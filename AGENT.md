@@ -20,7 +20,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [07-sztori-keret.md](07-sztori-keret.md) → miért dolgoznak együtt
    - [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) → folyamat, végek, harag
    - [09-dialog-es-architektura.md](09-dialog-es-architektura.md) → 3 rész, dialógus, kódstruktúra
-   - [10-vizualis-stilus.md](10-vizualis-stilus.md) → pixel + manga stílus, Rebeka referenciák
+   - [10-vizualis-stilus.md](10-vizualis-stilus.md) → pixel + manga stílus
+   - [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) → **kötelező képgenerálási szabály** (konzisztencia)
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -36,6 +37,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 4. **Páros útvonal**: Boglárka + Gréta a járható pár. Rebeka + Gréta szűk. Rebeka + Boglárka nem.
 
+5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány blokk + csak a különbség. Egy lány képenként. Ha eltér a kanontól, újra generáld.
+
 ## Folyamatkövetés (mi van kész)
 
 Frissítsd ezt a táblázatot, amikor valamit befejezel.
@@ -47,7 +50,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Sztorikeret + helyszínek | Kész | 07-sztori-keret.md |
 | Játékmenet + végek + harag | Kész | 08-jatekmenet-es-vegkimenetek.md |
 | 3 részes architektúra | Kész | 09-dialog-es-architektura.md |
-| Vizuális stílus (pixel + manga) | Alap kész | 10-vizualis-stilus.md, Rebeka referenciák generálva |
+| Vizuális stílus (pixel + manga) | Kész | 10-vizualis-stilus.md |
+| Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -56,7 +60,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | UI (pixel, szövegdoboz) | Nincs | Későbbi fázis |
 | Tesztek (headless) | Alap kész | src/tests/dialogue.test.ts |
 | Végkifejletek implementációja | Nincs | part3 |
-| Referenciaképek feltöltése | Részleges | Generált képek dokumentálva, repóba még nem |
+| Referenciaképek feltöltése | Részleges | Rebeka generálva, még nem a repóban |
 
 ## Következő lépések (javaslat)
 
@@ -64,7 +68,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 2. DialogueEngine összekötése a JSON-okkal.
 3. Part2 és Part3 scripte alapjának elkészítése.
 4. Bővített headless tesztek a végkimenetekre és a páros útvonalra.
-5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása.
+5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása a szabály szerint.
 6. Csak ezután UI.
 
 ## Szabályok agenteknek
@@ -74,6 +78,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - Frissítsd a fenti folyamatkövetési táblázatot, amikor egy részt befejezel.
 - Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
-- Vizuális generálásnál a pixel + manga stílust és a [04-vizualis-biblia.md](04-vizualis-biblia.md) + [10-vizualis-stilus.md](10-vizualis-stilus.md) promptjait használd.
+- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + teljes lány blokk. Egy személy képenként. Konzisztencia a kanonikus leírással.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály kész, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
