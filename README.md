@@ -29,6 +29,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [18-megvalositasi-terv.md](18-megvalositasi-terv.md) | Hiányzó elemek megvalósítási terve |
 | [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) | Flag-lista és intim eszkalációs tábla |
 | [20-kep-jelenet-lista.md](20-kep-jelenet-lista.md) | Kép- és jelenetlista a sávokhoz és kódokhoz |
+| [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) | Skálás turnaround modell sheet-ek (elől/oldal/hátul, ruhás + alsóneműs) és animált sprite alapok |
 
 Referenciaképek:
 

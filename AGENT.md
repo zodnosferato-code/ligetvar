@@ -31,6 +31,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [18-megvalositasi-terv.md](18-megvalositasi-terv.md) → hiányzó elemek megvalósítási terve
    - [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) → flag-lista és intim eszkalációs tábla
    - [20-kep-jelenet-lista.md](20-kep-jelenet-lista.md) → kép- és jelenetlista a sávokhoz
+   - [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) → skálás turnaround modell sheet-ek és animált sprite alapok
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -46,7 +47,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 4. **Páros útvonal**: Boglárka + Gréta a járható pár. Rebeka + Gréta szűk. Rebeka + Boglárka nem.
 
-5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. A képsávok **lehetőségek** (1. alap → 5. intim), nem kötelező szabályok. Az intim képek csak később, magas bizalomnál jelenhetnek meg. Ha eltér a kanontól, újra generáld.
+5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és a [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. A képsávok **lehetőségek** (1. alap → 5. intim), nem kötelező szabályok. Az intim képek csak később, magas bizalomnál jelenhetnek meg. Ha eltér a kanontól, újra generáld. Turnaround referenciák skálával, elől/oldal/hátul, ruhás és alsóneműs.
 
 6. **Akciók és pénzszerzés**: Lásd [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md). Heti 3 sáv, korlátozott akciók.
    - **MOHU**: Pac-Man stílusú gyűjtögető labirintus. Üveg/műanyag palack 75–125 Ft, energiaitalos doboz 150–200 Ft. Versenytárs: hajléktalan gyűjtögető.
@@ -87,6 +88,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Megvalósítási terv | Kész | 18-megvalositasi-terv.md |
 | Flag és eszkaláció | Kész | 19-flag-es-eszkalacio.md (flag-ek, lányonkénti láncok) |
 | Kép- és jelenetlista | Kész | 20-kep-jelenet-lista.md |
+| Turnaround referencia terv | Kész | 21-referencia-turnaround-terv.md |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Minta kész | dialogues/part1/*.json |
@@ -95,7 +97,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | UI (pixel, szövegdoboz) | Nincs | Későbbi fázis |
 | Tesztek (headless) | Alap kész | src/tests/dialogue.test.ts |
 | Végkifejletek implementációja | Nincs | part3 |
-| Referenciaképek feltöltése | Részleges | Rebeka generálva, még nem a repóban |
+| Referenciaképek feltöltése | Részleges | Rebeka generálva, még nem a repóban; turnaround példák generálva |
 | Zenefájlok | Nincs | Definíció kész, generálás később |
 | Lokalizációs minta | Kész | locales/hu.json |
 
@@ -105,7 +107,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 2. DialogueEngine összekötése a JSON-okkal.
 3. Part2 és Part3 scripte alapjának elkészítése.
 4. Bővített headless tesztek a végkimenetekre és a páros útvonalra.
-5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása a szabály szerint.
+5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása a szabály szerint. Turnaround képek feltöltése.
 6. Minijátékok (MOHU, építkezés) egyszerű implementációja.
 7. EventSystem alapjának megírása a random és feltételes eseményekhez.
 8. Zenefájlok generálása vagy beszerzése a definíció szerint.
@@ -120,7 +122,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - Frissítsd a fenti folyamatkövetési táblázatot, amikor egy részt befejezel.
 - Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
-- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Képsávok lehetőségek (1. alap → 5. intim), nem kötelezőek. Intim képek csak később. Konzisztencia a kanonikus leírással.
+- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Képsávok lehetőségek (1. alap → 5. intim), nem kötelezőek. Intim képek csak később. Konzisztencia a kanonikus leírással. Turnaround: skálás, elől/oldal/hátul, ruhás + alsóneműs.
 - **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU (Pac-Man, 75–125 Ft palackok, energiaital, hajléktalan versenytárs) + építkezés (időre, sör boost trade-off).
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan, flag szerint.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
@@ -129,4 +131,4 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Szakaszindítás**: A játék elején választható szakasz a [17-szakaszinditas.md](17-szakaszinditas.md) szerinti maximális értékekkel.
 - **Flag és eszkaláció**: A [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerinti flag-ek és láncok.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv, szakaszindítás, flag és eszkaláció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van. A 18-as terv feladatai (jelenetláncok, végrészletek, dialógus minták, képlista, lokalizációs minta) kidolgozva.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv, szakaszindítás, flag és eszkaláció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van. A 18-as terv feladatai kidolgozva. Turnaround referencia terv kész.
