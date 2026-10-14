@@ -24,6 +24,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) → **kötelező képgenerálási szabály** (konzisztencia, sejtető/félmeztelen, ruhaváltozás)
    - [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) → beszélgetés, hívás, pénzszerző minijátékok, korlátozott akciók
    - [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) → játékhurok, random események, kódolt meglepetések
+   - [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) → hangulatok és végteleníthető instrumentális zene
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -45,6 +46,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 7. **Játékhurok és események**: Lásd [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md). Random események és kódolt intim meglepetések a bizalmi szint szerint.
 
+8. **Zene**: Lásd [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md). Hangulatok és végteleníthető instrumentális loopok.
+
 ## Folyamatkövetés (mi van kész)
 
 Frissítsd ezt a táblázatot, amikor valamit befejezel.
@@ -60,6 +63,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md (sejtető, félmeztelen, pózíciók) |
 | Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU, építkezés, hívás) |
 | Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (random, kódolt meglepetések) |
+| Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -69,6 +73,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Tesztek (headless) | Alap kész | src/tests/dialogue.test.ts |
 | Végkifejletek implementációja | Nincs | part3 |
 | Referenciaképek feltöltése | Részleges | Rebeka generálva, még nem a repóban |
+| Zenefájlok | Nincs | Definíció kész, generálás később |
 
 ## Következő lépések (javaslat)
 
@@ -79,7 +84,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása a szabály szerint.
 6. Minijátékok (MOHU, építkezés) egyszerű implementációja.
 7. EventSystem alapjának megírása a random és feltételes eseményekhez.
-8. Csak ezután UI.
+8. Zenefájlok generálása vagy beszerzése a definíció szerint.
+9. Csak ezután UI.
 
 ## Szabályok agenteknek
 
@@ -91,5 +97,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Sejtető és félmeztelen képek, ruhadarabok lekerülése és pozícióváltás megengedett a bizalmi szint szerint. Konzisztencia a kanonikus leírással.
 - **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU 50 Ft üveg + építkezés minijáték.
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan.
+- **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer és játékhurok dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok és zene definíció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
