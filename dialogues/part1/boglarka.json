@@ -10,7 +10,8 @@
           "text_key": "dialogue.boglarka.intro.vg",
           "quality": "very_good",
           "effect": { "closeness": 5, "trust": 1, "flags": ["boglarka_margo"] },
-          "reaction": "kis_mosoly"
+          "reaction": "szegyenos",
+          "follow_node": "boglarka_intro_vg_react"
         },
         {
           "id": "good",
@@ -32,6 +33,20 @@
           "quality": "very_bad",
           "effect": { "closeness": -6, "anger": 2 },
           "reaction": "elpirul_es_elrejtozik"
+        }
+      ]
+    },
+    {
+      "id": "boglarka_intro_vg_react",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.intro.vg.react",
+      "choices": [
+        {
+          "id": "continue",
+          "text_key": "dialogue.boglarka.intro.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 2 },
+          "reaction": "elpirulas"
         }
       ]
     },
