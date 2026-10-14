@@ -98,7 +98,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Tesztek (headless) | Kész | `npm run test:engine` — 10 teszt az útvonalra, ajándékra, végre |
 | Végkifejletek implementációja | Kész | igaz, csendes, törött, páros, egyedül, botrány |
 | Referenciaképek feltöltése | Részleges | arcok, teljes alak, hátterek, ikonok az `assets/` alatt |
-| Zenefájlok | Nincs | Definíció kész, generálás később |
+| Zenefájlok | Kész | `music/*.mp3`, nyolc instrumentális loop, a UI a helyszínhez köti |
 | Lokalizációs minta | Kész | `locales/hu.json`. A játszható katalógus magyar szöveget tárol, nem kulcsot |
 
 ## Következő lépések (javaslat)
