@@ -266,6 +266,76 @@
           "reaction": "duhos_csend"
         }
       ]
+    },
+    {
+      "id": "rebeka_intimate_private",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.intimate_private",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.intimate_private.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_rebeka_intimate"] },
+          "reaction": "nyugalom_intense"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.intimate_private.good",
+          "quality": "good",
+          "effect": { "closeness": 4 },
+          "reaction": "enyhe_mosoly"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.intimate_private.bad",
+          "quality": "bad",
+          "effect": { "closeness": -3, "anger": 1 },
+          "reaction": "hideg"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.intimate_private.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -6, "risk": 10 },
+          "reaction": "duh"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_yield_control",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.yield_control",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.yield_control.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 10, "trust": 2, "flags": ["flag_rebeka_yield"] },
+          "reaction": "sebezheto"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.yield_control.good",
+          "quality": "good",
+          "effect": { "closeness": 5 },
+          "reaction": "nyugalom"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.yield_control.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2 },
+          "reaction": "gongy"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.yield_control.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -5, "anger": 2 },
+          "reaction": "hideg"
+        }
+      ]
     }
   ]
 }
