@@ -96,7 +96,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Dialógus JSON-ok (part1) | Minta | `dialogues/part1/*.json` |
 | Part2 és Part3 scripte | A motorban | Part 2 csomópontok a katalógus `STORY` listájában, a vég a `evaluateEnding` |
 | Teljes dialógusrendszer | Kész | Max 4 opció, very_good/good/bad/very_bad, `src/game/content/catalog.ts` |
-| UI (pixel, szövegdoboz) | Kész | `src/game/ui/` — tervező, jelenet, bolt, telefon, minijáték |
+| UI (pixel, szövegdoboz) | Kész | A főoldal a félév. A minijátékok csak a heti sávból nyílnak. |
 | Tesztek (headless) | Kész | `npm run test:engine` — 10 teszt az útvonalra, ajándékra, végre |
 | Végkifejletek implementációja | Kész | igaz, csendes, törött, páros, egyedül, botrány |
 | Referenciaképek feltöltése | Részleges | arcok, teljes alak, hátterek, ikonok az `assets/` alatt |

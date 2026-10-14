@@ -12,15 +12,21 @@ export type MoodId =
   | "ending_true";
 
 const FILE: Record<MoodId, string> = {
-  classroom_calm: "/music/classroom_calm.mp3",
-  holdkor_night: "/music/holdkor_night.mp3",
-  library_quiet: "/music/library_quiet.mp3",
-  office_morning: "/music/office_morning.mp3",
-  apartment_evening: "/music/apartment_evening.mp3",
-  bekas_to_dark: "/music/bekas_to_dark.mp3",
-  tension_low: "/music/tension_low.mp3",
-  ending_true: "/music/ending_true.mp3",
+  classroom_calm: pub("music/classroom_calm.mp3"),
+  holdkor_night: pub("music/holdkor_night.mp3"),
+  library_quiet: pub("music/library_quiet.mp3"),
+  office_morning: pub("music/office_morning.mp3"),
+  apartment_evening: pub("music/apartment_evening.mp3"),
+  bekas_to_dark: pub("music/bekas_to_dark.mp3"),
+  tension_low: pub("music/tension_low.mp3"),
+  ending_true: pub("music/ending_true.mp3"),
 };
+
+function pub(file: string) {
+  const env = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env;
+  const base = env?.BASE_URL ?? "/";
+  return `${base}${file}`;
+}
 
 const LEVEL: Record<MoodId, number> = {
   classroom_calm: 0.7,
