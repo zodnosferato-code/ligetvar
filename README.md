@@ -6,6 +6,19 @@ Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes 
 
 A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus. A téma a lányok meghódítása és a rejtett vágyaik beteljesítése. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a build agent a kódbázison dolgozhasson anélkül, hogy explicit tartalommal kellene foglalkoznia.
 
+## Futtatás és deploy
+
+```bash
+npm install
+npm run dev          # helyi fejlesztés (Vite)
+npm run build        # production build → dist/
+npm run test:engine  # headless motor tesztek (Node 22+)
+```
+
+**GitHub Pages**: A `.github/workflows/deploy-pages.yml` automatikusan deployolja a `main` ágat. A repó Settings → Pages → Source: **GitHub Actions** kell legyen.
+
+**Tesztek**: A `.github/workflows/test.yml` minden push/PR-n futtatja a `npm run test:engine` parancsot.
+
 | Dokumentum | Miről szól |
 | --- | --- |
 | [AGENT.md](AGENT.md) | Projekt útmutató, fő cél, folyamatkövetés, szabályok későbbi agenteknek |
@@ -37,17 +50,18 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [26-jelenet-felallitas.md](26-jelenet-felallitas.md) | Jelenetfelállítás, kamera-perspektíva, telefonos megjelenítés |
 | [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) | Ikonok és gombok definíciója — mind előre legenerált pixel kép |
 | [28-kiegeszitok.md](28-kiegeszitok.md) | Kiegészítők (könyv, nyaklánc, ceruza stb.) — nem karakter-részek |
+| [29-bovitett-dialogusok-es-portrek.md](29-bovitett-dialogusok-es-portrek.md) | Bővített dialógusok és portréváltások |
 
-A képek (sprite-ok, ikonok, jelenetek) a ground up-ból lesznek generálva a [04-vizualis-biblia.md](04-vizualis-biblia.md), [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md), [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) és [28-kiegeszitok.md](28-kiegeszitok.md) alapján. Nincs külső referenciafotó a repóban.
+A képek (sprite-ok, ikonok, jelenetek) a ground up-ból lesznek generálva a [04-vizualis-biblia.md](04-vizualis-biblia.md), [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md), [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) és [28-kiegeszitok.md](28-kiegeszitok.md) alapján.
 
 ## Kód
 
-A játszható, headless motor a `src/game/engine/` alatt van. Futtatás Node 22-vel, keretrendszer nélkül:
+A játszható, headless motor a `src/game/engine/` alatt van. Futtatás Node 22-vel:
 
 ```bash
 npm run test:engine
 ```
 
-A korábbi váz (`src/core/`, `npm test`) megmarad. A felület a `src/game/ui/` alatt van: tervező, jelenet, Polc, telefon, MOHU és építkezés. A párbeszédek a `src/game/content/catalog.ts` katalógusban vannak, nem külön JSON-ban. A `dialogues/part1/` és a `locales/hu.json` minta marad.
+A felület a `src/game/ui/` alatt van (Vite + React). A párbeszédek a `src/game/content/catalog.ts` katalógusban vannak, a `dialogues/part1/` és a `locales/hu.json` minta marad.
 
 Részletek: [ENGINE.md](ENGINE.md).
