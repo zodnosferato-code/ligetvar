@@ -8,7 +8,7 @@ Ez a lap a műfaj működését rögzíti, nem a Ligetvár jeleneteit. A végén
 
 **Randiszimulátor.** Elsősorban viszonykezelés. A játékosnak véges ideje van egy naptáron (nap, hét, félév, iskolaévek). Ezt az időt helyszínekre, tevékenységekre és beszélgetésekre költi. A cél egy kiválasztott szereplő vonzalmának felépítése, mielőtt lejár az idő. Ha senkihez nem kerül elég közel, az vereség, nem csak „egy szomorúbb fejezet”.
 
-A kettő keverhető. Sok játék visual novelként néz ki (háttér, sprite, szövegdoboz), és randiszimulátorként viselkedik (naptár, stat, idő). A Ligetvár ilyen hibrid: a jelenetek megírt párbeszédek, a közöttük lévő döntés az, mire költöd a hetet.
+A kettő keverhető. Sok játék visual novelként néz ki (háttér, sprite, szövegdoboz), és randiszimulátorként viselkedik (naptár, stat, idő). A Ligetvár ilyen hibrid: a jelenetek megírt párbeszédek, a köztük lévő döntés az, mire költöd a hetet.
 
 A műfaj alapját a *Tokimeki Memorial* (1994) tette le: több év, napi beosztás, saját statok és több szereplő rejtett vagy látható vonzalma. A *Persona* társas kapcsolatai ugyanezt a logikát használják egy nagyobb játék belsejében: egy időpont egy ember, a rang küszöbe nyitja a következő jelenetet.
 
@@ -142,7 +142,7 @@ Randiszimulátor, visual novel jelenetekkel.
 - Szereplőnként igaz, csendes és tört vég, plusz az egyedül vég.
 - Pixeles háttér, cserélhető arckifejezés, szövegdoboz, mentés.
 
-Amit szándékosan nem vesz át: három teljes iskolaév, tucatnyi stat, rejtett pontverseny, és minden olyan vég, ami szexjelenetre fut. A cél a félév alatt felépített közelség, nem egy erotikus játék.
+Amit szándékosan nem vesz át: három teljes iskolaév, tucatnyi stat, rejtett pontverseny. A cél a félév alatt felépített közelség, amely intimitásba is fordulhat a megfelelő útvonalakon.
 
 ## Források
 

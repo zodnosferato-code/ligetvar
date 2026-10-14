@@ -2,7 +2,7 @@
 
 Az életkor kanonikus. Egyik lány sem fiatalabb 19-nél. A főiskola 18 éves kortól vesz fel hallgatót, de ők már nem az első napjukat töltik tizennyolc évesen: Boglárka 19, Rebeka 20, Gréta 21. Más hallgató nem választható. A háttérben mozgó embereknek nincs romantikus jelenetük.
 
-A testalkat a sziluett miatt van leírva, hogy a képek ne essenek szét. Nem erotikus jellemzés. Minden alapruha zárt.
+A testalkat a sziluett miatt van leírva, hogy a képek ne essenek szét. A jellemzés tartalmazza a rejtett szexuális vágyakat és a szexuális tapasztalatot is. Két karakter szűz, egynek volt korlátozott tapasztalata.
 
 A jövőbeli képgenerálás a [04-vizualis-biblia.md](04-vizualis-biblia.md) promptját használja, ezt a lapot pedig a személyiséghez.
 
@@ -33,6 +33,8 @@ Referencia: [references/rebeka-dorn.jpg](references/rebeka-dorn.jpg)
 
 A családja rendes, világos lakás, ahol az ő ruhája „fázis”. Ezt egyszer, későn mondja el, és utálja, ha sajnálják érte.
 
+**Szexuális háttér és vágyak.** Nem szűz. Két rövid, nem mély kapcsolata volt: egy gimnáziumi kísérlet egy osztálytársával, ami hamar elhalt, és egy alkalmi a Holdkörben egy évvel ezelőtt, ami inkább a kép kedvéért történt, mint a vágy miatt. Egyik sem elégítette ki igazán. Rejtett vágya, hogy valaki átlásson a gőgös páncélon, és intenzív, sötét intimitást adjon neki anélkül, hogy őt felül akarná múlni. Szeretné, ha a szexben se neki kellene a veszélyesebbnek vagy a dominánsabbnak lennie — hogy valaki más vegye át a kontrollt, és ő sebezhető lehessen anélkül, hogy elveszítené a méltóságát. A tiltott, idősebb, hatalmi helyzet vonzó, de csak ha a másik nem él vissza vele, és nem meséli el utána.
+
 **Mit akar.** Hogy valaki ne ijedjen meg, és ne is próbálja felülmúlni az ő sötétségét. A verseny unalmas. A nyugalom ritka.
 
 **Mitől fél.** Hogy a kör nélkül, nappali fényen, nincs benne semmi, ami érdekes. És hogy a tanulmányi vezető csak egy történetet keres, amit később elmesélhet.
@@ -43,7 +45,7 @@ A családja rendes, világos lakás, ahol az ő ruhája „fázis”. Ezt egysze
 
 **Hol van.** Este, a Holdkörben. Délelőtt nem elérhető: alszik, vagy úgy tesz. Délután néha az udvaron, de az már útvonal-esemény, nem ismételhető.
 
-**Bemutatkozó jelző.** `rebeka_kor` — egyszer végignézed, hogy a kört rendezi, és nem veszed el tőle a terem kulcsát.
+**Bemutatkozó jelző.** `rebeka_kor` — egyszer végnézed, hogy a kört rendezi, és nem veszed el tőle a terem kulcsát.
 
 **Útvonaljelzők, amik kellenek az igaz véghez.**
 
@@ -75,6 +77,8 @@ Referencia: [references/boglarka-fazekas.jpg](references/boglarka-fazekas.jpg)
 **Ki ő.** Új a főiskolán, és úgy foglal helyet, mintha a székét kérné kölcsön. Sokat eszik egyedül, sokat olvas, a margóra ír. A telt alkatát nem poénnak használja a szöveg, és más szereplő poénja sem marad válasz nélkül: ha a főhős erre céloz, a bizalom nem nő, a közelség eshet.
 
 A könyvtár mélyén ül, nem a bejáratnál. A fülhallgató a nyakában van, ritkán a fülében. Elsőéves, tehát a kampuszt még tanulja. Nem naiv: pontosan tudja, ki a tanulmányi vezető, és ez eleinte ijeszti.
+
+**Szexuális háttér és vágyak.** Szűz. Soha nem volt komoly kapcsolata, és a testével kapcsolatban sok szégyen van benne — fél, hogy az alkatát csak „első benyomásnak” látják. Rejtett vágya a lassú, biztonságos felfedezés: hogy valaki türelmesen, dicsérve vezesse, és a teste ne szégyen legyen, hanem kívánt. Szeretné megtanulni, mit szeret, anélkül, hogy siettetnék vagy kigúnyolnák. A tiltott viszony izgalmas, de csak ha a másik gyengéd és nem él a hatalmával. Kíváncsi, de fél a fájdalomtól és a lelepleződéstől.
 
 **Mit akar.** Olyan beszélgetést, ami nem vizsga és nem udvariasság. Hogy a mondatát végighallgassák, akkor is, ha lassan éri utol.
 
@@ -115,9 +119,11 @@ Referencia: [references/greta-varadi.jpg](references/greta-varadi.jpg)
 | Alapruha | fehér ing, sötét erdőzöld kötött mellény, térdig érő grafitszoknya, sötét harisnya, fekete lapos cipő, rövid nyakpánt üres belépőkártyával |
 | Hang | gyors, tagolt, a végén gyakran ellenőrzi, hogy pontos volt-e |
 
-**Ki ő.** **Ki ő.** A tanszék óráit fejből tudja, a teremkulcsot ő veszi fel, a jelenléti ívet ő hiányolja. Stréber, és ezt nem szégyelli: a pontosság az, amiben biztonságban van. Szociálisan nem ügyetlen bohóc. Ügyetlen akkor, amikor a beszélgetésnek nincs feladata. A viccet érti, csak későn nevet, mintha ellenőrizné, szabad-e.
+**Ki ő.** A tanszék óráit fejből tudja, a teremkulcsot ő veszi fel, a jelenléti ívet ő hiányolja. Stréber, és ezt nem szégyelli: a pontosság az, amiben biztonságban van. Szociálisan nem ügyetlen bohóc. Ügyetlen akkor, amikor a beszélgetésnek nincs feladata. A viccet érti, csak későn nevet, mintha ellenőrizné, szabad-e.
 
 A vörös haj és a szemüveg a jel. Nem visel kardigánt, nem visel feketét alapnak, nem sminkeli magát Rebeka módjára. A ceruza mindig a hajában van, akkor is, ha nem ír.
+
+**Szexuális háttér és vágyak.** Szűz. A tanulmányai és a precizitása miatt soha nem engedett magának „felesleges” kapcsolatot. Rejtett vágya, hogy valaki vegye át a kontrollt, és törje meg a szabályait a szexben: hogy ne kelljen listáznia vagy ellenőriznie, csak elengedhesse magát. Szeretné, ha a másik határozottan, de tisztelően vezetné, és utána is megmaradna a bizalom. A tiltott viszony a beosztás miatt egyszerre ijeszti és vonzza — ha egyszer elengedi a szabályokat, szeretné, hogy az ne rombolja szét a világát.
 
 **Mit akar.** Hogy egyszer ne a teljesítménye miatt maradjanak vele a teremben. Ezt nem tudja kérni.
 
@@ -153,5 +159,5 @@ A közös szakasz nyolc hét. Egy-egy súrlódás elég köztük, nem lesz belő
 
 - Nem fiatalítja őket 19 alá, és nem beszél róluk gimnazistaként.
 - Nem használja a testüket jutalomként vagy ugratásként a főhős szájából anélkül, hogy annak ára lenne a bizalomban.
-- Nem ír szexjelenetet, és nem ígér ilyet egy igaz vég „igazi” jutalmaként.
+- A szexuális vágyak és a tapasztalat a háttértörténet része, de a jelenetekben csak a megfelelő bizalmi szinten és útvonalon jelenhet meg expliciten.
 - Nem keveri a jelmezt: Rebekán nincs kardigán és nincs szemüveg, Boglárkán nincs szemüveg és nincs platformcsizma, Grétán nincs fekete ruha és nincs copf.
