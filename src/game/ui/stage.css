@@ -187,11 +187,73 @@
   overflow: hidden;
 }
 
-.cast-card img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: center 20%;
+.title-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.title-copy {
+  padding: 1.25rem 1rem 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.title-mark {
+  font-size: 2.6rem;
+  line-height: 1;
+  margin: 0.3rem 0 0.4rem;
+  font-weight: 680;
+}
+
+.lead {
+  margin-top: 0;
+}
+
+.cast-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.45rem 0.55rem;
+}
+
+.cast-caption span {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.title-dock {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem 1rem;
+  border-top: 2px solid #000;
+  background: var(--color-desk);
+}
+
+.name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.name-field input {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  border: 2px solid #000;
+  font-family: var(--font-sans);
+  font-size: 1rem;
 }
 
 .meter {
