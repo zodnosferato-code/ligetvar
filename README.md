@@ -18,7 +18,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [07-sztori-keret.md](07-sztori-keret.md) | Misztikus gyógytorna, közös munka okai, közeledési útok, helyszínek |
 | [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) | Játékmenet, sztorifolyás, végkimenetek, páros útvonal, ajándék és harag rendszer |
 | [09-dialog-es-architektura.md](09-dialog-es-architektura.md) | 3 részes struktúra, dialógusrendszer (max 4 opció), moduláris headless kód |
-| [10-vizualis-stilus.md](10-vizualis-stilus.md) | Pixel + japán manga stílus, Rebeka referencia képek, kulcsjelenetek |
+| [10-vizualis-stilus.md](10-vizualis-stilus.md) | Pixel + japán manga stílus, kulcsjelenetek |
 | [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) | Kötelező képgenerálási szabály a konzisztencia érdekében |
 | [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) | Beszélgetés, hívás, pénzszerző minijátékok (MOHU, építkezés), korlátozott akciók |
 | [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) | Játékhurok, eseménytípusok, random események, kódolt intim meglepetések |
@@ -37,13 +37,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [26-jelenet-felallitas.md](26-jelenet-felallitas.md) | Jelenetfelállítás, kamera-perspektíva, telefonos megjelenítés |
 | [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) | Ikonok és gombok definíciója — mind előre legenerált pixel kép |
 
-Referenciaképek:
-
-- [references/rebeka-dorn.jpg](references/rebeka-dorn.jpg)
-- [references/boglarka-fazekas.jpg](references/boglarka-fazekas.jpg)
-- [references/greta-varadi.jpg](references/greta-varadi.jpg)
-
-A képek azonossági horgonyok (arc, haj, ruha, testalkat). A végleges játékbeli sprite-ok szigorúbb, rácsos pixelgrafikák lesznek, ezekről a lapokról. A kanonikus leírás a képpel együtt érvényes: ha a kép és a szöveg ütközik, a [04-vizualis-biblia.md](04-vizualis-biblia.md) „Eltérések” része mondja meg, melyik nyer.
+A képek (sprite-ok, ikonok, jelenetek) a ground up-ból lesznek generálva a [04-vizualis-biblia.md](04-vizualis-biblia.md), [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) alapján. Nincs külső referenciafotó a repóban.
 
 ## Kód
 
