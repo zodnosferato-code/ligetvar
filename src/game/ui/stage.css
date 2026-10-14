@@ -195,7 +195,19 @@
 }
 
 .title-copy {
-  padding: 1.25rem 1rem 1rem;
+  padding: 1.1rem 1rem 6.5rem;
+}
+
+.title-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.85rem 0 1rem;
+}
+
+.title-actions .pixel-btn {
+  width: 100%;
+  text-align: center;
 }
 
 .eyebrow {
@@ -229,20 +241,11 @@
   font-size: 0.78rem;
 }
 
-.title-dock {
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem 1rem;
-  border-top: 2px solid #000;
-  background: var(--color-desk);
-}
-
 .name-field {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  margin-top: 0.85rem;
   font-size: 0.85rem;
 }
 

@@ -69,7 +69,10 @@ export const useGame = create<GameStore>((set, get) => ({
   },
   resume: () => {
     const state = readSave();
-    if (!state) return;
+    if (!state) {
+      get().start(get().state.name);
+      return;
+    }
     set({ mode: "play", state, hasSave: true });
   },
   toTitle: () => set({ mode: "title" }),
