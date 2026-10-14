@@ -57,13 +57,16 @@ A haj, arcjel és testalkat **mindig** ez marad. A ruha változhat.
 Rebeka Dorn, age 20. Tall, 172 cm, curvy feminine hourglass, pale skin #f0d2c4.
 Long straight black hair #1a1420 to the waist, one dull plum streak #6e3a52
 on her left side. Sharp eyeliner, dark berry lipstick #6e2438, small beauty
-mark under her left eye. Silver ring choker #c9cdd4, one silver ring.
+mark under her left eye. Thin old scar on the right side of her abdomen
+(just above the waistline), which she is ashamed of and usually covers.
+Silver ring choker #c9cdd4, one silver ring.
 ```
 
 **Boglárka Fazekas**
 ```text
-Boglarka Fazekas, age 19. Short, 158 cm, chubby soft round build, round face,
-freckles #c48462, no glasses. Light brown hair #8a5a3a in a loose braid over her right shoulder.
+Boglarka Fazekas, age 19. Short, 150 cm, relatively fuller build with larger bust,
+soft round face and shoulders, freckles #c48462, no glasses. Light brown hair #8a5a3a
+in a loose braid over her right shoulder.
 ```
 
 **Gréta Váradi**
@@ -84,7 +87,7 @@ with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasse
 ## Konzisztencia szabályok
 
 1. Mindig az alap prompt + a lány haj/arc/test blokkja + ruházat/póz utasítás.
-2. A haj, arcjel és testalkat soha nem változhat.
+2. A haj, arcjel és testalkat soha nem változhat. Rebeka sebhelye és Boglárka 150 cm-es teltebb alkata kanonikus.
 3. Ruhadarabok csak akkor kerülnek le, ha a jelenet (bizalmi szint és lehetőség) kifejezetten kéri.
 4. Ha a generált kép eltér a kanontól (rossz haj, szemüveg Boglárkán stb.), újra kell generálni.
 5. Referenciaképek a `references/` mappába kerülnek, lehetőségenként csoportosítva.
