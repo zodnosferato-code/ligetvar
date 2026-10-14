@@ -17,30 +17,21 @@ Minden beszélgetés a dialógusrendszer szerint megy: max 4 opció, very_good /
 
 ## Pénzszerzési lehetőségek
 
-A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A minijátékok **szórakoztatóak**, régi egyszerű játékokra alapozva.
+A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A minijátékok **szórakoztatóak**.
 
-### 1. MOHU visszaváltás — Pac-Man stílusú gyűjtögető
-- **Alap**: Klasszikus Pac-Man / maze chase. A játékos egy egyszerű labirintusban (udvar, park, kampusz széle) mozog, és összegyűjti a szétszórt palackokat és dobozokat.
-- **Tárgyak**:
-  - Üveg palack: 75–125 Ft (változó érték)
-  - Műanyag palack: 75–125 Ft
-  - Energiaitalos doboz: magasabb érték (150–200 Ft), ritkább
-- **Versenytárs**: Egy hajléktalan gyűjtögető is a labirintusban jár. Ő is szedi a palackokat. Ha eléred, elveheti a közeledben lévőket, vagy lassít. Elkerülhető, de feszültséget ad.
-- Mechanika: Pixeles labirintus, 4 irányú mozgás. A tárgyak értéket adnak. Rövid power-up: gyorsabb mozgás vagy a versenytárs ideiglenes lelassítása.
-- Jutalom: Az összegyűjtött tárgyak értéke. Egy sávban 800–1800 Ft reális a teljesítmény és a versenytárs elkerülése szerint.
-- Korlát: hetente 2–3 alkalommal érdemes, utána csökken a hozam.
-- Szórakoztatás: klasszikus gyűjtögetés + feszült verseny a hajléktalannal, rövid és addiktív.
+### 1. MOHU visszaváltás — infinite runner
+- **Alap**: Oldalsó infinite runner. A játékos ugrik (Space / fel nyíl) a palackokért, elkerüli a veszélyeket.
+- **Tárgyak**: Üveg/műanyag palack 75–125 Ft, energiaitalos doboz magasabb. Veszélyek (sötét alakok) levonnak pontot.
+- Jutalom: Az összegyűjtött érték szerint, egy sávban 800–1800 Ft reális.
+- Korlát: hetente 2–3 alkalommal érdemes.
+- Szórakoztatás: egyszerű vezérlés, telefonbarát, feszültség a veszélyekkel.
 
-### 2. Fizikai munka — építkezés minijáték — időre menő falrakás
-- **Alap**: Időre megy. A játékos minél több falat (téglasort) próbál lerakni a rendelkezésre álló idő alatt.
-- Mechanika: Egyszerű, pontos lerakás szükséges (időzítés vagy pozíció). A jó lerakás teljes értéket ad, a rossz kevesebbet vagy semmit.
-- **Sör boost** (trade-off): A játékos ihat sört a játék előtt vagy közben.
-  - Előny: gyorsabb lerakás (több fal fér az időbe).
-  - Hátrány: nehezebb jól lerakni a falat (pontosabb időzítés kell, vagy nagyobb a hibalehetőség).
-- Jutalom: 12 000–18 000 Ft egy sávra a lerakott jó falak száma szerint. A sör növelheti a maximumot, de kockázatos.
-- Hatás: Jelenlét vagy Nyugalom stat enyhe változása a teljesítmény szerint. Túl sok sör enyhe fáradtságot okozhat.
-- Korlát: hetente maximum 1–2 alkalom, utána fáradtság.
-- Szórakoztatás: időnyomás + tudatos trade-off a sörrel.
+### 2. Tanári munka — trivia / iratellenőrzés
+- **Alap**: A tanszéki feladatok része. Kérdőívek javítása média, folklór és adminisztrációs témákban.
+- Mechanika: Időzített vagy egyszerű választásos kérdések. Helyes válasz pénzt ad (1000–1500 Ft / kérdés).
+- Jutalom: A helyes válaszok összege. Illeszkedik a tanári szerephez.
+- Korlát: hetente maximum 1–2 alkalom.
+- Szórakoztatás: tudás + a karakterek világához kötött kérdések.
 
 ### Egyéb meglévő pénzforrások (a rendszerekből)
 - Tanulmányi vezetői fizetés: 60 000 Ft / hét (automatikus).
@@ -56,7 +47,7 @@ A műfaj (Tokimeki Memorial, Persona-szerű időbeosztás, Stardew-szerű ajánd
 | Ajándék átadása | 0 (találkozáson) | ízlés szerint | hetente 1 értelmes |
 | Gyógytorna (kötelező) | háttér | stat, találkozás | heti egyszer |
 | Egyéni feladat | 1 | közelség, lakáslátogatás | történethez kötött |
-| Munka (palack / építkezés / irat) | 1 | pénz | korlátozott hetente |
+| Munka (palack / trivia / irat) | 1 | pénz | korlátozott hetente |
 | Stat emelés (olvasás, pihenés) | 1 | Jelenlét / Éleslátás / Nyugalom | |
 | Randihely (9. héttől) | 1 | közelség, kockázat | pénzbe kerül |
 | Pihenés / semmittevés | 1 | harag csökkenés, Nyugalom | |
@@ -69,4 +60,4 @@ A műfaj (Tokimeki Memorial, Persona-szerű időbeosztás, Stardew-szerű ajánd
 - Túl sok munka egy héten fáradtságot okoz (következő beszélgetések enyhén rosszabbak).
 - A lányok órarendje korlátozza, mikor érhetők el.
 
-A rendszer a meglévő [05-rendszerek.md](05-rendszerek.md) és [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) szabályaira épül. A minijátékok később külön modulban implementálhatók, headless tesztelhetően (a pontszám és a jutalom kiszámítható UI nélkül is).
+A rendszer a meglévő [05-rendszerek.md](05-rendszerek.md) és [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) szabályaira épül. A minijátékok a `src/game/ui/minigames.tsx`-ben vannak.
