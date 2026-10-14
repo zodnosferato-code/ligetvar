@@ -22,7 +22,7 @@ Referencia: [references/rebeka-dorn.jpg](references/rebeka-dorn.jpg)
 | --- | --- |
 | Kor | 20 |
 | Év | másodéves, média |
-| Magasság | 172 cm, a három közül a legmagasabb |
+| Magasság | 175 cm, a három közül a legmagasabb |
 | Alkat | nőies, hangsúlyos derék és csípő, egyenes tartás |
 | Haj | derékig érő, egyenes fekete haj, a bal oldalán tompa szilvakék tincs |
 | Arc | sápadt, éles szemfestés, sötét bogyószínű száj, anyajegy a bal szeme alatt |

@@ -9,6 +9,7 @@ Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Mi
 - **Felnőtt arányok**: nem chibi, nem gyerekarc, nem nagy fej.
 - **Egy személy képenként**: soha ne generálj két lányt egy képen.
 - **Háttér**: lapos `#2c2830` referenciánál. Játékbeli hátterek külön készülnek.
+- **Magasságskála**: 0–180 cm, a lány pontos magasságát mutatja a fej tetején.
 
 ## Képek lehetőségei (sávok az előrehaladás szerint)
 
@@ -43,7 +44,7 @@ Ruhadarabok **változhatnak vagy lekerülhetnek**. Pozíciók változhatnak (ál
 Pixel art character reference, Japanese manga style, one adult woman, full body,
 both feet visible if standing, centered. Crisp hard pixels, limited palette, no blur,
 no anti-aliasing, no text, no watermark, no second person. Plain flat background #2c2830.
-Adult proportions, not a child, not chibi.
+Adult proportions, not a child, not chibi. Accurate height scale 0-180 cm showing exact height.
 ```
 
 Ezután jön a lány specifikus blokkja, majd a ruházat/póz/intimitás utasítás.
@@ -54,7 +55,7 @@ A haj, arcjel és testalkat **mindig** ez marad. A ruha változhat.
 
 **Rebeka Dorn**
 ```text
-Rebeka Dorn, age 20. Tall, 172 cm, curvy feminine hourglass, pale skin #f0d2c4.
+Rebeka Dorn, age 20. Tall, exactly 175 cm, curvy feminine hourglass, pale skin #f0d2c4.
 Long straight black hair #1a1420 to the waist, one dull plum streak #6e3a52
 on her left side. Sharp eyeliner, dark berry lipstick #6e2438, small beauty
 mark under her left eye. Thin old scar on the right side of her abdomen
@@ -64,14 +65,14 @@ Silver ring choker #c9cdd4, one silver ring.
 
 **Boglárka Fazekas**
 ```text
-Boglarka Fazekas, age 19. Short, 150 cm, relatively fuller build with larger bust,
-soft round face and shoulders, freckles #c48462, no glasses. Light brown hair #8a5a3a
-in a loose braid over her right shoulder.
+Boglarka Fazekas, age 19. Short, exactly 150 cm, relatively fuller build with larger bust
+(bra two sizes larger), soft round face and shoulders, freckles #c48462, no glasses.
+Light brown hair #8a5a3a in a loose braid over her right shoulder.
 ```
 
 **Gréta Váradi**
 ```text
-Greta Varadi, age 21. Slim, 168 cm, copper-red hair #c4542a in a high ponytail
+Greta Varadi, age 21. Slim, exactly 168 cm, copper-red hair #c4542a in a high ponytail
 with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasses
 #2a2e33, light freckles across the nose, fair skin #f6d7c4.
 ```
@@ -87,10 +88,11 @@ with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasse
 ## Konzisztencia szabályok
 
 1. Mindig az alap prompt + a lány haj/arc/test blokkja + ruházat/póz utasítás.
-2. A haj, arcjel és testalkat soha nem változhat. Rebeka sebhelye és Boglárka 150 cm-es teltebb alkata kanonikus.
+2. A haj, arcjel és testalkat soha nem változhat. Rebeka 175 cm és sebhelye, Boglárka 150 cm-es teltebb alkata kanonikus.
 3. Ruhadarabok csak akkor kerülnek le, ha a jelenet (bizalmi szint és lehetőség) kifejezetten kéri.
 4. Ha a generált kép eltér a kanontól (rossz haj, szemüveg Boglárkán stb.), újra kell generálni.
 5. Referenciaképek a `references/` mappába kerülnek, lehetőségenként csoportosítva.
+6. Magasságskála mindig 0–180 cm, pontosan a lány magasságát mutatja.
 
 ## Játékbeli felhasználás
 
