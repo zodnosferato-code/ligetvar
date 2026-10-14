@@ -142,5 +142,41 @@
   "dialogue.route.boglarka": "Boglárkát.",
   "dialogue.route.greta": "Grétát.",
   "dialogue.route.pair": "Boglárkát és Grétát.",
-  "dialogue.route.none": "Senkit."
+  "dialogue.route.none": "Senkit.",
+
+  "dialogue.rebeka.intimate_private": "A lakásban nincs közönség. A sötét ruha egy ponton enged, a jel desire_private. A sebhely csak akkor látszik, ha te kéred.",
+  "dialogue.rebeka.intimate_private.vg": "Maradjon így. Nem viszem ki a folyosóra, és nem írom át a tiédet.",
+  "dialogue.rebeka.intimate_private.good": "Látom. Nem kell többet mondani.",
+  "dialogue.rebeka.intimate_private.bad": "Ez a tanszékre tartozik, nem ide.",
+  "dialogue.rebeka.intimate_private.vb": "Majd elmesélem, mit mutattál. A nevükkel együtt.",
+
+  "dialogue.rebeka.yield_control": "Ha a kulcs nálad marad, a jel desire_yield_control. Te vezetel, én nem rendezem át.",
+  "dialogue.rebeka.yield_control.vg": "A kulcs nálad. Nem nézek el, és nem hívok közönséget.",
+  "dialogue.rebeka.yield_control.good": "Rendben. Lassan, és csendben.",
+  "dialogue.rebeka.yield_control.bad": "A tanár ne vegye el a vezetést.",
+  "dialogue.rebeka.yield_control.vb": "Majd a tanszéken elmondom, ki adta át a kört.",
+
+  "dialogue.boglarka.slow_explore": "A kardigán lejjebb csúszik. A jel desire_slow_explore. Nem kell sietni, és nem kell névnek hívni.",
+  "dialogue.boglarka.slow_explore.vg": "Megvárom a mondat végét. A jel maradhat, nem viszem tovább.",
+  "dialogue.boglarka.slow_explore.good": "Maradj. Nem siettetlek.",
+  "dialogue.boglarka.slow_explore.bad": "Húzd vissza. Ez túl gyors.",
+  "dialogue.boglarka.slow_explore.vb": "Majd elmesélem, mi látszott a kardigán alatt.",
+
+  "dialogue.boglarka.body_praise": "Ha dicséred, a jel desire_body_praise. A forma a jegyzet tárgya, nem a vicc.",
+  "dialogue.boglarka.body_praise.vg": "A forma a szöveg része. Nem nevetem el, és nem siettetem.",
+  "dialogue.boglarka.body_praise.good": "Szépen írtad. A margó maradhat üres.",
+  "dialogue.boglarka.body_praise.bad": "Ez nem folklór. Zárd be a jegyzetet.",
+  "dialogue.boglarka.body_praise.vb": "Cuki név, cuki forma. Ennyi a jegyzet.",
+
+  "dialogue.greta.rule_break": "A lista itt véget ér. A jel desire_rule_break. A szabályt te engeded el, nem én írom át.",
+  "dialogue.greta.rule_break.vg": "Konkrétan: a szabály most nem kivétel, hanem a te döntésed. Leírom, ahogy van.",
+  "dialogue.greta.rule_break.good": "A dokumentum készen van. Dönts te.",
+  "dialogue.greta.rule_break.bad": "A lista ettől még kötelez.",
+  "dialogue.greta.rule_break.vb": "A demonstrátori helyed miatt ez kötelesség, nem választás.",
+
+  "dialogue.greta.yield": "Ha a vezetést átadod, a jel desire_yield_control. A bilincs csak magas bizalomnál, és csak ha kimondod.",
+  "dialogue.greta.yield.vg": "Kimondod, én követem. Nincs közönség, és a lista nem kerül a tanszékre.",
+  "dialogue.greta.yield.good": "Rendben. Pontosan, és lassan.",
+  "dialogue.greta.yield.bad": "A szabály nem enged kivételt.",
+  "dialogue.greta.yield.vb": "Majd a tanszék látja, ki engedte el a listát."
 }
