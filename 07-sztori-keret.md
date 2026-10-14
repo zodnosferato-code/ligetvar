@@ -22,23 +22,27 @@ A közeledés a közös munka, az egyéni feladatok és a helyszínek révén t�
 
 ### Rebeka (`exp_limited` · `desire_yield_control`, `desire_private_intense`, `theme_power_forbidden`, `theme_no_audience`)
 - **Tanterem:** A gyakorlatok dokumentálása során kérdéseket tesz fel. Ha a főhős nem próbálja „felülmúlni” a sötétségét, nyílik a beszélgetés.
-- **Egyéni feladat:** Fotóanyag előkészítése — ehhez a tanár lakásában kell átbeszélni a szimbolikát (esti látogatás).
+- **Egyéni feladat:** Fotóanyag előkészítése — ehhez a tanár lakásában (a kastélyban) kell átbeszélni a szimbolikát (esti látogatás).
 - **Békás-tó:** Sötétben, az elágazó utakon és bokrok között lehet privát, intenzív jeleneteket csinálni. Itt nyílik a `desire_private_intense` és a `desire_yield_control`.
 
 ### Boglárka (`exp_none` · `desire_slow_explore`, `desire_body_praise`, `theme_power_forbidden`)
 - **Tanterem:** A gyakorlatok közben lassan nyílik meg. A főhősnek meg kell várnia a mondatait, és nem szabad a testére célozni korán.
-- **Egyéni feladat:** Kutatási jegyzetek összeállítása — a tanár lakásában lehet nyugodtan átbeszélni a folklór anyagot (délutáni vagy esti látogatás).
+- **Egyéni feladat:** Kutatási jegyzetek összeállítása — a tanár lakásában (kastély) lehet nyugodtan átbeszélni a folklór anyagot (délutáni vagy esti látogatás).
 - **Békás-tó:** A sötét, csendes utak ideálisak a lassú felfedezéshez. Itt lehet a `desire_slow_explore` és a `desire_body_praise` témáit érinteni anélkül, hogy közönség lenne.
 
 ### Gréta (`exp_none` · `desire_rule_break`, `desire_yield_control`, `theme_power_forbidden`)
-- **Tanterem:** A szervezési munka során pontos, de ha a főhős hibázik és bevallja, nyílik a bizalom.
-- **Egyéni feladat:** Adminisztratív anyagok véglegesítése — a tanár lakásában kell átadni vagy átbeszélni a dokumentumokat (esti látogatás).
+- **Tanterem / iroda:** A szervezési munka során pontos, de ha a főhős hibázik és bevallja, nyílik a bizalom.
+- **Egyéni feladat:** Adminisztratív anyagok véglegesítése — a tanár lakásában vagy irodájában kell átadni vagy átbeszélni a dokumentumokat (esti látogatás).
 - **Békás-tó:** A sötét, szabálytalan utak lehetőséget adnak arra, hogy „ne legyen lista”. Itt nyílik a `desire_rule_break` és a `desire_yield_control`.
 
 ## Helyszínek a sztori szerint
 
-- **Tanterem (egy szoba):** A fő hely. Itt zajlanak a közös gyakorlatok és a munka megbeszélései. A jelenetek nagy része itt történik.
-- **A tanár lakása:** Egyéni feladatok után a lányok meglátogatják (anyag átadás, átbeszélés). Privát hely, ahol a beszélgetés mélyebb lehet.
-- **Békás-tó (sötétben):** Elágazó utak, bokrok. Randihely a 9. héttől. Ideális a privát, intim jelenetekhez a vágykódok szerint.
+Minden fő belső helyszín a **Ligetvár kastélyában** van. A 19. századi romantikus/neogótikus épület modernizált, de a kőfalak, íves ablakok, fagerendák és a régi szerkezet mindenütt láthatók. A főhős itt lakik és dolgozik.
+
+- **Tanterem (egy kastélyterem):** A fő hely. Magas kőfalak, csúcsíves ablakok, fagerendás mennyezet. Itt zajlanak a közös gyakorlatok és a munka megbeszélései. Modern asztalok, székek, tábla és gyógytornás eszközök vannak benne.
+- **A tanár lakása (kastélyszárny vagy torony):** Egyéni feladatok után a lányok meglátogatják (anyag átadás, átbeszélés). Privát, modernizált kastélyszoba kanapéval, ággyal, könyvekkel, íves ablakkal a parkra vagy udvarra. Itt a beszélgetés mélyebb lehet.
+- **A tanár irodája:** Szintén a kastélyban. Modern íróasztal, számítógép, iratok, de kőfalak, íves ablak és gerendák. Gréta ide jár adminisztrációra.
+- **Könyvtár:** Grandiózus kastélykönyvtár magas polcokkal, íves ablakokkal, olvasóasztallal. Boglárka kedvelt helye.
+- **Békás-tó (sötétben):** Elágazó utak, bokrok a kastély parkjának szélén vagy közelében. Randihely a 9. héttől. Ideális a privát, intim jelenetekhez a vágykódok szerint.
 
 A közeledés mindig a bizalmi lépcsőn és a történetjelzőkön múlik. A téma a meghódítás és a vágyak beteljesítése, de a kódbázis a kódokkal építhető.
