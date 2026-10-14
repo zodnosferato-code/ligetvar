@@ -29,36 +29,34 @@ A játék elejétől minimális szexuális interakciók lehetségesek (`act_flas
 
 | Típus | Feltétel (röviden) | Mit jelent |
 | --- | --- | --- |
-| **Igaz** | közelség ≥80, bizalom 5, 3 kötelező jelző, kockázat <60, `hatar` | A vágyak beteljesülnek (`act_desire_fulfill` a kódok szerint). A viszony a félév után is folytatódik. |
-| **Csendes** | közelség ≥55, bizalom ≥3, de hiányzik egy igaz-vég feltétel | Van viszony, de nem teljes. Korai aktusok megvoltak, de a mély vágyak nem. |
+| **Igaz** | közelség ≥80, bizalom 5, a lány problémái+vágyai legalább 2/3-a teljesült, kockázat <60, `hatar` | A vágyak beteljesülnek (`act_desire_fulfill` a kódok szerint). A viszony a félév után is folytatódik. |
+| **Csendes** | közelség ≥55, bizalom ≥3, de a 2/3 vagy egy más igaz-vég feltétel hiányzik | Van viszony, de nem teljes. Korai aktusok megvoltak, de a mély vágyak nem. |
 | **Törés** | kockázat ≥80 vagy a lány saját törésjelzője | A viszony megszakad. A lány visszavonul, esetleg pletykát indít vagy áthelyezi a munkáját. |
-| **Páros igaz** | mindkettő bizalma 5, közelség ≥75/80, `par_oszinte`, `hatar`, alacsony kockázat | Mindkét lány tudja és elfogadja. Külön-külön beteljesülnek a vágyaik. |
+| **Páros igaz** | mindkettő bizalma 5, közelség ≥75/80, mindkettő 2/3-a teljesült, `par_oszinte`, `hatar`, alacsony kockázat | Mindkét lány tudja és elfogadja. Külön-külön beteljesülnek a vágyaik. |
 | **Páros csendes** | egyikük igaz, a másik nem tört, de a páros feltételek nem teljesülnek | A szó szintjén együtt maradnak, de a félév után eltávolodnak. |
 | **Egyedül** | senki nem érte el a küszöböt | A gyógytorna lezajlott, senki nem került közel. |
 
-### Egyéni igaz végek témája (kódolt) — részletes feltételek
+### Egyéni igaz végek — 2/3 szabály
 
-**Rebeka Dorn** (`desire_yield_control` + `desire_private_intense`)
-- Előfeltétel: `flag_rebeka_desire_fulfill` vagy egyenértékű flag lánc, bizalom 5, közelség ≥80, `hatar`, `rebeka_feny`, `rebeka_foto`.
-- Hely: lakás vagy Békás-tó (sötét, nincs közönség — `theme_no_audience`).
-- Eredmény: a viszony folytatódik a félév után; a Holdkör ajtaja bezárul mögötte, de ő kint marad.
+A pontos listák a [03-karakterek.md](03-karakterek.md)-ben vannak. Összefoglalva:
 
-**Boglárka Fazekas** (`desire_slow_explore` + `desire_body_praise`)
-- Előfeltétel: flag lánc (`flag_boglarka_kiss_light` → `flag_boglarka_slow_explore` → touch), bizalom 5, közelség ≥80, `hatar`, `boglarka_nev`, `boglarka_udvar`.
+**Rebeka Dorn** (10 elem, legalább 7 kell)
+- Problémák: Holdkör nélküli érdektelenség, sebhely, tanár-mint-történet, gőg, közönség, családi fázis.
+- Vágyak: `desire_yield_control`, `desire_private_intense`, `theme_power_forbidden`, `theme_no_audience`.
+- Hely: lakás vagy Békás-tó.
+
+**Boglárka Fazekas** (9 elem, legalább 6 kell)
+- Problémák: testszégyen, láthatatlanság, elvágott mondatok, új hely, beosztás gyanúja, test mint első dolog.
+- Vágyak: `desire_slow_explore`, `desire_body_praise`, `theme_power_forbidden`.
 - Hely: Békás-tó vagy lakás, lassú tempó.
-- Eredmény: az udvaron nem fordítja el az arcát; a viszony nyíltabb marad.
 
-**Gréta Váradi** (`desire_rule_break` + `desire_yield_control`)
-- Előfeltétel: flag lánc + bilincs/ajándék flag, bizalom 5, közelség ≥80, `hatar`, `greta_hiba`, `greta_nem_vizsga`.
+**Gréta Váradi** (8 elem, legalább 6 kell)
+- Problémák: csak teljesítmény miatt, kivétel gyanúja, kontroll, beosztás, nem tud kérni.
+- Vágyak: `desire_rule_break`, `desire_yield_control`, `theme_power_forbidden`.
 - Hely: lakás vagy tó.
-- Eredmény: a ceruza a hajában marad, a lista le van téve; nincs következő napirendi pont.
 
 ### Páros igaz vég (Boglárka + Gréta)
-- Mindkettő bizalom 5, közelség ≥75/80, `flag_pair_boglarka_greta`, `par_oszinte` (mindkettő kimondta a 8. hét előtt), `hatar`, kockázat <60.
-- Külön-külön teljesülnek a saját `desire_fulfill` kódjaik.
-- Közös jelenetek a lakásban/tónál lehetségesek a zárt szakaszban, de nincs hármas.
-- Rebeka + Gréta: szűk, magasabb követelmények (mindkettő `hatar` + alacsony kockázat), könnyen törik.
-- Rebeka + Boglárka: nem járható.
+- Mindkettő eléri a saját 2/3-ot, bizalom 5, közelség ≥75/80, `flag_pair_boglarka_greta`, `par_oszinte`, `hatar`, kockázat <60.
 
 ## Két lány egyszerre — a járható pár
 
@@ -124,3 +122,4 @@ A rendszer a kódban egy egyszerű `anger` számmal (0–5) kezelhető lányonk�
 - 8. hét végén útvonalzár (egyedül / egy lány / pár).
 - Békás-tó, tanár lakása és tanterem a fő intim helyek.
 - Minden intim téma kódolt string.
+- Végállapot: a lány problémái + vágyai legalább 2/3-a teljesül (lásd [03-karakterek.md](03-karakterek.md)).
