@@ -30,6 +30,12 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) | Flag-lista és intim eszkalációs tábla |
 | [20-kep-jelenet-lista.md](20-kep-jelenet-lista.md) | Kép- és jelenetlista a sávokhoz és kódokhoz |
 | [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) | Skálás turnaround modell sheet-ek (elől/oldal/hátul, ruhás + alsóneműs) és animált sprite alapok |
+| [22-arckifejezesek.md](22-arckifejezesek.md) | Cserélhető arcok leírása lányonként |
+| [23-teljes-test-referencia.md](23-teljes-test-referencia.md) | Teljes test referencia képek terve |
+| [24-part1-sztori-es-dialogus.md](24-part1-sztori-es-dialogus.md) | Part 1 sztori és dialógus vázlat |
+| [25-allapotgep.md](25-allapotgep.md) | Lány állapotgép (unknown → route_candidate) |
+| [26-jelenet-felallitas.md](26-jelenet-felallitas.md) | Jelenetfelállítás, kamera-perspektíva, telefonos megjelenítés |
+| [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) | Ikonok és gombok definíciója — mind előre legenerált pixel kép |
 
 Referenciaképek:
 
