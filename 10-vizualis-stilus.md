@@ -10,6 +10,17 @@ A játék pixelgrafikás, japán manga stílusú (tiszta vonalak, kemény pixele
 - **Zárt ruházat**: az alapruha szerény, nincs meztelenség.
 - **Kulcsjelenetek**: magasabb felbontás, több részlet, enyhe mozgásérzet (haj, ruha, kéz). Ezek később animálhatók (2–4 frame).
 
+## Kastélyarchitektúra (hátterekhez)
+
+A Ligetvár egy 19. századi magyar romantikus/neogótikus kastély, amelyet főiskolává alakítottak. Minden háttér ezt tükrözi:
+
+- **Régi szerkezet látható**: kőfalak (szürke/barna tömör tömbök), csúcsíves íves ablakok (neogót), fagerendás mennyezet, magas termek, tornyok a külsőn, belső udvar.
+- **Modern nyomok**: egyszerű modern bútorok (asztalok, székek, számítógép, lámpák, radiátorok vagy modern fűtés), de nem dominálnak. Nincs üveg-acél modern épület, nincs japán elem (pagoda, lantern-stílusú keleti).
+- **Főhős terei**: irodája és lakása a kastélyban van. Iroda: modern íróasztal + kőfal + íves ablak. Lakás: kanapé/ágy + könyvek + kastélykilátás.
+- **Színek**: sötét kő, meleg fa, lámpafény (sárga/narancs), esti lila-kék ablakfény. Illeszkedjen a lányok palettájához.
+
+Hátterek generálásakor mindig hangsúlyozd: "19th century Hungarian Romantic/Neo-Gothic castle converted to college, stone walls, pointed arched windows, wooden beams, modern furniture mixed in, traces of old structure visible."
+
 ## Rebeka Dorn referencia képek (generált)
 
 A következő képek a kanonikus leírás alapján készültek:
@@ -42,6 +53,6 @@ silver ring choker #c9cdd4, chunky black platform boots, one silver ring.
 Arrogant calm, chin slightly raised.
 ```
 
-Kulcsjelenethez a végére: `Higher detail, slight fabric and hair movement, candle-lit classroom, mystical healing gymnastics pose.`
+Kulcsjelenethez a végére: `Higher detail, slight fabric and hair movement, candle-lit classroom in a 19th century Hungarian castle, mystical healing gymnastics pose.`
 
 A többi lány (Boglárka, Gréta) később ugyanezzel a stílussal generálható.
