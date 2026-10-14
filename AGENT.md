@@ -21,7 +21,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) → folyamat, végek, harag
    - [09-dialog-es-architektura.md](09-dialog-es-architektura.md) → 3 rész, dialógus, kódstruktúra
    - [10-vizualis-stilus.md](10-vizualis-stilus.md) → pixel + manga stílus
-   - [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) → **kötelező képgenerálási szabály** (konzisztencia)
+   - [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) → **kötelező képgenerálási szabály** (konzisztencia, sejtető/félmeztelen, ruhaváltozás)
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -37,7 +37,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 4. **Páros útvonal**: Boglárka + Gréta a járható pár. Rebeka + Gréta szűk. Rebeka + Boglárka nem.
 
-5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány blokk + csak a különbség. Egy lány képenként. Ha eltér a kanontól, újra generáld.
+5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. Sejtető és félmeztelen képek megengedettek a bizalmi szint szerint. Ruhadarabok változhatnak vagy lekerülhetnek, pozíciók változhatnak. Ha eltér a kanontól, újra generáld.
 
 ## Folyamatkövetés (mi van kész)
 
@@ -51,7 +51,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Játékmenet + végek + harag | Kész | 08-jatekmenet-es-vegkimenetek.md |
 | 3 részes architektúra | Kész | 09-dialog-es-architektura.md |
 | Vizuális stílus (pixel + manga) | Kész | 10-vizualis-stilus.md |
-| Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md |
+| Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md (sejtető, félmeztelen, pózíciók) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -78,6 +78,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - Frissítsd a fenti folyamatkövetési táblázatot, amikor egy részt befejezel.
 - Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
-- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + teljes lány blokk. Egy személy képenként. Konzisztencia a kanonikus leírással.
+- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Sejtető és félmeztelen képek, ruhadarabok lekerülése és pozícióváltás megengedett a bizalmi szint szerint. Konzisztencia a kanonikus leírással.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály kész, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály frissítve (sejtető/félmeztelen támogatással), Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
