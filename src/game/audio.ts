@@ -84,10 +84,14 @@ function ensure() {
 }
 
 export function unlockAudio() {
-  ensure();
-  if (ctx!.state === "suspended") void ctx!.resume();
-  unlocked = true;
-  if (wanted) void play(wanted);
+  try {
+    ensure();
+    if (ctx && ctx.state === "suspended") void ctx.resume().catch(() => undefined);
+    unlocked = true;
+    if (wanted) void play(wanted).catch(() => undefined);
+  } catch {
+    unlocked = false;
+  }
 }
 
 export function setMood(mood: MoodId) {
@@ -96,7 +100,11 @@ export function setMood(mood: MoodId) {
 }
 
 export function toggleMute() {
-  ensure();
+  try {
+    ensure();
+  } catch {
+    return muted;
+  }
   muted = !muted;
   const now = ctx!.currentTime;
   musicGain!.gain.setTargetAtTime(muted ? 0 : 0.22, now, 0.05);
@@ -107,7 +115,7 @@ export function toggleMute() {
   }
   if (ctx!.state === "suspended") void ctx!.resume();
   unlocked = true;
-  if (wanted) void play(wanted);
+  if (wanted) void play(wanted).catch(() => undefined);
   return muted;
 }
 
