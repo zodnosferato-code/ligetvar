@@ -7,65 +7,78 @@ Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Mi
 - **Pixel art + japán manga**: kemény pixelek, nincs blur, nincs anti-aliasing, tiszta manga vonalvezetés.
 - **Korlátozott paletta**: a [04-vizualis-biblia.md](04-vizualis-biblia.md) hex színei.
 - **Felnőtt arányok**: nem chibi, nem gyerekarc, nem nagy fej.
-- **Zárt, szerény ruházat**: nincs meztelenség, nincs fehérnemű, nincs dekoltázs.
-- **Háttér**: lapos `#2c2830` referenciánál. Játékbeli hátterek külön készülnek.
 - **Egy személy képenként**: soha ne generálj két lányt egy képen.
+- **Háttér**: lapos `#2c2830` referenciánál. Játékbeli hátterek külön készülnek.
+
+## Ruházat és intimitás fokozatai
+
+A ruházat és a meztelenség a bizalmi szint és a jelenet szerint változhat:
+
+| Szint | Leírás | Példa |
+| --- | --- | --- |
+| Alap | Teljes alapruha, szerény, zárt | Mindennapi megjelenés |
+| Sejtető | Ruhadarabok lazítva, kivágások, áttetsző részek, de még fedett | Gallér nyitva, szoknya feljebb, kardigán lecsúszva |
+| Félmeztelen | Egyes ruhadarabok lekerültek (felső, szoknya, harisnya), fehérnemű vagy részleges meztelenség | Felső le, melltartó, vagy deréktól felfelé meztelen |
+| Intim | Magasabb szintű, a vágykódok szerint (kódoltan) | Privát jelenetek, pózícióváltások |
+
+Ruhadarabok **változhatnak vagy lekerülhetnek**. Pozíciók változhatnak (álló, ülő, fekvő, mozgásban).
 
 ## Alap prompt (minden kép elején)
 
 ```text
-Pixel art character reference, Japanese manga style, one adult woman, full body front view,
-both feet visible, centered, standing. Crisp hard pixels, limited palette, no blur,
+Pixel art character reference, Japanese manga style, one adult woman, full body,
+both feet visible if standing, centered. Crisp hard pixels, limited palette, no blur,
 no anti-aliasing, no text, no watermark, no second person. Plain flat background #2c2830.
-Fully clothed, modest, adult proportions, not a child, not chibi.
+Adult proportions, not a child, not chibi.
 ```
 
-Ezután jön a lány specifikus blokkja a [04-vizualis-biblia.md](04-vizualis-biblia.md)-ből, majd a különbség (arckifejezés, póz, helyszín).
+Ezután jön a lány specifikus blokkja, majd a ruházat/póz/intimitás utasítás.
 
-## Lányonkénti blokkok (kanonikus)
+## Lányonkénti blokkok (kanonikus — haj, arc, test)
+
+A haj, arcjel és testalkat **mindig** ez marad. A ruha változhat.
 
 **Rebeka Dorn**
 ```text
 Rebeka Dorn, age 20. Tall, 172 cm, curvy feminine hourglass, pale skin #f0d2c4.
 Long straight black hair #1a1420 to the waist, one dull plum streak #6e3a52
 on her left side. Sharp eyeliner, dark berry lipstick #6e2438, small beauty
-mark under her left eye. Modest long-sleeved high-neck black midi dress #16141c
-with only a small keyhole at the collar, silver ring choker #c9cdd4, long black
-skirt, chunky black platform boots, one silver ring. Arrogant calm, chin slightly raised.
+mark under her left eye. Silver ring choker #c9cdd4, one silver ring.
 ```
 
 **Boglárka Fazekas**
 ```text
 Boglarka Fazekas, age 19. Short, 158 cm, chubby soft round build, round face,
-freckles #c48462, no glasses, no eyewear. Light brown hair #8a5a3a in a loose
-braid over her right shoulder. Shy expression, eyes slightly lowered, face visible.
-Oversized moss-green cardigan #5e7a58, cream high-neck dress #f4ead8 to mid-calf,
-dark tights, brown canvas shoes #6b5344, both arms holding a closed hardcover
-book #6a3a32 against her chest.
+freckles #c48462, no glasses. Light brown hair #8a5a3a in a loose braid over her right shoulder.
 ```
 
 **Gréta Váradi**
 ```text
 Greta Varadi, age 21. Slim, 168 cm, copper-red hair #c4542a in a high ponytail
 with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasses
-#2a2e33, light freckles across the nose, fair skin #f6d7c4, focused neutral mouth.
-White button shirt #f7f4ee, dark forest-green knit vest #1f4a3a, charcoal
-knee-length skirt #3a3e46, dark tights, simple black flats, short lanyard
-with a blank ID card.
+#2a2e33, light freckles across the nose, fair skin #f6d7c4.
 ```
+
+## Ruházat és póz utasítások (a blokk után)
+
+- **Alapruha**: az eredeti leírás a [04-vizualis-biblia.md](04-vizualis-biblia.md)-ből.
+- **Sejtető**: `Suggestive clothing: [konkrét ruhadarab lazítva vagy kivágva], still mostly covered.`
+- **Félmeztelen**: `Half-nude: [konkrét ruhadarab removed], [fehérnemű or partial], modest pose.`
+- **Pozíció**: `Pose: standing / sitting on edge / lying on side / slight movement.`
+- **Kulcsjelenet**: `Higher detail, slight fabric and hair movement, [helyszín].`
 
 ## Konzisztencia szabályok
 
-1. Mindig az alap prompt + a lány teljes blokkja + csak a különbség a végén.
-2. A haj, arcjel, testalkat és alapruha nem változhat, hacsak a jelenet kifejezetten nem kéri a ruha cseréjét.
-3. Kulcsjelenetekhez: `Higher detail, slight fabric and hair movement, [helyszín], [póz].`
-4. Ha a generált kép eltér a kanontól (pl. szemüveg Boglárkán, rossz hajszín), újra kell generálni, nem a leírást igazítani.
-5. Referenciaképek a `references/` mappába kerülnek, és a [04-vizualis-biblia.md](04-vizualis-biblia.md) és [10-vizualis-stilus.md](10-vizualis-stilus.md) hivatkozik rájuk.
+1. Mindig az alap prompt + a lány haj/arc/test blokkja + ruházat/póz utasítás.
+2. A haj, arcjel és testalkat soha nem változhat.
+3. Ruhadarabok csak akkor kerülnek le, ha a jelenet (bizalmi szint) kifejezetten kéri.
+4. Ha a generált kép eltér a kanontól (rossz haj, szemüveg Boglárkán stb.), újra kell generálni.
+5. Referenciaképek a `references/` mappába kerülnek.
 
 ## Játékbeli felhasználás
 
-- Referencia képek: részletes pixel-manga.
-- Játékbeli sprite: 64–80 px magas, ugyanabból a promptból, csak kisebb.
+- Alap és sejtető képek: mindennapi és korai intim jelenetek.
+- Félmeztelen és pozícióváltós képek: magasabb bizalmi szinteken (4–5), privát helyeken (lakás, Békás-tó).
 - Kulcsjelenetek: magasabb kidolgozottság, enyhe mozgásérzet, később 2–4 frame animáció.
 
-Minden agentnek ezt a dokumentumot kell követnie képgeneráláskor.
+Minden agentnek ezt a dokumentumot kell követnie képgeneráláskor. Az intim témák a kódban továbbra is a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják.
