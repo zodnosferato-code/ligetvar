@@ -28,6 +28,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [15-ajandekok.md](15-ajandekok.md) → ajándékok, árak, preferenciák, bizalom szerinti szemérmetlen ajándékok
    - [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md) → lokalizáció, a motor kódoltan hivatkozik, nem ismeri az intim tartalmat
    - [17-szakaszinditas.md](17-szakaszinditas.md) → szakaszindítás a játék elején a megfelelő max értékekkel
+   - [18-megvalositasi-terv.md](18-megvalositasi-terv.md) → hiányzó elemek megvalósítási terve
+   - [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) → flag-lista és intim eszkalációs tábla
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -50,7 +52,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - **Építkezés**: Időre menő falrakás. Sör boost: gyorsabb lerakás, de nehezebb jól lerakni (trade-off).
    - Hívás vagy magától bejövés a történet szerint.
 
-7. **Játékhurok és események**: Lásd [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md). Random események és kódolt intim meglepetések a bizalmi szint szerint.
+7. **Játékhurok és események**: Lásd [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md). Random események és kódolt intim meglepetések a bizalmi szint és flag szerint.
 
 8. **Zene**: Lásd [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md). Hangulatok és végteleníthető instrumentális loopok.
 
@@ -59,6 +61,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 10. **Lokalizáció**: Lásd [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md). A motor csak kulcsokat és kódokat használ, a tényleges szöveg a lokalizációs fájlokban van.
 
 11. **Szakaszindítás**: Lásd [17-szakaszinditas.md](17-szakaszinditas.md). A játék elején választható szakasz a megfelelő maximális értékekkel.
+
+12. **Flag és eszkaláció**: Lásd [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md). Flag-ek és lányonkénti eszkalációs láncok.
 
 ## Folyamatkövetés (mi van kész)
 
@@ -79,6 +83,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Ajándékok | Kész | 15-ajandekok.md (árak, preferenciák, bizalom szerinti intim) |
 | Lokalizáció és kódolás | Kész | 16-lokalizacio-es-kodolas.md (motor nem ismeri az intim tartalmat) |
 | Szakaszindítás | Kész | 17-szakaszinditas.md (választható szakasz max értékekkel) |
+| Megvalósítási terv | Kész | 18-megvalositasi-terv.md |
+| Flag és eszkaláció | Kész | 19-flag-es-eszkalacio.md (flag-ek, lányonkénti láncok) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -101,7 +107,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 7. EventSystem alapjának megírása a random és feltételes eseményekhez.
 8. Zenefájlok generálása vagy beszerzése a definíció szerint.
 9. Lokalizációs rendszer alapjának megírása.
-10. Szakaszindítás implementációja a GameState-ben.
+10. Szakaszindítás és flag rendszer implementációja a GameState-ben.
 11. Csak ezután UI.
 
 ## Szabályok agenteknek
@@ -113,10 +119,11 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
 - **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Képsávok lehetőségek (1. alap → 5. intim), nem kötelezőek. Intim képek csak később. Konzisztencia a kanonikus leírással.
 - **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU (Pac-Man, 75–125 Ft palackok, energiaital, hajléktalan versenytárs) + építkezés (időre, sör boost trade-off).
-- **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan.
+- **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan, flag szerint.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
 - **Ajándékok**: A [15-ajandekok.md](15-ajandekok.md) szerinti árak és preferenciák. Szemérmetlen ajándékok csak magas bizalomnál.
 - **Lokalizáció**: A motor csak kulcsokat és kódokat használ ([16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md)). A tényleges szöveg a lokalizációs fájlokban van.
 - **Szakaszindítás**: A játék elején választható szakasz a [17-szakaszinditas.md](17-szakaszinditas.md) szerinti maximális értékekkel.
+- **Flag és eszkaláció**: A [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerinti flag-ek és láncok.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv és szakaszindítás dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv, szakaszindítás, flag és eszkaláció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
