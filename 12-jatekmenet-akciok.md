@@ -17,14 +17,14 @@ Minden beszélgetés a dialógusrendszer szerint megy: max 4 opció, very_good /
 
 ## Pénzszerzési lehetőségek
 
-A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A minijátékok **szórakoztatóak**, régi egyszerű játékokra alapozva (Bricks, Space Invaders stílus).
+A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A minijátékok **szórakoztatóak**, régi egyszerű játékokra alapozva.
 
-### 1. MOHU üveg visszaváltás (50 Ft / db) — Bricks stílus
-- **Alap**: Klasszikus Breakout / Bricks. A játékos egy ütővel üti vissza az üvegeket (téglákat), hogy összegyűjtse őket.
-- Mechanika: Egyszerű pixeles Bricks. Az ütő mozgatása, a labda (vagy üveg) pattog. Minél több üveget „szétüt”, annál többet válthat vissza.
-- Jutalom: 50 Ft üvegenként. Egy sávban 10–25 üveg reális (500–1250 Ft), a teljesítmény szerint.
+### 1. MOHU üveg visszaváltás (50 Ft / db) — Pac-Man stílusú gyűjtögető
+- **Alap**: Klasszikus Pac-Man / maze chase. A játékos egy egyszerű labirintusban mozog, és összegyűjti a szétszórt üvegeket, miközben elkerüli a „őröket” (pl. takarítók vagy időlimit).
+- Mechanika: Pixeles labirintus, 4 irányú mozgás. Az üvegek pontokat (visszaváltást) adnak. Power-up: rövid időre gyorsabb vagy láthatatlan.
+- Jutalom: 50 Ft üvegenként. Egy sávban 12–28 üveg reális (600–1400 Ft), a teljesítmény és a túlélés szerint.
 - Korlát: hetente 2–3 alkalommal érdemes, utána csökken a hozam.
-- Szórakoztatás: rövid, feszült, klasszikus érzés.
+- Szórakoztatás: klasszikus gyűjtögetés, feszült elkerülés, rövid és addiktív.
 
 ### 2. Fizikai munka — építkezés minijáték — Space Invaders stílus
 - **Alap**: Space Invaders-szerű. A játékos téglákat (vagy építőanyagot) „lő” vagy rak le, hogy falat építsen, miközben „ellenségek” (pl. hibás téglák vagy idő) jönnek.
