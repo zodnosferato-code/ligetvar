@@ -199,24 +199,78 @@ img {
 }
 
 .sheet {
+  position: relative;
   background: var(--color-parchment);
   color: var(--color-ink);
-  padding: 0.9rem 1rem 1.1rem;
+  padding: 0.35rem 1rem 1.1rem;
   border-top: 3px solid #000;
 }
 
 .sheet p,
-.serif {
+.serif,
+.line {
   font-family: var(--font-serif);
-  line-height: 1.5;
+  line-height: 1.55;
+  font-size: 1.05rem;
+}
+
+.line {
+  min-height: 4.6rem;
+  margin: 0.35rem 0 0.2rem;
+  cursor: pointer;
+}
+
+.caret {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.9rem;
+  margin-left: 0.15rem;
+  background: var(--color-ink);
+  animation: blink 0.8s steps(1) infinite;
+  vertical-align: text-bottom;
+}
+
+.hint {
+  margin: 0.2rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.choices .pixel-btn {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  text-align: left;
+}
+
+.choices .pixel-btn span {
+  flex: none;
+  width: 1.3rem;
+  font-weight: 700;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .nameplate {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-bottom: 0.35rem;
+  margin: -1.05rem 0 0.15rem;
+  padding: 0.28rem 0.65rem;
+  background: var(--color-night);
+  color: var(--color-parchment);
+  border: 2px solid #000;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;

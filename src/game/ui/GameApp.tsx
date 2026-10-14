@@ -1,4 +1,4 @@
-import { Component, useEffect, useState, type ReactNode } from "react";
+import { Component, useEffect, useRef, useState, type ReactNode } from "react";
 import {
   CAST,
   GIRL_NAME,
@@ -439,9 +439,29 @@ function Scene() {
   const pick = useGame((s) => s.pick);
   const gift = useGame((s) => s.gift);
   const scene = state.scene;
+  const text = scene?.node.text ?? "";
+  const [shown, setShown] = useState(0);
+  const shownRef = useRef(0);
+  shownRef.current = shown;
+  useEffect(() => {
+    setShown(0);
+    if (!text) return;
+    let i = 0;
+    const step = Math.max(1, Math.ceil(text.length / 80));
+    const id = window.setInterval(() => {
+      i = Math.min(text.length, i + step);
+      setShown(i);
+      if (i >= text.length) window.clearInterval(id);
+    }, 28);
+    return () => window.clearInterval(id);
+  }, [scene?.node.id, text]);
   useEffect(() => {
     if (!scene) return;
     const onKey = (e: KeyboardEvent) => {
+      if (shownRef.current < text.length) {
+        setShown(text.length);
+        return;
+      }
       const idx = ["Digit1", "Digit2", "Digit3", "Digit4"].indexOf(e.code);
       const choice = idx >= 0 ? scene.node.choices[idx] : undefined;
       if (!choice) return;
@@ -451,7 +471,7 @@ function Scene() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [scene, pick, state]);
+  }, [scene, pick, state, text]);
 
   if (!scene) return null;
   const girl = scene.node.speaker === "narrator" ? null : scene.node.speaker;
@@ -481,21 +501,26 @@ function Scene() {
           <span>{girl ? GIRL_NAME[girl] : LOCATION_LABEL[scene.location]}</span>
           {girl ? <Hearts value={state.girls[girl].trust} /> : null}
         </div>
-        <p className="serif" style={{ marginTop: 0, whiteSpace: "pre-wrap" }}>
-          {scene.node.text}
+        <p className="line" onClick={() => setShown(text.length)}>
+          {text.slice(0, shown)}
+          {shown < text.length ? <i className="caret" /> : null}
         </p>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
-          {scene.node.choices.map((choice) => {
-            const open = choiceAvailable(state, choice, girl);
-            const lock = choiceLockReason(choice);
-            const tone = choice.quality === "bad" || choice.quality === "very_bad" ? "bad" : "good";
-            return (
-              <button key={choice.id} type="button" className={`pixel-btn ${open ? tone : ""}`} disabled={!open} onClick={() => pick(choice.id)}>
-                {open ? choice.text : lock}
-              </button>
-            );
-          })}
-        </div>
+        {shown >= text.length ? (
+          <div className="choices">
+            {scene.node.choices.map((choice, index) => {
+              const open = choiceAvailable(state, choice, girl);
+              const lock = choiceLockReason(choice);
+              return (
+                <button key={choice.id} type="button" className="pixel-btn" disabled={!open} onClick={() => pick(choice.id)}>
+                  <span>{index + 1}</span>
+                  {open ? choice.text : lock}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="hint">Koppints, vagy nyomj egy gombot a sor végére.</p>
+        )}
         {girl && owned.length > 0 && !state.giftMeeting ? (
           <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginTop: "0.7rem" }}>
             {owned.map((g) => (

@@ -12,14 +12,14 @@ export type MoodId =
   | "ending_true";
 
 const FILE: Record<MoodId, string> = {
-  classroom_calm: pub("music/classroom_calm.mp3"),
-  holdkor_night: pub("music/holdkor_night.mp3"),
-  library_quiet: pub("music/library_quiet.mp3"),
-  office_morning: pub("music/office_morning.mp3"),
-  apartment_evening: pub("music/apartment_evening.mp3"),
-  bekas_to_dark: pub("music/bekas_to_dark.mp3"),
-  tension_low: pub("music/tension_low.mp3"),
-  ending_true: pub("music/ending_true.mp3"),
+  classroom_calm: pub("music/classroom_calm.mp3?v=3"),
+  holdkor_night: pub("music/holdkor_night.mp3?v=3"),
+  library_quiet: pub("music/library_quiet.mp3?v=3"),
+  office_morning: pub("music/office_morning.mp3?v=3"),
+  apartment_evening: pub("music/apartment_evening.mp3?v=3"),
+  bekas_to_dark: pub("music/bekas_to_dark.mp3?v=3"),
+  tension_low: pub("music/tension_low.mp3?v=3"),
+  ending_true: pub("music/ending_true.mp3?v=3"),
 };
 
 function pub(file: string) {
@@ -78,9 +78,14 @@ function ensure() {
   if (ctx && musicGain) return;
   muted = readMuted();
   ctx = new AudioContext();
+  const warmth = ctx.createBiquadFilter();
+  warmth.type = "lowpass";
+  warmth.frequency.value = 7200;
+  warmth.Q.value = 0.4;
   musicGain = ctx.createGain();
-  musicGain.gain.value = muted ? 0 : 0.22;
-  musicGain.connect(ctx.destination);
+  musicGain.gain.value = muted ? 0 : 0.28;
+  musicGain.connect(warmth);
+  warmth.connect(ctx.destination);
   if (!listening) {
     listening = true;
     document.addEventListener("visibilitychange", () => {
@@ -114,7 +119,7 @@ export function toggleMute() {
   }
   muted = !muted;
   const now = ctx!.currentTime;
-  musicGain!.gain.setTargetAtTime(muted ? 0 : 0.22, now, 0.05);
+  musicGain!.gain.setTargetAtTime(muted ? 0 : 0.28, now, 0.05);
   try {
     localStorage.setItem(MUTE_KEY, muted ? "1" : "0");
   } catch {
@@ -154,13 +159,13 @@ async function play(mood: MoodId) {
   const now = ctx.currentTime;
   if (current) {
     const previous = current;
-    previous.gain.gain.setTargetAtTime(0, now, 0.18);
-    previous.source.stop(now + 1.2);
+    previous.gain.gain.setTargetAtTime(0, now, 0.35);
+    previous.source.stop(now + 2.2);
     current = null;
   }
   const gain = ctx.createGain();
   gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.setTargetAtTime(LEVEL[mood], now, 0.25);
+  gain.gain.setTargetAtTime(LEVEL[mood], now, 0.45);
   gain.connect(musicGain);
   const source = ctx.createBufferSource();
   source.buffer = buffer;

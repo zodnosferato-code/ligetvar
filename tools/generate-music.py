@@ -9,8 +9,8 @@ from pathlib import Path
 
 import numpy as np
 
-SR = 44100
-DUR = 32.0
+SR = 48000
+DUR = 48.0
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "music"
 
@@ -36,22 +36,31 @@ def tone(freq: float, dur: float, harmonics: tuple[tuple[float, float, float], .
     return fade_edges(y * vel, 0.012, min(dur * 0.45, 1.2))
 
 
-def piano(freq: float, dur: float = 3.2, vel: float = 0.34) -> np.ndarray:
-    return tone(
+def piano(freq: float, dur: float = 3.6, vel: float = 0.28) -> np.ndarray:
+    body = tone(
         freq,
         dur,
-        ((1, 1, 1.6), (2, 0.28, 2.4), (3, 0.12, 3.2), (4, 0.05, 4.2)),
+        ((1, 1, 1.1), (2, 0.18, 2.2), (3, 0.06, 3.4), (4, 0.02, 4.5)),
         vel,
     )
+    return soften(body, 2800)
 
 
-def bell(freq: float, dur: float = 2.4, vel: float = 0.22) -> np.ndarray:
-    return tone(
+def bell(freq: float, dur: float = 2.8, vel: float = 0.16) -> np.ndarray:
+    body = tone(
         freq,
         dur,
-        ((1, 1, 2.2), (2.76, 0.35, 3.4), (5.2, 0.12, 5)),
+        ((1, 1, 1.6), (2.01, 0.22, 2.8), (2.76, 0.12, 3.6)),
         vel,
     )
+    return soften(body, 3400)
+
+
+def soften(y: np.ndarray, cutoff: float) -> np.ndarray:
+    spec = np.fft.rfft(y)
+    freqs = np.fft.rfftfreq(len(y), 1 / SR)
+    spec *= 1 / (1 + (freqs / cutoff) ** 4)
+    return np.fft.irfft(spec, n=len(y))
 
 
 def pad(freqs: list[float], n: int, level: float) -> np.ndarray:
@@ -61,9 +70,10 @@ def pad(freqs: list[float], n: int, level: float) -> np.ndarray:
         for det in (-0.004, 0.0, 0.004):
             lfo = 0.86 + 0.14 * np.sin(2 * np.pi * t / 16 + f)
             y += lfo * np.sin(2 * np.pi * f * (1 + det) * t)
-    kernel = np.hanning(801)
+    kernel = np.hanning(1601)
     kernel /= kernel.sum()
     y = np.convolve(y, kernel, mode="same")
+    y = soften(y, 1400)
     return y / max(len(freqs), 1) * level
 
 
@@ -93,14 +103,19 @@ def place(buf: np.ndarray, start: float, note: np.ndarray, pan: float = 0.0) -> 
 
 
 def finish(buf: np.ndarray) -> np.ndarray:
-    mixed = np.stack([reverb(buf[:, 0], 0.32), reverb(buf[:, 1], 0.32)], axis=1)
-    n = int(1.2 * SR)
-    fade = np.linspace(0, 1, n)[:, None]
-    head = mixed[:n] * fade + mixed[-n:] * (1 - fade)
+    mixed = np.stack([reverb(buf[:, 0], 0.38), reverb(buf[:, 1], 0.38)], axis=1)
+    mixed[:, 0] = soften(mixed[:, 0], 4600)
+    mixed[:, 1] = soften(mixed[:, 1], 4200)
+    n = int(2.4 * SR)
+    rise = np.sin(np.linspace(0, np.pi / 2, n))[:, None]
+    fall = np.cos(np.linspace(0, np.pi / 2, n))[:, None]
+    head = mixed[:n] * rise + mixed[-n:] * fall
     looped = np.concatenate([head, mixed[n:-n]])
-    peak = np.max(np.abs(looped)) + 1e-9
-    looped = looped / peak * 0.42
-    print(f"  peak {np.max(np.abs(looped)):.3f} rms {np.sqrt(np.mean(looped**2)):.3f}")
+    looped = np.tanh(looped * 1.05)
+    rms = float(np.sqrt(np.mean(looped**2))) + 1e-9
+    peak = float(np.max(np.abs(looped))) + 1e-9
+    looped *= min(0.86 / peak, 0.09 / rms)
+    print(f"  peak {np.max(np.abs(looped)):.3f} rms {np.sqrt(np.mean(looped**2)):.3f} dur {len(looped) / SR:.1f}s")
     return looped.astype(np.float32)
 
 
@@ -117,7 +132,7 @@ def add_pad(buf: np.ndarray, freqs: list[float], level: float) -> None:
 def sprinkle(buf: np.ndarray, notes: list[int], every: float, voice, vel: float, start: float = 0.6) -> None:
     t = start
     step = 0
-    while t < DUR - 1.4:
+    while t < DUR - 3.2:
         place(buf, t, voice(midi(notes[step % len(notes)]), vel=vel), pan=0.18 if step % 2 else -0.16)
         t += every
         step += 1
@@ -234,7 +249,7 @@ def main() -> None:
         mp3 = OUT / f"{name}.mp3"
         write_wav(wav, audio)
         subprocess.run(
-            ["ffmpeg", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-q:a", "2", str(mp3)],
+            ["ffmpeg", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "192k", "-ar", "48000", str(mp3)],
             check=True,
             capture_output=True,
         )
