@@ -21,6 +21,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [10-vizualis-stilus.md](10-vizualis-stilus.md) | Pixel + japán manga stílus, Rebeka referencia képek, kulcsjelenetek |
 | [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) | Kötelező képgenerálási szabály a konzisztencia érdekében |
 | [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) | Beszélgetés, hívás, pénzszerző minijátékok (MOHU, építkezés), korlátozott akciók |
+| [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) | Játékhurok, eseménytípusok, random események, kódolt intim meglepetések |
 
 Referenciaképek:
 
