@@ -25,6 +25,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) → beszélgetés, hívás, pénzszerző minijátékok, korlátozott akciók
    - [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) → játékhurok, random események, kódolt meglepetések
    - [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) → hangulatok és végteleníthető instrumentális zene
+   - [15-ajandekok.md](15-ajandekok.md) → ajándékok, árak, preferenciák, bizalom szerinti szemérmetlen ajándékok
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -51,6 +52,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 8. **Zene**: Lásd [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md). Hangulatok és végteleníthető instrumentális loopok.
 
+9. **Ajándékok**: Lásd [15-ajandekok.md](15-ajandekok.md). Árak, preferenciák lányonként, bizalom szerint változó szemérmetlen ajándékok.
+
 ## Folyamatkövetés (mi van kész)
 
 Frissítsd ezt a táblázatot, amikor valamit befejezel.
@@ -67,6 +70,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU Pac-Man + versenytárs, építkezés időre + sör boost) |
 | Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (random, kódolt meglepetések) |
 | Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
+| Ajándékok | Kész | 15-ajandekok.md (árak, preferenciák, bizalom szerinti intim) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -101,5 +105,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU (Pac-Man, 75–125 Ft palackok, energiaital, hajléktalan versenytárs) + építkezés (időre, sör boost trade-off).
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
+- **Ajándékok**: A [15-ajandekok.md](15-ajandekok.md) szerinti árak és preferenciák. Szemérmetlen ajándékok csak magas bizalomnál.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer (frissített minijátékokkal), játékhurok és zene definíció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene és ajándékrendszer dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
