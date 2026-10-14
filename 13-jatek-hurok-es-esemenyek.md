@@ -1,6 +1,6 @@
 # Játékhurok és események
 
-A játék alapvető hurka, az eseménytípusok, a random események és a kódolt intim meglepetések. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják.
+A játék alapvető hurka, az eseménytípusok, a random események és a kódolt intim meglepetések. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják. A flag-ek és az eszkaláció a [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerint.
 
 ## Alap játékhurok
 
@@ -46,12 +46,12 @@ Ezek a hét során vagy a sáv végén történhetnek (alacsony eséllyel, hogy 
 
 ## Szexuális meglepetések (kódolt)
 
-Ezek ritkák, magas bizalomnál (3+) és privát helyen történhetnek. A kódban csak a kódok szerepelnek.
+Ezek ritkák, magas bizalomnál (3+) és privát helyen történhetnek. A kódban csak a kódok szerepelnek. A flag-ek a [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerint frissülnek.
 
 | Esemény | Feltétel | Kód | Hatás |
 | --- | --- | --- | --- |
-| Villantás gyógytorna közben | bizalom 1–2, tanterem | `act_flash` | közelség +2 |
-| Váratlan enyhe csók | bizalom 2–3, lakás vagy Békás-tó | `act_kiss_light` | közelség +4, bizalom +1 |
+| Villantás gyógytorna közben | bizalom 1–2, tanterem | `act_flash` | közelség +2, flag |
+| Váratlan enyhe csók | bizalom 2–3, lakás vagy Békás-tó | `act_kiss_light` | közelség +4, bizalom +1, flag |
 | Ruhadarab lazítása | bizalom 3+, privát | sejtető kép + `desire_*` flag | közelség +6 |
 | Félmeztelen meglepetés | bizalom 4+, lakás | félmeztelen kép + `act_touch_intimate` | közelség +8, vágykód nyílás |
 
@@ -65,8 +65,8 @@ Ezek az események nem kötelezőek, és a játékos választhat, hogy elfogadja
 ## Események implementációja
 
 - A core logikában egy `EventSystem` kezeli a feltételeket és a random esélyt.
-- Minden eseménynek van `id`, `condition`, `effect` és `dialogue` (vagy kép flag).
+- Minden eseménynek van `id`, `condition` (bizalom + flag), `effect` és `dialogue` (vagy kép flag).
 - Headless tesztelhető: mock randommal ellenőrizhető, hogy a feltételek helyesen működnek.
 - Az intim események csak a kódokat és a kép flag-eket használják.
 
-A hurok és az események a meglévő sáv- és bizalomrendszerre épülnek ([05-rendszerek.md](05-rendszerek.md), [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md)).
+A hurok és az események a meglévő sáv- és bizalomrendszerre épülnek ([05-rendszerek.md](05-rendszerek.md), [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md)). Az eszkaláció a [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) táblái szerint.
