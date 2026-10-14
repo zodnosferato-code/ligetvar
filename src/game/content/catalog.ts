@@ -7,7 +7,11 @@ export const GIRL_NAME: Record<GirlId, string> = {
   greta: "Gréta Váradi",
 };
 
-export const REQUIRED_FLAGS: string[] = [];
+export const REQUIRED_FLAGS: Record<GirlId, string[]> = {
+  rebeka: ["rebeka_kor", "rebeka_feny", "rebeka_foto"],
+  boglarka: ["boglarka_margo"],
+  greta: ["greta_lista"],
+};
 
 export const NODES: Record<string, DialogueNode> = {
   empty: {
@@ -35,7 +39,7 @@ export const NODES: Record<string, DialogueNode> = {
     text: "Ismétlés.",
     kind: "repeat",
     choices: [
-      { id: "very_good", text: "Rendben.", quality: "very_good", effect: { closeness: 4 }, reaction: "felmosoly" },
+      { id: "very_good", text: "Rendben.", quality: "very_good", effect: { closeness: 8 }, reaction: "felmosoly" },
       { id: "good", text: "Ok.", quality: "good", effect: { closeness: 1 }, reaction: "semleges" },
     ],
   },
@@ -45,7 +49,7 @@ export const NODES: Record<string, DialogueNode> = {
     text: "Ismétlés 2.",
     kind: "repeat",
     choices: [
-      { id: "good", text: "Ok.", quality: "good", effect: { closeness: 1 }, reaction: "semleges" },
+      { id: "good", text: "Ok.", quality: "good", effect: { closeness: 2 }, reaction: "semleges" },
     ],
   },
 };
