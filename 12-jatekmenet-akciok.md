@@ -31,13 +31,16 @@ A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A mi
 - Korlát: hetente 2–3 alkalommal érdemes, utána csökken a hozam.
 - Szórakoztatás: klasszikus gyűjtögetés + feszült verseny a hajléktalannal, rövid és addiktív.
 
-### 2. Fizikai munka — építkezés minijáték — Space Invaders stílus
-- **Alap**: Space Invaders-szerű. A játékos téglákat (vagy építőanyagot) „lő” vagy rak le, hogy falat építsen, miközben „ellenségek” (pl. hibás téglák vagy idő) jönnek.
-- Mechanika: Egyszerű oldalirányú mozgatás + lövés/rakás. A cél egy bizonyos magasságú fal építése időre.
-- Jutalom: 12 000–18 000 Ft egy sávra a teljesítmény szerint (magasabb, mint a palack).
-- Hatás: Jelenlét vagy Nyugalom stat enyhe változása.
+### 2. Fizikai munka — építkezés minijáték — időre menő falrakás
+- **Alap**: Időre megy. A játékos minél több falat (téglasort) próbál lerakni a rendelkezésre álló idő alatt.
+- Mechanika: Egyszerű, pontos lerakás szükséges (időzítés vagy pozíció). A jó lerakás teljes értéket ad, a rossz kevesebbet vagy semmit.
+- **Sör boost** (trade-off): A játékos ihat sört a játék előtt vagy közben.
+  - Előny: gyorsabb lerakás (több fal fér az időbe).
+  - Hátrány: nehezebb jól lerakni a falat (pontosabb időzítés kell, vagy nagyobb a hibalehetőség).
+- Jutalom: 12 000–18 000 Ft egy sávra a lerakott jó falak száma szerint. A sör növelheti a maximumot, de kockázatos.
+- Hatás: Jelenlét vagy Nyugalom stat enyhe változása a teljesítmény szerint. Túl sok sör enyhe fáradtságot okozhat.
 - Korlát: hetente maximum 1–2 alkalom, utána fáradtság.
-- Szórakoztatás: klasszikus, rövid, kielégítő.
+- Szórakoztatás: időnyomás + tudatos trade-off a sörrel.
 
 ### Egyéb meglévő pénzforrások (a rendszerekből)
 - Tanulmányi vezetői fizetés: 60 000 Ft / hét (automatikus).
