@@ -1,0 +1,73 @@
+# AGENT.md — Ligetvár projekt útmutató
+
+Ez a fájl későbbi agenteknek (vagy fejlesztőknek) szól. A cél, hogy a fonalat fel lehessen venni és a munkát folytatni lehessen anélkül, hogy mindent újra kelljen kitalálni.
+
+## Fő cél
+
+Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csomagolással). A játékos egy 34 éves tanár (Márton Kelényi), aki fakultatív misztikus gyógytornát tart a Ligetvári Főiskolán. Három felnőtt hallgatónő (Rebeka 20, Boglárka 19, Gréta 21) rejtett vágyaival kell közelebb kerülni. A téma a meghódítás és a vágyak beteljesítése.
+
+**Fontos**: Az intim/szexuális tartalom a kódbázisban **csak kódolt formában** szerepelhet (lásd [06-intim-szotar.md](06-intim-szotar.md)). A build agent és az automatikus folyamatok nem láthatnak explicit szöveget. A jelentést csak ez a dokumentum és a tervezői jegyzetek ismerik.
+
+## Hogyan kell tervezni és írni
+
+1. **Olvasd el a dokumentumokat sorrendben**:
+   - [01-mufaj.md](01-mufaj.md) → műfaj
+   - [02-koncepcio.md](02-koncepcio.md) → keret, statok, végek
+   - [03-karakterek.md](03-karakterek.md) → karakterlapok
+   - [05-rendszerek.md](05-rendszerek.md) → mechanikák
+   - [06-intim-szotar.md](06-intim-szotar.md) → kódolt intim témák
+   - [07-sztori-keret.md](07-sztori-keret.md) → miért dolgoznak együtt
+   - [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) → folyamat, végek, harag
+   - [09-dialog-es-architektura.md](09-dialog-es-architektura.md) → 3 rész, dialógus, kódstruktúra
+
+2. **Írási szabályok**:
+   - Minden dialógusban maximum 4 választás.
+   - Minden dialógusban legyen nagyon jó / jó / rossz / nagyon rossz opció.
+   - Az intim témák csak a szótár kódjait használják (`act_flash`, `desire_yield_control` stb.).
+   - A kód UI nélkül headless tesztelhető legyen.
+   - Moduláris, újrahasznosítható core logika.
+
+3. **Helyek**:
+   - Tanterem (fő hely, gyógytorna)
+   - Tanár lakása (egyéni feladatok után)
+   - Békás-tó sötétben (randihely, elágazó utak)
+
+4. **Páros útvonal**: Boglárka + Gréta a járható pár. Rebeka + Gréta szűk. Rebeka + Boglárka nem.
+
+## Folyamatkövetés (mi van kész)
+
+Frissítsd ezt a táblázatot, amikor valamit befejezel.
+
+| Komponens | Állapot | Megjegyzés |
+| --- | --- | --- |
+| Koncepció és karakterek | Kész | 01–08 dokumentumok |
+| Intim szótár (kódolt) | Kész | 06-intim-szotar.md |
+| Sztorikeret + helyszínek | Kész | 07-sztori-keret.md |
+| Játékmenet + végek + harag | Kész | 08-jatekmenet-es-vegkimenetek.md |
+| 3 részes architektúra | Kész | 09-dialog-es-architektura.md |
+| Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
+| Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
+| Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
+| Part2 és Part3 scripte | Nincs | src/scripts/ |
+| Teljes dialógusrendszer | Nincs | JSON + motor összekötés |
+| UI (pixel, szövegdoboz) | Nincs | Későbbi fázis |
+| Tesztek (headless) | Alap kész | src/tests/dialogue.test.ts |
+| Végkifejletek implementációja | Nincs | part3 |
+
+## Következő lépések (javaslat)
+
+1. Dialógus JSON séma és part1 dialógusok megírása a három lánynak (max 4 opció, very_good/good/bad/very_bad).
+2. DialogueEngine összekötése a JSON-okkal.
+3. Part2 és Part3 scripte alapjának elkészítése.
+4. Bővített headless tesztek a végkimenetekre és a páros útvonalra.
+5. Csak ezután UI.
+
+## Szabályok agenteknek
+
+- Ne írj explicit szexuális szöveget a kódba vagy a dialógusfájlokba. Csak a [06-intim-szotar.md](06-intim-szotar.md) kódjait használd.
+- A core logika maradjon UI-független és headless tesztelhető.
+- Frissítsd a fenti folyamatkövetési táblázatot, amikor egy részt befejezel.
+- Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
+- A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
+
+A projekt állapota: tervezés kész, core kód alapjai készek, dialógusok és a 3 rész teljes implementációja még hátra van.
