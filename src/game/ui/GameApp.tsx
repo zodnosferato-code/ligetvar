@@ -25,14 +25,20 @@ import {
 } from "../engine/logic.ts";
 import { GIRLS, type RouteId } from "../engine/types.ts";
 import { useGame } from "../store.ts";
+import { moodFor, setMood, toggleMute, unlockAudio } from "../audio.ts";
 import { BrickGame, MohuGame } from "./minigames.tsx";
 
 export function GameApp() {
   const mode = useGame((s) => s.mode);
+  const state = useGame((s) => s.state);
   const boot = useGame((s) => s.boot);
   useEffect(() => {
     boot();
   }, [boot]);
+  useEffect(() => {
+    if (mode !== "play") return;
+    setMood(moodFor(state));
+  }, [mode, state]);
   return <div className="stage">{mode === "title" ? <Title /> : <Play />}</div>;
 }
 
@@ -53,16 +59,37 @@ function Title() {
         </label>
         <div className="title-actions">
           {hasSave ? (
-            <button type="button" className="pixel-btn good" onClick={resume}>
+            <button
+              type="button"
+              className="pixel-btn good"
+              onClick={() => {
+                unlockAudio();
+                resume();
+              }}
+            >
               Folytatás
             </button>
           ) : (
-            <button type="button" className="pixel-btn good" onClick={() => start(name)}>
+            <button
+              type="button"
+              className="pixel-btn good"
+              onClick={() => {
+                unlockAudio();
+                start(name);
+              }}
+            >
               Új félév
             </button>
           )}
           {hasSave ? (
-            <button type="button" className="pixel-btn ghost" onClick={() => start(name)}>
+            <button
+              type="button"
+              className="pixel-btn ghost"
+              onClick={() => {
+                unlockAudio();
+                start(name);
+              }}
+            >
               Új félév
             </button>
           ) : null}
@@ -102,6 +129,14 @@ function Play() {
 function Hud() {
   const state = useGame((s) => s.state);
   const toTitle = useGame((s) => s.toTitle);
+  const [quiet, setQuiet] = useState(false);
+  useEffect(() => {
+    try {
+      if (localStorage.getItem("ligetvar-mute") === "1") setQuiet(true);
+    } catch {
+      /* ignore */
+    }
+  }, []);
   return (
     <header className="hud">
       <div>
@@ -112,6 +147,14 @@ function Hud() {
       </div>
       <div style={{ textAlign: "right" }}>
         <div>{formatFt(state.money)}</div>
+        <button
+          type="button"
+          className="pixel-btn ghost"
+          style={{ minHeight: "2rem", padding: "0.2rem 0.45rem" }}
+          onClick={() => setQuiet(toggleMute())}
+        >
+          {quiet ? "Csend" : "Zene"}
+        </button>
         <button type="button" className="pixel-btn ghost" style={{ minHeight: "2rem", padding: "0.2rem 0.45rem" }} onClick={toTitle}>
           Főcím
         </button>
@@ -474,7 +517,14 @@ function Ending() {
         </div>
         <p className="serif">{ending.text}</p>
         <p style={{ color: "var(--color-muted)" }}>{state.name} · 16. hét</p>
-        <button type="button" className="pixel-btn good" onClick={() => start(state.name)}>
+        <button
+          type="button"
+          className="pixel-btn good"
+          onClick={() => {
+            unlockAudio();
+            start(state.name);
+          }}
+        >
           Új félév
         </button>
       </div>
