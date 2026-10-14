@@ -27,6 +27,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) → hangulatok és végteleníthető instrumentális zene
    - [15-ajandekok.md](15-ajandekok.md) → ajándékok, árak, preferenciák, bizalom szerinti szemérmetlen ajándékok
    - [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md) → lokalizáció, a motor kódoltan hivatkozik, nem ismeri az intim tartalmat
+   - [17-szakaszinditas.md](17-szakaszinditas.md) → szakaszindítás a játék elején a megfelelő max értékekkel
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -57,6 +58,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 10. **Lokalizáció**: Lásd [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md). A motor csak kulcsokat és kódokat használ, a tényleges szöveg a lokalizációs fájlokban van.
 
+11. **Szakaszindítás**: Lásd [17-szakaszinditas.md](17-szakaszinditas.md). A játék elején választható szakasz a megfelelő maximális értékekkel.
+
 ## Folyamatkövetés (mi van kész)
 
 Frissítsd ezt a táblázatot, amikor valamit befejezel.
@@ -75,6 +78,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
 | Ajándékok | Kész | 15-ajandekok.md (árak, preferenciák, bizalom szerinti intim) |
 | Lokalizáció és kódolás | Kész | 16-lokalizacio-es-kodolas.md (motor nem ismeri az intim tartalmat) |
+| Szakaszindítás | Kész | 17-szakaszinditas.md (választható szakasz max értékekkel) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -97,7 +101,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 7. EventSystem alapjának megírása a random és feltételes eseményekhez.
 8. Zenefájlok generálása vagy beszerzése a definíció szerint.
 9. Lokalizációs rendszer alapjának megírása.
-10. Csak ezután UI.
+10. Szakaszindítás implementációja a GameState-ben.
+11. Csak ezután UI.
 
 ## Szabályok agenteknek
 
@@ -112,5 +117,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
 - **Ajándékok**: A [15-ajandekok.md](15-ajandekok.md) szerinti árak és preferenciák. Szemérmetlen ajándékok csak magas bizalomnál.
 - **Lokalizáció**: A motor csak kulcsokat és kódokat használ ([16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md)). A tényleges szöveg a lokalizációs fájlokban van.
+- **Szakaszindítás**: A játék elején választható szakasz a [17-szakaszinditas.md](17-szakaszinditas.md) szerinti maximális értékekkel.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály (sávok lehetőségek), akciórendszer, játékhurok, zene, ajándékrendszer és lokalizációs elv dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv és szakaszindítás dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
