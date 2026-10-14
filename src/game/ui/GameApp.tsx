@@ -28,6 +28,15 @@ import { useGame } from "../store.ts";
 import { moodFor, setMood, toggleMute, unlockAudio } from "../audio.ts";
 import { BrickGame, MohuGame } from "./minigames.tsx";
 
+function enterSemester(run: () => void) {
+  run();
+  try {
+    unlockAudio();
+  } catch {
+    /* a blocked audio device must not keep the semester on the title */
+  }
+}
+
 export function GameApp() {
   const mode = useGame((s) => s.mode);
   const state = useGame((s) => s.state);
@@ -62,10 +71,7 @@ function Title() {
             <button
               type="button"
               className="pixel-btn good"
-              onClick={() => {
-                unlockAudio();
-                resume();
-              }}
+              onClick={() => enterSemester(resume)}
             >
               Folytatás
             </button>
@@ -73,10 +79,7 @@ function Title() {
             <button
               type="button"
               className="pixel-btn good"
-              onClick={() => {
-                unlockAudio();
-                start(name);
-              }}
+              onClick={() => enterSemester(() => start(name))}
             >
               Új félév
             </button>
@@ -85,10 +88,7 @@ function Title() {
             <button
               type="button"
               className="pixel-btn ghost"
-              onClick={() => {
-                unlockAudio();
-                start(name);
-              }}
+              onClick={() => enterSemester(() => start(name))}
             >
               Új félév
             </button>
@@ -520,10 +520,7 @@ function Ending() {
         <button
           type="button"
           className="pixel-btn good"
-          onClick={() => {
-            unlockAudio();
-            start(state.name);
-          }}
+          onClick={() => enterSemester(() => start(state.name))}
         >
           Új félév
         </button>
