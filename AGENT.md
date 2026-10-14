@@ -42,7 +42,10 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. Sejtető és félmeztelen képek megengedettek a bizalmi szint szerint. Ruhadarabok változhatnak vagy lekerülhetnek, pozíciók változhatnak. Ha eltér a kanontól, újra generáld.
 
-6. **Akciók és pénzszerzés**: Lásd [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md). Heti 3 sáv, korlátozott akciók. MOHU palack (50 Ft) és építkezés minijáték. Hívás vagy magától bejövés.
+6. **Akciók és pénzszerzés**: Lásd [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md). Heti 3 sáv, korlátozott akciók.
+   - **MOHU**: Pac-Man stílusú gyűjtögető labirintus. Üveg/műanyag palack 75–125 Ft, energiaitalos doboz 150–200 Ft. Versenytárs: hajléktalan gyűjtögető.
+   - **Építkezés**: Időre menő falrakás. Sör boost: gyorsabb lerakás, de nehezebb jól lerakni (trade-off).
+   - Hívás vagy magától bejövés a történet szerint.
 
 7. **Játékhurok és események**: Lásd [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md). Random események és kódolt intim meglepetések a bizalmi szint szerint.
 
@@ -61,7 +64,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | 3 részes architektúra | Kész | 09-dialog-es-architektura.md |
 | Vizuális stílus (pixel + manga) | Kész | 10-vizualis-stilus.md |
 | Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md (sejtető, félmeztelen, pózíciók) |
-| Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU, építkezés, hívás) |
+| Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU Pac-Man + versenytárs, építkezés időre + sör boost) |
 | Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (random, kódolt meglepetések) |
 | Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
@@ -95,8 +98,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
 - **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Sejtető és félmeztelen képek, ruhadarabok lekerülése és pozícióváltás megengedett a bizalmi szint szerint. Konzisztencia a kanonikus leírással.
-- **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU 50 Ft üveg + építkezés minijáték.
+- **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU (Pac-Man, 75–125 Ft palackok, energiaital, hajléktalan versenytárs) + építkezés (időre, sör boost trade-off).
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok és zene definíció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer (frissített minijátékokkal), játékhurok és zene definíció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
