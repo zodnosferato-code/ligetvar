@@ -24,6 +24,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) | Játékhurok, eseménytípusok, random események, kódolt intim meglepetések |
 | [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) | Hangulatok és végteleníthető instrumentális zene |
 | [15-ajandekok.md](15-ajandekok.md) | Ajándékok, árak, preferenciák, bizalom szerinti szemérmetlen ajándékok |
+| [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md) | Lokalizáció és kódolt hivatkozás: a motor nem ismeri az intim tartalmat |
 
 Referenciaképek:
 
