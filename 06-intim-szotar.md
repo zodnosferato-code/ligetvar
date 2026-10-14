@@ -11,6 +11,18 @@ A build agent (vagy bármely automatikus kódgeneráló) a kódokat sima sztring
 | `exp_none` | Szűz. Nincs korábbi szexuális tapasztalata. |
 | `exp_limited` | Korlátozott tapasztalat. Volt 1–2 rövid, nem mély kapcsolat vagy alkalmi alkalom, de nem elégítő vagy formáló. |
 
+## Korai és fokozatos intim aktusok
+
+A játék elejétől kezdve minimális intim interakciók nyílnak (villantás, enyhe csók). A haladással egyre mélyebbre hatolunk a vágyakban.
+
+| Kód | Jelentés | Mikor nyílik |
+| --- | --- | --- |
+| `act_flash` | Villantás (rövid, részleges látás ruhán vagy mozgáson keresztül, pl. gyógytorna közben). | Bizalom 1–2, már a közös szakaszban. |
+| `act_kiss_light` | Enyhe csók (orca vagy rövid száj, nem mély). | Bizalom 2–3. |
+| `act_kiss_deep` | Mélyebb csók. | Bizalom 4. |
+| `act_touch_intimate` | Intimebb érintés a vágykódok szerint. | Bizalom 4–5, zárt útvonalon. |
+| `act_desire_fulfill` | A lány rejtett vágyának beteljesítése (a saját kódjai szerint). | Bizalom 5, igaz vég kapuja. |
+
 ## Vágy- és témakódok
 
 Ezek a rejtett vagy később megnyíló intim preferenciák. A jelenetekben és a kódban flag-ként vagy feltételként használhatók.
@@ -28,7 +40,8 @@ Ezek a rejtett vagy később megnyíló intim preferenciák. A jelenetekben és 
 ## Használat a kódban és a szkriptekben
 
 - Karakteradatokban: `sexual_exp: "exp_none"`, `desires: ["desire_slow_explore", "theme_power_forbidden"]`
-- Flag-ként: ha egy jelenet megnyitja a `desire_yield_control` témát, a kód csak a stringet ellenőrzi.
+- Aktusok: `available_acts: ["act_flash", "act_kiss_light"]` a bizalom szerint.
+- Flag-ként: ha egy jelenet megnyitja az `act_flash` vagy `desire_yield_control` témát, a kód csak a stringet ellenőrzi.
 - A build agent soha nem látja a fenti táblázat jelentését, csak a kódokat kezeli.
 
 A tényleges explicit jeleneteket (ha később bekerülnek) külön, nem automatikus ágakon lehet megírni. A kód és a struktúra ettől függetlenül építhető.

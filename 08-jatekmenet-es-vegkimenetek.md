@@ -6,28 +6,31 @@ A félév struktúrája, a közeledés menete, a lehetséges végek, a páros ú
 
 A játék egy 16 hetes félévet fog át. A főhős heti egyszer misztikus gyógytornát tart a tanteremben. A három lány a közös munka miatt rendszeresen jelen van, és a játékos szabad sávjaiban (délelőtt / délután / este) választhat, kivel és hol foglalkozik.
 
+A játék elejétől minimális szexuális interakciók lehetségesek (`act_flash`, `act_kiss_light`). A haladással egyre mélyebbre hatolunk a lányok vágyaiban (`act_touch_intimate`, `act_desire_fulfill`).
+
 ### 1–8. hét — Közös szakasz
 - Mindhárom lány elérhető a saját helyein és a tanteremben.
 - Ismételhető beszélgetések + bemutatkozó események.
 - Egyéni feladatok indíthatók (fotóanyag, kutatási jegyzet, admin dokumentum), amelyek a tanár lakásába vezetnek.
 - Ajándékok és közelség/bizalom építése.
+- Korai `act_flash` (gyógytorna közben) és `act_kiss_light` (privát helyen) már lehetséges bizalom 1–3 között.
 - A 8. hét végén döntés: egy lány, egy összeillő pár, vagy senki.
 
 ### 9–15. hét — Zárt útvonal
 - Csak a kiválasztott lány (vagy pár) útvonala fut.
 - Kulcsjelenetek a tanteremben, a lakásban és a Békás-tónál.
-- A vágykódok szerint mélyebb intim témák nyílhatnak (bizalom 4–5-nél).
+- Mélyebb aktusok (`act_kiss_deep`, `act_touch_intimate`) és a vágykódok szerint mélyebb intim témák nyílhatnak (bizalom 4–5-nél).
 - A kívül maradt lány háttérbe húzódik.
 
 ### 16. hét — Vég
-- Igaz, csendes, tört, páros vagy egyedül vég a feltételek szerint.
+- Igaz, csendes, tört, páros vagy egyedül vég a feltételek szerint. Az igaz vég az `act_desire_fulfill`-t tartalmazza.
 
 ## Végkimenetek
 
 | Típus | Feltétel (röviden) | Mit jelent |
 | --- | --- | --- |
-| **Igaz** | közelség ≥80, bizalom 5, 3 kötelező jelző, kockázat <60, `hatar` | A vágyak beteljesülnek a kódok szerint (privát, intenzív vagy lassú felfedezés). A viszony a félév után is folytatódik. |
-| **Csendes** | közelség ≥55, bizalom ≥3, de hiányzik egy igaz-vég feltétel | Van viszony, de nem teljes. A lány megmarad a megszokott távolságban vagy szerepében. |
+| **Igaz** | közelség ≥80, bizalom 5, 3 kötelező jelző, kockázat <60, `hatar` | A vágyak beteljesülnek (`act_desire_fulfill` a kódok szerint). A viszony a félév után is folytatódik. |
+| **Csendes** | közelség ≥55, bizalom ≥3, de hiányzik egy igaz-vég feltétel | Van viszony, de nem teljes. Korai aktusok megvoltak, de a mély vágyak nem. |
 | **Törés** | kockázat ≥80 vagy a lány saját törésjelzője | A viszony megszakad. A lány visszavonul, esetleg pletykát indít vagy áthelyezi a munkáját. |
 | **Páros igaz** | mindkettő bizalma 5, közelség ≥75/80, `par_oszinte`, `hatar`, alacsony kockázat | Mindkét lány tudja és elfogadja. Külön-külön beteljesülnek a vágyaik. |
 | **Páros csendes** | egyikük igaz, a másik nem tört, de a páros feltételek nem teljesülnek | A szó szintjén együtt maradnak, de a félév után eltávolodnak. |
@@ -98,6 +101,7 @@ A rendszer a kódban egy egyszerű `anger` számmal (0–5) kezelhető lányonk�
 
 - Heti 3 sáv + kötelező gyógytorna háttér.
 - Közelség, bizalom, kockázat, harag, jelzők.
+- Korai aktusok (`act_flash`, `act_kiss_light`) már a közös szakaszban.
 - 8. hét végén útvonalzár (egyedül / egy lány / pár).
 - Békás-tó, tanár lakása és tanterem a fő intim helyek.
 - Minden intim téma kódolt string.

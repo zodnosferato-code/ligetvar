@@ -2,7 +2,7 @@
 
 A félév hossza, a pénz, az ajándék, a bizalom fizikai lépcsője és a páros útvonal. A jelenetek még nincsenek megírva. Ez a szabály, amihez később igazodnak.
 
-A fizikai lépcső a magas bizalomnál (5) intimebb érintésekig is eljuthat. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a kódbázis ettől függetlenül építhető.
+A fizikai lépcső a játék elejétől minimális intim interakciókat enged (villantás, enyhe csók), és a haladással egyre mélyebbé válik a vágykódok szerint. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a kódbázis ettől függetlenül építhető.
 
 ## Hosszabb félév
 
@@ -10,9 +10,9 @@ Tizenhat hét, hetente három sáv: délelőtt, délután, este. Összesen 48 s�
 
 | Szakasz | Hetek | Mi történik |
 | --- | --- | --- |
-| Közös | 1–8 | Mindhárom lány, ismételhető beszélgetés, bemutatkozó események, munka, első ajándékok. |
+| Közös | 1–8 | Mindhárom lány, ismételhető beszélgetés, bemutatkozó események, munka, első ajándékok. Korai `act_flash` és `act_kiss_light` lehetséges. |
 | Döntés | 8. hét vége | Egy lány, egy összeillő pár, vagy senki. |
-| Útvonal | 9–15 | A zárt útvonal jelenetei. A kívül maradt lány háttér. Randihelyek innentől nyílhatnak, ha a feltételeik megvannak. |
+| Útvonal | 9–15 | A zárt útvonal jelenetei. A kívül maradt lány háttér. Randihelyek innentől nyílhatnak, ha a feltételeik megvannak. Mélyebb aktusok. |
 | Vég | 16 | Igaz, csendes, tört, páros, vagy egyedül. |
 
 Ismételhető beszélgetésből hetente lányonként kettő ad pontot. A második feleannyit ad, mint az első. A harmadik ugyanazon a héten már csak egy fáradt sor, szám nélkül. Így két lánnyal is lehet foglalkozni, de a munka és a saját statok még mindig időbe kerülnek.
@@ -72,26 +72,26 @@ Minden tárgynak van ára, egy ízléscímkéje, és lányonként egy hatása. A
 
 Hetente egy ajándék egy lánynak még számít. A második ugyanazon a héten már nem ad bizalmat, csak egy udvarias sort. Az ízlés elleni tárgy akkor is árt, ha drága.
 
-## Bizalom és érintés
+## Bizalom és érintés (korai intim interakciókkal)
 
-A bizalom 0–5, ahogy a koncepcióban. Nem minden kedves mondat lépteti. Az érintés választás egy jelenet végén, csak ha a fokozat megengedi, és a lány személyisége az adott helyen engedi. A játékos látja, ha egy érintés még zárva van, és egy rövid okot: „ehhez jobban meg kell bíznia” vagy „itt nem, mások előtt nem”.
+A bizalom 0–5. A játék elejétől minimális szexuális interakciók lehetségesek. Az érintés és az aktusok választások egy jelenet végén, csak ha a fokozat megengedi, és a lány személyisége az adott helyen engedi. A játékos látja, ha egy érintés még zárva van, és egy rövid okot: „ehhez jobban meg kell bíznia” vagy „itt nem, mások előtt nem”.
 
 | Bizalom | Ami megnyílhat |
 | --- | --- |
 | 0 | Beszéd. Magázódás. Nincs érintés. |
-| 1 | Tovább marad egy percet. A keresztneved felé mozdul, Gréta kivétel: ő magáz, amíg a bizalma 3 alatt van. |
-| 2 | Kézfogás, vagy a keze a tiédben egy mondatig. |
-| 3 | Ölelés. Rövid, és ő dönti el, mikor lép vissza. |
-| 4 | Puszi az orcára. Szájon csak akkor, ha a bizalom már 5, és nem nyilvános helyen történik. |
-| 5 | Az igaz vég kapuja. További intim lépcsők a [06-intim-szotar.md](06-intim-szotar.md) kódjai szerint nyílhatnak. |
+| 1 | Tovább marad egy percet. A keresztneved felé mozdul. Első `act_flash` lehetőség (gyógytorna vagy csendes jelenet). |
+| 2 | Kézfogás. `act_flash` ismételhető. `act_kiss_light` lehetőség privát helyen. |
+| 3 | Ölelés. `act_kiss_light` könnyebben. |
+| 4 | Puszi az orcára / `act_kiss_deep`. Szájon mélyebben, ha nem nyilvános. Első `act_touch_intimate` a vágykódok szerint. |
+| 5 | Az igaz vég kapuja. `act_desire_fulfill` a lány kódjai szerint. |
 
 Személyiség, ugyanazon a fokozaton:
 
-- **Rebeka** a kézfogást és a puszit csak akkor fogadja, ha nincs közönség. A Holdkörben, mások előtt, egy ölelés is kockázat +8, és a bizalom nem nő. Nála a nyilvános érintés hencegésnek látszik.
-- **Boglárka** a kézfogást a könyvtár sarkában már 2-es bizalomnál engedi. Ölelést és puszit csak 4-es, illetve 5-ös bizalomnál, és csak ha a `boglarka_udvar` óta legalább egyszer kijött veled a polcok közül. Nyilvános puszi nála az igaz vég jelenetébe való, nem egy délutáni választás.
+- **Rebeka** a kézfogást, villantást és a puszit csak akkor fogadja, ha nincs közönség. A Holdkörben, mások előtt, egy ölelés is kockázat +8, és a bizalom nem nő. Nála a nyilvános érintés hencegésnek látszik.
+- **Boglárka** a kézfogást és az enyhe villantást a könyvtár sarkában már 2-es bizalomnál engedi. Ölelést és csókot csak magasabb bizalomnál, és csak ha a `boglarka_udvar` óta legalább egyszer kijött veled a polcok közül. Nyilvános puszi nála az igaz vég jelenetébe való.
 - **Gréta** az irodában, nyitott ajtónál, semmilyen érintést nem fogad el, akármekkora a bizalom. Zárt ajtónál vagy az udvaron a táblázat szerint halad. Ha az érintés a demonstrátori munkájához van kötve, a `greta_eszkoz` jelző igaz lesz, és az érintés nem történik meg.
 
-Egy megengedett érintés közelséget ad: kézfogás +3, ölelés +5, puszi +8. Ugyanaz a fokozat ugyanazon a héten másodszor már nem ad pontot. Elutasított vagy túl korai kísérlet bizalom −1. Ez a „nem” ára, és nincs mód körbebeszélni.
+Egy megengedett érintés közelséget ad: kézfogás +3, ölelés +5, puszi +8, `act_flash` +2. Ugyanaz a fokozat ugyanazon a héten másodszor már nem ad pontot. Elutasított vagy túl korai kísérlet bizalom −1. Ez a „nem” ára, és nincs mód körbebeszélni.
 
 Az érintés nem helyettesíti a történetjelzőket. Puszi 4-es bizalomnál még nem igaz vég.
 
@@ -106,5 +106,6 @@ A rendszer kész, a helyszínek jelenetei még nem. A 9. héttől egy zárt útv
 | Kis mozi, hátsó sor nélkül: rendes vetítés | 9 000 | +12 | Gréta, ha előre megvan a film címe és az időpont |
 | Folyópart | 0, csak az út | +8 | Rebeka nappal, a `rebeka_feny` után |
 | Éjszakai peron | 2 000 jegy | +14 | Rebeka, közönség nélkül |
+| Békás-tó (sötétben) | 0 | +10 | mindhárom, privát aktusokhoz |
 
 Amíg a jelenet nincs megírva, a menüpont nem vezet szövegre. A szabály viszont már köti a későbbi írást: a randi nem ugorja át a bizalmi lépcsőt, és nem olcsóbb bizalomban, mint egy őszinte beszélgetés a kampuszon.
