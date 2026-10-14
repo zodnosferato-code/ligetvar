@@ -245,6 +245,76 @@
           "reaction": "fegyelmezett_duh"
         }
       ]
+    },
+    {
+      "id": "greta_rule_break",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.rule_break",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.rule_break.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_greta_rulebreak"] },
+          "reaction": "zavar_elpirul"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.rule_break.good",
+          "quality": "good",
+          "effect": { "closeness": 4 },
+          "reaction": "koncentrált"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.rule_break.bad",
+          "quality": "bad",
+          "effect": { "closeness": -3, "anger": 1 },
+          "reaction": "osszevont"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.greta.rule_break.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -5, "risk": 5 },
+          "reaction": "fegyelmezett_duh"
+        }
+      ]
+    },
+    {
+      "id": "greta_yield",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.yield",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.yield.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 9, "trust": 2, "flags": ["flag_greta_yield"] },
+          "reaction": "engedelmes"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.yield.good",
+          "quality": "good",
+          "effect": { "closeness": 4 },
+          "reaction": "zavar"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.yield.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2 },
+          "reaction": "osszevont"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.greta.yield.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -6, "anger": 2 },
+          "reaction": "fegyelmezett_duh"
+        }
+      ]
     }
   ]
 }
