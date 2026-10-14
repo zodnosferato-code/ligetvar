@@ -2,7 +2,7 @@
 
 Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes játék, később Tauri-héjjal Windowsra és Linuxra csomagolva. Ez a mappa csak tervezés. Játékkód még nincs.
 
-A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus, a karakterek háttértörténetei rejtett szexuális vágyakat is tartalmaznak. Explicit jelenetek a tervezés szerint később kerülhetnek be a megfelelő bizalmi szinteken.
+A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a build agent a kódbázison dolgozhasson anélkül, hogy explicit tartalommal kellene foglalkoznia. Explicit jelenetek a tervezés szerint később kerülhetnek be a megfelelő bizalmi szinteken.
 
 | Dokumentum | Miről szól |
 | --- | --- |
@@ -11,6 +11,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [03-karakterek.md](03-karakterek.md) | A főhős és a három lány karakterlapja |
 | [04-vizualis-biblia.md](04-vizualis-biblia.md) | Pixelstílus, paletta, és a prompt, amivel később ugyanazok maradnak |
 | [05-rendszerek.md](05-rendszerek.md) | Tizenhat hetes félév, páros útvonal, pénz, online ajándék, bizalmi érintés, későbbi randihelyek |
+| [06-intim-szotar.md](06-intim-szotar.md) | Intim témák kódolt szótára (build-agent kompatibilis) |
 
 Referenciaképek:
 

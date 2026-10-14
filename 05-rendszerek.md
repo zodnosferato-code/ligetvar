@@ -2,7 +2,7 @@
 
 A félév hossza, a pénz, az ajándék, a bizalom fizikai lépcsője és a páros útvonal. A jelenetek még nincsenek megírva. Ez a szabály, amihez később igazodnak.
 
-A fizikai lépcső a magas bizalomnál intimebb érintésekig és szexuális jelenetekig is eljuthat az útvonalakon, a karakterek vágyai szerint.
+A fizikai lépcső a magas bizalomnál (5) intimebb érintésekig is eljuthat. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a kódbázis ettől függetlenül építhető.
 
 ## Hosszabb félév
 
@@ -83,7 +83,7 @@ A bizalom 0–5, ahogy a koncepcióban. Nem minden kedves mondat lépteti. Az é
 | 2 | Kézfogás, vagy a keze a tiédben egy mondatig. |
 | 3 | Ölelés. Rövid, és ő dönti el, mikor lép vissza. |
 | 4 | Puszi az orcára. Szájon csak akkor, ha a bizalom már 5, és nem nyilvános helyen történik. |
-| 5 | Az igaz vég kapuja. Intimebb érintés és szexuális jelenet is megnyílhat az útvonalon, a karakter vágyai szerint. |
+| 5 | Az igaz vég kapuja. További intim lépcsők a [06-intim-szotar.md](06-intim-szotar.md) kódjai szerint nyílhatnak. |
 
 Személyiség, ugyanazon a fokozaton:
 
