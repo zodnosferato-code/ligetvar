@@ -41,13 +41,15 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - Moduláris, újrahasznosítható core logika.
 
 3. **Helyek**:
-   - Tanterem (fő hely, gyógytorna)
-   - Tanár lakása (egyéni feladatok után)
-   - Békás-tó sötétben (randihely, elágazó utak)
+   - Tanterem (kastélyterem, gyógytorna)
+   - Tanár lakása és irodája (mindkettő a kastélyban; a főhős itt lakik)
+   - Könyvtár (kastély)
+   - Békás-tó sötétben (randihely, elágazó utak a park szélén)
+   - Holdkör alagsor
 
 4. **Páros útvonal**: Boglárka + Gréta a járható pár. Rebeka + Gréta szűk. Rebeka + Boglárka nem.
 
-5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és a [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. A képsávok **lehetőségek** (1. alap → 5. intim), nem kötelező szabályok. Az intim képek csak később, magas bizalomnál jelenhetnek meg. Ha eltér a kanontól, újra generáld. Turnaround referenciák skálával, elől/oldal/hátul, ruhás és alsóneműs.
+5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és a [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. A képsávok **lehetőségek** (1. alap → 5. intim), nem kötelező szabályok. Az intim képek csak később, magas bizalomnál jelenhetnek meg. Ha eltér a kanontól, újra generáld. Turnaround referenciák skálával, elől/oldal/hátul, ruhás és alsóneműs. Háttereknél mindig a 19. századi magyar kastély (romantikus/neogót, kőfal, íves ablak, modern nyomok) szerint.
 
 6. **Akciók és pénzszerzés**: Lásd [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md). Heti 3 sáv, korlátozott akciók.
    - **MOHU**: Pac-Man stílusú gyűjtögető labirintus. Üveg/műanyag palack 75–125 Ft, energiaitalos doboz 150–200 Ft. Versenytárs: hajléktalan gyűjtögető.
@@ -117,7 +119,7 @@ A motor játszható. Ami még nincs kész:
 - Frissítsd a fenti folyamatkövetési táblázatot, amikor egy részt befejezel.
 - Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
-- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Képsávok lehetőségek (1. alap → 5. intim), nem kötelezőek. Intim képek csak később. Konzisztencia a kanonikus leírással. Turnaround: skálás, elől/oldal/hátul, ruhás + alsóneműs.
+- **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Képsávok lehetőségek (1. alap → 5. intim), nem kötelezőek. Intim képek csak később. Konzisztencia a kanonikus leírással. Turnaround: skálás, elől/oldal/hátul, ruhás + alsóneműs. Hátterek: 19. századi magyar kastély (kő, íves ablak, fagerenda, modern nyomok).
 - **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU (Pac-Man, 75–125 Ft palackok, energiaital, hajléktalan versenytárs) + építkezés (időre, sör boost trade-off).
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan, flag szerint.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
