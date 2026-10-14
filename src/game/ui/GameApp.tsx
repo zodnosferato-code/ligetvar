@@ -47,6 +47,26 @@ function Title() {
       <div className="scroll title-copy">
         <p className="eyebrow">Ligetvári Főiskola</p>
         <h1 className="serif title-mark">Ligetvár</h1>
+        <label className="name-field">
+          A neved a műhelyen
+          <input value={name} onChange={(e) => setName(e.target.value)} maxLength={32} autoComplete="name" />
+        </label>
+        <div className="title-actions">
+          {hasSave ? (
+            <button type="button" className="pixel-btn good" onClick={resume}>
+              Folytatás
+            </button>
+          ) : (
+            <button type="button" className="pixel-btn good" onClick={() => start(name)}>
+              Új félév
+            </button>
+          )}
+          {hasSave ? (
+            <button type="button" className="pixel-btn ghost" onClick={() => start(name)}>
+              Új félév
+            </button>
+          ) : null}
+        </div>
         <p className="serif lead">
           Tizenhat hét, heti három sáv. A pénz nem helyettesíti az időt, a beosztás pedig nem tartozás.
         </p>
@@ -62,32 +82,6 @@ function Title() {
           ))}
         </div>
       </div>
-      <form
-        className="title-dock"
-        onSubmit={(event) => {
-          event.preventDefault();
-          start(name);
-        }}
-      >
-        <label className="name-field">
-          A neved a műhelyen
-          <input value={name} onChange={(e) => setName(e.target.value)} maxLength={32} autoComplete="name" />
-        </label>
-        {hasSave ? (
-          <button type="button" className="pixel-btn good" onClick={resume}>
-            Folytatás
-          </button>
-        ) : (
-          <button type="submit" className="pixel-btn good">
-            Új félév
-          </button>
-        )}
-        {hasSave ? (
-          <button type="submit" className="pixel-btn ghost">
-            Új félév — felülírja a mentést
-          </button>
-        ) : null}
-      </form>
     </div>
   );
 }
