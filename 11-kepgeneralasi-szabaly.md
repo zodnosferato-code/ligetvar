@@ -1,6 +1,6 @@
 # Képgenerálási szabály
 
-Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Minden későbbi generálás (agent vagy kézi) ezt a szabályt követi.
+Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Minden későbbi generálás (agent vagy kézi) ezt a szabályt követi. A teljes test leírások a [23-teljes-test-referencia.md](23-teljes-test-referencia.md)-ben vannak.
 
 ## Kötelező stílus
 
@@ -10,6 +10,7 @@ Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Mi
 - **Egy személy képenként**: soha ne generálj két lányt egy képen.
 - **Háttér**: lapos `#2c2830` referenciánál. Játékbeli hátterek külön készülnek.
 - **Magasságskála**: 0–180 cm, a lány pontos magasságát mutatja a fej tetején.
+- **Teljes test**: ruhás és alsóneműs modell-lapok szemből, oldalról, hátulról (lásd 23-as dokumentum).
 
 ## Képek lehetőségei (sávok az előrehaladás szerint)
 
@@ -51,7 +52,7 @@ Ezután jön a lány specifikus blokkja, majd a ruházat/póz/intimitás utasít
 
 ## Lányonkénti blokkok (kanonikus — haj, arc, test)
 
-A haj, arcjel és testalkat **mindig** ez marad. A ruha változhat.
+A haj, arcjel és testalkat **mindig** ez marad. A ruha változhat. Részletes teljes test leírás: [23-teljes-test-referencia.md](23-teljes-test-referencia.md).
 
 **Rebeka Dorn**
 ```text
@@ -93,6 +94,7 @@ with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasse
 4. Ha a generált kép eltér a kanontól (rossz haj, szemüveg Boglárkán stb.), újra kell generálni.
 5. Referenciaképek a `references/` mappába kerülnek, lehetőségenként csoportosítva.
 6. Magasságskála mindig 0–180 cm, pontosan a lány magasságát mutatja.
+7. Teljes test referenciák a [23-teljes-test-referencia.md](23-teljes-test-referencia.md) szerint.
 
 ## Játékbeli felhasználás
 
