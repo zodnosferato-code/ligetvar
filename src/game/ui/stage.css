@@ -242,8 +242,13 @@
   min-height: 0;
 }
 
+.title-hero {
+  flex: none;
+  padding: 1.1rem 1rem 0.4rem;
+}
+
 .title-copy {
-  padding: 1.1rem 1rem 6.5rem;
+  padding: 0.4rem 1rem 2rem;
 }
 
 .title-actions {
@@ -256,6 +261,7 @@
 .title-actions .pixel-btn {
   width: 100%;
   text-align: center;
+  touch-action: manipulation;
 }
 
 .eyebrow {

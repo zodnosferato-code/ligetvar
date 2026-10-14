@@ -41,6 +41,14 @@ function reportError(error: unknown, extra?: string) {
   for (const listener of errorListeners) listener(entry);
 }
 
+function beginSemester(kind: "resume" | "new", name: string) {
+  if (useGame.getState().mode === "play") return;
+  enterSemester(() => {
+    if (kind === "resume") useGame.getState().resume();
+    else useGame.getState().start(name);
+  });
+}
+
 function enterSemester(run: () => void) {
   try {
     run();
@@ -141,6 +149,24 @@ function GameShell() {
     boot();
   }, [boot]);
   useEffect(() => {
+    if (mode !== "title") return;
+    const onPointerUp = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const trigger = target.closest("[data-begin]");
+      if (!trigger) return;
+      const kind = trigger.getAttribute("data-begin") === "resume" ? "resume" : "new";
+      const input = document.querySelector<HTMLInputElement>(".name-field input");
+      beginSemester(kind, input?.value ?? "");
+    };
+    window.addEventListener("pointerup", onPointerUp, true);
+    window.addEventListener("click", onPointerUp, true);
+    return () => {
+      window.removeEventListener("pointerup", onPointerUp, true);
+      window.removeEventListener("click", onPointerUp, true);
+    };
+  }, [mode]);
+  useEffect(() => {
     if (mode !== "play") return;
     try {
       setMood(moodFor(state));
@@ -153,47 +179,43 @@ function GameShell() {
 
 function Title() {
   const hasSave = useGame((s) => s.hasSave);
-  const start = useGame((s) => s.start);
-  const resume = useGame((s) => s.resume);
   const [name, setName] = useState("Márton Kelényi");
 
   return (
     <div className="title-screen">
-      <div className="scroll title-copy">
+      <div className="title-hero">
         <p className="eyebrow">Ligetvári Főiskola</p>
         <h1 className="serif title-mark">Ligetvár</h1>
         <label className="name-field">
           A neved a műhelyen
-          <input value={name} onChange={(e) => setName(e.target.value)} maxLength={32} autoComplete="name" />
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") beginSemester(hasSave ? "resume" : "new", name);
+            }}
+            maxLength={32}
+            autoComplete="name"
+          />
         </label>
         <div className="title-actions">
           {hasSave ? (
-            <button
-              type="button"
-              className="pixel-btn good"
-              onClick={() => enterSemester(resume)}
-            >
+            <button type="button" className="pixel-btn good" data-begin="resume">
               Folytatás
             </button>
           ) : (
-            <button
-              type="button"
-              className="pixel-btn good"
-              onClick={() => enterSemester(() => start(name))}
-            >
+            <button type="button" className="pixel-btn good" data-begin="new">
               Új félév
             </button>
           )}
           {hasSave ? (
-            <button
-              type="button"
-              className="pixel-btn ghost"
-              onClick={() => enterSemester(() => start(name))}
-            >
+            <button type="button" className="pixel-btn ghost" data-begin="new">
               Új félév
             </button>
           ) : null}
         </div>
+      </div>
+      <div className="scroll title-copy">
         <p className="serif lead">
           Tizenhat hét, heti három sáv. A pénz nem helyettesíti az időt, a beosztás pedig nem tartozás.
         </p>
