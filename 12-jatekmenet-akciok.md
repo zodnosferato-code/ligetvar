@@ -17,20 +17,22 @@ Minden beszélgetés a dialógusrendszer szerint megy: max 4 opció, very_good /
 
 ## Pénzszerzési lehetőségek
 
-A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak.
+A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A minijátékok **szórakoztatóak**, régi egyszerű játékokra alapozva (Bricks, Space Invaders stílus).
 
-### 1. MOHU üveg visszaváltás (50 Ft / db)
-- Egyszerű minijáték: a játékos összegyűjt üvegeket a kampuszon vagy a városban, majd visszaváltja őket a REpont automatánál.
-- Mechanika: kattintgatós vagy egyszerű időzítéses gyűjtés (pl. 10–20 üveg egy sávban).
-- Jutalom: 50 Ft üvegenként. Egy délutáni vagy esti sávban 800–1500 Ft reális.
-- Korlát: hetente 2–3 alkalommal érdemes, utána csökken a hozam (kevesebb üveg). 
+### 1. MOHU üveg visszaváltás (50 Ft / db) — Bricks stílus
+- **Alap**: Klasszikus Breakout / Bricks. A játékos egy ütővel üti vissza az üvegeket (téglákat), hogy összegyűjtse őket.
+- Mechanika: Egyszerű pixeles Bricks. Az ütő mozgatása, a labda (vagy üveg) pattog. Minél több üveget „szétüt”, annál többet válthat vissza.
+- Jutalom: 50 Ft üvegenként. Egy sávban 10–25 üveg reális (500–1250 Ft), a teljesítmény szerint.
+- Korlát: hetente 2–3 alkalommal érdemes, utána csökken a hozam.
+- Szórakoztatás: rövid, feszült, klasszikus érzés.
 
-### 2. Fizikai munka — építkezés minijáték
-- Alternatív: egyszerű klasszikus stílusú minijáték (tégla rakás, időzítés, egyszerű párosítás vagy kattintás sorozat).
-- Mechanika: pl. téglák rakása egy falra időre, vagy egy egyszerű „stack” játék.
-- Jutalom: 12 000–18 000 Ft egy sávra (magasabb, mint a palack, de fárasztóbb).
-- Hatás: Jelenlét vagy Nyugalom stat enyhe növekedése vagy csökkenése a teljesítmény szerint.
-- Korlát: hetente maximum 1–2 alkalom, utána a főhős fáradt (következő beszélgetés enyhén rosszabb).
+### 2. Fizikai munka — építkezés minijáték — Space Invaders stílus
+- **Alap**: Space Invaders-szerű. A játékos téglákat (vagy építőanyagot) „lő” vagy rak le, hogy falat építsen, miközben „ellenségek” (pl. hibás téglák vagy idő) jönnek.
+- Mechanika: Egyszerű oldalirányú mozgatás + lövés/rakás. A cél egy bizonyos magasságú fal építése időre.
+- Jutalom: 12 000–18 000 Ft egy sávra a teljesítmény szerint (magasabb, mint a palack).
+- Hatás: Jelenlét vagy Nyugalom stat enyhe változása.
+- Korlát: hetente maximum 1–2 alkalom, utána fáradtság.
+- Szórakoztatás: klasszikus, rövid, kielégítő.
 
 ### Egyéb meglévő pénzforrások (a rendszerekből)
 - Tanulmányi vezetői fizetés: 60 000 Ft / hét (automatikus).
@@ -59,4 +61,4 @@ A műfaj (Tokimeki Memorial, Persona-szerű időbeosztás, Stardew-szerű ajánd
 - Túl sok munka egy héten fáradtságot okoz (következő beszélgetések enyhén rosszabbak).
 - A lányok órarendje korlátozza, mikor érhetők el.
 
-A rendszer a meglévő [05-rendszerek.md](05-rendszerek.md) és [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) szabályaira épül. A minijátékok később külön modulban implementálhatók, headless tesztelhetően.
+A rendszer a meglévő [05-rendszerek.md](05-rendszerek.md) és [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) szabályaira épül. A minijátékok később külön modulban implementálhatók, headless tesztelhetően (a pontszám és a jutalom kiszámítható UI nélkül is).
