@@ -1176,7 +1176,7 @@ export const ACTIONS: ActionDef[] = [
   { id: "prep", label: "Tanterem", detail: "Jelenlét", slots: ["afternoon"], icon: I.classroom, kind: "stat", location: "classroom", node: "prep" },
   { id: "lecture", label: "Előadás", detail: "+18 000 Ft", slots: ["afternoon"], icon: I.presence, kind: "job", location: "courtyard", node: "lecture" },
   { id: "gym", label: "Edzés", detail: "Jelenlét", slots: ["afternoon"], icon: I.gym, kind: "stat", location: "courtyard", node: "gym" },
-  { id: "brick", label: "Építkezés", detail: "Fal, időre", slots: ["afternoon", "evening"], icon: I.gym, kind: "minigame", location: "construction" },
+  { id: "brick", label: "Kérdőív", detail: "Tanári javítás", slots: ["afternoon", "evening"], icon: I.study, kind: "minigame", location: "department" },
   { id: "mohu-a", label: "MOHU", detail: "Palackok az udvar szélén", slots: ["afternoon"], icon: I.money, kind: "minigame", location: "mohu" },
 
   { id: "holdkor", label: "Holdkör", detail: "Rebeka este", slots: ["evening"], icon: I.holdkor, kind: "visit", location: "holdkor", girl: "rebeka" },
