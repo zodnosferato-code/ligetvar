@@ -27,7 +27,7 @@ import {
 import { GIRLS, type ActionDef, type RouteId } from "../engine/types.ts";
 import { useGame } from "../store.ts";
 import { moodFor, setMood, toggleMute, unlockAudio } from "../audio.ts";
-import { BrickGame, MohuGame } from "./minigames.tsx";
+import { MohuGame, TriviaGame } from "./minigames.tsx";
 
 type ShownError = { message: string; stack?: string };
 
@@ -313,8 +313,8 @@ function Hearts({ value }: { value: number }) {
 
 function hotspotFor(action: ActionDef): "door" | "book" | "rest" | "bag" {
   if (action.id.startsWith("rest")) return "rest";
-  if (action.id.startsWith("mohu") || action.id === "brick" || action.id === "gym") return "bag";
-  if (action.kind === "job" || action.id === "study" || action.id === "proof") return "book";
+  if (action.id.startsWith("mohu") || action.id === "gym") return "bag";
+  if (action.kind === "job" || action.id === "study" || action.id === "proof" || action.id === "brick") return "book";
   return "door";
 }
 
@@ -502,7 +502,7 @@ function Job() {
     <>
       <Hud />
       {kind === "brick" ? (
-        <BrickGame onDone={(pay) => finishJob("brick", pay)} onCancel={cancelJob} />
+        <TriviaGame onDone={(pay) => finishJob("brick", pay)} onCancel={cancelJob} />
       ) : (
         <MohuGame onDone={(pay) => finishJob("mohu", pay)} onCancel={cancelJob} />
       )}
