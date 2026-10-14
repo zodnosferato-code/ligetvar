@@ -88,9 +88,10 @@ export function unlockAudio() {
     ensure();
     if (ctx && ctx.state === "suspended") void ctx.resume().catch(() => undefined);
     unlocked = true;
-    if (wanted) void play(wanted).catch(() => undefined);
-  } catch {
+    if (wanted) void play(wanted);
+  } catch (error) {
     unlocked = false;
+    throw error;
   }
 }
 
@@ -115,7 +116,7 @@ export function toggleMute() {
   }
   if (ctx!.state === "suspended") void ctx!.resume();
   unlocked = true;
-  if (wanted) void play(wanted).catch(() => undefined);
+  if (wanted) void play(wanted);
   return muted;
 }
 
