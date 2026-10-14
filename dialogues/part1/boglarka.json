@@ -245,6 +245,76 @@
           "reaction": "elrejtozik"
         }
       ]
+    },
+    {
+      "id": "boglarka_slow_explore",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.slow_explore",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.boglarka.slow_explore.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 7, "trust": 2, "flags": ["flag_boglarka_slow"] },
+          "reaction": "elpirulas_mosoly"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.boglarka.slow_explore.good",
+          "quality": "good",
+          "effect": { "closeness": 3 },
+          "reaction": "szegyenos"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.boglarka.slow_explore.bad",
+          "quality": "bad",
+          "effect": { "closeness": -3, "anger": 1 },
+          "reaction": "megbantott"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.boglarka.slow_explore.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -6, "anger": 2 },
+          "reaction": "elrejtozik"
+        }
+      ]
+    },
+    {
+      "id": "boglarka_body_praise",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.body_praise",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.boglarka.body_praise.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_boglarka_praise"] },
+          "reaction": "lágy_mosoly"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.boglarka.body_praise.good",
+          "quality": "good",
+          "effect": { "closeness": 4 },
+          "reaction": "elpirulas"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.boglarka.body_praise.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2 },
+          "reaction": "szomorkas"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.boglarka.body_praise.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -5, "anger": 1 },
+          "reaction": "elrejtozik"
+        }
+      ]
     }
   ]
 }
