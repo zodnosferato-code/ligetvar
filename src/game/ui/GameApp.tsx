@@ -41,63 +41,53 @@ function Title() {
   const start = useGame((s) => s.start);
   const resume = useGame((s) => s.resume);
   const [name, setName] = useState("Márton Kelényi");
-  const [armed, setArmed] = useState(false);
 
   return (
-    <div className="scroll" style={{ padding: "1.25rem 1rem 1.5rem" }}>
-      <p style={{ letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-muted)", margin: 0 }}>
-        Ligetvári Főiskola
-      </p>
-      <h1 className="serif" style={{ fontSize: "2.6rem", lineHeight: 1, margin: "0.3rem 0 0.4rem", fontWeight: 680 }}>
-        Ligetvár
-      </h1>
-      <p className="serif" style={{ marginTop: 0, color: "var(--color-parchment)" }}>
-        Tizenhat hét, heti három sáv. A pénz nem helyettesíti az időt, a beosztás pedig nem tartozás.
-      </p>
-      <div className="cast-row">
-        {GIRLS.map((id) => (
-          <article key={id} className="cast-card">
-            <img src={PORTRAIT[id]} alt={GIRL_NAME[id]} />
-            <div style={{ padding: "0.4rem 0.45rem 0.55rem" }}>
-              <strong style={{ display: "block" }}>{GIRL_NAME[id].split(" ")[0]}</strong>
-              <span style={{ color: "var(--color-muted)", fontSize: "0.78rem" }}>{CAST[id].age} éves</span>
-            </div>
-          </article>
-        ))}
+    <div className="title-screen">
+      <div className="scroll title-copy">
+        <p className="eyebrow">Ligetvári Főiskola</p>
+        <h1 className="serif title-mark">Ligetvár</h1>
+        <p className="serif lead">
+          Tizenhat hét, heti három sáv. A pénz nem helyettesíti az időt, a beosztás pedig nem tartozás.
+        </p>
+        <div className="cast-row">
+          {GIRLS.map((id) => (
+            <article key={id} className="cast-card">
+              <img src={PORTRAIT[id]} alt={GIRL_NAME[id]} />
+              <div className="cast-caption">
+                <strong>{GIRL_NAME[id].split(" ")[0]}</strong>
+                <span>{CAST[id].age} éves</span>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-      <label style={{ display: "block", marginTop: "1rem", fontSize: "0.85rem" }}>
-        A neved a műhelyen
-        <input
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            setArmed(false);
-          }}
-          className="pixel-btn"
-          style={{ width: "100%", marginTop: "0.35rem" }}
-          maxLength={32}
-          autoComplete="name"
-        />
-      </label>
-      <button
-        type="button"
-        className="pixel-btn good"
-        style={{ width: "100%", marginTop: "0.8rem" }}
-        onClick={() => {
-          if (hasSave && !armed) {
-            setArmed(true);
-            return;
-          }
+      <form
+        className="title-dock"
+        onSubmit={(event) => {
+          event.preventDefault();
           start(name);
         }}
       >
-        {armed ? "Felülírja a mentést — kezdd el" : "Új félév"}
-      </button>
-      {hasSave ? (
-        <button type="button" className="pixel-btn" style={{ width: "100%", marginTop: "0.5rem" }} onClick={resume}>
-          Folytatás
-        </button>
-      ) : null}
+        <label className="name-field">
+          A neved a műhelyen
+          <input value={name} onChange={(e) => setName(e.target.value)} maxLength={32} autoComplete="name" />
+        </label>
+        {hasSave ? (
+          <button type="button" className="pixel-btn good" onClick={resume}>
+            Folytatás
+          </button>
+        ) : (
+          <button type="submit" className="pixel-btn good">
+            Új félév
+          </button>
+        )}
+        {hasSave ? (
+          <button type="submit" className="pixel-btn ghost">
+            Új félév — felülírja a mentést
+          </button>
+        ) : null}
+      </form>
     </div>
   );
 }
