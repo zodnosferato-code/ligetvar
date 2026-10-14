@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Component, useEffect, useState, type ReactNode } from "react";
 import {
   CAST,
   GIRL_NAME,
@@ -28,16 +28,112 @@ import { useGame } from "../store.ts";
 import { moodFor, setMood, toggleMute, unlockAudio } from "../audio.ts";
 import { BrickGame, MohuGame } from "./minigames.tsx";
 
+type ShownError = { message: string; stack?: string };
+
+let shownError: ShownError | null = null;
+const errorListeners = new Set<(error: ShownError) => void>();
+
+function reportError(error: unknown, extra?: string) {
+  const message = error instanceof Error ? error.message : String(error);
+  const stack = [error instanceof Error ? error.stack : "", extra].filter(Boolean).join("\n");
+  const entry = { message, stack: stack || undefined };
+  shownError = entry;
+  for (const listener of errorListeners) listener(entry);
+}
+
 function enterSemester(run: () => void) {
-  run();
+  try {
+    run();
+  } catch (error) {
+    reportError(error);
+    return;
+  }
   try {
     unlockAudio();
-  } catch {
-    /* a blocked audio device must not keep the semester on the title */
+  } catch (error) {
+    reportError(error);
+  }
+}
+
+function ErrorPopup() {
+  const [error, setError] = useState<ShownError | null>(shownError);
+
+  useEffect(() => {
+    errorListeners.add(setError);
+    const onError = (event: ErrorEvent) => {
+      if (event.target && event.target !== window) return;
+      reportError(event.error ?? event.message);
+    };
+    const onReject = (event: PromiseRejectionEvent) => {
+      reportError(event.reason);
+    };
+    window.addEventListener("error", onError);
+    window.addEventListener("unhandledrejection", onReject);
+    return () => {
+      errorListeners.delete(setError);
+      window.removeEventListener("error", onError);
+      window.removeEventListener("unhandledrejection", onReject);
+    };
+  }, []);
+
+  if (!error) return null;
+
+  const text = [error.message, error.stack].filter(Boolean).join("\n\n");
+
+  return (
+    <div className="error-pop" role="alertdialog" aria-labelledby="error-title">
+      <div className="error-card">
+        <h2 id="error-title">Hiba</h2>
+        <p>{error.message}</p>
+        {error.stack ? <pre>{error.stack}</pre> : null}
+        <div className="error-actions">
+          <button
+            type="button"
+            className="pixel-btn"
+            onClick={() => {
+              void navigator.clipboard?.writeText(text).catch(() => undefined);
+            }}
+          >
+            Másolás
+          </button>
+          <button type="button" className="pixel-btn good" onClick={() => setError(null)}>
+            Bezár
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+class ShellBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  componentDidCatch(error: Error, info: { componentStack?: string }) {
+    reportError(error, info.componentStack);
+  }
+
+  render() {
+    if (this.state.failed) return null;
+    return this.props.children;
   }
 }
 
 export function GameApp() {
+  return (
+    <>
+      <ShellBoundary>
+        <GameShell />
+      </ShellBoundary>
+      <ErrorPopup />
+    </>
+  );
+}
+
+function GameShell() {
   const mode = useGame((s) => s.mode);
   const state = useGame((s) => s.state);
   const boot = useGame((s) => s.boot);
@@ -46,7 +142,11 @@ export function GameApp() {
   }, [boot]);
   useEffect(() => {
     if (mode !== "play") return;
-    setMood(moodFor(state));
+    try {
+      setMood(moodFor(state));
+    } catch (error) {
+      reportError(error);
+    }
   }, [mode, state]);
   return <div className="stage">{mode === "title" ? <Title /> : <Play />}</div>;
 }
