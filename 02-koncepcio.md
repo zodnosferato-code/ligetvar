@@ -2,39 +2,41 @@
 
 ## Egy mondat
 
-Egy félév alatt, heti három szabad sávból, közelebb kerülsz egy felnőtt hallgatóhoz, vagy egy összeillő párhoz a Ligetvári Főiskolán, ahol tanulmányi vezetőként tanítasz is. Közben a hírneved nem dőlhet romba, a pénz pedig nem váltja ki az időt.
+Egy félév alatt, heti három szabad sávból, közelebb kerülsz egy felnőtt hallgatóhoz, vagy egy összeillő párhoz a Ligetvári Főiskolán, ahol fakultatív misztikus gyógytornát tanítasz. A három lánynak külön oka van arra, hogy veled dolgozzon. Közben a hírneved nem dőlhet romba, a pénz pedig nem váltja ki az időt.
 
 ## Keret
 
 A Ligetvári Főiskola kitalált, kisvárosi intézmény. Alkalmazott bölcsészet és média. Hallgatót csak 18 éves kortól vesz fel. A játék egy őszi félévet fog át, tizenhat hetet. A város neve a játékban Ligetvár, a kampusz egy régi villából és egy újabb szárnyból áll.
 
-A hatalmi helyzet a történet anyaga, nem a jutalom. A főhős beosztása miatt egy viszony titok, pletyka és következmény. A lányok nem díjak, és nem a jegyükkel fizetnek. Egyiküket sem ő osztályozza. A szemináriumát más oktató jegyzi; ő a tanszék tanulmányi vezetője, aki hetente egy műhelyt tart. Ha egy útvonalon mégis értékelési helyzet adódna, a játék azt problémának írja, nem eszköznek.
+A hatalmi helyzet a történet anyaga, nem a jutalom. A főhős beosztása miatt egy viszony titok, pletyka és következmény. A lányok nem díjak, és nem a jegyükkel fizetnek. Egyiküket sem ő osztályozza. A szemináriumát más oktató jegyzi; ő a tanszék tanulmányi vezetője, aki heti egy fakultatív misztikus gyógytorna órát tart. Ha egy útvonalon mégis értékelési helyzet adódna, a játék azt problémának írja, nem eszköznek.
 
-Tartalmi vonal, v1: romantikus randiszimulátor felnőtt szereplőkkel. A karakterek háttértörténetei rejtett szexuális vágyakat tartalmaznak. Explicit szexjelenetek és meztelenség a magas bizalmi szinteken, megfelelő útvonalakon később kerülhetnek be. A közelség beszélgetés, idő, titok, választás és intimitás. A játék 18+-os keretet kap a viszony és a potenciális explicit tartalom miatt.
+Tartalmi vonal: romantikus randiszimulátor felnőtt szereplőkkel. A téma a lányok meghódítása és a rejtett vágyaik beteljesítése (kódoltan a [06-intim-szotar.md](06-intim-szotar.md)-ben). A közelség beszélgetés, idő, titok, választás és intimitás. A játék 18+-os keretet kap a viszony miatt.
+
+A részletes sztorikeret: [07-sztori-keret.md](07-sztori-keret.md).
 
 ## A főhős
 
-Alapnév: **Márton Kelényi**, a játékos átnevezheti. 34 éves. Tanulmányi vezető a Médiatudományi Tanszéken, emellett heti egy műhelyt visz: „Szöveg és jelenlét”. Nem évfolyamfelelős tanár egy középiskolában, és nem a három lány szakdolgozati témavezetője.
+Alapnév: **Márton Kelényi**, a játékos átnevezheti. 34 éves. Tanulmányi vezető a Médiatudományi Tanszéken, emellett heti egy fakultatív misztikus gyógytorna órát tart. Nem évfolyamfelelős tanár egy középiskolában, és nem a három lány szakdolgozati témavezetője.
 
 A játékos az ő idejét osztja be. A személyisége a választásokban dől el, három látható stat mentén. Nincs külön „erkölcs” mutató. A nyugalom, az éleslátás és a jelenlét elég.
 
 | Stat | Mit jelent egy jelenetben | Hogyan nő |
 | --- | --- | --- |
-| Jelenlét | Meg mered-e tartani a tekintetet, ki mersz-e állni a folyosón | Nyilvános hely, műhely, vállalt mondat |
-| Éleslátás | Észreveszed-e, amit nem mond ki | Könyvtár, csendes munka, pontos kérdés |
+| Jelenlét | Meg mered-e tartani a tekintetet, ki mersz-e állni a folyosón | Nyilvános hely, tanterem, vállalt mondat |
+| Éleslátás | Észreveszed-e, amit nem mond ki | Csendes munka, pontos kérdés |
 | Nyugalom | Nem kapkodsz, nem hencegsz a beosztásoddal | Este egyedül, vagy egy beszélgetés, ahol nem te nyersz |
 
 Mindhárom 0-tól 10-ig megy. Bizonyos sorok csak egy stat küszöbe fölött jelennek meg. Nem helyettesítik a közelséget: okosnak lenni még nem közelség.
 
 ## A három lány, röviden
 
-Részletes lap: [03-karakterek.md](03-karakterek.md).
+Részletes lap: [03-karakterek.md](03-karakterek.md). A közös munka okai: [07-sztori-keret.md](07-sztori-keret.md).
 
-| Név | Kor | Évfolyam | Alkat | Hol érhető el először |
+| Név | Kor | Évfolyam | Alkat | Miért dolgozik vele |
 | --- | --- | --- | --- | --- |
-| Rebeka Dorn | 20 | másodéves | gőgös, sötét, gót, a Holdkör köre | este, az alagsori klubszoba |
-| Boglárka Fazekas | 19 | elsőéves | duci, magának való, félénk | délután, a könyvtár mélye |
-| Gréta Váradi | 21 | harmadéves demonstrátor | stréber, vörös, pontos | délelőtt, a tanszéki iroda előtere |
+| Rebeka Dorn | 20 | másodéves | gőgös, sötét, gót, a Holdkör köre | Média projekt, dokumentáció |
+| Boglárka Fazekas | 19 | elsőéves | duci, magának való, félénk | Irodalmi kutatás, folklór |
+| Gréta Váradi | 21 | harmadéves demonstrátor | stréber, vörös, pontos | Adminisztráció, szervezés |
 
 Egyszerre mindhármukkal nem lehet véget vinni. Egy lánnyal igen. Két lánnyal csak akkor, ha a személyiségük engedi: Boglárka és Gréta járható pár, Rebeka és Gréta szűk pár, Rebeka és Boglárka nem fér össze. A szabály a [05-rendszerek.md](05-rendszerek.md) lapján van.
 
@@ -72,17 +74,18 @@ A törés erősebb, mint a csendes vég. Ha a botrány elszabadul, nem számít 
 
 ## Helyek
 
-Öt hely elég az első változathoz. Mindegyik egy pixeles háttér.
+A fő helyszínek a sztorikeret szerint:
 
 | Hely | Sáv | Ki lehet ott |
 | --- | --- | --- |
-| Tanszéki előtér | délelőtt | Gréta, néha Márton munkája statért, lány nélkül |
+| Tanterem (egy szoba) | délután (gyógytorna) | mindhárom lány, közös munka |
+| Tanár lakása | este (egyéni feladat után) | egy lány látogatóban |
+| Békás-tó (sötétben, elágazó utak) | este (9. héttől) | randihely, privát |
+| Tanszéki előtér | délelőtt | Gréta |
 | Könyvtár | délután | Boglárka |
-| Műhelyterem | délután, a 2. héttől hetente egyszer kötelező háttér, nem fogyaszt sávot | rövid tanári jelenet, stat nélkül |
 | Holdkör, alagsor | este | Rebeka |
-| Udvar, eső után | délelőtt vagy este, ritka eseményhely | útvonal-jelenetek, nem ismételhető lógás |
 
-A városi kávézó és a többi kampuszon kívüli hely nem az első írás. A 9. héttől a rendszer már tud randihelyet: pénz, egy sáv, kockázat, bizalmi küszöb. A konkrét helyek listája és az, hogy a jelenetük még nincs meg, a [05-rendszerek.md](05-rendszerek.md) lapján áll.
+A 9. héttől a rendszer már tud randihelyet: pénz, egy sáv, kockázat, bizalmi küszöb. A Békás-tó a fő külső hely.
 
 ## Egy sáv menete
 
@@ -120,7 +123,7 @@ Nem a párbeszéd. A téma.
 - **Gréta igaz.** Nem vizsga a viszony. Elront valamit, és mégsem ér véget.
 - **Gréta csendes.** Tiszteli, esetleg szereti, de a szabályos távolságban hagyja, mert az átláthatóbb.
 - **Gréta törés.** A főhős a demonstrátori helyét vagy a precizitását használja közelítésre. Ő ezt észreveszi, és lezárja.
-- **Egyedül.** A félév rendben lezárul. A műhely megvolt. Senki nem került közel.
+- **Egyedül.** A félév rendben lezárul. A gyógytorna megvolt. Senki nem került közel.
 
 ## Pixel és a képernyő
 
