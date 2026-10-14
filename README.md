@@ -1,11 +1,14 @@
 # Ligetvár — tervezési dokumentumok
 
+> **Agenteknek**: Olvasd el először az [AGENT.md](AGENT.md) fájlt. Ott van a fő cél, a folyamatkövetés (mi van kész), és az útmutató a folytatáshoz.
+
 Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes játék, később Tauri-héjjal Windowsra és Linuxra csomagolva. Ez a mappa csak tervezés. Játékkód még nincs.
 
 A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus. A téma a lányok meghódítása és a rejtett vágyaik beteljesítése. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a build agent a kódbázison dolgozhasson anélkül, hogy explicit tartalommal kellene foglalkoznia.
 
 | Dokumentum | Miről szól |
 | --- | --- |
+| [AGENT.md](AGENT.md) | Projekt útmutató, fő cél, folyamatkövetés, szabályok későbbi agenteknek |
 | [01-mufaj.md](01-mufaj.md) | Hogyan működik egy alap randiszimulátor, és miben más, mint egy visual novel |
 | [02-koncepcio.md](02-koncepcio.md) | Ligetvár köre, statjai, féléve, végkifejletei |
 | [03-karakterek.md](03-karakterek.md) | A főhős és a három lány karakterlapja |
