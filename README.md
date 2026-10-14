@@ -36,8 +36,9 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [25-allapotgep.md](25-allapotgep.md) | Lány állapotgép (unknown → route_candidate) |
 | [26-jelenet-felallitas.md](26-jelenet-felallitas.md) | Jelenetfelállítás, kamera-perspektíva, telefonos megjelenítés |
 | [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) | Ikonok és gombok definíciója — mind előre legenerált pixel kép |
+| [28-kiegeszitok.md](28-kiegeszitok.md) | Kiegészítők (könyv, nyaklánc, ceruza stb.) — nem karakter-részek |
 
-A képek (sprite-ok, ikonok, jelenetek) a ground up-ból lesznek generálva a [04-vizualis-biblia.md](04-vizualis-biblia.md), [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) alapján. Nincs külső referenciafotó a repóban.
+A képek (sprite-ok, ikonok, jelenetek) a ground up-ból lesznek generálva a [04-vizualis-biblia.md](04-vizualis-biblia.md), [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md), [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md) és [28-kiegeszitok.md](28-kiegeszitok.md) alapján. Nincs külső referenciafotó a repóban.
 
 ## Kód
 
