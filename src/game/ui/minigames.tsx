@@ -1,23 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-const MAZE = [
-  "###############",
-  "#P..b....e....#",
-  "#.##.###.##.#.#",
-  "#b...#...b....#",
-  "#.##.#.#####.##",
-  "#....R....b...#",
-  "#.###.##.##.#.#",
-  "#e...b....e...#",
-  "###############",
-];
-
-type Dir = { x: number; y: number };
-
+// Infinite runner for MOHU bottle collection
 export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; onCancel: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [score, setScore] = useState(0);
-  const [left, setLeft] = useState(42);
   const scoreRef = useRef(0);
   const over = useRef(false);
   const onDoneRef = useRef(onDone);
@@ -29,190 +15,134 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const rows = MAZE.length;
-    const cols = MAZE[0]!.length;
-    const walls = MAZE.map((row) => row.split(""));
-    let px = 1;
-    let py = 1;
-    let rx = 5;
-    let ry = 5;
-    const items: { x: number; y: number; v: number }[] = [];
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        const ch = walls[y]![x];
-        if (ch === "P") {
-          px = x;
-          py = y;
-          walls[y]![x] = ".";
-        } else if (ch === "R") {
-          rx = x;
-          ry = y;
-          walls[y]![x] = ".";
-        } else if (ch === "b") {
-          items.push({ x, y, v: 90 + ((x * 3 + y) % 5) * 10 });
-          walls[y]![x] = ".";
-        } else if (ch === "e") {
-          items.push({ x, y, v: 160 + (y % 2) * 30 });
-          walls[y]![x] = ".";
-        }
-      }
-    }
+    let playerY = 150;
+    let vy = 0;
+    let onGround = true;
+    const gravity = 0.6;
+    const jump = -12;
+    let items: { x: number; y: number; v: number; type: "bottle" | "hazard" }[] = [];
+    let spawnTimer = 0;
+    let time = 40;
+    let last = performance.now();
+    let raf = 0;
+    let running = true;
 
     const keys = new Set<string>();
     const onKey = (e: KeyboardEvent) => {
-      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "KeyW", "KeyA", "KeyS", "KeyD"].includes(e.code)) {
-        e.preventDefault();
-      }
+      if (["Space", "ArrowUp", "KeyW"].includes(e.code)) e.preventDefault();
       if (e.type === "keydown") keys.add(e.code);
       else keys.delete(e.code);
     };
     window.addEventListener("keydown", onKey);
     window.addEventListener("keyup", onKey);
 
-    let acc = 0;
-    let racc = 0;
-    let time = 42;
-    let last = performance.now();
-    let raf = 0;
-    let stun = 0;
-
-    const blocked = (x: number, y: number) => walls[y]?.[x] !== ".";
-    const dirFromKeys = (): Dir => {
-      // Screen-space: A / left decreases x. W decreases y (up the grid).
-      if (keys.has("ArrowLeft") || keys.has("KeyA")) return { x: -1, y: 0 };
-      if (keys.has("ArrowRight") || keys.has("KeyD")) return { x: 1, y: 0 };
-      if (keys.has("ArrowUp") || keys.has("KeyW")) return { x: 0, y: -1 };
-      if (keys.has("ArrowDown") || keys.has("KeyS")) return { x: 0, y: 1 };
-      return { x: 0, y: 0 };
-    };
-
-    const steal = () => {
-      const near = items.findIndex((it) => Math.abs(it.x - px) + Math.abs(it.y - py) <= 2);
-      if (near >= 0) items.splice(near, 1);
-      stun = 1.1;
-    };
-
-    const stepRival = () => {
-      if (stun > 0) return;
-      const target = items.slice().sort((a, b) => Math.abs(a.x - rx) + Math.abs(a.y - ry) - (Math.abs(b.x - rx) + Math.abs(b.y - ry)))[0];
-      const options = [
-        { x: 1, y: 0 },
-        { x: -1, y: 0 },
-        { x: 0, y: 1 },
-        { x: 0, y: -1 },
-      ].filter((d) => !blocked(rx + d.x, ry + d.y));
-      if (!options.length) return;
-      options.sort((a, b) => {
-        const da = target ? Math.abs(rx + a.x - target.x) + Math.abs(ry + a.y - target.y) : 0;
-        const db = target ? Math.abs(rx + b.x - target.x) + Math.abs(ry + b.y - target.y) : 0;
-        return da - db;
+    const spawn = () => {
+      const isHazard = Math.random() < 0.25;
+      items.push({
+        x: canvas.width + 20,
+        y: isHazard ? 180 : 160 + Math.random() * 40,
+        v: isHazard ? 0 : 80 + Math.floor(Math.random() * 60),
+        type: isHazard ? "hazard" : "bottle",
       });
-      const pick = options[0]!;
-      rx += pick.x;
-      ry += pick.y;
-      const got = items.findIndex((it) => it.x === rx && it.y === ry);
-      if (got >= 0) items.splice(got, 1);
-      if (Math.abs(rx - px) + Math.abs(ry - py) <= 1) steal();
     };
 
     const finish = () => {
       if (over.current) return;
       over.current = true;
+      running = false;
       cancelAnimationFrame(raf);
       onDoneRef.current(scoreRef.current);
     };
 
     const frame = (now: number) => {
+      if (!running) return;
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      acc += dt;
-      racc += dt;
       time -= dt;
-      stun = Math.max(0, stun - dt);
-      if (acc > 0.13) {
-        acc = 0;
-        const d = dirFromKeys();
-        if ((d.x || d.y) && !blocked(px + d.x, py + d.y)) {
-          px += d.x;
-          py += d.y;
-          const got = items.findIndex((it) => it.x === px && it.y === py);
-          if (got >= 0) {
-            scoreRef.current += items[got]!.v;
-            items.splice(got, 1);
+      spawnTimer -= dt;
+      if (spawnTimer <= 0) {
+        spawn();
+        spawnTimer = 1.2 + Math.random() * 0.8;
+      }
+
+      // Jump
+      if ((keys.has("Space") || keys.has("ArrowUp") || keys.has("KeyW")) && onGround) {
+        vy = jump;
+        onGround = false;
+      }
+      vy += gravity;
+      playerY += vy;
+      if (playerY >= 150) {
+        playerY = 150;
+        vy = 0;
+        onGround = true;
+      }
+
+      // Move items
+      for (let i = items.length - 1; i >= 0; i--) {
+        items[i]!.x -= 4;
+        if (items[i]!.x < -30) items.splice(i, 1);
+        // Collision
+        const px = 80;
+        const py = playerY;
+        const ix = items[i]!.x;
+        const iy = items[i]!.y;
+        if (Math.abs(px - ix) < 30 && Math.abs(py - iy) < 30) {
+          if (items[i]!.type === "bottle") {
+            scoreRef.current += items[i]!.v;
+            setScore(scoreRef.current);
+          } else {
+            // Hazard slows or reduces
+            scoreRef.current = Math.max(0, scoreRef.current - 40);
             setScore(scoreRef.current);
           }
+          items.splice(i, 1);
         }
       }
-      if (racc > 0.42) {
-        racc = 0;
-        stepRival();
-      }
-      setLeft(Math.max(0, Math.ceil(time)));
 
+      // Draw
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.floor(rect.width * dpr);
       canvas.height = Math.floor(rect.height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const tw = rect.width / cols;
-      const th = rect.height / rows;
       ctx.fillStyle = "#1c1614";
       ctx.fillRect(0, 0, rect.width, rect.height);
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          ctx.fillStyle = walls[y]![x] === "#" ? "#3a2a33" : "#2a2420";
-          ctx.fillRect(x * tw, y * th, tw - 1, th - 1);
-        }
-      }
-      for (const it of items) {
-        ctx.fillStyle = it.v > 150 ? "#c6a15a" : "#6d8a62";
-        ctx.fillRect(it.x * tw + tw * 0.28, it.y * th + th * 0.2, tw * 0.4, th * 0.6);
-      }
-      ctx.fillStyle = "#7a4458";
-      ctx.fillRect(rx * tw + 3, ry * th + 3, tw - 6, th - 6);
+      // Ground
+      ctx.fillStyle = "#2a2420";
+      ctx.fillRect(0, 200, rect.width, rect.height - 200);
+      // Player
       ctx.fillStyle = "#f3e6d0";
-      ctx.fillRect(px * tw + 3, py * th + 3, tw - 6, th - 6);
-      if (time <= 0 || items.length === 0) finish();
+      ctx.fillRect(60, playerY, 24, 40);
+      // Items
+      for (const it of items) {
+        ctx.fillStyle = it.type === "bottle" ? "#6d8a62" : "#7a4458";
+        ctx.fillRect(it.x, it.y, 20, 28);
+      }
+
+      if (time <= 0) finish();
       else raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
-    const pad = {
-      set(code: string, down: boolean) {
-        if (down) keys.add(code);
-        else keys.delete(code);
-      },
-    };
-    (canvas as HTMLCanvasElement & { __pad?: typeof pad }).__pad = pad;
+
     return () => {
+      running = false;
       cancelAnimationFrame(raf);
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("keyup", onKey);
     };
   }, []);
 
-  const pulse = (code: string, down: boolean) => {
-    const canvas = canvasRef.current as (HTMLCanvasElement & { __pad?: { set: (c: string, d: boolean) => void } }) | null;
-    canvas?.__pad?.set(code, down);
-  };
-
   return (
     <div className="scroll" style={{ padding: "0.8rem 1rem 1rem" }}>
       <div className="nameplate">
-        <span>MOHU</span>
-        <span>
-          {score.toLocaleString("hu-HU")} Ft · {left}s
-        </span>
+        <span>MOHU visszaváltás</span>
+        <span>{score.toLocaleString("hu-HU")} Ft</span>
       </div>
       <p className="serif" style={{ marginTop: 0 }}>
-        Szedd a palackot. A szilvás figura is gyűjt, és a közeledből elvehet egyet. A billentyű A balra, D jobbra.
+        Ugorj a palackokért (Space / fel). A sötét alakok elkerülendők.
       </p>
-      <canvas ref={canvasRef} style={{ width: "100%", height: "16rem", touchAction: "none", background: "#1c1614" }} />
-      <div className="action-grid" style={{ marginTop: "0.7rem" }}>
-        <Pad label="Fel" code="ArrowUp" pulse={pulse} />
-        <Pad label="Le" code="ArrowDown" pulse={pulse} />
-        <Pad label="Bal" code="ArrowLeft" pulse={pulse} />
-        <Pad label="Jobb" code="ArrowRight" pulse={pulse} />
-      </div>
+      <canvas ref={canvasRef} style={{ width: "100%", height: "16rem", background: "#1c1614" }} />
       <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.7rem" }}>
         <button type="button" className="pixel-btn good" onClick={() => onDone(scoreRef.current)}>
           Visszaváltom
@@ -225,129 +155,86 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
   );
 }
 
-function Pad({
-  label,
-  code,
-  pulse,
-}: {
-  label: string;
-  code: string;
-  pulse: (code: string, down: boolean) => void;
-}) {
-  return (
-    <button
-      type="button"
-      className="pixel-btn"
-      onPointerDown={() => pulse(code, true)}
-      onPointerUp={() => pulse(code, false)}
-      onPointerLeave={() => pulse(code, false)}
-    >
-      {label}
-    </button>
-  );
-}
+// Trivia dressed as teacher work (correcting quizzes / admin questions)
+const TRIVIA = [
+  {
+    q: "Melyik a helyes médiaelélet-fogalom a dokumentációhoz?",
+    options: ["Rituális kommunikáció", "Csak szórakoztatás", "Kizárólag hír"],
+    a: 0,
+    pay: 1200,
+  },
+  {
+    q: "A folklór kutatásban mi a 'terepmunka'?”,
+    options: ["Könyvtári olvasás", "Helyszíni megfigyelés és beszélgetés", "Csak online forrás"],
+    a: 1,
+    pay: 1400,
+  },
+  {
+    q: "Egy fakultatív kurzus jelenléti ívén mi a minimum a tanszéki szabály szerint?",
+    options: ["50%", "70%", "Nincs minimum"],
+    a: 1,
+    pay: 1000,
+  },
+  {
+    q: "Rebeka dokumentációjában a 'misztikus' gyakorlatok szimbolikája inkább...",
+    options: ["Nyilvános marketing", "Privát, közönség nélküli", "Vizsgaanyag"],
+    a: 1,
+    pay: 1300,
+  },
+  {
+    q: "Boglárka folklór dolgozatához melyik forrás a legalkalmasabb elsődlegesnek?",
+    options: ["Wikipedia összefoglaló", "Helyszíni jegyzet a kurzuson", "Csak tankönyv"],
+    a: 1,
+    pay: 1500,
+  },
+];
 
-export function BrickGame({ onDone, onCancel }: { onDone: (pay: number) => void; onCancel: () => void }) {
-  const [beer, setBeer] = useState(false);
-  const [hits, setHits] = useState(0);
-  const [miss, setMiss] = useState(0);
-  const [pos, setPos] = useState(0.5);
-  const beerRef = useRef(false);
-  const posRef = useRef(0.5);
-  const hitsRef = useRef(0);
-  const missRef = useRef(0);
-  const done = useRef(false);
+export function TriviaGame({ onDone, onCancel }: { onDone: (pay: number) => void; onCancel: () => void }) {
+  const [idx, setIdx] = useState(0);
+  const [score, setScore] = useState(0);
+  const [done, setDone] = useState(false);
+  const current = TRIVIA[idx];
 
-  useEffect(() => {
-    beerRef.current = beer;
-  }, [beer]);
-
-  useEffect(() => {
-    let raf = 0;
-    let last = performance.now();
-    let t = 0;
-    const loop = (now: number) => {
-      const dt = Math.min(0.05, (now - last) / 1000);
-      last = now;
-      t += dt * (beerRef.current ? 2.4 : 1.35);
-      const p = (Math.sin(t) + 1) / 2;
-      posRef.current = p;
-      setPos(p);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  const zone = beer ? 0.1 : 0.22;
-  const total = hits + miss;
-  const pay = () => hitsRef.current * (beerRef.current ? 1800 : 1600);
-
-  const lay = () => {
-    if (done.current || total >= 10) return;
-    const hit = Math.abs(posRef.current - 0.5) <= zone / 2;
-    if (hit) {
-      hitsRef.current += 1;
-      setHits(hitsRef.current);
+  const answer = (choice: number) => {
+    if (done) return;
+    if (choice === current.a) setScore((s) => s + current.pay);
+    if (idx + 1 >= TRIVIA.length) {
+      setDone(true);
+      onDone(score + (choice === current.a ? current.pay : 0));
     } else {
-      missRef.current += 1;
-      setMiss(missRef.current);
-    }
-    if (hitsRef.current + missRef.current >= 10) {
-      done.current = true;
-      onDone(pay());
+      setIdx((i) => i + 1);
     }
   };
+
+  if (done) return null;
 
   return (
     <div className="scroll" style={{ padding: "0.8rem 1rem 1rem" }}>
       <div className="nameplate">
-        <span>Építkezés</span>
-        <span>
-          {hits} jó / {miss} hibás
-        </span>
+        <span>Iratellenőrzés / kérdőív</span>
+        <span>{score.toLocaleString("hu-HU")} Ft</span>
       </div>
       <p className="serif" style={{ marginTop: 0 }}>
-        Tíz tégla, időzítve. A sör gyorsít és szűkíti a jó sávot: több fér bele, ha eltalálod.
+        A tanszéki munkád része: javítsd ki a kérdőíveket. Helyes válasz pénzt hoz.
       </p>
-      <label style={{ display: "flex", gap: "0.5rem", alignItems: "center", minHeight: "2.75rem" }}>
-        <input
-          type="checkbox"
-          checked={beer}
-          onChange={(e) => {
-            if (total === 0) setBeer(e.target.checked);
-          }}
-        />
-        Sör a műszak előtt
-      </label>
-      <div style={{ position: "relative", height: "2.5rem", background: "#2a2420", border: "2px solid #000", marginTop: "0.8rem" }}>
-        <div
-          style={{
-            position: "absolute",
-            left: `${(0.5 - zone / 2) * 100}%`,
-            width: `${zone * 100}%`,
-            top: 0,
-            bottom: 0,
-            background: "#6d8a62",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: `${pos * 100}%`,
-            top: 0,
-            bottom: 0,
-            width: "0.35rem",
-            background: "#f3e6d0",
-          }}
-        />
+      <p className="serif" style={{ fontWeight: 600 }}>
+        {current.q}
+      </p>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+        {current.options.map((opt, i) => (
+          <button key={i} type="button" className="pixel-btn" onClick={() => answer(i)}>
+            {opt}
+          </button>
+        ))}
       </div>
-      <button type="button" className="pixel-btn good" style={{ width: "100%", marginTop: "0.8rem" }} onClick={lay}>
-        Tégla ({10 - total} maradt)
-      </button>
-      <button type="button" className="pixel-btn ghost" style={{ marginTop: "0.5rem" }} onClick={onCancel}>
+      <button type="button" className="pixel-btn ghost" style={{ marginTop: "0.7rem" }} onClick={onCancel}>
         Mégsem
       </button>
     </div>
   );
+}
+
+// Keep BrickGame export name for compatibility but alias to Trivia if needed; update call site separately.
+export function BrickGame(props: { onDone: (pay: number) => void; onCancel: () => void }) {
+  return <TriviaGame {...props} />;
 }
