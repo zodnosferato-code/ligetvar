@@ -10,6 +10,20 @@ Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Mi
 - **Egy személy képenként**: soha ne generálj két lányt egy képen.
 - **Háttér**: lapos `#2c2830` referenciánál. Játékbeli hátterek külön készülnek.
 
+## Képek sávokba sorolása (előrehaladás szerint)
+
+A képek a történések és a bizalmi szint előrehaladásával sávokba vannak sorolva. Az intim képek csak később jelennek meg.
+
+| Sáv | Bizalom / hét | Képtípus | Példa |
+| --- | --- | --- | --- |
+| 1. Alap | 0–1, 1–4. hét | Teljes alapruha, szerény, mindennapi | Álló referencia, tanterem |
+| 2. Sejtető | 2, 5–8. hét | Ruhadarabok lazítva, enyhe kivágás | Gallér nyitva, kardigán lecsúszva |
+| 3. Közepes intim | 3, 9–12. hét | Részleges ruhalevétel, sejtető póz | Felső lazítva, harisnya, ülő póz |
+| 4. Félmeztelen | 4, 13–15. hét | Egyes ruhadarabok le, fehérnemű | Felső le, melltartó, fekvő póz |
+| 5. Intim | 5, 16. hét / vég | Magasabb szintű, privát | Pozícióváltás, vágykódok szerint |
+
+Az intim képek (4–5. sáv) csak akkor jelennek meg a játékban, ha a bizalmi szint és a történet engedi. A kódban kódolt flag-ekkel hivatkozottak.
+
 ## Ruházat és intimitás fokozatai
 
 A ruházat és a meztelenség a bizalmi szint és a jelenet szerint változhat:
@@ -71,14 +85,15 @@ with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasse
 
 1. Mindig az alap prompt + a lány haj/arc/test blokkja + ruházat/póz utasítás.
 2. A haj, arcjel és testalkat soha nem változhat.
-3. Ruhadarabok csak akkor kerülnek le, ha a jelenet (bizalmi szint) kifejezetten kéri.
+3. Ruhadarabok csak akkor kerülnek le, ha a jelenet (bizalmi szint és sáv) kifejezetten kéri.
 4. Ha a generált kép eltér a kanontól (rossz haj, szemüveg Boglárkán stb.), újra kell generálni.
-5. Referenciaképek a `references/` mappába kerülnek.
+5. Referenciaképek a `references/` mappába kerülnek, sávonként csoportosítva.
 
 ## Játékbeli felhasználás
 
-- Alap és sejtető képek: mindennapi és korai intim jelenetek.
-- Félmeztelen és pozícióváltós képek: magasabb bizalmi szinteken (4–5), privát helyeken (lakás, Békás-tó).
+- 1–2. sáv: mindennapi és korai jelenetek.
+- 3. sáv: közepes intim, 9. héttől.
+- 4–5. sáv: félmeztelen és intim képek csak magas bizalomnál és privát helyeken.
 - Kulcsjelenetek: magasabb kidolgozottság, enyhe mozgásérzet, később 2–4 frame animáció.
 
 Minden agentnek ezt a dokumentumot kell követnie képgeneráláskor. Az intim témák a kódban továbbra is a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják.
