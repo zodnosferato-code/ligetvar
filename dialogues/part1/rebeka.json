@@ -10,7 +10,8 @@
           "text_key": "dialogue.rebeka.intro.vg",
           "quality": "very_good",
           "effect": { "closeness": 6, "trust": 1, "flags": ["rebeka_kor"] },
-          "reaction": "elegedett_felmosoly"
+          "reaction": "elegedett_felmosoly",
+          "follow_node": "rebeka_intro_vg_react"
         },
         {
           "id": "good",
@@ -32,6 +33,20 @@
           "quality": "very_bad",
           "effect": { "closeness": -5, "anger": 2, "risk": 10 },
           "reaction": "duhos_csend"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_intro_vg_react",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.intro.vg.react",
+      "choices": [
+        {
+          "id": "continue",
+          "text_key": "dialogue.rebeka.intro.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 2 },
+          "reaction": "nyugalom"
         }
       ]
     },

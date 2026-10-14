@@ -10,7 +10,8 @@
           "text_key": "dialogue.greta.intro.vg",
           "quality": "very_good",
           "effect": { "closeness": 4, "trust": 1, "flags": ["greta_lista"] },
-          "reaction": "kis_elegedett_mosoly"
+          "reaction": "kis_elegedett_mosoly",
+          "follow_node": "greta_intro_vg_react"
         },
         {
           "id": "good",
@@ -32,6 +33,20 @@
           "quality": "very_bad",
           "effect": { "closeness": -4, "anger": 2, "risk": 5 },
           "reaction": "fegyelmezett_duh"
+        }
+      ]
+    },
+    {
+      "id": "greta_intro_vg_react",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.intro.vg.react",
+      "choices": [
+        {
+          "id": "continue",
+          "text_key": "dialogue.greta.intro.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 1 },
+          "reaction": "zavar_elpirul"
         }
       ]
     },
