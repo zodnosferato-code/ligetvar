@@ -5,6 +5,7 @@ import {
   GIFTS,
   HEART_EMPTY,
   HEART_FULL,
+  HUB_ICON,
   LOCATION_BG,
   LOCATION_LABEL,
   PORTRAIT,
@@ -23,7 +24,7 @@ import {
   routeOptions,
   visibleActions,
 } from "../engine/logic.ts";
-import { GIRLS, type RouteId } from "../engine/types.ts";
+import { GIRLS, type ActionDef, type RouteId } from "../engine/types.ts";
 import { useGame } from "../store.ts";
 import { moodFor, setMood, toggleMute, unlockAudio } from "../audio.ts";
 import { BrickGame, MohuGame } from "./minigames.tsx";
@@ -176,7 +177,20 @@ function GameShell() {
       reportError(error);
     }
   }, [mode, state]);
-  return <div className="stage">{mode === "title" ? <Title /> : <Play />}</div>;
+  return (
+    <div className="stage">
+      {mode === "title" ? (
+        <Title />
+      ) : (
+        <div
+          key={`${state.phase}:${state.slot}:${state.scene?.node.id ?? ""}:${state.minigame ?? ""}`}
+          className="screen-fade"
+        >
+          <Play />
+        </div>
+      )}
+    </div>
+  );
 }
 
 function Title() {
@@ -297,91 +311,118 @@ function Hearts({ value }: { value: number }) {
   );
 }
 
+function hotspotFor(action: ActionDef): "door" | "book" | "rest" | "bag" {
+  if (action.id.startsWith("rest")) return "rest";
+  if (action.id.startsWith("mohu") || action.id === "brick" || action.id === "gym") return "bag";
+  if (action.kind === "job" || action.id === "study" || action.id === "proof") return "book";
+  return "door";
+}
+
 function Planner() {
   const state = useGame((s) => s.state);
   const act = useGame((s) => s.act);
   const open = useGame((s) => s.open);
   const showGirl = useGame((s) => s.showGirl);
+  const [tray, setTray] = useState<"door" | "book" | "rest" | "bag" | null>(null);
+  const home = state.slot === 2;
   const actions = visibleActions(state).filter((row) => row.action.kind !== "date" || state.week >= 9);
+  const groups = {
+    door: actions.filter((row) => hotspotFor(row.action) === "door"),
+    book: actions.filter((row) => hotspotFor(row.action) === "book"),
+    rest: actions.filter((row) => hotspotFor(row.action) === "rest"),
+    bag: actions.filter((row) => hotspotFor(row.action) === "bag"),
+  };
+
+  const press = (id: "door" | "book" | "rest" | "bag") => {
+    const rows = groups[id].filter((row) => row.ok);
+    if (rows.length === 1) {
+      setTray(null);
+      act(rows[0].action.id);
+      return;
+    }
+    setTray((current) => (current === id ? null : id));
+  };
+
+  const spots = (
+    [
+      ["door", "Ajtó", HUB_ICON.door],
+      ["book", "Könyv", HUB_ICON.book],
+      ["rest", "Fotel", HUB_ICON.rest],
+      ["bag", "Zsák", HUB_ICON.bag],
+    ] as const
+  ).filter(([id]) => groups[id].length > 0);
 
   return (
-    <>
+    <div className="hub">
       <Hud />
-      <div className="scroll" style={{ padding: "0.8rem 1rem 1.2rem" }}>
-        <div className="cast-row">
+      <div
+        className={`hub-room ${home ? "hub-home" : "hub-office"}`}
+        style={{ backgroundImage: `url(${home ? LOCATION_BG.apartment : LOCATION_BG.department})` }}
+      >
+        {spots.map(([id, label, icon]) => (
+          <button
+            key={id}
+            type="button"
+            className={`hotspot at-${id} ${tray === id ? "is-open" : ""}`}
+            aria-label={label}
+            onClick={() => press(id)}
+          >
+            <img src={icon} alt="" />
+          </button>
+        ))}
+        <button type="button" className="hotspot at-phone" aria-label="Telefon" onClick={() => open("phone")}>
+          <img src={HUB_ICON.phone} alt="" />
+        </button>
+        <button type="button" className="hotspot at-shelf" aria-label="Polc" onClick={() => open("shop")}>
+          <img src={HUB_ICON.shelf} alt="" />
+        </button>
+        <div className="hub-faces">
           {GIRLS.map((id) => (
-            <button key={id} type="button" className="cast-card" onClick={() => showGirl(id)} style={{ padding: 0, textAlign: "left", color: "inherit" }}>
+            <button key={id} type="button" className="hub-face" onClick={() => showGirl(id)} aria-label={GIRL_NAME[id]}>
               <img src={PORTRAIT[id]} alt="" />
-              <div style={{ padding: "0.35rem" }}>
-                <strong>{GIRL_NAME[id].split(" ")[0]}</strong>
-                <div>
-                  <Hearts value={state.girls[id].trust} />
-                </div>
-                <div style={{ fontSize: "0.75rem", color: "var(--color-muted)" }}>
-                  {state.girls[id].closeness} · {PHASE_LABEL[girlPhase(state, id)]}
-                </div>
-              </div>
+              <Hearts value={state.girls[id].trust} />
             </button>
           ))}
         </div>
-        <p className="serif" style={{ margin: "0.7rem 0 0.4rem" }}>
-          Gréta délelőtt a tanszéki szárnyban, Boglárka délután a könyvtárteremben, Rebeka este a Holdkör alagsorában. A gyógytorna a kastélyteremben van.
-        </p>
-        <div style={{ display: "flex", gap: "0.45rem", margin: "0.4rem 0 0.55rem", flexWrap: "wrap" }}>
-          <Stat icon={STAT_ICON.presence} label="Jelenlét" value={state.presence} />
-          <Stat icon={STAT_ICON.insight} label="Éleslátás" value={state.insight} />
-          <Stat icon={STAT_ICON.calm} label="Nyugalom" value={state.calm} />
-          <Stat icon={STAT_ICON.energy} label="Energia" value={state.energy} />
-        </div>
-        <div className="meter">
-          <span style={{ width: `${state.energy}%` }} />
-        </div>
-        {state.risk > 0 ? (
-          <div style={{ marginTop: "0.45rem" }}>
-            <div style={{ fontSize: "0.75rem" }}>Kockázat {state.risk}</div>
-            <div className="meter plum">
-              <span style={{ width: `${state.risk}%` }} />
-            </div>
+        {tray ? (
+          <div className="hotspot-menu">
+            {groups[tray].map(({ action, ok, reason }) => (
+              <button
+                key={action.id}
+                type="button"
+                className="icon-choice"
+                disabled={!ok}
+                title={ok ? action.detail : reason}
+                aria-label={ok ? action.label : reason}
+                onClick={() => act(action.id)}
+              >
+                <img src={action.icon} alt="" />
+                <span>{action.label}</span>
+              </button>
+            ))}
           </div>
         ) : null}
-        {state.invite ? (
-          <p className="serif" style={{ marginBottom: 0 }}>
-            Este a lakásban: {GIRL_NAME[state.invite].split(" ")[0]}.
-          </p>
-        ) : null}
-        {state.lastNote ? <p className="note">{state.lastNote}</p> : null}
-        <div className="action-grid" style={{ marginTop: "0.8rem" }}>
-          {actions.map(({ action, ok, reason }) => (
-            <button key={action.id} type="button" className="pixel-btn" disabled={!ok} onClick={() => act(action.id)}>
-              <span style={{ display: "flex", gap: "0.45rem", alignItems: "center" }}>
-                <img className="icon-tile" src={action.icon} alt="" />
-                <span>
-                  <strong style={{ display: "block" }}>{action.label}</strong>
-                  <span style={{ fontWeight: 400, color: "var(--color-ink)" }}>{ok ? action.detail : reason}</span>
-                </span>
-              </span>
-            </button>
-          ))}
-        </div>
-        <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.8rem" }}>
-          <button type="button" className="pixel-btn" onClick={() => open("phone")}>
-            Telefon
-          </button>
-          <button type="button" className="pixel-btn" onClick={() => open("shop")}>
-            Polc
-          </button>
-        </div>
       </div>
-    </>
-  );
-}
-
-function Stat({ icon, label, value }: { icon: string; label: string; value: number }) {
-  return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", fontSize: "0.8rem" }}>
-      <img src={icon} alt="" style={{ width: "1.4rem", height: "1.4rem", objectFit: "contain" }} />
-      {label} {value}
-    </span>
+      <div className="hub-bar">
+        <span title="Jelenlét">
+          <img src={STAT_ICON.presence} alt="Jelenlét" />
+          {state.presence}
+        </span>
+        <span title="Éleslátás">
+          <img src={STAT_ICON.insight} alt="Éleslátás" />
+          {state.insight}
+        </span>
+        <span title="Nyugalom">
+          <img src={STAT_ICON.calm} alt="Nyugalom" />
+          {state.calm}
+        </span>
+        <span title="Energia">
+          <img src={STAT_ICON.energy} alt="Energia" />
+          {state.energy}
+        </span>
+        {state.lastNote ? <p className="note">{state.lastNote}</p> : null}
+      </div>
+    </div>
   );
 }
 

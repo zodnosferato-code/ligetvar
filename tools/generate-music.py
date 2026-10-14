@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seamless instrumental loops for Ligetvár. No vocals. Original synthesis."""
+"""Warmer seamless loops for Ligetvár. Instrumental, no vocals."""
 
 from __future__ import annotations
 
@@ -10,254 +10,196 @@ from pathlib import Path
 import numpy as np
 
 SR = 44100
-DUR = 36.0
+DUR = 32.0
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "public" / "music" if (ROOT / "public").is_dir() else ROOT / "music"
+OUT = ROOT / "music"
 
 
 def midi(n: float) -> float:
     return 440.0 * 2 ** ((n - 69) / 12)
 
 
-def lowpass(x: np.ndarray, cutoff: float, sr: int = SR) -> np.ndarray:
-    rc = 1.0 / (2 * np.pi * cutoff)
-    dt = 1.0 / sr
-    a = dt / (rc + dt)
-    y = np.empty_like(x)
-    acc = 0.0
-    for i, sample in enumerate(x):
-        acc += a * (sample - acc)
-        y[i] = acc
-    return y
+def fade_edges(note: np.ndarray, attack: float = 0.02, release: float = 0.4) -> np.ndarray:
+    a = min(len(note), int(attack * SR))
+    r = min(len(note), int(release * SR))
+    note[:a] *= np.linspace(0, 1, a)
+    note[-r:] *= np.linspace(1, 0, r)
+    return note
 
 
-def highpass(x: np.ndarray, cutoff: float, sr: int = SR) -> np.ndarray:
-    return x - lowpass(x, cutoff, sr)
-
-
-def piano(freq: float, dur: float, vel: float = 0.5) -> np.ndarray:
-    n = int(dur * SR)
-    t = np.arange(n) / SR
-    env = np.exp(-t * 2.6) * (1 - np.exp(-t * 90))
-    y = np.zeros(n)
-    for k, amp in ((1, 1.0), (2, 0.32), (3, 0.16), (4, 0.07), (5, 0.03)):
-        y += amp * np.sin(2 * np.pi * freq * k * t)
-    hammer_n = min(n, int(0.025 * SR))
-    ht = np.arange(hammer_n) / SR
-    y[:hammer_n] += np.random.randn(hammer_n) * np.exp(-ht / 0.004) * 0.12
-    return (y * env * vel).astype(np.float32)
-
-
-def kalimba(freq: float, dur: float, vel: float = 0.45) -> np.ndarray:
+def tone(freq: float, dur: float, harmonics: tuple[tuple[float, float, float], ...], vel: float) -> np.ndarray:
     n = int(dur * SR)
     t = np.arange(n) / SR
     y = np.zeros(n)
-    for ratio, amp, decay in ((1, 1.0, 4.5), (2.71, 0.45, 7), (5.15, 0.2, 10), (8.4, 0.08, 14)):
+    for ratio, amp, decay in harmonics:
         y += amp * np.sin(2 * np.pi * freq * ratio * t) * np.exp(-t * decay)
-    env = 1 - np.exp(-t * 120)
-    return (y * env * vel).astype(np.float32)
+    return fade_edges(y * vel, 0.012, min(dur * 0.45, 1.2))
 
 
-def pad(freqs: list[float], n: int, level: float = 0.18) -> np.ndarray:
+def piano(freq: float, dur: float = 3.2, vel: float = 0.34) -> np.ndarray:
+    return tone(
+        freq,
+        dur,
+        ((1, 1, 1.6), (2, 0.28, 2.4), (3, 0.12, 3.2), (4, 0.05, 4.2)),
+        vel,
+    )
+
+
+def bell(freq: float, dur: float = 2.4, vel: float = 0.22) -> np.ndarray:
+    return tone(
+        freq,
+        dur,
+        ((1, 1, 2.2), (2.76, 0.35, 3.4), (5.2, 0.12, 5)),
+        vel,
+    )
+
+
+def pad(freqs: list[float], n: int, level: float) -> np.ndarray:
     t = np.arange(n) / SR
     y = np.zeros(n)
     for f in freqs:
-        for det, pan_phase in ((-0.0035, 0.0), (0.0, 1.2), (0.0035, 2.4)):
-            lfo = 0.82 + 0.18 * np.sin(2 * np.pi * t / 12 + pan_phase)
+        for det in (-0.004, 0.0, 0.004):
+            lfo = 0.86 + 0.14 * np.sin(2 * np.pi * t / 16 + f)
             y += lfo * np.sin(2 * np.pi * f * (1 + det) * t)
-    y = lowpass(y / max(len(freqs), 1), 900)
-    return (y * level).astype(np.float32)
+    kernel = np.hanning(801)
+    kernel /= kernel.sum()
+    y = np.convolve(y, kernel, mode="same")
+    return y / max(len(freqs), 1) * level
+
+
+def reverb(x: np.ndarray, wet: float = 0.34) -> np.ndarray:
+    n = int(1.6 * SR)
+    t = np.arange(n) / SR
+    rng = np.random.default_rng(7)
+    impulse = np.exp(-t * 2.4) * rng.normal(0, 1, n)
+    for delay, gain in ((0.029, 0.6), (0.043, 0.45), (0.067, 0.3), (0.091, 0.2)):
+        shift = int(delay * SR)
+        impulse[shift:] += gain * np.exp(-t[:-shift] * 1.6) * rng.normal(0, 0.4, n - shift)
+    impulse /= np.max(np.abs(impulse)) + 1e-9
+    size = 1 << (len(x) + n - 2).bit_length()
+    wet_sig = np.fft.irfft(np.fft.rfft(x, size) * np.fft.rfft(impulse, size), size)[: len(x)]
+    peak = np.max(np.abs(wet_sig)) + 1e-9
+    return x * (1 - wet) + wet_sig / peak * np.max(np.abs(x) + 1e-9) * wet
 
 
 def place(buf: np.ndarray, start: float, note: np.ndarray, pan: float = 0.0) -> None:
     i = int(start * SR)
-    if i >= len(buf) or i < 0:
+    if i < 0 or i >= len(buf):
         return
     end = min(len(buf), i + len(note))
     chunk = note[: end - i]
-    left = np.sqrt(0.5 * (1 - pan))
-    right = np.sqrt(0.5 * (1 + pan))
-    buf[i:end, 0] += chunk * left
-    buf[i:end, 1] += chunk * right
-
-
-def stereo_from_mono(mono: np.ndarray, width: float = 0.15) -> np.ndarray:
-    delayed = np.concatenate([np.zeros(int(0.012 * SR)), mono])[: len(mono)]
-    left = mono * (1 - width) + delayed * width
-    right = mono * (1 - width) + np.concatenate([delayed[int(0.008 * SR) :], np.zeros(int(0.008 * SR))])[: len(mono)] * width
-    return np.stack([left, right], axis=1)
-
-
-def soft_kick(n_beats: int, every: float, n: int) -> np.ndarray:
-    y = np.zeros(n)
-    for i in range(n_beats):
-        start = int(i * every * SR)
-        length = int(0.28 * SR)
-        if start >= n:
-            break
-        t = np.arange(min(length, n - start)) / SR
-        freq = 78 * np.exp(-t * 14) + 42
-        phase = 2 * np.pi * np.cumsum(freq) / SR
-        body = np.sin(phase) * np.exp(-t * 10)
-        y[start : start + len(t)] += body * 0.55
-    return y
-
-
-def shaker(every: float, n: int, level: float = 0.08) -> np.ndarray:
-    y = np.zeros(n)
-    i = 0
-    burst = int(0.045 * SR)
-    t0 = 0.0
-    while t0 < DUR - 0.2:
-        start = int(t0 * SR)
-        noise = np.random.randn(burst) * np.exp(-np.arange(burst) / (0.008 * SR))
-        noise = highpass(lowpass(noise, 6000), 2000)
-        end = min(n, start + burst)
-        y[start:end] += noise[: end - start] * level
-        i += 1
-        t0 += every
-    return y
-
-
-def water(n: int) -> np.ndarray:
-    white = np.random.randn(n)
-    brown = np.cumsum(white)
-    brown -= brown.mean()
-    brown /= np.max(np.abs(brown)) + 1e-9
-    bed = highpass(lowpass(brown, 900), 180)
-    t = np.arange(n) / SR
-    swell = 0.55 + 0.45 * np.sin(2 * np.pi * t / 9)
-    return bed * swell * 0.22
+    buf[i:end, 0] += chunk * np.sqrt(0.5 * (1 - pan))
+    buf[i:end, 1] += chunk * np.sqrt(0.5 * (1 + pan))
 
 
 def finish(buf: np.ndarray) -> np.ndarray:
-    fade = int(0.04 * SR)
-    ramp = np.linspace(0, 1, fade)
-    buf[:fade] *= ramp[:, None]
-    buf[-fade:] *= ramp[::-1, None]
-    peak = np.max(np.abs(buf)) + 1e-9
-    buf = np.tanh(buf / peak) * 0.62
-    jump = float(np.max(np.abs(buf[0] - buf[-1])))
-    print(f"  seam {jump:.5f} peak {np.max(np.abs(buf)):.3f}")
-    return buf
+    mixed = np.stack([reverb(buf[:, 0], 0.32), reverb(buf[:, 1], 0.32)], axis=1)
+    n = int(1.2 * SR)
+    fade = np.linspace(0, 1, n)[:, None]
+    head = mixed[:n] * fade + mixed[-n:] * (1 - fade)
+    looped = np.concatenate([head, mixed[n:-n]])
+    peak = np.max(np.abs(looped)) + 1e-9
+    looped = looped / peak * 0.42
+    print(f"  peak {np.max(np.abs(looped)):.3f} rms {np.sqrt(np.mean(looped**2)):.3f}")
+    return looped.astype(np.float32)
 
 
 def empty() -> np.ndarray:
-    return np.zeros((int(DUR * SR), 2), dtype=np.float64)
+    return np.zeros((int(DUR * SR), 2))
 
 
-def add_mono(buf: np.ndarray, mono: np.ndarray, level: float = 1.0) -> None:
-    stereo = stereo_from_mono(mono * level)
-    buf += stereo
+def add_pad(buf: np.ndarray, freqs: list[float], level: float) -> None:
+    body = pad(freqs, len(buf), level)
+    buf[:, 0] += body
+    buf[:, 1] += body * 0.92
+
+
+def sprinkle(buf: np.ndarray, notes: list[int], every: float, voice, vel: float, start: float = 0.6) -> None:
+    t = start
+    step = 0
+    while t < DUR - 1.4:
+        place(buf, t, voice(midi(notes[step % len(notes)]), vel=vel), pan=0.18 if step % 2 else -0.16)
+        t += every
+        step += 1
 
 
 def classroom() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    add_mono(buf, pad([midi(48), midi(52), midi(55), midi(59)], n, 0.16))
-    scale = [72, 74, 76, 79, 81]
-    t = 1.2
-    step = 0
-    while t < DUR - 1.5:
-        note = scale[step % len(scale)]
-        place(buf, t, piano(midi(note), 2.8, 0.22), pan=0.2 if step % 2 else -0.15)
-        t += 3.0
-        step += 1
+    add_pad(buf, [midi(48), midi(52), midi(55), midi(59)], 0.16)
+    sprinkle(buf, [72, 76, 79, 74, 71], 3.2, piano, 0.28)
     return finish(buf)
 
 
 def holdkor() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    add_mono(buf, pad([midi(50), midi(53), midi(57), midi(60)], n, 0.14))
-    add_mono(buf, soft_kick(int(DUR / 1.8), 1.8, n), 0.7)
-    t = np.arange(n) / SR
-    air = np.sin(2 * np.pi * midi(81) * t) * (0.5 + 0.5 * np.sin(2 * np.pi * t / 9))
-    add_mono(buf, lowpass(air, 1200) * 0.04)
+    add_pad(buf, [midi(46), midi(50), midi(53), midi(58)], 0.15)
+    t = np.arange(len(buf)) / SR
+    pulse = np.sin(2 * np.pi * 52 * t) * np.exp(-np.mod(t, 1.6) * 8) * ((np.mod(t, 1.6) < 0.2).astype(float))
+    buf[:, 0] += pulse * 0.18
+    buf[:, 1] += pulse * 0.16
+    sprinkle(buf, [70, 72, 75, 77], 3.2, bell, 0.16, 1.1)
     return finish(buf)
 
 
 def library() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    add_mono(buf, water(n), 0.25)
-    scale = [57, 60, 62, 64, 67, 69]
-    t = 0.8
-    step = 0
-    while t < DUR - 1.2:
-        place(buf, t, kalimba(midi(scale[step % len(scale)]), 3.2, 0.34), pan=(-0.25 if step % 2 else 0.2))
-        t += 2.25
-        step += 1
+    add_pad(buf, [midi(57), midi(60), midi(64)], 0.08)
+    sprinkle(buf, [69, 72, 76, 74, 67], 2.4, bell, 0.24, 0.4)
     return finish(buf)
 
 
 def office() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    add_mono(buf, pad([midi(55), midi(59), midi(62)], n, 0.1))
-    add_mono(buf, shaker(0.5, n, 0.05))
-    motif = [67, 71, 74, 79]
-    t = 0.6
-    step = 0
-    while t < DUR - 1.0:
-        place(buf, t, kalimba(midi(motif[step % len(motif)]), 1.4, 0.28), pan=0.05)
-        t += 1.125
-        step += 1
+    add_pad(buf, [midi(55), midi(59), midi(62)], 0.12)
+    sprinkle(buf, [67, 71, 74, 79], 1.6, bell, 0.18, 0.3)
     return finish(buf)
 
 
 def apartment() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    chords = [
-        [53, 57, 60, 64],
-        [52, 55, 59, 62],
-        [50, 53, 57, 60],
-        [48, 52, 55, 59],
-    ]
-    for i, chord in enumerate(chords):
-        start = i * 9.0
+    add_pad(buf, [midi(53), midi(57), midi(60), midi(64)], 0.14)
+    for i, chord in enumerate(([53, 57, 60, 64], [52, 55, 59, 62], [50, 53, 57, 60], [48, 52, 55, 59])):
         for k, note in enumerate(chord):
-            place(buf, start + k * 0.045, piano(midi(note), 8.5, 0.2), pan=-0.1 + k * 0.06)
-        place(buf, start + 3.2, piano(midi(chord[-1] + 12), 4.0, 0.16), pan=0.15)
+            place(buf, i * 8 + k * 0.06, piano(midi(note), 7.5, 0.2), pan=-0.1 + k * 0.06)
     return finish(buf)
 
 
 def bekas() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    add_mono(buf, water(n), 0.85)
-    add_mono(buf, pad([midi(52), midi(55), midi(59)], n, 0.1))
-    t = 2.0
-    while t < DUR - 2:
-        place(buf, t, piano(midi(64), 5.0, 0.12), pan=0.0)
-        t += 6.0
+    rng = np.random.default_rng(3)
+    noise = np.cumsum(rng.normal(0, 1, len(buf)))
+    noise -= noise.mean()
+    noise /= np.max(np.abs(noise))
+    kernel = np.hanning(2401)
+    kernel /= kernel.sum()
+    bed = np.convolve(noise, kernel, mode="same")
+    t = np.arange(len(buf)) / SR
+    bed *= 0.08 * (0.7 + 0.3 * np.sin(2 * np.pi * t / 8))
+    buf[:, 0] += bed
+    buf[:, 1] += np.convolve(bed, np.hanning(400) / np.hanning(400).sum(), mode="same")
+    add_pad(buf, [midi(52), midi(55), midi(59)], 0.1)
+    sprinkle(buf, [64, 67, 71], 6.4, piano, 0.12, 1.5)
     return finish(buf)
 
 
 def tension() -> np.ndarray:
-    n = int(DUR * SR)
+    n = len(empty())
     t = np.arange(n) / SR
-    swell = 0.75 + 0.25 * np.sin(2 * np.pi * t / 12)
+    swell = 0.8 + 0.2 * np.sin(2 * np.pi * t / 16)
     y = np.zeros(n)
-    for f, amp in ((110, 0.5), (116.5, 0.42), (220, 0.22), (233, 0.16), (329, 0.05)):
+    for f, amp in ((110, 0.45), (116, 0.32), (164, 0.16), (220, 0.08)):
         y += amp * np.sin(2 * np.pi * f * t)
-    y = lowpass(y, 700) * swell * 0.2
-    buf = stereo_from_mono(y, 0.2)
+    kernel = np.hanning(1201)
+    kernel /= kernel.sum()
+    y = np.convolve(y, kernel, mode="same") * swell * 0.22
+    buf = np.stack([y, np.convolve(y, np.hanning(300) / 200, mode="same")], axis=1)
     return finish(buf)
 
 
 def ending() -> np.ndarray:
-    n = int(DUR * SR)
     buf = empty()
-    add_mono(buf, pad([midi(48), midi(52), midi(55), midi(59), midi(64)], n, 0.2))
-    arp = [60, 64, 67, 71, 72]
-    t = 0.5
-    step = 0
-    while t < DUR - 1.4:
-        place(buf, t, piano(midi(arp[step % len(arp)]), 3.4, 0.26), pan=0.12 if step % 2 else -0.08)
-        t += 1.8
-        step += 1
+    add_pad(buf, [midi(48), midi(52), midi(55), midi(59), midi(64)], 0.18)
+    sprinkle(buf, [60, 64, 67, 72, 71, 67], 1.6, piano, 0.22, 0.4)
     return finish(buf)
 
 
@@ -292,7 +234,7 @@ def main() -> None:
         mp3 = OUT / f"{name}.mp3"
         write_wav(wav, audio)
         subprocess.run(
-            ["ffmpeg", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "160k", str(mp3)],
+            ["ffmpeg", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-q:a", "2", str(mp3)],
             check=True,
             capture_output=True,
         )

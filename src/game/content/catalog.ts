@@ -116,6 +116,15 @@ export const STAT_ICON = {
 export const HEART_FULL = pub("icons/ui_heart_full.png");
 export const HEART_EMPTY = pub("icons/ui_heart_empty.png");
 
+export const HUB_ICON = {
+  door: pub("icons/icon_door.png"),
+  book: pub("icons/icon_book.png"),
+  rest: pub("icons/icon_chair.png"),
+  phone: pub("icons/icon_phone.png"),
+  shelf: pub("icons/icon_shelf.png"),
+  bag: pub("icons/icon_bottles.png"),
+};
+
 function c(
   id: string,
   text: string,
