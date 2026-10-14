@@ -9,6 +9,7 @@ import type {
   Quality,
   StoryEvent,
 } from "../engine/types.ts";
+import { mergePart1 } from "./part1.ts";
 
 function pub(file: string) {
   const env = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env;
@@ -1197,6 +1198,8 @@ export function chapterName(week: number): string {
   if (week <= 15) return "Zárt útvonal";
   return "Vég";
 }
+
+mergePart1(NODES, STORY);
 
 export function assertCatalog() {
   for (const n of Object.values(NODES)) {

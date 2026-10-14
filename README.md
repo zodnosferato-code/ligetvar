@@ -33,7 +33,7 @@ npm run test:engine  # headless motor tesztek (Node 22+)
 | [09-dialog-es-architektura.md](09-dialog-es-architektura.md) | 3 részes struktúra, dialógusrendszer (max 4 opció), moduláris headless kód |
 | [10-vizualis-stilus.md](10-vizualis-stilus.md) | Pixel + japán manga stílus, kulcsjelenetek |
 | [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) | Kötelező képgenerálási szabály a konzisztencia érdekében |
-| [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) | Beszélgetés, hívás, pénzszerző minijátékok (MOHU, építkezés), korlátozott akciók |
+| [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) | Beszélgetés, hívás, pénzszerző minijátékok (MOHU runner, kérdőív), korlátozott akciók |
 | [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) | Játékhurok, eseménytípusok, random események, kódolt intim meglepetések |
 | [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) | Hangulatok és végteleníthető instrumentális zene |
 | [15-ajandekok.md](15-ajandekok.md) | Ajándékok, árak, preferenciák, bizalom szerinti szemérmetlen ajándékok |

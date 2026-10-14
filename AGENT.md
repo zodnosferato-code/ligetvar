@@ -52,8 +52,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 5. **Képgenerálás**: Mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és a [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz utasítás. Egy lány képenként. A képsávok **lehetőségek** (1. alap → 5. intim), nem kötelező szabályok. Az intim képek csak később, magas bizalomnál jelenhetnek meg. Ha eltér a kanontól, újra generáld. Turnaround referenciák skálával, elől/oldal/hátul, ruhás és alsóneműs. Háttereknél mindig a 19. századi magyar kastély (romantikus/neogót, kőfal, íves ablak, modern nyomok) szerint.
 
 6. **Akciók és pénzszerzés**: Lásd [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md). Heti 3 sáv, korlátozott akciók.
-   - **MOHU**: Pac-Man stílusú gyűjtögető labirintus. Üveg/műanyag palack 75–125 Ft, energiaitalos doboz 150–200 Ft. Versenytárs: hajléktalan gyűjtögető.
-   - **Építkezés**: Időre menő falrakás. Sör boost: gyorsabb lerakás, de nehezebb jól lerakni (trade-off).
+   - **MOHU**: oldalsó infinite runner. Ugrás a palackokért, a sötét alakok levonnak.
+   - **Kérdőív**: tanszéki iratellenőrzés. A helyes válasz pénzt ad.
    - Hívás vagy magától bejövés a történet szerint.
 
 7. **Játékhurok és események**: Lásd [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md). Random események és kódolt intim meglepetések a bizalmi szint és flag szerint.
@@ -81,7 +81,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | 3 részes architektúra | Kész | 09-dialog-es-architektura.md |
 | Vizuális stílus (pixel + manga) | Kész | 10-vizualis-stilus.md |
 | Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md (sávok lehetőségek, intim később) |
-| Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU Pac-Man + versenytárs, építkezés időre + sör boost) |
+| Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU runner, tanszéki kérdőív) |
 | Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (jelenetláncokkal bővítve) |
 | Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
 | Ajándékok | Kész | 15-ajandekok.md (árak, preferenciák, bizalom szerinti intim) |
@@ -93,7 +93,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Turnaround referencia terv | Kész | 21-referencia-turnaround-terv.md |
 | Core kód (GameState, DialogueEngine) | Kész | `src/game/engine/` — a `src/core/` váz megmaradt |
 | Part1 script példa | Minta | `src/scripts/part1-kozos.ts`, a játék a katalógust használja |
-| Dialógus JSON-ok (part1) | Minta | `dialogues/part1/*.json` |
+| Dialógus JSON-ok (part1) | Kész | `dialogues/part1/*.json` + `locales/hu.json`, a katalógus induláskor beolvassa |
 | Part2 és Part3 scripte | A motorban | Part 2 csomópontok a katalógus `STORY` listájában, a vég a `evaluateEnding` |
 | Teljes dialógusrendszer | Kész | Max 4 opció, very_good/good/bad/very_bad, `src/game/content/catalog.ts` |
 | UI (pixel, szövegdoboz) | Kész | A főoldal a félév. A minijátékok csak a heti sávból nyílnak. |
@@ -101,16 +101,16 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Végkifejletek implementációja | Kész | igaz, csendes, törött, páros, egyedül, botrány |
 | Referenciaképek feltöltése | Részleges | arcok, teljes alak, hátterek, ikonok az `assets/` alatt |
 | Zenefájlok | Kész | `music/*.mp3`, nyolc instrumentális loop, a UI a helyszínhez köti |
-| Lokalizációs minta | Kész | `locales/hu.json`. A játszható katalógus magyar szöveget tárol, nem kulcsot |
+| Lokalizációs minta | Kész | A Part 1 jelenetek a `locales/hu.json` és a `dialogues/part1/` fájlokból jönnek. A többi katalógusszöveg még beágyazott. |
 
 ## Következő lépések (javaslat)
 
 A motor játszható. Ami még nincs kész:
 
-1. A katalógus szövegeit kulcsokra bontani, hogy a motor csak a `locales/` fájlokat lássa.
-2. Zenefájlok a 14-es dokumentum hangulataihoz.
+1. A maradék katalógusszövegeket (Part 2, munka, gyógytorna) is kulcsokra bontani.
+2. Arckifejezés-lapok a `22-arckifejezesek.md` szerint. Most a meglévő portré színe és a reakciófelirat változik.
 3. A `src/core/` váz nyugdíjazása, ha már senki nem hivatkozik rá.
-4. Part 2–3 jelenetek bővítése ugyanabban a katalógusban, explicit szöveg nélkül.
+4. Part 3 jelenetek ugyanabban a katalógusban, explicit szöveg nélkül.
 
 ## Szabályok agenteknek
 
@@ -120,7 +120,7 @@ A motor játszható. Ami még nincs kész:
 - Ha új mechanikát adsz hozzá, dokumentáld a megfelelő .md fájlban és itt is hivatkozd.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
 - **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) és [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Képsávok lehetőségek (1. alap → 5. intim), nem kötelezőek. Intim képek csak később. Konzisztencia a kanonikus leírással. Turnaround: skálás, elől/oldal/hátul, ruhás + alsóneműs. Hátterek: 19. századi magyar kastély (kő, íves ablak, fagerenda, modern nyomok).
-- **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU (Pac-Man, 75–125 Ft palackok, energiaital, hajléktalan versenytárs) + építkezés (időre, sör boost trade-off).
+- **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU infinite runner és tanszéki kérdőív, a [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) szerint.
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan, flag szerint.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
 - **Ajándékok**: A [15-ajandekok.md](15-ajandekok.md) szerinti árak és preferenciák. Szemérmetlen ajándékok csak magas bizalomnál.
@@ -128,4 +128,4 @@ A motor játszható. Ami még nincs kész:
 - **Szakaszindítás**: A játék elején választható szakasz a [17-szakaszinditas.md](17-szakaszinditas.md) szerinti maximális értékekkel.
 - **Flag és eszkaláció**: A [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerinti flag-ek és láncok.
 
-A projekt állapota: a tervezés kész, a játszható motor a `src/game/` alatt van (félév, útvonal, ajándék, végek, UI, headless tesztek). A zene és a kulcsos lokalizáció még hátra van. A részletek az [ENGINE.md](ENGINE.md) fájlban vannak.
+A projekt állapota: a tervezés kész, a játszható motor a `src/game/` alatt van. A Part 1 szöveg a lokalizációból jön, a zene a `music/` alatt van. A részletek az [ENGINE.md](ENGINE.md) fájlban vannak.

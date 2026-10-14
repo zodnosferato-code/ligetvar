@@ -78,6 +78,8 @@ export interface Choice {
   reaction: string;
   requires?: ChoiceRequires;
   follow?: GirlId;
+  /** Next line in the same visit. From the part 1 dialogue files. */
+  followNode?: string;
 }
 
 export interface DialogueNode {
@@ -137,6 +139,7 @@ export interface SceneState {
   node: DialogueNode;
   location: LocationId;
   source: string;
+  expression?: string;
 }
 
 export interface Snap {

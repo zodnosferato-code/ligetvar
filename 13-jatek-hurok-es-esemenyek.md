@@ -9,7 +9,7 @@ Egy hét menete:
 1. **Hét kezdete** — fizetés érkezik (automatikus), állapot frissül (harag enyhe csökkenés, ha nem volt rossz esemény).
 2. **3 szabad sáv** (délelőtt, délután, este) — a játékos választ akciót:
    - Beszélgetés / hívás
-   - Munka (MOHU, építkezés, irat stb.)
+   - Munka (MOHU runner, kérdőív, irat)
    - Stat emelés / pihenés
    - Egyéni feladat
 3. **Kötelező gyógytorna** — heti egyszer, háttérben (nem fogyaszt sávot). Itt találkozhat a lányokkal.
