@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night: #1c1614;
+  --color-desk: #120e0c;
+  --color-parchment: #f3e6d0;
+  --color-parchment-dim: #e6d5b8;
+  --color-muted: #a89884;
+  --color-moss: #6d8a62;
+  --color-plum: #7a4458;
+  --color-ink: #24180f;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Literata", ui-serif, Georgia, serif;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--color-desk);
+    color: var(--color-parchment);
+    margin: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  img {
+    image-rendering: pixelated;
+  }
+}
+
+.stage {
+  width: min(100%, 32rem);
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-night);
+  color: var(--color-parchment);
+  overflow: hidden;
+  box-shadow: 0 0 0 1px #000;
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.5rem;
+  background: var(--color-night);
+  border-bottom: 2px solid #000;
+}
+
+.pixel-btn {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.35;
+}
+
+.pixel-btn:disabled {
+  opacity: 0.72;
+  box-shadow: none;
+}
+
+.pixel-btn:not(:disabled):active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.pixel-btn.ghost {
+  background: transparent;
+  color: var(--color-parchment);
+  box-shadow: none;
+  border-color: var(--color-muted);
+}
+
+.pixel-btn.good {
+  box-shadow: 3px 3px 0 var(--color-moss);
+}
+
+.pixel-btn.bad {
+  box-shadow: 3px 3px 0 var(--color-plum);
+}
+
+.scene-bg {
+  position: relative;
+  min-height: 14rem;
+  flex: 1;
+  background: #000 center / cover no-repeat;
+}
+
+.portrait-frame {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0;
+  width: min(46%, 11.5rem);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 2px solid #000;
+  background: #2a242c;
+  box-shadow: 4px 0 0 #000;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.sheet {
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  padding: 0.9rem 1rem 1.1rem;
+  border-top: 3px solid #000;
+}
+
+.sheet p,
+.serif {
+  font-family: var(--font-serif);
+  line-height: 1.5;
+}
+
+.nameplate {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.note {
+  margin-top: 0.45rem;
+  color: var(--color-plum);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.icon-tile {
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+  background: #2a242c;
+  border: 2px solid #000;
+  flex: none;
+}
+
+.cast-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.cast-card {
+  background: #241c22;
+  border: 2px solid #000;
+  overflow: hidden;
+}
+
+.cast-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.meter {
+  height: 0.45rem;
+  background: #3a312c;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  background: var(--color-moss);
+}
+
+.meter.plum > span {
+  background: var(--color-plum);
+}
+
+.heart {
+  width: 1.15rem;
+  height: 1.15rem;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-btn:not(:disabled):active {
+    transform: none;
+  }
+}

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:headless": "jest --testPathPattern=src/tests"
+    "test:headless": "jest --testPathPattern=src/tests",
+    "test:engine": "node --experimental-strip-types --test src/game/engine/logic.test.ts"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

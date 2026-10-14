@@ -89,31 +89,26 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Flag és eszkaláció | Kész | 19-flag-es-eszkalacio.md (flag-ek, lányonkénti láncok) |
 | Kép- és jelenetlista | Kész | 20-kep-jelenet-lista.md |
 | Turnaround referencia terv | Kész | 21-referencia-turnaround-terv.md |
-| Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
-| Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
-| Dialógus JSON-ok (part1) | Minta kész | dialogues/part1/*.json |
-| Part2 és Part3 scripte | Nincs | src/scripts/ |
-| Teljes dialógusrendszer | Nincs | JSON + motor összekötés |
-| UI (pixel, szövegdoboz) | Nincs | Későbbi fázis |
-| Tesztek (headless) | Alap kész | src/tests/dialogue.test.ts |
-| Végkifejletek implementációja | Nincs | part3 |
-| Referenciaképek feltöltése | Részleges | Rebeka generálva, még nem a repóban; turnaround példák generálva |
+| Core kód (GameState, DialogueEngine) | Kész | `src/game/engine/` — a `src/core/` váz megmaradt |
+| Part1 script példa | Minta | `src/scripts/part1-kozos.ts`, a játék a katalógust használja |
+| Dialógus JSON-ok (part1) | Minta | `dialogues/part1/*.json` |
+| Part2 és Part3 scripte | A motorban | Part 2 csomópontok a katalógus `STORY` listájában, a vég a `evaluateEnding` |
+| Teljes dialógusrendszer | Kész | Max 4 opció, very_good/good/bad/very_bad, `src/game/content/catalog.ts` |
+| UI (pixel, szövegdoboz) | Kész | `src/game/ui/` — tervező, jelenet, bolt, telefon, minijáték |
+| Tesztek (headless) | Kész | `npm run test:engine` — 10 teszt az útvonalra, ajándékra, végre |
+| Végkifejletek implementációja | Kész | igaz, csendes, törött, páros, egyedül, botrány |
+| Referenciaképek feltöltése | Részleges | arcok, teljes alak, hátterek, ikonok az `assets/` alatt |
 | Zenefájlok | Nincs | Definíció kész, generálás később |
-| Lokalizációs minta | Kész | locales/hu.json |
+| Lokalizációs minta | Kész | `locales/hu.json`. A játszható katalógus magyar szöveget tárol, nem kulcsot |
 
 ## Következő lépések (javaslat)
 
-1. Dialógus JSON séma és part1 dialógusok megírása a három lánynak (max 4 opció, very_good/good/bad/very_bad). — **minta kész**
-2. DialogueEngine összekötése a JSON-okkal.
-3. Part2 és Part3 scripte alapjának elkészítése.
-4. Bővített headless tesztek a végkimenetekre és a páros útvonalra.
-5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása a szabály szerint. Turnaround képek feltöltése.
-6. Minijátékok (MOHU, építkezés) egyszerű implementációja.
-7. EventSystem alapjának megírása a random és feltételes eseményekhez.
-8. Zenefájlok generálása vagy beszerzése a definíció szerint.
-9. Lokalizációs rendszer alapjának megírása.
-10. Szakaszindítás és flag rendszer implementációja a GameState-ben.
-11. Csak ezután UI.
+A motor játszható. Ami még nincs kész:
+
+1. A katalógus szövegeit kulcsokra bontani, hogy a motor csak a `locales/` fájlokat lássa.
+2. Zenefájlok a 14-es dokumentum hangulataihoz.
+3. A `src/core/` váz nyugdíjazása, ha már senki nem hivatkozik rá.
+4. Part 2–3 jelenetek bővítése ugyanabban a katalógusban, explicit szöveg nélkül.
 
 ## Szabályok agenteknek
 
@@ -131,4 +126,4 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Szakaszindítás**: A játék elején választható szakasz a [17-szakaszinditas.md](17-szakaszinditas.md) szerinti maximális értékekkel.
 - **Flag és eszkaláció**: A [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerinti flag-ek és láncok.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv, szakaszindítás, flag és eszkaláció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van. A 18-as terv feladatai kidolgozva. Turnaround referencia terv kész.
+A projekt állapota: a tervezés kész, a játszható motor a `src/game/` alatt van (félév, útvonal, ajándék, végek, UI, headless tesztek). A zene és a kulcsos lokalizáció még hátra van. A részletek az [ENGINE.md](ENGINE.md) fájlban vannak.

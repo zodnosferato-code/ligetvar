@@ -2,7 +2,7 @@
 
 > **Agenteknek**: Olvasd el először az [AGENT.md](AGENT.md) fájlt. Ott van a fő cél, a folyamatkövetés (mi van kész), és az útmutató a folytatáshoz.
 
-Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes játék, később Tauri-héjjal Windowsra és Linuxra csomagolva. Ez a mappa csak tervezés. Játékkód még nincs.
+Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes játék, később Tauri-héjjal Windowsra és Linuxra csomagolva. A tervezés ebben a mappában van. A játszható motor a [ENGINE.md](ENGINE.md) szerint a `src/game/` alatt él.
 
 A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus. A téma a lányok meghódítása és a rejtett vágyaik beteljesítése. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a build agent a kódbázison dolgozhasson anélkül, hogy explicit tartalommal kellene foglalkoznia.
 
@@ -42,7 +42,12 @@ A képek (sprite-ok, ikonok, jelenetek) a ground up-ból lesznek generálva a [0
 
 ## Kód
 
-A core logika a `src/` mappában van. UI nélkül headless tesztelhető (`npm test`).
+A játszható, headless motor a `src/game/engine/` alatt van. Futtatás Node 22-vel, keretrendszer nélkül:
 
-Dialógus minták: `dialogues/part1/`  
-Lokalizációs minta: `locales/hu.json`
+```bash
+npm run test:engine
+```
+
+A korábbi váz (`src/core/`, `npm test`) megmarad. A felület a `src/game/ui/` alatt van: tervező, jelenet, Polc, telefon, MOHU és építkezés. A párbeszédek a `src/game/content/catalog.ts` katalógusban vannak, nem külön JSON-ban. A `dialogues/part1/` és a `locales/hu.json` minta marad.
+
+Részletek: [ENGINE.md](ENGINE.md).
