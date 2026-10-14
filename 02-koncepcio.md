@@ -10,7 +10,7 @@ A Ligetvári Főiskola kitalált, kisvárosi intézmény. Alkalmazott bölcsész
 
 A hatalmi helyzet a történet anyaga, nem a jutalom. A főhős beosztása miatt egy viszony titok, pletyka és következmény. A lányok nem díjak, és nem a jegyükkel fizetnek. Egyiküket sem ő osztályozza. A szemináriumát más oktató jegyzi; ő a tanszék tanulmányi vezetője, aki hetente egy műhelyt tart. Ha egy útvonalon mégis értékelési helyzet adódna, a játék azt problémának írja, nem eszköznek.
 
-Tartalmi vonal, v1: romantikus randiszimulátor felnőtt szereplőkkel. Nincs szexjelenet, nincs meztelenség, nincs olyan vég, ami ágyba visz. A közelség beszélgetés, idő, titok és választás. A játék 18+-os keretet kap a viszony miatt, nem explicit tartalom miatt.
+Tartalmi vonal, v1: romantikus randiszimulátor felnőtt szereplőkkel. A karakterek háttértörténetei rejtett szexuális vágyakat tartalmaznak. Explicit szexjelenetek és meztelenség a magas bizalmi szinteken, megfelelő útvonalakon később kerülhetnek be. A közelség beszélgetés, idő, titok, választás és intimitás. A játék 18+-os keretet kap a viszony és a potenciális explicit tartalom miatt.
 
 ## A főhős
 

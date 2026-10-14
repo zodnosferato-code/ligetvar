@@ -2,7 +2,7 @@
 
 Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes játék, később Tauri-héjjal Windowsra és Linuxra csomagolva. Ez a mappa csak tervezés. Játékkód még nincs.
 
-A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus, nem erotikus: nincs szexjelenet és nincs meztelenség.
+A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus, a karakterek háttértörténetei rejtett szexuális vágyakat is tartalmaznak. Explicit jelenetek a tervezés szerint később kerülhetnek be a megfelelő bizalmi szinteken.
 
 | Dokumentum | Miről szól |
 | --- | --- |
