@@ -62,6 +62,33 @@ Példák:
 
 Ezek az események nem kötelezőek, és a játékos választhat, hogy elfogadja vagy elutasítja (elutasítás nem büntet, ha udvarias).
 
+## Lányonkénti intim jelenetláncok (eszkaláció a 19 szerint)
+
+A láncok a [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) tábláira épülnek. Minden lépés feltételes (bizalom + előző flag), és helyhez kötött.
+
+### Rebeka Dorn
+1. `act_flash` — tanterem, bizalom 1+ (gyógytorna közben)
+2. `act_kiss_light` — tanterem/lakás, flag_rebeka_flash + bizalom 2+
+3. `act_touch` / `act_touch_intimate` — lakás, flag_rebeka_kiss_light + bizalom 3+
+4. `desire_fulfill` (`desire_yield_control` + `desire_private_intense`) — lakás / Békás-tó, flag + bizalom 4–5 + `hatar`
+
+### Boglárka Fazekas
+1. `act_kiss_light` — tanterem/könyvtár, bizalom 2+
+2. `desire_slow_explore` — lakás, flag_boglarka_kiss_light + bizalom 3+
+3. `act_touch` — lakás, flag_boglarka_slow_explore + bizalom 4+
+4. `desire_fulfill` (`desire_slow_explore` + `desire_body_praise`) — Békás-tó, flag + bizalom 5, lassú tempó
+
+### Gréta Váradi
+1. `act_flash` — tanterem, bizalom 1+
+2. `act_kiss_light` — tanterem, flag_greta_flash + bizalom 2+
+3. `desire_yield_control` — lakás, flag_greta_kiss_light + bizalom 3+ + bilincs ajándék (`flag_gift_handcuff_rebeka` mintájára)
+4. `desire_fulfill` — lakás / tó, flag_greta_yield_control + bizalom 4–5
+
+### Páros (Boglárka + Gréta)
+- Mindkettő bizalom 3+, `flag_pair_boglarka_greta` aktív.
+- Közös jelenetek a lakásban vagy a tónál, kódoltan (`par_oszinte` előfeltétel).
+- Nincs hármas jelenet.
+
 ## Események implementációja
 
 - A core logikában egy `EventSystem` kezeli a feltételeket és a random esélyt.

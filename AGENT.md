@@ -30,6 +30,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [17-szakaszinditas.md](17-szakaszinditas.md) → szakaszindítás a játék elején a megfelelő max értékekkel
    - [18-megvalositasi-terv.md](18-megvalositasi-terv.md) → hiányzó elemek megvalósítási terve
    - [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) → flag-lista és intim eszkalációs tábla
+   - [20-kep-jelenet-lista.md](20-kep-jelenet-lista.md) → kép- és jelenetlista a sávokhoz
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -73,21 +74,22 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Koncepció és karakterek | Kész | 01–08 dokumentumok |
 | Intim szótár (kódolt) | Kész | 06-intim-szotar.md |
 | Sztorikeret + helyszínek | Kész | 07-sztori-keret.md |
-| Játékmenet + végek + harag | Kész | 08-jatekmenet-es-vegkimenetek.md |
+| Játékmenet + végek + harag | Kész | 08-jatekmenet-es-vegkimenetek.md (részletezve) |
 | 3 részes architektúra | Kész | 09-dialog-es-architektura.md |
 | Vizuális stílus (pixel + manga) | Kész | 10-vizualis-stilus.md |
 | Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md (sávok lehetőségek, intim később) |
 | Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU Pac-Man + versenytárs, építkezés időre + sör boost) |
-| Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (random, kódolt meglepetések) |
+| Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (jelenetláncokkal bővítve) |
 | Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
 | Ajándékok | Kész | 15-ajandekok.md (árak, preferenciák, bizalom szerinti intim) |
 | Lokalizáció és kódolás | Kész | 16-lokalizacio-es-kodolas.md (motor nem ismeri az intim tartalmat) |
 | Szakaszindítás | Kész | 17-szakaszinditas.md (választható szakasz max értékekkel) |
 | Megvalósítási terv | Kész | 18-megvalositasi-terv.md |
 | Flag és eszkaláció | Kész | 19-flag-es-eszkalacio.md (flag-ek, lányonkénti láncok) |
+| Kép- és jelenetlista | Kész | 20-kep-jelenet-lista.md |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
-| Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
+| Dialógus JSON-ok (part1) | Minta kész | dialogues/part1/*.json |
 | Part2 és Part3 scripte | Nincs | src/scripts/ |
 | Teljes dialógusrendszer | Nincs | JSON + motor összekötés |
 | UI (pixel, szövegdoboz) | Nincs | Későbbi fázis |
@@ -95,10 +97,11 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Végkifejletek implementációja | Nincs | part3 |
 | Referenciaképek feltöltése | Részleges | Rebeka generálva, még nem a repóban |
 | Zenefájlok | Nincs | Definíció kész, generálás később |
+| Lokalizációs minta | Kész | locales/hu.json |
 
 ## Következő lépések (javaslat)
 
-1. Dialógus JSON séma és part1 dialógusok megírása a három lánynak (max 4 opció, very_good/good/bad/very_bad).
+1. Dialógus JSON séma és part1 dialógusok megírása a három lánynak (max 4 opció, very_good/good/bad/very_bad). — **minta kész**
 2. DialogueEngine összekötése a JSON-okkal.
 3. Part2 és Part3 scripte alapjának elkészítése.
 4. Bővített headless tesztek a végkimenetekre és a páros útvonalra.
@@ -126,4 +129,4 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Szakaszindítás**: A játék elején választható szakasz a [17-szakaszinditas.md](17-szakaszinditas.md) szerinti maximális értékekkel.
 - **Flag és eszkaláció**: A [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerinti flag-ek és láncok.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv, szakaszindítás, flag és eszkaláció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer, lokalizációs elv, szakaszindítás, flag és eszkaláció dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van. A 18-as terv feladatai (jelenetláncok, végrészletek, dialógus minták, képlista, lokalizációs minta) kidolgozva.

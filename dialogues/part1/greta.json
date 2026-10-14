@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "greta_intro",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.intro",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.intro.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 4, "trust": 1, "flags": ["greta_lista"] },
+          "reaction": "kis_elegedett_mosoly"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.intro.good",
+          "quality": "good",
+          "effect": { "closeness": 1 },
+          "reaction": "koncentrált"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.intro.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2, "anger": 1 },
+          "reaction": "osszevont_szemoldok"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.greta.intro.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -4, "anger": 2, "risk": 5 },
+          "reaction": "fegyelmezett_duh"
+        }
+      ]
+    }
+  ]
+}

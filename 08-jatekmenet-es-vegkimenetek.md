@@ -36,10 +36,29 @@ A játék elejétől minimális szexuális interakciók lehetségesek (`act_flas
 | **Páros csendes** | egyikük igaz, a másik nem tört, de a páros feltételek nem teljesülnek | A szó szintjén együtt maradnak, de a félév után eltávolodnak. |
 | **Egyedül** | senki nem érte el a küszöböt | A gyógytorna lezajlott, senki nem került közel. |
 
-### Egyéni igaz végek témája (kódolt)
-- **Rebeka:** `desire_yield_control` + `desire_private_intense` — a Békás-tón vagy a lakásban, közönség nélkül.
-- **Boglárka:** `desire_slow_explore` + `desire_body_praise` — lassú, dicsérő vezetés, a test elfogadása.
-- **Gréta:** `desire_rule_break` + `desire_yield_control` — a szabályok elengedése, kontroll átadása.
+### Egyéni igaz végek témája (kódolt) — részletes feltételek
+
+**Rebeka Dorn** (`desire_yield_control` + `desire_private_intense`)
+- Előfeltétel: `flag_rebeka_desire_fulfill` vagy egyenértékű flag lánc, bizalom 5, közelség ≥80, `hatar`, `rebeka_feny`, `rebeka_foto`.
+- Hely: lakás vagy Békás-tó (sötét, nincs közönség — `theme_no_audience`).
+- Eredmény: a viszony folytatódik a félév után; a Holdkör ajtaja bezárul mögötte, de ő kint marad.
+
+**Boglárka Fazekas** (`desire_slow_explore` + `desire_body_praise`)
+- Előfeltétel: flag lánc (`flag_boglarka_kiss_light` → `flag_boglarka_slow_explore` → touch), bizalom 5, közelség ≥80, `hatar`, `boglarka_nev`, `boglarka_udvar`.
+- Hely: Békás-tó vagy lakás, lassú tempó.
+- Eredmény: az udvaron nem fordítja el az arcát; a viszony nyíltabb marad.
+
+**Gréta Váradi** (`desire_rule_break` + `desire_yield_control`)
+- Előfeltétel: flag lánc + bilincs/ajándék flag, bizalom 5, közelség ≥80, `hatar`, `greta_hiba`, `greta_nem_vizsga`.
+- Hely: lakás vagy tó.
+- Eredmény: a ceruza a hajában marad, a lista le van téve; nincs következő napirendi pont.
+
+### Páros igaz vég (Boglárka + Gréta)
+- Mindkettő bizalom 5, közelség ≥75/80, `flag_pair_boglarka_greta`, `par_oszinte` (mindkettő kimondta a 8. hét előtt), `hatar`, kockázat <60.
+- Külön-külön teljesülnek a saját `desire_fulfill` kódjaik.
+- Közös jelenetek a lakásban/tónál lehetségesek a zárt szakaszban, de nincs hármas.
+- Rebeka + Gréta: szűk, magasabb követelmények (mindkettő `hatar` + alacsony kockázat), könnyen törik.
+- Rebeka + Boglárka: nem járható.
 
 ## Két lány egyszerre — a járható pár
 
