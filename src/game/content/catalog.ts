@@ -39,7 +39,7 @@ export const NODES: Record<string, DialogueNode> = {
     text: "Ismétlés.",
     kind: "repeat",
     choices: [
-      { id: "very_good", text: "Rendben.", quality: "very_good", effect: { closeness: 8 }, reaction: "felmosoly" },
+      { id: "very_good", text: "Rendben.", quality: "very_good", effect: { closeness: 4 }, reaction: "felmosoly" },
       { id: "good", text: "Ok.", quality: "good", effect: { closeness: 1 }, reaction: "semleges" },
     ],
   },
