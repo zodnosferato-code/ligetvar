@@ -26,6 +26,7 @@ Referencia: [references/rebeka-dorn.jpg](references/rebeka-dorn.jpg)
 | Alkat | nőies, hangsúlyos derék és csípő, egyenes tartás |
 | Haj | derékig érő, egyenes fekete haj, a bal oldalán tompa szilvakék tincs |
 | Arc | sápadt, éles szemfestés, sötét bogyószínű száj, anyajegy a bal szeme alatt |
+| Testjel | vékony, régi sebhely a hasán (jobb oldal, derékvonal felett), amit szégyel és eltakar |
 | Alapruha | hosszú ujjú, magas nyakú fekete midiruha, a gallérnál kis kulcslyuk, ezüst karika-nyakék, fekete platformcsizma, egy ezüst gyűrű |
 | Hang | lassú, pontos, ritkán emeli meg. Nem káromkodik dísznek. |
 | Intim | `exp_limited` · `desire_yield_control`, `desire_private_intense`, `theme_power_forbidden`, `theme_no_audience` |
@@ -36,9 +37,11 @@ A családja rendes, világos lakás, ahol az ő ruhája „fázis”. Ezt egysze
 
 **Intim háttér (kódolt).** `exp_limited`. A rejtett preferenciák a szótár szerint: `desire_yield_control`, `desire_private_intense`, `theme_power_forbidden`, `theme_no_audience`.
 
+**Sebhely.** Vékony, régi hegesedés a hasán. Gyerekkori balesetből maradt. Eltakarja, és ha valaki meglátja vagy megemlíti, hideggé válik. A történet része: a bizalommal és a `desire_private_intense` / elfogadás mentén oldódik (nem kell „meggyógyítani”, csak elfogadni).
+
 **Mit akar.** Hogy valaki ne ijedjen meg, és ne is próbálja felülmúlni az ő sötétségét. A verseny unalmas. A nyugalom ritka.
 
-**Mitől fél.** Hogy a kör nélkül, nappali fényen, nincs benne semmi, ami érdekes. És hogy a tanulmányi vezető csak egy történetet keres, amit később elmesélhet.
+**Mitől fél.** Hogy a kör nélkül, nappali fényen, nincs benne semmi, ami érdekes. Hogy a sebhelyet undorítónak vagy gyengének látják. És hogy a tanulmányi vezető csak egy történetet keres, amit később elmesélhet.
 
 **Viszony az elején.** Lekezeli. „Tanár úr” hidegen, soha nem becézi. Ha valaki Rebinek hívja, kijavítja. A főhős beosztása inkább ellenérv, mint izgalom: szerinte a tanárok akkor bátrak, amikor nincs közönség.
 
@@ -52,9 +55,10 @@ A családja rendes, világos lakás, ahol az ő ruhája „fázis”. Ezt egysze
 
 - `rebeka_feny` — nappal találkoztok, a festék és a kör nélkül
 - `rebeka_foto` — megmutat egy képet, amit nem a körnek készített
+- `rebeka_seb` — a sebhelyet meglátod és nem undorodsz / nem sajnálod nyíltan; elfogadó maradsz
 - `hatar` — a közös határ-mondat
 
-**Törésjelző.** `rebeka_kozonseg` — a főhős más előtt henceg a Holdkörrel vagy vele. Ezt nem bocsátja meg.
+**Törésjelző.** `rebeka_kozonseg` — a főhős más előtt henceg a Holdkörrel vagy vele. Ezt nem bocsátja meg. A sebhely nyilvános említése is ide vezethet.
 
 **Vége, egy-egy sorban.** Igaz: a kör ajtaja mögötted csukódik, és ő kint marad veled a folyosón. Csendes: visszahív a következő estre, a szokott helyére, a szokott hangján. Törés: a pletykát ő viszi végig, hidegen és pontosan, mielőtt te tehetnéd.
 
@@ -68,8 +72,8 @@ Referencia: [references/boglarka-fazekas.jpg](references/boglarka-fazekas.jpg)
 | --- | --- |
 | Kor | 19 |
 | Év | elsőéves, irodalom |
-| Magasság | 158 cm, a három közül a legalacsonyabb |
-| Alkat | telt, kerek, puha váll, nem sportos |
+| Magasság | 150 cm, a három közül a legalacsonyabb |
+| Alkat | viszonylag telt, puha, nagyobb mellbőség, kerek arc és váll |
 | Haj | világosbarna, laza copf a jobb vállán |
 | Arc | kerek, szeplős, nincs szemüvege, a szeme gyakran lefelé tart, de az arca látszik |
 | Alapruha | túl nagy mohazöld kardigán, ekrü magas nyakú ruha a lábszár közepéig, sötét harisnya, barna vászoncipő, mindkét kézzel egy csukott keménytáblás könyv |
@@ -81,6 +85,8 @@ Referencia: [references/boglarka-fazekas.jpg](references/boglarka-fazekas.jpg)
 A könyvtár mélyén ül, nem a bejáratnál. A fülhallgató a nyakában van, ritkán a fülében. Elsőéves, tehát a kampuszt még tanulja. Nem naiv: pontosan tudja, ki a tanulmányi vezető, és ez eleinte ijeszti.
 
 **Intim háttér (kódolt).** `exp_none`. A rejtett preferenciák a szótár szerint: `desire_slow_explore`, `desire_body_praise`, `theme_power_forbidden`.
+
+**Testés szégyen.** Az alacsonyabb, teltebb alkat és a nagyobb mellbőség miatt gyakran eltakarja magát a kardigánnal és a könyvvel. A történet része: a lassú bizalomépítés és a `desire_body_praise` / `desire_slow_explore` mentén oldódik az, hogy nem kell szégyellnie a testét.
 
 **Mit akar.** Olyan beszélgetést, ami nem vizsga és nem udvariasság. Hogy a mondatát végighallgassák, akkor is, ha lassan éri utol.
 
@@ -98,6 +104,7 @@ A könyvtár mélyén ül, nem a bejáratnál. A fülhallgató a nyakában van, 
 
 - `boglarka_nev` — te soha nem Boginak hívod; valaki más igen, és te nem neveted el
 - `boglarka_udvar` — egyszer kijön a könyvtárból veled az udvarra, még ha csak öt percre is
+- `boglarka_test` — a testét dicséred vagy elfogadod anélkül, hogy objektumként kezelnéd (`desire_body_praise`)
 - `hatar`
 
 **Törésjelző.** `boglarka_szem` — a főhős a teste elé beszéli a személyét, vagy a többiek előtt hozakodik elő vele, mielőtt ő készen állna.
