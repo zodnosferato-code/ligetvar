@@ -19,6 +19,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) | Játékmenet, sztorifolyás, végkimenetek, páros útvonal, ajándék és harag rendszer |
 | [09-dialog-es-architektura.md](09-dialog-es-architektura.md) | 3 részes struktúra, dialógusrendszer (max 4 opció), moduláris headless kód |
 | [10-vizualis-stilus.md](10-vizualis-stilus.md) | Pixel + japán manga stílus, Rebeka referencia képek, kulcsjelenetek |
+| [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) | Kötelező képgenerálási szabály a konzisztencia érdekében |
 
 Referenciaképek:
 
