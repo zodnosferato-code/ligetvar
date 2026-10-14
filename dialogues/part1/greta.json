@@ -34,6 +34,97 @@
           "reaction": "fegyelmezett_duh"
         }
       ]
+    },
+    {
+      "id": "greta_dokumentum",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.dokumentum",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.dokumentum.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 3, "trust": 1 },
+          "reaction": "kis_elegedett"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.dokumentum.good",
+          "quality": "good",
+          "effect": { "closeness": 1 },
+          "reaction": "koncentrált"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.dokumentum.bad",
+          "quality": "bad",
+          "effect": { "closeness": -1, "anger": 1 },
+          "reaction": "osszevont"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.greta.dokumentum.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -3, "anger": 1 },
+          "reaction": "fegyelmezett"
+        }
+      ]
+    },
+    {
+      "id": "greta_lakas_irat",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.lakas",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.lakas.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 4, "trust": 1, "flags": ["greta_hiba"] },
+          "reaction": "zavar_elpirul"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.lakas.good",
+          "quality": "good",
+          "effect": { "closeness": 2 },
+          "reaction": "koncentrált"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.lakas.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2 },
+          "reaction": "osszevont"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.greta.lakas.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -4, "risk": 5 },
+          "reaction": "fegyelmezett_duh"
+        }
+      ]
+    },
+    {
+      "id": "greta_kiss_light",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.kiss",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.greta.kiss.accept",
+          "quality": "very_good",
+          "effect": { "closeness": 4, "trust": 1, "flags": ["flag_greta_kiss_light"] },
+          "reaction": "zavar"
+        },
+        {
+          "id": "decline",
+          "text_key": "dialogue.greta.kiss.decline",
+          "quality": "bad",
+          "effect": { "closeness": 0 },
+          "reaction": "koncentrált"
+        }
+      ]
     }
   ]
 }
