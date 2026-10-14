@@ -6,7 +6,9 @@ Egy félév alatt, heti három szabad sávból, közelebb kerülsz egy felnőtt 
 
 ## Keret
 
-A Ligetvári Főiskola kitalált, kisvárosi intézmény. Alkalmazott bölcsészet és média. Hallgatót csak 18 éves kortól vesz fel. A játék egy őszi félévet fog át, tizenhat hetet. A város neve a játékban Ligetvár, a kampusz egy régi villából és egy újabb szárnyból áll.
+A Ligetvári Főiskola kitalált, kisvárosi intézmény. Alkalmazott bölcsészet és média. Hallgatót csak 18 éves kortól vesz fel. A játék egy őszi félévet fog át, tizenhat hetet.
+
+**A kampusz egy 19. századi magyar kastély (várkastély)**, amely romantikus és neogótikus elemekkel épült az 1800-as évek közepén-én. Magas kőfalak, csúcsíves íves ablakok, tornyok, fagerendás mennyezetek, belső udvar és parkosított liget körülötte. Az intézmény átépítette és modernizálta: fűtés, villany, számítógépek, modern bútorok és válaszfalak vannak, de a régi szerkezet mindenütt látható és érezhető. A főhős irodája és lakása is a kastélyban van (egy szárnyban vagy toronyszintű lakososztályban).
 
 A hatalmi helyzet a történet anyaga, nem a jutalom. A főhős beosztása miatt egy viszony titok, pletyka és következmény. A lányok nem díjak, és nem a jegyükkel fizetnek. Egyiküket sem ő osztályozza. A szemináriumát más oktató jegyzi; ő a tanszék tanulmányi vezetője, aki heti egy fakultatív misztikus gyógytorna órát tart. Ha egy útvonalon mégis értékelési helyzet adódna, a játék azt problémának írja, nem eszköznek.
 
@@ -17,6 +19,8 @@ A részletes sztorikeret: [07-sztori-keret.md](07-sztori-keret.md).
 ## A főhős
 
 Alapnév: **Márton Kelényi**, a játékos átnevezheti. 34 éves. Tanulmányi vezető a Médiatudományi Tanszéken, emellett heti egy fakultatív misztikus gyógytorna órát tart. Nem évfolyamfelelős tanár egy középiskolában, és nem a három lány szakdolgozati témavezetője.
+
+**Lakása és irodája a kastélyban van.** Az iroda egy átépített kastélyszoba modern asztallal, számítógéppel és iratokkal, de a kőfalak, íves ablak és gerendák megmaradtak. A lakás egy szerény lakososztály ugyanabban a szárnyban vagy egy toronyban, éjszakai kilátással a parkra vagy az udvarra.
 
 A játékos az ő idejét osztja be. A személyisége a választásokban dől el, három látható stat mentén. Nincs külön „erkölcs” mutató. A nyugalom, az éleslátás és a jelenlét elég.
 
@@ -74,15 +78,15 @@ A törés erősebb, mint a csendes vég. Ha a botrány elszabadul, nem számít 
 
 ## Helyek
 
-A fő helyszínek a sztorikeret szerint:
+A fő helyszínek a kastélyon belül és körül vannak (részletek a sztorikeretben):
 
 | Hely | Sáv | Ki lehet ott |
 | --- | --- | --- |
-| Tanterem (egy szoba) | délután (gyógytorna) | mindhárom lány, közös munka |
-| Tanár lakása | este (egyéni feladat után) | egy lány látogatóban |
+| Tanterem (kastélyterem) | délután (gyógytorna) | mindhárom lány, közös munka |
+| Tanár lakása (kastélyban) | este (egyéni feladat után) | egy lány látogatóban |
+| Tanár irodája (kastélyban) | délelőtt | Gréta, adminisztráció |
+| Könyvtár (kastély) | délután | Boglárka |
 | Békás-tó (sötétben, elágazó utak) | este (9. héttől) | randihely, privát |
-| Tanszéki előtér | délelőtt | Gréta |
-| Könyvtár | délután | Boglárka |
 | Holdkör, alagsor | este | Rebeka |
 
 A 9. héttől a rendszer már tud randihelyet: pénz, egy sáv, kockázat, bizalmi küszöb. A Békás-tó a fő külső hely.
