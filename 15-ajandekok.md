@@ -1,6 +1,6 @@
 # Ajándékok
 
-Vásárolható ajándékok, árak, és a hölgyek preferenciái. A preferencia a bizalmi szinttől függ: alacsony bizalomnál csak szerény ajándékok jók, magas bizalomnál szemérmetlenebb ajándékok is elfogadhatóak.
+Vásárolható ajándékok, árak, és a hölgyek preferenciái. A preferencia a bizalmi szinttől függ. Az intim ajándékok közepes bizalomnál (2–3) is megjelenhetnek, de a reakció még óvatos. Magas bizalomnál (4–5) teljesebben elfogadottak.
 
 Az intim ajándékok a kódban kódolt formában szerepelnek (lásd [06-intim-szotar.md](06-intim-szotar.md)).
 
@@ -16,35 +16,43 @@ Az intim ajándékok a kódban kódolt formában szerepelnek (lásd [06-intim-sz
 | Fekete sál | 3 000 | szerény | Rebeka |
 | Virágcsokor | 1 500 | szerény | általános |
 | Csoki | 800 | szerény | általános |
-| Parfüm (diszkrét) | 6 000 | közepes | magasabb bizalomnál |
+| Parfüm (diszkrét) | 6 000 | közepes | |
 | Selyem kendő | 4 800 | közepes | |
-| Fehérnemű (szerény) | 5 500 | intim | bizalom 3+ |
-| Fehérnemű (csipke) | 7 500 | intim | bizalom 4+ |
-| Bilincs (puha) | 4 200 | intim | bizalom 4+ (Rebeka, Gréta) |
-| Maszk / szemfedő | 3 800 | intim | bizalom 4+ |
+| Harisnya (csipke) | 3 200 | közepes/intim | bizalom 2+ |
+| Fülbevaló (csüngő) | 2 800 | közepes | |
+| Fehérnemű (szerény, pamut) | 4 500 | intim | bizalom 2+ |
+| Fehérnemű (csipke, fekete) | 7 500 | intim | bizalom 3+ |
+| Fehérnemű (piros, merész) | 8 200 | intim | bizalom 4+ |
+| Bilincs (puha, bőr) | 4 200 | intim | bizalom 3+ (Rebeka, Gréta) |
+| Maszk / szemfedő | 3 800 | intim | bizalom 3+ |
+| Nyakörv (diszkrét) | 5 000 | intim | bizalom 4+ |
+| Testolaj / masszázs olaj | 3 600 | intim | bizalom 2+ |
 
 ## Preferenciák (bizalom szerint)
 
 A értékek: + (kedveli), 0 (semleges), − (nem szereti).
 
 ### Rebeka Dorn
-- Alacsony bizalom (0–2): Gyertya, sál +, könyv 0, tea −
-- Magas bizalom (3–5): Fehérnemű, bilincs, maszk +, parfüm +
+- Alacsony (0–1): Gyertya, sál +
+- Közepes (2–3): Harisnya, szerény fehérnemű, testolaj +, bilincs 0
+- Magas (4–5): Csipke/piros fehérnemű, bilincs, maszk, nyakörv +
 
 ### Boglárka Fazekas
-- Alacsony bizalom (0–2): Könyv, tea +, virág +, intim −
-- Magas bizalom (3–5): Szerény fehérnemű 0/+, csipke csak 5-nél
+- Alacsony (0–1): Könyv, tea, virág +
+- Közepes (2–3): Szerény fehérnemű, testolaj 0, harisnya 0
+- Magas (4–5): Csipke fehérnemű 0/+, merész csak 5-nél
 
 ### Gréta Váradi
-- Alacsony bizalom (0–2): Toll, fülhallgató +, tea 0
-- Magas bizalom (3–5): Bilincs, maszk +, fehérnemű 0
+- Alacsony (0–1): Toll, fülhallgató +
+- Közepes (2–3): Harisnya, maszk 0, bilincs 0
+- Magas (4–5): Bilincs, maszk, nyakörv +, fehérnemű 0
 
 ## Szabályok
 
 - Hetente maximum 1 értelmes ajándék ad pontot egy lánynak.
-- Rossz ajándék (pl. intim túl korán) haragot növel vagy közelséget csökkent.
+- Rossz ajándék (túl merész a jelenlegi bizalomhoz) haragot növel vagy közelséget csökkent.
 - Jó ajándék: közelség +3–6, bizalom +0–1 a típus és a szint szerint.
-- Az ajándékok a boltban (online vagy a városban) vásárolhatók, a pénz a minijátékokból és a fizetésből jön.
-- A szemérmetlen ajándékok csak akkor jelennek meg a boltban, ha a megfelelő bizalmi szint megvan legalább egy lánynál (vagy külön flag).
+- Az ajándékok a boltban (online vagy a városban) vásárolhatók.
+- Az intim ajándékok közepes bizalomnál (2+) is megjelennek a boltban, de a reakció a pontos szinttől függ.
 
 A rendszer a meglévő bizalom- és közelségrendszerre épül ([05-rendszerek.md](05-rendszerek.md), [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md)).
