@@ -26,6 +26,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) → játékhurok, random események, kódolt meglepetések
    - [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) → hangulatok és végteleníthető instrumentális zene
    - [15-ajandekok.md](15-ajandekok.md) → ajándékok, árak, preferenciák, bizalom szerinti szemérmetlen ajándékok
+   - [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md) → lokalizáció, a motor kódoltan hivatkozik, nem ismeri az intim tartalmat
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -54,6 +55,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 9. **Ajándékok**: Lásd [15-ajandekok.md](15-ajandekok.md). Árak, preferenciák lányonként, bizalom szerint változó szemérmetlen ajándékok.
 
+10. **Lokalizáció**: Lásd [16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md). A motor csak kulcsokat és kódokat használ, a tényleges szöveg a lokalizációs fájlokban van.
+
 ## Folyamatkövetés (mi van kész)
 
 Frissítsd ezt a táblázatot, amikor valamit befejezel.
@@ -71,6 +74,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (random, kódolt meglepetések) |
 | Hangulatok és zene | Kész | 14-hangulatok-es-zene.md (definíció, loopok) |
 | Ajándékok | Kész | 15-ajandekok.md (árak, preferenciák, bizalom szerinti intim) |
+| Lokalizáció és kódolás | Kész | 16-lokalizacio-es-kodolas.md (motor nem ismeri az intim tartalmat) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -92,7 +96,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 6. Minijátékok (MOHU, építkezés) egyszerű implementációja.
 7. EventSystem alapjának megírása a random és feltételes eseményekhez.
 8. Zenefájlok generálása vagy beszerzése a definíció szerint.
-9. Csak ezután UI.
+9. Lokalizációs rendszer alapjának megírása.
+10. Csak ezután UI.
 
 ## Szabályok agenteknek
 
@@ -106,5 +111,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan.
 - **Zene**: A [14-hangulatok-es-zene.md](14-hangulatok-es-zene.md) szerinti hangulatok és seamless loopok.
 - **Ajándékok**: A [15-ajandekok.md](15-ajandekok.md) szerinti árak és preferenciák. Szemérmetlen ajándékok csak magas bizalomnál.
+- **Lokalizáció**: A motor csak kulcsokat és kódokat használ ([16-lokalizacio-es-kodolas.md](16-lokalizacio-es-kodolas.md)). A tényleges szöveg a lokalizációs fájlokban van.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene és ajándékrendszer dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer, játékhurok, zene, ajándékrendszer és lokalizációs elv dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
