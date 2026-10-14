@@ -43,10 +43,15 @@ function reportError(error: unknown, extra?: string) {
 
 function beginSemester(kind: "resume" | "new", name: string) {
   if (useGame.getState().mode === "play") return;
+  const trigger = document.querySelector<HTMLElement>("[data-begin]");
+  if (trigger) trigger.textContent = "Nyílik…";
   enterSemester(() => {
     if (kind === "resume") useGame.getState().resume();
     else useGame.getState().start(name);
   });
+  if (useGame.getState().mode !== "play") {
+    reportError(new Error("A gomb lefutott, de a félév nem indult el."));
+  }
 }
 
 function enterSemester(run: () => void) {
@@ -150,21 +155,18 @@ function GameShell() {
   }, [boot]);
   useEffect(() => {
     if (mode !== "title") return;
-    const onPointerUp = (event: Event) => {
+    const onPress = (event: Event) => {
       const target = event.target;
       if (!(target instanceof Element)) return;
       const trigger = target.closest("[data-begin]");
       if (!trigger) return;
+      event.preventDefault();
       const kind = trigger.getAttribute("data-begin") === "resume" ? "resume" : "new";
       const input = document.querySelector<HTMLInputElement>(".name-field input");
       beginSemester(kind, input?.value ?? "");
     };
-    window.addEventListener("pointerup", onPointerUp, true);
-    window.addEventListener("click", onPointerUp, true);
-    return () => {
-      window.removeEventListener("pointerup", onPointerUp, true);
-      window.removeEventListener("click", onPointerUp, true);
-    };
+    window.addEventListener("pointerdown", onPress, true);
+    return () => window.removeEventListener("pointerdown", onPress, true);
   }, [mode]);
   useEffect(() => {
     if (mode !== "play") return;
@@ -200,16 +202,16 @@ function Title() {
         </label>
         <div className="title-actions">
           {hasSave ? (
-            <button type="button" className="pixel-btn good" data-begin="resume">
+            <button type="button" className="pixel-btn good" data-begin="resume" onPointerDown={() => beginSemester("resume", name)}>
               Folytatás
             </button>
           ) : (
-            <button type="button" className="pixel-btn good" data-begin="new">
+            <button type="button" className="pixel-btn good" data-begin="new" onPointerDown={() => beginSemester("new", name)}>
               Új félév
             </button>
           )}
           {hasSave ? (
-            <button type="button" className="pixel-btn ghost" data-begin="new">
+            <button type="button" className="pixel-btn ghost" data-begin="new" onPointerDown={() => beginSemester("new", name)}>
               Új félév
             </button>
           ) : null}
