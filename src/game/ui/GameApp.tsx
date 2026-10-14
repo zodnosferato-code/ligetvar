@@ -184,7 +184,7 @@ function GameShell() {
       ) : (
         <div
           key={`${state.phase}:${state.slot}:${state.scene?.node.id ?? ""}:${state.minigame ?? ""}`}
-          className="screen-fade"
+          className={`screen-fade time-${(["morning", "afternoon", "evening"] as const)[state.slot]}`}
         >
           <Play />
         </div>
@@ -281,6 +281,11 @@ function Hud() {
         <strong>
           {state.week}. hét · {SLOT_LABEL[state.slot]}
         </strong>
+        <div className="day-cycle" aria-hidden>
+          <i className="sky sun" />
+          <i className="sky dusk" />
+          <i className="sky moon" />
+        </div>
         <div style={{ color: "var(--color-muted)", fontSize: "0.78rem" }}>{chapterName(state.week)}</div>
       </div>
       <div style={{ textAlign: "right" }}>
@@ -359,6 +364,9 @@ function Planner() {
         className={`hub-room ${home ? "hub-home" : "hub-office"}`}
         style={{ backgroundImage: `url(${home ? LOCATION_BG.apartment : LOCATION_BG.department})` }}
       >
+        <div className="sky-window" aria-hidden>
+          <i />
+        </div>
         {spots.map(([id, label, icon]) => (
           <button
             key={id}
