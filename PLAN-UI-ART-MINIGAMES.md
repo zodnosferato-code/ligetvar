@@ -1,22 +1,14 @@
 # Plan — UI, Art, Minigames, Dialogue Improvements
 
-**Status: Partially implemented and committed.**
+**Status: The semester screen is the main page again.**
 
-## Completed
-- Plan document created.
-- Minigames replaced in `src/game/ui/minigames.tsx`:
-  - MOHU is now an infinite runner (jump with Space/Up to collect bottles, avoid hazards).
-  - Brick/construction replaced with a trivia game dressed as teacher work (correcting quizzes on media/folklore/admin topics). Rewards money on correct answers.
-- Office POV skeleton added to GameApp.tsx (hotspots for clock/rest, phone, shop, study; girl portraits overlay). Full visual integration uses the castle office background.
-- Docs updated earlier for castle setting.
+## Fixed
+- `GameApp.tsx` no longer opens a menu that only launches minigames. Új félév / Folytatás enters the week planner, scenes, phone, shop, and endings.
+- The catalog is the full dialogue set, not the stub.
+- Pictures and music resolve through Vite's `public/` folder and `import.meta.env.BASE_URL`, so GitHub Pages (`/ligetvar/`) can load them.
+- Title and place names follow the castle notes in `02-koncepcio.md` and `10-vizualis-stilus.md`: the office and the lodging are inside the 19th-century castle, with modern furniture against the old stone.
 
-## Remaining / next
-- Full GameApp.tsx replacement with complete office hotspots (local version prepared; binary/size limits on direct push noted).
-- Background asset replacement: new castle-themed PNGs generated (classroom, courtyard, office, apartment, library). Upload them to `assets/backgrounds/` and update LOCATION_BG if filenames differ.
-- Dialogue expansion in catalog.ts: longer, more natural lines for key nodes (Rebeka intro, photo, Boglárka margin, etc.) while preserving all sexual flags and coded content.
-- Test the new minigames and office clicks in the running app.
-- Update 12-jatekmenet-akciok.md to describe the new minigames.
-
-All sexual content remains; only writing quality and presentation improved.
-
-Commit these changes and continue local testing.
+## Still open
+- New castle-specific background paintings. The current PNGs remain the place art.
+- Longer multi-turn portrait scenes from `29-bovitett-dialogusok-es-portrek.md`.
+- MOHU is the runner and the old brick job is the trivia quiz (`BrickGame` delegates to `TriviaGame`), matching `12-jatekmenet-akciok.md`.
