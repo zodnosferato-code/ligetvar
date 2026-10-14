@@ -19,12 +19,17 @@ Minden beszélgetés a dialógusrendszer szerint megy: max 4 opció, very_good /
 
 A pénz ajándékra és randihelyekre kell. Az akciók sávot fogyasztanak. A minijátékok **szórakoztatóak**, régi egyszerű játékokra alapozva.
 
-### 1. MOHU üveg visszaváltás (50 Ft / db) — Pac-Man stílusú gyűjtögető
-- **Alap**: Klasszikus Pac-Man / maze chase. A játékos egy egyszerű labirintusban mozog, és összegyűjti a szétszórt üvegeket, miközben elkerüli a „őröket” (pl. takarítók vagy időlimit).
-- Mechanika: Pixeles labirintus, 4 irányú mozgás. Az üvegek pontokat (visszaváltást) adnak. Power-up: rövid időre gyorsabb vagy láthatatlan.
-- Jutalom: 50 Ft üvegenként. Egy sávban 12–28 üveg reális (600–1400 Ft), a teljesítmény és a túlélés szerint.
+### 1. MOHU visszaváltás — Pac-Man stílusú gyűjtögető
+- **Alap**: Klasszikus Pac-Man / maze chase. A játékos egy egyszerű labirintusban (udvar, park, kampusz széle) mozog, és összegyűjti a szétszórt palackokat és dobozokat.
+- **Tárgyak**:
+  - Üveg palack: 75–125 Ft (változó érték)
+  - Műanyag palack: 75–125 Ft
+  - Energiaitalos doboz: magasabb érték (150–200 Ft), ritkább
+- **Versenytárs**: Egy hajléktalan gyűjtögető is a labirintusban jár. Ő is szedi a palackokat. Ha eléred, elveheti a közeledben lévőket, vagy lassít. Elkerülhető, de feszültséget ad.
+- Mechanika: Pixeles labirintus, 4 irányú mozgás. A tárgyak értéket adnak. Rövid power-up: gyorsabb mozgás vagy a versenytárs ideiglenes lelassítása.
+- Jutalom: Az összegyűjtött tárgyak értéke. Egy sávban 800–1800 Ft reális a teljesítmény és a versenytárs elkerülése szerint.
 - Korlát: hetente 2–3 alkalommal érdemes, utána csökken a hozam.
-- Szórakoztatás: klasszikus gyűjtögetés, feszült elkerülés, rövid és addiktív.
+- Szórakoztatás: klasszikus gyűjtögetés + feszült verseny a hajléktalannal, rövid és addiktív.
 
 ### 2. Fizikai munka — építkezés minijáték — Space Invaders stílus
 - **Alap**: Space Invaders-szerű. A játékos téglákat (vagy építőanyagot) „lő” vagy rak le, hogy falat építsen, miközben „ellenségek” (pl. hibás téglák vagy idő) jönnek.
