@@ -14,6 +14,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [06-intim-szotar.md](06-intim-szotar.md) | Intim témák kódolt szótára (build-agent kompatibilis) |
 | [07-sztori-keret.md](07-sztori-keret.md) | Misztikus gyógytorna, közös munka okai, közeledési útok, helyszínek |
 | [08-jatekmenet-es-vegkimenetek.md](08-jatekmenet-es-vegkimenetek.md) | Játékmenet, sztorifolyás, végkimenetek, páros útvonal, ajándék és harag rendszer |
+| [09-dialog-es-architektura.md](09-dialog-es-architektura.md) | 3 részes struktúra, dialógusrendszer (max 4 opció), moduláris headless kód |
 
 Referenciaképek:
 
@@ -22,3 +23,7 @@ Referenciaképek:
 - [references/greta-varadi.jpg](references/greta-varadi.jpg)
 
 A képek azonossági horgonyok (arc, haj, ruha, testalkat). A végleges játékbeli sprite-ok szigorúbb, rácsos pixelgrafikák lesznek, ezekről a lapokról. A kanonikus leírás a képpel együtt érvényes: ha a kép és a szöveg ütközik, a [04-vizualis-biblia.md](04-vizualis-biblia.md) „Eltérések” része mondja meg, melyik nyer.
+
+## Kód
+
+A core logika a `src/` mappában van. UI nélkül headless tesztelhető (`npm test`).
