@@ -1,6 +1,4 @@
-@import "tailwindcss";
-
-@theme {
+:root {
   --color-night: #1c1614;
   --color-desk: #120e0c;
   --color-parchment: #f3e6d0;
@@ -13,27 +11,25 @@
   --font-serif: "Literata", ui-serif, Georgia, serif;
 }
 
-@layer base {
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
-  }
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
 
-  html,
-  body {
-    background: var(--color-desk);
-    color: var(--color-parchment);
-    margin: 0;
-    min-height: 100%;
-  }
+html,
+body {
+  background: var(--color-desk);
+  color: var(--color-parchment);
+  margin: 0;
+  min-height: 100%;
+}
 
-  body {
-    font-family: var(--font-sans);
-  }
+body {
+  font-family: var(--font-sans);
+}
 
-  img {
-    image-rendering: pixelated;
-  }
+img {
+  image-rendering: pixelated;
 }
 
 .error-pop {
