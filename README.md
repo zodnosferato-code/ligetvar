@@ -28,6 +28,7 @@ A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hal
 | [17-szakaszinditas.md](17-szakaszinditas.md) | Szakaszindítás a játék elején a megfelelő maximális értékekkel |
 | [18-megvalositasi-terv.md](18-megvalositasi-terv.md) | Hiányzó elemek megvalósítási terve |
 | [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) | Flag-lista és intim eszkalációs tábla |
+| [20-kep-jelenet-lista.md](20-kep-jelenet-lista.md) | Kép- és jelenetlista a sávokhoz és kódokhoz |
 
 Referenciaképek:
 
@@ -40,3 +41,6 @@ A képek azonossági horgonyok (arc, haj, ruha, testalkat). A végleges játékb
 ## Kód
 
 A core logika a `src/` mappában van. UI nélkül headless tesztelhető (`npm test`).
+
+Dialógus minták: `dialogues/part1/`  
+Lokalizációs minta: `locales/hu.json`
