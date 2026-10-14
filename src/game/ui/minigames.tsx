@@ -65,7 +65,6 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
         spawnTimer = 1.2 + Math.random() * 0.8;
       }
 
-      // Jump
       if ((keys.has("Space") || keys.has("ArrowUp") || keys.has("KeyW")) && onGround) {
         vy = jump;
         onGround = false;
@@ -78,11 +77,9 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
         onGround = true;
       }
 
-      // Move items
       for (let i = items.length - 1; i >= 0; i--) {
         items[i]!.x -= 4;
         if (items[i]!.x < -30) items.splice(i, 1);
-        // Collision
         const px = 80;
         const py = playerY;
         const ix = items[i]!.x;
@@ -92,7 +89,6 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
             scoreRef.current += items[i]!.v;
             setScore(scoreRef.current);
           } else {
-            // Hazard slows or reduces
             scoreRef.current = Math.max(0, scoreRef.current - 40);
             setScore(scoreRef.current);
           }
@@ -100,7 +96,6 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
         }
       }
 
-      // Draw
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.floor(rect.width * dpr);
@@ -108,13 +103,10 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.fillStyle = "#1c1614";
       ctx.fillRect(0, 0, rect.width, rect.height);
-      // Ground
       ctx.fillStyle = "#2a2420";
       ctx.fillRect(0, 200, rect.width, rect.height - 200);
-      // Player
       ctx.fillStyle = "#f3e6d0";
       ctx.fillRect(60, playerY, 24, 40);
-      // Items
       for (const it of items) {
         ctx.fillStyle = it.type === "bottle" ? "#6d8a62" : "#7a4458";
         ctx.fillRect(it.x, it.y, 20, 28);
@@ -155,7 +147,6 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
   );
 }
 
-// Trivia dressed as teacher work (correcting quizzes / admin questions)
 const TRIVIA = [
   {
     q: "Melyik a helyes médiaelélet-fogalom a dokumentációhoz?",
@@ -164,7 +155,7 @@ const TRIVIA = [
     pay: 1200,
   },
   {
-    q: "A folklór kutatásban mi a 'terepmunka'?”,
+    q: "A folklór kutatásban mi a terepmunka?",
     options: ["Könyvtári olvasás", "Helyszíni megfigyelés és beszélgetés", "Csak online forrás"],
     a: 1,
     pay: 1400,
@@ -176,7 +167,7 @@ const TRIVIA = [
     pay: 1000,
   },
   {
-    q: "Rebeka dokumentációjában a 'misztikus' gyakorlatok szimbolikája inkább...",
+    q: "Rebeka dokumentációjában a misztikus gyakorlatok szimbolikája inkább...",
     options: ["Nyilvános marketing", "Privát, közönség nélküli", "Vizsgaanyag"],
     a: 1,
     pay: 1300,
@@ -234,7 +225,6 @@ export function TriviaGame({ onDone, onCancel }: { onDone: (pay: number) => void
   );
 }
 
-// Keep BrickGame export name for compatibility but alias to Trivia if needed; update call site separately.
 export function BrickGame(props: { onDone: (pay: number) => void; onCancel: () => void }) {
   return <TriviaGame {...props} />;
 }
