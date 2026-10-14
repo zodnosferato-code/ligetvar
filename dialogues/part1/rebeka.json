@@ -1,1 +1,256 @@
-PLACEHOLDER_REBEKA
+{
+  "nodes": [
+    {
+      "id": "rebeka_intro",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.intro",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.intro.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 6, "trust": 1, "flags": ["rebeka_kor"] },
+          "reaction": "elegedett_felmosoly"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.intro.good",
+          "quality": "good",
+          "effect": { "closeness": 2 },
+          "reaction": "semleges"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.intro.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2, "anger": 1 },
+          "reaction": "hideg_tekintet"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.intro.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -5, "anger": 2, "risk": 10 },
+          "reaction": "duhos_csend"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_foto_kerdes",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.foto",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.foto.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 4, "trust": 1 },
+          "reaction": "felmosoly"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.foto.good",
+          "quality": "good",
+          "effect": { "closeness": 1 },
+          "reaction": "semleges"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.foto.bad",
+          "quality": "bad",
+          "effect": { "closeness": -1, "anger": 1 },
+          "reaction": "unalom"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.foto.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -3, "anger": 1 },
+          "reaction": "hideg"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_nappali_feny",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.nappali",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.nappali.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 5, "trust": 1, "flags": ["rebeka_feny"] },
+          "reaction": "nyugalom"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.nappali.good",
+          "quality": "good",
+          "effect": { "closeness": 2 },
+          "reaction": "semleges"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.nappali.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2, "anger": 1 },
+          "reaction": "gongy"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.nappali.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -4, "anger": 2 },
+          "reaction": "hideg"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_lakas_szimbolika",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.lakas",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.lakas.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 5, "trust": 1, "flags": ["rebeka_foto"] },
+          "reaction": "nyugalom"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.lakas.good",
+          "quality": "good",
+          "effect": { "closeness": 2 },
+          "reaction": "semleges"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.lakas.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2 },
+          "reaction": "gongy"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.lakas.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -4, "risk": 5 },
+          "reaction": "duh"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_tanterem_kozos",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.tanterem",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.tanterem.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 3, "flags": ["rebeka_kozos"] },
+          "reaction": "felmosoly"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.tanterem.good",
+          "quality": "good",
+          "effect": { "closeness": 1 },
+          "reaction": "semleges"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.tanterem.bad",
+          "quality": "bad",
+          "effect": { "closeness": -1, "anger": 1 },
+          "reaction": "unalom"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.tanterem.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -3, "risk": 5 },
+          "reaction": "hideg"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_early_flash",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.act_flash",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.rebeka.act_flash.accept",
+          "quality": "good",
+          "effect": { "closeness": 3, "flags": ["flag_rebeka_flash"] },
+          "reaction": "enyhe_mosoly"
+        },
+        {
+          "id": "decline",
+          "text_key": "dialogue.rebeka.act_flash.decline",
+          "quality": "bad",
+          "effect": { "closeness": -1 },
+          "reaction": "semleges"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_kiss_light",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.kiss",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.rebeka.kiss.accept",
+          "quality": "very_good",
+          "effect": { "closeness": 5, "trust": 1, "flags": ["flag_rebeka_kiss_light"] },
+          "reaction": "intenziv"
+        },
+        {
+          "id": "decline",
+          "text_key": "dialogue.rebeka.kiss.decline",
+          "quality": "bad",
+          "effect": { "closeness": 0 },
+          "reaction": "semleges"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_het8_elokeszites",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.het8",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.het8.vg",
+          "quality": "very_good",
+          "effect": { "closeness": 6, "trust": 1, "flags": ["rebeka_route_candidate"] },
+          "reaction": "nyugalom"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.het8.good",
+          "quality": "good",
+          "effect": { "closeness": 3 },
+          "reaction": "semleges"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.het8.bad",
+          "quality": "bad",
+          "effect": { "closeness": -2, "anger": 1 },
+          "reaction": "gongy"
+        },
+        {
+          "id": "very_bad",
+          "text_key": "dialogue.rebeka.het8.vb",
+          "quality": "very_bad",
+          "effect": { "closeness": -5, "anger": 2, "risk": 10 },
+          "reaction": "duhos_csend"
+        }
+      ]
+    }
+  ]
+}
