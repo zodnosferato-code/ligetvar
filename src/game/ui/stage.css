@@ -153,6 +153,31 @@ img {
   background: #000 center / cover no-repeat;
 }
 
+.portrait-frame em {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.15rem 0.3rem;
+  background: rgb(18 14 12 / 0.82);
+  color: var(--color-parchment);
+  font-style: normal;
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.expr-blush img {
+  filter: sepia(0.35) saturate(1.4) hue-rotate(-10deg);
+}
+
+.expr-cold img {
+  filter: saturate(0.4) brightness(0.85) hue-rotate(180deg);
+}
+
+.expr-warm img {
+  filter: sepia(0.2) brightness(1.05);
+}
+
 .portrait-frame {
   position: absolute;
   z-index: 2;

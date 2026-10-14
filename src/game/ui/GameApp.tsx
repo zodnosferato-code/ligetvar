@@ -456,14 +456,23 @@ function Scene() {
   if (!scene) return null;
   const girl = scene.node.speaker === "narrator" ? null : scene.node.speaker;
   const owned = GIFTS.filter((g) => (state.inventory[g.id] ?? 0) > 0);
+  const expression = scene.expression ?? "";
+  const mood = /pir|szegy|zavar/.test(expression)
+    ? "blush"
+    : /hideg|duh|unalom|gongy/.test(expression)
+      ? "cold"
+      : /nyug|eleged|mosoly|intenz/.test(expression)
+        ? "warm"
+        : "still";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: 0, flex: 1 }}>
       <Hud />
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[scene.location]})` }}>
         {girl ? (
-          <div className="portrait-frame">
+          <div className={`portrait-frame expr-${mood}`}>
             <img src={PORTRAIT[girl]} alt={GIRL_NAME[girl]} />
+            {expression ? <em>{expression.replaceAll("_", " ")}</em> : null}
           </div>
         ) : null}
       </div>

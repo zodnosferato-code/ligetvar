@@ -332,6 +332,14 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   if (scene.node.id === "bekas") next.invite = null;
   next.lastNote = describeDelta(state, next, target, choice.reaction) + tired + capped;
 
+  if (choice.followNode) {
+    const node = NODES[choice.followNode];
+    if (node) {
+      next.scene = { node, location: scene.location, source: scene.source, expression: choice.reaction };
+      next.phase = "scene";
+      return next;
+    }
+  }
   if (choice.follow) {
     const node = openGirlTalk(next, choice.follow, "classroom");
     next.scene = { node, location: "classroom", source: node.kind === "story" ? "story" : "repeat" };

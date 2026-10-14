@@ -13,7 +13,7 @@ node --experimental-strip-types --test src/game/engine/logic.test.ts
 | Állapot | `src/game/engine/types.ts` | 16 hét, 3 sáv, pénz, energia, jelenlét, éleslátás, nyugalom, kockázat, lányonként közelség / bizalom / harag / flag |
 | Szabályok | `src/game/engine/logic.ts` | Sáv, dialógus, ismétlés, ajándék, útvonalzár, hétváltás, végek |
 | Tartalom | `src/game/content/catalog.ts` | Csomópontok, történetesemények, ajándékok, akciók. Max 4 választás. |
-| UI | `src/game/ui/` | Tervező, jelenet, Polc, telefon, MOHU, építkezés |
+| UI | `src/game/ui/` | Iroda és lakosztály, jelenet, Polc, telefon, MOHU runner, kérdőív |
 | Mentés | `src/game/store.ts` | `localStorage`, kulcs `ligetvar-save-v1` |
 
 A lány fázisa (`unknown` → `fulfilled`) nem tárolt mező. A `girlPhase()` a számokból, a flag-ekből, a hétből és az útvonalból számolja, a `25-allapotgep.md` szerint.
