@@ -13,9 +13,15 @@ Példák:
 
 ## Többnode-os láncok
 
-A JSON-okba bekerültek köztes reakció node-ok (pl. `*_intro_vg_react`). A choice-okban `follow_node` mező jelzi a következő node-ot (a motorban a meglévő `follow` vagy hasonló mechanizmussal köthető).
+A nagyon jó válasz (és a fotó, jegyzet, dokumentum, lakás jó válasza, illetve a csók és a villanás elfogadása) `follow_node` mezővel nyit egy reakciósort. A folytatás gomb saját `text_key`-t kap, nem a választás szövegét ismétli.
 
-Ez lehetővé teszi, hogy a portra a beszélgetés közben változzon (pl. szégyenlős → elpirulás a jó válaszra).
+Láncok:
+
+- Rebeka: intro, fotó, nappali fény, lakás, tanterem, villanás, csók, intimate_private, yield_control
+- Boglárka: intro, jegyzet, lakás, tanterem, csók, slow_explore, body_praise
+- Gréta: intro, dokumentum, lakás, tanterem, csók, rule_break, yield
+
+A reakciósor alatt a portré színe, kerete és helyzete változik (elpirulás, hideg, meleg). Külön arclap még nincs: a `22-arckifejezesek.md` sprite-jai később cserélik a szűrőt.
 
 ## Használat
 
