@@ -23,6 +23,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [10-vizualis-stilus.md](10-vizualis-stilus.md) → pixel + manga stílus
    - [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) → **kötelező képgenerálási szabály** (konzisztencia, sejtető/félmeztelen, ruhaváltozás)
    - [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md) → beszélgetés, hívás, pénzszerző minijátékok, korlátozott akciók
+   - [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) → játékhurok, random események, kódolt meglepetések
 
 2. **Írási szabályok**:
    - Minden dialógusban maximum 4 választás.
@@ -42,6 +43,8 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
 
 6. **Akciók és pénzszerzés**: Lásd [12-jatekmenet-akciok.md](12-jatekmenet-akciok.md). Heti 3 sáv, korlátozott akciók. MOHU palack (50 Ft) és építkezés minijáték. Hívás vagy magától bejövés.
 
+7. **Játékhurok és események**: Lásd [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md). Random események és kódolt intim meglepetések a bizalmi szint szerint.
+
 ## Folyamatkövetés (mi van kész)
 
 Frissítsd ezt a táblázatot, amikor valamit befejezel.
@@ -56,6 +59,7 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 | Vizuális stílus (pixel + manga) | Kész | 10-vizualis-stilus.md |
 | Képgenerálási szabály | Kész | 11-kepgeneralasi-szabaly.md (sejtető, félmeztelen, pózíciók) |
 | Akciók és pénzszerzés | Kész | 12-jatekmenet-akciok.md (MOHU, építkezés, hívás) |
+| Játékhurok és események | Kész | 13-jatek-hurok-es-esemenyek.md (random, kódolt meglepetések) |
 | Core kód (GameState, DialogueEngine) | Alap kész | src/core/ — headless |
 | Part1 script példa | Alap kész | src/scripts/part1-kozos.ts |
 | Dialógus JSON-ok (part1) | Nincs | dialogues/part1/*.json |
@@ -74,7 +78,8 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 4. Bővített headless tesztek a végkimenetekre és a páros útvonalra.
 5. Rebeka generált képeinek feltöltése a references/ mappába, majd Boglárka és Gréta generálása a szabály szerint.
 6. Minijátékok (MOHU, építkezés) egyszerű implementációja.
-7. Csak ezután UI.
+7. EventSystem alapjának megírása a random és feltételes eseményekhez.
+8. Csak ezután UI.
 
 ## Szabályok agenteknek
 
@@ -85,5 +90,6 @@ Frissítsd ezt a táblázatot, amikor valamit befejezel.
 - A páros útvonal szabályait (Boglárka+Gréta) tartsd be.
 - **Képgenerálás**: Kötelezően a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szerint. Alap prompt + lány haj/arc/test blokk + ruházat/póz. Egy személy képenként. Sejtető és félmeztelen képek, ruhadarabok lekerülése és pozícióváltás megengedett a bizalmi szint szerint. Konzisztencia a kanonikus leírással.
 - **Akciók**: Heti 3 sáv, nem végtelen. Hívás vagy magától bejövés a történet szerint. Pénz: MOHU 50 Ft üveg + építkezés minijáték.
+- **Események**: Random és feltételes események a [13-jatek-hurok-es-esemenyek.md](13-jatek-hurok-es-esemenyek.md) szerint. Intim meglepetések csak kódoltan.
 
-A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály és akciórendszer dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
+A projekt állapota: tervezés kész, core kód alapjai készek, képgenerálási szabály, akciórendszer és játékhurok dokumentálva, Rebeka vizuális referenciák generálva, dialógusok és a 3 rész teljes implementációja még hátra van.
