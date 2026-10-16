@@ -449,23 +449,26 @@ describe("Ligetvár engine", () => {
     let state = applyChoice(createInitial("Márton"), "continue");
     state.week = 4;
     state.girls.rebeka.trust = 1;
-    state.seen = only("rebeka_nappali_feny");
-    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_nappali_feny");
+    state.seen = only("rebeka_nappali");
+    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_nappali");
 
     state = createInitial("Márton");
     state.week = 6;
     state.girls.boglarka.trust = 2;
-    state.seen = only("boglarka_lakas_kutatas");
-    assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_lakas_kutatas");
+    state.seen = only("boglarka_lakas");
+    assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_lakas");
 
     state = createInitial("Márton");
-    state.week = 7;
-    state.girls.rebeka.trust = 3;
-    state.seen = only("rebeka_intimate_private");
-    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate_private");
-
     state.week = 9;
-    assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate_private");
+    state.route = "rebeka";
+    state.girls.rebeka.trust = 4;
+    state.seen = only("rebeka_intimate");
+    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
+
+    state.week = 8;
+    state.girls.rebeka.trust = 3;
+    state.route = "none";
+    assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
   });
 });
 
