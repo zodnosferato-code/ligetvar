@@ -4,12 +4,13 @@ Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Mi
 
 ## Kötelező stílus
 
-- **Pixel art + japán manga**: kemény pixelek, nincs blur, nincs anti-aliasing, tiszta manga vonalvezetés.
-- **Korlátozott paletta**: a [04-vizualis-biblia.md](04-vizualis-biblia.md) hex színei.
-- **Felnőtt arányok**: nem chibi, nem gyerekarc, nem nagy fej.
+- **Downscaled detailed pixel art + japán manga**: látható pixelrács, puha multi-tone shading és enyhe dithering, atmoszférikus világítás. Nem hard 8-bit, nem chibi, nincs blur, nincs anti-aliasing, nincs 3D. (Részletek: [04-vizualis-biblia.md](04-vizualis-biblia.md) zárt sablonja.)
+- **Korlátozott de gazdag paletta**: a [04-vizualis-biblia.md](04-vizualis-biblia.md) hex színei.
+- **Felnőtt arányok**: nem chibi, nem gyerekarc, nagy kifejező szemek, formás nőies test.
 - **Egy személy képenként**: soha ne generálj két lányt egy képen.
-- **Háttér**: lapos `#2c2830` referenciánál. Játékbeli hátterek külön készülnek.
-- **Magasságskála**: 0–180 cm, a lány pontos magasságát mutatja a fej tetején.
+- **Háttér**: referenciánál lapos `#2c2830`. Játékbeli jeleneteknél részletes pixeles kastélybelső (kőfal, íves ablak, fa gerenda, gyertyák, meleg fény).
+- **POV**: jelenetek a játékos első személyű nézőpontjából (karakter a néző felé, játékos teste nem látszik).
+- **Magasságskála**: 0–180 cm a referencia képeken, a lány pontos magasságát mutatja a fej tetején.
 - **Teljes test**: ruhás és alsóneműs modell-lapok szemből, oldalról, hátulról (lásd 23-as dokumentum).
 
 ## Képek lehetőségei (sávok az előrehaladás szerint)
