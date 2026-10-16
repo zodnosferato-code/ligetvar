@@ -361,11 +361,26 @@ function advance(state: GameState): GameState {
 function openEnding(state: GameState) {
   const ending = evaluateEnding(state);
   const girl = ending.girls[0];
-  const node = girl ? NODES[`${girl}_ending_${ending.id}`] : undefined;
+  // Prefer a scripted ending node when one exists for this girl + outcome
+  let node = girl ? NODES[`${girl}_ending_${ending.id}`] : undefined;
   if (!node) {
-    state.phase = "ending";
-    state.scene = null;
-    return;
+    // Intentional presentation for every outcome (alone, scandal, fade, pair-*, etc.)
+    // so the ending never jumps straight to the phase without a scene.
+    node = {
+      id: `ending_${ending.id}`,
+      speaker: "narrator",
+      text: `${ending.title}\n\n${ending.text}`,
+      kind: "story",
+      choices: [
+        {
+          id: "continue",
+          text: "Folytatás",
+          quality: "good",
+          effect: {},
+          reaction: "semleges",
+        },
+      ],
+    };
   }
   state.phase = "scene";
   state.scene = { node, location: ending.location, source: "ending" };

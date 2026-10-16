@@ -468,3 +468,15 @@ describe("Ligetvár engine", () => {
     assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate_private");
   });
 });
+
+describe("dialogue translations", () => {
+  it("never shows a raw text_key as dialogue text", () => {
+    const rawKey = /^(dialogue|choice)\\./;
+    for (const node of Object.values(NODES)) {
+      assert.equal(rawKey.test(node.text), false, `missing translation for node ${node.id}: ${node.text.slice(0, 60)}`);
+      for (const choice of node.choices) {
+        assert.equal(rawKey.test(choice.text), false, `missing translation for choice in ${node.id}: ${choice.text.slice(0, 60)}`);
+      }
+    }
+  });
+});
