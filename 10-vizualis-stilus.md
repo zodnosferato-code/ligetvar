@@ -1,14 +1,15 @@
-# Vizuális stílus — Pixel grafika + japán manga
+# Vizuális stílus — Downscaled Detailed Pixel Art + japán manga
 
-A játék pixelgrafikás, japán manga stílusú (tiszta vonalak, kemény pixelek, korlátozott paletta). A referenciaképek részletesebbek, a játékbeli sprite-ok kisebbek (64–80 px magasak). Kulcsfontosságú jelenetek magasabb kidolgozottságú „mozgó” (animált vagy több frame-es) képeket kaphatnak.
+A játék **downscaled detailed pixel art** stílusú (látható pixelrács, puha többtónusú shading, manga arányok). Nem tiszta 8-bit hard-edge, nem chibi. A referenciaképek és kulcsjelenetek részletesebbek; a játékbeli sprite-ok kisebbek (64–80 px magasak). Kulcsfontosságú jelenetek magasabb kidolgozottságú képeket kaphatnak.
 
 ## Alapelvek
 
-- **Pixel art + manga**: kemény pixelek, nincs blur, nincs anti-aliasing, tiszta manga vonalvezetés.
-- **Korlátozott paletta**: a [04-vizualis-biblia.md](04-vizualis-biblia.md) hex színei.
-- **Felnőtt arányok**: nem chibi, nem gyerekarc.
-- **Zárt ruházat**: az alapruha szerény, nincs meztelenség.
-- **Kulcsjelenetek**: magasabb felbontás, több részlet, enyhe mozgásérzet (haj, ruha, kéz). Ezek később animálhatók (2–4 frame).
+- **Downscaled detailed pixel art + manga**: látható pixelek, puha multi-tone shading és enyhe dithering, atmoszférikus világítás. Nincs blur, nincs anti-aliasing, nincs 3D.
+- **Korlátozott de gazdag paletta**: a [04-vizualis-biblia.md](04-vizualis-biblia.md) hex színei, meleg gyertyafény + hűvös ablakfény.
+- **Felnőtt arányok**: nem chibi, nem gyerekarc, nagy kifejező szemek, formás nőies test.
+- **Háttér**: részletes pixeles kastélybelső (kőfal, íves ablak, fa gerenda, gyertyák).
+- **POV**: jelenetek a játékos első személyű nézőpontjából.
+- **Kulcsjelenetek**: magasabb részletesség, enyhe mozgásérzet (haj, ruha, kéz).
 
 ## Kastélyarchitektúra (hátterekhez)
 
