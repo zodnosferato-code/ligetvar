@@ -111,6 +111,86 @@
           }
         }
       ]
+    },
+    {
+      "id": "rebeka_lilla",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.lilla",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.lilla.vg",
+          "quality": "very_good",
+          "effect": {
+            "trust": 2,
+            "insight": 1,
+            "flags": [
+              "rebeka_lilla"
+            ]
+          },
+          "reaction": "lágy_bizalom",
+          "follow_node": "rebeka_lilla_review"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.lilla.good",
+          "quality": "good",
+          "effect": {
+            "trust": 1,
+            "insight": 1
+          },
+          "reaction": "nyugalom",
+          "follow_node": "rebeka_lilla_review"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.lilla.bad",
+          "quality": "bad",
+          "effect": {
+            "anger": 1
+          },
+          "reaction": "hideg"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_lilla_review",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.lilla_review",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.rebeka.lilla_review.vg",
+          "quality": "very_good",
+          "effect": {
+            "trust": 1,
+            "insight": 2,
+            "flags": [
+              "rebeka_tukor"
+            ]
+          },
+          "reaction": "lágy_bizalom"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.rebeka.lilla_review.good",
+          "quality": "good",
+          "effect": {
+            "insight": 1
+          },
+          "reaction": "koncentrált"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.rebeka.lilla_review.bad",
+          "quality": "bad",
+          "effect": {
+            "risk": 5,
+            "anger": 1
+          },
+          "reaction": "hideg"
+        }
+      ]
     }
   ]
 }
