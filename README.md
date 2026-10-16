@@ -65,3 +65,6 @@ npm run test:engine
 A felület a `src/game/ui/` alatt van (Vite + React). A párbeszédek a `src/game/content/catalog.ts` katalógusban vannak, a `dialogues/part1/` és a `locales/hu.json` minta marad.
 
 Részletek: [ENGINE.md](ENGINE.md).
+## Háttérjelenetek
+
+Az `assets/backgrounds/` mappában lévő jelenetképek (classroom.jpg, library.jpg, apartment.jpg, department.jpg, courtyard.jpg) az alapok. Minden képgenerálónak ezeket kell használnia bázisként. Mindegyik tartalmaz közeli ülő- vagy fekvőhelyet a kamerához, hogy a nők és a jövőbeli intim jelenetek rájuk rajzolhatók legyenek. Játékos POV.

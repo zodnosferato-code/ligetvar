@@ -153,3 +153,24 @@ Minden jelenet promptjába be kell építeni a helyszín részletes leírását:
 - **Holdkör / udvar**: esti kastélyudvar vagy alagsor, gyertyák, kőfalak.
 
 A jelenetek leírásánál mindig pontosítsd a világítást, a bútorokat, a karakter ruháját és pózát, valamint a játékos POV-t.
+
+
+## Jelenetképek mint alap (kötelező)
+
+Az `assets/backgrounds/` mappában lévő előre elkészített jelenetképek az alapok. Minden képgeneráló AI-nak ezeket kell használnia bázisként:
+
+- `classroom.jpg` — tanterem, nagy asztal/pad az előtérben, közel a kamerához
+- `library.jpg` — könyvtár, kanapé/olvasóhely az előtérben
+- `apartment.jpg` — lakás/hálószoba, ágy az előtérben, közel a kamerához
+- `department.jpg` — tanszék/iroda, kanapé/szék az előtérben
+- `courtyard.jpg` — udvar/Holdkör, pad az előtérben
+
+**Szabályok a jelenetekhez:**
+- A jelenetképek üresek (nincs karakter).
+- Mindig legyen egy világosan azonosítható ülő- vagy fekvőhely az előtérben, közel a kamerához (asztal, pad, ágy, kanapé, pad).
+- A karaktereket ezekre a helyekre kell elhelyezni (ülő, fekvő, vagy álló közvetlenül mögöttük).
+- Jövőbeli szexuális / intim jeleneteket ezekre az alapokra kell rajzolni / kompozitálni (a nő az ülő- vagy fekvőhelyen, közel a kamerához, játékos POV-ból).
+- A stílus a zárt downscaled detailed pixel art sablon marad.
+- Játékos POV: első személy, karakter a néző felé vagy a néző irányába, játékos teste nem látszik.
+
+Generáláskor mindig hivatkozz a megfelelő background fájlra mint bázisra, és tartsd meg a közeli ülő/fekvő helyet.

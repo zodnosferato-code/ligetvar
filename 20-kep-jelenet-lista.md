@@ -46,3 +46,18 @@ Ez a dokumentum a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) sá
 - Sáv 3–5, lakás / tó, `flag_pair_boglarka_greta` után.
 
 A generálás mindig a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) alap prompt + lány blokk + ruházat/póz utasítás szerint történik. A kódban a képek flag-ekkel vagy kulcsokkal hivatkozottak.
+
+
+## Háttérjelenetek (assets/backgrounds/)
+
+Az alábbi előre generált jelenetképek szolgálnak alapként. Mind tartalmaz közeli ülő- vagy fekvőhelyet a kamerához:
+
+| Fájl | Helyszín | Ülő/fekvőhely |
+| --- | --- | --- |
+| classroom.jpg | Tanterem | Nagy asztal az előtérben |
+| library.jpg | Könyvtár | Kanapé/olvasóhely |
+| apartment.jpg | Lakás | Ágy az előtérben |
+| department.jpg | Tanszék | Kanapé/szék |
+| courtyard.jpg | Udvar / Holdkör | Pad az előtérben |
+
+Karakter- és intim jeleneteket ezekre kell kompozitálni. A hely közel a kamerához, játékos POV-ból.
