@@ -1287,3 +1287,30 @@ img {
     max-height: 100%;
   }
 }
+
+
+/* Keep hotspot coordinates in the same plane as the complete background artwork. */
+.hub-room {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--hub-artwork-ratio, 16 / 9);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 760px) {
+  .hub-room {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 760px) {
+  .hub-room {
+    height: auto;
+    min-height: 0;
+  }
+}
