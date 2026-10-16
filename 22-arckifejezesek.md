@@ -83,7 +83,7 @@ Az arckifejezések szemből a legolvashatóbbak. Oldalról a profil és a szem v
 
 ### Koncentrált semleges
 - **Szemből**: szem egyenes a szemüveg mögött, száj zárt, pontos.
-- **Oldalról**: profil egyenes, ceruza a hajban látszik.
+- **Oldalról**: profil egyenes.
 - **Hátulról**: egyenes tartás, lófarok magas.
 - **Alváltozatok**: pontos, üzleti.
 

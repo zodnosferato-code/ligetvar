@@ -35,7 +35,7 @@ Ez a dokumentum a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) sá
 ### Gréta Váradi
 | Sáv | Hely | Kód / flag | Példa leírás |
 | --- | --- | --- | --- |
-| 1 | Tanszék | — | Álló, alapruha, ceruza a hajában |
+| 1 | Tanszék | — | Álló, alapruha |
 | 2 | Tanterem | `act_flash` | Mellény lazítva |
 | 3 | Lakás | `act_kiss_light` | Ülő, sejtető |
 | 4 | Lakás | `desire_yield_control` | Félmeztelen (bilincs ajándék után) |

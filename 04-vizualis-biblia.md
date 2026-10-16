@@ -36,12 +36,12 @@ Makeup: none or minimal natural. Hair: light brown #8a5a3a, loose braid over rig
 ```text
 Face: thin rectangular face, light freckles on nose, thin rectangular glasses #2a2e33, defined but not heavy brows,
 neat closed mouth, focused calm expression. Makeup: light, professional, natural lip color, subtle.
-Hair: copper-red #c4542a in high ponytail with yellow pencil through the tie.
+Hair: copper-red #c4542a in high ponytail, often with a few loose strands.
 ```
 
 ## Test és smink szabály
 
-- Minden lány **formás és nőies** (Rebeka hangsúlyos derék/csípő, Boglárka teltebb nagyobb mellbőség, Gréta karcsú de nőies).
+- Minden lány **formás és nőies** (Rebeka hangsúlyos derék/csípő, Boglárka puha nőies formák, nagyobb formás mellbőség (nem túlsúlyos), Gréta karcsú de nőies).
 - Smink a személyiséghez: Rebeka erős és precíz, Boglárka szinte semmi, Gréta visszafogott professzionális.
 - Magasságskála mindig 0–180 cm, a fej teteje pontosan a megadott értéknél.
 

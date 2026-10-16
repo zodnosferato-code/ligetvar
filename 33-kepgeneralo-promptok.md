@@ -35,11 +35,11 @@ Pixel art, Japanese manga style, hard crisp pixels, limited flat colors, clean l
 ### Gréta Váradi (21, 168 cm)
 
 ```text
-[shared style] Full body front view, both feet visible, standing. Slim athletic feminine build, pale skin with light freckles on nose, copper-red hair in high ponytail with yellow pencil through the tie, thin rectangular glasses, focused calm expression, neat closed mouth. White shirt, dark forest-green knitted vest, graphite knee-length skirt, dark stockings, black flat shoes, short neck strap with empty ID card. Flat background or castle department stone.
+[shared style] Full body front view, both feet visible, standing. Slim athletic feminine build, pale skin with light freckles on nose, copper-red hair in high ponytail with a few loose strands, thin rectangular glasses, focused calm expression, neat closed mouth. White shirt, dark forest-green knitted vest, graphite knee-length skirt, dark stockings, black flat shoes, short neck strap with empty ID card. Flat background or castle department stone.
 ```
 
 ```text
-[shared style] Close-up face and shoulders, Gréta Váradi, concentrated expression behind thin rectangular glasses, light freckles on nose, copper-red high ponytail with yellow pencil, white shirt and green vest collar.
+[shared style] Close-up face and shoulders, Gréta Váradi, concentrated expression behind thin rectangular glasses, light freckles on nose, copper-red high ponytail, white shirt and green vest collar.
 ```
 
 ## Arckifejezés referencia promptok (portré / felsőtest)
@@ -108,7 +108,7 @@ Adj hozzá mindenhez a karakter kanonikus haj/arc részleteit + "upper body port
 ### Gréta – Light (tanszék / tanterem)
 
 ```text
-[shared style] Gréta Váradi in castle department office or classroom, standing at desk, green vest loosened, white shirt top buttons open, graphite skirt slightly raised, copper ponytail with yellow pencil, focused but flustered expression behind glasses.
+[shared style] Gréta Váradi in castle department office or classroom, standing at desk, green vest loosened, white shirt top buttons open, graphite skirt slightly raised, copper ponytail, focused but flustered expression behind glasses.
 ```
 
 ### Gréta – Medium / Intimate (iroda asztal vagy lakás)

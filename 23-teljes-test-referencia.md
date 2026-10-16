@@ -22,7 +22,7 @@ Minden lánynál: ruhás alap + alsóneműs modell-lap (anatomiai referencia). A
 
 ## Boglárka Fazekas (150 cm)
 
-**Testalkat:** alacsony, viszonylag telt, puha, nagyobb mellbőség (melltartó két számmal nagyobb), kerek váll és arc. Szeplős bőr.
+**Testalkat:** alacsony, puha nőies formák, nagyobb formás mellbőség, kerek váll és arc, formás csípő. Szeplős bőr. Vonzó saját módján, nem túlsúlyos.
 
 ### Ruhás (alapruha)
 - **Szemből:** túl nagy mohazöld kardigán, ekrü magas nyakú ruha, könyv a mellkasánál mindkét kézzel. Félénk tartás, váll enyhén behúzva.
@@ -41,7 +41,7 @@ Minden lánynál: ruhás alap + alsóneműs modell-lap (anatomiai referencia). A
 **Testalkat:** karcsú, de nőies, egyenes tartás, formás de nem túltengő mellek és csípő. Halvány szeplők.
 
 ### Ruhás (alapruha)
-- **Szemből:** fehér ing, sötét erdőzöld mellény, grafitszoknya, szemüveg, ceruza a lófarokban. Precíz, egyenes tartás.
+- **Szemből:** fehér ing, sötét erdőzöld mellény, grafitszoknya, szemüveg. Precíz, egyenes tartás.
 - **Oldalról:** egyenes profil, szoknya hossza, lófarok magas.
 - **Hátulról:** mellény háta, lófarok, egyenes hát.
 
