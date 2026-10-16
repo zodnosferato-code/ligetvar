@@ -57,15 +57,15 @@ export const CAST: Record<
 };
 
 export const LOCATION_BG: Record<LocationId, string> = {
-  apartment: pub("backgrounds/apartment.png"),
+  apartment: pub("backgrounds/apartment.jpg"),
   classroom: pub("backgrounds/classroom.png"),
   courtyard: pub("backgrounds/courtyard.png"),
-  department: pub("backgrounds/department.png"),
+  department: pub("backgrounds/department.jpg"),
   holdkor: pub("backgrounds/holdkor.png"),
   library: pub("backgrounds/library.png"),
   bekas: pub("backgrounds/courtyard.png"),
   bookshop: pub("backgrounds/library.png"),
-  cinema: pub("backgrounds/department.png"),
+  cinema: pub("backgrounds/department.jpg"),
   peron: pub("backgrounds/holdkor.png"),
   construction: pub("backgrounds/courtyard.png"),
   mohu: pub("backgrounds/courtyard.png"),
