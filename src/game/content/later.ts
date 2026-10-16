@@ -1,7 +1,5 @@
 import type { DialogueNode, GirlId, LocationId, StoryEvent } from "../engine/types.ts";
 import hu from "../../../locales/hu.json" with { type: "json" };
-import hu2 from "../../../locales/hu-part2.json" with { type: "json" };
-import hu3 from "../../../locales/hu-part3.json" with { type: "json" };
 import rebeka2 from "../../../dialogues/part2/rebeka.json" with { type: "json" };
 import boglarka2 from "../../../dialogues/part2/boglarka.json" with { type: "json" };
 import greta2 from "../../../dialogues/part2/greta.json" with { type: "json" };
@@ -25,7 +23,7 @@ type RawNode = {
   choices: RawChoice[];
 };
 
-const lines = { ...hu, ...hu2, ...hu3 } as Record<string, string>;
+const lines = hu as Record<string, string>;
 
 function girlOf(id: string): GirlId {
   if (id.startsWith("rebeka")) return "rebeka";
