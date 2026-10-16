@@ -16,8 +16,7 @@
               "greta_route_active"
             ]
           },
-          "reaction": "enyhe_mosoly",
-          "follow_node": "greta_rule_full"
+          "reaction": "enyhe_mosoly"
         },
         {
           "id": "good",
@@ -56,8 +55,7 @@
               "flag_greta_evidence_verified"
             ]
           },
-          "reaction": "yielding",
-          "follow_node": "greta_yield_full"
+          "reaction": "yielding"
         },
         {
           "id": "good",
@@ -86,8 +84,7 @@
               "flag_greta_evidence_verified"
             ]
           },
-          "reaction": "yielding",
-          "follow_node": "greta_desire_fulfill"
+          "reaction": "yielding"
         },
         {
           "id": "good",
