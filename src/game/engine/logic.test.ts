@@ -157,7 +157,8 @@ describe("Ligetvár engine", () => {
     assert.equal(state.slot, 2);
     state = applyChoice(state, "continue");
     assert.equal(state.energy, 70);
-    assert.equal(state.scene?.node.id, "physio");
+    assert.equal(state.scene?.node.id, "rebeka_foto_kerdes");
+    assert.equal(state.slot, 2);
   });
 
   it("keeps every follow-up inside the catalog", () => {
@@ -341,22 +342,22 @@ describe("Ligetvár engine", () => {
     let state = createInitial("Márton");
     state.week = 4;
     state.girls.rebeka.trust = 1;
-    state.seen = only("rebeka_early_flash");
-    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_early_flash");
+    state.seen = only("rebeka_nappali_feny");
+    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_nappali_feny");
 
     state = createInitial("Márton");
     state.week = 6;
-    state.girls.rebeka.trust = 2;
-    state.seen = only("rebeka_kiss_light");
-    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_kiss_light");
+    state.girls.boglarka.trust = 2;
+    state.seen = only("boglarka_lakas_kutatas");
+    assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_lakas_kutatas");
 
     state = createInitial("Márton");
     state.week = 7;
-    state.girls.boglarka.trust = 3;
-    state.seen = only("boglarka_slow_explore");
-    assert.equal(openGirlTalk(state, "boglarka", "library").id, "boglarka_slow_explore");
+    state.girls.rebeka.trust = 3;
+    state.seen = only("rebeka_intimate_private");
+    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate_private");
 
     state.week = 9;
-    assert.notEqual(openGirlTalk(state, "boglarka", "library").id, "boglarka_slow_explore");
+    assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate_private");
   });
 });
