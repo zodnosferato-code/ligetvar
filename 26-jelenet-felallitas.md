@@ -2,6 +2,12 @@
 
 Ez a dokumentum rögzíti, hogyan épülnek fel a játék jelenetei vizuálisan: milyen nézőpontból látjuk a lányokat, és hogyan jelennek meg a telefonon. A korábbi dokumentumok (04, 10, 20) a képgenerálási szabályokat és a sávokat írják le; ez a dokumentum a **kamera és a jelenet felépítését** határozza meg.
 
+## Főképernyő (hub)
+
+A főképernyő háttérképe (lakosztály vagy tanszéki iroda) tartalmazza a kattintható tárgyakat (ajtó, könyv, fotel, zsák, telefon, polc).  
+Ezek a tárgyak a gombok — nem véletlenszerűen elhelyezett lebegő ikonok.  
+Minden tárgyhoz tartozik egy dedikált ikon (lásd [27-ikonok-es-gombok.md](27-ikonok-es-gombok.md)), amely csak hover/fókusz/nyitott állapotban jelenik meg. A hotspot átlátszó réteg a tárgy fölött.
+
 ## Alapelv: láthatatlan főszereplő
 
 A mi karakterünk (a játékos) **soha nem jelenik meg** a képen. A játékos a saját szemszögéből nézi a jelenetet — mintha ő maga állna a helyszínen.
