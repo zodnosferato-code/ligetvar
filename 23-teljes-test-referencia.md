@@ -1,6 +1,6 @@
 # Teljes test referencia — Szöveges leírás
 
-A játék romantikus és szexuális jeleneteihez szükséges a teljes test konzisztens leírása. A lányokat szemből, oldalról és hátulról látjuk. A stílus a [04-vizualis-biblia.md](04-vizualis-biblia.md) zárt sablonját követi. Magasságskála: 0–180 cm, fej teteje pontosan a megadott értéknél.
+A játék romantikus és szexuális jeleneteihez szükséges a teljes test konzisztens leírása. A lányokat szemből, oldalról és hátulról látjuk. A stílus a [04-vizualis-biblia.md](04-vizualis-biblia.md) zárt sablonját követi.
 
 Minden lánynál: ruhás alap + alsóneműs modell-lap (anatomiai referencia). A meztelen állapot a magas bizalomú jelenetekhez készül később ugyanebből.
 
@@ -55,7 +55,6 @@ Minden lánynál: ruhás alap + alsóneműs modell-lap (anatomiai referencia). A
 ## Általános szabályok a későbbi generáláshoz
 
 - Mindig a zárt stílus-sablon + a lány arc- és testblokkja.
-- Magasságskála kötelező a referencia képeken.
 - Alsóneműs lapok: szerény, nem szexuális póz, A-póz.
 - Intim jelenetek: a vágykódok szerint (`desire_yield_control`, `desire_slow_explore`, stb.), a bizalmi szinttől függően.
 - Nincs két lány egy képen. Felnőtt arányok.
