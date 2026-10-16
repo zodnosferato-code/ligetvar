@@ -200,11 +200,11 @@ describe("Ligetvár engine", () => {
     state = chooseAction(state, "holdkor");
     assert.equal(state.scene?.node.id, "rebeka_intro");
 
-    // Current dialogues/part1/rebeka.json awards +5 closeness and follows
-    // directly to rebeka_foto; the old synthetic *_vg_react node was removed.
+    // The rewritten dialogue rewards trust more than quick romantic closeness.
+    // The first answer should continue to the evidence-focused photo conversation.
     state = applyChoice(state, "very_good");
-    assert.equal(state.girls.rebeka.trust, 1);
-    assert.equal(state.girls.rebeka.closeness, 5);
+    assert.equal(state.girls.rebeka.trust, 2);
+    assert.equal(state.girls.rebeka.closeness, 1);
     assert.ok(state.girls.rebeka.flags.includes("rebeka_kor"));
     assert.ok(state.seen.includes("rebeka_intro"));
     assert.equal(state.energy, 70);
@@ -450,7 +450,7 @@ describe("Ligetvár engine", () => {
     assert.equal(door?.ok, true);
   });
 
-  it("opens act 1 scenes at her own place before the route lock", () => {
+  it("keeps optional romance behind the late investigation milestones", () => {
     const only = (id: string) => STORY.map((event) => event.id).filter((seen) => seen !== id);
     let state = applyChoice(createInitial("Márton"), "continue");
     state.week = 4;
@@ -464,17 +464,20 @@ describe("Ligetvár engine", () => {
     state.seen = only("boglarka_lakas");
     assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_lakas");
 
+    // A kiss is optional and cannot appear before the final evidence/relationship gate.
     state = createInitial("Márton");
-    state.week = 9;
+    state.week = 15;
     state.route = "rebeka";
     state.girls.rebeka.trust = 4;
-    state.seen = only("rebeka_intimate");
-    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
+    state.girls.rebeka.closeness = 60;
+    state.seen = only("rebeka_kiss");
+    assert.equal(openGirlTalk(state, "rebeka", "apartment").id, "rebeka_kiss");
 
     state.week = 8;
     state.girls.rebeka.trust = 3;
+    state.girls.rebeka.closeness = 45;
     state.route = "none";
-    assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
+    assert.notEqual(openGirlTalk(state, "rebeka", "apartment").id, "rebeka_kiss");
   });
 });
 
