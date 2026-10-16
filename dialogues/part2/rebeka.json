@@ -52,8 +52,7 @@
           "effect": {
             "closeness": 2
           },
-          "reaction": "nyugalom",
-          "follow_node": "rebeka_bekas_private"
+          "reaction": "nyugalom"
         }
       ]
     },
@@ -73,8 +72,7 @@
               "flag_rebeka_evidence_verified"
             ]
           },
-          "reaction": "sebezheto",
-          "follow_node": "rebeka_yield_full"
+          "reaction": "sebezheto"
         },
         {
           "id": "good",
@@ -103,8 +101,7 @@
               "flag_rebeka_evidence_verified"
             ]
           },
-          "reaction": "sebezheto",
-          "follow_node": "rebeka_desire_fulfill"
+          "reaction": "sebezheto"
         },
         {
           "id": "good",
