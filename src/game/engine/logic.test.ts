@@ -471,7 +471,7 @@ describe("Ligetvár engine", () => {
 
 describe("dialogue translations", () => {
   it("never shows a raw text_key as dialogue text", () => {
-    const rawKey = /^(dialogue|choice)\\./;
+    const rawKey = /^dialogue\./;
     for (const node of Object.values(NODES)) {
       assert.equal(rawKey.test(node.text), false, `missing translation for node ${node.id}: ${node.text.slice(0, 60)}`);
       for (const choice of node.choices) {
