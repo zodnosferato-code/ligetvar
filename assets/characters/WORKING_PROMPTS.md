@@ -1,0 +1,82 @@
+# Working text-to-image prompts (Ligetvár intim)
+
+All successful gens used **text-to-image only**. No reference/image-to-image on intimate.
+
+## Style prefix (every prompt)
+```
+Downscaled detailed pixel art Japanese manga style visible pixel grid soft multi-tone shading. One adult woman only. [CHARACTER LOCK]. [POSE + SCENE]. No text no second person.
+```
+Aspect: `2:3`
+
+## Character locks (paste after style)
+
+### Rebeka Dorn
+```
+Rebeka Dorn angular face pale skin half-lidded dark eyes sharp black winged eyeliner berry wine lips beauty mark under LEFT eye. Long jet-black hair ONE dull plum streak LEFT silver ring choker. Tall hourglass medium firm bare breasts.
+```
+
+### Boglárka Fazekas
+```
+Boglarka Fazekas soft ROUND adult face freckles dense blush large brown eyes light brown braid RIGHT. Short soft curvy larger soft bare breasts soft stomach full hips.
+```
+
+### Gréta Váradi
+```
+Greta Varadi slim rectangular face thin dark rectangular glasses copper-orange red high ponytail freckles nose blush. Slim athletic smaller firm bare breasts long legs.
+```
+
+## Safe pose language (works)
+- standing full nude
+- sitting on bed / desk full nude
+- on all fours looking back full nude
+- reclining on back full nude
+- wet bath steam full nude
+- kneeling looking up mouth open (oral-ready)
+- bent over looking back
+- breasts squeezed together with hands (cleavage)
+- open coat night hallway flash
+- straddling / kneeling open thighs facing camera
+- one hand between thighs self-touch
+
+## Blocked language (avoid)
+fellatio, shaft, viewer tip, titjob, penetration, explicit sex act names, multi-person sex
+
+## Scene templates that worked
+
+### Standing nude
+`Standing full nude castle bedroom warm lamp stone walls arms at sides adult nude portrait`
+
+### Sitting nude
+`Sitting on edge of bed full nude hands on thighs castle bedroom warm lamp adult nude intimate pose`
+
+### All-fours
+`On all fours on bed rear three-quarter view looking back arched back full nude castle bedroom warm lamp purple sheets`
+
+### Reclining
+`Lying on back on purple sheets one knee raised full nude castle bedroom warm lamp adult nude reclining`
+
+### Wet bath
+`Full nude wet skin water droplets castle bath steam warm candlelight adult wet nude`
+
+### Oral-ready kneel
+`Kneeling looking UP at camera full nude or lingerie mouth slightly open adult intimate kneeling pose`
+
+### Bent over
+`Bent over bed looking back over shoulder full nude or lingerie arched back castle bedroom warm lamp`
+
+### Cleavage squeeze
+`Bare breasts squeezed together with both hands cleavage focus castle warm lamp`
+
+### Hallway flash
+`Standing dark stone castle hallway night torch light [color] coat fully open revealing full nude body coat held open with both hands adult night flash exhibition pose`
+
+### Straddle / open-thigh kneel
+`Kneeling upright on bed facing camera thighs open full nude hands on own thighs castle bedroom warm lamp adult intimate`
+
+### Self-touch
+`Sitting on bed one hand between thighs other hand on breast full nude private self-touch pose castle bedroom warm lamp`
+
+## Outfit accents (optional)
+- Rebeka: silver choker only, black coat, black harness
+- Boglárka: moss-green coat, cream lace, collar
+- Gréta: glasses always on, white lab/open coat, green vest off
