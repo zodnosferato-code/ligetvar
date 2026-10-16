@@ -360,6 +360,28 @@ describe("Ligetvár engine", () => {
     assert.ok(social.seen.some((id) => id.includes("part2")));
   });
 
+  it("plays Rebeka's and Boglárka's routes from week 1 through the ending", () => {
+    for (const girl of ["rebeka", "boglarka"] as const) {
+      const state = playSemester(
+        createInitial("Márton"),
+        (current) => routeOptions(current).options.some((option) => option.id === girl && option.ok)
+          ? girl
+          : "alone",
+        "visit",
+        girl,
+      );
+      assert.equal(state.phase, "ending", girl + " playthrough did not reach an ending");
+      assert.equal(state.week, 16, girl + " playthrough should reach week 16");
+      assert.equal(state.route, girl, girl + " route should remain locked");
+      assert.ok(state.seen.length > 0, girl + " playthrough should visit story scenes");
+      assert.ok(
+        state.seen.some((id) => id.startsWith(girl + "_part2") || id.startsWith(girl + "_")),
+        girl + " playthrough should see at least one character scene",
+      );
+      assert.ok(state.workShifts >= 1, girl + " playthrough should complete at least one job");
+    }
+  });
+
   it("plays Gréta's semester on her best lines", () => {
     const focused = playSemester(
       createInitial("Márton"),
