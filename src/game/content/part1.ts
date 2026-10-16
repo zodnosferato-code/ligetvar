@@ -45,18 +45,31 @@ function toNode(raw: RawNode, previous?: DialogueNode): DialogueNode {
   };
 }
 
+// Explicit scene scheduling — do not rely on ID substring matching.
+// Each important scene has its own location, week window, trust requirement and priority.
+const SCENE_META: Record<string, { locations: LocationId[]; minWeek: number; minTrust?: number; maxWeek?: number; priority: number }> = {
+  // Rebeka
+  rebeka_foto: { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 },
+  rebeka_nappali: { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 },
+  rebeka_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
+  rebeka_intimate: { locations: ["apartment", "holdkor"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 },
+  rebeka_yield: { locations: ["apartment", "holdkor"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 },
+  // Boglárka
+  boglarka_jegyzet: { locations: ["library"], minWeek: 2, priority: 16 },
+  boglarka_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
+  boglarka_explore: { locations: ["apartment"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 },
+  boglarka_praise: { locations: ["apartment"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 },
+  // Gréta
+  greta_dokumentum: { locations: ["department"], minWeek: 2, priority: 16 },
+  greta_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
+  greta_rule: { locations: ["apartment", "department"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 },
+  greta_yield: { locations: ["apartment", "department"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 },
+};
+
 function beat(id: string): { locations: LocationId[]; minWeek: number; minTrust?: number; maxWeek?: number; priority: number } | null {
   if (id.endsWith("_react") || id.endsWith("_intro")) return null;
-  if (id.includes("het8")) return { locations: ["classroom"], minWeek: 7, maxWeek: 8, priority: 75 };
-  if (id.includes("yield") || id.includes("rule_break") || id.includes("body_praise") || id.includes("slow_explore") || id.includes("intimate"))
-    return { locations: ["apartment", "holdkor", "library", "department"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 };
-  if (id.includes("kiss")) return { locations: ["apartment", "holdkor", "library", "department"], minWeek: 6, maxWeek: 8, minTrust: 2, priority: 36 };
-  if (id.includes("flash")) return { locations: ["classroom", "holdkor", "library", "department"], minWeek: 4, maxWeek: 8, minTrust: 1, priority: 28 };
-  if (id.includes("lakas")) return { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 };
-  if (id.includes("tanterem")) return { locations: ["classroom"], minWeek: 2, priority: 18 };
-  if (id.includes("konyvtar") || id.includes("jegyzet")) return { locations: ["library"], minWeek: 2, priority: 16 };
-  if (id.includes("dokumentum") || id.includes("irat") || id.includes("lista")) return { locations: ["department"], minWeek: 2, priority: 16 };
-  if (id.includes("nappali") || id.includes("foto")) return { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 };
+  if (SCENE_META[id]) return SCENE_META[id];
+  // Fallback for any future scenes (prefer explicit entry above)
   return { locations: ["classroom"], minWeek: 2, priority: 14 };
 }
 
