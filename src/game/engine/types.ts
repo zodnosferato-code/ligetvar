@@ -91,6 +91,10 @@ export interface DialogueNode {
   journal?: string;
   /** Extra energy cost applied to every choice. Narrator nodes default to 0. */
   cost?: number;
+  /** Display-only name for a narrator-driven NPC; it never creates romance stats. */
+  speakerLabel?: string;
+  /** Optional image caption shown in a labelled placeholder when art is not available. */
+  artCaption?: string;
 }
 
 export interface StoryEvent {
