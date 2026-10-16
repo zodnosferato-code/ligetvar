@@ -462,6 +462,8 @@ describe("Ligetvár engine", () => {
     state.week = 6;
     state.girls.boglarka.trust = 2;
     state.seen = only("boglarka_lakas");
+    assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_repeat_0");
+    state.girls.boglarka.trust = 3;
     assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_lakas");
 
     // A kiss is optional and cannot appear before the final evidence/relationship gate.
