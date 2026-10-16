@@ -16,8 +16,7 @@
               "boglarka_route_active"
             ]
           },
-          "reaction": "elpirulas",
-          "follow_node": "boglarka_slow_full"
+          "reaction": "elpirulas"
         },
         {
           "id": "good",
@@ -56,8 +55,7 @@
               "flag_boglarka_evidence_verified"
             ]
           },
-          "reaction": "elpirulas_mosoly",
-          "follow_node": "boglarka_body_full"
+          "reaction": "elpirulas_mosoly"
         },
         {
           "id": "good",
@@ -86,8 +84,7 @@
               "flag_boglarka_evidence_verified"
             ]
           },
-          "reaction": "lágy_mosoly",
-          "follow_node": "boglarka_desire_fulfill"
+          "reaction": "lágy_mosoly"
         },
         {
           "id": "good",
