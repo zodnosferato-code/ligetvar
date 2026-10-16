@@ -645,7 +645,7 @@ function Scene() {
         {girl ? (
           <div className={`portrait-frame expr-${mood} ${plate ? "portrait-supporting" : ""} ${intimate ? "portrait-intimate" : ""}`}>
             <img src={portraitFor(girl, portraitExpression)} alt={GIRL_NAME[girl]} />
-            {expression ? <em>{expression.replaceAll("_", " ")}</em> : null}
+            {expression && !plate && !intimate ? <em>{expression.replaceAll("_", " ")}</em> : null}
           </div>
         ) : null}
       </div>
