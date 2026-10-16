@@ -137,8 +137,18 @@ const PLATE: Record<string, string> = {
   greta_ending_quiet: "greta-window-sill.jpg",
 };
 
+// Short dialogue node IDs (from part1 JSON) map to the canonical illustration keys.
+const ILLUSTRATION_ALIAS: Record<string, string> = {
+  rebeka_intimate: "rebeka_intimate_private",
+  rebeka_yield: "rebeka_yield_control",
+  boglarka_explore: "boglarka_slow_explore",
+  boglarka_praise: "boglarka_body_praise",
+  greta_rule: "greta_rule_break",
+};
+
 export function illustrationFor(nodeId: string, girl: GirlId, route: string): string | null {
-  const stem = nodeId.replace(/_(?:vg|good|bad|vb)?_react$/, "").replace(/_react$/, "");
+  const cleaned = nodeId.replace(/_(?:vg|good|bad|vb)?_react$/, "").replace(/_react$/, "");
+  const stem = ILLUSTRATION_ALIAS[cleaned] ?? cleaned;
   if (route === "boglarka_greta" && /desire|ending_true|kiss/.test(stem)) {
     return pub("references/intim/boglarka-greta-kiss-bed.jpg");
   }
