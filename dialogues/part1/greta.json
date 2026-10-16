@@ -147,6 +147,86 @@
           }
         }
       ]
+    },
+    {
+      "id": "greta_aktak",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.aktak",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.aktak.vg",
+          "quality": "very_good",
+          "effect": {
+            "trust": 2,
+            "insight": 1,
+            "flags": [
+              "greta_aktak"
+            ]
+          },
+          "reaction": "fegyelmezett",
+          "follow_node": "greta_idoelteres"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.aktak.good",
+          "quality": "good",
+          "effect": {
+            "trust": 1,
+            "insight": 1
+          },
+          "reaction": "nyugalom",
+          "follow_node": "greta_idoelteres"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.aktak.bad",
+          "quality": "bad",
+          "effect": {
+            "risk": 5,
+            "anger": 1
+          },
+          "reaction": "fegyelmezett_duh"
+        }
+      ]
+    },
+    {
+      "id": "greta_idoelteres",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.idoelteres",
+      "choices": [
+        {
+          "id": "very_good",
+          "text_key": "dialogue.greta.idoelteres.vg",
+          "quality": "very_good",
+          "effect": {
+            "trust": 1,
+            "insight": 2,
+            "flags": [
+              "greta_naplo"
+            ]
+          },
+          "reaction": "lágy_bizalom"
+        },
+        {
+          "id": "good",
+          "text_key": "dialogue.greta.idoelteres.good",
+          "quality": "good",
+          "effect": {
+            "insight": 1
+          },
+          "reaction": "fegyelmezett"
+        },
+        {
+          "id": "bad",
+          "text_key": "dialogue.greta.idoelteres.bad",
+          "quality": "bad",
+          "effect": {
+            "risk": 5
+          },
+          "reaction": "hideg_tekintet"
+        }
+      ]
     }
   ]
 }
