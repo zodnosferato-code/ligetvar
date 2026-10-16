@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "id": "boglarka_ending_true",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.part3.true",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.boglarka.part3.true.accept",
+          "quality": "very_good",
+          "effect": { "flags": ["ending_true_boglarka"] },
+          "reaction": "lágy_mosoly",
+          "follow_node": "boglarka_ending_true_react"
+        }
+      ]
+    },
+    {
+      "id": "boglarka_ending_true_react",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.part3.true.react",
+      "choices": [
+        {
+          "id": "continue",
+          "text_key": "dialogue.boglarka.part3.true.react.continue",
+          "quality": "very_good",
+          "effect": {},
+          "reaction": "elpirulas"
+        }
+      ]
+    },
+    {
+      "id": "boglarka_ending_quiet",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.part3.quiet",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.boglarka.part3.quiet.accept",
+          "quality": "good",
+          "effect": { "flags": ["ending_quiet_boglarka"] },
+          "reaction": "szegyenos"
+        }
+      ]
+    },
+    {
+      "id": "boglarka_ending_broken",
+      "speaker": "boglarka",
+      "text_key": "dialogue.boglarka.part3.broken",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.boglarka.part3.broken.accept",
+          "quality": "bad",
+          "effect": { "flags": ["ending_broken_boglarka"] },
+          "reaction": "elrejtozik"
+        }
+      ]
+    }
+  ]
+}
