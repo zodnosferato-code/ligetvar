@@ -57,6 +57,9 @@ A műfaj (Tokimeki Memorial, Persona-szerű időbeosztás, Stardew-szerű ajánd
 - Hetente 3 szabad sáv (délelőtt, délután, este).
 - Egy sáv = egy fő akció.
 - A gyógytorna és a fizetés nem fogyaszt sávot.
+- Négy kemény sáv után pihenő kell. Kemény sáv a látogatás, a munka, a minijáték és a randi. A fotel lenullázza.
+- Randi és a Polc egy műszakot kér előbb: MOHU vagy kérdőív. A látogatás ettől nem függ.
+- A közös szakaszban, a lány saját helyén, van villanás (4. hét, bizalom 1) és könnyű csók (6. hét, bizalom 2). A 7–8. héten bizalom 3-nál egy mélyebb jelenet is elfér. A vágy beteljesítése a zárt útvonal 14. hete.
 - Túl sok munka egy héten fáradtságot okoz (következő beszélgetések enyhén rosszabbak).
 - A lányok órarendje korlátozza, mikor érhetők el.
 

@@ -28,6 +28,21 @@ A lány fázisa (`unknown` → `fulfilled`) nem tárolt mező. A `girlPhase()` a
 6. 8. hét zárása: egyedül, egy lány, vagy járható pár. Rebeka + Boglárka nem zárható, és ha párként mondod, Boglárka bizalma kettővel esik.
 7. 16. hét: igaz, csendes, törött, páros, távol, egyedül vagy botrány.
 
+## Látható szabályok
+
+Ezek a tervezőn és a Polcon ki vannak írva. A teszt is ezeket várja.
+
+| Szabály | Mit csinál | Hol látszik |
+| --- | --- | --- |
+| Ismétlés | Az első beszélgetés ad pontot, a második feleannyit, a harmadik már nem. Bizalmat csak új jelenet nagyon jó válasza ad. | Tervező, 1–8. hét |
+| Pihenő | Négy kemény sáv (látogatás, munka, minijáték, randi) után csak a fotel nyílik. A hétfő egyet enged. | Tervező, ha a fáradtság 3 vagy 4 |
+| Műszak | Randi és a Polc zárva, amíg egy MOHU-kör vagy egy kérdőív le nem ment. A látogatás nem vár erre. | Tervező a 9. héttől, Polc |
+| Közös szakasz | 4. héttől villanás, 6. héttől könnyű csók, 7–8. héten bizalom 3-nál egy mélyebb jelenet. A lány saját helyén is, nem csak a lakásban. | A látogatás jelenete |
+| Zárás | 8. hét vége. Közelség 30, bizalom 2, kockázat 80 alatt. Enélkül a 9. hét utáni mély jelenetek nem jönnek. | Útvonalzár |
+| Mély jelenet | 9. héttől a zárt útvonalon, 11. héttől a teljes jelenetek, 14. héttől a vágy beteljesítése, ha a bizalom 4 és a közelség 55. | A saját helye vagy a lakosztály |
+
+A lány arca alatt a fázisa áll: ismeretlen, bemutatkozott, melegszik, magán, közeli, jelölt, útvonal, beteljesült, törés.
+
 Az intim lépcső flag-ekben él (`hatar`, `flag_desire_fulfill`). A párbeszéd nem tartalmaz explicit szöveget.
 
 ## Amit a motor szándékosan nem tárol külön

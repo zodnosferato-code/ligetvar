@@ -49,9 +49,9 @@ function beat(id: string): { locations: LocationId[]; minWeek: number; minTrust?
   if (id.endsWith("_react") || id.endsWith("_intro")) return null;
   if (id.includes("het8")) return { locations: ["classroom"], minWeek: 7, maxWeek: 8, priority: 75 };
   if (id.includes("yield") || id.includes("rule_break") || id.includes("body_praise") || id.includes("slow_explore") || id.includes("intimate"))
-    return { locations: ["apartment", "bekas"], minWeek: 9, minTrust: 4, priority: 60 };
-  if (id.includes("kiss")) return { locations: ["apartment"], minWeek: 6, minTrust: 2, priority: 45 };
-  if (id.includes("flash")) return { locations: ["classroom"], minWeek: 4, minTrust: 1, priority: 32 };
+    return { locations: ["apartment", "holdkor", "library", "department"], minWeek: 7, maxWeek: 8, minTrust: 3, priority: 55 };
+  if (id.includes("kiss")) return { locations: ["apartment", "holdkor", "library", "department"], minWeek: 6, maxWeek: 8, minTrust: 2, priority: 36 };
+  if (id.includes("flash")) return { locations: ["classroom", "holdkor", "library", "department"], minWeek: 4, maxWeek: 8, minTrust: 1, priority: 28 };
   if (id.includes("lakas")) return { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 };
   if (id.includes("tanterem")) return { locations: ["classroom"], minWeek: 2, priority: 18 };
   if (id.includes("konyvtar") || id.includes("jegyzet")) return { locations: ["library"], minWeek: 2, priority: 16 };
