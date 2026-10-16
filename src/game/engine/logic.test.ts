@@ -16,15 +16,26 @@ import {
   resolveJob,
   routeOptions,
   visibleActions,
+  actionStatus,
 } from "./logic.ts";
+import { ACTIONS } from "../content/catalog.ts";
 import type { GameState, RouteId, SceneState } from "./types.ts";
+import rebeka1 from "../../../dialogues/part1/rebeka.json" with { type: "json" };
+import boglarka1 from "../../../dialogues/part1/boglarka.json" with { type: "json" };
+import greta1 from "../../../dialogues/part1/greta.json" with { type: "json" };
+import rebeka2 from "../../../dialogues/part2/rebeka.json" with { type: "json" };
+import boglarka2 from "../../../dialogues/part2/boglarka.json" with { type: "json" };
+import greta2 from "../../../dialogues/part2/greta.json" with { type: "json" };
+import rebeka3 from "../../../dialogues/part3/rebeka.json" with { type: "json" };
+import boglarka3 from "../../../dialogues/part3/boglarka.json" with { type: "json" };
+import greta3 from "../../../dialogues/part3/greta.json" with { type: "json" };
 
 function withScene(state: GameState, nodeId: string): GameState {
   const scene: SceneState = { node: NODES[nodeId]!, location: "holdkor", source: "repeat" };
   return { ...state, phase: "scene", scene };
 }
 
-const QUALITY = ["bad", "risky", "good", "very_good"];
+const QUALITY = ["very_bad", "bad", "risky", "good", "very_good"];
 
 function playSemester(start: GameState, lock: (state: GameState) => RouteId, style: "visit" | "rest" = "visit"): GameState {
   let state = start;
@@ -58,9 +69,19 @@ function playSemester(start: GameState, lock: (state: GameState) => RouteId, sty
     }
     if (state.phase === "planner") {
       const open = visibleActions(state).filter((entry) => entry.ok);
-      if (!open.length) throw new Error(`no action in week ${state.week} slot ${state.slot}`);
-      const order = (style === "rest" ? ["stat", "job", "minigame", "visit", "date"] : ["visit", "date", "job", "stat", "minigame"]) as const;
-      const picked = order.map((kind) => open.find((entry) => entry.action.kind === kind)).find(Boolean) ?? open[0]!;
+      if (!open.length) throw new Error(`no action in week ${state.week} slot ${state.slot} strain ${state.strain}`);
+      const rest = open.find((entry) => entry.action.id.startsWith("rest"));
+      const job = open.find((entry) => entry.action.kind === "minigame");
+      const order = style === "rest"
+        ? (["stat", "job", "minigame", "visit", "date"] as const)
+        : (["visit", "date", "job", "stat", "minigame"] as const);
+      let picked =
+        style === "visit" && (state.workShifts ?? 0) < 1 && job
+          ? job
+          : style === "visit" && rest && (state.strain ?? 0) >= 3
+            ? rest
+            : order.map((kind) => open.find((entry) => entry.action.kind === kind)).find(Boolean);
+      picked = picked ?? rest ?? open[0]!;
       state = chooseAction(state, picked.action.id);
       continue;
     }
@@ -112,7 +133,8 @@ describe("Ligetvár engine", () => {
     assert.equal(late.girls.greta.trust, 4);
 
     const end = createInitial("Márton", 5, "boglarka");
-    assert.equal(end.phase, "ending");
+    assert.equal(end.phase, "scene");
+    assert.equal(end.scene?.node.id, "boglarka_ending_true");
     assert.equal(evaluateEnding(end).id, "true");
 
     const pair = createInitial("Márton", 5, "boglarka_greta");
@@ -273,5 +295,44 @@ describe("Ligetvár engine", () => {
     assert.notEqual(social.route, "none");
     assert.ok(social.seen.length > 0);
     assert.ok(evaluateEnding(social).title.length > 0);
+    assert.ok(social.workShifts >= 1);
+    assert.ok(social.seen.some((id) => id.includes("part2")));
+  });
+
+  it("loads every written dialogue, including part 2 and part 3", () => {
+    const packs = [rebeka1, boglarka1, greta1, rebeka2, boglarka2, greta2, rebeka3, boglarka3, greta3];
+    for (const pack of packs) {
+      for (const raw of pack.nodes) {
+        const node = NODES[raw.id];
+        assert.ok(node, raw.id);
+        assert.equal(node.text.startsWith("dialogue."), false, raw.id);
+        for (const choice of node.choices) assert.equal(choice.text.startsWith("dialogue."), false, `${raw.id}:${choice.id}`);
+      }
+    }
+  });
+
+  it("requires rest before another push, and a minigame before a date", () => {
+    const visit = ACTIONS.find((action) => action.id === "department")!;
+    const rest = ACTIONS.find((action) => action.id === "rest-m")!;
+    let tired = createInitial("Márton");
+    tired.strain = 4;
+    assert.equal(actionStatus(tired, visit).ok, false);
+    assert.equal(actionStatus(tired, rest).ok, true);
+    tired = chooseAction(tired, "rest-m");
+    assert.equal(tired.strain, 0);
+
+    const date = ACTIONS.find((action) => action.id === "date-peron")!;
+    let dating = createInitial("Márton");
+    dating.week = 9;
+    dating.slot = 2;
+    dating.route = "rebeka";
+    dating.girls.rebeka.trust = 3;
+    dating.girls.rebeka.closeness = 50;
+    assert.equal(actionStatus(dating, date).ok, false);
+    dating = resolveJob({ ...dating, phase: "minigame", minigame: "brick" }, "brick", 8000);
+    assert.equal(dating.workShifts, 1);
+    dating.phase = "planner";
+    dating.scene = null;
+    assert.equal(actionStatus(dating, date).ok, true);
   });
 });

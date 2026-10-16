@@ -180,6 +180,8 @@ export interface GameState {
   brickWeek: number;
   bekasThisWeek: boolean;
   riskSoothed: boolean;
+  strain: number;
+  workShifts: number;
   snap: Snap;
   dossier: GirlId | null;
 }

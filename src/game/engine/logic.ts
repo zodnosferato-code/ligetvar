@@ -80,6 +80,8 @@ export function createInitial(name: string, stage: StageId = 1, route: RouteId =
     brickWeek: 0,
     bekasThisWeek: false,
     riskSoothed: false,
+    strain: 0,
+    workShifts: 0,
     snap: { money: 0, risk: 0, closeness: { rebeka: 0, boglarka: 0, greta: 0 }, trust: { rebeka: 0, boglarka: 0, greta: 0 } },
     dossier: null,
   };
@@ -123,10 +125,10 @@ function openStage(state: GameState, stage: StageId, route: RouteId) {
   state.route = picked;
   if (picked === "boglarka_greta" || picked === "rebeka_greta") addFlag(state.flags, "par_oszinte");
   if (stage === 5) {
-    state.phase = "ending";
     for (const girl of routedGirls(picked)) {
       state.girls[girl].flags = [...REQUIRED_FLAGS[girl], "hatar"];
     }
+    openEnding(state);
   }
 }
 
@@ -310,7 +312,7 @@ function advance(state: GameState): GameState {
     next.doingPhysio = false;
     next.rolled = false;
     if (next.week === 8 && next.route === "none") next.phase = "route";
-    else if (next.week >= 16) next.phase = "ending";
+    else if (next.week >= 16) openEnding(next);
     else next.phase = "summary";
     return next;
   }
@@ -329,6 +331,19 @@ function advance(state: GameState): GameState {
   next.phase = "scene";
   next.scene = { node: physioNode(present), location: "classroom", source: "physio" };
   return next;
+}
+
+function openEnding(state: GameState) {
+  const ending = evaluateEnding(state);
+  const girl = ending.girls[0];
+  const node = girl ? NODES[`${girl}_ending_${ending.id}`] : undefined;
+  if (!node) {
+    state.phase = "ending";
+    state.scene = null;
+    return;
+  }
+  state.phase = "scene";
+  state.scene = { node, location: ending.location, source: "ending" };
 }
 
 function rumorGate(state: GameState): boolean {
@@ -370,7 +385,7 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   const nth = speaker ? state.talkCounts[speaker] : 0;
   if (scene.node.kind === "repeat" && speaker) effect = scaleRepeat(effect, nth);
   effect = fatigue(effect, state.energy);
-  const continued = scene.source === "follow";
+  const continued = scene.source === "follow" || scene.source === "ending";
   const cost = scene.node.cost ?? (continued || scene.node.speaker === "narrator" ? 0 : 8);
   effect.energy = (effect.energy ?? 0) - cost;
 
@@ -389,10 +404,20 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   if (choice.followNode) {
     const node = NODES[choice.followNode];
     if (node) {
-      next.scene = { node, location: scene.location, source: "follow", expression: choice.reaction };
+      next.scene = {
+        node,
+        location: scene.location,
+        source: scene.source === "ending" ? "ending" : "follow",
+        expression: choice.reaction,
+      };
       next.phase = "scene";
       return next;
     }
+  }
+  if (scene.source === "ending") {
+    next.phase = "ending";
+    next.scene = null;
+    return next;
   }
   if (choice.follow) {
     const node = openGirlTalk(next, choice.follow, "classroom");
@@ -408,6 +433,12 @@ export function actionStatus(state: GameState, action: ActionDef): { ok: boolean
   if (state.phase !== "planner") return { ok: false, reason: "Most nem választhatsz sávot." };
   const slotName = (["morning", "afternoon", "evening"] as const)[state.slot]!;
   if (!action.slots.includes(slotName)) return { ok: false, reason: "Más napszak." };
+  if ((state.strain ?? 0) >= 4 && !action.id.startsWith("rest")) {
+    return { ok: false, reason: "Pihenj egy sávot, mielőtt újra nekilátsz." };
+  }
+  if (action.kind === "date" && (state.workShifts ?? 0) < 1) {
+    return { ok: false, reason: "A randi előtt kell egy műszak: palack vagy kérdőív." };
+  }
   if (action.once && action.node && state.seen.includes(action.node)) return { ok: false, reason: "Ez a randi már megvolt." };
   if (action.kind === "date" && action.id === "bekas") {
     if (state.week < 9 || state.route === "none" || state.route === "alone") return { ok: false, reason: "A tó a zárt útvonalon nyílik." };
@@ -442,9 +473,11 @@ export function chooseAction(state: GameState, actionId: string): GameState {
   if (!status.ok) return { ...state, lastNote: status.reason };
   if (action.kind === "minigame") {
     const id = action.id.startsWith("mohu") ? "mohu" : "brick";
-    return { ...state, phase: "minigame", minigame: id, lastNote: "" };
+    return { ...state, phase: "minigame", minigame: id, strain: (state.strain ?? 0) + 1, lastNote: "" };
   }
   let next = structuredClone(state);
+  if (action.id.startsWith("rest")) next.strain = 0;
+  else if (action.kind === "visit" || action.kind === "date" || action.kind === "job") next.strain = (next.strain ?? 0) + 1;
   if (action.kind === "date") {
     const routed = GIRLS.filter((g) => girlOnRoute(next.route, g) && next.girls[g].anger < 4);
     const focus = action.girl ?? routed[next.week % Math.max(1, routed.length)] ?? null;
@@ -532,6 +565,7 @@ export function speakHonest(state: GameState, girl: GirlId): GameState {
 
 export function buyGift(state: GameState, giftId: string, price: number): GameState {
   if (state.money < price) return { ...state, lastNote: "A Polc nem hitelez." };
+  if ((state.workShifts ?? 0) < 1) return { ...state, lastNote: "A Polc a műszak után nyílik." };
   const next = structuredClone(state);
   next.money -= price;
   next.inventory[giftId] = (next.inventory[giftId] ?? 0) + 1;
@@ -618,6 +652,7 @@ export function resolveJob(state: GameState, kind: "mohu" | "brick", rawPay: num
     if (rawPay >= 14000) next.presence = clamp(next.presence + 1, 0, 10);
   }
   next.money += pay;
+  next.workShifts = (next.workShifts ?? 0) + 1;
   next.minigame = null;
   next.lastNote = `A sáv ${pay.toLocaleString("hu-HU")} Ft-ot hozott.`;
   next.phase = "scene";
@@ -735,6 +770,7 @@ export function nextWeek(state: GameState): GameState {
   next.brickWeek = 0;
   next.bekasThisWeek = false;
   next.riskSoothed = false;
+  next.strain = Math.max(0, (next.strain ?? 0) - 1);
   next.invite = null;
   next.scene = null;
   next.doingPhysio = false;

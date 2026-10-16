@@ -197,5 +197,11 @@
   "dialogue.greta_rule_break_vg_react": "(A szoknya felhúzva.) Nincsenek szabályok. Te vezetsz. Használd.",
   "dialogue.greta_rule_break_vg_react.continue": "Vezetek. Használom.",
   "dialogue.greta_yield_vg_react": "(A bilincs a csuklón.) Engedelmeskedem. Te döntesz.",
-  "dialogue.greta_yield_vg_react.continue": "Döntök. Engedelmeskedsz."
+  "dialogue.greta_yield_vg_react.continue": "Döntök. Engedelmeskedsz.",
+  "dialogue.greta_lakas_irat_vg_react": "(Az iratok az asztalon.) A hiba az enyém. Nem fedjük el.",
+  "dialogue.greta_lakas_irat_vg_react.continue": "Nem fedjük el. Maradok.",
+  "dialogue.greta_lakas_irat_good_react": "(A lista a kezében marad.) Rendben. Az irat pontos.",
+  "dialogue.greta_lakas_irat_good_react.continue": "Pontosan. Folytasd.",
+  "dialogue.greta_tanterem_kozos_vg_react": "(A jelenléti ív.) A szabály mindenkire vonatkozik.",
+  "dialogue.greta_tanterem_kozos_vg_react.continue": "Mindenkire. Folytasd."
 }

@@ -10,6 +10,7 @@ import type {
   StoryEvent,
 } from "../engine/types.ts";
 import { mergePart1 } from "./part1.ts";
+import { mergeLater } from "./later.ts";
 
 function pub(file: string) {
   const env = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env;
@@ -1230,6 +1231,7 @@ export function chapterName(week: number): string {
 }
 
 mergePart1(NODES, STORY);
+mergeLater(NODES, STORY);
 
 export function assertCatalog() {
   for (const n of Object.values(NODES)) {
