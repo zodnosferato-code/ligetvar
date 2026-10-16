@@ -340,6 +340,15 @@ function Hearts({ value }: { value: number }) {
   );
 }
 
+function guideFor(state: { week: number; strain?: number; workShifts?: number; route: string }): string {
+  if ((state.strain ?? 0) >= 4) return "Fáradt vagy. Most csak a fotel nyílik.";
+  if ((state.strain ?? 0) >= 3) return "Még egy kemény sáv, aztán pihenő kell.";
+  if (state.week <= 8) return "A bizalom új jelenetből nő. Ismétlés a másodiknál felez, a harmadiknál már nem ad.";
+  if ((state.workShifts ?? 0) < 1) return "Randihoz és a Polchoz egy műszak kell: palack vagy kérdőív.";
+  if (state.route === "none" || state.route === "alone") return "Mély jelenet csak a zárt útvonalon jön.";
+  return "A mély jelenet a saját helyén vagy a lakosztályban nyílik, ha a bizalom megvan.";
+}
+
 function hotspotFor(action: ActionDef): "door" | "book" | "rest" | "bag" {
   if (action.id.startsWith("rest")) return "rest";
   if (action.id.startsWith("mohu") || action.id === "gym") return "bag";
@@ -410,9 +419,10 @@ function Planner() {
         </button>
         <div className="hub-faces">
           {GIRLS.map((id) => (
-            <button key={id} type="button" className="hub-face" onClick={() => showGirl(id)} aria-label={GIRL_NAME[id]}>
+            <button key={id} type="button" className="hub-face" onClick={() => showGirl(id)} aria-label={GIRL_NAME[id]} title={PHASE_LABEL[girlPhase(state, id)]}>
               <img src={PORTRAIT[id]} alt="" />
               <Hearts value={state.girls[id].trust} />
+              <em>{PHASE_LABEL[girlPhase(state, id)]}</em>
             </button>
           ))}
         </div>
@@ -429,7 +439,7 @@ function Planner() {
                 onClick={() => act(action.id)}
               >
                 <img src={action.icon} alt="" />
-                <span>{action.label}</span>
+                <span>{ok ? action.label : reason}</span>
               </button>
             ))}
           </div>
@@ -453,6 +463,7 @@ function Planner() {
           {state.energy}
         </span>
         {state.lastNote ? <p className="note">{state.lastNote}</p> : null}
+        <p className="hint">{guideFor(state)}</p>
       </div>
     </div>
   );
@@ -589,7 +600,9 @@ function Shop() {
           Polc
         </h2>
         <p className="serif" style={{ marginTop: 0 }}>
-          A rendelés nem visz sávot. Átadni csak találkozón lehet, egyet.
+          {(state.workShifts ?? 0) < 1
+            ? "A Polc a műszak után nyílik. Előbb egy palackos kör vagy egy kérdőív."
+            : "A rendelés nem visz sávot. Átadni csak találkozón lehet, egyet."}
         </p>
         {GIFTS.map((gift) => (
           <button
@@ -597,7 +610,7 @@ function Shop() {
             type="button"
             className="pixel-btn"
             style={{ width: "100%", marginBottom: "0.45rem" }}
-            disabled={state.money < gift.price}
+            disabled={state.money < gift.price || (state.workShifts ?? 0) < 1}
             onClick={() => buy(gift.id)}
           >
             <strong>{gift.name}</strong> · {formatFt(gift.price)}

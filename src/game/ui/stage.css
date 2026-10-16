@@ -689,6 +689,15 @@ img {
   height: 0.7rem;
 }
 
+.hub-face em {
+  display: block;
+  font-style: normal;
+  font-size: 0.55rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  padding: 0.1rem 0 0.15rem;
+}
+
 .hotspot-menu {
   position: absolute;
   left: 0;

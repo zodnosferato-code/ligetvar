@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { NODES, assertCatalog } from "../content/catalog.ts";
+import { ACTIONS, NODES, STORY, assertCatalog } from "../content/catalog.ts";
 import {
   applyChoice,
   choiceAvailable,
@@ -13,12 +13,12 @@ import {
   girlPhase,
   isCandidate,
   nextWeek,
+  openGirlTalk,
   resolveJob,
   routeOptions,
   visibleActions,
   actionStatus,
 } from "./logic.ts";
-import { ACTIONS } from "../content/catalog.ts";
 import type { GameState, RouteId, SceneState } from "./types.ts";
 import rebeka1 from "../../../dialogues/part1/rebeka.json" with { type: "json" };
 import boglarka1 from "../../../dialogues/part1/boglarka.json" with { type: "json" };
@@ -334,5 +334,29 @@ describe("Ligetvár engine", () => {
     dating.phase = "planner";
     dating.scene = null;
     assert.equal(actionStatus(dating, date).ok, true);
+  });
+
+  it("opens act 1 scenes at her own place before the route lock", () => {
+    const only = (id: string) => STORY.map((event) => event.id).filter((seen) => seen !== id);
+    let state = createInitial("Márton");
+    state.week = 4;
+    state.girls.rebeka.trust = 1;
+    state.seen = only("rebeka_early_flash");
+    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_early_flash");
+
+    state = createInitial("Márton");
+    state.week = 6;
+    state.girls.rebeka.trust = 2;
+    state.seen = only("rebeka_kiss_light");
+    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_kiss_light");
+
+    state = createInitial("Márton");
+    state.week = 7;
+    state.girls.boglarka.trust = 3;
+    state.seen = only("boglarka_slow_explore");
+    assert.equal(openGirlTalk(state, "boglarka", "library").id, "boglarka_slow_explore");
+
+    state.week = 9;
+    assert.notEqual(openGirlTalk(state, "boglarka", "library").id, "boglarka_slow_explore");
   });
 });
