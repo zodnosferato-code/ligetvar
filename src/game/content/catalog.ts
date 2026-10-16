@@ -788,7 +788,7 @@ add(
   node(
     "boglarka_route",
     "boglarka",
-    "Boglárka a gondnok jegyzeteit és a három mondaváltozatot teszi egymás mellé. „Az egyik szöveg szerint a harang elűzi a szarírt, a másik csak azt mondja, hogy megszakítja a hangutánzást. Ha rosszul választunk, valakit veszélybe küldhetünk. Segítesz úgy megfogalmazni a tervet, hogy a bizonytalanság is benne maradjon?”",
+    "Boglárka a gondnok jegyzeteit és a három mondaváltozatot teszi egymás mellé. „Az egyik szöveg szerint a harang elűzi a köpenyes árnyalakot, a másik csak azt állítja, hogy megszakítja a hangutánzást. Ha rosszul választunk, valakit veszélybe küldhetünk. Segítesz úgy megfogalmazni a tervet, hogy a bizonytalanság is benne maradjon?”",
     "story",
     [
       c(
@@ -1322,12 +1322,13 @@ const HORROR_EVENTS: HorrorEvent[] = [
   {
     minWeek: 3, maxWeek: 8, location: "holdkor",
     node: node("horror_shadow_frame", "narrator",
-      "A fotóműhely monitorán egy korábban észre sem vett részlet jelenik meg. A fák között agancsszerű forma áll, de a pocsolya tükröződése fél méterrel arrébb mutatja. A kép önmagában lehet expozíciós hiba. A fájl metaadatai viszont nem egyeznek azzal az idővel, amikor a gép órája szerint a felvétel készült.",
+      "A fotóműhely monitorán egy korábban észre sem vett részlet jelenik meg. A fák között magas, sötét köpenyes alak áll, kapucnija alatt nem látszik arc; a pocsolya csak a fákat tükrözi, őt nem. A kép önmagában lehet expozíciós hiba. A fájl metaadatai viszont nem egyeznek azzal az idővel, amikor a gép órája szerint a felvétel készült.",
       "story", [
         c("preserve", "Készítsünk ellenőrzőösszeget, másolatot és jegyzőkönyvet; az eredetit ne módosítsuk.", "very_good", { insight: 2, world: ["evidence_photo_preserved"] }, "bizonyítékmegőrzés"),
         c("compare", "Hasonlítsuk össze a másik két képpel, mielőtt következtetést vonunk le.", "good", { insight: 1 }, "összevetés"),
         c("post", "Tegyük közzé. Hadd döntse el a közönség, hogy szörny-e.", "bad", { risk: 7, world: ["evidence_photo_published"] }, "nyilvánosság")
-      ], "Esetjelentés — Egy fénykép tükröződése és időbélyege nem egyezik.")
+      ], "Esetjelentés — Egy fénykép tükröződése és időbélyege nem egyezik.", undefined, undefined,
+      "A kapucni mélyén csak egyetlen izzó vörös szem látszik; az arc és a test részletei teljesen rejtve maradnak · illusztráció hiányzik")
   },
   {
     minWeek: 4, maxWeek: 10, location: "department",
@@ -1362,7 +1363,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
   {
     minWeek: 8, maxWeek: 13, location: "library",
     node: node("horror_bell_clapper", "narrator",
-      "A régi leltár szerint a főiskola harangját egy baleset után leszerelték. A harangtest megvan, de a nyelve hiányzik; a kivétel dátuma egybeesik az egyik régi eltűnés hetével. A mondák nem egyeznek abban, hogy a harang elűzi-e a szarírt. Eszter vallomása alapján egyelőre csak annyi állítható: a tiszta, ismétlődő hang megszakíthatja az utánzást.",
+      "A régi leltár szerint a főiskola harangját egy baleset után leszerelték. A harangtest megvan, de a nyelve hiányzik; a kivétel dátuma egybeesik az egyik régi eltűnés hetével. A régi feljegyzések nem egyeznek abban, hogy a harang elűzi-e a köpenyes árnyalakot. Eszter vallomása alapján egyelőre csak annyi állítható: a tiszta, ismétlődő hang megszakíthatja az utánzást.",
       "story", [
         c("compare", "A leltárt vessük össze a gondnok jegyzeteivel; a harangot ne próbáljuk ki ember mellett.", "very_good", { insight: 2, calm: 1, world: ["bell_clapper_traced"] }, "források összevetése"),
         c("plan", "Készítsünk biztonságos próbát távol a park ösvényeitől.", "good", { insight: 1 }, "óvatos kísérlet"),
@@ -1382,12 +1383,13 @@ const HORROR_EVENTS: HorrorEvent[] = [
   {
     minWeek: 11, maxWeek: 15, location: "holdkor",
     node: node("horror_full_sighting", "narrator",
-      "A Holdkör hátsó ablakán át egy pillanatra teljes alak látszik a fák között. A szarír magasabb egy embernél, agancsai elakadnak a kapu felső ívében, de a teste nem mozdul velük együtt. Az árnyék előbb fordul meg, mint az alak. A felvétel homályos, de három különböző irányból ugyanaz a csend hallatszik vissza.",
+      "A Holdkör hátsó ablakán át egy pillanatra teljes alak látszik a fák között: magas, sötét köpenyt visel, arca a kapucni mélyén eltűnik. A szél megmozdítja a fákat, de a köpenye mozdulatlan; az árnyéka egy ütemmel a teste előtt fordul el. A nedves kövön nincs felismerhető tükörképe. A felvétel homályos, ezért önmagában nem bizonyít semmit, de három különböző irányból ugyanazt a hangtalan jelenlétet jelentik.",
       "story", [
         c("withdraw", "Rögzítsük az időt és a távolságot, majd vonuljunk vissza a kivilágított épületbe.", "very_good", { calm: 2, insight: 1, world: ["monster_sighting_verified"] }, "biztonságos visszavonulás"),
         c("compare", "Vessük össze a látottakat a korábbi képekkel, és ne állítsunk többet, mint amit a felvétel mutat.", "good", { insight: 1 }, "bizonyíték-összevetés"),
         c("approach", "Közelítsünk, hogy végre éles képet készíthessünk.", "bad", { risk: 12 }, "veszélyes közelítés")
-      ], "Esetjelentés — Három tanú ugyanarról az agancsos alakról számolt be.")
+      ], "Esetjelentés — Három tanú ugyanarról a köpenyes alakról számolt be.", undefined, undefined,
+      "Csak egyetlen izzó vörös szem látszik a kapucni sötétjében; sem az arc, sem a haj, sem a testalkat nem fedhető fel még · illusztráció hiányzik")
   },
   {
     minWeek: 12, maxWeek: 15, location: "department",
@@ -1402,7 +1404,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
   {
     minWeek: 13, maxWeek: 15, location: "courtyard",
     node: node("horror_last_trace", "narrator",
-      "Az eső után friss nyomok vezetnek a lezárt szárnyhoz, de egyik sem tart visszafelé. A gondnok régi jegyzete szerint a lény akkor zavarodik meg, ha az utánzott hang nem kap választ, és tiszta, ismétlődő hang szólal meg a közelében. Ez még nem győzelmi terv. Csak az első olyan feltevés, amelyet a fényképek, az iratok és a vallomások egyszerre támasztanak alá.",
+      "Az eső után friss nyomok vezetnek a lezárt szárnyhoz, de egyik sem tart visszafelé. A gondnok régi jegyzete szerint a köpenyes alak akkor veszti el a tájékozódását, ha az utánzott hang nem kap választ, és tiszta, ismétlődő hang szólal meg a közelében. Ez még nem győzelmi terv. Csak az első olyan feltevés, amelyet a fényképek, az iratok és a vallomások egyszerre támasztanak alá.",
       "story", [
         c("rehearse", "Próbáljuk el a visszavonulást és a jelzéseket nappal; a harang hangját csak a kijelölt ponton használjuk.", "very_good", { insight: 1, calm: 2, world: ["final_plan_rehearsed"] }, "finálé előtti próba"),
         c("delegate", "Osszuk ki a feladatokat, és mindenkinek legyen kijelölt társa.", "good", { calm: 1 }, "feladatmegosztás"),
@@ -1413,19 +1415,19 @@ const HORROR_EVENTS: HorrorEvent[] = [
   {
     minWeek: 3, maxWeek: 10, location: "courtyard",
     node: node(
-      "horror_satyr_attack_courtyard",
+      "horror_cloaked_attack_courtyard",
       "narrator",
-      "A nyugati udvaron a portás hangján szólít valaki két hallgatót. Amikor egyikük válaszolna, az agancsos, szatírszerű alak kilép a gesztenyefák közül, és elvágja a kapu felé vezető utat. Nem egyenesen rohan: az egyedül maradó célpont mozdulatait figyeli. Dr. Farkas Dénes, a biológiaoktató az ablakból látja a támadást, és a személyzeti vészcsengőhöz irányítja őket.",
+      "A nyugati udvaron a portás hangján szólít valaki két hallgatót. Amikor egyikük válaszolna, egy magas, köpenyes árnyalak válik le a gesztenyefák közti sötétségről, és elvágja a kapu felé vezető utat. A kapucni alatt nincs kivehető arc; az alak a csoportból leszakadó hallgatót figyeli, majd a hang felé fordul, mintha a válasz irányából tájékozódna. Dr. Farkas Dénes, a biológiaoktató az ablakból látja a támadást, és a személyzeti vészcsengőhöz irányítja őket.",
       "story",
       [
-        c("stay_together", "Tartsd együtt a két hallgatót, és a kivilágított porta felé hátráljatok.", "very_good", { risk: -8, calm: 1, world: ["satyr_attack_team_escape"] }, "együtt maradás"),
-        c("signal", "Használd a vészcsengőt, és jelentsétek be a helyszínt a portán.", "good", { presence: 1, risk: -4, world: ["satyr_attack_signal_used"] }, "vészjelzés"),
-        c("chase", "Válaszolj a hangnak, és indulj egyedül az alak után.", "bad", { risk: 12, world: ["satyr_attack_isolated"] }, "elszigetelődés")
+        c("stay_together", "Tartsd együtt a két hallgatót, és a kivilágított porta felé hátráljatok.", "very_good", { risk: -8, calm: 1, world: ["shadow_attack_team_escape"] }, "együtt maradás"),
+        c("signal", "Használd a vészcsengőt, és jelentsétek be a helyszínt a portán.", "good", { presence: 1, risk: -4, world: ["shadow_attack_signal_used"] }, "vészjelzés"),
+        c("chase", "Válaszolj a hangnak, és indulj egyedül az alak után.", "bad", { risk: 12, world: ["shadow_attack_isolated"] }, "elszigetelődés")
       ],
-      "Esetjelentés — Tanúvallomás készült az udvari szatírtámadásról.",
+      "Esetjelentés — Tanúvallomás készült az udvari támadásról, amelyben egy köpenyes árnyalak zárta el a menekülőutat.",
       0,
       "Dr. Farkas Dénes · biológiaoktató",
-      "Szatírtámadás az udvaron · illusztráció hiányzik"
+      "Sötét köpenyes sziluett; a kapucni alatt kizárólag egyetlen izzó vörös szem látható, minden más részlet rejtve marad · illusztráció hiányzik"
     ),
   },
   {
@@ -1433,12 +1435,12 @@ const HORROR_EVENTS: HorrorEvent[] = [
     node: node(
       "horror_teacher_folklore",
       "narrator",
-      "Dr. Sárközi Júlia, a néprajzkutató vendégoktató két, egymástól független régi feljegyzést tesz az asztalra. Mindkettő agancsos alakról beszél, amely ismerős hangon hívja félre az embereket. Júlia nem állítja, hogy a legenda bizonyíték, de megmutatja, mely részletek térnek vissza a mostani vallomásokban: a késleltetett hang, az elzárt út és az, hogy a lény az egyedül maradót követi.",
+      "Dr. Sárközi Júlia, a néprajzkutató vendégoktató két, egymástól független régi feljegyzést tesz az asztalra. Mindkettő magas, köpenyes éji alakról beszél, amely ismerős hangon hívja félre az embereket. Az egyik margóján az ember és a vérivó közötti származás lehetősége is szerepel, de Júlia hangsúlyozza: ez folklór, nem bizonyíték. A mostani vallomásokkal a hangutánzás, a tükörkép hiánya és az egyedül maradók célba vétele mutat közös mintát.",
       "story",
       [
-        c("compare", "Készítsünk forrásjegyzéket, és különítsük el a tanúvallomást a folklórtól.", "very_good", { insight: 2, calm: 1, world: ["satyr_folklore_documented"] }, "forráskritika"),
+        c("compare", "Készítsünk forrásjegyzéket, és különítsük el a tanúvallomást a folklórtól.", "very_good", { insight: 2, calm: 1, world: ["shadow_figure_lore_documented"] }, "forráskritika"),
         c("protect", "A korábbi tanú nevét hagyjuk ki; csak az ellenőrizhető részleteket használjuk.", "good", { calm: 1, world: ["teacher_witness_protected"] }, "tanúvédelem"),
-        c("dismiss", "A népmesék nem érnek semmit. Zárjuk le a kutatást.", "bad", { risk: 5, world: ["satyr_folklore_dismissed"] }, "elutasítás")
+        c("dismiss", "A népmesék nem érnek semmit. Zárjuk le a kutatást.", "bad", { risk: 5, world: ["shadow_figure_lore_dismissed"] }, "elutasítás")
       ],
       "Esetjelentés — Egy vendégoktató segített összevetni a folklórt és a tanúvallomásokat.",
       0,
@@ -1449,19 +1451,19 @@ const HORROR_EVENTS: HorrorEvent[] = [
   {
     minWeek: 8, maxWeek: 15, location: "peron",
     node: node(
-      "horror_satyr_attack_peron",
+      "horror_cloaked_attack_peron",
       "narrator",
-      "Az esti peron végéről a tanszéki ügyeletes hangja hív a sínek felé. Dr. Kerekes Áron rákiált a csoportodra, hogy ne induljatok a hang után, de az agancsos alak már megindult a sötétből. A peron lámpája villog, a menekülőút a szolgálati ajtó felé vezet. Az alak a válaszokra fordul, mintha a hang irányából tájékozódna.",
+      "Az esti peron végéről a tanszéki ügyeletes hangja hív a sínek felé. Dr. Kerekes Áron rákiált a csoportodra, hogy ne induljatok a hang után, de a sötét köpenyes alak már előlép a ködből. A kapucni alatt nincs arc, a lámpafény pedig mintha elnyelné a ruháján. A menekülőút a szolgálati ajtó felé vezet; az alak minden válaszra a hang irányába fordul.",
       "story",
       [
-        c("service_door", "Ne feleljetek a hívásra; együtt menjetek be a szolgálati helyiségbe.", "very_good", { calm: 2, risk: -8, world: ["satyr_attack_peron_escape"] }, "együtt menekülés"),
-        c("alarm", "Riaszd a peron személyzetét, és maradjatok a fényben.", "good", { presence: 1, risk: -4, world: ["satyr_attack_peron_alarm"] }, "riasztás"),
-        c("answer", "Válaszolj a saját neveddel, hátha kiderül, honnan jön a hang.", "very_bad", { risk: 15, world: ["satyr_attack_peron_lured"] }, "a hang követése")
+        c("service_door", "Ne feleljetek a hívásra; együtt menjetek be a szolgálati helyiségbe.", "very_good", { calm: 2, risk: -8, world: ["shadow_attack_peron_escape"] }, "együtt menekülés"),
+        c("alarm", "Riaszd a peron személyzetét, és maradjatok a fényben.", "good", { presence: 1, risk: -4, world: ["shadow_attack_peron_alarm"] }, "riasztás"),
+        c("answer", "Válaszolj a saját neveddel, hátha kiderül, honnan jön a hang.", "very_bad", { risk: 15, world: ["shadow_attack_peron_lured"] }, "a hang követése")
       ],
       "Esetjelentés — Újabb támadást jelentettek az esti peronról.",
       0,
       "Dr. Kerekes Áron · ügyeletes oktató",
-      "Szatírtámadás a peronon · illusztráció hiányzik"
+      "Ködfátyolos, sötét köpenyes sziluett; a kapucni alatt egyetlen izzó vörös szem látszik, az arc nem vehető ki · illusztráció hiányzik"
     ),
   },
   {
@@ -1481,12 +1483,30 @@ const HORROR_EVENTS: HorrorEvent[] = [
       "Dr. Kerekes Áron · ügyeletes oktató",
       "Dr. Kerekes Áron · portrékép hiányzik"
     ),
+  },
+  {
+    minWeek: 14, maxWeek: 16, location: "department",
+    node: node(
+      "horror_half_vampire_reveal",
+      "narrator",
+      "Dr. Kerekes Áron bezárja a tanszéki irattár ajtaját, aztán egy régi, pecsétes jegyzőkönyvet tesz eléd. A tanúk leírása, a tükröződés nélküli felvételek és a vérrel kapcsolatos régi kórlap ugyanarra mutatnak: a köpenyes alak nem egyszerűen ember vagy teljes vámpír, hanem félvér vámpír — emberi és vámpírvérből született. Amikor a kapucni végre lecsúszik, nem elegáns vagy csábító alakot láttok: rövid fekete haj, ritkás bajusz, kissé túlsúlyos testalkat és durva, kevéssé megnyerő arcvonások. A külső esetlensége semmit sem vesz el a veszélyéből. Nappal is járhat, de a gyorsasága és az éhsége nem emberi. A hangutánzást arra használja, hogy elszigetelje a kiszemelt hallgatót. A tanúk vallomásaiból az is kiderül, hogy szexuális vágya betegesen felnőtt nőkre irányul, de vágyát nem kölcsönösségként, hanem birtoklásként és kényszerként éli meg; a visszautasítás sem állítaná meg. Nem pusztán vérre szomjazik, hanem a félelem és a másik fölötti uralom érzésére is. Ez nem csábítás és nem romantika, hanem fenyegetés. Első a lehetséges áldozatok biztonsága.",
+      "story",
+      [
+        c("protect", "Biztosítsuk a tanúkat, alakítsunk ki páros kíséretet és vészjelzést; senki ne maradjon vele egyedül.", "very_good", { insight: 2, calm: 2, risk: -8, world: ["half_vampire_reveal_documented", "survivors_protected"] }, "tanúvédelem és biztonsági terv"),
+        c("copy", "Készítsünk ellenőrzött másolatot a jegyzőkönyvről, és adjuk át független vizsgálónak.", "good", { insight: 1, risk: -3, world: ["half_vampire_records_copied"] }, "bizonyítékmegőrzés"),
+        c("bait", "Csaljuk egyedül a szolgálati folyosóra; majd ott kiderül, mire készül.", "bad", { risk: 15, world: ["half_vampire_bait_attempted"] }, "veszélyes elszigetelődés")
+      ],
+      "Esetjelentés — A köpenyes alak félvér vámpír, akinek ragadozó, kényszerítő szándékát dokumentálták.",
+      0,
+      "Dr. Kerekes Áron · ügyeletes oktató",
+      "A leleplezett félvér vámpír: sötét köpeny, rövid fekete haj, ritkás bajusz, kissé túlsúlyos testalkat, durva és kevéssé megnyerő arc · illusztráció hiányzik"
+    ),
   }
 ];
 
 export function horrorNode(week: number, seen: string[], seed: number): { node: DialogueNode; location: LocationId } | null {
   // Keep missed events as catch-up candidates after their intended window. Otherwise a
-  // low roll count could permanently skip important cases and the late satyr attacks.
+  // low roll count could permanently skip important cases and the late cloaked-figure attacks.
   const unseen = HORROR_EVENTS.filter(
     (event) => week >= event.minWeek && !seen.includes(event.node.id)
   );
@@ -1510,20 +1530,20 @@ export function weeklyHorrorSummary(week: number): { title: string; text: string
   const beats: Array<{ title: string; text: string }> = [
     { title: "Egy hiányzó negyvenhárom perc", text: "Varga Lilla, tizenkilenc éves biológushallgató a parkban tűnt el rövid időre, majd úgy került elő, hogy az út egy részére nem emlékezett. A hivatalos jelentés tájékozódási zavart említ; a hang, amely őt az ösvényre csalta, a szobatársa hangja volt." },
     { title: "A hang, amelynek nem lett volna szabad ott lennie", text: "Lilla szobatársa igazolja, hogy nem hagyta el a kollégiumot. A vallomás ezért nem magyarázza meg az esetet — csak azt bizonyítja, hogy valami ismerős hangon szólíthatta a hallgatót." },
-    { title: "Az első ellentmondó felvétel", text: "Rebeka fényképén az agancsos forma és a tükröződés nem ugyanoda esik. A kép lehet hibás, ezért az eredeti fájl és a metaadatok megőrzése fontosabb, mint a gyors következtetés." },
+    { title: "Az első ellentmondó felvétel", text: "Rebeka fényképén egy köpenyes alak áll a fák között, de a pocsolya csak a fákat tükrözi. Lehet optikai vagy technikai hiba; az eredeti fájl és a metaadatok megőrzése fontosabb a gyors következtetésnél." },
     { title: "Egy második tanú", text: "Egy újabb hallgató ugyanazt a hangutánzó jelenséget írja le. A tanúvallomást csak engedéllyel lehet felhasználni; a főiskolán közben továbbra is rémhírként kezelik az ügyet." },
     { title: "A régi akták", text: "Tóth Júlia korábbi esete azonos mintát mutat: rövid eltűnés, hiányos emlékezet, majd a jelentés átminősítése. Az időbélyeg módosítása arra utal, hogy az intézményi nyilvántartás nem megbízható." },
     { title: "Aki már egyszer hallotta", text: "Németh Eszter, volt hallgató, évekkel korábbi találkozásról beszél. Nem tudja leírni a lényt, de emlékszik a saját hangjára a fák között és a válasz késleltetett visszhangjára." },
     { title: "A hiányzó részlet", text: "A lezárt szárny rajzai és a régi térkép nem fedik egymást. Az épület nyugati fala mögött olyan átjáró húzódhat, amelyet a jelenlegi tervrajzok már nem jelölnek." },
-    { title: "A harang leltári nyoma", text: "A harangtest megvan, a nyelve hiányzik. A leszerelés dátuma egybeesik egy régi hallgatói incidenssel. A folklór nem bizonyít fegyvert, de a hang megszakíthatja a lény utánzását." },
-    { title: "A zárt útvonal", text: "A nyomozás immár egy lezárt szervizalagút felé tart. A csoport felismeri, hogy a szarír akkor a legveszélyesebb, amikor valakit leválaszt a többiekről; a biztonsági szabályokat ezért még a belépés előtt rögzíteni kell." },
+    { title: "A harang leltári nyoma", text: "A harangtest megvan, a nyelve hiányzik. A leszerelés dátuma egybeesik egy régi hallgatói incidenssel. A feljegyzések nem bizonyítják, hogy a harang árt az alaknak, de tiszta hangja megszakíthatja a hangutánzást." },
+    { title: "A zárt útvonal", text: "A nyomozás immár egy lezárt szervizalagút felé tart. A köpenyes árnyalak akkor a legveszélyesebb, amikor valakit leválaszt a többiekről; a biztonsági szabályokat ezért még a belépés előtt rögzíteni kell." },
     { title: "A főhős hangja a rossz helyről", text: "Egy folyosói megszólítás a főhős hangját utánozza, miközben ő látható helyen áll. A csapat megtanulja: ismerős hang nem jelent megbízható hívást, és senki nem indulhat el egyedül." },
-    { title: "Nyomok a fal túloldalán", text: "A lezárt ajtónál friss karcolások és megszakadó patanyomok jelennek meg. Nincs bizonyíték arra, hogy az ajtót kívülről kinyitották volna; az épület alaprajzát újra kell vizsgálni." },
-    { title: "Egy pillanatnyi teljes alak", text: "Három tanú ugyanabban az órában látja az agancsos alakot, de a beszámolók a mozgásáról eltérnek. Rebeka felvétele, Boglárka forrásai és Gréta iratai együtt teszik először ellenőrizhetővé a mintát." },
+    { title: "Nyomok a fal túloldalán", text: "A lezárt ajtónál friss, mély karcolások és fekete, hamuszerű por jelenik meg. Nincs bizonyíték arra, hogy az ajtót kívülről kinyitották volna; az épület alaprajzát és a fal mögötti üreget újra kell vizsgálni." },
+    { title: "Egy pillanatnyi teljes alak", text: "Három tanú ugyanabban az órában látja a magas, köpenyes alakot. Mindhárman említik, hogy a kapucni alatt nem volt kivehető arc, és az árnyék más ütemben mozdult, mint a test. Rebeka felvétele, Boglárka forrásai és Gréta iratai együtt teszik ellenőrizhetővé a mintát." },
     { title: "A jelentések közös mintája", text: "A régi és új ügyekben ugyanaz a szerkesztési nyom szerepel. Ez az eltussolást valószínűsíti, de önmagában nem bizonyítja, ki és milyen szándékkal módosította az iratokat." },
-    { title: "A hangutánzás szabálya", text: "A vallomások és a legendaváltozatok egy irányba mutatnak: a szarír az ismerős hanggal próbálja elszigetelni a célpontját. A hang elutasítása, a társas jelzés és a harang tiszta hangja együtt növelheti a túlélés esélyét." },
-    { title: "A finálé előtti utolsó nyom", text: "A nyomok a föld alatti üreghez vezetnek. A bizonyítékok már összeállnak, de a bejutás önmagában nem megoldás: visszavonulási út, kijelölt társ és a tanúk védelme nélkül a csapat újabb áldozatot kockáztat." },
-    { title: "A történet végén", text: "A finálé kimenetele attól függ, mennyire őriztétek meg a bizonyítékokat és a csapat bizalmát. A szarír létezése többé nem egyetlen hallgató emlékezetkiesésén múlik; az intézménynek most már a túlélők beszámolóira és az iratokra is választ kell adnia." }
+    { title: "A hangutánzás szabálya", text: "A vallomások és a régi feljegyzések egy irányba mutatnak: a köpenyes alak ismerős hanggal próbálja elszigetelni a célpontját. A hívás elutasítása, a társas jelzés és a harang tiszta hangja együtt növelheti a túlélés esélyét." },
+    { title: "A finálé előtti utolsó nyom", text: "A régi iratok már egy ember és vámpír közötti félvér származását említik, a felvételek pedig a tükörkép nélküli, köpenyes alakot mutatják. Ez erős nyom, de a bizonyítékokat még össze kell vetni; a csapat biztonsága nem függhet egyetlen feltevéstől." },
+    { title: "A történet végén", text: "A tanúvallomások és a régi iratok alapján a köpenyes alak félvér vámpír: hangutánzással szigeteli el a kiszemelt hallgatókat, vérre szomjazik, és ragadozó, kényszerítő szexuális vágyát a másik fölötti uralommal kapcsolja össze. Ez nem romantikus vonzalom, hanem fenyegetés. A finálé kimenetele attól függ, mennyire őriztétek meg a bizonyítékokat, a túlélők biztonságát és a csapat bizalmát." }
   ];
   return beats[Math.max(0, Math.min(beats.length - 1, Math.floor(week) - 1))]!;
 }
