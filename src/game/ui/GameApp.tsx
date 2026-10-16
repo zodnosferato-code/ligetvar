@@ -402,6 +402,22 @@ function Planner() {
   const showGirl = useGame((s) => s.showGirl);
   const [tray, setTray] = useState<"door" | "book" | "rest" | "bag" | null>(null);
   const home = state.slot === 2;
+  const roomBackground = home ? LOCATION_BG.apartment : LOCATION_BG.department;
+  const [roomAspect, setRoomAspect] = useState("16 / 9");
+  useEffect(() => {
+    let active = true;
+    const artwork = new Image();
+    artwork.onload = () => {
+      if (active && artwork.naturalWidth > 0 && artwork.naturalHeight > 0) {
+        setRoomAspect(`${artwork.naturalWidth} / ${artwork.naturalHeight}`);
+      }
+    };
+    artwork.src = roomBackground;
+    return () => {
+      active = false;
+      artwork.onload = null;
+    };
+  }, [roomBackground]);
   const actions = visibleActions(state).filter((row) => row.action.kind !== "date" || state.week >= 9);
   const groups = {
     door: actions.filter((row) => hotspotFor(row.action) === "door" && row.action.id !== "apartment"),
@@ -435,7 +451,7 @@ function Planner() {
       <Hud />
       <div
         className={`hub-room ${home ? "hub-home" : "hub-office"}`}
-        style={{ backgroundImage: `url(${home ? LOCATION_BG.apartment : LOCATION_BG.department})` }}
+        style={{ backgroundImage: `url(${roomBackground})`, aspectRatio: roomAspect }}
       >
         <div className="sky-window" aria-hidden>
           <i />
