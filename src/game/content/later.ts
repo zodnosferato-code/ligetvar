@@ -58,10 +58,10 @@ function toNode(raw: RawNode): DialogueNode {
 function schedule(id: string, girl: GirlId): Omit<StoryEvent, "id" | "node" | "girl" | "part"> | null {
   if (id.endsWith("_react") || id.includes("ending")) return null;
   const home = homeOf(girl);
-  if (id.endsWith("part2_intro")) return { locations: [home, "classroom"], minWeek: 9, minTrust: 2, priority: 72 };
-  if (id.includes("desire_fulfill")) return { locations: ["apartment", home], minWeek: 14, minTrust: 4, minClose: 55, priority: 90 };
-  if (id.includes("bekas")) return { locations: ["bekas", home], minWeek: 11, minTrust: 3, priority: 66 };
-  return { locations: ["apartment", home, "classroom"], minWeek: 11, minTrust: 3, priority: 64 };
+  if (id.endsWith("part2_intro")) return { locations: [home, "classroom"], minWeek: 10, minTrust: 3, priority: 72 };
+  if (id.includes("desire_fulfill")) return { locations: ["apartment", home], minWeek: 15, minTrust: 5, minClose: 65, priority: 90 };
+  if (id.includes("bekas")) return { locations: ["bekas", home], minWeek: 13, minTrust: 4, priority: 66 };
+  return { locations: ["apartment", home, "classroom"], minWeek: 12, minTrust: 4, priority: 64 };
 }
 
 export function mergeLater(nodes: Record<string, DialogueNode>, story: StoryEvent[]) {
