@@ -9,7 +9,11 @@
           "id": "accept",
           "text_key": "dialogue.boglarka.part3.true.accept",
           "quality": "very_good",
-          "effect": { "flags": ["ending_true_boglarka"] },
+          "effect": {
+            "flags": [
+              "ending_true_boglarka"
+            ]
+          },
           "reaction": "lágy_mosoly",
           "follow_node": "boglarka_ending_true_react"
         }
@@ -38,7 +42,11 @@
           "id": "accept",
           "text_key": "dialogue.boglarka.part3.quiet.accept",
           "quality": "good",
-          "effect": { "flags": ["ending_quiet_boglarka"] },
+          "effect": {
+            "flags": [
+              "ending_quiet_boglarka"
+            ]
+          },
           "reaction": "szegyenos"
         }
       ]
@@ -52,7 +60,11 @@
           "id": "accept",
           "text_key": "dialogue.boglarka.part3.broken.accept",
           "quality": "bad",
-          "effect": { "flags": ["ending_broken_boglarka"] },
+          "effect": {
+            "flags": [
+              "ending_broken_boglarka"
+            ]
+          },
           "reaction": "elrejtozik"
         }
       ]

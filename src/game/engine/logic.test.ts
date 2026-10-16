@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { existsSync } from "node:fs";
-import { ACTIONS, NODES, STORY, assertCatalog, illustrationFor, portraitFor, PORTRAIT } from "../content/catalog.ts";
+import { ACTIONS, NODES, STORY, assertCatalog, horrorNode, illustrationFor, portraitFor, PORTRAIT, weeklyHorrorSummary } from "../content/catalog.ts";
 import {
   applyChoice,
   choiceAvailable,
@@ -9,6 +9,7 @@ import {
   commitRoute,
   createInitial,
   evaluateEnding,
+  finishScene,
   giftResolution,
   giveGift,
   girlPhase,
@@ -199,11 +200,11 @@ describe("Ligetvár engine", () => {
     state = chooseAction(state, "holdkor");
     assert.equal(state.scene?.node.id, "rebeka_intro");
 
-    // Current dialogues/part1/rebeka.json awards +5 closeness and follows
-    // directly to rebeka_foto; the old synthetic *_vg_react node was removed.
+    // The rewritten dialogue rewards trust more than quick romantic closeness.
+    // The first answer should continue to the evidence-focused photo conversation.
     state = applyChoice(state, "very_good");
-    assert.equal(state.girls.rebeka.trust, 1);
-    assert.equal(state.girls.rebeka.closeness, 5);
+    assert.equal(state.girls.rebeka.trust, 2);
+    assert.equal(state.girls.rebeka.closeness, 1);
     assert.ok(state.girls.rebeka.flags.includes("rebeka_kor"));
     assert.ok(state.seen.includes("rebeka_intro"));
     assert.equal(state.energy, 70);
@@ -449,7 +450,7 @@ describe("Ligetvár engine", () => {
     assert.equal(door?.ok, true);
   });
 
-  it("opens act 1 scenes at her own place before the route lock", () => {
+  it("keeps optional romance behind the late investigation milestones", () => {
     const only = (id: string) => STORY.map((event) => event.id).filter((seen) => seen !== id);
     let state = applyChoice(createInitial("Márton"), "continue");
     state.week = 4;
@@ -463,17 +464,60 @@ describe("Ligetvár engine", () => {
     state.seen = only("boglarka_lakas");
     assert.equal(openGirlTalk(state, "boglarka", "apartment").id, "boglarka_lakas");
 
+    // A kiss is optional and cannot appear before the final evidence/relationship gate.
     state = createInitial("Márton");
-    state.week = 9;
+    state.week = 15;
     state.route = "rebeka";
     state.girls.rebeka.trust = 4;
-    state.seen = only("rebeka_intimate");
-    assert.equal(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
+    state.girls.rebeka.closeness = 60;
+    state.seen = only("rebeka_kiss");
+    assert.equal(openGirlTalk(state, "rebeka", "apartment").id, "rebeka_kiss");
 
     state.week = 8;
     state.girls.rebeka.trust = 3;
+    state.girls.rebeka.closeness = 45;
     state.route = "none";
-    assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
+    assert.notEqual(openGirlTalk(state, "rebeka", "apartment").id, "rebeka_kiss");
+  });
+});
+
+describe("campus horror story", () => {
+  it("offers victim cases and monster evidence independently of romance progress", () => {
+    const first = horrorNode(4, [], 4);
+    assert.ok(first);
+    assert.equal(first.node.id, "horror_lilla_report");
+    assert.ok(first.node.choices.length >= 2 && first.node.choices.length <= 4);
+    const second = horrorNode(4, [first.node.id], 4);
+    assert.ok(second);
+    assert.notEqual(second.node.id, first.node.id);
+    assert.match(weeklyHorrorSummary(1).text, /Varga Lilla/);
+    assert.match(weeklyHorrorSummary(12).text, /agancsos alak/);
+  });
+
+  it("can trigger a horror encounter when every relationship is still at zero", () => {
+    const state = applyChoice(createInitial("Márton"), "continue");
+    state.week = 4;
+    state.slot = 0;
+    state.rolled = false;
+    state.doingPhysio = false;
+    state.phase = "scene";
+    state.scene = { node: NODES["brief_open"]!, location: "courtyard", source: "brief" };
+    state.girls.rebeka.closeness = 0;
+    state.girls.boglarka.closeness = 0;
+    state.girls.greta.closeness = 0;
+
+    let encounter: GameState | null = null;
+    for (let remainder = 0; remainder < 97; remainder += 1) {
+      state.money = remainder;
+      const candidate = finishScene(state);
+      if (candidate.scene?.node.id.startsWith("horror_")) {
+        encounter = candidate;
+        break;
+      }
+    }
+    assert.ok(encounter, "a horror incident should not require closeness with a character");
+    assert.equal(encounter!.phase, "scene");
+    assert.equal(encounter!.rolled, true);
   });
 });
 

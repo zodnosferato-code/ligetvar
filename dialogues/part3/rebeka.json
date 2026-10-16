@@ -9,7 +9,11 @@
           "id": "accept",
           "text_key": "dialogue.rebeka.part3.true.accept",
           "quality": "very_good",
-          "effect": { "flags": ["ending_true_rebeka"] },
+          "effect": {
+            "flags": [
+              "ending_true_rebeka"
+            ]
+          },
           "reaction": "nyugalom",
           "follow_node": "rebeka_ending_true_react"
         }
@@ -38,7 +42,11 @@
           "id": "accept",
           "text_key": "dialogue.rebeka.part3.quiet.accept",
           "quality": "good",
-          "effect": { "flags": ["ending_quiet_rebeka"] },
+          "effect": {
+            "flags": [
+              "ending_quiet_rebeka"
+            ]
+          },
           "reaction": "semleges"
         }
       ]
@@ -52,7 +60,11 @@
           "id": "accept",
           "text_key": "dialogue.rebeka.part3.broken.accept",
           "quality": "bad",
-          "effect": { "flags": ["ending_broken_rebeka"] },
+          "effect": {
+            "flags": [
+              "ending_broken_rebeka"
+            ]
+          },
           "reaction": "hideg"
         }
       ]
