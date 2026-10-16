@@ -282,8 +282,10 @@ function node(
   choices: Choice[],
   journal?: string,
   cost?: number,
+  speakerLabel?: string,
+  artCaption?: string,
 ): DialogueNode {
-  return { id, speaker, text, kind, choices, journal, cost };
+  return { id, speaker, text, kind, choices, journal, cost, speakerLabel, artCaption };
 }
 
 const NODES: Record<string, DialogueNode> = {};
@@ -1406,14 +1408,99 @@ const HORROR_EVENTS: HorrorEvent[] = [
         c("delegate", "Osszuk ki a feladatokat, és mindenkinek legyen kijelölt társa.", "good", { calm: 1 }, "feladatmegosztás"),
         c("rush", "Nincs idő próbára, induljunk azonnal a föld alá.", "bad", { risk: 12 }, "kapkodás")
       ], "Esetjelentés — A finálé előtt összeállt a hangutánzás elleni biztonsági terv.")
+  },
+
+  {
+    minWeek: 3, maxWeek: 10, location: "courtyard",
+    node: node(
+      "horror_satyr_attack_courtyard",
+      "narrator",
+      "A nyugati udvaron a portás hangján szólít valaki két hallgatót. Amikor egyikük válaszolna, az agancsos, szatírszerű alak kilép a gesztenyefák közül, és elvágja a kapu felé vezető utat. Nem egyenesen rohan: az egyedül maradó célpont mozdulatait figyeli. Dr. Farkas Dénes, a biológiaoktató az ablakból látja a támadást, és a személyzeti vészcsengőhöz irányítja őket.",
+      "story",
+      [
+        c("stay_together", "Tartsd együtt a két hallgatót, és a kivilágított porta felé hátráljatok.", "very_good", { risk: -8, calm: 1, world: ["satyr_attack_team_escape"] }, "együtt maradás"),
+        c("signal", "Használd a vészcsengőt, és jelentsétek be a helyszínt a portán.", "good", { presence: 1, risk: -4, world: ["satyr_attack_signal_used"] }, "vészjelzés"),
+        c("chase", "Válaszolj a hangnak, és indulj egyedül az alak után.", "bad", { risk: 12, world: ["satyr_attack_isolated"] }, "elszigetelődés")
+      ],
+      "Esetjelentés — Tanúvallomás készült az udvari szatírtámadásról.",
+      0,
+      "Dr. Farkas Dénes · biológiaoktató",
+      "Szatírtámadás az udvaron · illusztráció hiányzik"
+    ),
+  },
+  {
+    minWeek: 4, maxWeek: 12, location: "library",
+    node: node(
+      "horror_teacher_folklore",
+      "narrator",
+      "Dr. Sárközi Júlia, a néprajzkutató vendégoktató két, egymástól független régi feljegyzést tesz az asztalra. Mindkettő agancsos alakról beszél, amely ismerős hangon hívja félre az embereket. Júlia nem állítja, hogy a legenda bizonyíték, de megmutatja, mely részletek térnek vissza a mostani vallomásokban: a késleltetett hang, az elzárt út és az, hogy a lény az egyedül maradót követi.",
+      "story",
+      [
+        c("compare", "Készítsünk forrásjegyzéket, és különítsük el a tanúvallomást a folklórtól.", "very_good", { insight: 2, calm: 1, world: ["satyr_folklore_documented"] }, "forráskritika"),
+        c("protect", "A korábbi tanú nevét hagyjuk ki; csak az ellenőrizhető részleteket használjuk.", "good", { calm: 1, world: ["teacher_witness_protected"] }, "tanúvédelem"),
+        c("dismiss", "A népmesék nem érnek semmit. Zárjuk le a kutatást.", "bad", { risk: 5, world: ["satyr_folklore_dismissed"] }, "elutasítás")
+      ],
+      "Esetjelentés — Egy vendégoktató segített összevetni a folklórt és a tanúvallomásokat.",
+      0,
+      "Dr. Sárközi Júlia · néprajzkutató",
+      "Dr. Sárközi Júlia · portrékép hiányzik"
+    ),
+  },
+  {
+    minWeek: 8, maxWeek: 15, location: "peron",
+    node: node(
+      "horror_satyr_attack_peron",
+      "narrator",
+      "Az esti peron végéről a tanszéki ügyeletes hangja hív a sínek felé. Dr. Kerekes Áron rákiált a csoportodra, hogy ne induljatok a hang után, de az agancsos alak már megindult a sötétből. A peron lámpája villog, a menekülőút a szolgálati ajtó felé vezet. Az alak a válaszokra fordul, mintha a hang irányából tájékozódna.",
+      "story",
+      [
+        c("service_door", "Ne feleljetek a hívásra; együtt menjetek be a szolgálati helyiségbe.", "very_good", { calm: 2, risk: -8, world: ["satyr_attack_peron_escape"] }, "együtt menekülés"),
+        c("alarm", "Riaszd a peron személyzetét, és maradjatok a fényben.", "good", { presence: 1, risk: -4, world: ["satyr_attack_peron_alarm"] }, "riasztás"),
+        c("answer", "Válaszolj a saját neveddel, hátha kiderül, honnan jön a hang.", "very_bad", { risk: 15, world: ["satyr_attack_peron_lured"] }, "a hang követése")
+      ],
+      "Esetjelentés — Újabb támadást jelentettek az esti peronról.",
+      0,
+      "Dr. Kerekes Áron · ügyeletes oktató",
+      "Szatírtámadás a peronon · illusztráció hiányzik"
+    ),
+  },
+  {
+    minWeek: 9, maxWeek: 15, location: "department",
+    node: node(
+      "horror_teacher_archive",
+      "narrator",
+      "Dr. Kerekes Áron nem hajlandó szóbeszédként elintézni az ügyet. Megmutat egy iratmásolatot: az egyik korábbi jelentés időbélyegét kétszer írták át, és a módosítás nem szerepel a naplóban. Kerekes szerint a dékáni iroda nem ad ki újabb dokumentumot hivatalos kérelem nélkül. A döntés most az, hogyan marad ellenőrizhető a bizonyíték, és hogyan kerülhető el egy bizonyítatlan személyes vád.",
+      "story",
+      [
+        c("audit", "Kérj hivatalos másolatot, őrizd meg az eredeti fájlt és a módosítási naplót.", "very_good", { insight: 2, calm: 1, world: ["teacher_records_preserved"] }, "bizonyítéklánc"),
+        c("copy", "Készíts külön, dátumozott biztonsági másolatot.", "good", { insight: 1, world: ["teacher_records_copied"] }, "biztonsági másolat"),
+        c("accuse", "Ne várj papírra; nevezd meg nyilvánosan a felelőst.", "bad", { risk: 10, world: ["teacher_records_accused"] }, "elhamarkodott vád")
+      ],
+      "Esetjelentés — Egy másik oktató segített feltárni az iratkezelési eltérést.",
+      0,
+      "Dr. Kerekes Áron · ügyeletes oktató",
+      "Dr. Kerekes Áron · portrékép hiányzik"
+    ),
   }
 ];
 
 export function horrorNode(week: number, seen: string[], seed: number): { node: DialogueNode; location: LocationId } | null {
-  const available = HORROR_EVENTS.filter((event) =>
-    week >= event.minWeek && week <= event.maxWeek && !seen.includes(event.node.id)
+  // Keep missed events as catch-up candidates after their intended window. Otherwise a
+  // low roll count could permanently skip important cases and the late satyr attacks.
+  const unseen = HORROR_EVENTS.filter(
+    (event) => week >= event.minWeek && !seen.includes(event.node.id)
   );
+  if (!unseen.length) return null;
+
+  const overdue = unseen
+    .filter((event) => week > event.maxWeek)
+    .sort((a, b) => a.maxWeek - b.maxWeek);
+  const earliestMissedDeadline = overdue[0]?.maxWeek;
+  const available = earliestMissedDeadline === undefined
+    ? unseen.filter((event) => week <= event.maxWeek)
+    : overdue.filter((event) => event.maxWeek === earliestMissedDeadline);
   if (!available.length) return null;
+
   const index = Math.abs(seed) % available.length;
   const selected = available[index]!;
   return { node: selected.node, location: selected.location };
