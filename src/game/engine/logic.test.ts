@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { existsSync } from "node:fs";
-import { ACTIONS, NODES, STORY, assertCatalog, illustrationFor, portraitFor, PORTRAIT } from "../content/catalog.ts";
+import { ACTIONS, NODES, STORY, assertCatalog, horrorNode, illustrationFor, portraitFor, PORTRAIT, weeklyHorrorSummary } from "../content/catalog.ts";
 import {
   applyChoice,
   choiceAvailable,
@@ -9,6 +9,7 @@ import {
   commitRoute,
   createInitial,
   evaluateEnding,
+  finishScene,
   giftResolution,
   giveGift,
   girlPhase,
@@ -474,6 +475,46 @@ describe("Ligetvár engine", () => {
     state.girls.rebeka.trust = 3;
     state.route = "none";
     assert.notEqual(openGirlTalk(state, "rebeka", "holdkor").id, "rebeka_intimate");
+  });
+});
+
+describe("campus horror story", () => {
+  it("offers victim cases and monster evidence independently of romance progress", () => {
+    const first = horrorNode(4, [], 4);
+    assert.ok(first);
+    assert.equal(first.node.id, "horror_lilla_report");
+    assert.ok(first.node.choices.length >= 2 && first.node.choices.length <= 4);
+    const second = horrorNode(4, [first.node.id], 4);
+    assert.ok(second);
+    assert.notEqual(second.node.id, first.node.id);
+    assert.match(weeklyHorrorSummary(1).text, /Varga Lilla/);
+    assert.match(weeklyHorrorSummary(12).text, /agancsos alak/);
+  });
+
+  it("can trigger a horror encounter when every relationship is still at zero", () => {
+    const state = applyChoice(createInitial("Márton"), "continue");
+    state.week = 4;
+    state.slot = 0;
+    state.rolled = false;
+    state.doingPhysio = false;
+    state.phase = "scene";
+    state.scene = { node: NODES["brief_open"]!, location: "courtyard", source: "brief" };
+    state.girls.rebeka.closeness = 0;
+    state.girls.boglarka.closeness = 0;
+    state.girls.greta.closeness = 0;
+
+    let encounter: GameState | null = null;
+    for (let remainder = 0; remainder < 97; remainder += 1) {
+      state.money = remainder;
+      const candidate = finishScene(state);
+      if (candidate.scene?.node.id.startsWith("horror_")) {
+        encounter = candidate;
+        break;
+      }
+    }
+    assert.ok(encounter, "a horror incident should not require closeness with a character");
+    assert.equal(encounter!.phase, "scene");
+    assert.equal(encounter!.rolled, true);
   });
 });
 
