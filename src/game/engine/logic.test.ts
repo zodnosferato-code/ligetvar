@@ -118,6 +118,38 @@ describe("Ligetvár engine", () => {
     }
   });
 
+  it("opens on a prologue and recaps the act breaks", () => {
+    const start = createInitial("Márton");
+    assert.equal(start.phase, "scene");
+    assert.equal(start.scene?.node.id, "brief_open");
+    assert.match(start.scene?.node.text ?? "", /^Márton vagy/);
+    assert.match(start.scene?.node.text ?? "", /Gréta/);
+    const monday = applyChoice(start, "continue");
+    assert.equal(monday.phase, "planner");
+    assert.equal(monday.week, 1);
+    assert.equal(monday.slot, 0);
+
+    let mid = createInitial("Márton");
+    mid.week = 8;
+    mid.route = "greta";
+    mid.scene = null;
+    mid = nextWeek(mid);
+    assert.equal(mid.week, 9);
+    assert.equal(mid.scene?.node.id, "brief_act2");
+    assert.match(mid.scene?.node.text ?? "", /Gréta van az útvonalon/);
+    const after = applyChoice(mid, "continue");
+    assert.equal(after.phase, "planner");
+    assert.equal(after.slot, 0);
+
+    let late = createInitial("Márton");
+    late.week = 15;
+    late.route = "alone";
+    late.scene = null;
+    late = nextWeek(late);
+    assert.equal(late.scene?.node.id, "brief_act3");
+    assert.match(late.scene?.node.text ?? "", /Egyedül zártad/);
+  });
+
   it("starts the semester with salary already paid", () => {
     const state = createInitial("  ");
     assert.equal(state.name, "Márton Kelényi");
@@ -162,7 +194,7 @@ describe("Ligetvár engine", () => {
   });
 
   it("applies a very good intro and remembers the flag", () => {
-    let state = createInitial("Márton");
+    let state = applyChoice(createInitial("Márton"), "continue");
     state.slot = 2;
     state = chooseAction(state, "holdkor");
     assert.equal(state.scene?.node.id, "rebeka_intro");
@@ -193,7 +225,7 @@ describe("Ligetvár engine", () => {
   });
 
   it("halves the second talk and zeroes the third", () => {
-    let state = createInitial("Márton");
+    let state = applyChoice(createInitial("Márton"), "continue");
     state = applyChoice(withScene(state, "rebeka_repeat_0"), "very_good");
     assert.equal(state.girls.rebeka.closeness, 4);
     assert.equal(state.girls.rebeka.trust, 0);
@@ -273,7 +305,7 @@ describe("Ligetvár engine", () => {
   });
 
   it("pays trust for the right gift once a week", () => {
-    let state = createInitial("Márton");
+    let state = applyChoice(createInitial("Márton"), "continue");
     state.girls.rebeka.flags.push("rebeka_kor");
     state.inventory.pen = 2;
     state = giveGift(withScene(state, "rebeka_repeat_0"), "pen");
@@ -291,7 +323,7 @@ describe("Ligetvár engine", () => {
     const state = nextWeek(createInitial("Márton"));
     assert.equal(state.week, 2);
     assert.equal(state.money, 165_000);
-    let stood = createInitial("Márton");
+    let stood = applyChoice(createInitial("Márton"), "continue");
     stood.slot = 2;
     stood.invite = "boglarka";
     stood.girls.boglarka.trust = 2;
@@ -353,7 +385,7 @@ describe("Ligetvár engine", () => {
   it("requires rest before another push, and a minigame before a date", () => {
     const visit = ACTIONS.find((action) => action.id === "department")!;
     const rest = ACTIONS.find((action) => action.id === "rest-m")!;
-    let tired = createInitial("Márton");
+    let tired = applyChoice(createInitial("Márton"), "continue");
     tired.strain = 4;
     assert.equal(actionStatus(tired, visit).ok, false);
     assert.equal(actionStatus(tired, rest).ok, true);
@@ -361,7 +393,7 @@ describe("Ligetvár engine", () => {
     assert.equal(tired.strain, 0);
 
     const date = ACTIONS.find((action) => action.id === "date-peron")!;
-    let dating = createInitial("Márton");
+    let dating = applyChoice(createInitial("Márton"), "continue");
     dating.week = 9;
     dating.slot = 2;
     dating.route = "rebeka";
@@ -402,7 +434,7 @@ describe("Ligetvár engine", () => {
     }
     assert.equal(illustrationFor("rebeka_intro", "rebeka", "none"), null);
 
-    let called = createInitial("Márton");
+    let called = applyChoice(createInitial("Márton"), "continue");
     called.girls.greta.trust = 2;
     called = inviteGirl(called, "greta");
     assert.equal(called.invite, "greta");
@@ -414,7 +446,7 @@ describe("Ligetvár engine", () => {
 
   it("opens act 1 scenes at her own place before the route lock", () => {
     const only = (id: string) => STORY.map((event) => event.id).filter((seen) => seen !== id);
-    let state = createInitial("Márton");
+    let state = applyChoice(createInitial("Márton"), "continue");
     state.week = 4;
     state.girls.rebeka.trust = 1;
     state.seen = only("rebeka_nappali_feny");

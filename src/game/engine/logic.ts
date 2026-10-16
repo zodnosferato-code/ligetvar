@@ -88,7 +88,32 @@ export function createInitial(name: string, stage: StageId = 1, route: RouteId =
   state.snap = takeSnap(state);
   if (stage !== 1) openStage(state, stage, route);
   state.snap = takeSnap(state);
+  if (stage === 1) openBrief(state, "brief_open", "courtyard");
   return state;
+}
+
+function openBrief(state: GameState, id: string, location: LocationId, extra = "") {
+  const base = NODES[id];
+  if (!base) return;
+  const named = base.text.replaceAll("{{name}}", state.name);
+  const text = extra ? `${named}\n\n${extra}` : named;
+  state.phase = "scene";
+  state.scene = {
+    node: { ...base, text },
+    location,
+    source: "brief",
+  };
+}
+
+function routeTail(state: GameState): string {
+  const route = state.route;
+  if (route === "alone") return "Egyedül zártad. A műhely megmarad, senki nem kerül közel.";
+  if (route === "boglarka_greta") return "Boglárkát és Grétát zártad. Külön-külön tudják. A folyosón nem sétáltok hármasban.";
+  if (route === "rebeka_greta") return "Rebekát és Grétát zártad. Szűk pár: külön-külön vállalják, együtt nem mutatkoznak.";
+  if (route === "rebeka" || route === "boglarka" || route === "greta") {
+    return `${GIRL_NAME[route].split(" ")[0]} van az útvonalon. A másik kettő hidegen marad, hacsak nem mondtad meg nekik személyesen.`;
+  }
+  return "Még nincs zárt útvonal.";
 }
 
 function routedGirls(route: RouteId): GirlId[] {
@@ -413,6 +438,12 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
       next.phase = "scene";
       return next;
     }
+  }
+  if (scene.source === "brief") {
+    next.phase = "planner";
+    next.scene = null;
+    next.lastNote = "A hét a térképen van.";
+    return next;
   }
   if (scene.source === "ending") {
     next.phase = "ending";
@@ -782,6 +813,8 @@ export function nextWeek(state: GameState): GameState {
   next.snap = takeSnap(next);
   next.lastNote = `${next.week}. hét. A fizetés megjött.`;
   next.journal.push(`${next.week}. hét kezdete.`);
+  if (next.week === 9) openBrief(next, "brief_act2", "courtyard", routeTail(next));
+  else if (next.week === 16) openBrief(next, "brief_act3", "department", routeTail(next));
   return next;
 }
 

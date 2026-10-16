@@ -15,6 +15,7 @@ import {
   SLOT_LABEL,
   STAT_ICON,
   chapterName,
+  actNote,
 } from "../content/catalog.ts";
 import {
   PHASE_LABEL,
@@ -259,7 +260,7 @@ function Title() {
       </div>
       <div className="scroll title-copy">
         <p className="serif lead">
-          Tizenhat hét a Ligetvárban. Az irodád és a lakosztályod a kastély szárnyában van: kőfal, íves ablak, modern asztal a régi gerendák alatt.
+          Tanulmányi vezető vagy egy kastélyban működő főiskolán. Tizenhat hét, három nő, és a nyolcadik hét végén egy zárás. A félév egy bevezetővel indul.
         </p>
         <div className="cast-row">
           {GIRLS.map((id) => (
@@ -551,13 +552,22 @@ function Scene() {
       </div>
       <div className="sheet scroll">
         <div className="nameplate">
-          <span>{girl ? GIRL_NAME[girl] : LOCATION_LABEL[scene.location]}</span>
+          <span>
+            {scene.source === "brief"
+              ? scene.node.id === "brief_open"
+                ? "Bevezető"
+                : "Összefoglaló"
+              : girl
+                ? GIRL_NAME[girl]
+                : LOCATION_LABEL[scene.location]}
+          </span>
           {girl ? <Hearts value={state.girls[girl].trust} /> : null}
         </div>
         <p className="line" onClick={() => setShown(text.length)}>
           {text.slice(0, shown)}
           {shown < text.length ? <i className="caret" /> : null}
         </p>
+        {scene.source === "brief" ? <p className="hint">Ez nem visz sávot. Utána a hét térképe jön.</p> : null}
         {scene.source === "follow" ? <p className="hint">A beszélgetés még tart.</p> : null}
         {shown >= text.length ? (
           <div className="choices">
@@ -688,9 +698,10 @@ function Summary() {
       <Hud />
       <div className="scroll sheet">
         <h2 className="serif" style={{ marginTop: 0 }}>
-          {state.week}. hét vége
+          {state.week}. hét vége · {chapterName(state.week)}
         </h2>
-        <p className="serif">A gyógytorna megvolt. Hétfőn jön a fizetés.</p>
+        <p className="serif">{actNote(state.week)}</p>
+        <p>A gyógytorna megvolt. Hétfőn jön a fizetés.</p>
         {GIRLS.map((id) => {
           const d = state.girls[id].closeness - state.snap.closeness[id];
           const t = state.girls[id].trust - state.snap.trust[id];

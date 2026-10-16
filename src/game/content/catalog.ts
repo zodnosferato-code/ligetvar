@@ -285,6 +285,41 @@ function add(n: DialogueNode) {
   NODES[n.id] = n;
 }
 
+const onward = c("continue", "Tovább", "good", {}, "tovább");
+
+add(
+  node(
+    "brief_open",
+    "narrator",
+    "{{name}} vagy, harmincnégy éves tanulmányi vezető a Ligetvári Főiskolán. A főiskola egy tizenkilencedik századi kastély. Az irodád és a lakosztályod is a szárnyában van: kőfal, íves ablak, modern asztal a régi gerendák alatt.\n\nTizenhat hét, hetente három sáv. Délelőtt, délután, este. Hétfőn a fizetés magától jön. A hét végén gyógytorna van, és ott dől el, kivel maradsz óra után.\n\nGréta Váradi délelőtt a tanszéken van. Pontos, és a lista a biztonsága. Boglárka Fazekas délután a könyvtárban ül. Halk, amíg a mondata végét meg nem várják. Rebeka Dorn este a Holdkör alagsorában. Nem akar történet lenni, és nem tűri a közönséget.\n\nA bizalom új jelenetből nő, ismétlésből alig. Négy kemény sáv után pihenned kell. Ha felhívsz valakit, este külön gomb enged be. A nyolcadik hét végén zársz: egy lányt, egy összeillő párt, vagy senkit.",
+    "ambient",
+    [onward],
+    "A félév a kastélyban kezdődik.",
+  ),
+);
+
+add(
+  node(
+    "brief_act2",
+    "narrator",
+    "Véget ért a közös szakasz. Nyolc hétig mindhárman a saját helyükön voltak: Gréta a tanszéken, Boglárka a könyvtárban, Rebeka a Holdkörben.\n\nMostantól egy útvonal van. Aki rajta van, vele mélyül a félév. Aki nincs, hidegen marad a folyosón. Randi és a tó innentől nyílhat, ha a bizalom és a közelség megvan. A pletyka és a kockázat még mindig számít.",
+    "ambient",
+    [onward],
+    "A közös szakasz lezárult.",
+  ),
+);
+
+add(
+  node(
+    "brief_act3",
+    "narrator",
+    "A zárt szakasz vége. Ez az utolsó hét, utána nincs új sáv.\n\nAmi a bizalomból, a határból és a kockázatból összegyűlt, a záráson dől el. Lehet csendes vég, igaz vég, vagy törés. Aki az útvonalon van, nála dől el. Aki nincs, már nem lép be.",
+    "ambient",
+    [onward],
+    "Az utolsó hét kezdődik.",
+  ),
+);
+
 add(
   node(
     "rebeka_intro",
@@ -1323,7 +1358,13 @@ export const SLOT_LABEL = ["Délelőtt", "Délután", "Este"] as const;
 export function chapterName(week: number): string {
   if (week <= 8) return "Közös szakasz";
   if (week <= 15) return "Zárt útvonal";
-  return "Vég";
+  return "Utolsó hét";
+}
+
+export function actNote(week: number): string {
+  if (week <= 8) return "Mindhárom nő a saját helyén van. A zárás a nyolcadik hét végén jön: egy lány, egy összeillő pár, vagy senki.";
+  if (week <= 15) return "Csak a zárt útvonal mélyül. Aki nincs rajta, hidegen marad. A mély jelenet a saját helyén vagy a lakosztályban nyílik.";
+  return "Ez az utolsó hét. Ami a bizalomból és a kockázatból összegyűlt, a záráson dől el.";
 }
 
 mergePart1(NODES, STORY);
