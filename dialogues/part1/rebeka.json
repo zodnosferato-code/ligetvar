@@ -5,210 +5,56 @@
       "speaker": "rebeka",
       "text_key": "dialogue.rebeka.intro",
       "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.intro.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 6, "trust": 1, "flags": ["rebeka_kor"] },
-          "reaction": "elegedett_felmosoly",
-          "follow_node": "rebeka_intro_vg_react"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.intro.good",
-          "quality": "good",
-          "effect": { "closeness": 3, "trust": 1 },
-          "reaction": "semleges",
-          "follow_node": "rebeka_intro_good_react"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.intro.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2, "anger": 1 },
-          "reaction": "hideg_tekintet"
-        }
+        {"id": "very_good", "text_key": "dialogue.rebeka.intro.vg", "quality": "very_good", "effect": {"closeness": 5, "trust": 1, "flags": ["rebeka_kor"]}, "follow_node": "rebeka_foto"},
+        {"id": "good", "text_key": "dialogue.rebeka.intro.good", "quality": "good", "effect": {"closeness": 3, "trust": 1}},
+        {"id": "bad", "text_key": "dialogue.rebeka.intro.bad", "quality": "bad", "effect": {"closeness": -2, "anger": 1}}
       ]
     },
     {
-      "id": "rebeka_intro_vg_react",
-      "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.intro.vg.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.rebeka.intro.vg.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "nyugalom",
-          "follow_node": "rebeka_foto_kerdes"
-        }
-      ]
-    },
-    {
-      "id": "rebeka_foto_kerdes",
+      "id": "rebeka_foto",
       "speaker": "rebeka",
       "text_key": "dialogue.rebeka.foto",
       "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.foto.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 5, "trust": 1 },
-          "reaction": "felmosoly",
-          "follow_node": "rebeka_nappali_feny"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.foto.good",
-          "quality": "good",
-          "effect": { "closeness": 3 },
-          "reaction": "semleges"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.foto.bad",
-          "quality": "bad",
-          "effect": { "closeness": -1, "anger": 1 },
-          "reaction": "unalom"
-        }
+        {"id": "very_good", "text_key": "dialogue.rebeka.foto.vg", "quality": "very_good", "effect": {"closeness": 4, "trust": 1}, "follow_node": "rebeka_nappali"},
+        {"id": "good", "text_key": "dialogue.rebeka.foto.good", "quality": "good", "effect": {"closeness": 2}},
+        {"id": "bad", "text_key": "dialogue.rebeka.foto.bad", "quality": "bad", "effect": {"closeness": -1}}
       ]
     },
     {
-      "id": "rebeka_nappali_feny",
+      "id": "rebeka_nappali",
       "speaker": "rebeka",
       "text_key": "dialogue.rebeka.nappali",
       "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.nappali.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 5, "trust": 1, "flags": ["rebeka_feny"] },
-          "reaction": "nyugalom",
-          "follow_node": "rebeka_lakas_szimbolika"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.nappali.good",
-          "quality": "good",
-          "effect": { "closeness": 3 },
-          "reaction": "semleges"
-        },
-        {
-          "id": "neutral",
-          "text_key": "dialogue.rebeka.nappali.neutral",
-          "quality": "good",
-          "effect": { "closeness": 1 },
-          "reaction": "semleges"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.nappali.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2, "anger": 1 },
-          "reaction": "gongy"
-        }
+        {"id": "very_good", "text_key": "dialogue.rebeka.nappali.vg", "quality": "very_good", "effect": {"closeness": 4, "trust": 1, "flags": ["rebeka_feny"]}, "follow_node": "rebeka_lakas"},
+        {"id": "good", "text_key": "dialogue.rebeka.nappali.good", "quality": "good", "effect": {"closeness": 2}},
+        {"id": "tease", "text_key": "dialogue.rebeka.nappali.tease", "quality": "good", "effect": {"closeness": 3}}
       ]
     },
     {
-      "id": "rebeka_lakas_szimbolika",
+      "id": "rebeka_lakas",
       "speaker": "rebeka",
       "text_key": "dialogue.rebeka.lakas",
       "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.lakas.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 6, "trust": 1, "flags": ["rebeka_foto"] },
-          "reaction": "nyugalom",
-          "follow_node": "rebeka_intimate_private"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.lakas.good",
-          "quality": "good",
-          "effect": { "closeness": 3 },
-          "reaction": "semleges"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.lakas.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2, "risk": 3 },
-          "reaction": "gongy"
-        }
+        {"id": "very_good", "text_key": "dialogue.rebeka.lakas.vg", "quality": "very_good", "effect": {"closeness": 5, "trust": 1, "flags": ["rebeka_foto"]}, "follow_node": "rebeka_intimate"},
+        {"id": "good", "text_key": "dialogue.rebeka.lakas.good", "quality": "good", "effect": {"closeness": 3}}
       ]
     },
     {
-      "id": "rebeka_intimate_private",
+      "id": "rebeka_intimate",
       "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.intimate_private",
+      "text_key": "dialogue.rebeka.intimate_short",
       "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.intimate_private.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_rebeka_intimate"] },
-          "reaction": "nyugalom_intense",
-          "follow_node": "rebeka_yield_control"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.intimate_private.good",
-          "quality": "good",
-          "effect": { "closeness": 5, "trust": 1 },
-          "reaction": "enyhe_mosoly"
-        }
+        {"id": "very_good", "text_key": "dialogue.rebeka.intimate_short.vg", "quality": "very_good", "effect": {"closeness": 7, "trust": 2, "flags": ["flag_rebeka_intimate"]}, "follow_node": "rebeka_yield"},
+        {"id": "good", "text_key": "dialogue.rebeka.intimate_short.good", "quality": "good", "effect": {"closeness": 4, "trust": 1}}
       ]
     },
     {
-      "id": "rebeka_yield_control",
+      "id": "rebeka_yield",
       "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.yield_control",
+      "text_key": "dialogue.rebeka.yield_short",
       "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.yield_control.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 10, "trust": 2, "flags": ["flag_rebeka_yield"] },
-          "reaction": "sebezheto",
-          "follow_node": "rebeka_het8_elokeszites"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.yield_control.good",
-          "quality": "good",
-          "effect": { "closeness": 6, "trust": 1 },
-          "reaction": "nyugalom"
-        }
-      ]
-    },
-    {
-      "id": "rebeka_het8_elokeszites",
-      "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.het8",
-      "choices": [
-        {
-          "id": "very_good",
-          "text_key": "dialogue.rebeka.het8.vg",
-          "quality": "very_good",
-          "effect": { "closeness": 6, "trust": 1, "flags": ["rebeka_route_candidate"] },
-          "reaction": "nyugalom"
-        },
-        {
-          "id": "good",
-          "text_key": "dialogue.rebeka.het8.good",
-          "quality": "good",
-          "effect": { "closeness": 4 },
-          "reaction": "semleges"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.het8.bad",
-          "quality": "bad",
-          "effect": { "closeness": -1, "anger": 1 },
-          "reaction": "gongy"
-        }
+        {"id": "very_good", "text_key": "dialogue.rebeka.yield_short.vg", "quality": "very_good", "effect": {"closeness": 8, "trust": 2, "flags": ["flag_rebeka_yield"]}},
+        {"id": "good", "text_key": "dialogue.rebeka.yield_short.good", "quality": "good", "effect": {"closeness": 5, "trust": 1}}
       ]
     }
   ]
