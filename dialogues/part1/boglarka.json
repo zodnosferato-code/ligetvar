@@ -17,7 +17,7 @@
           "id": "good",
           "text_key": "dialogue.boglarka.intro.good",
           "quality": "good",
-          "effect": { "closeness": 4, "trust": 1 },
+          "effect": { "closeness": 3, "trust": 1 },
           "reaction": "szegyenos",
           "follow_node": "boglarka_jegyzet"
         },
@@ -25,15 +25,8 @@
           "id": "bad",
           "text_key": "dialogue.boglarka.intro.bad",
           "quality": "bad",
-          "effect": { "closeness": -2, "anger": 1 },
+          "effect": { "closeness": -3, "anger": 1 },
           "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.intro.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 2 },
-          "reaction": "elpirul_es_elrejtozik"
         }
       ]
     },
@@ -63,15 +56,14 @@
           "quality": "very_good",
           "effect": { "closeness": 5, "trust": 1 },
           "reaction": "kis_mosoly",
-          "follow_node": "boglarka_jegyzet_vg_react"
+          "follow_node": "boglarka_lakas_kutatas"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.jegyzet.good",
           "quality": "good",
           "effect": { "closeness": 3 },
-          "reaction": "szegyenos",
-          "follow_node": "boglarka_jegyzet_good_react"
+          "reaction": "szegyenos"
         },
         {
           "id": "bad",
@@ -79,42 +71,6 @@
           "quality": "bad",
           "effect": { "closeness": -1, "anger": 1 },
           "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.jegyzet.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -3, "anger": 1 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_jegyzet_vg_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka_jegyzet_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka_jegyzet_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "elpirulas",
-          "follow_node": "boglarka_lakas_kutatas"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_jegyzet_good_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka_jegyzet_good_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka_jegyzet_good_react.continue",
-          "quality": "good",
-          "effect": { "closeness": 2 },
-          "reaction": "semleges"
         }
       ]
     },
@@ -129,58 +85,21 @@
           "quality": "very_good",
           "effect": { "closeness": 6, "trust": 1 },
           "reaction": "lágy_bizalom",
-          "follow_node": "boglarka_lakas_kutatas_vg_react"
+          "follow_node": "boglarka_slow_explore"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.lakas.good",
           "quality": "good",
           "effect": { "closeness": 3 },
-          "reaction": "szegyenos",
-          "follow_node": "boglarka_lakas_kutatas_good_react"
+          "reaction": "szegyenos"
         },
         {
           "id": "bad",
           "text_key": "dialogue.boglarka.lakas.bad",
           "quality": "bad",
-          "effect": { "closeness": -1 },
+          "effect": { "closeness": -2 },
           "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.lakas.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 1 },
-          "reaction": "szomorkas"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_lakas_kutatas_vg_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka_lakas_kutatas_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka_lakas_kutatas_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "elpirulas",
-          "follow_node": "boglarka_slow_explore"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_lakas_kutatas_good_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka_lakas_kutatas_good_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka_lakas_kutatas_good_react.continue",
-          "quality": "good",
-          "effect": { "closeness": 2 },
-          "reaction": "semleges"
         }
       ]
     },
@@ -195,44 +114,14 @@
           "quality": "very_good",
           "effect": { "closeness": 8, "trust": 2, "flags": ["flag_boglarka_slow"] },
           "reaction": "elpirulas_mosoly",
-          "follow_node": "boglarka_slow_explore_vg_react"
+          "follow_node": "boglarka_body_praise"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.slow_explore.good",
           "quality": "good",
           "effect": { "closeness": 5, "trust": 1 },
-          "reaction": "szegyenos",
-          "follow_node": "boglarka_body_praise"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.boglarka.slow_explore.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2, "anger": 1 },
-          "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.slow_explore.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 2 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_slow_explore_vg_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka_slow_explore_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka_slow_explore_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "elpirulas",
-          "follow_node": "boglarka_body_praise"
+          "reaction": "szegyenos"
         }
       ]
     },
@@ -247,7 +136,7 @@
           "quality": "very_good",
           "effect": { "closeness": 9, "trust": 2, "flags": ["flag_boglarka_praise"] },
           "reaction": "lágy_mosoly",
-          "follow_node": "boglarka_body_praise_vg_react"
+          "follow_node": "boglarka_het8_elokeszites"
         },
         {
           "id": "good",
@@ -255,35 +144,6 @@
           "quality": "good",
           "effect": { "closeness": 5, "trust": 1 },
           "reaction": "elpirulas"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.boglarka.body_praise.bad",
-          "quality": "bad",
-          "effect": { "closeness": -1 },
-          "reaction": "szomorkas"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.body_praise.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 1 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_body_praise_vg_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka_body_praise_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka_body_praise_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "elpirulas",
-          "follow_node": "boglarka_het8_elokeszites"
         }
       ]
     },
@@ -312,13 +172,6 @@
           "quality": "bad",
           "effect": { "closeness": -1, "anger": 1 },
           "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.het8.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -3, "anger": 2 },
-          "reaction": "elrejtozik"
         }
       ]
     }
