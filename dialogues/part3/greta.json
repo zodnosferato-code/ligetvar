@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "id": "greta_ending_true",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.part3.true",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.greta.part3.true.accept",
+          "quality": "very_good",
+          "effect": { "flags": ["ending_true_greta"] },
+          "reaction": "enyhe_mosoly",
+          "follow_node": "greta_ending_true_react"
+        }
+      ]
+    },
+    {
+      "id": "greta_ending_true_react",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.part3.true.react",
+      "choices": [
+        {
+          "id": "continue",
+          "text_key": "dialogue.greta.part3.true.react.continue",
+          "quality": "very_good",
+          "effect": {},
+          "reaction": "nyugalom"
+        }
+      ]
+    },
+    {
+      "id": "greta_ending_quiet",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.part3.quiet",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.greta.part3.quiet.accept",
+          "quality": "good",
+          "effect": { "flags": ["ending_quiet_greta"] },
+          "reaction": "semleges"
+        }
+      ]
+    },
+    {
+      "id": "greta_ending_broken",
+      "speaker": "greta",
+      "text_key": "dialogue.greta.part3.broken",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.greta.part3.broken.accept",
+          "quality": "bad",
+          "effect": { "flags": ["ending_broken_greta"] },
+          "reaction": "hideg"
+        }
+      ]
+    }
+  ]
+}
