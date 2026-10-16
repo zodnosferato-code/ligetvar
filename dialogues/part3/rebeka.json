@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "id": "rebeka_ending_true",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.part3.true",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.rebeka.part3.true.accept",
+          "quality": "very_good",
+          "effect": { "flags": ["ending_true_rebeka"] },
+          "reaction": "nyugalom",
+          "follow_node": "rebeka_ending_true_react"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_ending_true_react",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.part3.true.react",
+      "choices": [
+        {
+          "id": "continue",
+          "text_key": "dialogue.rebeka.part3.true.react.continue",
+          "quality": "very_good",
+          "effect": {},
+          "reaction": "nyugalom"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_ending_quiet",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.part3.quiet",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.rebeka.part3.quiet.accept",
+          "quality": "good",
+          "effect": { "flags": ["ending_quiet_rebeka"] },
+          "reaction": "semleges"
+        }
+      ]
+    },
+    {
+      "id": "rebeka_ending_broken",
+      "speaker": "rebeka",
+      "text_key": "dialogue.rebeka.part3.broken",
+      "choices": [
+        {
+          "id": "accept",
+          "text_key": "dialogue.rebeka.part3.broken.accept",
+          "quality": "bad",
+          "effect": { "flags": ["ending_broken_rebeka"] },
+          "reaction": "hideg"
+        }
+      ]
+    }
+  ]
+}
