@@ -99,6 +99,57 @@ export function portraitFor(girl: GirlId, expression = ""): string {
   return moodFace(girl, mood);
 }
 
+export const FULL_BODY: Record<GirlId, string> = {
+  rebeka: pub("characters/rebeka/rebeka-full-front-clothed.jpg"),
+  boglarka: pub("characters/boglarka/boglarka-full-front-clothed.jpg"),
+  greta: pub("characters/greta/greta-full-front-clothed.jpg"),
+};
+
+const PLATE: Record<string, string> = {
+  rebeka_nappali_feny: "rebeka-light-classroom-keyhole.jpg",
+  rebeka_foto_kerdes: "rebeka-light-classroom-v2.jpg",
+  rebeka_lakas_szimbolika: "rebeka-medium-pulled-dress-v2.jpg",
+  rebeka_intimate_private: "rebeka-medium-apartment-bed.jpg",
+  rebeka_yield_control: "rebeka-soft-rope.jpg",
+  rebeka_part2_intro: "rebeka-medium-apartment-bed.jpg",
+  rebeka_bekas_private: "rebeka-rain-balcony.jpg",
+  rebeka_yield_full: "rebeka-hardcore-yield-kneeling.jpg",
+  rebeka_desire_fulfill: "rebeka-nude-reclining.jpg",
+  rebeka_ending_true: "rebeka-nude-sitting-bed.jpg",
+  rebeka_ending_quiet: "rebeka-window-sill.jpg",
+  boglarka_lakas_kutatas: "boglarka-light-library-cardigan.jpg",
+  boglarka_slow_explore: "boglarka-medium-lingerie-sitting.jpg",
+  boglarka_body_praise: "boglarka-medium-lingerie-bed.jpg",
+  boglarka_part2_intro: "boglarka-medium-lingerie-v2.jpg",
+  boglarka_slow_full: "boglarka-nude-sitting-bed.jpg",
+  boglarka_body_full: "boglarka-spread-recline.jpg",
+  boglarka_desire_fulfill: "boglarka-nude-reclining.jpg",
+  boglarka_ending_true: "boglarka-nude-sitting-bed.jpg",
+  boglarka_ending_quiet: "boglarka-light-library-v2.jpg",
+  greta_lakas_irat: "greta-light-office-open-shirt.jpg",
+  greta_rule_break: "greta-medium-desk-lingerie.jpg",
+  greta_yield: "greta-soft-rope.jpg",
+  greta_part2_intro: "greta-medium-desk-v2.jpg",
+  greta_rule_full: "greta-hardcore-bound-v2.jpg",
+  greta_yield_full: "greta-hardcore-bound-yield.jpg",
+  greta_desire_fulfill: "greta-nude-reclining.jpg",
+  greta_ending_true: "greta-nude-sitting-desk.jpg",
+  greta_ending_quiet: "greta-window-sill.jpg",
+};
+
+export function illustrationFor(nodeId: string, girl: GirlId, route: string): string | null {
+  const stem = nodeId.replace(/_(?:vg|good|bad|vb)?_react$/, "").replace(/_react$/, "");
+  if (route === "boglarka_greta" && /desire|ending_true|kiss/.test(stem)) {
+    return pub("references/intim/boglarka-greta-kiss-bed.jpg");
+  }
+  if (route === "rebeka_greta" && /desire|ending_true|kiss/.test(stem)) {
+    return pub("references/intim/rebeka-greta-kiss-soft.jpg");
+  }
+  const file = PLATE[stem];
+  if (!file || !file.startsWith(girl)) return null;
+  return pub(`references/intim/${file}`);
+}
+
 export const GIRL_NAME: Record<GirlId, string> = {
   rebeka: "Rebeka Dorn",
   boglarka: "Boglárka Fazekas",
