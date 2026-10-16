@@ -562,7 +562,7 @@ describe("campus horror story", () => {
     assert.equal(reveal.node.id, "horror_half_vampire_reveal");
     assert.match(reveal.node.text, /félvér vámpír/);
     assert.match(reveal.node.text, /szexuális vágya/);
-    assert.match(reveal.node.text, /kényszerű közelség/);
+    assert.match(reveal.node.text, /birtoklásként és kényszerként/);
     assert.match(reveal.node.text, /nem romantika/);
     assert.match(reveal.node.text, /rövid fekete haj/);
     assert.match(reveal.node.text, /ritkás bajusz/);
