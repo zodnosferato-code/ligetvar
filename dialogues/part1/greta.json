@@ -9,7 +9,7 @@
           "id": "very_good",
           "text_key": "dialogue.greta.intro.vg",
           "quality": "very_good",
-          "effect": { "closeness": 4, "trust": 1, "flags": ["greta_lista"] },
+          "effect": { "closeness": 5, "trust": 1, "flags": ["greta_lista"] },
           "reaction": "kis_elegedett_mosoly",
           "follow_node": "greta_intro_vg_react"
         },
@@ -17,7 +17,7 @@
           "id": "good",
           "text_key": "dialogue.greta.intro.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3, "trust": 1 },
           "reaction": "koncentrált",
           "follow_node": "greta_dokumentum"
         },
@@ -25,14 +25,14 @@
           "id": "bad",
           "text_key": "dialogue.greta.intro.bad",
           "quality": "bad",
-          "effect": { "closeness": -2, "anger": 1 },
+          "effect": { "closeness": -1, "anger": 1 },
           "reaction": "osszevont_szemoldok"
         },
         {
           "id": "very_bad",
           "text_key": "dialogue.greta.intro.vb",
           "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 2, "risk": 5 },
+          "effect": { "closeness": -3, "anger": 2, "risk": 4 },
           "reaction": "fegyelmezett_duh"
         }
       ]
@@ -46,7 +46,7 @@
           "id": "continue",
           "text_key": "dialogue.greta.intro.vg.continue",
           "quality": "very_good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "zavar_elpirul",
           "follow_node": "greta_dokumentum"
         }
@@ -61,7 +61,7 @@
           "id": "very_good",
           "text_key": "dialogue.greta.dokumentum.vg",
           "quality": "very_good",
-          "effect": { "closeness": 3, "trust": 1 },
+          "effect": { "closeness": 4, "trust": 1 },
           "reaction": "kis_elegedett",
           "follow_node": "greta_dokumentum_vg_react"
         },
@@ -69,7 +69,7 @@
           "id": "good",
           "text_key": "dialogue.greta.dokumentum.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3 },
           "reaction": "koncentrált",
           "follow_node": "greta_dokumentum_good_react"
         },
@@ -77,14 +77,14 @@
           "id": "bad",
           "text_key": "dialogue.greta.dokumentum.bad",
           "quality": "bad",
-          "effect": { "closeness": -1, "anger": 1 },
+          "effect": { "closeness": 0, "anger": 1 },
           "reaction": "osszevont"
         },
         {
           "id": "very_bad",
           "text_key": "dialogue.greta.dokumentum.vb",
           "quality": "very_bad",
-          "effect": { "closeness": -3, "anger": 1 },
+          "effect": { "closeness": -2, "anger": 1 },
           "reaction": "fegyelmezett"
         }
       ]
@@ -98,7 +98,7 @@
           "id": "continue",
           "text_key": "dialogue.greta_dokumentum_vg_react.continue",
           "quality": "very_good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "kis_elegedett",
           "follow_node": "greta_lakas_irat"
         }
@@ -113,7 +113,7 @@
           "id": "continue",
           "text_key": "dialogue.greta_dokumentum_good_react.continue",
           "quality": "good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "semleges"
         }
       ]
@@ -127,7 +127,7 @@
           "id": "very_good",
           "text_key": "dialogue.greta.lakas.vg",
           "quality": "very_good",
-          "effect": { "closeness": 4, "trust": 1, "flags": ["greta_hiba"] },
+          "effect": { "closeness": 5, "trust": 1, "flags": ["greta_hiba"] },
           "reaction": "zavar_elpirul",
           "follow_node": "greta_lakas_irat_vg_react"
         },
@@ -135,7 +135,7 @@
           "id": "good",
           "text_key": "dialogue.greta.lakas.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3 },
           "reaction": "koncentrált",
           "follow_node": "greta_lakas_irat_good_react"
         },
@@ -143,14 +143,14 @@
           "id": "bad",
           "text_key": "dialogue.greta.lakas.bad",
           "quality": "bad",
-          "effect": { "closeness": -2 },
+          "effect": { "closeness": -1 },
           "reaction": "osszevont"
         },
         {
           "id": "very_bad",
           "text_key": "dialogue.greta.lakas.vb",
           "quality": "very_bad",
-          "effect": { "closeness": -4, "risk": 5 },
+          "effect": { "closeness": -3, "risk": 4 },
           "reaction": "fegyelmezett_duh"
         }
       ]
@@ -164,7 +164,7 @@
           "id": "continue",
           "text_key": "dialogue.greta_lakas_irat_vg_react.continue",
           "quality": "very_good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "kis_elegedett",
           "follow_node": "greta_rule_break"
         }
@@ -179,7 +179,7 @@
           "id": "continue",
           "text_key": "dialogue.greta_lakas_irat_good_react.continue",
           "quality": "good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "semleges"
         }
       ]
@@ -201,7 +201,7 @@
           "id": "good",
           "text_key": "dialogue.greta.rule_break.good",
           "quality": "good",
-          "effect": { "closeness": 4 },
+          "effect": { "closeness": 5, "trust": 1 },
           "reaction": "koncentrált",
           "follow_node": "greta_yield"
         },
@@ -209,14 +209,14 @@
           "id": "bad",
           "text_key": "dialogue.greta.rule_break.bad",
           "quality": "bad",
-          "effect": { "closeness": -3, "anger": 1 },
+          "effect": { "closeness": -2, "anger": 1 },
           "reaction": "osszevont"
         },
         {
           "id": "very_bad",
           "text_key": "dialogue.greta.rule_break.vb",
           "quality": "very_bad",
-          "effect": { "closeness": -5, "risk": 5 },
+          "effect": { "closeness": -4, "risk": 4 },
           "reaction": "fegyelmezett_duh"
         }
       ]
@@ -230,7 +230,7 @@
           "id": "continue",
           "text_key": "dialogue.greta_rule_break_vg_react.continue",
           "quality": "very_good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "kis_elegedett",
           "follow_node": "greta_yield"
         }
@@ -253,21 +253,21 @@
           "id": "good",
           "text_key": "dialogue.greta.yield.good",
           "quality": "good",
-          "effect": { "closeness": 4 },
+          "effect": { "closeness": 5, "trust": 1 },
           "reaction": "zavar"
         },
         {
           "id": "bad",
           "text_key": "dialogue.greta.yield.bad",
           "quality": "bad",
-          "effect": { "closeness": -2 },
+          "effect": { "closeness": -1 },
           "reaction": "osszevont"
         },
         {
           "id": "very_bad",
           "text_key": "dialogue.greta.yield.vb",
           "quality": "very_bad",
-          "effect": { "closeness": -6, "anger": 2 },
+          "effect": { "closeness": -5, "anger": 2 },
           "reaction": "fegyelmezett_duh"
         }
       ]
@@ -281,7 +281,7 @@
           "id": "continue",
           "text_key": "dialogue.greta_yield_vg_react.continue",
           "quality": "very_good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 2 },
           "reaction": "kis_elegedett",
           "follow_node": "greta_het8_elokeszites"
         }
@@ -296,28 +296,28 @@
           "id": "very_good",
           "text_key": "dialogue.greta.het8.vg",
           "quality": "very_good",
-          "effect": { "closeness": 5, "trust": 1, "flags": ["greta_route_candidate"] },
+          "effect": { "closeness": 6, "trust": 1, "flags": ["greta_route_candidate"] },
           "reaction": "kis_elegedett"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.het8.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3 },
           "reaction": "koncentrált"
         },
         {
           "id": "bad",
           "text_key": "dialogue.greta.het8.bad",
           "quality": "bad",
-          "effect": { "closeness": -2, "anger": 1 },
+          "effect": { "closeness": -1, "anger": 1 },
           "reaction": "osszevont"
         },
         {
           "id": "very_bad",
           "text_key": "dialogue.greta.het8.vb",
           "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 2, "risk": 5 },
+          "effect": { "closeness": -3, "anger": 2, "risk": 4 },
           "reaction": "fegyelmezett_duh"
         }
       ]
