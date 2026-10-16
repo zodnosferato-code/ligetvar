@@ -1,4 +1,4 @@
-import { Component, useEffect, useRef, useState, type ReactNode } from "react";
+import { Component, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import {
   CAST,
   GIRL_NAME,
@@ -266,7 +266,7 @@ function Title() {
         <div className="cast-row">
           {GIRLS.map((id) => (
             <article key={id} className="cast-card">
-              <img src={PORTRAIT[id]} alt={GIRL_NAME[id]} />
+              <ArtFallbackImage src={PORTRAIT[id]} alt={GIRL_NAME[id]} caption={`${GIRL_NAME[id]} — portrékép hiányzik`} className="cast-card-art" />
               <div className="cast-caption">
                 <strong>{GIRL_NAME[id].split(" ")[0]}</strong>
                 <span>{CAST[id].age} éves</span>
@@ -454,6 +454,7 @@ function Planner() {
         className={`hub-room ${home ? "hub-home" : "hub-office"}`}
         style={{ backgroundImage: `url(${roomBackground})`, aspectRatio: roomAspect }}
       >
+        <BackgroundFallback src={roomBackground} label={home ? "Lakás háttér" : "Tanszéki háttér"} />
         <div className="sky-window" aria-hidden>
           <i />
         </div>
@@ -483,14 +484,14 @@ function Planner() {
             title={guest?.ok ? "Engedd be" : "Este jön fel. A gomb akkor enged be."}
             onClick={() => act("apartment")}
           >
-            <img src={PORTRAIT[state.invite]} alt="" />
+            <ArtFallbackImage src={PORTRAIT[state.invite]} alt="" caption={`${GIRL_NAME[state.invite]} — portrékép hiányzik`} className="compact-portrait-art" />
             <em>Beenged</em>
           </button>
         ) : null}
         <div className="hub-faces">
           {GIRLS.map((id) => (
             <button key={id} type="button" className="hub-face" onClick={() => showGirl(id)} aria-label={GIRL_NAME[id]} title={PHASE_LABEL[girlPhase(state, id)]}>
-              <img src={PORTRAIT[id]} alt="" />
+              <ArtFallbackImage src={PORTRAIT[id]} alt="" caption={`${GIRL_NAME[id]} — portrékép hiányzik`} className="hub-face-art" />
               <Hearts value={state.girls[id].trust} />
               <em>{PHASE_LABEL[girlPhase(state, id)]}</em>
             </button>
@@ -552,7 +553,7 @@ function Planner() {
             title={guest?.ok ? "Engedd be" : "Este jön fel. A gomb akkor enged be."}
             onClick={() => { setTray(null); act("apartment"); }}
           >
-            <img src={PORTRAIT[state.invite]} alt="" />
+            <ArtFallbackImage src={PORTRAIT[state.invite]} alt="" caption={`${GIRL_NAME[state.invite]} — portrékép hiányzik`} className="compact-portrait-art" />
             <span>Vendég</span>
           </button>
         ) : null}
@@ -597,6 +598,50 @@ function Planner() {
         <p className="hint">{guideFor(state)}</p>
       </div>
     </div>
+  );
+}
+
+type ArtFallbackImageProps = {
+  src: string | null;
+  alt: string;
+  caption: string;
+  className?: string;
+  style?: CSSProperties;
+};
+
+function ArtFallbackImage({ src, alt, caption, className = "", style }: ArtFallbackImageProps) {
+  const [missing, setMissing] = useState(!src);
+  useEffect(() => setMissing(!src), [src]);
+  if (!src || missing) {
+    return (
+      <div
+        className={`missing-art ${className}`.trim()}
+        role="img"
+        aria-label={`Hiányzó kép: ${caption}`}
+        style={style}
+      >
+        <span className="missing-art-mark" aria-hidden="true">▧</span>
+        <strong>{caption}</strong>
+        <small>Hiányzó kép</small>
+      </div>
+    );
+  }
+  return <img className={className} src={src} alt={alt} style={style} onError={() => setMissing(true)} />;
+}
+
+function BackgroundFallback({ src, label }: { src: string; label: string }) {
+  const [missing, setMissing] = useState(false);
+  useEffect(() => setMissing(false), [src]);
+  return (
+    <>
+      <img className="asset-probe" src={src} alt="" aria-hidden="true" onError={() => setMissing(true)} />
+      {missing ? (
+        <div className="missing-background" role="img" aria-label={`Hiányzó háttérkép: ${label}`}>
+          <strong>Háttérkép hiányzik</strong>
+          <span>{label}</span>
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -658,10 +703,23 @@ function Scene() {
     <div style={{ display: "flex", flexDirection: "column", minHeight: 0, flex: 1 }}>
       <Hud />
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[scene.location]})` }}>
-        {plate ? <img className="scene-plate" src={plate} alt="" /> : null}
+        <BackgroundFallback src={LOCATION_BG[scene.location]} label={LOCATION_LABEL[scene.location]} />
+        {plate || scene.node.artCaption ? (
+          <ArtFallbackImage
+            src={plate}
+            alt=""
+            caption={scene.node.artCaption ?? `${scene.node.speakerLabel ?? "Jelenet"} — illusztráció hiányzik`}
+            className="scene-plate"
+          />
+        ) : null}
         {girl ? (
           <div className={`portrait-frame expr-${mood} ${plate ? "portrait-supporting" : ""} ${intimate ? "portrait-intimate" : ""}`}>
-            <img src={portraitFor(girl, portraitExpression)} alt={GIRL_NAME[girl]} />
+            <ArtFallbackImage
+              src={portraitFor(girl, portraitExpression)}
+              alt={GIRL_NAME[girl]}
+              caption={`${GIRL_NAME[girl]} — portrékép hiányzik`}
+              className="portrait-art"
+            />
             {expression && !plate && !intimate ? <em>{expression.replaceAll("_", " ")}</em> : null}
           </div>
         ) : null}
@@ -675,7 +733,7 @@ function Scene() {
                 : "Összefoglaló"
               : girl
                 ? GIRL_NAME[girl]
-                : LOCATION_LABEL[scene.location]}
+                : (scene.node.speakerLabel ?? LOCATION_LABEL[scene.location])}
           </span>
           {girl ? <Hearts value={state.girls[girl].trust} /> : null}
         </div>
@@ -917,10 +975,18 @@ function Ending() {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: 0, flex: 1 }}>
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[ending.location]})` }}>
-        {plate ? <img className="scene-plate" src={plate} alt="" /> : null}
+        <BackgroundFallback src={LOCATION_BG[ending.location]} label={LOCATION_LABEL[ending.location]} />
+        {plate ? (
+          <ArtFallbackImage src={plate} alt="" caption={`${ending.title} — illusztráció hiányzik`} className="scene-plate" />
+        ) : null}
         {girl ? (
           <div className="portrait-frame">
-            <img src={PORTRAIT[girl]} alt={GIRL_NAME[girl]} />
+            <ArtFallbackImage
+              src={PORTRAIT[girl]}
+              alt={GIRL_NAME[girl]}
+              caption={`${GIRL_NAME[girl]} — portrékép hiányzik`}
+              className="portrait-art"
+            />
           </div>
         ) : null}
       </div>
@@ -953,7 +1019,12 @@ function Dossier() {
     <>
       <Hud />
       <div className="scroll" style={{ padding: "0.8rem 1rem 1.2rem" }}>
-        <img src={FULL_BODY[id]} alt={GIRL_NAME[id]} style={{ width: "100%", maxHeight: "18rem", objectFit: "contain", background: "#1a1614", border: "2px solid #000" }} />
+        <ArtFallbackImage
+          src={FULL_BODY[id]}
+          alt={GIRL_NAME[id]}
+          caption={`${GIRL_NAME[id]} — egészalakos kép hiányzik`}
+          style={{ width: "100%", maxHeight: "18rem", objectFit: "contain", background: "#1a1614", border: "2px solid #000" }}
+        />
         <h2 className="serif" style={{ marginBottom: 0 }}>
           {GIRL_NAME[id]}
         </h2>

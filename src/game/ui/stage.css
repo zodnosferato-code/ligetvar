@@ -1314,3 +1314,104 @@ img {
     min-height: 0;
   }
 }
+
+
+/* Explicit, labelled fallbacks for missing location backgrounds and character art. */
+.asset-probe {
+  display: none !important;
+}
+
+.missing-background {
+  position: absolute;
+  z-index: 5;
+  top: 0.35rem;
+  left: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  max-width: min(88%, 16rem);
+  padding: 0.35rem 0.5rem;
+  border: 1px dashed var(--color-muted);
+  background: rgb(17 14 12 / 0.92);
+  color: var(--color-parchment);
+  font-size: 0.68rem;
+  line-height: 1.25;
+  pointer-events: none;
+}
+
+.missing-background span {
+  color: var(--color-muted);
+}
+
+.missing-art {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  overflow: hidden;
+  padding: 0.55rem;
+  border: 1px dashed var(--color-muted);
+  background: #171412;
+  color: var(--color-parchment);
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.missing-art strong {
+  font-weight: 700;
+}
+
+.missing-art small {
+  color: var(--color-muted);
+  font-size: 0.65rem;
+}
+
+.missing-art-mark {
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0.72;
+}
+
+.scene-plate.missing-art {
+  z-index: 1;
+}
+
+.portrait-frame > .missing-art {
+  width: 100%;
+  height: 100%;
+  min-height: 4rem;
+}
+
+.cast-card-art,
+.cast-card > .missing-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.compact-portrait-art.missing-art {
+  width: 100%;
+  height: 100%;
+  padding: 0.1rem;
+  gap: 0.05rem;
+  font-size: 0.42rem;
+}
+
+.compact-portrait-art.missing-art .missing-art-mark {
+  display: none;
+}
+
+.hub-face-art.missing-art {
+  width: 100%;
+  height: 100%;
+  padding: 0.15rem;
+  font-size: 0.45rem;
+}
+
+.hub-face-art.missing-art .missing-art-mark {
+  display: none;
+}

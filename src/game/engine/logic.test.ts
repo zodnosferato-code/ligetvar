@@ -483,7 +483,7 @@ describe("Ligetvár engine", () => {
 
 describe("campus horror story", () => {
   it("offers victim cases and monster evidence independently of romance progress", () => {
-    const first = horrorNode(4, [], 4);
+    const first = horrorNode(4, [], 0);
     assert.ok(first);
     assert.equal(first.node.id, "horror_lilla_report");
     assert.ok(first.node.choices.length >= 2 && first.node.choices.length <= 4);
@@ -492,6 +492,40 @@ describe("campus horror story", () => {
     assert.notEqual(second.node.id, first.node.id);
     assert.match(weeklyHorrorSummary(1).text, /Varga Lilla/);
     assert.match(weeklyHorrorSummary(12).text, /agancsos alak/);
+  });
+
+  it("keeps week-limited incidents available as catch-up events after their window", () => {
+    const missed = horrorNode(16, [], 0);
+    assert.ok(missed);
+    assert.equal(missed.node.id, "horror_lilla_report");
+  });
+
+  it("offers satyr attacks and named faculty without changing romance stats", () => {
+    const seenAtWeekFour = new Set<string>();
+    for (let seed = 0; seed < 128; seed += 1) {
+      const event = horrorNode(4, [], seed);
+      if (event) seenAtWeekFour.add(event.node.id);
+    }
+    assert.ok(seenAtWeekFour.has("horror_satyr_attack_courtyard"));
+    assert.ok(seenAtWeekFour.has("horror_teacher_folklore"));
+
+    const teacherSeed = Array.from({ length: 128 }, (_, seed) => seed).find(
+      (seed) => horrorNode(4, [], seed)?.node.id === "horror_teacher_folklore",
+    );
+    assert.notEqual(teacherSeed, undefined);
+    const teacher = horrorNode(4, [], teacherSeed!);
+    assert.ok(teacher);
+    assert.equal(teacher.node.speaker, "narrator");
+    assert.match(teacher.node.speakerLabel ?? "", /Dr\. Sárközi Júlia/);
+    assert.match(teacher.node.artCaption ?? "", /portrékép hiányzik/);
+
+    const state = createInitial("Márton");
+    state.phase = "scene";
+    state.rolled = true;
+    state.scene = { node: teacher.node, location: teacher.location, source: "story" };
+    const before = structuredClone(state.girls);
+    const after = applyChoice(state, teacher.node.choices[0]!.id);
+    assert.deepEqual(after.girls, before);
   });
 
   it("can trigger a horror encounter when every relationship is still at zero", () => {
