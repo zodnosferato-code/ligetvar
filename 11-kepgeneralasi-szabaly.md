@@ -13,7 +13,6 @@
 - **Egy személy képenként**: soha ne generálj két lányt egy képen.
 - **Háttér**: referenciánál lapos `#2c2830`. Játékbeli jeleneteknél részletes pixeles kastélybelső (kőfal, íves ablak, fa gerenda, gyertyák, meleg fény).
 - **POV**: jelenetek a játékos első személyű nézőpontjából (karakter a néző felé, játékos teste nem látszik).
-- **Magasságskála**: 0–180 cm a referencia képeken, a lány pontos magasságát mutatja a fej tetején.
 - **Teljes test**: ruhás és alsóneműs modell-lapok szemből, oldalról, hátulról (lásd 23-as dokumentum).
 
 ## Képek lehetőségei (sávok az előrehaladás szerint)
@@ -49,7 +48,7 @@ Ruhadarabok **változhatnak vagy lekerülhetnek**. Pozíciók változhatnak (ál
 Pixel art character reference, Japanese manga style, one adult woman, full body,
 both feet visible if standing, centered. Crisp hard pixels, limited palette, no blur,
 no anti-aliasing, no text, no watermark, no second person. Plain flat background #2c2830.
-Adult proportions, not a child, not chibi. Accurate height scale 0-180 cm showing exact height.
+Adult proportions, not a child, not chibi.
 ```
 
 Ezután jön a lány specifikus blokkja, majd a ruházat/póz/intimitás utasítás.
@@ -97,8 +96,7 @@ with a few loose strands. Thin rectangular glasses
 3. Ruhadarabok csak akkor kerülnek le, ha a jelenet (bizalmi szint és lehetőség) kifejezetten kéri.
 4. Ha a generált kép eltér a kanontól (rossz haj, szemüveg Boglárkán stb.), újra kell generálni.
 5. Referenciaképek a `references/` mappába kerülnek, lehetőségenként csoportosítva.
-6. Magasságskála mindig 0–180 cm, pontosan a lány magasságát mutatja.
-7. Teljes test referenciák a [23-teljes-test-referencia.md](23-teljes-test-referencia.md) szerint.
+6. Teljes test referenciák a [23-teljes-test-referencia.md](23-teljes-test-referencia.md) szerint.
 
 ## Játékbeli felhasználás
 

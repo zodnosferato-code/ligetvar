@@ -33,7 +33,6 @@ Face: thin rectangular face, light freckles on nose, thin rectangular glasses #2
 
 - Minden lány **formás és nőies** (Rebeka hangsúlyos derék/csípő, Boglárka puha nőies formák nagyobb formás mellbőséggel, Gréta karcsú de nőies).
 - Smink a személyiséghez: Rebeka erős és precíz, Boglárka szinte semmi, Gréta visszafogott professzionális.
-- Magasságskála mindig 0–180 cm a referencia képeken, a fej teteje pontosan a megadott értéknél.
 - Jelenetek a játékos első személyű POV-jából: karakter a néző felé néz, játékos teste nem látszik.
 
 Ez a dokumentum a kanonikus forrás. Minden agentnek ezt kell másolnia a prompt elejére.

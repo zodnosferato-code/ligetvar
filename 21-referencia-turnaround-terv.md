@@ -1,18 +1,17 @@
 # Referencia turnaround és modell sheet terv
 
-Ez a dokumentum a későbbi konzisztens sprite-generáláshoz és animációhoz szükséges referencia képek tervét tartalmazza. A cél: minden lány ugyanabban a pózban, skálával mögöttük, előlről, oldalról és hátulról, ruhában és alsóneműben (anatomy reference), hogy később image-to-image vagy prompt-only generálás is konzisztens legyen.
+Ez a dokumentum a későbbi konzisztens sprite-generáláshoz és animációhoz szükséges referencia képek tervét tartalmazza. A cél: minden lány ugyanabban a pózban, előlről, oldalról és hátulról, ruhában és alsóneműben (anatomy reference), hogy később image-to-image vagy prompt-only generálás is konzisztens legyen.
 
 A meglévő [04-vizualis-biblia.md](04-vizualis-biblia.md), [10-vizualis-stilus.md](10-vizualis-stilus.md) és [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) szabályai érvényesek. A haj, arcjel és testalkat soha nem változhat.
 
 ## Követelmények
 
 - **Ugyanaz a póz**: neutral A-pose (karok enyhén el a testtől), álló, mindkét láb látszik.
-- **Skála**: magasság mérő (cm jelölések 140–190) a háttérben, hogy a testarányok és magasságok (Rebeka 172, Boglárka 158, Gréta 168) ellenőrizhetők legyenek.
 - **Nézetek**: elől (front), oldal (profile), hátul (back).
 - **Ruházat**:
   - Teljes alapruha (kanonikus).
   - Alsónemű (bra + panties) modell sheet célból, nem szexuális póz. (Teljes meztelenség generálása a jelenlegi eszközökkel korlátozott, ezért ez a praktikus alternatíva.)
-- **Stílus**: kemény pixel, manga vonal, korlátozott paletta, lapos #2c2830 háttér, nincs blur, anti-aliasing, szöveg (a skálán kívül).
+- **Stílus**: kemény pixel, manga vonal, korlátozott paletta, lapos #2c2830 háttér, nincs blur, anti-aliasing, szöveg.
 - **Egy lány képenként**.
 
 ## Generálási sorrend és használat
@@ -27,9 +26,8 @@ A meglévő [04-vizualis-biblia.md](04-vizualis-biblia.md), [10-vizualis-stilus.
 ```text
 Pixel art character reference sheet, Japanese manga style, one adult woman age [age],
 full body [front/side/back] view standing in neutral A-pose (arms slightly away),
-both feet visible, centered. Height scale ruler behind her marked in cm from 140 to 190,
-flat dark background #2c2830. Crisp hard pixels, limited palette, no blur,
-no anti-aliasing, no text except the scale numbers, no watermark, no second person.
+both feet visible, centered. Flat dark background #2c2830. Crisp hard pixels, limited palette, no blur,
+no anti-aliasing, no text, no watermark, no second person.
 [Fully clothed modest / Wearing only simple neutral undergarments (bra and panties)
 for anatomical reference, modest non-sexual pose.]
 [Girl specific block from 04/11]

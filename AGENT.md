@@ -34,7 +34,7 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - [18-megvalositasi-terv.md](18-megvalositasi-terv.md) → hiányzó elemek megvalósítási terve
    - [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) → flag-lista és intim eszkalációs tábla
    - [20-kep-jelenet-lista.md](20-kep-jelenet-lista.md) → kép- és jelenetlista a sávokhoz
-   - [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) → skálás turnaround modell sheet-ek és animált sprite alapok
+   - [21-referencia-turnaround-terv.md](21-referencia-turnaround-terv.md) → turnaround modell sheet-ek és animált sprite alapok
    - [30-bovitett-sztori-es-intim-jelenetek.md](30-bovitett-sztori-es-intim-jelenetek.md) → explicit sztori és intim jelenetek
 
 2. **Írási szabályok**:
