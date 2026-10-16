@@ -193,25 +193,30 @@ describe("Ligetvár engine", () => {
     assert.equal(evaluateEnding(pair).id, "pair-true");
   });
 
-  it("applies a very good intro and remembers the flag", () => {
+  it("applies the current Part 1 intro choice and follows its dialogue node", () => {
     let state = applyChoice(createInitial("Márton"), "continue");
     state.slot = 2;
     state = chooseAction(state, "holdkor");
     assert.equal(state.scene?.node.id, "rebeka_intro");
+
+    // Current dialogues/part1/rebeka.json awards +5 closeness and follows
+    // directly to rebeka_foto; the old synthetic *_vg_react node was removed.
     state = applyChoice(state, "very_good");
     assert.equal(state.girls.rebeka.trust, 1);
-    assert.equal(state.girls.rebeka.closeness, 6);
+    assert.equal(state.girls.rebeka.closeness, 5);
     assert.ok(state.girls.rebeka.flags.includes("rebeka_kor"));
     assert.ok(state.seen.includes("rebeka_intro"));
     assert.equal(state.energy, 70);
     assert.equal(state.phase, "scene");
-    assert.equal(state.scene?.node.id, "rebeka_intro_vg_react");
-    assert.equal(state.scene?.expression, "elegedett_felmosoly");
-    assert.match(portraitFor("rebeka", state.scene?.expression), /halfsmile/);
+    assert.equal(state.scene?.node.id, "rebeka_foto");
+    assert.equal(state.scene?.source, "follow");
     assert.equal(state.slot, 2);
-    state = applyChoice(state, "continue");
+
+    // The next node uses its current JSON choice IDs, not the removed
+    // "continue" choice from the former synthetic reaction node.
+    state = applyChoice(state, "very_good");
     assert.equal(state.energy, 70);
-    assert.equal(state.scene?.node.id, "rebeka_foto_kerdes");
+    assert.equal(state.scene?.node.id, "rebeka_nappali");
     assert.equal(state.slot, 2);
   });
 
