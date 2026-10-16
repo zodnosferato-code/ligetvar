@@ -1,6 +1,9 @@
-# Képgenerálási szabály
+## Képforrás szabály (kanonikus)
 
-Ez a dokumentum biztosítja, hogy minden generált kép konzisztens maradjon. Minden későbbi generálás (agent vagy kézi) ezt a szabályt követi. A teljes test leírások a [23-teljes-test-referencia.md](23-teljes-test-referencia.md)-ben vannak.
+- **Egyetlen hivatalos forrás**: minden referencia, jelenet, háttér, ikon és karakterkép a **GitHub repóban** (`assets/`) él. Ez az egyetlen hely, ahonnan az engine, az agentek és a játék képeket tölt.
+- **Drive csak archívum**: a Google Drive mappák (pl. „Ligetvár Character References Full”, „Ligetvár Scene Backgrounds”) csak biztonsági másolatot / archívumot jelentenek. Nem forrás, nem szinkronizálódik vissza, és nem használható generáláshoz vagy játékhoz.
+- Új képet **először** a repóba kell commitolni (`assets/references/`, `assets/backgrounds/`, `assets/characters/` stb.). Drive-ra csak utólag, kézi archívumként másolható.
+- Minden generálás és image-to-image művelet a repóban lévő képeket és a dokumentációt használja alapként.
 
 ## Kötelező stílus
 
