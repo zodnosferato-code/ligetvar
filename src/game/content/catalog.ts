@@ -1294,6 +1294,153 @@ export function rumorNode(): DialogueNode {
   );
 }
 
+type HorrorEvent = { minWeek: number; maxWeek: number; location: LocationId; node: DialogueNode };
+
+const HORROR_EVENTS: HorrorEvent[] = [
+  {
+    minWeek: 2, maxWeek: 8, location: "department",
+    node: node("horror_lilla_report", "narrator",
+      "A tanszéki hirdetőtáblán egy rövid, hivatalos közlemény áll: Varga Lilla, tizenkilenc éves biológushallgató negyvenhárom percre eltűnt a parkban, majd a nyugati kapunál került elő. Nem sérült meg, de a történtek egy részére nem emlékszik. A jelentés szerint „valószínű tájékozódási zavar”. A lap szélén valaki ceruzával odaírta: Lilla azt állította, hogy a szobatársa hívta, aki aznap este végig a kollégiumban volt.",
+      "story", [
+        c("record", "Kérjünk beleegyezésével részletes tanúvallomást, és őrizzük meg az eredeti jelentést.", "very_good", { insight: 1, calm: 1, world: ["case_lilla_documented"] }, "óvatos dokumentálás"),
+        c("wait", "Előbb ellenőrizzük, ki írta a közleményt; Lillát ne tegyük ki újabb nyomásnak.", "good", { insight: 1 }, "ellenőrzés"),
+        c("dismiss", "Ha nincs sérülés és nincs szemtanú, nincs mit vizsgálni.", "bad", { risk: 5, world: ["case_lilla_dismissed"] }, "elhallgatás")
+      ], "Esetjelentés — Varga Lilla eltűnésének és emlékezetkiesésének dokumentuma előkerült.")
+  },
+  {
+    minWeek: 2, maxWeek: 8, location: "classroom",
+    node: node("horror_voice_witness", "narrator",
+      "A rövid, négyszemközti vallomásban Lilla egy apró részletre emlékszik: a hang a szobatársa becenevén szólította, majd megismételte a mondat utolsó szótagját, mintha egy pillanattal később érne utol a visszhang. Lilla nem látott biztosan semmit. Azt kéri, hogy a nevét ne írják ki a folyosói hirdetőtáblára.",
+      "story", [
+        c("protect", "A nevét zártan kezeljük, a részleteket pedig különválasztjuk a következtetéseinktől.", "very_good", { calm: 1, insight: 1, world: ["case_witness_protected"] }, "tanúvédelem"),
+        c("verify", "Kérdezzünk rá a hangra egy második, független beszélgetésben.", "good", { insight: 1 }, "ellenőrzés"),
+        c("publish", "A teljes történet kell a nyilvánosságnak, névvel együtt.", "bad", { risk: 8, world: ["case_witness_exposed"] }, "adatvédelmi kockázat")
+      ], "Esetjelentés — Lilla a hangutánzás késleltetett visszhangjáról számolt be.")
+  },
+  {
+    minWeek: 3, maxWeek: 8, location: "holdkor",
+    node: node("horror_shadow_frame", "narrator",
+      "A fotóműhely monitorán egy korábban észre sem vett részlet jelenik meg. A fák között agancsszerű forma áll, de a pocsolya tükröződése fél méterrel arrébb mutatja. A kép önmagában lehet expozíciós hiba. A fájl metaadatai viszont nem egyeznek azzal az idővel, amikor a gép órája szerint a felvétel készült.",
+      "story", [
+        c("preserve", "Készítsünk ellenőrzőösszeget, másolatot és jegyzőkönyvet; az eredetit ne módosítsuk.", "very_good", { insight: 2, world: ["evidence_photo_preserved"] }, "bizonyítékmegőrzés"),
+        c("compare", "Hasonlítsuk össze a másik két képpel, mielőtt következtetést vonunk le.", "good", { insight: 1 }, "összevetés"),
+        c("post", "Tegyük közzé. Hadd döntse el a közönség, hogy szörny-e.", "bad", { risk: 7, world: ["evidence_photo_published"] }, "nyilvánosság")
+      ], "Esetjelentés — Egy fénykép tükröződése és időbélyege nem egyezik.")
+  },
+  {
+    minWeek: 4, maxWeek: 10, location: "department",
+    node: node("horror_old_case", "narrator",
+      "Egy régi iktatókönyvben ugyanaz a mintázat ismétlődik: Tóth Júlia hallgató huszonegy percig nem volt elérhető a park közelében, majd segítséget kért a portán. Az ügyet „éjszakai pánikreakcióként” zárták le. A digitális másolat szerint a bejegyzés ideje délutánra került át, és egy korábbi melléklet hiányzik.",
+      "story", [
+        c("audit", "Rögzítsük az eredeti és a módosított időpontot is; az eltérést még ne nevezzük szándékos hamisításnak.", "very_good", { insight: 2, world: ["case_old_audited"] }, "iratellenőrzés"),
+        c("copy", "Kérjünk egy másik példányt a levéltárból.", "good", { insight: 1 }, "másolatkérés"),
+        c("accuse", "Azonnal nevezzük meg nyilvánosan a felelőst.", "bad", { risk: 8 }, "elhamarkodott vád")
+      ], "Esetjelentés — Tóth Júlia régi bejegyzésének időpontját utólag módosították.")
+  },
+  {
+    minWeek: 5, maxWeek: 12, location: "library",
+    node: node("horror_survivor_statement", "narrator",
+      "Egy volt hallgató, Németh Eszter, csak akkor hajlandó beszélni, ha a neve nem kerül a jegyzőkönyv nyilvános változatába. Évekkel korábban őt is egy ismerős hang csalta a fák közé. Nem látott tiszta alakot; azt hallotta, hogy a saját hangja szólítja a keresőcsapatot a rossz irányból. Amikor megpróbált felelni, a hang egy ütemmel később ismételte a szavait.",
+      "story", [
+        c("protect", "A nevét külön, korlátozott hozzáférésű mellékletben tartjuk, és csak a jóváhagyásával idézzük.", "very_good", { calm: 1, insight: 1, world: ["case_eszt­er_protected"] }, "tanúvédelem"),
+        c("clarify", "Kérdezzük meg, mely részletekre emlékszik biztosan, és melyekre csak következtet.", "good", { insight: 1 }, "pontosítás"),
+        c("press", "Addig kérdezzük, amíg pontosan le nem írja a lényt.", "bad", { risk: 5 }, "nyomásgyakorlás")
+      ], "Esetjelentés — Németh Eszter túlélővallomása megerősítette a késleltetett hangutánzás motívumát.")
+  },
+  {
+    minWeek: 7, maxWeek: 12, location: "courtyard",
+    node: node("horror_sealed_door", "narrator",
+      "A lezárt szervizajtó előtt friss, páros nyomok indulnak a fal felé, aztán megszakadnak a kövön. A zár sértetlen. A porban keskeny karcolások húzódnak, mintha valami a túloldalról próbálta volna kitapogatni a kilincset. A közeli diákok semmit sem hallottak — kivéve az egyikük, aki a saját nevét hallotta a fal mögül.",
+      "story", [
+        c("document", "Fényképezzük le a helyet mércével, és a lezárt ajtót ne nyissuk ki egyedül.", "very_good", { insight: 1, calm: 1, world: ["tunnel_marks_documented"] }, "helyszíni dokumentálás"),
+        c("secure", "Értesítsük a gondnokságot, és kérjünk két tanút a helyszín biztosításához.", "good", { calm: 1 }, "biztosítás"),
+        c("enter", "Nyissuk ki most, mielőtt eltűnnek a nyomok.", "bad", { risk: 10 }, "veszélyes behatolás")
+      ], "Esetjelentés — Friss nyomok jelentek meg a lezárt szervizajtónál.")
+  },
+  {
+    minWeek: 8, maxWeek: 13, location: "library",
+    node: node("horror_bell_clapper", "narrator",
+      "A régi leltár szerint a főiskola harangját egy baleset után leszerelték. A harangtest megvan, de a nyelve hiányzik; a kivétel dátuma egybeesik az egyik régi eltűnés hetével. A mondák nem egyeznek abban, hogy a harang elűzi-e a szarírt. Eszter vallomása alapján egyelőre csak annyi állítható: a tiszta, ismétlődő hang megszakíthatja az utánzást.",
+      "story", [
+        c("compare", "A leltárt vessük össze a gondnok jegyzeteivel; a harangot ne próbáljuk ki ember mellett.", "very_good", { insight: 2, calm: 1, world: ["bell_clapper_traced"] }, "források összevetése"),
+        c("plan", "Készítsünk biztonságos próbát távol a park ösvényeitől.", "good", { insight: 1 }, "óvatos kísérlet"),
+        c("test", "Menjünk ki éjjel és csengessünk, hátha előjön.", "bad", { risk: 10 }, "kockázatos próba")
+      ], "Esetjelentés — A harang hiányzó nyelve az egyik régi incidens idején került le.")
+  },
+  {
+    minWeek: 10, maxWeek: 15, location: "classroom",
+    node: node("horror_mimic_call", "narrator",
+      "A délutáni folyosón a főhős hangja hallatszik a lezárt lépcsőházból: valaki azt mondja, hogy az egyik hallgató azonnal jöjjön le. Ugyanabban a pillanatban a főhős a terem másik végében áll. A hang nem ismétel, csak vár. A diák már elindulna, de a csoportos jelzésre megáll.",
+      "story", [
+        c("stay_together", "Senki nem válik le a csoportról; ellenőrizzük egymást látásból és kézjellel.", "very_good", { calm: 2, world: ["mimic_safety_protocol"] }, "biztonsági jelzés"),
+        c("call_backup", "Kérjünk gondnoki segítséget, és zárjuk le a folyosót.", "good", { calm: 1 }, "segítségkérés"),
+        c("follow_voice", "Menjünk a hang után, amíg még halljuk.", "bad", { risk: 12 }, "veszélyes követés")
+      ], "Esetjelentés — A lény a főhős hangját utánozta egy lezárt lépcsőházból.")
+  },
+  {
+    minWeek: 11, maxWeek: 15, location: "holdkor",
+    node: node("horror_full_sighting", "narrator",
+      "A Holdkör hátsó ablakán át egy pillanatra teljes alak látszik a fák között. A szarír magasabb egy embernél, agancsai elakadnak a kapu felső ívében, de a teste nem mozdul velük együtt. Az árnyék előbb fordul meg, mint az alak. A felvétel homályos, de három különböző irányból ugyanaz a csend hallatszik vissza.",
+      "story", [
+        c("withdraw", "Rögzítsük az időt és a távolságot, majd vonuljunk vissza a kivilágított épületbe.", "very_good", { calm: 2, insight: 1, world: ["monster_sighting_verified"] }, "biztonságos visszavonulás"),
+        c("compare", "Vessük össze a látottakat a korábbi képekkel, és ne állítsunk többet, mint amit a felvétel mutat.", "good", { insight: 1 }, "bizonyíték-összevetés"),
+        c("approach", "Közelítsünk, hogy végre éles képet készíthessünk.", "bad", { risk: 12 }, "veszélyes közelítés")
+      ], "Esetjelentés — Három tanú ugyanarról az agancsos alakról számolt be.")
+  },
+  {
+    minWeek: 12, maxWeek: 15, location: "department",
+    node: node("horror_reports_bundle", "narrator",
+      "A három jelentés egymás mellé téve már nem elszigetelt furcsaság: az eltűnések időpontjai a harang leltári változása után sűrűsödnek, a tanúvallomásokat pedig minden alkalommal rövidítették. A dékáni titkárság neve a továbbítási sorban szerepel, de a közvetlen szándék még nem bizonyított. A legfontosabb kérdés most az, hogy miként védjétek a tanúkat és az eredeti iratokat.",
+      "story", [
+        c("chain", "Készítsünk dokumentált bizonyítékláncot, és adjuk át független vizsgálónak.", "very_good", { insight: 2, calm: 1, world: ["evidence_chain_complete"] }, "bizonyítéklánc"),
+        c("copy", "Őrizzünk külön biztonsági másolatot, mielőtt bárkit megvádolunk.", "good", { insight: 1 }, "biztonsági másolat"),
+        c("accuse", "Nyilvánosan nevezzük meg a dékánt a bizonyítékok teljes ellenőrzése előtt.", "bad", { risk: 10 }, "bizonyítatlan vád")
+      ], "Esetjelentés — A régi és új ügyek ugyanabba az intézményi mintába illeszkednek.")
+  },
+  {
+    minWeek: 13, maxWeek: 15, location: "courtyard",
+    node: node("horror_last_trace", "narrator",
+      "Az eső után friss nyomok vezetnek a lezárt szárnyhoz, de egyik sem tart visszafelé. A gondnok régi jegyzete szerint a lény akkor zavarodik meg, ha az utánzott hang nem kap választ, és tiszta, ismétlődő hang szólal meg a közelében. Ez még nem győzelmi terv. Csak az első olyan feltevés, amelyet a fényképek, az iratok és a vallomások egyszerre támasztanak alá.",
+      "story", [
+        c("rehearse", "Próbáljuk el a visszavonulást és a jelzéseket nappal; a harang hangját csak a kijelölt ponton használjuk.", "very_good", { insight: 1, calm: 2, world: ["final_plan_rehearsed"] }, "finálé előtti próba"),
+        c("delegate", "Osszuk ki a feladatokat, és mindenkinek legyen kijelölt társa.", "good", { calm: 1 }, "feladatmegosztás"),
+        c("rush", "Nincs idő próbára, induljunk azonnal a föld alá.", "bad", { risk: 12 }, "kapkodás")
+      ], "Esetjelentés — A finálé előtt összeállt a hangutánzás elleni biztonsági terv.")
+  }
+];
+
+export function horrorNode(week: number, seen: string[], seed: number): { node: DialogueNode; location: LocationId } | null {
+  const available = HORROR_EVENTS.filter((event) =>
+    week >= event.minWeek && week <= event.maxWeek && !seen.includes(event.node.id)
+  );
+  if (!available.length) return null;
+  const index = Math.abs(seed) % available.length;
+  const selected = available[index]!;
+  return { node: selected.node, location: selected.location };
+}
+
+export function weeklyHorrorSummary(week: number): { title: string; text: string } {
+  const beats: Array<{ title: string; text: string }> = [
+    { title: "Egy hiányzó negyvenhárom perc", text: "Varga Lilla, tizenkilenc éves biológushallgató a parkban tűnt el rövid időre, majd úgy került elő, hogy az út egy részére nem emlékezett. A hivatalos jelentés tájékozódási zavart említ; a hang, amely őt az ösvényre csalta, a szobatársa hangja volt." },
+    { title: "A hang, amelynek nem lett volna szabad ott lennie", text: "Lilla szobatársa igazolja, hogy nem hagyta el a kollégiumot. A vallomás ezért nem magyarázza meg az esetet — csak azt bizonyítja, hogy valami ismerős hangon szólíthatta a hallgatót." },
+    { title: "Az első ellentmondó felvétel", text: "Rebeka fényképén az agancsos forma és a tükröződés nem ugyanoda esik. A kép lehet hibás, ezért az eredeti fájl és a metaadatok megőrzése fontosabb, mint a gyors következtetés." },
+    { title: "Egy második tanú", text: "Egy újabb hallgató ugyanazt a hangutánzó jelenséget írja le. A tanúvallomást csak engedéllyel lehet felhasználni; a főiskolán közben továbbra is rémhírként kezelik az ügyet." },
+    { title: "A régi akták", text: "Tóth Júlia korábbi esete azonos mintát mutat: rövid eltűnés, hiányos emlékezet, majd a jelentés átminősítése. Az időbélyeg módosítása arra utal, hogy az intézményi nyilvántartás nem megbízható." },
+    { title: "Aki már egyszer hallotta", text: "Németh Eszter, volt hallgató, évekkel korábbi találkozásról beszél. Nem tudja leírni a lényt, de emlékszik a saját hangjára a fák között és a válasz késleltetett visszhangjára." },
+    { title: "A hiányzó részlet", text: "A lezárt szárny rajzai és a régi térkép nem fedik egymást. Az épület nyugati fala mögött olyan átjáró húzódhat, amelyet a jelenlegi tervrajzok már nem jelölnek." },
+    { title: "A harang leltári nyoma", text: "A harangtest megvan, a nyelve hiányzik. A leszerelés dátuma egybeesik egy régi hallgatói incidenssel. A folklór nem bizonyít fegyvert, de a hang megszakíthatja a lény utánzását." },
+    { title: "A zárt útvonal", text: "A nyomozás immár egy lezárt szervizalagút felé tart. A csoport felismeri, hogy a szarír akkor a legveszélyesebb, amikor valakit leválaszt a többiekről; a biztonsági szabályokat ezért még a belépés előtt rögzíteni kell." },
+    { title: "A főhős hangja a rossz helyről", text: "Egy folyosói megszólítás a főhős hangját utánozza, miközben ő látható helyen áll. A csapat megtanulja: ismerős hang nem jelent megbízható hívást, és senki nem indulhat el egyedül." },
+    { title: "Nyomok a fal túloldalán", text: "A lezárt ajtónál friss karcolások és megszakadó patanyomok jelennek meg. Nincs bizonyíték arra, hogy az ajtót kívülről kinyitották volna; az épület alaprajzát újra kell vizsgálni." },
+    { title: "Egy pillanatnyi teljes alak", text: "Három tanú ugyanabban az órában látja az agancsos alakot, de a beszámolók a mozgásáról eltérnek. Rebeka felvétele, Boglárka forrásai és Gréta iratai együtt teszik először ellenőrizhetővé a mintát." },
+    { title: "A jelentések közös mintája", text: "A régi és új ügyekben ugyanaz a szerkesztési nyom szerepel. Ez az eltussolást valószínűsíti, de önmagában nem bizonyítja, ki és milyen szándékkal módosította az iratokat." },
+    { title: "A hangutánzás szabálya", text: "A vallomások és a legendaváltozatok egy irányba mutatnak: a szarír az ismerős hanggal próbálja elszigetelni a célpontját. A hang elutasítása, a társas jelzés és a harang tiszta hangja együtt növelheti a túlélés esélyét." },
+    { title: "A finálé előtti utolsó nyom", text: "A nyomok a föld alatti üreghez vezetnek. A bizonyítékok már összeállnak, de a bejutás önmagában nem megoldás: visszavonulási út, kijelölt társ és a tanúk védelme nélkül a csapat újabb áldozatot kockáztat." },
+    { title: "A történet végén", text: "A finálé kimenetele attól függ, mennyire őriztétek meg a bizonyítékokat és a csapat bizalmát. A szarír létezése többé nem egyetlen hallgató emlékezetkiesésén múlik; az intézménynek most már a túlélők beszámolóira és az iratokra is választ kell adnia." }
+  ];
+  return beats[Math.max(0, Math.min(beats.length - 1, Math.floor(week) - 1))]!;
+}
+
 export { NODES };
 
 export const STORY: StoryEvent[] = [
