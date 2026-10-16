@@ -492,6 +492,7 @@ describe("campus horror story", () => {
     assert.notEqual(second.node.id, first.node.id);
     assert.match(weeklyHorrorSummary(1).text, /Varga Lilla/);
     assert.match(weeklyHorrorSummary(12).text, /köpenyes alak/);
+    assert.match(horrorNode(4, [], 0)?.node.artCaption ?? "", /egyetlen izzó vörös szem/);
   });
 
   it("keeps week-limited incidents available as catch-up events after their window", () => {
@@ -553,6 +554,11 @@ describe("campus horror story", () => {
     assert.match(reveal.node.text, /szexuális vágya/);
     assert.match(reveal.node.text, /kényszerű közelség/);
     assert.match(reveal.node.text, /nem romantika/);
+    assert.match(reveal.node.text, /rövid fekete haj/);
+    assert.match(reveal.node.text, /ritkás bajusz/);
+    assert.match(reveal.node.text, /kissé túlsúlyos testalkat/);
+    assert.match(reveal.node.text, /felnőtt nőkre/);
+    assert.match(reveal.node.artCaption ?? "", /rövid fekete haj/);
 
     const state = createInitial("Márton");
     state.phase = "scene";
