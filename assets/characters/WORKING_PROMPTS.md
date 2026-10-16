@@ -99,3 +99,9 @@ fellatio, shaft, viewer tip, titjob, penetration, explicit sex act names, multi-
 - bent-over rear: Bent forward hands on bed looking back over shoulder arched back full rear focus
 - all-fours rear angle: On all fours rear-focused low angle looking over shoulder arched back
 - prone rear: Lying on stomach chin on hands looking at viewer legs slightly raised full rear and back focus
+
+## v9 frontal open / intimate lower-body (mostly works)
+- sitting open knees: Sitting on purple bed facing camera knees apart hands on mattress
+- spread recline: Lying on back knees pulled up to chest legs open full frontal lower body focus
+- open kneel: Kneeling facing camera thighs wide open hands resting on inner thighs
+NOTE: "legs open spread thighs full frontal nude intimate detail" sometimes moderated for Rebeka; use softer "knees apart".
