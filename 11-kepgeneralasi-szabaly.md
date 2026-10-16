@@ -74,7 +74,7 @@ Light brown hair #8a5a3a in a loose braid over her right shoulder.
 **Gréta Váradi**
 ```text
 Greta Varadi, age 21. Slim, exactly 168 cm, copper-red hair #c4542a in a high ponytail
-with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasses
+with a few loose strands. Thin rectangular glasses
 #2a2e33, light freckles across the nose, fair skin #f6d7c4.
 ```
 
@@ -104,3 +104,51 @@ with a yellow pencil #e2b84a stuck through the hair tie. Thin rectangular glasse
 - Kulcsjelenetek: magasabb kidolgozottság, enyhe mozgásérzet, később 2–4 frame animáció.
 
 Minden agentnek ezt a dokumentumot kell követnie képgeneráláskor. Az intim témák a kódban továbbra is a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják. A sávok lehetőségek, nem kötelező szabályok.
+
+## Játékos POV és jelenetleírás
+
+Minden játékbeli jelenet a **játékos (Márton) első személyű nézőpontjából** van. A képgeneráló eszközöknek ezt figyelembe kell venniük:
+
+- Első személyű nézet: a kamera a játékos szeme.
+- A karakter a néző felé néz vagy a néző irányába fordul.
+- A játékos teste, keze, ruhája **nem látszik** a képen (kivéve ha explicit interakció, pl. kézfogás, de akkor is csak a kéz részlete).
+- A háttér és a környezet a játékos szemszögéből látható.
+- A jelenet leírásában mindig szerepeljen a helyszín részletes leírása (kastély stílus, világítás, bútorok, ablakok stb.).
+
+### Részletes karakter vizuális blokk (AI konzisztenciához)
+
+A karakterleírásoknak elég részletesnek kell lenniük ahhoz, hogy egy képgeneráló AI ugyanazt a karaktert konzisztensen reprodukálja több képen is. Használd a zárt stílus-sablont + a pontos arc/test blokkot minden alkalommal.
+
+**Rebeka Dorn kiegészítő részletek:**
+- Szemszín: sötétbarna/fekete, éles eyeliner.
+- Orr: egyenes, keskeny.
+- Ajak: telt, sötét bogyószínű rúzs.
+- Bőr: sápadt, sima, #f0d2c4.
+- Test: 175 cm, óraüveg, hangsúlyos derék, formás fenék, közepes mell.
+
+**Boglárka Fazekas kiegészítő részletek:**
+- Szemszín: barna, nagy, gyakran lefelé néz.
+- Orr: kicsi, szeplős.
+- Ajak: természetes, puha rózsaszín.
+- Bőr: világos, szeplős orron és arcon, #f5e0d0 környéke.
+- Test: 150 cm, puha nőies formák, nagyobb formás mellbőség, formás csípő, **nem túlsúlyos**, vonzó saját módján (cukor, aranyos, puha).
+
+**Gréta Váradi kiegészítő részletek:**
+- Szemszín: zöldesbarna, téglalap szemüveg mögött.
+- Orr: egyenes, halvány szeplős.
+- Ajak: vékony, természetes szín.
+- Bőr: világos, #f2d5c0 környéke.
+- Test: 168 cm, karcsú sportos, formás kisebb mellek, hosszú lábak, feszes fenék.
+- Haj: rézvörös magas lófarok, **nincs ceruza a hajban**.
+
+## Helyszín részletes leírás (minden jelenethez)
+
+Minden jelenet promptjába be kell építeni a helyszín részletes leírását:
+
+- **Kastély általános**: 19. századi magyar romantikus/neo-gótikus kastély, kőfalak, hegyes íves ablakok, fagerendák, modern bútorok keveredve a régi struktúrával. Meleg lámpafény, esti lila-kék ablakfény.
+- **Tanterem**: fa padok, tábla, íves ablakok, gyertyafény vagy lámpa.
+- **Könyvtár**: magas fapolcok, olvasóasztalok, íves ablakok, csendes, meleg fény.
+- **Lakás/iroda**: modern íróasztal + kőfal + íves ablak, kanapé/ágy, könyvek, kastélykilátás.
+- **Holdkör / udvar**: esti kastélyudvar vagy alagsor, gyertyák, kőfalak.
+
+A jelenetek leírásánál mindig pontosítsd a világítást, a bútorokat, a karakter ruháját és pózát, valamint a játékos POV-t.

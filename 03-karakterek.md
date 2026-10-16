@@ -61,7 +61,7 @@ Referencia: [references/boglarka-fazekas.jpg](references/boglarka-fazekas.jpg)
 | Kor | 19 |
 | Év | elsőéves, irodalom |
 | Magasság | 150 cm, a három közül a legalacsonyabb |
-| Alkat | viszonylag telt, puha, nagyobb mellbőség ami a kardigán alatt is kiemelkedik, kerek arc és váll, puha has, formás csípő és combok |
+| Alkat | alacsony, puha nőies formák, nagyobb de formás mellbőség (nem túlsúlyos), kerek arc, formás csípő és combok, vonzó saját módján |
 | Haj | világosbarna, laza copf a jobb vállán, gyakran kibomlik |
 | Arc | kerek, szeplős, nincs szemüvege, a szeme gyakran lefelé tart, de az arca látszik, könnyen elpirul |
 | Alapruha | túl nagy mohazöld kardigán, ekrü magas nyakú ruha a lábszár közepéig, sötét harisnya, barna vászoncipő, mindkét kézzel egy csukott keménytáblás könyv. A kardigán gyakran lecsúszik a válláról. |
@@ -100,7 +100,7 @@ Referencia: [references/greta-varadi.jpg](references/greta-varadi.jpg)
 | Év | harmadéves, alkalmazott médiaelemzés, tanszéki demonstrátor |
 | Magasság | 168 cm |
 | Alkat | karcsú, egyenes, sportos, kisebb de formás mellek, hosszú lábak, feszes fenék |
-| Haj | rézvörös, magas lófarok, egy sárga ceruza átdugva a hajgumín, gyakran kibomlik |
+| Haj | rézvörös, magas lófarok, gyakran kibomlik |
 | Arc | vékony, téglalap szemüveg, halvány szeplő az orron, összeszedett, majdnem szigorú száj, ami könnyen megnyílik |
 | Alapruha | fehér ing, sötét erdőzöld kötött mellény, térdig érő grafitszoknya, sötét harisnya, fekete lapos cipő, rövid nyakpánt üres belépőkártyával. A mellény gyakran feszül a mellén. |
 | Hang | gyors, tagolt, a végén gyakran ellenőrzi, hogy pontos volt-e. Intim helyzetben elakad, majd enged. |
