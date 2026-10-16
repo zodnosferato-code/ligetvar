@@ -491,7 +491,18 @@ describe("campus horror story", () => {
     assert.ok(second);
     assert.notEqual(second.node.id, first.node.id);
     assert.match(weeklyHorrorSummary(1).text, /Varga Lilla/);
-    assert.match(weeklyHorrorSummary(12).text, /agancsos alak/);
+    assert.match(weeklyHorrorSummary(12).text, /köpenyes alak/);
+    const shadowSeed = Array.from({ length: 128 }, (_, seed) => seed).find(
+      (seed) => horrorNode(4, [], seed)?.node.id === "horror_shadow_frame",
+    );
+    assert.notEqual(shadowSeed, undefined);
+    assert.match(horrorNode(4, [], shadowSeed!)?.node.artCaption ?? "", /egyetlen izzó vörös szem/);
+
+    const courtyardSeed = Array.from({ length: 128 }, (_, seed) => seed).find(
+      (seed) => horrorNode(4, [], seed)?.node.id === "horror_cloaked_attack_courtyard",
+    );
+    assert.notEqual(courtyardSeed, undefined);
+    assert.match(horrorNode(4, [], courtyardSeed!)?.node.artCaption ?? "", /egyetlen izzó vörös szem/);
   });
 
   it("keeps week-limited incidents available as catch-up events after their window", () => {
@@ -500,13 +511,13 @@ describe("campus horror story", () => {
     assert.equal(missed.node.id, "horror_lilla_report");
   });
 
-  it("offers satyr attacks and named faculty without changing romance stats", () => {
+  it("offers cloaked-figure attacks and named faculty without changing romance stats", () => {
     const seenAtWeekFour = new Set<string>();
     for (let seed = 0; seed < 128; seed += 1) {
       const event = horrorNode(4, [], seed);
       if (event) seenAtWeekFour.add(event.node.id);
     }
-    assert.ok(seenAtWeekFour.has("horror_satyr_attack_courtyard"));
+    assert.ok(seenAtWeekFour.has("horror_cloaked_attack_courtyard"));
     assert.ok(seenAtWeekFour.has("horror_teacher_folklore"));
 
     const teacherSeed = Array.from({ length: 128 }, (_, seed) => seed).find(
@@ -525,6 +536,46 @@ describe("campus horror story", () => {
     state.scene = { node: teacher.node, location: teacher.location, source: "story" };
     const before = structuredClone(state.girls);
     const after = applyChoice(state, teacher.node.choices[0]!.id);
+    assert.deepEqual(after.girls, before);
+  });
+
+  it("reveals the cloaked figure as a predatory half-vampire without changing romance stats", () => {
+    const otherEvents = [
+      "horror_lilla_report",
+      "horror_voice_witness",
+      "horror_shadow_frame",
+      "horror_old_case",
+      "horror_survivor_statement",
+      "horror_sealed_door",
+      "horror_bell_clapper",
+      "horror_mimic_call",
+      "horror_full_sighting",
+      "horror_reports_bundle",
+      "horror_last_trace",
+      "horror_cloaked_attack_courtyard",
+      "horror_teacher_folklore",
+      "horror_cloaked_attack_peron",
+      "horror_teacher_archive",
+    ];
+    const reveal = horrorNode(16, otherEvents, 0);
+    assert.ok(reveal);
+    assert.equal(reveal.node.id, "horror_half_vampire_reveal");
+    assert.match(reveal.node.text, /félvér vámpír/);
+    assert.match(reveal.node.text, /szexuális vágya/);
+    assert.match(reveal.node.text, /birtoklásként és kényszerként/);
+    assert.match(reveal.node.text, /nem romantika/);
+    assert.match(reveal.node.text, /rövid fekete haj/);
+    assert.match(reveal.node.text, /ritkás bajusz/);
+    assert.match(reveal.node.text, /kissé túlsúlyos testalkat/);
+    assert.match(reveal.node.text, /felnőtt nőkre/);
+    assert.match(reveal.node.artCaption ?? "", /rövid fekete haj/);
+
+    const state = createInitial("Márton");
+    state.phase = "scene";
+    state.rolled = true;
+    state.scene = { node: reveal.node, location: reveal.location, source: "story" };
+    const before = structuredClone(state.girls);
+    const after = applyChoice(state, reveal.node.choices[0]!.id);
     assert.deepEqual(after.girls, before);
   });
 
