@@ -33,7 +33,7 @@ function toNode(raw: RawNode, previous?: DialogueNode): DialogueNode {
     text: line(raw.text_key),
     kind: previous?.kind ?? (raw.id.includes("repeat") ? "repeat" : "story"),
     journal: previous?.journal,
-    cost: previous?.cost,
+    cost: raw.id.endsWith("_react") ? 0 : previous?.cost,
     choices: raw.choices.map((choice) => ({
       id: choice.id,
       text: line(choice.text_key),

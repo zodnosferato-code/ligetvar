@@ -506,6 +506,7 @@ function Scene() {
           {text.slice(0, shown)}
           {shown < text.length ? <i className="caret" /> : null}
         </p>
+        {scene.source === "follow" ? <p className="hint">A beszélgetés még tart.</p> : null}
         {shown >= text.length ? (
           <div className="choices">
             {scene.node.choices.map((choice, index) => {

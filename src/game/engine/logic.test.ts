@@ -48,6 +48,21 @@ describe("Ligetvár engine", () => {
     assert.ok(state.girls.rebeka.flags.includes("rebeka_kor"));
     assert.ok(state.seen.includes("rebeka_intro"));
     assert.equal(state.energy, 70);
+    assert.equal(state.phase, "scene");
+    assert.equal(state.scene?.node.id, "rebeka_intro_vg_react");
+    assert.equal(state.slot, 2);
+    state = applyChoice(state, "continue");
+    assert.equal(state.energy, 70);
+    assert.equal(state.scene?.node.id, "physio");
+  });
+
+  it("keeps every follow-up inside the catalog", () => {
+    for (const node of Object.values(NODES)) {
+      for (const choice of node.choices) {
+        if (!choice.followNode) continue;
+        assert.ok(NODES[choice.followNode], `${node.id} -> ${choice.followNode}`);
+      }
+    }
   });
 
   it("halves the second talk and zeroes the third", () => {

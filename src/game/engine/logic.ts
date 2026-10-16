@@ -317,7 +317,8 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   const nth = speaker ? state.talkCounts[speaker] : 0;
   if (scene.node.kind === "repeat" && speaker) effect = scaleRepeat(effect, nth);
   effect = fatigue(effect, state.energy);
-  const cost = scene.node.cost ?? (scene.node.speaker === "narrator" ? 0 : 8);
+  const continued = scene.source === "follow";
+  const cost = scene.node.cost ?? (continued || scene.node.speaker === "narrator" ? 0 : 8);
   effect.energy = (effect.energy ?? 0) - cost;
 
   const target = speaker ?? (scene.node.id === "bekas" ? state.invite : null);
@@ -335,7 +336,7 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   if (choice.followNode) {
     const node = NODES[choice.followNode];
     if (node) {
-      next.scene = { node, location: scene.location, source: scene.source, expression: choice.reaction };
+      next.scene = { node, location: scene.location, source: "follow", expression: choice.reaction };
       next.phase = "scene";
       return next;
     }
