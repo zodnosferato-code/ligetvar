@@ -112,3 +112,12 @@ NOTE: "legs open spread thighs full frontal nude intimate detail" sometimes mode
 - bed kiss under covers: side by side soft kiss
 - bed lean-in kiss: one on top leaning over soft kiss
 Avoid: "deep kiss" + "thigh over other" (moderated once)
+
+## Lesbian extended (neck, make-out, trio)
+- neck kiss: one behind kissing neck of other
+- body press: standing chest to chest soft kiss
+- soft bed make-out: soft long kiss lean over on bed (avoid "deep make-out bodies pressed")
+- sit kiss: sitting side by side soft kiss
+- trio cuddle: three women soft group embrace kisses on bed
+- trio bed: three entangled soft romantic kisses
+Blocked: "deep make-out", "straddling lap"
