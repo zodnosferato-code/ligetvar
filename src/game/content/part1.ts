@@ -1,49 +1,12 @@
-import type { Choice, DialogueNode, GirlId, LocationId, StoryEvent } from "../engine/types.ts";
+import type { LocationId, StoryEvent } from "../engine/types.ts";
+import { loadDialogueNode, type RawDialogueNode } from "./dialogueLoader.ts";
 import hu from "../../../locales/hu.json" with { type: "json" };
 import rebeka from "../../../dialogues/part1/rebeka.json" with { type: "json" };
 import boglarka from "../../../dialogues/part1/boglarka.json" with { type: "json" };
 import greta from "../../../dialogues/part1/greta.json" with { type: "json" };
 
-type RawChoice = {
-  id: string;
-  text_key: string;
-  quality: Choice["quality"];
-  effect: Choice["effect"];
-  reaction: string;
-  follow_node?: string;
-};
-
-type RawNode = {
-  id: string;
-  speaker: GirlId | "narrator";
-  text_key: string;
-  choices: RawChoice[];
-};
-
 const lines = hu as Record<string, string>;
 
-function line(key: string) {
-  return lines[key] ?? key;
-}
-
-function toNode(raw: RawNode, previous?: DialogueNode): DialogueNode {
-  return {
-    id: raw.id,
-    speaker: raw.speaker,
-    text: line(raw.text_key),
-    kind: previous?.kind ?? (raw.id.includes("repeat") ? "repeat" : "story"),
-    journal: previous?.journal,
-    cost: raw.id.endsWith("_react") ? 0 : previous?.cost,
-    choices: raw.choices.map((choice) => ({
-      id: choice.id,
-      text: line(choice.text_key),
-      quality: choice.quality,
-      effect: choice.effect,
-      reaction: choice.reaction,
-      followNode: choice.follow_node,
-    })),
-  };
-}
 
 // Explicit scene scheduling — do not rely on ID substring matching.
 // Each important scene has its own location, week window, trust requirement and priority.
@@ -52,22 +15,22 @@ const SCENE_META: Record<string, { locations: LocationId[]; minWeek: number; min
   // Rebeka
   rebeka_foto: { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 },
   rebeka_nappali: { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 },
-  rebeka_lilla: { locations: ["holdkor", "classroom"], minWeek: 4, minTrust: 1, priority: 26 },
-  rebeka_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
-  rebeka_intimate: { locations: ["apartment", "holdkor"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
-  rebeka_yield: { locations: ["apartment", "holdkor"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
+  rebeka_lilla: { locations: ["holdkor", "classroom"], minWeek: 5, minTrust: 2, priority: 26 },
+  rebeka_lakas: { locations: ["apartment"], minWeek: 6, minTrust: 3, priority: 30 },
+  rebeka_intimate: { locations: ["apartment", "holdkor"], minWeek: 12, minTrust: 4, priority: 55, part: 2 },
+  rebeka_yield: { locations: ["apartment", "holdkor"], minWeek: 12, minTrust: 4, priority: 55, part: 2 },
   // Boglárka
   boglarka_jegyzet: { locations: ["library"], minWeek: 2, priority: 16 },
-  boglarka_vallomas: { locations: ["library", "classroom"], minWeek: 4, minTrust: 1, priority: 26 },
-  boglarka_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
-  boglarka_explore: { locations: ["apartment"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
-  boglarka_praise: { locations: ["apartment"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
+  boglarka_vallomas: { locations: ["library", "classroom"], minWeek: 5, minTrust: 2, priority: 26 },
+  boglarka_lakas: { locations: ["apartment"], minWeek: 6, minTrust: 3, priority: 30 },
+  boglarka_explore: { locations: ["apartment"], minWeek: 12, minTrust: 4, priority: 55, part: 2 },
+  boglarka_praise: { locations: ["apartment"], minWeek: 12, minTrust: 4, priority: 55, part: 2 },
   // Gréta
   greta_dokumentum: { locations: ["department"], minWeek: 2, priority: 16 },
-  greta_aktak: { locations: ["department", "classroom"], minWeek: 4, minTrust: 1, priority: 26 },
-  greta_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
-  greta_rule: { locations: ["apartment", "department"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
-  greta_yield: { locations: ["apartment", "department"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
+  greta_aktak: { locations: ["department", "classroom"], minWeek: 5, minTrust: 2, priority: 26 },
+  greta_lakas: { locations: ["apartment"], minWeek: 6, minTrust: 3, priority: 30 },
+  greta_rule: { locations: ["apartment", "department"], minWeek: 12, minTrust: 4, priority: 55, part: 2 },
+  greta_yield: { locations: ["apartment", "department"], minWeek: 12, minTrust: 4, priority: 55, part: 2 },
 };
 
 function beat(id: string): { locations: LocationId[]; minWeek: number; minTrust?: number; maxWeek?: number; priority: number; part?: 1 | 2 } | null {
@@ -78,11 +41,11 @@ function beat(id: string): { locations: LocationId[]; minWeek: number; minTrust?
 }
 
 export function mergePart1(nodes: Record<string, DialogueNode>, story: StoryEvent[]) {
-  const packs = [rebeka, boglarka, greta] as Array<{ nodes: RawNode[] }>;
+  const packs = [rebeka, boglarka, greta] as Array<{ nodes: RawDialogueNode[] }>;
   for (const pack of packs) {
     for (const raw of pack.nodes) {
       const previous = nodes[raw.id];
-      nodes[raw.id] = toNode(raw, previous);
+      nodes[raw.id] = loadDialogueNode(raw, lines, previous);
       const where = beat(raw.id);
       if (!where || previous) continue;
       const girl = raw.speaker as GirlId;

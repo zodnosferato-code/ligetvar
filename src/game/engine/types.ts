@@ -78,7 +78,7 @@ export interface Choice {
   reaction: string;
   requires?: ChoiceRequires;
   follow?: GirlId;
-  /** Next line in the same visit. From the part 1 dialogue files. */
+  /** Next line in the same visit, shared by every authored dialogue part. */
   followNode?: string;
 }
 
