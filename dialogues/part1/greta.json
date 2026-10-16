@@ -63,15 +63,14 @@
           "quality": "very_good",
           "effect": { "closeness": 4, "trust": 1 },
           "reaction": "kis_elegedett",
-          "follow_node": "greta_dokumentum_vg_react"
+          "follow_node": "greta_lakas_irat"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.dokumentum.good",
           "quality": "good",
           "effect": { "closeness": 3 },
-          "reaction": "koncentrált",
-          "follow_node": "greta_dokumentum_good_react"
+          "reaction": "koncentrált"
         },
         {
           "id": "bad",
@@ -79,42 +78,6 @@
           "quality": "bad",
           "effect": { "closeness": 0, "anger": 1 },
           "reaction": "osszevont"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.dokumentum.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -2, "anger": 1 },
-          "reaction": "fegyelmezett"
-        }
-      ]
-    },
-    {
-      "id": "greta_dokumentum_vg_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta_dokumentum_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta_dokumentum_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "kis_elegedett",
-          "follow_node": "greta_lakas_irat"
-        }
-      ]
-    },
-    {
-      "id": "greta_dokumentum_good_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta_dokumentum_good_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta_dokumentum_good_react.continue",
-          "quality": "good",
-          "effect": { "closeness": 2 },
-          "reaction": "semleges"
         }
       ]
     },
@@ -129,58 +92,21 @@
           "quality": "very_good",
           "effect": { "closeness": 5, "trust": 1, "flags": ["greta_hiba"] },
           "reaction": "zavar_elpirul",
-          "follow_node": "greta_lakas_irat_vg_react"
+          "follow_node": "greta_rule_break"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.lakas.good",
           "quality": "good",
           "effect": { "closeness": 3 },
-          "reaction": "koncentrált",
-          "follow_node": "greta_lakas_irat_good_react"
+          "reaction": "koncentrált"
         },
         {
           "id": "bad",
           "text_key": "dialogue.greta.lakas.bad",
           "quality": "bad",
-          "effect": { "closeness": -1 },
+          "effect": { "closeness": -2, "risk": 2 },
           "reaction": "osszevont"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.lakas.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -3, "risk": 4 },
-          "reaction": "fegyelmezett_duh"
-        }
-      ]
-    },
-    {
-      "id": "greta_lakas_irat_vg_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta_lakas_irat_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta_lakas_irat_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "kis_elegedett",
-          "follow_node": "greta_rule_break"
-        }
-      ]
-    },
-    {
-      "id": "greta_lakas_irat_good_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta_lakas_irat_good_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta_lakas_irat_good_react.continue",
-          "quality": "good",
-          "effect": { "closeness": 2 },
-          "reaction": "semleges"
         }
       ]
     },
@@ -195,15 +121,14 @@
           "quality": "very_good",
           "effect": { "closeness": 8, "trust": 2, "flags": ["flag_greta_rulebreak"] },
           "reaction": "zavar_elpirul",
-          "follow_node": "greta_rule_break_vg_react"
+          "follow_node": "greta_yield"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.rule_break.good",
           "quality": "good",
           "effect": { "closeness": 5, "trust": 1 },
-          "reaction": "koncentrált",
-          "follow_node": "greta_yield"
+          "reaction": "koncentrált"
         },
         {
           "id": "bad",
@@ -211,28 +136,6 @@
           "quality": "bad",
           "effect": { "closeness": -2, "anger": 1 },
           "reaction": "osszevont"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.rule_break.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "risk": 4 },
-          "reaction": "fegyelmezett_duh"
-        }
-      ]
-    },
-    {
-      "id": "greta_rule_break_vg_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta_rule_break_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta_rule_break_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "kis_elegedett",
-          "follow_node": "greta_yield"
         }
       ]
     },
@@ -247,7 +150,7 @@
           "quality": "very_good",
           "effect": { "closeness": 9, "trust": 2, "flags": ["flag_greta_yield"] },
           "reaction": "engedelmes",
-          "follow_node": "greta_yield_vg_react"
+          "follow_node": "greta_het8_elokeszites"
         },
         {
           "id": "good",
@@ -255,35 +158,6 @@
           "quality": "good",
           "effect": { "closeness": 5, "trust": 1 },
           "reaction": "zavar"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.greta.yield.bad",
-          "quality": "bad",
-          "effect": { "closeness": -1 },
-          "reaction": "osszevont"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.yield.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 2 },
-          "reaction": "fegyelmezett_duh"
-        }
-      ]
-    },
-    {
-      "id": "greta_yield_vg_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta_yield_vg_react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta_yield_vg_react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "kis_elegedett",
-          "follow_node": "greta_het8_elokeszites"
         }
       ]
     },
@@ -312,13 +186,6 @@
           "quality": "bad",
           "effect": { "closeness": -1, "anger": 1 },
           "reaction": "osszevont"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.het8.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -3, "anger": 2, "risk": 4 },
-          "reaction": "fegyelmezett_duh"
         }
       ]
     }
