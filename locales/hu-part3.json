@@ -1,0 +1,28 @@
+{
+  "dialogue.rebeka.part3.true": "A félév vége. Nincs közönség, nincs történet. A kontroll a tiéd volt. A sebhely is. Maradok.",
+  "dialogue.rebeka.part3.true.accept": "Maradsz. Nem viszem ki innen.",
+  "dialogue.rebeka.part3.true.react": "(A tincs a gallérra esik. A gőg nincs.) Akkor a sötét marad a miénk. A nappali fény sem tesz érdektelenné.",
+  "dialogue.rebeka.part3.true.react.continue": "A sötét a miénk. Maradunk.",
+  "dialogue.rebeka.part3.quiet": "A félév vége. Volt közelség. De a páncél nem hullott le teljesen. Nem történet, de nem is a teljes sötét.",
+  "dialogue.rebeka.part3.quiet.accept": "Elég volt. Csendben.",
+  "dialogue.rebeka.part3.broken": "A félév vége. A kulcs nálam marad. A történet a tiéd volt. Én visszavonulok.",
+  "dialogue.rebeka.part3.broken.accept": "Értem. Visszavonulsz.",
+
+  "dialogue.boglarka.part3.true": "A félév vége. Nem vágtad el a mondataimat. A formáim kívánatosak. Látsz. Maradok.",
+  "dialogue.boglarka.part3.true.accept": "Látlak. Maradsz. Nem nevetem el.",
+  "dialogue.boglarka.part3.true.react": "(Elpirul, de a szeme nem lefelé tart.) Akkor a margók is maradnak. És a formáim is. Nem vagyok láthatatlan.",
+  "dialogue.boglarka.part3.true.react.continue": "Nem vagy láthatatlan. Maradunk.",
+  "dialogue.boglarka.part3.quiet": "A félév vége. Volt lassú érintés. De a mondataimat még elvágták néha. Elég volt.",
+  "dialogue.boglarka.part3.quiet.accept": "Elég volt. Nyugodtan.",
+  "dialogue.boglarka.part3.broken": "A félév vége. A tested volt az első. A mondataimat elvágtad. Visszavonulok.",
+  "dialogue.boglarka.part3.broken.accept": "Értem. Visszavonulsz.",
+
+  "dialogue.greta.part3.true": "A félév vége. Nincs lista. Nem a teljesítmény miatt maradtál. A kontroll a tiéd volt. Maradok, csak úgy.",
+  "dialogue.greta.part3.true.accept": "Maradsz. Nem a lista miatt. Csak úgy.",
+  "dialogue.greta.part3.true.react": "(A ceruza a hajban. A pontosság marad, a kontroll nem.) Akkor nincsenek szabályok. És nem vagyok csak hasznos.",
+  "dialogue.greta.part3.true.react.continue": "Nincsenek szabályok. Maradunk. Nem csak hasznos.",
+  "dialogue.greta.part3.quiet": "A félév vége. Volt kivétel. De a lista még ott volt. Elég volt.",
+  "dialogue.greta.part3.quiet.accept": "Elég volt. Pontosan.",
+  "dialogue.greta.part3.broken": "A félév vége. A kivétel gyanús volt. A lista marad. Visszavonulok.",
+  "dialogue.greta.part3.broken.accept": "Értem. Visszavonulsz."
+}
