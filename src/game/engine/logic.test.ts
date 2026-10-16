@@ -11,6 +11,7 @@ import {
   giftResolution,
   giveGift,
   girlPhase,
+  inviteGirl,
   isCandidate,
   nextWeek,
   openGirlTalk,
@@ -19,7 +20,7 @@ import {
   visibleActions,
   actionStatus,
 } from "./logic.ts";
-import type { GameState, RouteId, SceneState } from "./types.ts";
+import type { GameState, GirlId, RouteId, SceneState } from "./types.ts";
 import rebeka1 from "../../../dialogues/part1/rebeka.json" with { type: "json" };
 import boglarka1 from "../../../dialogues/part1/boglarka.json" with { type: "json" };
 import greta1 from "../../../dialogues/part1/greta.json" with { type: "json" };
@@ -37,7 +38,12 @@ function withScene(state: GameState, nodeId: string): GameState {
 
 const QUALITY = ["very_bad", "bad", "risky", "good", "very_good"];
 
-function playSemester(start: GameState, lock: (state: GameState) => RouteId, style: "visit" | "rest" = "visit"): GameState {
+function playSemester(
+  start: GameState,
+  lock: (state: GameState) => RouteId,
+  style: "visit" | "rest" = "visit",
+  focus?: GirlId,
+): GameState {
   let state = start;
   const repeats = new Map<string, number>();
   for (let step = 0; step < 500; step += 1) {
@@ -62,25 +68,38 @@ function playSemester(start: GameState, lock: (state: GameState) => RouteId, sty
       const girl = state.scene.node.speaker === "narrator" ? null : state.scene.node.speaker;
       const open = state.scene.node.choices.filter((choice) => choiceAvailable(state, choice, girl));
       const pool = open.length ? open : state.scene.node.choices;
-      const choice = pool.slice().sort((a, b) => QUALITY.indexOf(b.quality) - QUALITY.indexOf(a.quality))[0];
+      const choice = pool.slice().sort((a, b) => {
+        const quality = QUALITY.indexOf(b.quality) - QUALITY.indexOf(a.quality);
+        if (quality !== 0 || !focus) return quality;
+        const hers = (choiceId: string, follow?: GirlId) => (follow === focus || choiceId === focus ? 1 : 0);
+        return hers(b.id, b.follow) - hers(a.id, a.follow);
+      })[0];
       if (!choice) throw new Error(`no choice on ${state.scene.node.id}`);
       state = applyChoice(state, choice.id);
       continue;
     }
     if (state.phase === "planner") {
+      if (focus && !state.invite && state.girls[focus].trust >= 2 && state.girls[focus].anger < 3) {
+        const invited = inviteGirl(state, focus);
+        if (invited.invite === focus) state = invited;
+      }
       const open = visibleActions(state).filter((entry) => entry.ok);
       if (!open.length) throw new Error(`no action in week ${state.week} slot ${state.slot} strain ${state.strain}`);
       const rest = open.find((entry) => entry.action.id.startsWith("rest"));
       const job = open.find((entry) => entry.action.kind === "minigame");
+      const hers = focus ? open.find((entry) => entry.action.girl === focus) : undefined;
+      const home = focus && state.invite === focus ? open.find((entry) => entry.action.id === "apartment") : undefined;
       const order = style === "rest"
         ? (["stat", "job", "minigame", "visit", "date"] as const)
         : (["visit", "date", "job", "stat", "minigame"] as const);
       let picked =
         style === "visit" && (state.workShifts ?? 0) < 1 && job
           ? job
-          : style === "visit" && rest && (state.strain ?? 0) >= 3
+          : rest && (state.strain ?? 0) >= 3
             ? rest
-            : order.map((kind) => open.find((entry) => entry.action.kind === kind)).find(Boolean);
+            : focus
+              ? (home ?? hers ?? rest ?? open.find((entry) => entry.action.kind === "stat"))
+              : order.map((kind) => open.find((entry) => entry.action.kind === kind)).find(Boolean);
       picked = picked ?? rest ?? open[0]!;
       state = chooseAction(state, picked.action.id);
       continue;
@@ -298,6 +317,22 @@ describe("Ligetvár engine", () => {
     assert.ok(evaluateEnding(social).title.length > 0);
     assert.ok(social.workShifts >= 1);
     assert.ok(social.seen.some((id) => id.includes("part2")));
+  });
+
+  it("plays Gréta's semester on her best lines", () => {
+    const focused = playSemester(
+      createInitial("Márton"),
+      (state) => (routeOptions(state).options.some((option) => option.id === "greta" && option.ok) ? "greta" : "alone"),
+      "visit",
+      "greta",
+    );
+    assert.equal(focused.phase, "ending");
+    assert.equal(focused.week, 16);
+    assert.equal(focused.route, "greta");
+    assert.ok(focused.girls.greta.closeness > focused.girls.rebeka.closeness);
+    assert.ok(focused.girls.greta.closeness > focused.girls.boglarka.closeness);
+    assert.ok(focused.seen.some((id) => id.startsWith("greta_part2") || id === "greta_yield" || id === "greta_rule_break"));
+    assert.ok(focused.workShifts >= 1);
   });
 
   it("loads every written dialogue, including part 2 and part 3", () => {
