@@ -16,6 +16,7 @@ import {
   STAT_ICON,
   chapterName,
   actNote,
+  weeklyHorrorSummary,
 } from "../content/catalog.ts";
 import {
   PHASE_LABEL,
@@ -808,6 +809,10 @@ function Phone() {
 function Summary() {
   const state = useGame((s) => s.state);
   const advanceWeek = useGame((s) => s.advanceWeek);
+  const horror = weeklyHorrorSummary(state.week);
+  const caseNotes = state.journal
+    .filter((entry) => entry.startsWith(`${state.week}. hét — Esetjelentés — `))
+    .slice(-2);
   return (
     <>
       <Hud />
@@ -816,6 +821,21 @@ function Summary() {
           {state.week}. hét vége · {chapterName(state.week)}
         </h2>
         <p className="serif">{actNote(state.week)}</p>
+        <section className="case-summary" aria-labelledby="case-summary-title">
+          <p className="eyebrow">Heti incidensösszefoglaló</p>
+          <h3 id="case-summary-title" className="serif">{horror.title}</h3>
+          <p>{horror.text}</p>
+          {caseNotes.length > 0 ? (
+            <div className="case-log">
+              <strong>A héten rögzített nyomok</strong>
+              {caseNotes.map((entry) => (
+                <p key={entry}>{entry.replace(`${state.week}. hét — `, "")}</p>
+              ))}
+            </div>
+          ) : (
+            <p className="note">A heti jelentés összefoglalja az ismert eseteket; új bizonyíték csak akkor kerül az aktába, ha a játék során rögzítitek.</p>
+          )}
+        </section>
         <p>A gyógytorna megvolt. Hétfőn jön a fizetés.</p>
         {GIRLS.map((id) => {
           const d = state.girls[id].closeness - state.snap.closeness[id];
