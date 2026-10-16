@@ -7,9 +7,6 @@ import greta from "../../../dialogues/part1/greta.json" with { type: "json" };
 
 const lines = hu as Record<string, string>;
 
-function line(key: string) {
-  return lines[key] ?? key;
-}
 
 // Explicit scene scheduling — do not rely on ID substring matching.
 // Each important scene has its own location, week window, trust requirement and priority.
