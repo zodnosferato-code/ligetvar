@@ -6,10 +6,12 @@ import {
   HEART_EMPTY,
   HEART_FULL,
   HUB_ICON,
+  FULL_BODY,
   LOCATION_BG,
   LOCATION_LABEL,
   PORTRAIT,
   portraitFor,
+  illustrationFor,
   SLOT_LABEL,
   STAT_ICON,
   chapterName,
@@ -365,7 +367,7 @@ function Planner() {
   const home = state.slot === 2;
   const actions = visibleActions(state).filter((row) => row.action.kind !== "date" || state.week >= 9);
   const groups = {
-    door: actions.filter((row) => hotspotFor(row.action) === "door"),
+    door: actions.filter((row) => hotspotFor(row.action) === "door" && row.action.id !== "apartment"),
     book: actions.filter((row) => hotspotFor(row.action) === "book"),
     rest: actions.filter((row) => hotspotFor(row.action) === "rest"),
     bag: actions.filter((row) => hotspotFor(row.action) === "bag"),
@@ -381,6 +383,7 @@ function Planner() {
     setTray((current) => (current === id ? null : id));
   };
 
+  const guest = state.invite ? actions.find((row) => row.action.id === "apartment") : undefined;
   const spots = (
     [
       ["door", "Ajtó", HUB_ICON.door],
@@ -417,6 +420,19 @@ function Planner() {
         <button type="button" className="hotspot at-shelf" aria-label="Polc" onClick={() => open("shop")}>
           <img src={HUB_ICON.shelf} alt="" />
         </button>
+        {state.invite ? (
+          <button
+            type="button"
+            className="hotspot at-guest"
+            aria-label={`Engedd be: ${GIRL_NAME[state.invite]}`}
+            disabled={!guest?.ok}
+            title={guest?.ok ? "Engedd be" : "Este jön fel. A gomb akkor enged be."}
+            onClick={() => act("apartment")}
+          >
+            <img src={PORTRAIT[state.invite]} alt="" />
+            <em>Beenged</em>
+          </button>
+        ) : null}
         <div className="hub-faces">
           {GIRLS.map((id) => (
             <button key={id} type="button" className="hub-face" onClick={() => showGirl(id)} aria-label={GIRL_NAME[id]} title={PHASE_LABEL[girlPhase(state, id)]}>
@@ -510,6 +526,7 @@ function Scene() {
 
   if (!scene) return null;
   const girl = scene.node.speaker === "narrator" ? null : scene.node.speaker;
+  const plate = girl ? illustrationFor(scene.node.id, girl, state.route) : null;
   const owned = GIFTS.filter((g) => (state.inventory[g.id] ?? 0) > 0);
   const expression = scene.expression ?? "";
   const mood = /pir|szegy|zavar/.test(expression)
@@ -524,6 +541,7 @@ function Scene() {
     <div style={{ display: "flex", flexDirection: "column", minHeight: 0, flex: 1 }}>
       <Hud />
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[scene.location]})` }}>
+        {plate ? <img className="scene-plate" src={plate} alt="" /> : null}
         {girl ? (
           <div className={`portrait-frame expr-${mood}`}>
             <img src={portraitFor(girl, expression)} alt={GIRL_NAME[girl]} />
@@ -747,9 +765,13 @@ function Ending() {
   const start = useGame((s) => s.start);
   const ending = evaluateEnding(state);
   const girl = ending.girls[0];
+  const plate = girl
+    ? illustrationFor(`${girl}_ending_${ending.id === "pair-true" ? "true" : ending.id}`, girl, state.route)
+    : null;
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: 0, flex: 1 }}>
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[ending.location]})` }}>
+        {plate ? <img className="scene-plate" src={plate} alt="" /> : null}
         {girl ? (
           <div className="portrait-frame">
             <img src={PORTRAIT[girl]} alt={GIRL_NAME[girl]} />
@@ -785,7 +807,7 @@ function Dossier() {
     <>
       <Hud />
       <div className="scroll" style={{ padding: "0.8rem 1rem 1.2rem" }}>
-        <img src={PORTRAIT[id]} alt={GIRL_NAME[id]} style={{ width: "100%", maxHeight: "16rem", objectFit: "cover", objectPosition: "center 18%", border: "2px solid #000" }} />
+        <img src={FULL_BODY[id]} alt={GIRL_NAME[id]} style={{ width: "100%", maxHeight: "18rem", objectFit: "contain", background: "#1a1614", border: "2px solid #000" }} />
         <h2 className="serif" style={{ marginBottom: 0 }}>
           {GIRL_NAME[id]}
         </h2>

@@ -546,7 +546,7 @@ export function inviteGirl(state: GameState, girl: GirlId): GameState {
     ...state,
     invite: girl,
     phase: "planner",
-    lastNote: `${GIRL_NAME[girl].split(" ")[0]} este feljön, ha a lakást választod. A korrektúra ezt elrontja.`,
+    lastNote: `${GIRL_NAME[girl].split(" ")[0]} felveszi. Este külön gomb enged be a lakosztályba. A korrektúra ezt elrontja.`,
   };
 }
 

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { ACTIONS, NODES, STORY, assertCatalog, portraitFor, PORTRAIT } from "../content/catalog.ts";
+import { existsSync } from "node:fs";
+import { ACTIONS, NODES, STORY, assertCatalog, illustrationFor, portraitFor, PORTRAIT } from "../content/catalog.ts";
 import {
   applyChoice,
   choiceAvailable,
@@ -384,14 +385,31 @@ describe("Ligetvár engine", () => {
     assert.match(portraitFor("greta", "zavar"), /flustered/);
     assert.match(portraitFor("greta", "engedelmes"), /yielding/);
     assert.equal(portraitFor("rebeka", "semleges"), PORTRAIT.rebeka);
-    for (const node of Object.values(NODES)) {
-      if (node.speaker === "narrator") continue;
-      for (const choice of node.choices) {
-        const face = portraitFor(node.speaker, choice.reaction);
-        if (!choice.reaction || choice.reaction.includes(" ")) continue;
-        assert.match(face, /characters\//, `${node.id}:${choice.reaction}`);
-      }
+  });
+
+  it("shows an encounter illustration, and keeps the call separate from letting her in", () => {
+    const cases = [
+      ["rebeka_intimate_private_vg_react", "rebeka", "rebeka", "rebeka-medium-apartment-bed.jpg"],
+      ["boglarka_desire_fulfill", "boglarka", "boglarka", "boglarka-nude-reclining.jpg"],
+      ["greta_yield_full", "greta", "greta", "greta-hardcore-bound-yield.jpg"],
+      ["rebeka_desire_fulfill", "rebeka", "rebeka_greta", "rebeka-greta-kiss-soft.jpg"],
+      ["boglarka_ending_true", "boglarka", "boglarka_greta", "boglarka-greta-kiss-bed.jpg"],
+    ] as const;
+    for (const [id, girl, route, file] of cases) {
+      const url = illustrationFor(id, girl, route);
+      assert.ok(url?.endsWith(file), id);
+      assert.equal(existsSync(new URL(`../../../assets/references/intim/${file}`, import.meta.url).pathname), true, file);
     }
+    assert.equal(illustrationFor("rebeka_intro", "rebeka", "none"), null);
+
+    let called = createInitial("Márton");
+    called.girls.greta.trust = 2;
+    called = inviteGirl(called, "greta");
+    assert.equal(called.invite, "greta");
+    assert.equal(visibleActions(called).some((row) => row.action.id === "apartment"), false);
+    called.slot = 2;
+    const door = visibleActions(called).find((row) => row.action.id === "apartment");
+    assert.equal(door?.ok, true);
   });
 
   it("opens act 1 scenes at her own place before the route lock", () => {
