@@ -54,10 +54,13 @@ Az alábbi előre generált jelenetképek szolgálnak alapként. Mind tartalmaz 
 
 | Fájl | Helyszín | Ülő/fekvőhely |
 | --- | --- | --- |
-| classroom.jpg | Tanterem | Nagy asztal az előtérben |
-| library.jpg | Könyvtár | Rejtett sarok asztal az előtérben (nincs ágy) |
-| apartment.jpg | Lakás | Ágy az előtérben |
-| department.jpg | Tanszék | Kanapé/szék |
-| courtyard.jpg | Udvar / Holdkör | Pad az előtérben |
+| classroom.jpg | Tanterem (gyógytorna) | Nagy asztal az előtérben |
+| library.jpg | Könyvtár (Boglárka) | Rejtett sarok asztal az előtérben (nincs ágy) |
+| apartment.jpg | Tanár lakása (kastélyszárny) | Ágy az előtérben |
+| department.jpg | Tanszék / iroda (Gréta) | Kanapé/szék |
+| courtyard.jpg | Udvar nappal | Pad az előtérben |
+| holdkor-night.jpg | Holdkör éjszaka (Rebeka) | Pad / kőülés az előtérben |
+| bekas-to.jpg | Békás-tó éjszaka | Kőpadka / fű az előtérben |
+| hallway.jpg | Kastélyfolyosó | Ablakülés az előtérben |
 
 Karakter- és intim jeleneteket ezekre kell kompozitálni. A hely közel a kamerához, játékos POV-ból.
