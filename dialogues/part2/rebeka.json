@@ -9,7 +9,7 @@
           "id": "very_good",
           "text_key": "dialogue.rebeka.part2.intro.vg",
           "quality": "very_good",
-          "effect": { "closeness": 4, "trust": 1, "flags": ["rebeka_route_active"] },
+          "effect": { "closeness": 5, "trust": 1, "flags": ["rebeka_route_active"] },
           "reaction": "nyugalom",
           "follow_node": "rebeka_part2_intro_react"
         },
@@ -17,7 +17,7 @@
           "id": "good",
           "text_key": "dialogue.rebeka.part2.intro.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3 },
           "reaction": "semleges"
         },
         {
@@ -26,13 +26,6 @@
           "quality": "bad",
           "effect": { "closeness": -2, "anger": 1 },
           "reaction": "hideg"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.rebeka.part2.intro.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 2, "risk": 5 },
-          "reaction": "duhos_csend"
         }
       ]
     },
@@ -45,8 +38,9 @@
           "id": "continue",
           "text_key": "dialogue.rebeka.part2.intro.react.continue",
           "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "nyugalom"
+          "effect": { "closeness": 2 },
+          "reaction": "nyugalom",
+          "follow_node": "rebeka_bekas_private"
         }
       ]
     },
@@ -59,44 +53,16 @@
           "id": "very_good",
           "text_key": "dialogue.rebeka.part2.bekas.vg",
           "quality": "very_good",
-          "effect": { "closeness": 6, "trust": 2, "flags": ["flag_rebeka_private_intense"] },
+          "effect": { "closeness": 7, "trust": 2, "flags": ["flag_rebeka_private_intense"] },
           "reaction": "sebezheto",
-          "follow_node": "rebeka_bekas_private_react"
+          "follow_node": "rebeka_yield_full"
         },
         {
           "id": "good",
           "text_key": "dialogue.rebeka.part2.bekas.good",
           "quality": "good",
-          "effect": { "closeness": 3 },
+          "effect": { "closeness": 4 },
           "reaction": "nyugalom"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.part2.bekas.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "gongy"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.rebeka.part2.bekas.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 1, "risk": 8 },
-          "reaction": "hideg"
-        }
-      ]
-    },
-    {
-      "id": "rebeka_bekas_private_react",
-      "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.part2.bekas.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.rebeka.part2.bekas.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "nyugalom_intense"
         }
       ]
     },
@@ -109,43 +75,15 @@
           "id": "very_good",
           "text_key": "dialogue.rebeka.part2.yield_full.vg",
           "quality": "very_good",
-          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_rebeka_desire_yield"] },
+          "effect": { "closeness": 9, "trust": 2, "flags": ["flag_rebeka_desire_yield"] },
           "reaction": "sebezheto",
-          "follow_node": "rebeka_yield_full_react"
+          "follow_node": "rebeka_desire_fulfill"
         },
         {
           "id": "good",
           "text_key": "dialogue.rebeka.part2.yield_full.good",
           "quality": "good",
-          "effect": { "closeness": 4 },
-          "reaction": "nyugalom"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.part2.yield_full.bad",
-          "quality": "bad",
-          "effect": { "closeness": -3, "anger": 1 },
-          "reaction": "hideg"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.rebeka.part2.yield_full.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -6, "anger": 2, "risk": 10 },
-          "reaction": "duh"
-        }
-      ]
-    },
-    {
-      "id": "rebeka_yield_full_react",
-      "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.part2.yield_full.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.rebeka.part2.yield_full.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 5 },
           "reaction": "nyugalom"
         }
       ]
@@ -160,43 +98,14 @@
           "text_key": "dialogue.rebeka.part2.fulfill.vg",
           "quality": "very_good",
           "effect": { "closeness": 10, "trust": 1, "flags": ["flag_rebeka_desire_fulfill"] },
-          "reaction": "nyugalom_intense",
-          "follow_node": "rebeka_desire_fulfill_react"
+          "reaction": "nyugalom_intense"
         },
         {
           "id": "good",
           "text_key": "dialogue.rebeka.part2.fulfill.good",
           "quality": "good",
-          "effect": { "closeness": 5 },
+          "effect": { "closeness": 6 },
           "reaction": "sebezheto"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.rebeka.part2.fulfill.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "gongy"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.rebeka.part2.fulfill.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "risk": 15 },
-          "reaction": "duhos_csend"
-        }
-      ]
-    },
-    {
-      "id": "rebeka_desire_fulfill_react",
-      "speaker": "rebeka",
-      "text_key": "dialogue.rebeka.part2.fulfill.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.rebeka.part2.fulfill.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "nyugalom"
         }
       ]
     }
