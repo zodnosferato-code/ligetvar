@@ -1131,3 +1131,159 @@ img {
     min-height: 5.5rem;
   }
 }
+
+
+/* Responsive polish: preserve artwork proportions on every viewport. */
+img {
+  max-width: 100%;
+  height: auto;
+  image-rendering: auto;
+}
+
+.stage {
+  width: min(100%, 58rem);
+  min-width: 0;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.scene-bg {
+  flex: 0 0 auto;
+  width: 100%;
+  height: clamp(12rem, 32dvh, 24rem);
+  min-height: 0;
+  max-height: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #080605;
+}
+
+.scene-plate {
+  object-fit: contain;
+  object-position: center;
+}
+
+.portrait-frame img,
+.hub-face img,
+.hotspot.at-guest img {
+  max-width: 100%;
+}
+
+.hub-room {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-night);
+}
+
+.icon-tile,
+.heart,
+.hub-bar img,
+.hotspot img,
+.icon-choice img,
+.mobile-action-trigger img,
+.mobile-menu-choice img {
+  object-fit: contain;
+}
+
+.sheet,
+.scroll {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.pixel-btn {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  touch-action: manipulation;
+}
+
+@media (min-width: 761px) {
+  .stage {
+    margin: 0 auto;
+  }
+
+  .scene-bg {
+    height: clamp(15rem, 36dvh, 26rem);
+  }
+
+  .sheet {
+    padding: 0.75rem clamp(1rem, 3vw, 2rem) 1.5rem;
+  }
+
+  .sheet p,
+  .serif,
+  .line {
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    line-height: 1.5;
+  }
+
+  .title-mark {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .cast-row {
+    gap: clamp(0.5rem, 1.2vw, 1rem);
+  }
+
+  .pixel-btn {
+    font-size: 0.9rem;
+  }
+
+  .hub-room {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .stage {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .scene-bg {
+    height: clamp(8rem, 29dvh, 15rem);
+    min-height: 0;
+  }
+
+  .portrait-frame img {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .hub-room {
+    background-size: contain;
+  }
+
+  .sheet {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+
+  .action-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pixel-btn {
+    min-height: 2.75rem;
+  }
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  .scene-bg {
+    height: 42dvh;
+    min-height: 7rem;
+  }
+
+  .hub-room {
+    min-height: 10rem;
+  }
+
+  .portrait-frame {
+    max-height: 100%;
+  }
+}
