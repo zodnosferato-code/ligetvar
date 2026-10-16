@@ -803,6 +803,16 @@ img {
 }
 
 
+
+/* Let the scene illustration lead; use emotion portraits as secondary cues. */
+.portrait-frame.portrait-supporting {
+  width: min(24%, 6rem);
+}
+
+.portrait-frame.portrait-intimate {
+  width: min(18%, 4.5rem);
+}
+
 /* Mobile layout: keep the full scene artwork visible and put every action in a
    persistent, labelled control area instead of relying on hover-only hotspots. */
 .mobile-actions,
@@ -996,6 +1006,16 @@ img {
   .portrait-frame {
     width: min(31%, 7.5rem);
     right: 0.45rem;
+  }
+
+  .portrait-frame.portrait-supporting {
+    width: min(18%, 4.25rem);
+    right: 0.35rem;
+  }
+
+  .portrait-frame.portrait-intimate {
+    width: min(14%, 3.25rem);
+    right: 0.35rem;
   }
 
   .sheet {
