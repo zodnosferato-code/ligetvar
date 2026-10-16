@@ -55,7 +55,7 @@ Az alábbi előre generált jelenetképek szolgálnak alapként. Mind tartalmaz 
 | Fájl | Helyszín | Ülő/fekvőhely |
 | --- | --- | --- |
 | classroom.jpg | Tanterem | Nagy asztal az előtérben |
-| library.jpg | Könyvtár | Kanapé/olvasóhely |
+| library.jpg | Könyvtár | Rejtett sarok asztal az előtérben (nincs ágy) |
 | apartment.jpg | Lakás | Ágy az előtérben |
 | department.jpg | Tanszék | Kanapé/szék |
 | courtyard.jpg | Udvar / Holdkör | Pad az előtérben |
