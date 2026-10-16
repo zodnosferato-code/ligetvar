@@ -2,7 +2,10 @@
 
 Ez a fájl későbbi agenteknek (vagy fejlesztőknek) szól. A cél, hogy a fonalat fel lehessen venni és a munkát folytatni lehessen anélkül, hogy mindent újra kelljen kitalálni.
 
-## Fő cél
+## Képek forrása
+
+- **GitHub a kanonikus forrás**. Minden kép a `assets/` alatt él a repóban. Innen tölt az engine és minden agent.
+- **Google Drive csak archívum**. Nem forrás, nem használható generáláshoz vagy játékhoz. Új képet először a repóba kell commitolni.
 
 Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csomagolással). A játékos egy 34 éves tanár (Márton Kelényi), aki fakultatív misztikus gyógytornát tart a Ligetvári Főiskolán. Három felnőtt hallgatónő (Rebeka 20, Boglárka 19, Gréta 21) rejtett vágyaival kell közelebb kerülni. A téma a meghódítás és a vágyak beteljesítése. **A szexuális tartalom fontos, a beszélgetések és a képi illusztrációk szexik.**
 

@@ -6,7 +6,9 @@ Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes 
 
 A választható szereplők felnőttek. A főiskola 18 éves kortól vesz fel hallgatót. A három lány 19, 20 és 21 éves. A játék romantikus. A téma a lányok meghódítása és a rejtett vágyaik beteljesítése. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjaival vannak jelölve, hogy a build agent a kódbázison dolgozhasson anélkül, hogy explicit tartalommal kellene foglalkoznia.
 
-## Futtatás és deploy
+## Képek forrása
+
+Minden kép (karakterreferencia, jelenetháttér, ikon) **kizárólag a GitHub repóból** származik (`assets/`). A Google Drive mappák csak archívumként szolgálnak, nem hivatalos forrás.
 
 ```bash
 npm install
