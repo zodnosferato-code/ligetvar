@@ -105,3 +105,10 @@ fellatio, shaft, viewer tip, titjob, penetration, explicit sex act names, multi-
 - spread recline: Lying on back knees pulled up to chest legs open full frontal lower body focus
 - open kneel: Kneeling facing camera thighs wide open hands resting on inner thighs
 NOTE: "legs open spread thighs full frontal nude intimate detail" sometimes moderated for Rebeka; use softer "knees apart".
+
+## Lesbian kissing pairs (works)
+- standing embrace lips locked: two women full nude standing kiss
+- soft romantic kiss: lips gently touching closed eyes
+- bed kiss under covers: side by side soft kiss
+- bed lean-in kiss: one on top leaning over soft kiss
+Avoid: "deep kiss" + "thigh over other" (moderated once)
