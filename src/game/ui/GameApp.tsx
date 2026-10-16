@@ -462,6 +462,67 @@ function Planner() {
           </div>
         ) : null}
       </div>
+      <nav className="mobile-actions" aria-label="Helyek és műveletek">
+        {spots.map(([id, label, icon]) => (
+          <button
+            key={id}
+            type="button"
+            className={"mobile-action-trigger " + (tray === id ? "is-open" : "")}
+            aria-expanded={tray === id}
+            onClick={() => press(id)}
+          >
+            <img src={icon} alt="" />
+            <span>{label}</span>
+          </button>
+        ))}
+        <button
+          type="button"
+          className="mobile-action-trigger"
+          onClick={() => { setTray(null); open("phone"); }}
+        >
+          <img src={HUB_ICON.phone} alt="" />
+          <span>Telefon</span>
+        </button>
+        <button
+          type="button"
+          className="mobile-action-trigger"
+          onClick={() => { setTray(null); open("shop"); }}
+        >
+          <img src={HUB_ICON.shelf} alt="" />
+          <span>Polc</span>
+        </button>
+        {state.invite ? (
+          <button
+            type="button"
+            className="mobile-action-trigger"
+            disabled={!guest?.ok}
+            title={guest?.ok ? "Engedd be" : "Este jön fel. A gomb akkor enged be."}
+            onClick={() => { setTray(null); act("apartment"); }}
+          >
+            <img src={PORTRAIT[state.invite]} alt="" />
+            <span>Vendég</span>
+          </button>
+        ) : null}
+      </nav>
+      {tray ? (
+        <div className="mobile-action-menu" role="group" aria-label="Elérhető műveletek">
+          <div className="mobile-menu-title">Választható műveletek</div>
+          {groups[tray].map(({ action, ok, reason }) => (
+            <button
+              key={action.id}
+              type="button"
+              className="mobile-menu-choice"
+              disabled={!ok}
+              title={ok ? action.detail : reason}
+              aria-label={ok ? action.label : reason}
+              onClick={() => { setTray(null); act(action.id); }}
+            >
+              <img src={action.icon} alt="" />
+              <span>{ok ? action.label : reason}</span>
+            </button>
+          ))}
+        </div>
+      ) : null}
       <div className="hub-bar">
         <span title="Jelenlét">
           <img src={STAT_ICON.presence} alt="Jelenlét" />
