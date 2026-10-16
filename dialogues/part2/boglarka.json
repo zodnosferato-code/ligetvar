@@ -9,15 +9,15 @@
           "id": "very_good",
           "text_key": "dialogue.boglarka.part2.intro.vg",
           "quality": "very_good",
-          "effect": { "closeness": 4, "trust": 1, "flags": ["boglarka_route_active"] },
+          "effect": { "closeness": 5, "trust": 1, "flags": ["boglarka_route_active"] },
           "reaction": "elpirulas",
-          "follow_node": "boglarka_part2_intro_react"
+          "follow_node": "boglarka_slow_full"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.part2.intro.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3 },
           "reaction": "szegyenos"
         },
         {
@@ -26,27 +26,6 @@
           "quality": "bad",
           "effect": { "closeness": -2, "anger": 1 },
           "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.part2.intro.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 2 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_part2_intro_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka.part2.intro.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka.part2.intro.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "kis_mosoly"
         }
       ]
     },
@@ -59,44 +38,16 @@
           "id": "very_good",
           "text_key": "dialogue.boglarka.part2.slow_full.vg",
           "quality": "very_good",
-          "effect": { "closeness": 6, "trust": 2, "flags": ["flag_boglarka_slow_full"] },
+          "effect": { "closeness": 7, "trust": 2, "flags": ["flag_boglarka_slow_full"] },
           "reaction": "elpirulas_mosoly",
-          "follow_node": "boglarka_slow_full_react"
+          "follow_node": "boglarka_body_full"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.part2.slow_full.good",
           "quality": "good",
-          "effect": { "closeness": 3 },
+          "effect": { "closeness": 4 },
           "reaction": "szegyenos"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.boglarka.part2.slow_full.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.part2.slow_full.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 1 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_slow_full_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka.part2.slow_full.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka.part2.slow_full.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "elpirulas"
         }
       ]
     },
@@ -109,43 +60,15 @@
           "id": "very_good",
           "text_key": "dialogue.boglarka.part2.body_full.vg",
           "quality": "very_good",
-          "effect": { "closeness": 7, "trust": 2, "flags": ["flag_boglarka_body_full"] },
+          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_boglarka_body_full"] },
           "reaction": "lágy_mosoly",
-          "follow_node": "boglarka_body_full_react"
+          "follow_node": "boglarka_desire_fulfill"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.part2.body_full.good",
           "quality": "good",
-          "effect": { "closeness": 3 },
-          "reaction": "elpirulas"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.boglarka.part2.body_full.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "szomorkas"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.part2.body_full.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 1 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_body_full_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka.part2.body_full.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka.part2.body_full.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
+          "effect": { "closeness": 4 },
           "reaction": "elpirulas"
         }
       ]
@@ -159,44 +82,15 @@
           "id": "very_good",
           "text_key": "dialogue.boglarka.part2.fulfill.vg",
           "quality": "very_good",
-          "effect": { "closeness": 9, "trust": 1, "flags": ["flag_boglarka_desire_fulfill"] },
-          "reaction": "elpirulas_mosoly",
-          "follow_node": "boglarka_desire_fulfill_react"
+          "effect": { "closeness": 10, "trust": 1, "flags": ["flag_boglarka_desire_fulfill"] },
+          "reaction": "elpirulas_mosoly"
         },
         {
           "id": "good",
           "text_key": "dialogue.boglarka.part2.fulfill.good",
           "quality": "good",
-          "effect": { "closeness": 4 },
+          "effect": { "closeness": 5 },
           "reaction": "szegyenos"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.boglarka.part2.fulfill.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "megbantott"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.boglarka.part2.fulfill.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 2 },
-          "reaction": "elrejtozik"
-        }
-      ]
-    },
-    {
-      "id": "boglarka_desire_fulfill_react",
-      "speaker": "boglarka",
-      "text_key": "dialogue.boglarka.part2.fulfill.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.boglarka.part2.fulfill.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "lágy_bizalom"
         }
       ]
     }
