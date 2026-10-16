@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 import { NODES, assertCatalog } from "../content/catalog.ts";
 import {
   applyChoice,
+  choiceAvailable,
   chooseAction,
   commitRoute,
   createInitial,
@@ -12,13 +13,60 @@ import {
   girlPhase,
   isCandidate,
   nextWeek,
+  resolveJob,
   routeOptions,
+  visibleActions,
 } from "./logic.ts";
-import type { GameState, SceneState } from "./types.ts";
+import type { GameState, RouteId, SceneState } from "./types.ts";
 
 function withScene(state: GameState, nodeId: string): GameState {
   const scene: SceneState = { node: NODES[nodeId]!, location: "holdkor", source: "repeat" };
   return { ...state, phase: "scene", scene };
+}
+
+const QUALITY = ["bad", "risky", "good", "very_good"];
+
+function playSemester(start: GameState, lock: (state: GameState) => RouteId, style: "visit" | "rest" = "visit"): GameState {
+  let state = start;
+  const repeats = new Map<string, number>();
+  for (let step = 0; step < 500; step += 1) {
+    if (state.phase === "ending") return state;
+    const mark = `${state.week}|${state.slot}|${state.phase}|${state.scene?.node.id ?? ""}|${state.minigame ?? ""}`;
+    const again = (repeats.get(mark) ?? 0) + 1;
+    repeats.set(mark, again);
+    if (again > 4) throw new Error(`stuck at ${mark}: ${state.lastNote}`);
+    if (state.phase === "summary") {
+      state = nextWeek(state);
+      continue;
+    }
+    if (state.phase === "route") {
+      state = commitRoute(state, lock(state), true);
+      continue;
+    }
+    if (state.phase === "minigame" && state.minigame) {
+      state = resolveJob(state, state.minigame, 8000);
+      continue;
+    }
+    if (state.phase === "scene" && state.scene) {
+      const girl = state.scene.node.speaker === "narrator" ? null : state.scene.node.speaker;
+      const open = state.scene.node.choices.filter((choice) => choiceAvailable(state, choice, girl));
+      const pool = open.length ? open : state.scene.node.choices;
+      const choice = pool.slice().sort((a, b) => QUALITY.indexOf(b.quality) - QUALITY.indexOf(a.quality))[0];
+      if (!choice) throw new Error(`no choice on ${state.scene.node.id}`);
+      state = applyChoice(state, choice.id);
+      continue;
+    }
+    if (state.phase === "planner") {
+      const open = visibleActions(state).filter((entry) => entry.ok);
+      if (!open.length) throw new Error(`no action in week ${state.week} slot ${state.slot}`);
+      const order = (style === "rest" ? ["stat", "job", "minigame", "visit", "date"] : ["visit", "date", "job", "stat", "minigame"]) as const;
+      const picked = order.map((kind) => open.find((entry) => entry.action.kind === kind)).find(Boolean) ?? open[0]!;
+      state = chooseAction(state, picked.action.id);
+      continue;
+    }
+    throw new Error(`unhandled phase ${state.phase}`);
+  }
+  throw new Error(`no ending by week ${state.week}, phase ${state.phase}`);
 }
 
 describe("Ligetvár engine", () => {
@@ -206,5 +254,24 @@ describe("Ligetvár engine", () => {
     assert.equal(stood.girls.boglarka.trust, 1);
     assert.equal(stood.invite, null);
     assert.match(stood.scene?.node.text ?? "", /otthagyod/);
+  });
+
+  it("plays a semester from the first morning to an ending", () => {
+    const quiet = playSemester(createInitial("Márton"), () => "alone", "rest");
+    assert.equal(quiet.phase, "ending");
+    assert.equal(quiet.week, 16);
+    assert.equal(quiet.route, "alone");
+    assert.equal(evaluateEnding(quiet).id, "alone");
+    assert.ok(quiet.money >= 0);
+
+    const social = playSemester(createInitial("Márton"), (state) => {
+      const route = routeOptions(state).options.find((option) => option.ok && option.id !== "alone");
+      return route?.id ?? "alone";
+    });
+    assert.equal(social.phase, "ending");
+    assert.equal(social.week, 16);
+    assert.notEqual(social.route, "none");
+    assert.ok(social.seen.length > 0);
+    assert.ok(evaluateEnding(social).title.length > 0);
   });
 });
