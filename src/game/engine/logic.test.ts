@@ -492,7 +492,17 @@ describe("campus horror story", () => {
     assert.notEqual(second.node.id, first.node.id);
     assert.match(weeklyHorrorSummary(1).text, /Varga Lilla/);
     assert.match(weeklyHorrorSummary(12).text, /köpenyes alak/);
-    assert.match(horrorNode(4, [], 0)?.node.artCaption ?? "", /egyetlen izzó vörös szem/);
+    const shadowSeed = Array.from({ length: 128 }, (_, seed) => seed).find(
+      (seed) => horrorNode(4, [], seed)?.node.id === "horror_shadow_frame",
+    );
+    assert.notEqual(shadowSeed, undefined);
+    assert.match(horrorNode(4, [], shadowSeed!)?.node.artCaption ?? "", /egyetlen izzó vörös szem/);
+
+    const courtyardSeed = Array.from({ length: 128 }, (_, seed) => seed).find(
+      (seed) => horrorNode(4, [], seed)?.node.id === "horror_cloaked_attack_courtyard",
+    );
+    assert.notEqual(courtyardSeed, undefined);
+    assert.match(horrorNode(4, [], courtyardSeed!)?.node.artCaption ?? "", /egyetlen izzó vörös szem/);
   });
 
   it("keeps week-limited incidents available as catch-up events after their window", () => {
