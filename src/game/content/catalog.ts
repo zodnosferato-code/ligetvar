@@ -1327,7 +1327,8 @@ const HORROR_EVENTS: HorrorEvent[] = [
         c("preserve", "Készítsünk ellenőrzőösszeget, másolatot és jegyzőkönyvet; az eredetit ne módosítsuk.", "very_good", { insight: 2, world: ["evidence_photo_preserved"] }, "bizonyítékmegőrzés"),
         c("compare", "Hasonlítsuk össze a másik két képpel, mielőtt következtetést vonunk le.", "good", { insight: 1 }, "összevetés"),
         c("post", "Tegyük közzé. Hadd döntse el a közönség, hogy szörny-e.", "bad", { risk: 7, world: ["evidence_photo_published"] }, "nyilvánosság")
-      ], "Esetjelentés — Egy fénykép tükröződése és időbélyege nem egyezik.")
+      ], "Esetjelentés — Egy fénykép tükröződése és időbélyege nem egyezik.", undefined, undefined,
+      "A kapucni mélyén csak egyetlen izzó vörös szem látszik; az arc és a test részletei teljesen rejtve maradnak · illusztráció hiányzik")
   },
   {
     minWeek: 4, maxWeek: 10, location: "department",
@@ -1387,7 +1388,8 @@ const HORROR_EVENTS: HorrorEvent[] = [
         c("withdraw", "Rögzítsük az időt és a távolságot, majd vonuljunk vissza a kivilágított épületbe.", "very_good", { calm: 2, insight: 1, world: ["monster_sighting_verified"] }, "biztonságos visszavonulás"),
         c("compare", "Vessük össze a látottakat a korábbi képekkel, és ne állítsunk többet, mint amit a felvétel mutat.", "good", { insight: 1 }, "bizonyíték-összevetés"),
         c("approach", "Közelítsünk, hogy végre éles képet készíthessünk.", "bad", { risk: 12 }, "veszélyes közelítés")
-      ], "Esetjelentés — Három tanú ugyanarról a köpenyes alakról számolt be.")
+      ], "Esetjelentés — Három tanú ugyanarról a köpenyes alakról számolt be.", undefined, undefined,
+      "Csak egyetlen izzó vörös szem látszik a kapucni sötétjében; sem az arc, sem a haj, sem a testalkat nem fedhető fel még · illusztráció hiányzik")
   },
   {
     minWeek: 12, maxWeek: 15, location: "department",
@@ -1425,7 +1427,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
       "Esetjelentés — Tanúvallomás készült az udvari támadásról, amelyben egy köpenyes árnyalak zárta el a menekülőutat.",
       0,
       "Dr. Farkas Dénes · biológiaoktató",
-      "Köpenyes árnyalak az udvaron · illusztráció hiányzik"
+      "Sötét köpenyes sziluett; a kapucni alatt kizárólag egyetlen izzó vörös szem látható, minden más részlet rejtve marad · illusztráció hiányzik"
     ),
   },
   {
@@ -1461,7 +1463,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
       "Esetjelentés — Újabb támadást jelentettek az esti peronról.",
       0,
       "Dr. Kerekes Áron · ügyeletes oktató",
-      "Köpenyes árnyalak a peronon · illusztráció hiányzik"
+      "Ködfátyolos, sötét köpenyes sziluett; a kapucni alatt egyetlen izzó vörös szem látszik, az arc nem vehető ki · illusztráció hiányzik"
     ),
   },
   {
@@ -1487,7 +1489,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
     node: node(
       "horror_half_vampire_reveal",
       "narrator",
-      "Dr. Kerekes Áron bezárja a tanszéki irattár ajtaját, aztán egy régi, pecsétes jegyzőkönyvet tesz eléd. A tanúk leírása, a tükröződés nélküli felvételek és a vérrel kapcsolatos régi kórlap ugyanarra mutatnak: a köpenyes alak nem egyszerűen ember vagy teljes vámpír, hanem félvér vámpír — emberi és vámpírvérből született. Nappal is járhat, de a gyorsasága és az éhsége nem emberi. A hangutánzást arra használja, hogy elszigetelje a kiszemelt hallgatót. A tanúk beszámolóiból a rosszabb szándéka is kirajzolódik: nemcsak vért akar, hanem a félelem és a kényszerű közelség fölötti uralmat; szexuális vágya nem kölcsönös vonzalom, hanem birtokló, ragadozó késztetés, amelyben a másik nemet mondása sem állítaná meg. Ez nem csábítás és nem romantika, hanem fenyegetés. Első a lehetséges áldozatok biztonsága.",
+      "Dr. Kerekes Áron bezárja a tanszéki irattár ajtaját, aztán egy régi, pecsétes jegyzőkönyvet tesz eléd. A tanúk leírása, a tükröződés nélküli felvételek és a vérrel kapcsolatos régi kórlap ugyanarra mutatnak: a köpenyes alak nem egyszerűen ember vagy teljes vámpír, hanem félvér vámpír — emberi és vámpírvérből született. Amikor a kapucni végre lecsúszik, nem elegáns vagy csábító alakot láttok: rövid fekete haj, ritkás bajusz, kissé túlsúlyos testalkat és durva, kevéssé megnyerő arcvonások. A külső esetlensége semmit sem vesz el a veszélyéből. Nappal is járhat, de a gyorsasága és az éhsége nem emberi. A hangutánzást arra használja, hogy elszigetelje a kiszemelt hallgatót. A tanúk vallomásaiból az is kiderül, hogy beteges vággyal fixálódik felnőtt nőkre, de vágyát nem kölcsönösségként, hanem birtoklásként és kényszerként éli meg; a visszautasítás sem állítaná meg. Nem pusztán vérre szomjazik, hanem a félelem és a másik fölötti uralom érzésére is. Ez nem csábítás és nem romantika, hanem fenyegetés. Első a lehetséges áldozatok biztonsága.",
       "story",
       [
         c("protect", "Biztosítsuk a tanúkat, alakítsunk ki páros kíséretet és vészjelzést; senki ne maradjon vele egyedül.", "very_good", { insight: 2, calm: 2, risk: -8, world: ["half_vampire_reveal_documented", "survivors_protected"] }, "tanúvédelem és biztonsági terv"),
@@ -1497,7 +1499,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
       "Esetjelentés — A köpenyes alak félvér vámpír, akinek ragadozó, kényszerítő szándékát dokumentálták.",
       0,
       "Dr. Kerekes Áron · ügyeletes oktató",
-      "A félvér vámpír leleplezése · illusztráció hiányzik"
+      "A leleplezett félvér vámpír: sötét köpeny, rövid fekete haj, ritkás bajusz, kissé túlsúlyos testalkat, durva és kevéssé megnyerő arc · illusztráció hiányzik"
     ),
   }
 ];
