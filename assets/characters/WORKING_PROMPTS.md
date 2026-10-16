@@ -86,3 +86,10 @@ fellatio, shaft, viewer tip, titjob, penetration, explicit sex act names, multi-
 - window sill night: Sitting on wide stone window sill night moon castle tower full nude
 - rear kneel: Kneeling facing away rear view looking over shoulder full nude
 - reverse chair: Sitting reverse on wooden chair facing away looking back over shoulder full nude
+
+## v7 experimental poses (work)
+- mirror: Standing full nude before tall ornate mirror reflection visible
+- library table: Lying on back on library wooden table books scattered
+- rain balcony: Standing castle stone balcony night rain wet full nude hands on railing
+- close rear: Close crop hands and knees rear three-quarter looking over shoulder
+- soft rope: Sitting on bed soft rope loosely around wrists in front full nude
