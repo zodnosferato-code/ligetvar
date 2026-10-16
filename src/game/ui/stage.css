@@ -591,12 +591,30 @@ img {
 
 .hotspot {
   position: absolute;
-  width: 3.7rem;
-  height: 3.7rem;
-  padding: 0.28rem;
-  background: rgb(18 14 12 / 0.78);
-  border: 2px solid #000;
-  box-shadow: 3px 3px 0 #000;
+  width: 5.5rem;
+  height: 5.5rem;
+  padding: 0;
+  background: transparent;
+  border: 2px solid transparent;
+  box-shadow: none;
+  opacity: 0.01;
+  transition: opacity 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.hotspot:hover,
+.hotspot.is-open,
+.hotspot:focus-visible {
+  opacity: 1;
+  background: rgb(18 14 12 / 0.55);
+  border-color: #c9cdd4;
+  box-shadow: 0 0 0 2px #6e2438;
+}
+
+.hotspot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(1px 1px 0 #000);
 }
 
 .hotspot img,
@@ -618,7 +636,12 @@ img {
 .hub-office .at-phone { right: 22%; bottom: 8%; }
 .hub-office .at-shelf { right: 4%; bottom: 28%; }
 
-.hub-home .at-door { left: 3%; top: 46%; }
+.hub-home .at-door { left: 6%; top: 38%; }
+.hub-home .at-book { right: 12%; top: 52%; }
+.hub-home .at-rest { left: 32%; top: 58%; }
+.hub-home .at-bag { left: 4%; bottom: 12%; }
+.hub-home .at-phone { right: 10%; top: 28%; }
+.hub-home .at-shelf { right: 4%; bottom: 18%; }
 .hub-home .at-book { right: 8%; top: 58%; }
 .hub-home .at-rest { left: 38%; top: 62%; }
 .hub-home .at-bag { left: 6%; bottom: 14%; }
