@@ -11,6 +11,7 @@ import {
   nextWeek,
   resolveJob,
   speakHonest,
+  type StageId,
 } from "./engine/logic.ts";
 import { SAVE_KEY, type GameState, type GirlId, type RouteId } from "./engine/types.ts";
 
@@ -19,7 +20,7 @@ interface GameStore {
   state: GameState;
   hasSave: boolean;
   boot: () => void;
-  start: (name: string) => void;
+  start: (name: string, stage?: StageId, route?: RouteId) => void;
   resume: () => void;
   toTitle: () => void;
   act: (id: string) => void;
@@ -62,8 +63,8 @@ export const useGame = create<GameStore>((set, get) => ({
   state: createInitial("Márton Kelényi"),
   hasSave: false,
   boot: () => set({ hasSave: !!readSave() }),
-  start: (name) => {
-    const state = createInitial(name);
+  start: (name, stage, route) => {
+    const state = createInitial(name, stage ?? 1, route ?? "boglarka");
     persist(state);
     set({ mode: "play", state, hasSave: true });
   },

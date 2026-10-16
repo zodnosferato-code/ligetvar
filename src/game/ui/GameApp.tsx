@@ -24,6 +24,7 @@ import {
   isCandidate,
   routeOptions,
   visibleActions,
+  type StageId,
 } from "../engine/logic.ts";
 import { GIRLS, type ActionDef, type RouteId } from "../engine/types.ts";
 import { useGame } from "../store.ts";
@@ -43,13 +44,13 @@ function reportError(error: unknown, extra?: string) {
   for (const listener of errorListeners) listener(entry);
 }
 
-function beginSemester(kind: "resume" | "new", name: string) {
+function beginSemester(kind: "resume" | "new", name: string, stage: StageId = 1, route: RouteId = "boglarka") {
   if (useGame.getState().mode === "play") return;
   const trigger = document.querySelector<HTMLElement>("[data-begin]");
   if (trigger) trigger.textContent = "Nyílik…";
   enterSemester(() => {
     if (kind === "resume") useGame.getState().resume();
-    else useGame.getState().start(name);
+    else useGame.getState().start(name, stage, route);
   });
   if (useGame.getState().mode !== "play") {
     reportError(new Error("A gomb lefutott, de a félév nem indult el."));
@@ -165,7 +166,9 @@ function GameShell() {
       event.preventDefault();
       const kind = trigger.getAttribute("data-begin") === "resume" ? "resume" : "new";
       const input = document.querySelector<HTMLInputElement>(".name-field input");
-      beginSemester(kind, input?.value ?? "");
+      const stage = Number(trigger.getAttribute("data-stage") || "1") as StageId;
+      const route = (trigger.getAttribute("data-route") || "boglarka") as RouteId;
+      beginSemester(kind, input?.value ?? "", stage, route);
     };
     window.addEventListener("pointerdown", onPress, true);
     return () => window.removeEventListener("pointerdown", onPress, true);
@@ -197,6 +200,10 @@ function GameShell() {
 function Title() {
   const hasSave = useGame((s) => s.hasSave);
   const [name, setName] = useState("Márton Kelényi");
+  const [stage, setStage] = useState<StageId>(1);
+  const [route, setRoute] = useState<RouteId>("boglarka");
+  const stages: StageId[] = [1, 2, 3, 4, 5];
+  const routes: RouteId[] = ["rebeka", "boglarka", "greta", "boglarka_greta", "rebeka_greta", "alone"];
 
   return (
     <div className="title-screen">
@@ -217,20 +224,36 @@ function Title() {
         </label>
         <div className="title-actions">
           {hasSave ? (
-            <button type="button" className="pixel-btn good" data-begin="resume" onPointerDown={() => beginSemester("resume", name)}>
+            <button type="button" className="pixel-btn good" data-begin="resume" data-stage={stage} data-route={route} onPointerDown={() => beginSemester("resume", name, stage, route)}>
               Folytatás
             </button>
           ) : (
-            <button type="button" className="pixel-btn good" data-begin="new" onPointerDown={() => beginSemester("new", name)}>
+            <button type="button" className="pixel-btn good" data-begin="new" data-stage={stage} data-route={route} onPointerDown={() => beginSemester("new", name, stage, route)}>
               Új félév
             </button>
           )}
           {hasSave ? (
-            <button type="button" className="pixel-btn ghost" data-begin="new" onPointerDown={() => beginSemester("new", name)}>
+            <button type="button" className="pixel-btn ghost" data-begin="new" data-stage={stage} data-route={route} onPointerDown={() => beginSemester("new", name, stage, route)}>
               Új félév
             </button>
           ) : null}
         </div>
+        <div className="stage-pick" role="group" aria-label="Szakasz">
+          {stages.map((id) => (
+            <button key={id} type="button" className={`pixel-btn ghost ${stage === id ? "good" : ""}`} onClick={() => setStage(id)}>
+              {id === 1 ? "1. hét" : id === 2 ? "5. hét" : id === 3 ? "Zárás" : id === 4 ? "13. hét" : "Vég"}
+            </button>
+          ))}
+        </div>
+        {stage >= 4 ? (
+          <div className="stage-pick" role="group" aria-label="Útvonal">
+            {routes.map((id) => (
+              <button key={id} type="button" className={`pixel-btn ghost ${route === id ? "good" : ""}`} onClick={() => setRoute(id)}>
+                {id === "alone" ? "Egyedül" : id === "boglarka_greta" ? "B+G" : id === "rebeka_greta" ? "R+G" : id === "rebeka" ? "Rebeka" : id === "greta" ? "Gréta" : "Boglárka"}
+              </button>
+            ))}
+          </div>
+        ) : null}
       </div>
       <div className="scroll title-copy">
         <p className="serif lead">

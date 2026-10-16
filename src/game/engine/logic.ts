@@ -33,7 +33,17 @@ export function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
-export function createInitial(name: string): GameState {
+export type StageId = 1 | 2 | 3 | 4 | 5;
+
+export const STAGES: Record<StageId, { week: number; money: number; trust: number; closeness: number }> = {
+  1: { week: 1, money: 105_000, trust: 0, closeness: 0 },
+  2: { week: 5, money: 30_000, trust: 2, closeness: 25 },
+  3: { week: 8, money: 60_000, trust: 3, closeness: 45 },
+  4: { week: 13, money: 90_000, trust: 4, closeness: 65 },
+  5: { week: 16, money: 120_000, trust: 5, closeness: 85 },
+};
+
+export function createInitial(name: string, stage: StageId = 1, route: RouteId = "boglarka"): GameState {
   const girls = {
     rebeka: emptyGirl(),
     boglarka: emptyGirl(),
@@ -74,7 +84,50 @@ export function createInitial(name: string): GameState {
     dossier: null,
   };
   state.snap = takeSnap(state);
+  if (stage !== 1) openStage(state, stage, route);
+  state.snap = takeSnap(state);
   return state;
+}
+
+function routedGirls(route: RouteId): GirlId[] {
+  if (route === "boglarka_greta") return ["boglarka", "greta"];
+  if (route === "rebeka_greta") return ["rebeka", "greta"];
+  if (route === "rebeka" || route === "boglarka" || route === "greta") return [route];
+  return [];
+}
+
+function openStage(state: GameState, stage: StageId, route: RouteId) {
+  const spec = STAGES[stage];
+  state.week = spec.week;
+  state.money = spec.money;
+  state.energy = 78;
+  state.lastNote = `${spec.week}. hét.`;
+  state.journal = [`${spec.week}. hét. Szakaszindítás.`];
+  for (const girl of GIRLS) {
+    state.girls[girl].trust = spec.trust;
+    state.girls[girl].closeness = spec.closeness;
+    state.girls[girl].anger = 0;
+    state.girls[girl].flags = [];
+  }
+  state.flags = [];
+  state.route = "none";
+  state.phase = "planner";
+  state.risk = 0;
+  if (stage < 3) return;
+  for (const girl of GIRLS) addFlag(state.flags, `honest_${girl}`);
+  if (stage === 3) {
+    state.phase = "route";
+    return;
+  }
+  const picked = route === "none" ? "boglarka" : route;
+  state.route = picked;
+  if (picked === "boglarka_greta" || picked === "rebeka_greta") addFlag(state.flags, "par_oszinte");
+  if (stage === 5) {
+    state.phase = "ending";
+    for (const girl of routedGirls(picked)) {
+      state.girls[girl].flags = [...REQUIRED_FLAGS[girl], "hatar"];
+    }
+  }
 }
 
 function addFlag(list: string[], flag: string) {
