@@ -93,3 +93,9 @@ fellatio, shaft, viewer tip, titjob, penetration, explicit sex act names, multi-
 - rain balcony: Standing castle stone balcony night rain wet full nude hands on railing
 - close rear: Close crop hands and knees rear three-quarter looking over shoulder
 - soft rope: Sitting on bed soft rope loosely around wrists in front full nude
+
+## v8 rear / back-view poses (work well)
+- standing rear: Standing facing away rear view looking over shoulder hands on hips
+- bent-over rear: Bent forward hands on bed looking back over shoulder arched back full rear focus
+- all-fours rear angle: On all fours rear-focused low angle looking over shoulder arched back
+- prone rear: Lying on stomach chin on hands looking at viewer legs slightly raised full rear and back focus
