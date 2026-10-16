@@ -352,6 +352,42 @@ function guideFor(state: { week: number; strain?: number; workShifts?: number; r
   return "A mély jelenet a saját helyén vagy a lakosztályban nyílik, ha a bizalom megvan.";
 }
 
+const INTIMATE_PORTRAIT_EXPRESSION: Record<string, string> = {
+  rebeka_intimate: "sebezheto",
+  rebeka_intimate_private: "sebezheto",
+  rebeka_bekas_private: "sebezheto",
+  rebeka_yield: "sebezheto",
+  rebeka_yield_control: "sebezheto",
+  rebeka_yield_full: "sebezheto",
+  rebeka_desire_fulfill: "nyugalom_intense",
+  rebeka_ending_true: "nyugalom",
+  boglarka_explore: "elpirulas_mosoly",
+  boglarka_slow_explore: "elpirulas_mosoly",
+  boglarka_slow_full: "elpirulas_mosoly",
+  boglarka_praise: "lágy_mosoly",
+  boglarka_body_praise: "lágy_mosoly",
+  boglarka_body_full: "lágy_mosoly",
+  boglarka_desire_fulfill: "elpirulas_mosoly",
+  boglarka_ending_true: "lágy_mosoly",
+  greta_rule: "yielding",
+  greta_rule_break: "yielding",
+  greta_rule_full: "yielding",
+  greta_yield: "yielding",
+  greta_yield_full: "yielding",
+  greta_desire_fulfill: "yielding",
+  greta_ending_true: "enyhe_mosoly",
+};
+
+function scenePortraitExpression(nodeId: string, expression: string): string {
+  if (expression) return expression;
+  const id = nodeId.replace(/_(?:vg|good|bad|vb)?_react$/, "").replace(/_react$/, "");
+  return INTIMATE_PORTRAIT_EXPRESSION[id] ?? "";
+}
+
+function isIntimateScene(nodeId: string): boolean {
+  return /(?:intimate|yield|slow|explore|praise|body|rule|desire_fulfill|ending_true)/i.test(nodeId);
+}
+
 function hotspotFor(action: ActionDef): "door" | "book" | "rest" | "bag" {
   if (action.id.startsWith("rest")) return "rest";
   if (action.id.startsWith("mohu") || action.id === "gym") return "bag";
@@ -591,11 +627,13 @@ function Scene() {
   const plate = girl ? illustrationFor(scene.node.id, girl, state.route) : null;
   const owned = GIFTS.filter((g) => (state.inventory[g.id] ?? 0) > 0);
   const expression = scene.expression ?? "";
-  const mood = /pir|szegy|zavar/.test(expression)
+  const portraitExpression = scenePortraitExpression(scene.node.id, expression);
+  const intimate = isIntimateScene(scene.node.id);
+  const mood = /pir|szegy|zavar/.test(portraitExpression)
     ? "blush"
-    : /hideg|duh|unalom|gongy/.test(expression)
+    : /hideg|duh|unalom|gongy/.test(portraitExpression)
       ? "cold"
-      : /nyug|eleged|mosoly|intenz/.test(expression)
+      : /nyug|eleged|mosoly|intenz|yield|sebezheto|bizalom/.test(portraitExpression)
         ? "warm"
         : "still";
 
@@ -605,8 +643,8 @@ function Scene() {
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[scene.location]})` }}>
         {plate ? <img className="scene-plate" src={plate} alt="" /> : null}
         {girl ? (
-          <div className={`portrait-frame expr-${mood}`}>
-            <img src={portraitFor(girl, expression)} alt={GIRL_NAME[girl]} />
+          <div className={`portrait-frame expr-${mood} ${plate ? "portrait-supporting" : ""} ${intimate ? "portrait-intimate" : ""}`}>
+            <img src={portraitFor(girl, portraitExpression)} alt={GIRL_NAME[girl]} />
             {expression ? <em>{expression.replaceAll("_", " ")}</em> : null}
           </div>
         ) : null}
