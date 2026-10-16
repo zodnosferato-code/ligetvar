@@ -80,3 +80,9 @@ fellatio, shaft, viewer tip, titjob, penetration, explicit sex act names, multi-
 - Rebeka: silver choker only, black coat, black harness
 - Boglárka: moss-green coat, cream lace, collar
 - Gréta: glasses always on, white lab/open coat, green vest off
+
+## v6 experimental poses (also work)
+- wall press: Pressed back against cold stone wall castle hallway torch light full nude
+- window sill night: Sitting on wide stone window sill night moon castle tower full nude
+- rear kneel: Kneeling facing away rear view looking over shoulder full nude
+- reverse chair: Sitting reverse on wooden chair facing away looking back over shoulder full nude
