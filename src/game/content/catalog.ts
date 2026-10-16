@@ -517,33 +517,33 @@ add(
   node(
     "rebeka_route",
     "rebeka",
-    "A zárt hetekben a kör kisebb. Ha jössz, nem dísznek jössz. És nem viszed ki a folyosóra.",
+    "A lezárt szárny első bejárása után Rebeka külön mappába rendezi az eredeti felvételeket. „A legélesebb képet tenném ki, de ha túl korán következtetünk, Lilla vallomását is hitelteleníthetik. Segítesz eldönteni, mikor mutassuk meg a nyomokat?”",
     "story",
     [
       c(
         "very_good",
-        "Nem viszlek közönség elé. A fény nappal is a tiéd, kulcs nélkül is.",
+        "Előbb független ellenőrzést kérünk, aztán együtt döntünk arról, mi hozható nyilvánosságra.",
         "very_good",
-        { closeness: 8, trust: 1 },
+        { closeness: 4, trust: 1, flags: ["rebeka_route_active"] },
         "a válla leereszt",
       ),
-      c("good", "A dokumentáció kész. A többi rád tartozik.", "good", { closeness: 3 }, "semleges"),
+      c("good", "Az eredetit elmentjük; a nyilvánossággal várjunk.", "good", { closeness: 2, trust: 1 }, "megfontolja"),
       c(
         "bad",
-        "A Holdkör nélkül kevésbé vagy érdekes. Ezt tudnod kell.",
+        "Ez már nem a te dolgod. Add át a képeket, és kész.",
         "bad",
-        { closeness: -3, anger: 1 },
+        { closeness: -2, anger: 1 },
         "sértés",
       ),
       c(
         "very_bad",
-        "Holnap a tanszéken is így állunk majd egymás mellett.",
+        "Tedd ki névvel együtt az egészet. A felhajtás majd reakcióra kényszeríti őket.",
         "very_bad",
         { closeness: -4, anger: 1, risk: 12, flags: ["rebeka_kozonseg"] },
-        "közönségnek érzi",
+        "közönségnek teszi ki",
       ),
     ],
-    "Rebeka a zárt útvonalon is nappali fényben maradt.",
+    "Rebeka az eredeti felvételeket és a tanúvédelmet választotta a sietség helyett.",
   ),
 );
 
@@ -786,27 +786,27 @@ add(
   node(
     "boglarka_route",
     "boglarka",
-    "Ha ezt komolyan gondolod, nem csak a lámpa alatt férsz hozzá. Én… én kibírom, ha valaki látja. De lassan.",
+    "Boglárka a gondnok jegyzeteit és a három mondaváltozatot teszi egymás mellé. „Az egyik szöveg szerint a harang elűzi a szarírt, a másik csak azt mondja, hogy megszakítja a hangutánzást. Ha rosszul választunk, valakit veszélybe küldhetünk. Segítesz úgy megfogalmazni a tervet, hogy a bizonytalanság is benne maradjon?”",
     "story",
     [
       c(
         "very_good",
-        "Lassan. És nem te vagy a titkolt második. Ha látják, melletted állok, nem előtted.",
+        "A tényt, a következtetést és a sejtést külön jelöljük. A terv csak azt ígérheti, amit a nyomok alátámasztanak.",
         "very_good",
-        { closeness: 8, trust: 1 },
+        { closeness: 4, trust: 1, flags: ["boglarka_route_active"] },
         "nagy levegő",
       ),
-      c("good", "A könyvtár még jó. Az udvarra ráérünk.", "good", { closeness: 3 }, "türelem"),
-      c("bad", "A sarok biztonságosabb. Maradjunk ott.", "bad", { closeness: -1 }, "visszalököd"),
+      c("good", "Keressünk még egy forrást, és addig ne próbáljuk ki a harangot.", "good", { closeness: 2, trust: 1 }, "türelem"),
+      c("bad", "A legenda bizonyíték; nincs szükség további ellenőrzésre.", "bad", { closeness: -2, anger: 1 }, "visszalép"),
       c(
         "very_bad",
-        "Ne lassíts. A félév nem várja meg a mondatod végét.",
+        "A folklór csak babona. Hagyd abba a kutatást.",
         "very_bad",
         { closeness: -4, anger: 2 },
         "türelmetlen",
       ),
     ],
-    "Boglárka kimondta, hogy látva is kibírja.",
+    "Boglárka a forráskritikát választotta a kész válasz helyett.",
   ),
 );
 
@@ -1007,27 +1007,27 @@ add(
   node(
     "greta_route",
     "greta",
-    "Zárt ajtónál könnyebb kimondani. Elrontottam egy mondatot a heti jelentésben. Ha ez vizsga, most vége.",
+    "Gréta három dokumentum közös jegyzékét rakja eléd: egy hallgatói vallomást, a gondnok régi jelentését és az akták módosítási naplóját. „Még nem tudjuk, ki írta át a dátumokat. De a bizonyítékok együtt már elég erősek ahhoz, hogy független vizsgálatot kérjünk. Ez nem vizsga; itt az a fontos, hogy pontosan jelezzük, mi ismert és mi nem.”",
     "story",
     [
       c(
         "very_good",
-        "Nem vizsga. A mondat javítható. Te attól még itt vagy.",
+        "Nem kell mindent egyedül megoldanod. Készítsük el a dokumentált átadást, a hiányzó adatokat is feltüntetve.",
         "very_good",
-        { closeness: 8, trust: 1, flags: ["greta_nem_vizsga"] },
+        { closeness: 4, trust: 1, flags: ["greta_nem_vizsga"] },
         "egyet pislog, és javít",
       ),
-      c("good", "Mutasd a mondatot. A többit nem pontozom.", "good", { closeness: 3 }, "dolgozik"),
-      c("bad", "Egy demonstrátor ilyen hibát ne vigyen haza.", "bad", { closeness: -2, anger: 1 }, "szigor"),
+      c("good", "Mutasd a jegyzéket. Ellenőrizzük végig az oldalszámokat és a dátumokat.", "good", { closeness: 2, trust: 1 }, "dolgozik"),
+      c("bad", "A vizsgálat csak újabb problémát hoz. Inkább zárjuk le.", "bad", { closeness: -2, anger: 1 }, "szigor"),
       c(
         "very_bad",
-        "Hozd ide a listát. A kapcsolatunk ettől függ.",
+        "A beosztásoddal elérhetem, hogy ne férj hozzá több irathoz. Döntsd el, kinek dolgozol.",
         "very_bad",
-        { closeness: -5, anger: 2, flags: ["greta_eszkoz"] },
+        { closeness: -5, anger: 2, flags: ["greta_eszkoz"], risk: 8 },
         "zsarolás",
       ),
     ],
-    "Gréta elrontott egy mondatot, és nem lett vége.",
+    "Gréta a dokumentált együttműködést választotta a vak engedelmesség helyett.",
   ),
 );
 
@@ -1342,7 +1342,7 @@ const HORROR_EVENTS: HorrorEvent[] = [
     node: node("horror_survivor_statement", "narrator",
       "Egy volt hallgató, Németh Eszter, csak akkor hajlandó beszélni, ha a neve nem kerül a jegyzőkönyv nyilvános változatába. Évekkel korábban őt is egy ismerős hang csalta a fák közé. Nem látott tiszta alakot; azt hallotta, hogy a saját hangja szólítja a keresőcsapatot a rossz irányból. Amikor megpróbált felelni, a hang egy ütemmel később ismételte a szavait.",
       "story", [
-        c("protect", "A nevét külön, korlátozott hozzáférésű mellékletben tartjuk, és csak a jóváhagyásával idézzük.", "very_good", { calm: 1, insight: 1, world: ["case_eszt­er_protected"] }, "tanúvédelem"),
+        c("protect", "A nevét külön, korlátozott hozzáférésű mellékletben tartjuk, és csak a jóváhagyásával idézzük.", "very_good", { calm: 1, insight: 1, world: ["case_eszter_protected"] }, "tanúvédelem"),
         c("clarify", "Kérdezzük meg, mely részletekre emlékszik biztosan, és melyekre csak következtet.", "good", { insight: 1 }, "pontosítás"),
         c("press", "Addig kérdezzük, amíg pontosan le nem írja a lényt.", "bad", { risk: 5 }, "nyomásgyakorlás")
       ], "Esetjelentés — Németh Eszter túlélővallomása megerősítette a késleltetett hangutánzás motívumát.")
@@ -1449,23 +1449,23 @@ export const STORY: StoryEvent[] = [
   { id: "rebeka_foto", node: "rebeka_foto", girl: "rebeka", locations: ["apartment"], part: 1, priority: 35, minWeek: 3, minTrust: 2 },
   { id: "rebeka_hatar", node: "rebeka_hatar", girl: "rebeka", locations: ["holdkor", "apartment", "classroom"], part: 1, priority: 40, minWeek: 5, minTrust: 2 },
   { id: "rebeka_het8", node: "rebeka_het8", girl: "rebeka", locations: ["holdkor", "classroom"], part: 1, priority: 80, minWeek: 7, maxWeek: 8 },
-  { id: "rebeka_route", node: "rebeka_route", girl: "rebeka", locations: ["holdkor", "apartment", "classroom"], part: 2, priority: 60, minWeek: 10, minTrust: 3 },
-  { id: "rebeka_kiss", node: "rebeka_kiss", girl: "rebeka", locations: ["apartment"], part: 2, priority: 70, minWeek: 11, minTrust: 4 },
+  { id: "rebeka_route", node: "rebeka_route", girl: "rebeka", locations: ["holdkor", "apartment", "classroom"], part: 2, priority: 82, minWeek: 10, minTrust: 3 },
+  { id: "rebeka_kiss", node: "rebeka_kiss", girl: "rebeka", locations: ["apartment"], part: 2, priority: 95, minWeek: 15, minTrust: 4, minClose: 60 },
 
   { id: "boglarka_intro", node: "boglarka_intro", girl: "boglarka", locations: ["library", "classroom"], part: 1, priority: 10, minWeek: 1 },
   { id: "boglarka_nev", node: "boglarka_nev", girl: "boglarka", locations: ["library", "classroom"], part: 1, priority: 20, minWeek: 2 },
   { id: "boglarka_udvar", node: "boglarka_udvar", girl: "boglarka", locations: ["courtyard"], part: 1, priority: 35, minWeek: 4, minTrust: 2 },
   { id: "boglarka_hatar", node: "boglarka_hatar", girl: "boglarka", locations: ["library", "apartment", "classroom"], part: 1, priority: 40, minWeek: 5, minTrust: 2 },
   { id: "boglarka_het8", node: "boglarka_het8", girl: "boglarka", locations: ["library", "classroom"], part: 1, priority: 80, minWeek: 7, maxWeek: 8 },
-  { id: "boglarka_route", node: "boglarka_route", girl: "boglarka", locations: ["library", "apartment", "classroom"], part: 2, priority: 60, minWeek: 10, minTrust: 3 },
-  { id: "boglarka_kiss", node: "boglarka_kiss", girl: "boglarka", locations: ["apartment"], part: 2, priority: 70, minWeek: 11, minTrust: 4 },
+  { id: "boglarka_route", node: "boglarka_route", girl: "boglarka", locations: ["library", "apartment", "classroom"], part: 2, priority: 82, minWeek: 10, minTrust: 3 },
+  { id: "boglarka_kiss", node: "boglarka_kiss", girl: "boglarka", locations: ["apartment"], part: 2, priority: 95, minWeek: 15, minTrust: 4, minClose: 60 },
 
   { id: "greta_intro", node: "greta_intro", girl: "greta", locations: ["department", "classroom"], part: 1, priority: 10, minWeek: 1 },
   { id: "greta_hiba", node: "greta_hiba", girl: "greta", locations: ["department", "classroom"], part: 1, priority: 30, minWeek: 3 },
   { id: "greta_hatar", node: "greta_hatar", girl: "greta", locations: ["department", "apartment", "classroom"], part: 1, priority: 40, minWeek: 5, minTrust: 2 },
   { id: "greta_het8", node: "greta_het8", girl: "greta", locations: ["department", "classroom"], part: 1, priority: 80, minWeek: 7, maxWeek: 8 },
-  { id: "greta_route", node: "greta_route", girl: "greta", locations: ["department", "apartment", "classroom"], part: 2, priority: 60, minWeek: 10, minTrust: 3 },
-  { id: "greta_kiss", node: "greta_kiss", girl: "greta", locations: ["apartment"], part: 2, priority: 70, minWeek: 12, minTrust: 4 },
+  { id: "greta_route", node: "greta_route", girl: "greta", locations: ["department", "apartment", "classroom"], part: 2, priority: 82, minWeek: 10, minTrust: 3 },
+  { id: "greta_kiss", node: "greta_kiss", girl: "greta", locations: ["apartment"], part: 2, priority: 95, minWeek: 15, minTrust: 4, minClose: 60 },
 ];
 
 export const REQUIRED_FLAGS: Record<GirlId, string[]> = {
