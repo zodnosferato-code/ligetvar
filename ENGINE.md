@@ -37,7 +37,7 @@ Ezek a tervezőn és a Polcon ki vannak írva. A teszt is ezeket várja.
 | Ismétlés | Az első beszélgetés ad pontot, a második feleannyit, a harmadik már nem. Bizalmat csak új jelenet nagyon jó válasza ad. | Tervező, 1–8. hét |
 | Pihenő | Négy kemény sáv (látogatás, munka, minijáték, randi) után csak a fotel nyílik. A hétfő egyet enged. | Tervező, ha a fáradtság 3 vagy 4 |
 | Műszak | Randi és a Polc zárva, amíg egy MOHU-kör vagy egy kérdőív le nem ment. A látogatás nem vár erre. | Tervező a 9. héttől, Polc |
-| Közös szakasz | 4. héttől villanás, 6. héttől könnyű csók, 7–8. héten bizalom 3-nál egy mélyebb jelenet. A lány saját helyén is, nem csak a lakásban. | A látogatás jelenete |
+| Közös szakasz | 2. héttől a saját helyén (fotó, jegyzet, dokumentum). Lakás bizalom 2-től. 7–8. héten bizalom 3-nál a mélyebb jelenet. A 9. héttől ezek zárnak. | A látogatás jelenete |
 | Zárás | 8. hét vége. Közelség 30, bizalom 2, kockázat 80 alatt. Enélkül a 9. hét utáni mély jelenetek nem jönnek. | Útvonalzár |
 | Mély jelenet | 9. héttől a zárt útvonalon, 11. héttől a teljes jelenetek, 14. héttől a vágy beteljesítése, ha a bizalom 4 és a közelség 55. | A saját helye vagy a lakosztály |
 
