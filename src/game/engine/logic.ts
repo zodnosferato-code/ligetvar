@@ -6,6 +6,7 @@ import {
   STORY,
   jobNode,
   physioNode,
+  horrorNode,
   rumorNode,
 } from "../content/catalog.ts";
 import {
@@ -387,22 +388,24 @@ function openEnding(state: GameState) {
 }
 
 function rumorGate(state: GameState): boolean {
-  if (state.rolled || state.doingPhysio) return false;
-  if (state.week < 2 && state.risk < 8) return false;
-  const heat = GIRLS.some((g) => state.girls[g].closeness >= 20);
-  if (!heat) return false;
-  const n = (state.week * 13 + state.slot * 7 + (state.money % 97) + state.seen.length) % 10;
-  return n < 3;
+  if (state.rolled || state.doingPhysio || state.week < 2) return false;
+  // Horror incidents belong to the campus story, not to the player's romance stats.
+  // One check per time slot keeps them occasional while allowing them to appear on a
+  // fresh run even when the player has not built closeness with anyone.
+  const roll = (state.week * 13 + state.slot * 7 + (state.money % 97) + state.seen.length * 3 + state.journal.length) % 10;
+  return roll < 3;
 }
 
 function maybeRumor(state: GameState): GameState | null {
   if (!rumorGate(state)) return null;
-  const node = rumorNode();
+  const seed = state.week * 19 + state.slot * 31 + (state.money % 97) + state.seen.length * 7 + state.journal.length;
+  const selected = horrorNode(state.week, state.seen, seed);
+  const node = selected?.node ?? rumorNode();
   return {
     ...state,
     rolled: true,
     phase: "scene",
-    scene: { node, location: "department", source: "story" },
+    scene: { node, location: selected?.location ?? "department", source: "story" },
   };
 }
 

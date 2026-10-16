@@ -52,16 +52,19 @@ const SCENE_META: Record<string, { locations: LocationId[]; minWeek: number; min
   // Rebeka
   rebeka_foto: { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 },
   rebeka_nappali: { locations: ["holdkor", "classroom"], minWeek: 2, priority: 16 },
+  rebeka_lilla: { locations: ["holdkor", "classroom"], minWeek: 4, minTrust: 1, priority: 26 },
   rebeka_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
   rebeka_intimate: { locations: ["apartment", "holdkor"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
   rebeka_yield: { locations: ["apartment", "holdkor"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
   // Boglárka
   boglarka_jegyzet: { locations: ["library"], minWeek: 2, priority: 16 },
+  boglarka_vallomas: { locations: ["library", "classroom"], minWeek: 4, minTrust: 1, priority: 26 },
   boglarka_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
   boglarka_explore: { locations: ["apartment"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
   boglarka_praise: { locations: ["apartment"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
   // Gréta
   greta_dokumentum: { locations: ["department"], minWeek: 2, priority: 16 },
+  greta_aktak: { locations: ["department", "classroom"], minWeek: 4, minTrust: 1, priority: 26 },
   greta_lakas: { locations: ["apartment"], minWeek: 3, minTrust: 2, priority: 30 },
   greta_rule: { locations: ["apartment", "department"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
   greta_yield: { locations: ["apartment", "department"], minWeek: 9, minTrust: 4, priority: 55, part: 2 },
