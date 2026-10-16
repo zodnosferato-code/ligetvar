@@ -18,6 +18,24 @@ no soft shading, no 3D, no realistic rendering, no text, no watermark.
 - **Nagy ikon** (kiemelt elem, ajándék részlet): 48×48 px
 - Minden méret egész számú nagyítással jelenik meg a telefonon (portré, 1×/2×/3×).
 
+## Főképernyő (hub) — tárgyak a háttérben
+
+A főképernyő (lakosztály vagy tanszéki iroda) **nem** véletlenszerűen elhelyezett ikonokat használ. A háttérképbe belerajzolt tárgyak maguk a kattintható gombok. Minden tárgyhoz tartozik egy dedikált ikon, amely hover/fókusz/nyitott állapotban jelenik meg.
+
+| Hotspot | Háttérben lévő tárgy | Dedikált ikon | Akciócsoport |
+| --- | --- | --- | --- |
+| `door` | Faajtó (bal fal) | `icon_door` | Kilépés / helyválasztás |
+| `book` | Nyitott könyv / jegyzet | `icon_book` | Tanulás, feladat |
+| `rest` | Fotel / szék | `icon_chair` | Pihenés |
+| `bag` | Zsák / táska | `icon_bottles` | Pénzszerző / csomag |
+| `phone` | Régi telefon | `icon_phone` | Hívás |
+| `shelf` | Könyvespolc / irattartó | `icon_shelf` | Bolt / ajándék |
+
+- A tárgyak a háttérkép részét képezik (pixel art, ugyanaz a stílus).
+- A hotspot átlátszó réteg a tárgy fölött; alapból láthatatlan, hover/fókusz/nyitott állapotban mutatja a dedikált ikont és keretet.
+- A menü (ha több akció tartozik a tárgyhoz) a dedikált akcióikonokat használja.
+- Nincs véletlenszerű ikonelhelyezés a háttér fölött.
+
 ## Ikoncsoportok
 
 ### 1. Akcióikonok (a 12-jatekmenet-akciok.md akcióihoz)

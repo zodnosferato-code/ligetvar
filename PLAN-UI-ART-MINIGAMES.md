@@ -2,6 +2,12 @@
 
 **Status: The semester screen is the main page again.**
 
+### Hub interaction rule
+The main hub (apartment / department office) does **not** use randomly placed floating icons.  
+Clickable controls are objects painted into the background itself (door, book, chair, sack, telephone, shelf).  
+Each object has a dedicated icon that appears only on hover/focus/open.  
+Hotspots are transparent overlays positioned exactly over those objects.
+
 ## Fixed
 - `GameApp.tsx` no longer opens a menu that only launches minigames. Új félév / Folytatás enters the week planner, scenes, phone, shop, and endings.
 - The catalog is the full dialogue set, not the stub.
