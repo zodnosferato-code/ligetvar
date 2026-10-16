@@ -1,4 +1,4 @@
-import type { GirlId, LocationId, StoryEvent } from "../engine/types.ts";
+import type { DialogueNode, GirlId, LocationId, StoryEvent } from "../engine/types.ts";
 import { loadDialogueNode, type RawDialogueNode } from "./dialogueLoader.ts";
 import hu from "../../../locales/hu.json" with { type: "json" };
 import rebeka2 from "../../../dialogues/part2/rebeka.json" with { type: "json" };
@@ -42,8 +42,8 @@ export function mergeLater(nodes: Record<string, DialogueNode>, story: StoryEven
       story.push({ id: raw.id, node: raw.id, girl, part: 2, ...where });
     }
   }
-  const endings = [rebeka3, boglarka3, greta3] as Array<{ nodes: RawNode[] }>;
+  const endings = [rebeka3, boglarka3, greta3] as Array<{ nodes: RawDialogueNode[] }>;
   for (const pack of endings) {
-    for (const raw of pack.nodes) nodes[raw.id] = toNode(raw);
+    for (const raw of pack.nodes) nodes[raw.id] = loadDialogueNode(raw, lines);
   }
 }
