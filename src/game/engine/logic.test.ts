@@ -37,6 +37,40 @@ describe("Ligetvár engine", () => {
     assert.equal(state.route, "none");
   });
 
+  it("opens a later stage without rewriting the first week", () => {
+    const first = createInitial("Márton", 1);
+    assert.equal(first.week, 1);
+    assert.equal(first.money, 105_000);
+    assert.equal(first.girls.rebeka.trust, 0);
+
+    const early = createInitial("Márton", 2);
+    assert.equal(early.week, 5);
+    assert.equal(early.money, 30_000);
+    assert.equal(early.girls.boglarka.trust, 2);
+    assert.equal(early.girls.boglarka.closeness, 25);
+    assert.equal(early.route, "none");
+    assert.equal(early.phase, "planner");
+
+    const lock = createInitial("Márton", 3);
+    assert.equal(lock.week, 8);
+    assert.equal(lock.phase, "route");
+    assert.equal(isCandidate(lock, "greta"), true);
+    assert.equal(routeOptions(lock).options.find((o) => o.id === "boglarka_greta")?.ok, true);
+
+    const late = createInitial("Márton", 4, "greta");
+    assert.equal(late.week, 13);
+    assert.equal(late.route, "greta");
+    assert.equal(late.phase, "planner");
+    assert.equal(late.girls.greta.trust, 4);
+
+    const end = createInitial("Márton", 5, "boglarka");
+    assert.equal(end.phase, "ending");
+    assert.equal(evaluateEnding(end).id, "true");
+
+    const pair = createInitial("Márton", 5, "boglarka_greta");
+    assert.equal(evaluateEnding(pair).id, "pair-true");
+  });
+
   it("applies a very good intro and remembers the flag", () => {
     let state = createInitial("Márton");
     state.slot = 2;

@@ -362,6 +362,19 @@ img {
   touch-action: manipulation;
 }
 
+.stage-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: -0.35rem 0 0.8rem;
+}
+
+.stage-pick .pixel-btn {
+  min-height: 2rem;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.75rem;
+}
+
 .eyebrow {
   margin: 0;
   letter-spacing: 0.22em;
