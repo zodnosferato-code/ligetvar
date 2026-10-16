@@ -9,6 +9,7 @@ import {
   LOCATION_BG,
   LOCATION_LABEL,
   PORTRAIT,
+  portraitFor,
   SLOT_LABEL,
   STAT_ICON,
   chapterName,
@@ -491,7 +492,7 @@ function Scene() {
       <div className="scene-bg" style={{ backgroundImage: `url(${LOCATION_BG[scene.location]})` }}>
         {girl ? (
           <div className={`portrait-frame expr-${mood}`}>
-            <img src={PORTRAIT[girl]} alt={GIRL_NAME[girl]} />
+            <img src={portraitFor(girl, expression)} alt={GIRL_NAME[girl]} />
             {expression ? <em>{expression.replaceAll("_", " ")}</em> : null}
           </div>
         ) : null}

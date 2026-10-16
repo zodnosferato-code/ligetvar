@@ -18,10 +18,40 @@ function pub(file: string) {
 }
 
 export const PORTRAIT: Record<GirlId, string> = {
-  rebeka: pub("references/rebeka-face-neutral.png"),
-  boglarka: pub("references/boglarka-face-neutral.png"),
-  greta: pub("references/greta-face-neutral.png"),
+  rebeka: pub("characters/rebeka/rebeka-face-front.jpg"),
+  boglarka: pub("characters/boglarka/boglarka-face-front.jpg"),
+  greta: pub("characters/greta/greta-emotion-smile.jpg"),
 };
+
+const MOOD: Record<GirlId, Record<string, string>> = {
+  rebeka: {
+    anger: pub("characters/rebeka/rebeka-emotion-anger.jpg"),
+    smile: pub("characters/rebeka/rebeka-emotion-halfsmile.jpg"),
+    soft: pub("characters/rebeka/rebeka-emotion-vulnerable.jpg"),
+    yield: pub("characters/rebeka/rebeka-emotion-yielding.jpg"),
+  },
+  boglarka: {
+    blush: pub("characters/boglarka/boglarka-emotion-blush.jpg"),
+    smile: pub("characters/boglarka/boglarka-emotion-smile.jpg"),
+    trust: pub("characters/boglarka/boglarka-emotion-trust.jpg"),
+  },
+  greta: {
+    fluster: pub("characters/greta/greta-emotion-flustered.jpg"),
+    smile: pub("characters/greta/greta-emotion-smile.jpg"),
+    yield: pub("characters/greta/greta-emotion-yielding.jpg"),
+  },
+};
+
+export function portraitFor(girl: GirlId, expression = ""): string {
+  const face = MOOD[girl];
+  const mark = expression.toLowerCase();
+  if (!mark) return PORTRAIT[girl];
+  if (/yield|atad|enged/.test(mark) && face.yield) return face.yield;
+  if (/duh|hideg|harag|anger|gongy/.test(mark) && face.anger) return face.anger;
+  if (/pir|szegy|zavar|sebez/.test(mark)) return face.blush ?? face.soft ?? face.fluster ?? PORTRAIT[girl];
+  if (/mosoly|eleged|nyug|bizal|intenz/.test(mark)) return face.smile ?? face.trust ?? PORTRAIT[girl];
+  return PORTRAIT[girl];
+}
 
 export const GIRL_NAME: Record<GirlId, string> = {
   rebeka: "Rebeka Dorn",
@@ -58,17 +88,17 @@ export const CAST: Record<
 
 export const LOCATION_BG: Record<LocationId, string> = {
   apartment: pub("backgrounds/apartment.jpg"),
-  classroom: pub("backgrounds/classroom.png"),
-  courtyard: pub("backgrounds/courtyard.png"),
+  classroom: pub("backgrounds/classroom.jpg"),
+  courtyard: pub("backgrounds/courtyard.jpg"),
   department: pub("backgrounds/department.jpg"),
-  holdkor: pub("backgrounds/holdkor.png"),
-  library: pub("backgrounds/library.png"),
-  bekas: pub("backgrounds/courtyard.png"),
-  bookshop: pub("backgrounds/library.png"),
-  cinema: pub("backgrounds/department.jpg"),
-  peron: pub("backgrounds/holdkor.png"),
-  construction: pub("backgrounds/courtyard.png"),
-  mohu: pub("backgrounds/courtyard.png"),
+  holdkor: pub("backgrounds/holdkor-night.jpg"),
+  library: pub("backgrounds/library.jpg"),
+  bekas: pub("backgrounds/bekas-to.jpg"),
+  bookshop: pub("backgrounds/library.jpg"),
+  cinema: pub("backgrounds/hallway.jpg"),
+  peron: pub("backgrounds/hallway.jpg"),
+  construction: pub("backgrounds/courtyard.jpg"),
+  mohu: pub("backgrounds/courtyard.jpg"),
 };
 
 export const LOCATION_LABEL: Record<LocationId, string> = {
@@ -87,18 +117,18 @@ export const LOCATION_LABEL: Record<LocationId, string> = {
 };
 
 const I = {
-  talk: pub("icons/icon_talk.png"),
-  call: pub("icons/icon_call.png"),
-  gift: pub("icons/icon_gift.png"),
-  gym: pub("icons/icon_gym.png"),
-  rest: pub("icons/icon_rest.png"),
-  study: pub("icons/icon_study.png"),
-  task: pub("icons/icon_task.png"),
-  apartment: pub("icons/icon_place_apartment.png"),
-  classroom: pub("icons/icon_place_classroom.png"),
-  courtyard: pub("icons/icon_place_courtyard.png"),
-  holdkor: pub("icons/icon_place_holdkor.png"),
-  library: pub("icons/icon_place_library.png"),
+  talk: pub("icons/icon_door.png"),
+  call: pub("icons/icon_phone.png"),
+  gift: pub("icons/icon_shelf.png"),
+  gym: pub("icons/icon_bottles.png"),
+  rest: pub("icons/icon_chair.png"),
+  study: pub("icons/icon_book.png"),
+  task: pub("icons/icon_book.png"),
+  apartment: pub("icons/icon_door.png"),
+  classroom: pub("icons/icon_chair.png"),
+  courtyard: pub("icons/icon_door.png"),
+  holdkor: pub("icons/icon_door.png"),
+  library: pub("icons/icon_book.png"),
   money: pub("icons/icon_stat_money.png"),
   calm: pub("icons/icon_stat_calm.png"),
   insight: pub("icons/icon_stat_insight.png"),
