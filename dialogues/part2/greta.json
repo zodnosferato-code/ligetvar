@@ -9,15 +9,15 @@
           "id": "very_good",
           "text_key": "dialogue.greta.part2.intro.vg",
           "quality": "very_good",
-          "effect": { "closeness": 4, "trust": 1, "flags": ["greta_route_active"] },
+          "effect": { "closeness": 5, "trust": 1, "flags": ["greta_route_active"] },
           "reaction": "enyhe_mosoly",
-          "follow_node": "greta_part2_intro_react"
+          "follow_node": "greta_rule_full"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.part2.intro.good",
           "quality": "good",
-          "effect": { "closeness": 2 },
+          "effect": { "closeness": 3 },
           "reaction": "semleges"
         },
         {
@@ -26,27 +26,6 @@
           "quality": "bad",
           "effect": { "closeness": -2, "anger": 1 },
           "reaction": "hideg"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.part2.intro.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -4, "anger": 2 },
-          "reaction": "duhos"
-        }
-      ]
-    },
-    {
-      "id": "greta_part2_intro_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta.part2.intro.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta.part2.intro.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "nyugalom"
         }
       ]
     },
@@ -59,44 +38,16 @@
           "id": "very_good",
           "text_key": "dialogue.greta.part2.rule_full.vg",
           "quality": "very_good",
-          "effect": { "closeness": 6, "trust": 2, "flags": ["flag_greta_rule_full"] },
+          "effect": { "closeness": 7, "trust": 2, "flags": ["flag_greta_rule_full"] },
           "reaction": "yielding",
-          "follow_node": "greta_rule_full_react"
+          "follow_node": "greta_yield_full"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.part2.rule_full.good",
           "quality": "good",
-          "effect": { "closeness": 3 },
+          "effect": { "closeness": 4 },
           "reaction": "enyhe_mosoly"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.greta.part2.rule_full.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "gongy"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.part2.rule_full.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 1 },
-          "reaction": "hideg"
-        }
-      ]
-    },
-    {
-      "id": "greta_rule_full_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta.part2.rule_full.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta.part2.rule_full.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 2 },
-          "reaction": "yielding"
         }
       ]
     },
@@ -109,44 +60,16 @@
           "id": "very_good",
           "text_key": "dialogue.greta.part2.yield_full.vg",
           "quality": "very_good",
-          "effect": { "closeness": 8, "trust": 2, "flags": ["flag_greta_desire_yield"] },
+          "effect": { "closeness": 9, "trust": 2, "flags": ["flag_greta_desire_yield"] },
           "reaction": "yielding",
-          "follow_node": "greta_yield_full_react"
+          "follow_node": "greta_desire_fulfill"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.part2.yield_full.good",
           "quality": "good",
-          "effect": { "closeness": 4 },
+          "effect": { "closeness": 5 },
           "reaction": "enyhe_mosoly"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.greta.part2.yield_full.bad",
-          "quality": "bad",
-          "effect": { "closeness": -3 },
-          "reaction": "gongy"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.part2.yield_full.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -6, "anger": 2 },
-          "reaction": "hideg"
-        }
-      ]
-    },
-    {
-      "id": "greta_yield_full_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta.part2.yield_full.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta.part2.yield_full.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "yielding"
         }
       ]
     },
@@ -160,43 +83,14 @@
           "text_key": "dialogue.greta.part2.fulfill.vg",
           "quality": "very_good",
           "effect": { "closeness": 10, "trust": 1, "flags": ["flag_greta_desire_fulfill"] },
-          "reaction": "yielding",
-          "follow_node": "greta_desire_fulfill_react"
+          "reaction": "yielding"
         },
         {
           "id": "good",
           "text_key": "dialogue.greta.part2.fulfill.good",
           "quality": "good",
-          "effect": { "closeness": 5 },
+          "effect": { "closeness": 6 },
           "reaction": "enyhe_mosoly"
-        },
-        {
-          "id": "bad",
-          "text_key": "dialogue.greta.part2.fulfill.bad",
-          "quality": "bad",
-          "effect": { "closeness": -2 },
-          "reaction": "gongy"
-        },
-        {
-          "id": "very_bad",
-          "text_key": "dialogue.greta.part2.fulfill.vb",
-          "quality": "very_bad",
-          "effect": { "closeness": -5, "anger": 2, "risk": 10 },
-          "reaction": "hideg"
-        }
-      ]
-    },
-    {
-      "id": "greta_desire_fulfill_react",
-      "speaker": "greta",
-      "text_key": "dialogue.greta.part2.fulfill.react",
-      "choices": [
-        {
-          "id": "continue",
-          "text_key": "dialogue.greta.part2.fulfill.react.continue",
-          "quality": "very_good",
-          "effect": { "closeness": 1 },
-          "reaction": "nyugalom"
         }
       ]
     }
