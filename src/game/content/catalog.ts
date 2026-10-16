@@ -43,15 +43,60 @@ const MOOD: Record<GirlId, Record<string, string>> = {
   },
 };
 
-export function portraitFor(girl: GirlId, expression = ""): string {
+const REACTION: Record<string, "anger" | "soft" | "yield" | "smile" | "blush" | "trust" | "neutral"> = {
+  nyugalom: "smile",
+  semleges: "neutral",
+  hideg: "anger",
+  elpirulas: "blush",
+  szegyenos: "blush",
+  elrejtozik: "soft",
+  gongy: "anger",
+  megbantott: "soft",
+  enyhe_mosoly: "smile",
+  kis_elegedett: "smile",
+  yielding: "yield",
+  "koncentrált": "neutral",
+  fegyelmezett_duh: "anger",
+  osszevont: "anger",
+  duhos_csend: "anger",
+  sebezheto: "soft",
+  elpirulas_mosoly: "blush",
+  "lágy_mosoly": "smile",
+  szomorkas: "soft",
+  nyugalom_intense: "smile",
+  duh: "anger",
+  zavar_elpirul: "blush",
+  kis_mosoly: "smile",
+  "lágy_bizalom": "trust",
+  duhos: "anger",
+  elpirul_es_elrejtozik: "blush",
+  szaraz_mosoly: "smile",
+  kis_elegedett_mosoly: "smile",
+  osszevont_szemoldok: "anger",
+  fegyelmezett: "neutral",
+  engedelmes: "yield",
+  zavar: "blush",
+  elegedett_felmosoly: "smile",
+  hideg_tekintet: "anger",
+  felmosoly: "smile",
+  unalom: "anger",
+};
+
+function moodFace(girl: GirlId, mood: (typeof REACTION)[string]): string {
   const face = MOOD[girl];
-  const mark = expression.toLowerCase();
-  if (!mark) return PORTRAIT[girl];
-  if (/yield|atad|enged/.test(mark) && face.yield) return face.yield;
-  if (/duh|hideg|harag|anger|gongy/.test(mark) && face.anger) return face.anger;
-  if (/pir|szegy|zavar|sebez/.test(mark)) return face.blush ?? face.soft ?? face.fluster ?? PORTRAIT[girl];
-  if (/mosoly|eleged|nyug|bizal|intenz/.test(mark)) return face.smile ?? face.trust ?? PORTRAIT[girl];
+  if (mood === "blush" || mood === "soft") return face.blush ?? face.soft ?? face.fluster ?? PORTRAIT[girl];
+  if (mood === "yield") return face.yield ?? face.trust ?? face.soft ?? PORTRAIT[girl];
+  if (mood === "smile") return face.smile ?? PORTRAIT[girl];
+  if (mood === "trust") return face.trust ?? face.smile ?? PORTRAIT[girl];
+  if (mood === "anger") return face.anger ?? face.fluster ?? face.blush ?? PORTRAIT[girl];
   return PORTRAIT[girl];
+}
+
+export function portraitFor(girl: GirlId, expression = ""): string {
+  const mark = expression.toLowerCase().replaceAll(" ", "_");
+  const mood = REACTION[mark];
+  if (!mood || mood === "neutral") return PORTRAIT[girl];
+  return moodFace(girl, mood);
 }
 
 export const GIRL_NAME: Record<GirlId, string> = {

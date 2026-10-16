@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { ACTIONS, NODES, STORY, assertCatalog } from "../content/catalog.ts";
+import { ACTIONS, NODES, STORY, assertCatalog, portraitFor, PORTRAIT } from "../content/catalog.ts";
 import {
   applyChoice,
   choiceAvailable,
@@ -173,6 +173,8 @@ describe("Ligetvár engine", () => {
     assert.equal(state.energy, 70);
     assert.equal(state.phase, "scene");
     assert.equal(state.scene?.node.id, "rebeka_intro_vg_react");
+    assert.equal(state.scene?.expression, "elegedett_felmosoly");
+    assert.match(portraitFor("rebeka", state.scene?.expression), /halfsmile/);
     assert.equal(state.slot, 2);
     state = applyChoice(state, "continue");
     assert.equal(state.energy, 70);
@@ -370,6 +372,26 @@ describe("Ligetvár engine", () => {
     dating.phase = "planner";
     dating.scene = null;
     assert.equal(actionStatus(dating, date).ok, true);
+  });
+
+  it("shows the emotion portrait that matches the dialogue reaction", () => {
+    assert.match(portraitFor("rebeka", "hideg_tekintet"), /anger/);
+    assert.match(portraitFor("rebeka", "sebezheto"), /vulnerable/);
+    assert.match(portraitFor("rebeka", "yielding"), /yielding/);
+    assert.match(portraitFor("boglarka", "elpirulas"), /blush/);
+    assert.match(portraitFor("boglarka", "lágy_bizalom"), /trust/);
+    assert.match(portraitFor("boglarka", "enyhe_mosoly"), /smile/);
+    assert.match(portraitFor("greta", "zavar"), /flustered/);
+    assert.match(portraitFor("greta", "engedelmes"), /yielding/);
+    assert.equal(portraitFor("rebeka", "semleges"), PORTRAIT.rebeka);
+    for (const node of Object.values(NODES)) {
+      if (node.speaker === "narrator") continue;
+      for (const choice of node.choices) {
+        const face = portraitFor(node.speaker, choice.reaction);
+        if (!choice.reaction || choice.reaction.includes(" ")) continue;
+        assert.match(face, /characters\//, `${node.id}:${choice.reaction}`);
+      }
+    }
   });
 
   it("opens act 1 scenes at her own place before the route lock", () => {
