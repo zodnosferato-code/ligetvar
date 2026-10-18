@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Ajándékok
 
 Vásárolható ajándékok, árak, és a hölgyek preferenciái. A preferencia a bizalmi szinttől függ. Az intim ajándékok közepes bizalomnál (2–3) is megjelenhetnek, de a reakció még óvatos. Magas bizalomnál (4–5) teljesebben elfogadottak.

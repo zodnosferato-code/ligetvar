@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Kiegészítők — vizuális definíció
 
 A lányok alap karakteréhez tartozó ruházat és testjegyek a [03-karakterek.md](03-karakterek.md)-ben és a [04-vizualis-biblia.md](04-vizualis-biblia.md)-ben vannak rögzítve. Ez a dokumentum a **nem karakter-rész kiegészítőket** határozza meg: olyan tárgyakat, amiket hordhatnak vagy náluk lehetnek, de nem kötelező részük a sziluettnek vagy az alap megjelenésnek.

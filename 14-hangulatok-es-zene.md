@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Hangulatok és végteleníthető instrumentális zene
 
 A játék hangulatai és a hozzájuk tartozó loopolható instrumentális zenék. A zenék háttérben futnak, nem zavarják a párbeszédet, és végteleníthetők (seamless loop).

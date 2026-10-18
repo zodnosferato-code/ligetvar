@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 ## Képforrás szabály (kanonikus)
 
 - **Egyetlen hivatalos forrás**: minden referencia, jelenet, háttér, ikon és karakterkép a **GitHub repóban** (`assets/`) él. Ez az egyetlen hely, ahonnan az engine, az agentek és a játék képeket tölt.

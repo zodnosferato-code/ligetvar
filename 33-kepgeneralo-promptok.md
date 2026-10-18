@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Képgeneráló promptok — karakterek, arckifejezések, intim jelenetek
 
 Ez a dokumentum kész promptokat tartalmaz a három lány referencia képeihez, arckifejezéseihez és a tervezett szexuális/intim jelenetekhez. Minden prompt a [04-vizualis-biblia.md](04-vizualis-biblia.md) zárt stílus-sablonját követi, a karakterlapok ([03-karakterek.md](03-karakterek.md)), az arckifejezések ([22-arckifejezesek.md](22-arckifejezesek.md)) és a jelenetterv ([31-szexuális-jelenetek-terv.md](31-szexuális-jelenetek-terv.md)) alapján.

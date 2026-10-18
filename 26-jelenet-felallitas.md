@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Jelenetfelállítás és kamera-perspektíva
 
 Ez a dokumentum rögzíti, hogyan épülnek fel a játék jelenetei vizuálisan: milyen nézőpontból látjuk a lányokat, és hogyan jelennek meg a telefonon. A korábbi dokumentumok (04, 10, 20) a képgenerálási szabályokat és a sávokat írják le; ez a dokumentum a **kamera és a jelenet felépítését** határozza meg.

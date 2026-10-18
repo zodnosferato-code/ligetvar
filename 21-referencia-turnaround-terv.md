@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Referencia turnaround és modell sheet terv
 
 Ez a dokumentum a későbbi konzisztens sprite-generáláshoz és animációhoz szükséges referencia képek tervét tartalmazza. A cél: minden lány ugyanabban a pózban, előlről, oldalról és hátulról, ruhában és alsóneműben (anatomy reference), hogy később image-to-image vagy prompt-only generálás is konzisztens legyen.

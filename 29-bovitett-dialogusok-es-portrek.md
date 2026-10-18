@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Bővített dialógusok és portréváltások (Part 1)
 
 A Part 1 dialógusok jelentősen hosszabbak és komplexebbek lettek. A `locales/hu.json` szövegei most több mondatosak, természetesebbek, és a karakterek személyiségéhez (Rebeka gőgje, Boglárka szégyene, Gréta precizitása) illeszkednek.

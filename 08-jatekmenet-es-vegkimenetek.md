@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Játékmenet, sztorifolyás és végkimenetek
 
 A félév struktúrája, a közeledés menete, a lehetséges végek, a páros útvonal, az ajándékrendszer és a megharagudás mechanikája. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják.

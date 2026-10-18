@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Sztorikeret — Misztikus gyógytorna és a közös munka
 
 A játék témája a lányok meghódítása és a rejtett vágyaik beteljesítése (a [06-intim-szotar.md](06-intim-szotar.md) kódjai szerint). A keret: a főhős fakultatív misztikus gyógytornát tanít, és a három lánynak külön-külön oka van arra, hogy vele dolgozzon a félév során.

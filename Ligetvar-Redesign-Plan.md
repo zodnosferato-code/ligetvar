@@ -1,6 +1,6 @@
 # Ligetvár — story and basic art redesign
 
-Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign; the redesigned runtime and story are not implemented. Planning revision: 18 October 2026, following engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
+Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign. The v2 runtime and 45 Hungarian scenes are now implemented; final manga production and the complete art/release gates remain open. See docs/REDESIGN-PROGRESS.md for actual verification. Planning revision: 18 October 2026, following engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
 
 ## 1. Decisions established with Miki
 
@@ -222,12 +222,12 @@ Phase B precedes bulk writing. Phase C validates art early; phase E completes pr
 
 Unchecked items below are implementation work, not claims of completion.
 
-- [ ] **A1 — Documentation authority:** this plan governs the redesign. `ENGINE.md` describes the current runtime until updated alongside implementation. Mark conflicting numbered story/art documents historical and link their replacements; do not use an old draft to override this plan. Preserve non-conflicting character identity details and asset provenance.
-- [ ] **A2 — Inventory:** enumerate imports, content loaders, scene IDs, route IDs, localization keys, save fields, asset references, and test entry points. Classify each as keep, replace, or retire, recording its replacement and verification command.
-- [ ] **B1 — Single scene source:** migrate hardcoded/JSON-merged scene definitions into one typed registry. Validate unique IDs, localization and art references, next-scene links, prerequisites, and cycles. Retain adapters only during migration, with an explicit removal task.
-- [ ] **B2 — Save boundary:** introduce a new save version and key. Keep the original v1 save intact; explain that redesigned story progress requires a restart. Import only an explicitly allowed player name if requested. Never translate old pair routes or milestone flags into new commitments. Reject unsupported versions safely.
-- [ ] **F1 — Legacy engine:** retire `src/core/`, `src/scripts/part1-kozos.ts`, and their legacy test entry after checking consumers. `src/tests/dialogue.test.ts` currently imports that engine: migrate any useful coverage before deleting it. Update package scripts and documentation together; no broken imports or test commands may remain.
-- [ ] **F2 — Legacy narrative:** remove the two retired pair routes, incompatibility penalty for Rebeka/Boglárka, ancestry reveal, obsolete clue chains, old ending branches, calendar-only summaries, and migrated content adapters after replacement coverage passes.
+- [x] **A1 — Documentation authority:** this plan governs the redesign. `ENGINE.md` describes the current runtime until updated alongside implementation. Mark conflicting numbered story/art documents historical and link their replacements; do not use an old draft to override this plan. Preserve non-conflicting character identity details and asset provenance.
+- [x] **A2 — Inventory:** enumerate imports, content loaders, scene IDs, route IDs, localization keys, save fields, asset references, and test entry points. Classify each as keep, replace, or retire, recording its replacement and verification command.
+- [x] **B1 — Single scene source:** migrate hardcoded/JSON-merged scene definitions into one typed registry. Validate unique IDs, localization and art references, next-scene links, prerequisites, and cycles. Retain adapters only during migration, with an explicit removal task.
+- [x] **B2 — Save boundary:** introduce a new save version and key. Keep the original v1 save intact; explain that redesigned story progress requires a restart. Import only an explicitly allowed player name if requested. Never translate old pair routes or milestone flags into new commitments. Reject unsupported versions safely.
+- [x] **F1 — Legacy engine:** retire `src/core/`, `src/scripts/part1-kozos.ts`, and their legacy test entry after checking consumers. `src/tests/dialogue.test.ts` currently imports that engine: migrate any useful coverage before deleting it. Update package scripts and documentation together; no broken imports or test commands may remain.
+- [x] **F2 — Legacy narrative:** remove the two retired pair routes, incompatibility penalty for Rebeka/Boglárka, ancestry reveal, obsolete clue chains, old ending branches, calendar-only summaries, and migrated content adapters after replacement coverage passes.
 - [ ] **F3 — Art and UI:** switch active scenes to the reviewed manifest, remove obsolete aliases and pixel CSS, and consolidate overridden scene-layout rules. Remove unreferenced runtime assets only after checking code, content, styles, and reference/provenance uses. Historical references must not enter the active runtime manifest.
 - [ ] **F4 — Completion:** verify no retired ID is reachable, all supported save behavior is documented, all active scenes resolve their assets/text, and README/AGENT/ENGINE describe the appropriate implemented state. Record actual command results; do not equate a clean build with narrative correctness.
 
@@ -243,7 +243,7 @@ Unchecked items below are implementation work, not claims of completion.
 
 ### Sixteen-week discretionary slot budget
 
-The shared-story slot uses the corresponding beat in section 5. This table budgets only the other two slots, showing a demanding triad path. A numbered foundation is one substantial individual scene: shared interest, attraction, invitation, disagreement, repair/commitment, aftermath. On the triad path, commitment means agreeing to that relationship's terms, not promising exclusivity. The eight additional scenes are T1–T8. All listed content is proposed, not implemented.
+The shared-story slot uses the corresponding beat in section 5. This table budgets only the other two slots, showing a demanding triad path. A numbered foundation is one substantial individual scene: shared interest, attraction, invitation, disagreement, repair/commitment, aftermath. On the triad path, commitment means agreeing to that relationship's terms, not promising exclusivity. The eight additional scenes are T1–T8. The runtime now implements this budget; the authored triad simulation and two-appointment recovery test verify it. Final art remains transitional.
 
 | Week | Discretionary slot A | Discretionary slot B |
 | --- | --- | --- |

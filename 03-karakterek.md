@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Karakterek (bővített, szexuális fókuszú)
 
 Az életkor kanonikus. Egyik lány sem fiatalabb 19-nél. A főiskola 18 éves kortól vesz fel hallgatót, de ők már nem az első napjukat töltik tizennyolc évesen: Boglárka 19, Rebeka 20, Gréta 21. Más hallgató nem választható. A háttérben mozgó embereknek nincs romantikus jelenetük.

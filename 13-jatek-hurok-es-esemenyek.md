@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Játékhurok és események
 
 A játék alapvető hurka, az eseménytípusok, a random események és a kódolt intim meglepetések. Az intim témák a [06-intim-szotar.md](06-intim-szotar.md) kódjait használják. A flag-ek és az eszkaláció a [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) szerint.

@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Játékmenet — Beszélgetés, hívás, pénzszerzés és korlátozott akciók
 
 A játékos heti 3 szabad sávban (délelőtt, délután, este) választhat akciót. Az akciók **nem végtelenek** egy nap / héten. A történetnek megfelelően a lányok bejöhetnek maguktól, vagy a játékos hívhatja őket.
