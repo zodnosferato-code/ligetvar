@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # 35 — Dialógusfák és intim jelenetek (bővített, képekhez kötött)
 
 Ez a dokumentum a meglévő `dialogues/part1/*.json` és `locales/hu.json` alapján készült. Javított, karakterhűbb és érzékibb dialógusokat ad az intim node-okhoz, és új jeleneteket javasol, amelyek közvetlenül használják az `assets/references/intim/` képeket.

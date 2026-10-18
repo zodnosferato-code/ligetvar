@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Kép- és jelenetlista a sávokhoz
 
 Ez a dokumentum a [11-kepgeneralasi-szabaly.md](11-kepgeneralasi-szabaly.md) sávaira és a [19-flag-es-eszkalacio.md](19-flag-es-eszkalacio.md) kódjaira épül. A sávok **lehetőségek**, nem kötelezőek. Az intim képek csak magas bizalomnál és privát helyen jelenhetnek meg. Minden kép egy lány, a kanonikus blokk szerint.

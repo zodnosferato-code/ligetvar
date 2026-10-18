@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Ikonok és gombok — definíció és generálási terv
 
 Minden ikon és gomb a játékban **előre legenerált kép** (pixel art, a 04-vizualis-biblia.md stílusában). Nincs futásidejű rajzolás, nincs SVG, nincs betűtípus-alapú ikon — minden vizuális elem egy kész, rácsos pixelgrafika, amit a 11-kepgeneralasi-szabaly.md szerint generálunk.

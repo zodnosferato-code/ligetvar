@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Intim szótár (build-agent kompatibilis)
 
 Ez a lap a szexuális és intim témák kódolt neveit tartalmazza. A játék kódbázisában, a karakterlapokon és a szkriptekben csak ezek a kódok szerepelnek. A jelentésüket csak ez a dokumentum és a tervezői jegyzetek ismerik.

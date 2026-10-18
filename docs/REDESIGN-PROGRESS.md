@@ -1,0 +1,57 @@
+# Redesign implementation record
+
+Baseline checked: main `84e01edbc809e727cbc095ff4d522784a4557232`, with no newer changes before implementation. Authority: [redesign plan](../Ligetvar-Redesign-Plan.md), section 10. Implementation was published directly to main as [37f6458](https://github.com/zodnosferato-code/ligetvar/commit/37f64586a506dfb402f1bb7ba056ab8033327172). No branch or pull request was created; no force-push was used. Concurrent Venice tooling commits through 50c8d0b were inspected and preserved, including their script, package command, .gitignore and README/AGENT guidance; the unrelated authenticated smoke test was not run.
+
+## Implemented phases and remaining gates
+
+| Phase | Actual status |
+| --- | --- |
+| A: inventory / authority | Complete. Numbered legacy documents marked historical; replacements listed below. New scene inventory and art register generated from runtime metadata. |
+| B: prerequisites | Implemented: guaranteed shared slot + two discretionary slots, explicit prerequisites, witnessed decisions/evidence, atomic scene completion, independent bonds, ordered endings, v2 save boundary, optional jobs/gifts without work gates. Synthetic foundation tests ran before bulk writing in the initial workspace. |
+| C: opening | Weeks 1–3, all introductions and Rebeka foundation 1 authored and verified. Responsive composition inspected. Combined final manga style sample remains pending; functional work uses the user-authorized clothed transitional/placeholder option. |
+| D: story / relationships | 45 authored Hungarian scenes: 16 shared; 18 individual foundations (six per single); eight additional triad scenes; two preparation activities; friendship aftermath. All supported paths reach week 16. T8 combines both personal aftermaths in one slot. |
+| E: basic art | **Open.** Final 31 manga assets, identity/reference sheets, architecture sheet and style approval are not produced. Existing images are transitional, missing images explicitly labelled. No image generation invoked; no explicit artwork generated. See ART-REGISTER.md. |
+| F: retirement / release | Replaced core, adapters, old route rules, calendar summaries, illustration aliases and broken Jest entry retired after useful checks migrated. Runtime/content tests, builds and representative browser paths pass. Full art/release gates remain open; do not call the entire redesign complete. |
+
+## Inventory / keep–replace–retire map
+
+| Baseline area | Replacement / disposition | Verification |
+| --- | --- | --- |
+| src/game/engine/{types,logic}.ts | Keep immutable reducer approach, clamp, salary, optional jobs/gifts; replace incompatible scheduling, fatigue/work gates, derived commitments and endings | npm test |
+| catalog.ts + part1.ts / later.ts / dialogueLoader.ts | One typed catalog with local Hungarian text, explicit metadata/prerequisites; merged JSON loaders deleted | Registry, reference, knowledge and route tests |
+| src/core/*, src/scripts/part1-kozos.ts | No active consumers except old test entry; max-four-choice, targeted immutable effects and useful coverage migrated; prototype deleted | Import scan, typecheck, tests |
+| src/tests/dialogue.test.ts and old Jest commands/dependencies | One Node headless suite; npm test and test:headless delegate to it; Jest/ts-jest removed, explicit Node types added | Clean npm ci; npm test |
+| dialogues/part{1,2,3}/*.json, locales/*.json | Historical provenance retained, zero active runtime imports; old localization keys no longer active | Source scan, scene-local text validation |
+| Old scene / route IDs and horror clues | Legacy ancestry, two pair routes and R/B incompatibility rule retired. Active IDs/deadlines/evidence enumerated in SCENE-INVENTORY.md | No retired IDs reachable, full route simulations |
+| State / save fields | version, name, week, slot, phase, scene, minigame, money, energy, exposure, bonds, direction, decisions, evidence, completed, preparation, disclosure, inventory, giftsWeek, jobsWeek, journal, confrontation, institution, lastNote | Save schema/reference tests and save/resume at every required-scene line |
+| Old v1 girl flags / route / milestones / workShifts / strain / invite / serialized node | Preserve original v1 bytes under old key; new v2 restart, explicit optional name-only import | Legacy preservation, unsupported/malformed/forged save tests |
+| GameApp.tsx and stage.css | Replace conflicting cascade/pixel CSS with explicit portraits, backgrounds, mobile header, text scaling and knowledge journal | Actual desktop/mobile/browser review |
+| audio.ts, minigames.tsx, music | Keep working framework; adapt new state, isolate audio failure. Optional runner gets touch jump and fixes offscreen-removal crash; trivia uses current research practices | Build/typecheck; actual runner + full UI paths |
+| assets/backgrounds and characters | Explicit transitional manifest, exact locations, safe neutral emotion fallback. Missing assistant/faculty/chamber art labelled | File resolution tests, art register, visual layout review |
+| assets/references/intim and old asset logs/locks | Historic source/provenance retained; runtime aliases and public/references symlink removed, no explicit archive shipped | Active import scan; dist/reference exclusion check |
+| README / AGENT / ENGINE / numbered docs / workflows | Current runtime documented; old conflicts historical; CI uses npm ci, tests, typecheck, build | Actual local commands and Actions |
+
+Active routes: friendship, rebeka, boglarka, greta, triad. The scene inventory enumerates every active scene, direct prerequisite, actual deadline, location and evidence ID. Hungarian text is scene-local, with zero active old localization keys. Active code remains React + Zustand + Vite; no parallel replacement engine or runtime content adapter remains.
+
+## Provisional creative choices (not previously approved canon)
+
+The separate university assistant is **Végh Soma**, provisionally 32, responsible for archive access/equipment. He deliberately transforms between weeks 1 and 2, seeking recognition and desirability. The plan's proposed grounding, vitality-drain, borrowed-voice and vulnerable-anchor rules are used. The fatal ritual collapse is low-gore and established before the confrontation. No final appearance is invented or approved; his human/transformed art remains a labelled placeholder. Women-only T3/T4 use an explicitly introduced viewpoint interlude; Márton is absent and does not choose their attraction for them.
+
+## Actual verification
+
+- Initial baseline suite: 27 passed, 0 failed, covering legacy behavior only.
+- Initial implementation foundation: five synthetic tests passed before bulk story writing. An executor restart later removed the unpublished local workspace; work was restored from the session, all final code rechecked and then published through GitHub with an expected-head lease. Earlier local commit IDs are not published commits.
+- Final clean `npm ci`: succeeded, 72 packages installed after retiring Jest dependencies.
+- `npm test` / `npm run test:engine`: **22 passed, 0 failed**. Three single romances; triad; two missed triad appointments recovered; friendship; poor preparation; declined triad → agreed single; late refusal; real deadlines; knowledge order; all required evidence; save boundary/resume; ending order; retired-reference exclusion.
+- Triad budget: **18 relationship slots**; with two recovered appointments and both optional preparations, **20 optional slots**, within 32. Minimum energy remains above zero in tested schedules. T7 occurs in week 14; T8 in week 16 and costs one slot.
+- `npm run typecheck`: passed. `npm run build`: passed, 42 transformed modules. Missing final art is not treated as a successful art check.
+- `tools/verify-ui.cjs`: actual production-build browser paths passed. 1440px desktop, 390px and 320px mobile at 130% text; real save/resume; touch runner + offscreen items; full 16-week friendship and triad paths; aftermath before closure; no horizontal overflow; no page errors. Desktop/mobile portrait and ending screenshots were opened and visually inspected. The script is reusable with Playwright/Chromium; browser binaries are not project dependencies.
+- Initial Chromium download failed with a truncated archive. Browser review subsequently ran with an alternate locally installed Chromium package. The failed attempt is not counted as a passed review.
+- For implementation commit 37f6458: [Tests](https://github.com/zodnosferato-code/ligetvar/actions/runs/39142460667) **success**, [GitHub Pages deployment](https://github.com/zodnosferato-code/ligetvar/actions/runs/39142460722) **success**. Cleanup commit ca28ad6: Tests succeeded (run 39143242852); Pages deployment was still in progress at this checkpoint. Final documentation commit Actions must also be checked at handoff.
+
+## Remaining work
+
+1. Produce and approve the combined clean-manga style sample, 31 non-explicit runtime assets and production reference sheets; replace transitional sources and neutral fallbacks only after identity/expression/location checks pass. Explicit illustrations are optional and excluded from required completion gates.
+2. Repeat desktop/mobile visual review against final artwork, especially all five expressions, assistant continuity and lighting variants. Current review validates layout, not final art identity/style.
+3. The current Hungarian story is fully authored and playable, but provisional Soma/magic details and prose can receive a creative review. Do not describe those choices as previously approved. No required runtime/story path is intentionally left as a placeholder.
+4. Recheck Actions on the final pushed commit. Keep F3/F4 and the overall release gate open until final art acceptance and final release review are complete.

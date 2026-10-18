@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Arckifejezések és pózok — Szöveges leírás
 
 A lányokat általában **szemből**, **oldalról** vagy **hátulról** látjuk a jelenettől függően. Az arckifejezések és a testpózok szövegesen vannak definiálva, hogy később a sprite-ok és a referencia képek ehhez igazodjanak. A stílus a [04-vizualis-biblia.md](04-vizualis-biblia.md) zárt sablonját követi.

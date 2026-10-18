@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Teljes test referencia — Szöveges leírás
 
 A játék romantikus és szexuális jeleneteihez szükséges a teljes test konzisztens leírása. A lányokat szemből, oldalról és hátulról látjuk. A stílus a [04-vizualis-biblia.md](04-vizualis-biblia.md) zárt sablonját követi.

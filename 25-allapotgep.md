@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Állapotgép — Lányonként
 
 Minden lánynak van egy egyszerű állapotgépe (`GirlStateMachine`), amely a meglévő `GirlStats` + flag rendszerre épül. Nem helyettesíti a számokat és a flag-eket, hanem magasabb szintű fázist ad belőlük.

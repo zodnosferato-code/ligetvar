@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Lokalizáció és kódolt hivatkozás
 
 A játékmotor a szövegeket lokalizáltan olvassa. A motor maga **nem ismeri** az intim / szexuális tartalmat. Minden ilyen témát kódoltan hivatkozik, a tényleges szöveg a lokalizációs fájlokban van.

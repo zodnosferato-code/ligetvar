@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # 36 — Teljes sztori narratíva
 
 A félév folyamán Márton Kelényi, a Médiatudományi Tanszék tanulmányi vezetője, fakultatív **Misztikus Gyógytornát** tart a Ligetvár kastélyának egyik termében. A kurzus lassú mozgásokból, légzésből és „energetikai” gyakorlatokból áll. Három lány rendszeresen jelen van, mindegyik más okból.

@@ -1,50 +1,44 @@
-# Játékmotor
+# Játékmotor — átdolgozott félév, v2
 
-A játszható motor a `src/game/` alatt van. A korábbi `src/core/` váz megmarad, de a félév szabályait ez a motor futtatja. A logika UI nélkül, headless tesztelhető.
-
-```bash
-node --experimental-strip-types --test src/game/engine/logic.test.ts
-```
-
-## Rétegek
-
-| Réteg | Fájl | Szerep |
+| Réteg | Aktív forrás | Szerep |
 | --- | --- | --- |
-| Állapot | `src/game/engine/types.ts` | 16 hét, 3 sáv, pénz, energia, jelenlét, éleslátás, nyugalom, kockázat, lányonként közelség / bizalom / harag / flag |
-| Szabályok | `src/game/engine/logic.ts` | Sáv, dialógus, ismétlés, ajándék, útvonalzár, hétváltás, végek |
-| Tartalom | `src/game/content/catalog.ts` | Csomópontok, történetesemények, ajándékok, akciók. Max 4 választás. |
-| UI | `src/game/ui/` | Iroda és lakosztály, jelenet, Polc, telefon, MOHU runner, kérdőív |
-| Mentés | `src/game/store.ts` | `localStorage`, kulcs `ligetvar-save-v1` |
+| Állapot | `src/game/engine/types.ts` | verziózott félév, négy kapcsolódás, tanúsított döntések és bizonyítékok |
+| Szabályok | `src/game/engine/logic.ts` | változatlan bemenetből új állapotot adó reducerek; sávok, előfeltételek, hatások, lezárás |
+| Történet | `src/game/content/catalog.ts` | 45 magyar jelenet; egyetlen aktív jelenetregiszter |
+| Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
+| Képmanifest | `src/game/content/assets.ts` | pontos helyszín, ruhás átmeneti portré, biztonságos semleges tartalék, jelölt helyőrző |
+| Mentés | `src/game/engine/save.ts`, `store.ts` | v2 validálás és külön kulcs; Zustand/localStorage integráció |
+| UI | `src/game/ui/` | heti tervező, nagy portrés dialógus, mobil fejléc, napló, összegzés, epilógus |
+| Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
 
-A lány fázisa (`unknown` → `fulfilled`) nem tárolt mező. A `girlPhase()` a számokból, a flag-ekből, a hétből és az útvonalból számolja, a `25-allapotgep.md` szerint.
+## Heti hurok
 
-## Hurok
+A `slot=0` a garantált közös alkalom. Pénz, energia, véletlen és románc nem akadályozza. Az `1` és `2` szabad sáv, a `3` heti összegzés. Csak a közös alkalom befejezése és mindhárom sáv felhasználása után váltható hét. Jelenet közbeni sorváltás nem kerül újabb sávba. Külön automatikus gyógytorna nincs; a közös jelenetek tartalmazzák a műhelyt.
 
-1. Tervező: a napszak akciói (látogatás, munka, stat, minijáték, randi).
-2. Jelenet: max 4 választás, hatás, debug delta a `lastNote` mezőben.
-3. Ismételt beszélgetés: az első ad pontot, a második feleannyit, a harmadik már nem.
-4. Este, a harmadik sáv után: gyógytorna-jelenet, ha a harag engedi.
-5. Hét vége: összefoglaló, majd hétfőn +60 000 Ft, energia, a heti számlálók nullázása.
-6. 8. hét zárása: egyedül, egy lány, vagy járható pár. Rebeka + Boglárka nem zárható, és ha párként mondod, Boglárka bizalma kettővel esik.
-7. 16. hét: igaz, csendes, törött, páros, távol, egyedül vagy botrány.
+A személyes jelenet költsége 8 energia, a közös alkalom +4, az új hét +24, a pihenő +32. Alacsony energia nem zárja el a történetet. A 15. heti konfrontáció támogatott felkészüléssel további 8, hiányos felkészüléssel 28 energiát vesz el. Az opcionális munkák külön szabad sávot használnak, a vásárlás és találkozó nem igényel műszakot. Ajándék személyenként hetente egyszer adható, legfeljebb csekély kapcsolódási bónusszal.
 
-## Látható szabályok
+Az előfeltétel explicit jelenet-, bizonyíték- és döntéshivatkozás; összetett alternatívákhoz `anyOf` használható. A személyes alkalmak az ajánlott héttől a 14. hét végéig pótolhatók. T7 kizárólag a 14. héten; személyes utóbeszélgetések kizárólag a 16. héten. A UI kiírja a tényleges határidőt. A kihagyott alkalom nem teljesül automatikusan.
 
-Ezek a tervezőn és a Polcon ki vannak írva. A teszt is ezeket várja.
+## Tanúsított tudás és döntés
 
-| Szabály | Mit csinál | Hol látszik |
-| --- | --- | --- |
-| Ismétlés | Az első beszélgetés ad pontot, a második feleannyit, a harmadik már nem. Bizalmat csak új jelenet nagyon jó válasza ad. | Tervező, 1–8. hét |
-| Pihenő | Négy kemény sáv (látogatás, munka, minijáték, randi) után csak a fotel nyílik. A hétfő egyet enged. | Tervező, ha a fáradtság 3 vagy 4 |
-| Műszak | Randi és a Polc zárva, amíg egy MOHU-kör vagy egy kérdőív le nem ment. A látogatás nem vár erre. | Tervező a 9. héttől, Polc |
-| Közös szakasz | 2. héttől a saját helyén (fotó, jegyzet, dokumentum). Lakás bizalom 2-től. 7–8. héten bizalom 3-nál a mélyebb jelenet. A 9. héttől ezek zárnak. | A látogatás jelenete |
-| Zárás | 8. hét vége. Közelség 30, bizalom 2, kockázat 80 alatt. Enélkül a 9. hét utáni mély jelenetek nem jönnek. | Útvonalzár |
-| Mély jelenet | 9. héttől a zárt útvonalon, 11. héttől a teljes jelenetek, 14. héttől a vágy beteljesítése, ha a bizalom 4 és a közelség 55. | A saját helye vagy a lakosztály |
+A jelenetben a választási hatás a kurzor `pending` listájában vár. Csak a végső sor befejezése írja a `completed`, `evidence`, `decisions` és `journal` mezőket. A napló és heti összegzés ezekből épül, nem a naptári hétszámból. A hatás név szerint céloz kapcsolódást, soha nem örökli az előző beszélő romantikus statját.
 
-A lány arca alatt a fázisa áll: ismeretlen, bemutatkozott, melegszik, magán, közeli, jelölt, útvonal, beteljesült, törés.
+A 8. héttől választott irány szándék, nem elköteleződés. Az első személyes vállalás után a tervező már nem írja át az irányt; a folytatásról az utóbeszélgetésben lehet visszalépni. A hármas út önálló női vonzalmat, külön beszélgetéseket, hármas egyeztetést és mindhárom fél igenjét igényli, továbbá mindkét egyéni jóvátételt/vállalást. Elutasított T5/T6 után közösen akart egyéni irány vagy barátság választható. A számok, kávé és ajándékok ezeket nem pótolják.
 
-Az intim lépcső flag-ekben él (`hatar`, `flag_desire_fulfill`). A párbeszéd nem tartalmaz explicit szöveget.
+## Lezárás
 
-## Amit a motor szándékosan nem tárol külön
+A `resolution` mező jelöli a konfrontációt és az intézményi döntést. A 15. héten minden végigjátszott út megszakítja a rítust és megöli a vámpírt. A külön segítői beosztás és jelzéspróba együtt támogatott kimenetelt ad; nélkülük a segítők közbelépnek, de nő a kimerülés és sérül a bizonyíték. A 16. heti jelentés nyilvános/korlátozott/belső közlésről dönt. Megőrzött bizonyítékkal nyilvános elismerés, másként részleges válasz vagy elhallgatás következik. Ez független a románctól.
 
-A fázis, a jelöltség és a végkimenetel mind számított. Új jelenet a katalógus `STORY` listájába kerül, új szabály a `logic.ts`-be, teszt a `logic.test.ts`-be.
+Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egyetlen alkalomban tartalmazza a két személyes aftermath-állomást is. Az `evaluateEnding` addig nem ad végső kapcsolati epilógust, amíg a 16. heti összegzésből a játékos ténylegesen le nem zárja a félévet. Külön egyéni, hármas, baráti, rendezetlen és eltávolodó kapcsolat lehetséges. A magánéleti kitettség külön kijelzett mező, nem természetfeletti veszélypontszám.
+
+## Mentési határ
+
+- Kulcs: `ligetvar-save-v2`, `version: 2`. A v1 kulcsot a motor soha nem írja vagy törli.
+- A régi félévet újra kell kezdeni. A címoldalon külön kérhető a v1 játékosnevének átvétele; hét, útvonal, stat és mérföldkő nem importálható.
+- Ismeretlen verzió, hibás JSON, hiányos állapot, ismeretlen jelenet/kurzor, hamis bizonyítékforrás vagy érvénytelen folyamathatás nem tölthető be. Sikertelen folytatás nem írja felül a mentést új játékkal.
+- Jelenet közben is menthető és folytatható. A mentés a kurzort és a még nem tanúsított hatásokat is őrzi.
+- Írási hiba a felületen látható, a játék memóriában folytatható.
+
+## Ellenőrzés
+
+`npm test` / `npm run test:engine` / `npm run test:headless`: ugyanaz a Node headless készlet. `npm run typecheck`: TypeScript. `npm run build`: Vite production build. A régi `src/core/`, JSON-összefésülők és Jest belépési pont megszűntek a hasznos ellenőrzések átültetése után. A történeti JSON és lokalizáció megmaradt forrás/proveniencia céljára, aktív import nélkül. A tényleges eredményeket a [haladási napló](docs/REDESIGN-PROGRESS.md) rögzíti.

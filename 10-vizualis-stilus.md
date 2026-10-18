@@ -1,3 +1,5 @@
+> **Történeti dokumentum.** A redesignnal ütköző szabályokat a [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) és a jelenlegi [ENGINE.md](ENGINE.md) váltja fel. Karakterazonosság és asset-proveniencia megőrzendő; ez a szöveg nem aktív történetforrás. Új dialógusban legfeljebb négy kontextuális választás van, kötelező jó/rossz ranglétra nélkül.
+
 # Vizuális stílus — Downscaled Detailed Pixel Art + japán manga
 
 A játék **downscaled detailed pixel art** stílusú (látható pixelrács, puha többtónusú shading, manga arányok). Nem tiszta 8-bit hard-edge, nem chibi. A referenciaképek és kulcsjelenetek részletesebbek; a játékbeli sprite-ok kisebbek (64–80 px magasak). Kulcsfontosságú jelenetek magasabb kidolgozottságú képeket kaphatnak.
