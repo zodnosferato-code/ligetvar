@@ -1,5 +1,7 @@
 # AGENT.md — Ligetvár projekt útmutató
 
+> **Redesign authority (18 October 2026):** [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) governs new story, art, and engine work. Its section 10 defines cleanup, engine prerequisites, the 16-week activity budget, and completion gates. Conflicting rules below describe the legacy version, not requirements for the redesign. The redesigned runtime is not yet implemented; [ENGINE.md](ENGINE.md) documents the current engine. Keep at most four choices, but replace the mandatory good/bad ranking ladder with contextual choices when implementing redesigned scenes.
+
 Ez a fájl későbbi agenteknek (vagy fejlesztőknek) szól. A cél, hogy a fonalat fel lehessen venni és a munkát folytatni lehessen anélkül, hogy mindent újra kelljen kitalálni.
 
 ## Képek forrása

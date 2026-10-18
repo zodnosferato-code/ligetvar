@@ -1,5 +1,7 @@
 # Ligetvár — tervezési dokumentumok
 
+> **Redesign authority (18 October 2026):** [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md) governs new story, art, and engine work. Its section 10 defines cleanup, engine prerequisites, the 16-week activity budget, and completion gates. Conflicting rules below describe the legacy version, not requirements for the redesign. The redesigned runtime is not yet implemented; [ENGINE.md](ENGINE.md) documents the current engine. Keep at most four choices, but replace the mandatory good/bad ranking ladder with contextual choices when implementing redesigned scenes.
+
 > **Agenteknek**: Olvasd el először az [AGENT.md](AGENT.md) fájlt. Ott van a fő cél, a folyamatkövetés (mi van kész), és az útmutató a folytatáshoz.
 
 Munkacím: **Ligetvár**. Egy féléves, pixelgrafikás randiszimulátor. Webes játék, később Tauri-héjjal Windowsra és Linuxra csomagolva. A tervezés ebben a mappában van. A játszható motor a [ENGINE.md](ENGINE.md) szerint a `src/game/` alatt él.
