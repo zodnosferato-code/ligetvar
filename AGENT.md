@@ -47,3 +47,11 @@ Egy 16 hetes, pixelgrafikás randiszimulátor webes játék (később Tauri csom
    - Moduláris, újrahasznosítható core logika.
 
 A többi rész változatlan. A folyamatkövetés: Karakterek és dialógusok szexuális fókusszal bővítve (03, dialogues/part1, locales/hu.json, 30-as doc).
+
+## Venice API (server-side tooling)
+
+- Use the OpenAI-compatible Venice endpoint `https://api.venice.ai/api/v1` with chat model `zai-org-glm-5-2`.
+- Read credentials exclusively from `process.env.VENICE_API_KEY`; never commit credentials, log tokens, or expose them through `VITE_*` or client-side code. This is a public Vite application.
+- Store the credential as the GitHub Actions repository secret `VENICE_API_KEY` when automation needs it. Never print or interpolate secrets into logs.
+- Validate chat connectivity with `npm run venice:smoke` in a trusted Node 22+ environment where the secret is available. The script sends a minimal non-sensitive `/chat/completions` request and reports HTTP failure without printing response bodies.
+- Chat completion configuration is not an image-generation integration; select and validate an image-capable endpoint/model separately for any permitted image workflows.
