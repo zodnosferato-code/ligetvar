@@ -10,7 +10,8 @@
     "test": "npm run test:engine",
     "test:headless": "npm run test:engine",
     "test:engine": "node --experimental-strip-types --test src/game/engine/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "venice:smoke": "node scripts/venice-smoke.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
