@@ -1,6 +1,6 @@
 # Ligetvár — story and basic art redesign
 
-Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This is a proposed redesign, not implemented content. The repository has not been changed. No tests were run for this planning task.
+Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign; the redesigned runtime and story are not implemented. Planning revision: 18 October 2026, following engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
 
 ## 1. Decisions established with Miki
 
@@ -209,14 +209,68 @@ Suggested delivery sizes: backgrounds 1920×1080 PNG/WebP; portrait masters 1024
 
 | Phase | Deliverable | Gate before proceeding |
 | --- | --- | --- |
-| A. Canon | One story bible, character sheets, magic rules, scene list, revised visual bible | No conflicting account of transformation, victims, or ending; remaining creative decisions resolved |
-| B. Opening prototype | Weeks 1–3, all three introductions, first workshop and disappearance, one complete optional relationship scene | Player understands each person's motivation; the first clues follow causally; portrait and background look coherent together |
-| C. Shared plot | Sixteen authored shared scenes and state-aware journal | Threat resolves without romance; no discovery appears before its prerequisites |
-| D. Relationships | Six core scenes per single route, eight additional shared-route scenes, epilogues | Every commitment is witnessed; all three triad bonds develop; non-selected characters retain agency |
-| E. Basic art | 31 approved runtime assets, reference sheets, asset register | Identity, expression, location, and mobile-readability checks pass |
-| F. Integration | Explicit scene scheduling and art metadata, versioned saves, replacement UI presentation | Complete playthroughs and meaningful engine/content checks run successfully |
+| A. Canon and cleanup inventory | Canonical documentation, creative decisions, scene inventory, explicit keep/replace/retire list | Conflicts have a named replacement; no active content is deleted merely because it is old |
+| B. Engine prerequisites | Typed scenes and prerequisites, guaranteed weekly scheduler, relationship bonds and decisions, ordered endings, versioned saves | Synthetic single, triad, friendship, and poor-preparation paths reach week 16; required evidence cannot be missed |
+| C. Opening prototype | Weeks 1–3, all introductions, one complete optional relationship scene, one combined manga scene | Real content runs through the new scheduler and save format; clues are causal; desktop and phone composition is readable |
+| D. Shared plot and relationships | Sixteen shared scenes, knowledge-aware journal, single and triad scenes, epilogues | The slot budget below is playable; commitments are witnessed; the women develop an independent bond |
+| E. Basic art | 31 runtime assets, reference sheets, asset register | Identity, expression, location, and mobile-readability checks pass |
+| F. Retirement and release verification | Remove superseded runtime paths and assets; finalize documentation | Reference checks, build, engine/content tests, full route simulations, and manual UI review pass |
 
-The opening prototype starts the art validation early; phase E completes production after the scene list is stable. No bulk generation before the combined-scene prototype succeeds.
+Phase B precedes bulk writing. Phase C validates art early; phase E completes production after the scene list is stable. Phase F verifies integration rather than introducing the scheduler or ending model for the first time. Keep the current engine and UI framework; extend their data model and rules.
+
+### Cleanup checklist and retirement gates
+
+Unchecked items below are implementation work, not claims of completion.
+
+- [ ] **A1 — Documentation authority:** this plan governs the redesign. `ENGINE.md` describes the current runtime until updated alongside implementation. Mark conflicting numbered story/art documents historical and link their replacements; do not use an old draft to override this plan. Preserve non-conflicting character identity details and asset provenance.
+- [ ] **A2 — Inventory:** enumerate imports, content loaders, scene IDs, route IDs, localization keys, save fields, asset references, and test entry points. Classify each as keep, replace, or retire, recording its replacement and verification command.
+- [ ] **B1 — Single scene source:** migrate hardcoded/JSON-merged scene definitions into one typed registry. Validate unique IDs, localization and art references, next-scene links, prerequisites, and cycles. Retain adapters only during migration, with an explicit removal task.
+- [ ] **B2 — Save boundary:** introduce a new save version and key. Keep the original v1 save intact; explain that redesigned story progress requires a restart. Import only an explicitly allowed player name if requested. Never translate old pair routes or milestone flags into new commitments. Reject unsupported versions safely.
+- [ ] **F1 — Legacy engine:** retire `src/core/`, `src/scripts/part1-kozos.ts`, and their legacy test entry after checking consumers. `src/tests/dialogue.test.ts` currently imports that engine: migrate any useful coverage before deleting it. Update package scripts and documentation together; no broken imports or test commands may remain.
+- [ ] **F2 — Legacy narrative:** remove the two retired pair routes, incompatibility penalty for Rebeka/Boglárka, ancestry reveal, obsolete clue chains, old ending branches, calendar-only summaries, and migrated content adapters after replacement coverage passes.
+- [ ] **F3 — Art and UI:** switch active scenes to the reviewed manifest, remove obsolete aliases and pixel CSS, and consolidate overridden scene-layout rules. Remove unreferenced runtime assets only after checking code, content, styles, and reference/provenance uses. Historical references must not enter the active runtime manifest.
+- [ ] **F4 — Completion:** verify no retired ID is reachable, all supported save behavior is documented, all active scenes resolve their assets/text, and README/AGENT/ENGINE describe the appropriate implemented state. Record actual command results; do not equate a clean build with narrative correctness.
+
+### Engine prerequisites: acceptance contract
+
+- **Scheduler:** each week has one guaranteed shared-story slot and two discretionary slots. Replace the extra automatic workshop with a shared scene where appropriate. Required scenes cannot be blocked by fatigue, romance, money, random encounters, or missed optional clues. Scene continuations consume no additional slot; finishing the scene consumes exactly one. Week advancement cannot skip the shared scene.
+- **Prerequisites and knowledge:** declare required scenes/decisions/evidence explicitly. Record discoveries only on witnessed completion and derive journal/recaps from those records. Optional atmosphere cannot deliver future revelations. Validate both graph structure and reachable playthroughs.
+- **Relationships:** store the Márton–Rebeka, Márton–Boglárka, and Rebeka–Boglárka bonds separately, plus Gréta's individual progression. Record each participant's affirmative decisions and repair milestones; numerical trust cannot replace them. Week 8 chooses a tentative direction, not final consent or commitment. A declined triad permits an agreed single route or friendship.
+- **Scene composition:** participants and speaker are distinct fields; support faculty and the assistant without romance stats. Each scene declares location, expression, and artwork. Multi-speaker dialogue must not inherit the previous speaker's expression or apply effects to the wrong relationship.
+- **Endings:** complete the week-15 confrontation before resolving week-16 aftermath, institutional outcome, and relationship epilogues. Preparation changes costs and evidence, not whether the vampire dies. Friendship and poor preparation remain complete story paths.
+- **Economy:** remove mandatory job gates for dates/shopping; balance recovery inside the discretionary budget. Repeated interactions cannot grant commitment milestones. Preserve optional jobs and gifts without making them required for story access.
+- **Verification before bulk writing:** use small fixture scenes to exercise all 16 weeks, blocked prerequisites, refusals, missed optional scenes, save/resume, and ending order. These are new tests to implement; the current 27 tests cover the old rules and some expectations must change deliberately.
+
+### Sixteen-week discretionary slot budget
+
+The shared-story slot uses the corresponding beat in section 5. This table budgets only the other two slots, showing a demanding triad path. A numbered foundation is one substantial individual scene: shared interest, attraction, invitation, disagreement, repair/commitment, aftermath. On the triad path, commitment means agreeing to that relationship's terms, not promising exclusivity. The eight additional scenes are T1–T8. All listed content is proposed, not implemented.
+
+| Week | Discretionary slot A | Discretionary slot B |
+| --- | --- | --- |
+| 1 | Rebeka foundation 1 | Free / rest |
+| 2 | Boglárka foundation 1 | Free / rest |
+| 3 | Rebeka foundation 2 | Free / catch-up |
+| 4 | T1: image-caption dispute | Boglárka foundation 2 |
+| 5 | T2: joint correction | Free / rest |
+| 6 | Rebeka foundation 3 | Free / catch-up |
+| 7 | Boglárka foundation 3 | T3: conversation without Márton |
+| 8 | T4: independent attraction | Free / tentative direction |
+| 9 | Rebeka foundation 4 | Free / rest |
+| 10 | Boglárka foundation 4 | Free / catch-up |
+| 11 | T5: separate conversations with Márton | Free / rest |
+| 12 | T6: three-way discussion | Free / catch-up |
+| 13 | Rebeka foundation 5 | Boglárka foundation 5 |
+| 14 | T7: ordinary shared evening | Free / preparation or rest |
+| 15 | Free / recovery after confrontation | Free / catch-up |
+| 16 | T8: shared aftermath, including both foundation-6 resolutions | Free / closing activity |
+
+This path costs **18 distinct optional slots**, including 12 individual milestones (two resolved within T8) and eight additional triad scenes. It leaves **14 flexible slots**. T5 contains two sequential conversations within one authored scene and one slot. T8 deliberately combines the two personal aftermath resolutions with the shared aftermath; do not charge three separate slots for that content. T4 can begin within week 8's shared beat, but its substantive relationship scene is budgeted separately. The women-only scene opportunity in week 12 may reprise T3/T4 rather than adding an unbudgeted mandatory scene.
+
+For a single route, reserve its six scenes in weeks 2, 5, 7, 10, 13, and 16; this leaves 26 flexible slots. Adapt the emotional pace and invitations to the character. Friendship has no mandatory romance slots. Introductions and indispensable contributions by all three women occur in shared scenes, so this budget does not require separate introduction visits.
+
+**Recovery and timing rules:** optional relationship scenes remain available after their suggested week until their actual narrative deadline. Earlier prerequisites are offered before later scenes, without advancing commitment automatically. Permit at least two missed optional appointments to be recovered using the flexible slots in a triad simulation. Consequences may change an outcome when the player declines or misses its real deadline, but never block the core investigation. Confirm the fatigue balance leaves those recovery slots usable. Schedule T7 before the confrontation; week-15 catch-up cannot replay pre-confrontation danger as if it were current. Week 16 must offer its aftermath activities before ending evaluation closes the run. Display meaningful deadlines to the player.
+
+**Calendar gate:** keep 16 weeks unless a playable simulation demonstrates insufficient room after removing mandatory work gates and balancing rest. If it fails, first combine redundant scenes or reduce optional prerequisites; extending the semester requires an explicit pacing decision. This table proves a proposed capacity budget, not tested runtime reachability or a real-world delivery estimate.
 
 ### Targeted code and documentation changes
 
