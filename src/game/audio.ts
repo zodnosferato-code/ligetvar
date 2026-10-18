@@ -1,4 +1,4 @@
-import { evaluateEnding } from "./engine/logic.ts";
+import { SCENES } from "./content/catalog.ts";
 import type { GameState, LocationId } from "./engine/types.ts";
 
 export type MoodId =
@@ -47,11 +47,7 @@ const PLACE: Partial<Record<LocationId, MoodId>> = {
   apartment: "apartment_evening",
   bekas: "bekas_to_dark",
   courtyard: "classroom_calm",
-  bookshop: "library_quiet",
-  cinema: "apartment_evening",
-  peron: "holdkor_night",
-  construction: "office_morning",
-  mohu: "office_morning",
+  chamber: "tension_low",
 };
 
 const MUTE_KEY = "ligetvar-mute";
@@ -99,7 +95,7 @@ export function unlockAudio() {
     ensure();
     if (ctx && ctx.state === "suspended") void ctx.resume().catch(() => undefined);
     unlocked = true;
-    if (wanted) void play(wanted);
+    if (wanted) void play(wanted).catch(() => undefined);
   } catch (error) {
     unlocked = false;
     throw error;
@@ -108,7 +104,7 @@ export function unlockAudio() {
 
 export function setMood(mood: MoodId) {
   wanted = mood;
-  if (unlocked) void play(mood);
+  if (unlocked) void play(mood).catch(() => undefined);
 }
 
 export function toggleMute() {
@@ -127,7 +123,7 @@ export function toggleMute() {
   }
   if (ctx!.state === "suspended") void ctx!.resume();
   unlocked = true;
-  if (wanted) void play(wanted);
+  if (wanted) void play(wanted).catch(() => undefined);
   return muted;
 }
 
@@ -176,16 +172,9 @@ async function play(mood: MoodId) {
 }
 
 export function moodFor(state: GameState): MoodId {
-  if (state.phase === "ending") {
-    const id = evaluateEnding(state).id;
-    if (id === "true" || id === "pair-true") return "ending_true";
-    if (id === "broken" || id === "scandal" || id === "pair-broken") return "tension_low";
-    return "apartment_evening";
-  }
-  if (state.risk >= 60) return "tension_low";
-  const place = state.scene ? PLACE[state.scene.location] : undefined;
+  if (state.phase === 'ending') return state.confrontation === 'supported' ? 'ending_true' : 'apartment_evening';
+  if (state.week >= 14 && state.week <= 15) return 'tension_low';
+  const place = state.scene ? PLACE[SCENES[state.scene.id]?.location] : undefined;
   if (place) return place;
-  if (state.slot === 0) return "office_morning";
-  if (state.slot === 1) return "library_quiet";
-  return "apartment_evening";
+  return state.slot === 0 ? 'office_morning' : state.slot === 1 ? 'library_quiet' : 'apartment_evening';
 }

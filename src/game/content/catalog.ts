@@ -1,1644 +1,415 @@
-import type {
-  ActionDef,
-  Choice,
-  DialogueNode,
-  Effect,
-  GiftDef,
-  GirlId,
-  LocationId,
-  Quality,
-  StoryEvent,
-} from "../engine/types.ts";
-import { mergePart1 } from "./part1.ts";
-import { mergeLater } from "./later.ts";
-
-function pub(file: string) {
-  const env = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env;
-  const base = env?.BASE_URL ?? "/";
-  return `${base}${file}`;
+/** Sole active narrative source: typed scheduling, Hungarian dialogue and exact visual metadata. */
+import type { ActorId, Choice, Effect, Evidence, Expression, Line, LocationId, Registry, Requirements, Scene } from '../engine/types.ts';
+type Spoken={speaker:ActorId;text:string;expression?:Expression;choices?:Choice[]};
+const say=(speaker:ActorId,text:string,expression:Expression='neutral',choices?:Choice[]):Spoken=>({speaker,text,expression,choices});
+const option=(id:string,text:string,reaction:string,effect?:Effect):Choice=>({id,text,reaction,effect});
+function scene(id:string,title:string,kind:Scene['kind'],week:number,deadline:number,location:LocationId,participants:ActorId[],spoken:Spoken[],requires:Requirements={},evidence:string[]=[],journal=title,onComplete?:Effect):Scene {
+ const lines:Line[]=spoken.map((l,i)=>({...l,id:'line_'+i,expression:l.expression??'neutral',...(i<spoken.length-1?{next:'line_'+(i+1)}:{})}));
+ return {id,title,kind,week,deadline,location,background:location,lighting:location==='holdkor'?'night':'day',participants,requires,evidence,journal,entry:'line_0',lines,contentStatus:'authored',onComplete};
 }
-
-export const PORTRAIT: Record<GirlId, string> = {
-  rebeka: pub("characters/rebeka/rebeka-face-front.jpg"),
-  boglarka: pub("characters/boglarka/boglarka-face-front.jpg"),
-  greta: pub("characters/greta/greta-emotion-smile.jpg"),
-};
-
-const MOOD: Record<GirlId, Record<string, string>> = {
-  rebeka: {
-    anger: pub("characters/rebeka/rebeka-emotion-anger.jpg"),
-    smile: pub("characters/rebeka/rebeka-emotion-halfsmile.jpg"),
-    soft: pub("characters/rebeka/rebeka-emotion-vulnerable.jpg"),
-    yield: pub("characters/rebeka/rebeka-emotion-yielding.jpg"),
-  },
-  boglarka: {
-    blush: pub("characters/boglarka/boglarka-emotion-blush.jpg"),
-    smile: pub("characters/boglarka/boglarka-emotion-smile.jpg"),
-    trust: pub("characters/boglarka/boglarka-emotion-trust.jpg"),
-  },
-  greta: {
-    fluster: pub("characters/greta/greta-emotion-flustered.jpg"),
-    smile: pub("characters/greta/greta-emotion-smile.jpg"),
-    yield: pub("characters/greta/greta-emotion-yielding.jpg"),
-  },
-};
-
-const REACTION: Record<string, "anger" | "soft" | "yield" | "smile" | "blush" | "trust" | "neutral"> = {
-  nyugalom: "smile",
-  semleges: "neutral",
-  hideg: "anger",
-  elpirulas: "blush",
-  szegyenos: "blush",
-  elrejtozik: "soft",
-  gongy: "anger",
-  megbantott: "soft",
-  enyhe_mosoly: "smile",
-  kis_elegedett: "smile",
-  yielding: "yield",
-  "koncentrált": "neutral",
-  fegyelmezett_duh: "anger",
-  osszevont: "anger",
-  duhos_csend: "anger",
-  sebezheto: "soft",
-  elpirulas_mosoly: "blush",
-  "lágy_mosoly": "smile",
-  szomorkas: "soft",
-  nyugalom_intense: "smile",
-  duh: "anger",
-  zavar_elpirul: "blush",
-  kis_mosoly: "smile",
-  "lágy_bizalom": "trust",
-  duhos: "anger",
-  elpirul_es_elrejtozik: "blush",
-  szaraz_mosoly: "smile",
-  kis_elegedett_mosoly: "smile",
-  osszevont_szemoldok: "anger",
-  fegyelmezett: "neutral",
-  engedelmes: "yield",
-  zavar: "blush",
-  elegedett_felmosoly: "smile",
-  hideg_tekintet: "anger",
-  felmosoly: "smile",
-  unalom: "anger",
-};
-
-function moodFace(girl: GirlId, mood: (typeof REACTION)[string]): string {
-  const face = MOOD[girl];
-  if (mood === "blush" || mood === "soft") return face.blush ?? face.soft ?? face.fluster ?? PORTRAIT[girl];
-  if (mood === "yield") return face.yield ?? face.trust ?? face.soft ?? PORTRAIT[girl];
-  if (mood === "smile") return face.smile ?? PORTRAIT[girl];
-  if (mood === "trust") return face.trust ?? face.smile ?? PORTRAIT[girl];
-  if (mood === "anger") return face.anger ?? face.fluster ?? face.blush ?? PORTRAIT[girl];
-  return PORTRAIT[girl];
-}
-
-export function portraitFor(girl: GirlId, expression = ""): string {
-  const mark = expression.toLowerCase().replaceAll(" ", "_");
-  const mood = REACTION[mark];
-  if (!mood || mood === "neutral") return PORTRAIT[girl];
-  return moodFace(girl, mood);
-}
-
-export const FULL_BODY: Record<GirlId, string> = {
-  rebeka: pub("characters/rebeka/rebeka-full-front-clothed.jpg"),
-  boglarka: pub("characters/boglarka/boglarka-full-front-clothed.jpg"),
-  greta: pub("characters/greta/greta-full-front-clothed.jpg"),
-};
-
-const PLATE: Record<string, string> = {
-  rebeka_nappali_feny: "rebeka-light-classroom-keyhole.jpg",
-  rebeka_foto_kerdes: "rebeka-light-classroom-v2.jpg",
-  rebeka_lakas_szimbolika: "rebeka-medium-pulled-dress-v2.jpg",
-  rebeka_intimate_private: "rebeka-medium-apartment-bed.jpg",
-  rebeka_yield_control: "rebeka-soft-rope.jpg",
-  rebeka_part2_intro: "rebeka-medium-apartment-bed.jpg",
-  rebeka_bekas_private: "rebeka-rain-balcony.jpg",
-  rebeka_yield_full: "rebeka-hardcore-yield-kneeling.jpg",
-  rebeka_desire_fulfill: "rebeka-nude-reclining.jpg",
-  rebeka_ending_true: "rebeka-nude-sitting-bed.jpg",
-  rebeka_ending_quiet: "rebeka-window-sill.jpg",
-  boglarka_lakas_kutatas: "boglarka-light-library-cardigan.jpg",
-  boglarka_slow_explore: "boglarka-medium-lingerie-sitting.jpg",
-  boglarka_body_praise: "boglarka-medium-lingerie-bed.jpg",
-  boglarka_part2_intro: "boglarka-medium-lingerie-v2.jpg",
-  boglarka_slow_full: "boglarka-nude-sitting-bed.jpg",
-  boglarka_body_full: "boglarka-spread-recline.jpg",
-  boglarka_desire_fulfill: "boglarka-nude-reclining.jpg",
-  boglarka_ending_true: "boglarka-nude-sitting-bed.jpg",
-  boglarka_ending_quiet: "boglarka-light-library-v2.jpg",
-  greta_lakas_irat: "greta-light-office-open-shirt.jpg",
-  greta_rule_break: "greta-medium-desk-lingerie.jpg",
-  greta_yield: "greta-soft-rope.jpg",
-  greta_part2_intro: "greta-medium-desk-v2.jpg",
-  greta_rule_full: "greta-hardcore-bound-v2.jpg",
-  greta_yield_full: "greta-hardcore-bound-yield.jpg",
-  greta_desire_fulfill: "greta-nude-reclining.jpg",
-  greta_ending_true: "greta-nude-sitting-desk.jpg",
-  greta_ending_quiet: "greta-window-sill.jpg",
-};
-
-// Short dialogue node IDs (from part1 JSON) map to the canonical illustration keys.
-const ILLUSTRATION_ALIAS: Record<string, string> = {
-  rebeka_intimate: "rebeka_intimate_private",
-  rebeka_yield: "rebeka_yield_control",
-  boglarka_explore: "boglarka_slow_explore",
-  boglarka_praise: "boglarka_body_praise",
-  greta_rule: "greta_rule_break",
-};
-
-export function illustrationFor(nodeId: string, girl: GirlId, route: string): string | null {
-  const cleaned = nodeId.replace(/_(?:vg|good|bad|vb)?_react$/, "").replace(/_react$/, "");
-  const stem = ILLUSTRATION_ALIAS[cleaned] ?? cleaned;
-  if (route === "boglarka_greta" && /desire|ending_true|kiss/.test(stem)) {
-    return pub("references/intim/boglarka-greta-kiss-bed.jpg");
-  }
-  if (route === "rebeka_greta" && /desire|ending_true|kiss/.test(stem)) {
-    return pub("references/intim/rebeka-greta-kiss-soft.jpg");
-  }
-  const file = PLATE[stem];
-  if (!file || !file.startsWith(girl)) return null;
-  return pub(`references/intim/${file}`);
-}
-
-export const GIRL_NAME: Record<GirlId, string> = {
-  rebeka: "Rebeka Dorn",
-  boglarka: "Boglárka Fazekas",
-  greta: "Gréta Váradi",
-};
-
-export const CAST: Record<
-  GirlId,
-  { age: number; year: string; blurb: string; haunt: string }
-> = {
-  rebeka: {
-    age: 20,
-    year: "másodéves, média",
-    blurb:
-      "Gőgös és pontos. A Holdkör a páncélja. Nem akar történet lenni, és nem tűri a közönséget.",
-    haunt: "Este a Holdkör alagsorában",
-  },
-  boglarka: {
-    age: 19,
-    year: "elsőéves, irodalom",
-    blurb:
-      "Félénk, amíg a mondata végét meg nem várják. A kardigán és a könyv páncél. Utána szárazabb a humora, mint hinnéd.",
-    haunt: "Délután a könyvtárteremben",
-  },
-  greta: {
-    age: 21,
-    year: "harmadéves demonstrátor",
-    blurb:
-      "A lista a biztonsága. A kivétel gyanús neki. Nem a beosztásod miatt marad, ha marad.",
-    haunt: "Délelőtt a tanszéki szárnyban",
-  },
-};
-
-export const LOCATION_BG: Record<LocationId, string> = {
-  apartment: pub("backgrounds/apartment.jpg"),
-  classroom: pub("backgrounds/classroom.jpg"),
-  courtyard: pub("backgrounds/courtyard.jpg"),
-  department: pub("backgrounds/department.jpg"),
-  holdkor: pub("backgrounds/holdkor-night.jpg"),
-  library: pub("backgrounds/library.jpg"),
-  bekas: pub("backgrounds/bekas-to.jpg"),
-  bookshop: pub("backgrounds/library.jpg"),
-  cinema: pub("backgrounds/hallway.jpg"),
-  peron: pub("backgrounds/hallway.jpg"),
-  construction: pub("backgrounds/courtyard.jpg"),
-  mohu: pub("backgrounds/courtyard.jpg"),
-};
-
-export const LOCATION_LABEL: Record<LocationId, string> = {
-  apartment: "Lakosztály",
-  classroom: "Kastélyterem",
-  courtyard: "Belső udvar",
-  department: "Tanszéki szárny",
-  holdkor: "Holdkör, alagsor",
-  library: "Könyvtárterem",
-  bekas: "Békás-tó",
-  bookshop: "Könyvesbolt",
-  cinema: "Kis mozi",
-  peron: "Éjszakai peron",
-  construction: "Építkezés",
-  mohu: "A liget széle",
-};
-
-const I = {
-  talk: pub("icons/icon_door.png"),
-  call: pub("icons/icon_phone.png"),
-  gift: pub("icons/icon_shelf.png"),
-  gym: pub("icons/icon_bottles.png"),
-  rest: pub("icons/icon_chair.png"),
-  study: pub("icons/icon_book.png"),
-  task: pub("icons/icon_book.png"),
-  apartment: pub("icons/icon_door.png"),
-  classroom: pub("icons/icon_chair.png"),
-  courtyard: pub("icons/icon_door.png"),
-  holdkor: pub("icons/icon_door.png"),
-  library: pub("icons/icon_book.png"),
-  money: pub("icons/icon_stat_money.png"),
-  calm: pub("icons/icon_stat_calm.png"),
-  insight: pub("icons/icon_stat_insight.png"),
-  presence: pub("icons/icon_stat_presence.png"),
-  energy: pub("icons/icon_stat_energy.png"),
-};
-
-export const STAT_ICON = {
-  presence: I.presence,
-  insight: I.insight,
-  calm: I.calm,
-  money: I.money,
-  energy: I.energy,
-};
-
-export const HEART_FULL = pub("icons/ui_heart_full.png");
-export const HEART_EMPTY = pub("icons/ui_heart_empty.png");
-
-export const HUB_ICON = {
-  door: pub("icons/icon_door.png"),
-  book: pub("icons/icon_book.png"),
-  rest: pub("icons/icon_chair.png"),
-  phone: pub("icons/icon_phone.png"),
-  shelf: pub("icons/icon_shelf.png"),
-  bag: pub("icons/icon_bottles.png"),
-};
-
-function c(
-  id: string,
-  text: string,
-  quality: Quality,
-  effect: Effect,
-  reaction: string,
-  requires?: Choice["requires"],
-): Choice {
-  return { id, text, quality, effect, reaction, requires };
-}
-
-function node(
-  id: string,
-  speaker: DialogueNode["speaker"],
-  text: string,
-  kind: DialogueNode["kind"],
-  choices: Choice[],
-  journal?: string,
-  cost?: number,
-  speakerLabel?: string,
-  artCaption?: string,
-): DialogueNode {
-  return { id, speaker, text, kind, choices, journal, cost, speakerLabel, artCaption };
-}
-
-const NODES: Record<string, DialogueNode> = {};
-
-function add(n: DialogueNode) {
-  if (n.choices.length < 1 || n.choices.length > 4) {
-    throw new Error(`A(z) ${n.id} csomópontnak 1–4 választása lehet.`);
-  }
-  NODES[n.id] = n;
-}
-
-const onward = c("continue", "Tovább", "good", {}, "tovább");
-
-add(
-  node(
-    "brief_open",
-    "narrator",
-    "{{name}} vagy, harmincnégy éves tanulmányi vezető a Ligetvári Főiskolán. A főiskola egy tizenkilencedik századi kastély. Az irodád és a lakosztályod is a szárnyában van: kőfal, íves ablak, modern asztal a régi gerendák alatt.\n\nTizenhat hét, hetente három sáv. Délelőtt, délután, este. Hétfőn a fizetés magától jön. A hét végén gyógytorna van, és ott dől el, kivel maradsz óra után.\n\nGréta Váradi délelőtt a tanszéken van. Pontos, és a lista a biztonsága. Boglárka Fazekas délután a könyvtárban ül. Halk, amíg a mondata végét meg nem várják. Rebeka Dorn este a Holdkör alagsorában. Nem akar történet lenni, és nem tűri a közönséget.\n\nA bizalom új jelenetből nő, ismétlésből alig. Négy kemény sáv után pihenned kell. Ha felhívsz valakit, este külön gomb enged be. A nyolcadik hét végén zársz: egy lányt, egy összeillő párt, vagy senkit.",
-    "ambient",
-    [onward],
-    "A félév a kastélyban kezdődik.",
-  ),
-);
-
-add(
-  node(
-    "brief_act2",
-    "narrator",
-    "Véget ért a közös szakasz. Nyolc hétig mindhárman a saját helyükön voltak: Gréta a tanszéken, Boglárka a könyvtárban, Rebeka a Holdkörben.\n\nMostantól egy útvonal van. Aki rajta van, vele mélyül a félév. Aki nincs, hidegen marad a folyosón. Randi és a tó innentől nyílhat, ha a bizalom és a közelség megvan. A pletyka és a kockázat még mindig számít.",
-    "ambient",
-    [onward],
-    "A közös szakasz lezárult.",
-  ),
-);
-
-add(
-  node(
-    "brief_act3",
-    "narrator",
-    "A zárt szakasz vége. Ez az utolsó hét, utána nincs új sáv.\n\nAmi a bizalomból, a határból és a kockázatból összegyűlt, a záráson dől el. Lehet csendes vég, igaz vég, vagy törés. Aki az útvonalon van, nála dől el. Aki nincs, már nem lép be.",
-    "ambient",
-    [onward],
-    "Az utolsó hét kezdődik.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_intro",
-    "rebeka",
-    "A Holdkör ma este ül össze. Te is jössz, tanár úr? A kulcs nálam van. A tanszéké nem.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Csak ha te rendezed a kört, és nem veszed el a kulcsot.",
-        "very_good",
-        { closeness: 6, trust: 1, flags: ["rebeka_kor"] },
-        "elégedett félmosoly",
-      ),
-      c("good", "Ha van hely, megnézem. Nem szólok bele.", "good", { closeness: 2 }, "semleges"),
-      c(
-        "bad",
-        "A tanárok nem szoktak ilyen helyekre járni.",
-        "bad",
-        { closeness: -2, anger: 1 },
-        "hideg tekintet",
-      ),
-      c(
-        "very_bad",
-        "Majd elmesélem a tanszéken, milyen érdekes körötök van.",
-        "very_bad",
-        { closeness: -5, anger: 2, risk: 10 },
-        "dühös csend",
-      ),
-    ],
-    "Rebeka megmutatta a Holdkör kulcsát.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_feny",
-    "rebeka",
-    "Nappal minden átlagosnak tűnik. A kör nélkül… érdektelen. Mintha a fény levonná rólam a szerepet.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A nappali fény nem hazudik. Csak másra világít. Nem kell, hogy különleges legyél.",
-        "very_good",
-        { closeness: 5, trust: 1, flags: ["rebeka_feny"] },
-        "nyugalom",
-      ),
-      c(
-        "good",
-        "A kör az éjszakáé. A nappal attól még a tiéd.",
-        "good",
-        { closeness: 3 },
-        "semleges",
-      ),
-      c(
-        "bad",
-        "Különleges vagy a sötétben. Ez elég.",
-        "bad",
-        { closeness: -2, anger: 1 },
-        "gőg",
-      ),
-      c(
-        "very_bad",
-        "A tanárok is csak a történetet keresik. Te is ezt várod tőlem, ugye?",
-        "very_bad",
-        { closeness: -4, anger: 2 },
-        "hideg",
-      ),
-    ],
-    "Rebeka nappal is szóba állt veled.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_foto",
-    "rebeka",
-    "A lakásodban nyugodtabb átbeszélni a fotók szimbolikáját. Nincs közönség. Nem kérek véleményt a tanszékről.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A sötét részek őszintébbek, mint a nappali fény. Nem kell átírni.",
-        "very_good",
-        { closeness: 5, trust: 1, flags: ["rebeka_foto"] },
-        "nyugalom",
-      ),
-      c("good", "Rendben, nézzük meg. Nem viszem ki a folyosóra.", "good", { closeness: 2 }, "semleges"),
-      c(
-        "bad",
-        "A tanár lakása furcsa hely erre.",
-        "bad",
-        { closeness: -2 },
-        "gőg",
-      ),
-      c(
-        "very_bad",
-        "Majd később elmesélem valakinek, hogy itt voltál.",
-        "very_bad",
-        { closeness: -4, risk: 8, anger: 1 },
-        "düh",
-      ),
-    ],
-    "A fotók a lakásban maradtak.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_hatar",
-    "rebeka",
-    "Ha a kör miatt vagy itt, mondd ki. Ha a beosztásod miatt, azt is. Nem szeretek tartozni.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A műhely nem tartozás. A beosztásom sem. Ha maradsz, azért maradsz, mert akarod.",
-        "very_good",
-        { closeness: 4, trust: 1, flags: ["hatar"] },
-        "a gőg egy pillanatra leül",
-        { calm: 3 },
-      ),
-      c(
-        "good",
-        "Nem kérek semmit a műhelyért. A többit majd később.",
-        "good",
-        { closeness: 2 },
-        "óvatos",
-      ),
-      c(
-        "bad",
-        "A jelenléted a körön már elég köszönet.",
-        "bad",
-        { closeness: -2, anger: 1 },
-        "sértés",
-      ),
-      c(
-        "very_bad",
-        "Egy tanulmányi vezetőnek illik tudnia, ki mivel tartozik.",
-        "very_bad",
-        { closeness: -5, anger: 2, risk: 6 },
-        "tartozásnak hallja",
-      ),
-    ],
-    "Kimondtad Rebekának: a műhely nem tartozás.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_het8",
-    "rebeka",
-    "A nyolcadik hét vége közel. A kör is, a döntés is. Nem kérdezem kétszer.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A nappali fény nem tesz érdektelenné. Ha maradsz, maradsz. Nem történet.",
-        "very_good",
-        { closeness: 6, flags: ["rebeka_route_ready"] },
-        "nyugalom",
-      ),
-      c("good", "A fotók készen vannak. A kör is. Én még itt vagyok.", "good", { closeness: 3 }, "semleges"),
-      c(
-        "bad",
-        "A tanárnak is döntenie kell, kivel foglalkozik. Majd meglátjuk.",
-        "bad",
-        { closeness: -2, anger: 1 },
-        "gőg",
-      ),
-      c(
-        "very_bad",
-        "Majd a tanszéken elmesélem, ki kivel volt.",
-        "very_bad",
-        { closeness: -5, anger: 2, risk: 10 },
-        "dühös csend",
-      ),
-    ],
-    "Rebeka megkérdezte, maradsz-e a félév után is a körben.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_route",
-    "rebeka",
-    "A lezárt szárny első bejárása után Rebeka külön mappába rendezi az eredeti felvételeket. „A legélesebb képet tenném ki, de ha túl korán következtetünk, Lilla vallomását is hitelteleníthetik. Segítesz eldönteni, mikor mutassuk meg a nyomokat?”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Előbb független ellenőrzést kérünk, aztán együtt döntünk arról, mi hozható nyilvánosságra.",
-        "very_good",
-        { closeness: 4, trust: 1, flags: ["rebeka_route_active"] },
-        "a válla leereszt",
-      ),
-      c("good", "Az eredetit elmentjük; a nyilvánossággal várjunk.", "good", { closeness: 2, trust: 1 }, "megfontolja"),
-      c(
-        "bad",
-        "Ez már nem a te dolgod. Add át a képeket, és kész.",
-        "bad",
-        { closeness: -2, anger: 1 },
-        "sértés",
-      ),
-      c(
-        "very_bad",
-        "Tedd ki névvel együtt az egészet. A felhajtás majd reakcióra kényszeríti őket.",
-        "very_bad",
-        { closeness: -4, anger: 1, risk: 12, flags: ["rebeka_kozonseg"] },
-        "közönségnek teszi ki",
-      ),
-    ],
-    "Rebeka az eredeti felvételeket és a tanúvédelmet választotta a sietség helyett.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_kiss",
-    "rebeka",
-    "A folyosó üres. Megáll, és nem néz körbe. „Ha most nem, akkor sehol. Röviden.”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Itt. Röviden. Senkinek nem mesélem el.",
-        "very_good",
-        { closeness: 8, trust: 1, flags: ["flag_rebeka_kiss_light"] },
-        "egy rövid csók, aztán egy lépés távolság",
-      ),
-      c("good", "Nem a folyosón. A lakásban, ha még akarod.", "good", { closeness: 2 }, "vállalja a halasztást"),
-      c("bad", "Ez túl gyors. Menjünk vissza a terembe.", "bad", { closeness: -1 }, "visszalép"),
-      c(
-        "very_bad",
-        "Holnap a tanszéken is ezt akarom, hogy lássák.",
-        "very_bad",
-        { closeness: -3, anger: 1, risk: 12, flags: ["rebeka_kozonseg"] },
-        "ez hencegés",
-      ),
-    ],
-    "Rebeka egy üres folyosón megállt.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_peron",
-    "rebeka",
-    "Az éjszakai peronon nincs Holdkör és nincs névsor. A vonat késik. Ő nem magyarázkodik.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Nem kell veszélyesebbnek lenned, mint a menetrend. Itt vagyok, és ennyi.",
-        "very_good",
-        { closeness: 10, trust: 1 },
-        "a gőg kifárad",
-        { presence: 4 },
-      ),
-      c("good", "Megvárom veled a vonatot. Nem kérdezek a sebről.", "good", { closeness: 5 }, "csend"),
-      c("bad", "Unalmas hely. A kör érdekesebb volt.", "bad", { closeness: -2, anger: 1 }, "unalom"),
-      c(
-        "very_bad",
-        "Lefotózom, és megmutatom a tanszéken, milyen vagy közönség nélkül.",
-        "very_bad",
-        { closeness: -6, anger: 2, risk: 8 },
-        "elárulás",
-      ),
-    ],
-    "Az éjszakai peronon nem volt közönség.",
-  ),
-);
-
-add(
-  node(
-    "rebeka_repeat_0",
-    "rebeka",
-    "A kör ma rövidebb. A fényt te hozod, vagy én? Ne díszítsd a választ.",
-    "repeat",
-    [
-      c("very_good", "A kulcs a köré. Nem kérem el, és nem mesélem el.", "very_good", { closeness: 4 }, "félmosoly"),
-      c("good", "Majd a kör után beszélünk. Van időd.", "good", { closeness: 2 }, "semleges"),
-      c("bad", "Egy tanárnak ez nem hely. Menjünk be a terembe.", "bad", { closeness: -1, anger: 1 }, "hideg"),
-      c(
-        "very_bad",
-        "Holnap a titkárságon szóba hozom a kört.",
-        "very_bad",
-        { closeness: -4, anger: 2, risk: 8 },
-        "fenyegetés",
-      ),
-    ],
-  ),
-);
-
-add(
-  node(
-    "rebeka_repeat_1",
-    "rebeka",
-    "Nappal a folyosó mindent átlagossá tesz. Te is átlagosnak látszol, amíg nem szólsz.",
-    "repeat",
-    [
-      c(
-        "very_good",
-        "Akkor szólok itt, ahol nincs közönség. Nem a történeted érdekel.",
-        "very_good",
-        { closeness: 4 },
-        "a tekintete megáll",
-        { insight: 3 },
-      ),
-      c("good", "Az átlagos nap is nap. Nem kell hozzá kulcs.", "good", { closeness: 2 }, "semleges"),
-      c("bad", "Sötétben jobban áll neked a szöveg. Maradj annál.", "bad", { closeness: -2, anger: 1 }, "gőg"),
-      c("very_bad", "Majd megírom helyetted, ki vagy a kör nélkül.", "very_bad", { closeness: -4, anger: 2 }, "sértés"),
-    ],
-  ),
-);
-
-add(
-  node(
-    "boglarka_intro",
-    "boglarka",
-    "Elnézést… a könyvtár mélyén ülök. Nem zavarok? A margóra írtam, de még nem fejeztem be a mondatot.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Megvárom, amíg befejezed a mondatot. Mit írtál a margóra?",
-        "very_good",
-        { closeness: 6, trust: 1, flags: ["boglarka_margo"] },
-        "a könyv lejjebb csúszik, a szeme feljebb",
-      ),
-      c("good", "Nem zavarok. Olvashatok itt?", "good", { closeness: 2 }, "bólint"),
-      c("bad", "Gyorsan, miről szól a könyv?", "bad", { closeness: -2, anger: 1 }, "visszahúzódik"),
-      c(
-        "very_bad",
-        "Bogi, ugye? Cuki név. Majd rövidre fogod.",
-        "very_bad",
-        { closeness: -5, anger: 2 },
-        "a becenév fáj",
-      ),
-    ],
-    "Boglárka hagyta, hogy a margóig eljuss.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_nev",
-    "boglarka",
-    "A jegyzeteim… ha van időd. Nem kell dicsérni. Csak ne vágd el a mondatot a közepén.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Boglárka. Megvárom a végét. A margón pontosan az van, ami kell.",
-        "very_good",
-        { closeness: 5, trust: 1, flags: ["boglarka_nev"] },
-        "kimondod a nevét, nem a becenevet",
-      ),
-      c("good", "Rendben, nézzük. Nem siettetlek.", "good", { closeness: 2 }, "olvas"),
-      c("bad", "Röviden, mi a lényeg? Öt percem van.", "bad", { closeness: -2, anger: 1 }, "siet"),
-      c(
-        "very_bad",
-        "A folklór helyett beszélj magadról, az érdekesebb.",
-        "very_bad",
-        { closeness: -4, anger: 2 },
-        "bezár",
-      ),
-    ],
-    "A nevén szólítottad, és kivártad a mondatot.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_udvar",
-    "boglarka",
-    "Az udvaron többen vannak, mint a polcok között. A könyvet két kézzel fogja. „Ha… ha kijövök, nem muszáj integetni.”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Nem integetek. Melletted megyek, ameddig te akarod. A könyv maradhat.",
-        "very_good",
-        { closeness: 6, trust: 1, flags: ["boglarka_udvar"] },
-        "kijön a polcok közül",
-      ),
-      c("good", "A padnál megállunk. Nem kell tovább.", "good", { closeness: 2 }, "óvatos"),
-      c("bad", "Senki nem néz rád. Nyugodj meg.", "bad", { closeness: -2, anger: 1 }, "lekicsinylés"),
-      c(
-        "very_bad",
-        "Hadd lássák, kivel sétálok. Ez a lényeg.",
-        "very_bad",
-        { closeness: -5, anger: 2, risk: 8 },
-        "közönség",
-      ),
-    ],
-    "Boglárka kijött veled az udvarra.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_hatar",
-    "boglarka",
-    "A beosztásod… gyanús. Ha a jegy miatt vagy kedves, azt inkább most mondd. Nem az én szakom a tiéd, de akkor is.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A műhely nem tartozás. Nem osztályozlak. Ha maradsz, az nem szívesség a tanszéknek.",
-        "very_good",
-        { closeness: 4, trust: 1, flags: ["hatar"] },
-        "a gyanú leül",
-        { calm: 3 },
-      ),
-      c("good", "A jegyet más írja. Én csak a műhelyt tartom.", "good", { closeness: 2 }, "tény"),
-      c("bad", "Egy kis figyelem nem árthat a félévnek.", "bad", { closeness: -2, anger: 1 }, "rossz alku"),
-      c(
-        "very_bad",
-        "Ha segítek a kutatásban, illik hálásnak lenni.",
-        "very_bad",
-        { closeness: -5, anger: 2 },
-        "tartozásnak hallja",
-      ),
-    ],
-    "Boglárkának is kimondtad a határt.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_het8",
-    "boglarka",
-    "A nyolcadik hét… a könyvtárban is csendesebb lesz. Ha elmész, nem kérdezem meg még egyszer.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Várok a mondat végére. Ha maradsz, nem siettetsz, és nem a sarokba zárlak.",
-        "very_good",
-        { closeness: 6 },
-        "a copf a vállára esik",
-      ),
-      c("good", "A jegyzetek készen vannak. Én is itt vagyok.", "good", { closeness: 3 }, "semleges"),
-      c("bad", "A tanárnak döntenie kell. Ne nehezítsd meg.", "bad", { closeness: -2, anger: 1 }, "siet"),
-      c("very_bad", "Majd Boginak hívlak a folyosón, hogy megszokd.", "very_bad", { closeness: -5, anger: 2 }, "becenév"),
-    ],
-    "Boglárka megkérdezte, maradsz-e a csendben is.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_route",
-    "boglarka",
-    "Boglárka a gondnok jegyzeteit és a három mondaváltozatot teszi egymás mellé. „Az egyik szöveg szerint a harang elűzi a köpenyes árnyalakot, a másik csak azt állítja, hogy megszakítja a hangutánzást. Ha rosszul választunk, valakit veszélybe küldhetünk. Segítesz úgy megfogalmazni a tervet, hogy a bizonytalanság is benne maradjon?”",
-    "story",
-    [
-      c(
-        "very_good",
-        "A tényt, a következtetést és a sejtést külön jelöljük. A terv csak azt ígérheti, amit a nyomok alátámasztanak.",
-        "very_good",
-        { closeness: 4, trust: 1, flags: ["boglarka_route_active"] },
-        "nagy levegő",
-      ),
-      c("good", "Keressünk még egy forrást, és addig ne próbáljuk ki a harangot.", "good", { closeness: 2, trust: 1 }, "türelem"),
-      c("bad", "A legenda bizonyíték; nincs szükség további ellenőrzésre.", "bad", { closeness: -2, anger: 1 }, "visszalép"),
-      c(
-        "very_bad",
-        "A folklór csak babona. Hagyd abba a kutatást.",
-        "very_bad",
-        { closeness: -4, anger: 2 },
-        "türelmetlen",
-      ),
-    ],
-    "Boglárka a forráskritikát választotta a kész válasz helyett.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_kiss",
-    "boglarka",
-    "A lakásban a könyvet az asztalra teszi, mindkét keze szabadon marad. „Ha… ha nem zavar. Lassan.”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Lassan. Megállok, ha kéred.",
-        "very_good",
-        { closeness: 8, trust: 1, flags: ["flag_boglarka_kiss_light"] },
-        "rövid, óvatos csók",
-      ),
-      c("good", "Előbb a jegyzet vége. A többi ráér.", "good", { closeness: 2 }, "megvárja"),
-      c("bad", "Nem most. Fura a lakás.", "bad", { closeness: -1 }, "visszalép"),
-      c("very_bad", "Ne bújj a könyv mögé, amikor hozzám szólsz.", "very_bad", { closeness: -3, anger: 1 }, "szégyen"),
-    ],
-    "Boglárka letette a könyvet.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_bolt",
-    "boglarka",
-    "A használt könyvesboltban a polc magasabb nála. Nem nyúl fel. Várja, hogy te sem kapod le helyette a kötetet.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Szólj, melyiket nézed. Nem veszem le helyetted, amíg kéred.",
-        "very_good",
-        { closeness: 10, trust: 1 },
-        "ő nyúl fel, amikor kész",
-      ),
-      c("good", "Ezt a margót üresen hagyták. Illik hozzád.", "good", { closeness: 4 }, "a könyv a kezébe kerül"),
-      c("bad", "Veszek egyet, majd elolvasod. Siessünk.", "bad", { closeness: -1, anger: 1 }, "döntesz helyette"),
-      c("very_bad", "A borító szebb, mint a szöveg. Az a lényeg.", "very_bad", { closeness: -4, anger: 1 }, "felszín"),
-    ],
-    "A könyvesboltban nem vetted ki a kezéből a választást.",
-  ),
-);
-
-add(
-  node(
-    "boglarka_repeat_0",
-    "boglarka",
-    "A könyvtárban csend van. A margók… ha van időd. Ha nincs, azt is kibírom.",
-    "repeat",
-    [
-      c("very_good", "Van időm a mondat végéig. Olvasd fel azt a sort.", "very_good", { closeness: 4 }, "olvas"),
-      c("good", "Olvasok itt, ha nem zavar. Nem kell beszélni.", "good", { closeness: 2 }, "csend"),
-      c("bad", "Gyorsan, mert más dolgom van.", "bad", { closeness: -1, anger: 1 }, "siet"),
-      c("very_bad", "Bogi, ne bújj a copfod mögé.", "very_bad", { closeness: -4, anger: 2 }, "becenév"),
-    ],
-  ),
-);
-
-add(
-  node(
-    "boglarka_repeat_1",
-    "boglarka",
-    "Gréta nézi a jelenléti ívet a terem előtt. Én inkább itt maradok, amíg a névsor véget ér.",
-    "repeat",
-    [
-      c(
-        "very_good",
-        "Maradj. A névsor nélküled is megvan. A margó nem.",
-        "very_good",
-        { closeness: 4 },
-        "marad",
-      ),
-      c("good", "Ha kész vagy, együtt megyünk ki. Nem előtted.", "good", { closeness: 2 }, "melletted"),
-      c("bad", "A jelenlét kötelező. Gyere.", "bad", { closeness: -1, anger: 1 }, "parancs"),
-      c("very_bad", "Ne tartsd fel a listát a félénkségeddel.", "very_bad", { closeness: -4, anger: 2 }, "szégyen"),
-    ],
-  ),
-);
-
-add(
-  node(
-    "greta_intro",
-    "greta",
-    "A jelenléti íven hiba van. Segíthetsz pontosan javítani, tanár úr? A ceruza nálam, a felelősség is.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Konkrétan: te írod alá, én csak nézem. Nem fedem el a hibádat.",
-        "very_good",
-        { closeness: 6, trust: 1, flags: ["greta_lista"] },
-        "a ceruza megáll a kezében",
-      ),
-      c("good", "Rendben, nézzük meg. Soronként.", "good", { closeness: 2 }, "dolgozik"),
-      c("bad", "Majd később, most nincs időm.", "bad", { closeness: -1, anger: 1 }, "halasztás"),
-      c(
-        "very_bad",
-        "A demonstrátori helyed miatt kötelességed ezt megcsinálni.",
-        "very_bad",
-        { closeness: -5, anger: 2, flags: ["greta_eszkoz"] },
-        "eszköznek hallja",
-      ),
-    ],
-    "Gréta lista-hibáját nem takartad el.",
-  ),
-);
-
-add(
-  node(
-    "greta_hiba",
-    "greta",
-    "Az adminisztráción egy sor az enyém. Elrontottam a dátumot. Ha elrejted, gyorsabb. Ha nem, pontos.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A hiba a tiéd, a javítás is. Én nem írom át a neved helyett.",
-        "very_good",
-        { closeness: 5, trust: 1, flags: ["greta_hiba"] },
-        "kijavítja, és nem omlik össze",
-      ),
-      c("good", "Javítsuk ki együtt. A dátum a lapszélen marad.", "good", { closeness: 2 }, "közös"),
-      c("bad", "Majd én átírom, ne lássa a tanszék.", "bad", { closeness: -2, anger: 1 }, "eltakarod"),
-      c(
-        "very_bad",
-        "Egy demonstrátor nem hibázhat. Ezt jegyezd meg.",
-        "very_bad",
-        { closeness: -5, anger: 2 },
-        "vizsgának veszi",
-      ),
-    ],
-    "Gréta hibáját nem takartad a tanszék elől.",
-  ),
-);
-
-add(
-  node(
-    "greta_hatar",
-    "greta",
-    "Nyitott ajtónál kérdezem, mert így szabályos. Ha a kedvesség kivétel, azt ki kell mondani. Különben gyanús.",
-    "story",
-    [
-      c(
-        "very_good",
-        "A műhely nem tartozás, és nem kivétel a szabály alól. A beosztásom nem fizetség.",
-        "very_good",
-        { closeness: 4, trust: 1, flags: ["hatar"] },
-        "leírja magának, aztán bólint",
-        { calm: 3 },
-      ),
-      c("good", "A jelenléti ív a munka. Ami ezen kívül van, az nem kötelező.", "good", { closeness: 2 }, "határ"),
-      c("bad", "Egy demonstrátornak illik rugalmasnak lenni.", "bad", { closeness: -2, anger: 1 }, "kivétel"),
-      c(
-        "very_bad",
-        "A helyed miatt itt maradsz, amíg azt mondom.",
-        "very_bad",
-        { closeness: -5, anger: 2, flags: ["greta_eszkoz"] },
-        "bezár",
-      ),
-    ],
-    "Grétának is kimondtad: ez nem kivétel és nem tartozás.",
-  ),
-);
-
-add(
-  node(
-    "greta_het8",
-    "greta",
-    "A nyolcadik hét vége. A lista is lezárul. Ha utána is beszélsz velem, az már nem adminisztráció.",
-    "story",
-    [
-      c(
-        "very_good",
-        "Konkrétan: ha maradsz, a szabály nem kivétel. Nem titkoljuk, és nem vizsga.",
-        "very_good",
-        { closeness: 6, flags: ["greta_nem_vizsga"] },
-        "a ceruza a hajában marad",
-      ),
-      c("good", "A dokumentumok készen vannak. A többi nem lista.", "good", { closeness: 3 }, "pontos"),
-      c("bad", "A tanárnak döntenie kell. Te csak a névsort írod.", "bad", { closeness: -2, anger: 1 }, "lekicsinylés"),
-      c(
-        "very_bad",
-        "A demonstrátori helyed miatt kötelességed maradni.",
-        "very_bad",
-        { closeness: -5, anger: 2, flags: ["greta_eszkoz"] },
-        "eszköz",
-      ),
-    ],
-    "Gréta megkérdezte, a lista után mi marad.",
-  ),
-);
-
-add(
-  node(
-    "greta_route",
-    "greta",
-    "Gréta három dokumentum közös jegyzékét rakja eléd: egy hallgatói vallomást, a gondnok régi jelentését és az akták módosítási naplóját. „Még nem tudjuk, ki írta át a dátumokat. De a bizonyítékok együtt már elég erősek ahhoz, hogy független vizsgálatot kérjünk. Ez nem vizsga; itt az a fontos, hogy pontosan jelezzük, mi ismert és mi nem.”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Nem kell mindent egyedül megoldanod. Készítsük el a dokumentált átadást, a hiányzó adatokat is feltüntetve.",
-        "very_good",
-        { closeness: 4, trust: 1, flags: ["greta_nem_vizsga"] },
-        "egyet pislog, és javít",
-      ),
-      c("good", "Mutasd a jegyzéket. Ellenőrizzük végig az oldalszámokat és a dátumokat.", "good", { closeness: 2, trust: 1 }, "dolgozik"),
-      c("bad", "A vizsgálat csak újabb problémát hoz. Inkább zárjuk le.", "bad", { closeness: -2, anger: 1 }, "szigor"),
-      c(
-        "very_bad",
-        "A beosztásoddal elérhetem, hogy ne férj hozzá több irathoz. Döntsd el, kinek dolgozol.",
-        "very_bad",
-        { closeness: -5, anger: 2, flags: ["greta_eszkoz"], risk: 8 },
-        "zsarolás",
-      ),
-    ],
-    "Gréta a dokumentált együttműködést választotta a vak engedelmesség helyett.",
-  ),
-);
-
-add(
-  node(
-    "greta_kiss",
-    "greta",
-    "Az ajtó csukva. Levette a szemüvegét, aztán visszaveszi. „Nincs szabály, ami ezt tiltja. Ez gyanús. És mégis.”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Nincs lista. Ha kéred, megállunk. Ha nem, itt maradok.",
-        "very_good",
-        { closeness: 8, trust: 1, flags: ["flag_greta_kiss_light"] },
-        "rövid csók, aztán visszatolja a szemüveget",
-      ),
-      c("good", "A szabály az, hogy te mondod, mikor. Várhatunk.", "good", { closeness: 2 }, "a tempó az övé"),
-      c("bad", "Ez szabálytalan. Felejtsük el.", "bad", { closeness: -1 }, "visszalép"),
-      c(
-        "very_bad",
-        "A demonstrátori kulcsoddal zártad az ajtót. Ez a dolgod.",
-        "very_bad",
-        { closeness: -4, anger: 2, flags: ["greta_eszkoz"] },
-        "eszköz",
-      ),
-    ],
-    "Zárt ajtónál Gréta letette a listát.",
-  ),
-);
-
-add(
-  node(
-    "greta_mozi",
-    "greta",
-    "A jegyeken rajta van az időpont és a cím. Ellenőrizte kétszer. „Ha nem ezt egyeztettük, hazamegyek.”",
-    "story",
-    [
-      c(
-        "very_good",
-        "Ezt egyeztettük. A hátsó sor nem kell. A film címe stimmel.",
-        "very_good",
-        { closeness: 10, trust: 1 },
-        "a jegy a tárcájába kerül",
-        { insight: 4 },
-      ),
-      c("good", "Ha a cím stimmel, bemegyünk. Ha nem, visszaadom a jegyet.", "good", { closeness: 4 }, "pontos"),
-      c("bad", "Mindegy, mi megy. Üljünk le.", "bad", { closeness: -2, anger: 1 }, "rendezetlen"),
-      c("very_bad", "A demonstrátori kedvezményedből vettem. Illik maradni.", "very_bad", { closeness: -5, anger: 2, flags: ["greta_eszkoz"] }, "eszköz"),
-    ],
-    "A mozi időpontja stimmelt.",
-  ),
-);
-
-add(
-  node(
-    "greta_repeat_0",
-    "greta",
-    "A lista pontos. Ha van eltérés, javítom. Ha nincs, akkor is megnézem még egyszer.",
-    "repeat",
-    [
-      c(
-        "very_good",
-        "A szabály mindenkire vonatkozik. A kivétel gyanús. Ebben igazad van.",
-        "very_good",
-        { closeness: 4 },
-        "egyetért",
-      ),
-      c("good", "Nézzük a listát. Nem siettetlek a végén sem.", "good", { closeness: 2 }, "dolgozik"),
-      c("bad", "Majd később, most nincs idő.", "bad", { closeness: -1, anger: 1 }, "halasztás"),
-      c(
-        "very_bad",
-        "A demonstrátori helyed miatt itt vagy. Ez a szabály.",
-        "very_bad",
-        { closeness: -4, anger: 2, flags: ["greta_eszkoz"] },
-        "eszköz",
-      ),
-    ],
-  ),
-);
-
-add(
-  node(
-    "greta_repeat_1",
-    "greta",
-    "A folyosón nyitva az irodaajtó. Idekint nem beszélek olyat, ami nem kerülhet jegyzőkönyvbe.",
-    "repeat",
-    [
-      c(
-        "very_good",
-        "Akkor csak annyit, ami nyitott ajtónál is igaz. A többi várhat.",
-        "very_good",
-        { closeness: 4 },
-        "tisztelet",
-        { calm: 2 },
-      ),
-      c("good", "Holnap, zárt ajtónál, ha te kéred.", "good", { closeness: 2 }, "határidő"),
-      c("bad", "Ne légy ennyire merev. Senki nem jegyzetel.", "bad", { closeness: -2, anger: 1 }, "lekicsinylés"),
-      c("very_bad", "Húzd be az ajtót. Most. A helyed miatt megteheted.", "very_bad", { closeness: -4, anger: 2, risk: 6, flags: ["greta_eszkoz"] }, "parancs"),
-    ],
-  ),
-);
-
-function cold(id: GirlId, text: string): DialogueNode {
-  return node(
-    `${id}_cold`,
-    id,
-    text,
-    "cold",
-    [c("ok", "Értem. Nem erőltetem.", "good", {}, "távolság")],
-    undefined,
-    0,
-  );
-}
-
-add(cold("rebeka", "A kör nélkül is van napirended. Az enyém már nem fér bele. Ne állj az ajtóba."));
-add(cold("boglarka", "A margó tele van. Másnak írom. Bocsánat, hogy nem nézek fel."));
-add(cold("greta", "A lista lezárult. Ami utána van, az nem az én feladatom. Viszontlátásra, tanár úr."));
-
-function refuse(id: GirlId, text: string): DialogueNode {
-  return node(
-    `${id}_refuse`,
-    id,
-    text,
-    "refuse",
-    [c("ok", "Elmegyek.", "bad", {}, "elutasít")],
-    undefined,
-    0,
-  );
-}
-
-add(refuse("rebeka", "Ne gyere a kör közelébe. Amit elmondtál rólam, az elég volt."));
-add(refuse("boglarka", "Kérlek, maradj a folyosón. Most nem tudok beszélni."));
-add(refuse("greta", "A beszélgetésnek nincs értelme, amíg a hangnem ilyen. Lezárom."));
-
-add(
-  node(
-    "bekas",
-    "narrator",
-    "A Békás-tó sötét. A város innen egy vonal. Aki veled jött, külön jött: nem a kampusz előtt, és nem a karodon.",
-    "ambient",
-    [
-      c(
-        "very_good",
-        "Nem kell közönség. Elmondom, amit a tanszéken nem lehet.",
-        "very_good",
-        { closeness: 8 },
-        "a víz elviszi a mondatot",
-      ),
-      c("good", "Csak sétálunk. A tó nem kér jegyzőkönyvet.", "good", { closeness: 4 }, "csend"),
-      c("bad", "Unalmas. Menjünk vissza, amíg látnak.", "bad", { closeness: -2, risk: 4 }, "siet"),
-      c("very_bad", "Holnap elmesélem, kivel voltam kint.", "very_bad", { closeness: -4, anger: 1, risk: 10 }, "pletyka"),
-    ],
-  ),
-);
-
-add(
-  node("study", "narrator", "A tanszéki folyóiratot a lámpa alá húzod. Amit nem mondanak ki, a lapszélen szokott lenni.", "ambient", [
-    c("ok", "Elolvasod a lapszélt is.", "good", { insight: 1, energy: -12 }, "éleslátás"),
-  ], undefined, 0),
-);
-add(
-  node("rest", "narrator", "Este a lakás csendes. Nem tervezel mondatot, és nem nyitsz levelet.", "ambient", [
-    c("ok", "Korán oltod a lámpát.", "good", { calm: 1, energy: 36, soothe: true }, "nyugalom"),
-  ], undefined, 0),
-);
-add(
-  node("gym", "narrator", "Az udvar végében van egy rozsdás húzódzkodó. Nem közönségnek csinálod.", "ambient", [
-    c("ok", "Megcsinálod a sorozatot.", "good", { presence: 1, energy: -16 }, "jelenlét"),
-  ], undefined, 0),
-);
-add(
-  node("paper", "narrator", "A titkárság iratai egy dobozban várnak. Lány nincs a szobában. A pecsét viszont igen.", "ambient", [
-    c("ok", "Rendezed az iratokat.", "good", { money: 12000, energy: -14 }, "iratok"),
-  ], undefined, 0),
-);
-add(
-  node("lecture", "narrator", "A művelődési házban egy óra a misztikus gyógytornáról. A közönség idegen, a mondat a tiéd.", "ambient", [
-    c("ok", "Végigmondod, és nem hencegsz a tanszékkel.", "good", { money: 18000, presence: 1, energy: -16 }, "előadás"),
-  ], undefined, 0),
-);
-add(
-  node(
-    "proof",
-    "narrator",
-    "Esti korrektúra. A margó tele idegen hibával. A pénz pontos, az idő nem.",
-    "ambient",
-    [c("ok", "Leadod hajnal előtt.", "good", { money: 22000, energy: -18 }, "korrektúra")],
-    undefined,
-    0,
-  ),
-);
-add(
-  node("walk", "narrator", "Az udvar este kiürül. A kockázat egy része a fák alatt marad, ha nem keresel közönséget.", "ambient", [
-    c("ok", "Egy kört mész, és nem hívsz senkit.", "good", { calm: 1, energy: -6, soothe: true }, "séta"),
-  ], undefined, 0),
-);
-add(
-  node("prep", "narrator", "A tantermet előkészíted a gyógytornára. A szőnyegek a helyükön, a névsor még üres.", "ambient", [
-    c("ok", "Kinyitod az ablakot.", "good", { presence: 1, energy: -8 }, "terem"),
-  ], undefined, 0),
-);
-add(
-  node(
-    "empty",
-    "narrator",
-    "A hely üres. Aki ide jár, most máshol van, vagy nem akar ajtót nyitni.",
-    "ambient",
-    [c("ok", "Visszamész.", "good", { energy: -4 }, "üres")],
-    undefined,
-    0,
-  ),
-);
-
-export function physioNode(names: { id: GirlId; label: string }[]): DialogueNode {
-  const choices: Choice[] = names.slice(0, 3).map((g) => ({
-    id: g.id,
-    text: `${g.label.split(" ")[0]} mellett maradok óra után.`,
-    quality: "good" as const,
-    effect: { energy: -4 },
-    reaction: "az óra után",
-    follow: g.id,
-  }));
-  choices.push({
-    id: "even",
-    text: "Egyformán zárom az órát, és nem hívok ki senkit.",
-    quality: "good",
-    effect: { presence: 1, energy: -5 },
-    reaction: "a műhely rendben lement",
-  });
-  return {
-    id: "physio",
-    speaker: "narrator",
-    text: "A fakultatív gyógytorna lezajlik. A három név a lapon van, a jegy nem a tiéd. Óra után egy perc még a tiéd.",
-    kind: "ambient",
-    cost: 0,
-    choices: choices.slice(0, 4),
-    journal: "A heti gyógytorna megvolt.",
-  };
-}
-
-export function jobNode(text: string): DialogueNode {
-  return {
-    id: "job-result",
-    speaker: "narrator",
-    text,
-    kind: "ambient",
-    cost: 0,
-    choices: [c("ok", "Tovább", "good", {}, "kész")],
-  };
-}
-
-export function rumorNode(): DialogueNode {
-  return node(
-    "rumor",
-    "narrator",
-    "A titkárságon valaki összeilleszt két nevet. Nem tudják biztosan. Elég, ha kíváncsiak.",
-    "story",
-    [
-      c("calm", "Nem magyarázkodsz. A csend kevesebbet ad a pletykának.", "good", { risk: 5, world: ["pletyka"] }, "pletyka", { calm: 3 }),
-      c("bad", "Viccel még teszel rá. A vicc terjed.", "bad", { risk: 10, world: ["pletyka"] }, "pletyka"),
-    ],
-    "A tanszéken összeér két név.",
-  );
-}
-
-type HorrorEvent = { minWeek: number; maxWeek: number; location: LocationId; node: DialogueNode };
-
-const HORROR_EVENTS: HorrorEvent[] = [
-  {
-    minWeek: 2, maxWeek: 8, location: "department",
-    node: node("horror_lilla_report", "narrator",
-      "A tanszéki hirdetőtáblán egy rövid, hivatalos közlemény áll: Varga Lilla, tizenkilenc éves biológushallgató negyvenhárom percre eltűnt a parkban, majd a nyugati kapunál került elő. Nem sérült meg, de a történtek egy részére nem emlékszik. A jelentés szerint „valószínű tájékozódási zavar”. A lap szélén valaki ceruzával odaírta: Lilla azt állította, hogy a szobatársa hívta, aki aznap este végig a kollégiumban volt.",
-      "story", [
-        c("record", "Kérjünk beleegyezésével részletes tanúvallomást, és őrizzük meg az eredeti jelentést.", "very_good", { insight: 1, calm: 1, world: ["case_lilla_documented"] }, "óvatos dokumentálás"),
-        c("wait", "Előbb ellenőrizzük, ki írta a közleményt; Lillát ne tegyük ki újabb nyomásnak.", "good", { insight: 1 }, "ellenőrzés"),
-        c("dismiss", "Ha nincs sérülés és nincs szemtanú, nincs mit vizsgálni.", "bad", { risk: 5, world: ["case_lilla_dismissed"] }, "elhallgatás")
-      ], "Esetjelentés — Varga Lilla eltűnésének és emlékezetkiesésének dokumentuma előkerült.")
-  },
-  {
-    minWeek: 2, maxWeek: 8, location: "classroom",
-    node: node("horror_voice_witness", "narrator",
-      "A rövid, négyszemközti vallomásban Lilla egy apró részletre emlékszik: a hang a szobatársa becenevén szólította, majd megismételte a mondat utolsó szótagját, mintha egy pillanattal később érne utol a visszhang. Lilla nem látott biztosan semmit. Azt kéri, hogy a nevét ne írják ki a folyosói hirdetőtáblára.",
-      "story", [
-        c("protect", "A nevét zártan kezeljük, a részleteket pedig különválasztjuk a következtetéseinktől.", "very_good", { calm: 1, insight: 1, world: ["case_witness_protected"] }, "tanúvédelem"),
-        c("verify", "Kérdezzünk rá a hangra egy második, független beszélgetésben.", "good", { insight: 1 }, "ellenőrzés"),
-        c("publish", "A teljes történet kell a nyilvánosságnak, névvel együtt.", "bad", { risk: 8, world: ["case_witness_exposed"] }, "adatvédelmi kockázat")
-      ], "Esetjelentés — Lilla a hangutánzás késleltetett visszhangjáról számolt be.")
-  },
-  {
-    minWeek: 3, maxWeek: 8, location: "holdkor",
-    node: node("horror_shadow_frame", "narrator",
-      "A fotóműhely monitorán egy korábban észre sem vett részlet jelenik meg. A fák között magas, sötét köpenyes alak áll, kapucnija alatt nem látszik arc; a pocsolya csak a fákat tükrözi, őt nem. A kép önmagában lehet expozíciós hiba. A fájl metaadatai viszont nem egyeznek azzal az idővel, amikor a gép órája szerint a felvétel készült.",
-      "story", [
-        c("preserve", "Készítsünk ellenőrzőösszeget, másolatot és jegyzőkönyvet; az eredetit ne módosítsuk.", "very_good", { insight: 2, world: ["evidence_photo_preserved"] }, "bizonyítékmegőrzés"),
-        c("compare", "Hasonlítsuk össze a másik két képpel, mielőtt következtetést vonunk le.", "good", { insight: 1 }, "összevetés"),
-        c("post", "Tegyük közzé. Hadd döntse el a közönség, hogy szörny-e.", "bad", { risk: 7, world: ["evidence_photo_published"] }, "nyilvánosság")
-      ], "Esetjelentés — Egy fénykép tükröződése és időbélyege nem egyezik.", undefined, undefined,
-      "A kapucni mélyén csak egyetlen izzó vörös szem látszik; az arc és a test részletei teljesen rejtve maradnak · illusztráció hiányzik")
-  },
-  {
-    minWeek: 4, maxWeek: 10, location: "department",
-    node: node("horror_old_case", "narrator",
-      "Egy régi iktatókönyvben ugyanaz a mintázat ismétlődik: Tóth Júlia hallgató huszonegy percig nem volt elérhető a park közelében, majd segítséget kért a portán. Az ügyet „éjszakai pánikreakcióként” zárták le. A digitális másolat szerint a bejegyzés ideje délutánra került át, és egy korábbi melléklet hiányzik.",
-      "story", [
-        c("audit", "Rögzítsük az eredeti és a módosított időpontot is; az eltérést még ne nevezzük szándékos hamisításnak.", "very_good", { insight: 2, world: ["case_old_audited"] }, "iratellenőrzés"),
-        c("copy", "Kérjünk egy másik példányt a levéltárból.", "good", { insight: 1 }, "másolatkérés"),
-        c("accuse", "Azonnal nevezzük meg nyilvánosan a felelőst.", "bad", { risk: 8 }, "elhamarkodott vád")
-      ], "Esetjelentés — Tóth Júlia régi bejegyzésének időpontját utólag módosították.")
-  },
-  {
-    minWeek: 5, maxWeek: 12, location: "library",
-    node: node("horror_survivor_statement", "narrator",
-      "Egy volt hallgató, Németh Eszter, csak akkor hajlandó beszélni, ha a neve nem kerül a jegyzőkönyv nyilvános változatába. Évekkel korábban őt is egy ismerős hang csalta a fák közé. Nem látott tiszta alakot; azt hallotta, hogy a saját hangja szólítja a keresőcsapatot a rossz irányból. Amikor megpróbált felelni, a hang egy ütemmel később ismételte a szavait.",
-      "story", [
-        c("protect", "A nevét külön, korlátozott hozzáférésű mellékletben tartjuk, és csak a jóváhagyásával idézzük.", "very_good", { calm: 1, insight: 1, world: ["case_eszter_protected"] }, "tanúvédelem"),
-        c("clarify", "Kérdezzük meg, mely részletekre emlékszik biztosan, és melyekre csak következtet.", "good", { insight: 1 }, "pontosítás"),
-        c("press", "Addig kérdezzük, amíg pontosan le nem írja a lényt.", "bad", { risk: 5 }, "nyomásgyakorlás")
-      ], "Esetjelentés — Németh Eszter túlélővallomása megerősítette a késleltetett hangutánzás motívumát.")
-  },
-  {
-    minWeek: 7, maxWeek: 12, location: "courtyard",
-    node: node("horror_sealed_door", "narrator",
-      "A lezárt szervizajtó előtt friss, páros nyomok indulnak a fal felé, aztán megszakadnak a kövön. A zár sértetlen. A porban keskeny karcolások húzódnak, mintha valami a túloldalról próbálta volna kitapogatni a kilincset. A közeli diákok semmit sem hallottak — kivéve az egyikük, aki a saját nevét hallotta a fal mögül.",
-      "story", [
-        c("document", "Fényképezzük le a helyet mércével, és a lezárt ajtót ne nyissuk ki egyedül.", "very_good", { insight: 1, calm: 1, world: ["tunnel_marks_documented"] }, "helyszíni dokumentálás"),
-        c("secure", "Értesítsük a gondnokságot, és kérjünk két tanút a helyszín biztosításához.", "good", { calm: 1 }, "biztosítás"),
-        c("enter", "Nyissuk ki most, mielőtt eltűnnek a nyomok.", "bad", { risk: 10 }, "veszélyes behatolás")
-      ], "Esetjelentés — Friss nyomok jelentek meg a lezárt szervizajtónál.")
-  },
-  {
-    minWeek: 8, maxWeek: 13, location: "library",
-    node: node("horror_bell_clapper", "narrator",
-      "A régi leltár szerint a főiskola harangját egy baleset után leszerelték. A harangtest megvan, de a nyelve hiányzik; a kivétel dátuma egybeesik az egyik régi eltűnés hetével. A régi feljegyzések nem egyeznek abban, hogy a harang elűzi-e a köpenyes árnyalakot. Eszter vallomása alapján egyelőre csak annyi állítható: a tiszta, ismétlődő hang megszakíthatja az utánzást.",
-      "story", [
-        c("compare", "A leltárt vessük össze a gondnok jegyzeteivel; a harangot ne próbáljuk ki ember mellett.", "very_good", { insight: 2, calm: 1, world: ["bell_clapper_traced"] }, "források összevetése"),
-        c("plan", "Készítsünk biztonságos próbát távol a park ösvényeitől.", "good", { insight: 1 }, "óvatos kísérlet"),
-        c("test", "Menjünk ki éjjel és csengessünk, hátha előjön.", "bad", { risk: 10 }, "kockázatos próba")
-      ], "Esetjelentés — A harang hiányzó nyelve az egyik régi incidens idején került le.")
-  },
-  {
-    minWeek: 10, maxWeek: 15, location: "classroom",
-    node: node("horror_mimic_call", "narrator",
-      "A délutáni folyosón a főhős hangja hallatszik a lezárt lépcsőházból: valaki azt mondja, hogy az egyik hallgató azonnal jöjjön le. Ugyanabban a pillanatban a főhős a terem másik végében áll. A hang nem ismétel, csak vár. A diák már elindulna, de a csoportos jelzésre megáll.",
-      "story", [
-        c("stay_together", "Senki nem válik le a csoportról; ellenőrizzük egymást látásból és kézjellel.", "very_good", { calm: 2, world: ["mimic_safety_protocol"] }, "biztonsági jelzés"),
-        c("call_backup", "Kérjünk gondnoki segítséget, és zárjuk le a folyosót.", "good", { calm: 1 }, "segítségkérés"),
-        c("follow_voice", "Menjünk a hang után, amíg még halljuk.", "bad", { risk: 12 }, "veszélyes követés")
-      ], "Esetjelentés — A lény a főhős hangját utánozta egy lezárt lépcsőházból.")
-  },
-  {
-    minWeek: 11, maxWeek: 15, location: "holdkor",
-    node: node("horror_full_sighting", "narrator",
-      "A Holdkör hátsó ablakán át egy pillanatra teljes alak látszik a fák között: magas, sötét köpenyt visel, arca a kapucni mélyén eltűnik. A szél megmozdítja a fákat, de a köpenye mozdulatlan; az árnyéka egy ütemmel a teste előtt fordul el. A nedves kövön nincs felismerhető tükörképe. A felvétel homályos, ezért önmagában nem bizonyít semmit, de három különböző irányból ugyanazt a hangtalan jelenlétet jelentik.",
-      "story", [
-        c("withdraw", "Rögzítsük az időt és a távolságot, majd vonuljunk vissza a kivilágított épületbe.", "very_good", { calm: 2, insight: 1, world: ["monster_sighting_verified"] }, "biztonságos visszavonulás"),
-        c("compare", "Vessük össze a látottakat a korábbi képekkel, és ne állítsunk többet, mint amit a felvétel mutat.", "good", { insight: 1 }, "bizonyíték-összevetés"),
-        c("approach", "Közelítsünk, hogy végre éles képet készíthessünk.", "bad", { risk: 12 }, "veszélyes közelítés")
-      ], "Esetjelentés — Három tanú ugyanarról a köpenyes alakról számolt be.", undefined, undefined,
-      "Csak egyetlen izzó vörös szem látszik a kapucni sötétjében; sem az arc, sem a haj, sem a testalkat nem fedhető fel még · illusztráció hiányzik")
-  },
-  {
-    minWeek: 12, maxWeek: 15, location: "department",
-    node: node("horror_reports_bundle", "narrator",
-      "A három jelentés egymás mellé téve már nem elszigetelt furcsaság: az eltűnések időpontjai a harang leltári változása után sűrűsödnek, a tanúvallomásokat pedig minden alkalommal rövidítették. A dékáni titkárság neve a továbbítási sorban szerepel, de a közvetlen szándék még nem bizonyított. A legfontosabb kérdés most az, hogy miként védjétek a tanúkat és az eredeti iratokat.",
-      "story", [
-        c("chain", "Készítsünk dokumentált bizonyítékláncot, és adjuk át független vizsgálónak.", "very_good", { insight: 2, calm: 1, world: ["evidence_chain_complete"] }, "bizonyítéklánc"),
-        c("copy", "Őrizzünk külön biztonsági másolatot, mielőtt bárkit megvádolunk.", "good", { insight: 1 }, "biztonsági másolat"),
-        c("accuse", "Nyilvánosan nevezzük meg a dékánt a bizonyítékok teljes ellenőrzése előtt.", "bad", { risk: 10 }, "bizonyítatlan vád")
-      ], "Esetjelentés — A régi és új ügyek ugyanabba az intézményi mintába illeszkednek.")
-  },
-  {
-    minWeek: 13, maxWeek: 15, location: "courtyard",
-    node: node("horror_last_trace", "narrator",
-      "Az eső után friss nyomok vezetnek a lezárt szárnyhoz, de egyik sem tart visszafelé. A gondnok régi jegyzete szerint a köpenyes alak akkor veszti el a tájékozódását, ha az utánzott hang nem kap választ, és tiszta, ismétlődő hang szólal meg a közelében. Ez még nem győzelmi terv. Csak az első olyan feltevés, amelyet a fényképek, az iratok és a vallomások egyszerre támasztanak alá.",
-      "story", [
-        c("rehearse", "Próbáljuk el a visszavonulást és a jelzéseket nappal; a harang hangját csak a kijelölt ponton használjuk.", "very_good", { insight: 1, calm: 2, world: ["final_plan_rehearsed"] }, "finálé előtti próba"),
-        c("delegate", "Osszuk ki a feladatokat, és mindenkinek legyen kijelölt társa.", "good", { calm: 1 }, "feladatmegosztás"),
-        c("rush", "Nincs idő próbára, induljunk azonnal a föld alá.", "bad", { risk: 12 }, "kapkodás")
-      ], "Esetjelentés — A finálé előtt összeállt a hangutánzás elleni biztonsági terv.")
-  },
-
-  {
-    minWeek: 3, maxWeek: 10, location: "courtyard",
-    node: node(
-      "horror_cloaked_attack_courtyard",
-      "narrator",
-      "A nyugati udvaron a portás hangján szólít valaki két hallgatót. Amikor egyikük válaszolna, egy magas, köpenyes árnyalak válik le a gesztenyefák közti sötétségről, és elvágja a kapu felé vezető utat. A kapucni alatt nincs kivehető arc; az alak a csoportból leszakadó hallgatót figyeli, majd a hang felé fordul, mintha a válasz irányából tájékozódna. Dr. Farkas Dénes, a biológiaoktató az ablakból látja a támadást, és a személyzeti vészcsengőhöz irányítja őket.",
-      "story",
-      [
-        c("stay_together", "Tartsd együtt a két hallgatót, és a kivilágított porta felé hátráljatok.", "very_good", { risk: -8, calm: 1, world: ["shadow_attack_team_escape"] }, "együtt maradás"),
-        c("signal", "Használd a vészcsengőt, és jelentsétek be a helyszínt a portán.", "good", { presence: 1, risk: -4, world: ["shadow_attack_signal_used"] }, "vészjelzés"),
-        c("chase", "Válaszolj a hangnak, és indulj egyedül az alak után.", "bad", { risk: 12, world: ["shadow_attack_isolated"] }, "elszigetelődés")
-      ],
-      "Esetjelentés — Tanúvallomás készült az udvari támadásról, amelyben egy köpenyes árnyalak zárta el a menekülőutat.",
-      0,
-      "Dr. Farkas Dénes · biológiaoktató",
-      "Sötét köpenyes sziluett; a kapucni alatt kizárólag egyetlen izzó vörös szem látható, minden más részlet rejtve marad · illusztráció hiányzik"
-    ),
-  },
-  {
-    minWeek: 4, maxWeek: 12, location: "library",
-    node: node(
-      "horror_teacher_folklore",
-      "narrator",
-      "Dr. Sárközi Júlia, a néprajzkutató vendégoktató két, egymástól független régi feljegyzést tesz az asztalra. Mindkettő magas, köpenyes éji alakról beszél, amely ismerős hangon hívja félre az embereket. Az egyik margóján az ember és a vérivó közötti származás lehetősége is szerepel, de Júlia hangsúlyozza: ez folklór, nem bizonyíték. A mostani vallomásokkal a hangutánzás, a tükörkép hiánya és az egyedül maradók célba vétele mutat közös mintát.",
-      "story",
-      [
-        c("compare", "Készítsünk forrásjegyzéket, és különítsük el a tanúvallomást a folklórtól.", "very_good", { insight: 2, calm: 1, world: ["shadow_figure_lore_documented"] }, "forráskritika"),
-        c("protect", "A korábbi tanú nevét hagyjuk ki; csak az ellenőrizhető részleteket használjuk.", "good", { calm: 1, world: ["teacher_witness_protected"] }, "tanúvédelem"),
-        c("dismiss", "A népmesék nem érnek semmit. Zárjuk le a kutatást.", "bad", { risk: 5, world: ["shadow_figure_lore_dismissed"] }, "elutasítás")
-      ],
-      "Esetjelentés — Egy vendégoktató segített összevetni a folklórt és a tanúvallomásokat.",
-      0,
-      "Dr. Sárközi Júlia · néprajzkutató",
-      "Dr. Sárközi Júlia · portrékép hiányzik"
-    ),
-  },
-  {
-    minWeek: 8, maxWeek: 15, location: "peron",
-    node: node(
-      "horror_cloaked_attack_peron",
-      "narrator",
-      "Az esti peron végéről a tanszéki ügyeletes hangja hív a sínek felé. Dr. Kerekes Áron rákiált a csoportodra, hogy ne induljatok a hang után, de a sötét köpenyes alak már előlép a ködből. A kapucni alatt nincs arc, a lámpafény pedig mintha elnyelné a ruháján. A menekülőút a szolgálati ajtó felé vezet; az alak minden válaszra a hang irányába fordul.",
-      "story",
-      [
-        c("service_door", "Ne feleljetek a hívásra; együtt menjetek be a szolgálati helyiségbe.", "very_good", { calm: 2, risk: -8, world: ["shadow_attack_peron_escape"] }, "együtt menekülés"),
-        c("alarm", "Riaszd a peron személyzetét, és maradjatok a fényben.", "good", { presence: 1, risk: -4, world: ["shadow_attack_peron_alarm"] }, "riasztás"),
-        c("answer", "Válaszolj a saját neveddel, hátha kiderül, honnan jön a hang.", "very_bad", { risk: 15, world: ["shadow_attack_peron_lured"] }, "a hang követése")
-      ],
-      "Esetjelentés — Újabb támadást jelentettek az esti peronról.",
-      0,
-      "Dr. Kerekes Áron · ügyeletes oktató",
-      "Ködfátyolos, sötét köpenyes sziluett; a kapucni alatt egyetlen izzó vörös szem látszik, az arc nem vehető ki · illusztráció hiányzik"
-    ),
-  },
-  {
-    minWeek: 9, maxWeek: 15, location: "department",
-    node: node(
-      "horror_teacher_archive",
-      "narrator",
-      "Dr. Kerekes Áron nem hajlandó szóbeszédként elintézni az ügyet. Megmutat egy iratmásolatot: az egyik korábbi jelentés időbélyegét kétszer írták át, és a módosítás nem szerepel a naplóban. Kerekes szerint a dékáni iroda nem ad ki újabb dokumentumot hivatalos kérelem nélkül. A döntés most az, hogyan marad ellenőrizhető a bizonyíték, és hogyan kerülhető el egy bizonyítatlan személyes vád.",
-      "story",
-      [
-        c("audit", "Kérj hivatalos másolatot, őrizd meg az eredeti fájlt és a módosítási naplót.", "very_good", { insight: 2, calm: 1, world: ["teacher_records_preserved"] }, "bizonyítéklánc"),
-        c("copy", "Készíts külön, dátumozott biztonsági másolatot.", "good", { insight: 1, world: ["teacher_records_copied"] }, "biztonsági másolat"),
-        c("accuse", "Ne várj papírra; nevezd meg nyilvánosan a felelőst.", "bad", { risk: 10, world: ["teacher_records_accused"] }, "elhamarkodott vád")
-      ],
-      "Esetjelentés — Egy másik oktató segített feltárni az iratkezelési eltérést.",
-      0,
-      "Dr. Kerekes Áron · ügyeletes oktató",
-      "Dr. Kerekes Áron · portrékép hiányzik"
-    ),
-  },
-  {
-    minWeek: 14, maxWeek: 16, location: "department",
-    node: node(
-      "horror_half_vampire_reveal",
-      "narrator",
-      "Dr. Kerekes Áron bezárja a tanszéki irattár ajtaját, aztán egy régi, pecsétes jegyzőkönyvet tesz eléd. A tanúk leírása, a tükröződés nélküli felvételek és a vérrel kapcsolatos régi kórlap ugyanarra mutatnak: a köpenyes alak nem egyszerűen ember vagy teljes vámpír, hanem félvér vámpír — emberi és vámpírvérből született. Amikor a kapucni végre lecsúszik, nem elegáns vagy csábító alakot láttok: rövid fekete haj, ritkás bajusz, kissé túlsúlyos testalkat és durva, kevéssé megnyerő arcvonások. A külső esetlensége semmit sem vesz el a veszélyéből. Nappal is járhat, de a gyorsasága és az éhsége nem emberi. A hangutánzást arra használja, hogy elszigetelje a kiszemelt hallgatót. A tanúk vallomásaiból az is kiderül, hogy szexuális vágya betegesen felnőtt nőkre irányul, de vágyát nem kölcsönösségként, hanem birtoklásként és kényszerként éli meg; a visszautasítás sem állítaná meg. Nem pusztán vérre szomjazik, hanem a félelem és a másik fölötti uralom érzésére is. Ez nem csábítás és nem romantika, hanem fenyegetés. Első a lehetséges áldozatok biztonsága.",
-      "story",
-      [
-        c("protect", "Biztosítsuk a tanúkat, alakítsunk ki páros kíséretet és vészjelzést; senki ne maradjon vele egyedül.", "very_good", { insight: 2, calm: 2, risk: -8, world: ["half_vampire_reveal_documented", "survivors_protected"] }, "tanúvédelem és biztonsági terv"),
-        c("copy", "Készítsünk ellenőrzött másolatot a jegyzőkönyvről, és adjuk át független vizsgálónak.", "good", { insight: 1, risk: -3, world: ["half_vampire_records_copied"] }, "bizonyítékmegőrzés"),
-        c("bait", "Csaljuk egyedül a szolgálati folyosóra; majd ott kiderül, mire készül.", "bad", { risk: 15, world: ["half_vampire_bait_attempted"] }, "veszélyes elszigetelődés")
-      ],
-      "Esetjelentés — A köpenyes alak félvér vámpír, akinek ragadozó, kényszerítő szándékát dokumentálták.",
-      0,
-      "Dr. Kerekes Áron · ügyeletes oktató",
-      "A leleplezett félvér vámpír: sötét köpeny, rövid fekete haj, ritkás bajusz, kissé túlsúlyos testalkat, durva és kevéssé megnyerő arc · illusztráció hiányzik"
-    ),
-  }
+const shared=(week:number,title:string,location:LocationId,participants:ActorId[],lines:Spoken[],evidence:string[],journal:string,extra:Requirements={}):Scene=>scene('shared_'+week,title,'shared',week,week,location,participants,lines,{...extra,scenes:week>1?['shared_'+(week-1)]:[]},evidence,journal);
+const spine:Scene[]=[
+ shared(1,'Az első műhely','classroom',['marton','rebeka','boglarka','greta','soma'],[
+  say('narrator','Októberi eső kopog a radiátor fölötti ablakon. Márton Kelényi, harmincnégy éves tanár és tanulmányi felelős, elindítja a fakultatív műhelyt. A mozgásos figyelemgyakorlatot évek óta ismeri; most először tanítja Ligetváron.'),
+  say('greta','Gréta Váradi vagyok, huszonegy. Az adminisztrációban segítek, de a gyakorlatot is szeretném megtanulni. A terembeosztásban csütörtök szerepel; ma kedd van. Ezt még az első késés előtt javítsuk ki.'),
+  say('rebeka','Rebeka Dorn, húsz. Fotóesszét készítek a műhelyről. Azt állítod, észrevesszük, ha elterelik a figyelmünket? Mutass valamit, ami nem csak jól hangzik. Arcot egyelőre nem fényképezek.','amused'),
+  say('boglarka','Fazekas Boglárka, tizenkilenc. A helyi mozdulatsorok eredetét kutatom. Pontosan mit figyelünk: az eltelt időt vagy azt, ahogy emlékezünk rá? A kettő nem feltétlenül egyezik.'),
+  say('marton','A talpatok nyomását, három önként választott lélegzetet és a falióra járását. Ez nem vizsga.','neutral',[
+   option('demonstrate','Megmutatom, aztán mindenki a saját tempójában próbálhatja.','Gréta elteszi a jelenléti ívet. Rebeka leengedi a gépet; Boglárka elindítja a stoppert.'),
+   option('observe','Előbb figyelhettek is; csak az vegyen részt, aki szeretne.','Boglárka előbb figyel, aztán maga áll be a körbe. Senkit nem kell rábeszélni.')]),
+  say('narrator','A gyakorlat végén ugyanazt a fél percet mérik. Rebeka észreveszi, hogy a folyosói zajra elfordult; a következő körben tudatosan visszahozza a figyelmét. A módszer segít észlelni a kiesést, nem tesz sérthetetlenné.'),
+  say('soma','Végh Soma, egyetemi asszisztens. A raktári kulcsokat én hoztam. A saját kutatási előterjesztésemet harmadszor adták vissza. Ti legalább kaptatok termet.','displeased'),
+  say('marton','Az eszközökért köszönöm. A műhely eredményét nem fogom senki pályázatához előre eladni.'),
+  say('narrator','Soma a szűkített hozzáférésű archívum felé indul. Gréta kijavítja a dátumot. Rebeka képet kér az üres kör helyéről, Boglárka felírja a mozdulatsor forrását. Mindhárman más kérdéssel maradnak ott.')
+ ],['grounding'],'Megismertem a három hallgatót és Somát. Az önkéntes földelőgyakorlat segít észrevenni a figyelem elkalandozását.'),
+ shared(2,'Egy hiányzó este','department',['marton','soma','greta','rebeka','boglarka','denes'],[
+  say('greta','Soma tegnap nem jött el a leltárra. Ma reggel négy órányi munkát készített el húsz perc alatt. A kimaradt időpont ettől még kimaradt.'),
+  say('soma','Néha elég rájönni, hogyan figyeljenek végre rád. Ma felhívtak az ösztöndíjbizottságtól. A rossz kávét is jobb kedvvel iszom.','amused'),
+  say('rebeka','Lilla tegnap estétől ma délig nem válaszolt. Most visszajött, de nem bír felmenni a lépcsőn. Nem kérek tőle képet.'),
+  say('denes','Megvizsgáltam. Kimerült, sérülést nem találtam. Elindult a könyvtárból, a következő emléke pedig a reggeli busz. Most pihenésre van szüksége.'),
+  say('boglarka','Külön írom, amit ő mond, és amit mi feltételezünk. Az üres helyet a jegyzetben nem tölthetjük ki helyette.'),
+  say('marton','Előbb megkérdezzük, akar-e beszélni velünk.','neutral',[
+   option('ask','Dénesen keresztül kérek egy rövid, visszautasítható beszélgetést.','Dénes vállalja, hogy megkérdezi. Az egészségi adatok nála maradnak.'),
+   option('space','Adok neki egy napot; jelezzük, hogy meghallgatjuk, ha szeretné.','Lilla másnap üzen: tíz percet vállal, fénykép nélkül.')]),
+  say('narrator','Soma lendülete és Lilla hiányzó estéje egyelőre két külön tény. Földelést felajánlhatnak, elveszett emlékek visszaadását nem ígérik.')
+ ],['returned_lilla'],'Lilla kimerülten tért vissza, és hiányzik egy estéje. Soma elmulasztott egy találkozót, majd feltűnően energikusan tért vissza. Az okot még nem ismerjük.'),
+ shared(3,'Tíz perc, felvétel nélkül','library',['marton','lilla','rebeka','boglarka','greta'],[
+  say('lilla','Tíz perc. Az arcomat ne fényképezzétek le, a hangomat se tegyétek sehova. Nem szeretném, hogy az egész épület engem nézzen.'),
+  say('rebeka','A gép a táskában marad. Ha később kell kép a helyszínről, előbb megmutatom neked.'),
+  say('marton','Bármikor abbahagyhatjuk.','neutral',[
+   option('listen','A saját szavaiddal mondd, ameddig jólesik.','Lilla maga választja ki, honnan kezdi.'),
+   option('timeline','Csak az utolsó biztos időpontot keressük meg.','Gréta megmutatja a naplót; Lilla javítja a dátumot.')]),
+  say('lilla','Fél kilenc volt. Valaki azt mondta: „Maradt még egy hely neked.” Azt hittem, a szakkörre hívnak. Ugyanezt hallottam a lépcsőn is. A következő dolog a reggeli busz volt.'),
+  say('boglarka','A „valaki hívott” nem jelenti, hogy tudjuk, ki volt. Az ismétlődő mondatot idézetként jelölöm; a beszélőt ismeretlenül hagyom.'),
+  say('greta','A kártyanaplóban 20:34 áll, utána 6:12. Ez két biztos pont. A közötte lévő rész még nincs meg.'),
+  say('lilla','Ennyi elég. A nevem helyett legyen L. a közös jegyzetben.'),
+  say('narrator','Becsukják a füzetet. Van egy pontos idézetük és két időpontjuk, de nincs bizonyítékuk a tettesre.')
+ ],['phrase','time_gap'],'Lilla engedélyével rögzítettük az ismételt mondatot és a hiányzó időt. A hang gazdája ismeretlen.',{evidence:['grounding','returned_lilla']}),
+ shared(4,'A képek és a névsor','library',['marton','rebeka','boglarka','greta','julia'],[
+  say('narrator','Rebeka a helyszínképeket, Gréta a kártyanaplót hozza. Boglárka külön lapra teszi az idézeteket. Júlia csak a tanúk által megosztható változatot kapja meg.'),
+  say('rebeka','A gépem órája hét percet siet. Ha ezt nem javítom, úgy látszik, mintha Lilla az eltűnése után is itt lett volna.'),
+  say('greta','A belépési rendszer óráját aznap állították be. Az időpontokat ehhez igazítom.'),
+  say('boglarka','Az „elvitték” szót húzzuk ki. Azt tudjuk, hogy bement a folyosóra. Azt még nem, hogy kivel és miért.'),
+  say('julia','A helyi történetekben van hívogató hang, de a hasonlóság nem bizonyíték. A pontos lejegyzés többet ér egy hangzatos párhuzamnál.'),
+  say('marton','Külön maradjon a tény és a feltételezés.','neutral',[
+   option('separate','Közösen javítsuk az időrendet, az eredetiket megőrizve.','A hétperces eltérést és a javítás szerzőjét is rögzítitek.'),
+   option('check','Előbb mindenki ellenőrizze a saját forrását.','Gréta három oszlopot nyit, és jelöli a bizonytalanságokat.')]),
+  say('narrator','A három külön hozzájárulásból összeáll a könyvtártól a lezárt lépcsőig vezető út. Az ajtón túl továbbra is hiányzik az este.')
+ ],['timeline'],'A korrigált fényképidő, az eredeti idézet és a belépési napló a lezárt lépcsőig vezet.',{evidence:['phrase','time_gap']}),
+ shared(5,'Ugyanaz a mondat','holdkor',['marton','rebeka','boglarka','greta'],[
+  say('narrator','A vetítőt keresik. A szomszédos, üres tárolóból ismerős hang szól: „Maradt még egy hely neked.”'),
+  say('rebeka','Ez az én hangom. De én nem mondtam semmit.','displeased'),
+  say('marton','Ne induljatok a hang után. Saját lélegzet, talp a kövön, tekintet az órán.','neutral',[
+   option('ground','Végigvezetem a már megtanult földelést.','A csoport visszatalál a saját tempójához.'),
+   option('withdraw','Előbb visszalépünk a világos lépcsőhöz.','Biztonságos távolságból is megfigyelhető az ismétlés.')]),
+  say('boglarka','Ugyanazzal a szünettel mondja. A kérdésemre nem válaszol. Ez ismétlés, nem beszélgetés.'),
+  say('greta','A tároló kulcsa nálam van. Nem nyitjuk ki egyedül. Jelzek Áronnak.'),
+  say('narrator','A hang harmadszor is ugyanott vesz levegőt. Mire Áron leér, elhallgat. A földelés a figyelmüket hozta vissza; a hang forrását nem mutatta meg.')
+ ],['borrowed_voice'],'Egy üres helyiségből szólt Rebeka hallott mondata. A hang nem tudott új választ adni; a földelés segített ellenállni.',{evidence:['grounding','phrase','timeline']}),
+ shared(6,'Az ajánlat ára','courtyard',['marton','soma','denes','rebeka','boglarka','greta'],[
+  say('soma','Megkaptam a vendégelőadói lehetőséget. Régebben egy szót sem hagytak végigmondani. Most mindenki talál rám időt.','amused'),
+  say('greta','A meghívó valódi. Az előkészítő találkozó éjszakára került. Ez nem szokásos.'),
+  say('denes','Egy másik hallgató is visszatért. A nevét nem adhatom tovább. Elismerést ígértek a munkájáért; ezért ment el. Utána órák estek ki.'),
+  say('boglarka','Az indoka érthető. Az, hogy elment, nem beleegyezés olyasmibe, amiről nem tudott.'),
+  say('rebeka','Nem használom az arcát. A helyszín képét is ő választhatja ki, ha szeretné.'),
+  say('marton','A két esetet személyes adatok nélkül vetjük össze.','neutral',[
+   option('protect','Az állapotok és az engedélyezett időpontok elégségesek.','Dénes mindkét esetnél ugyanazt a szokatlan kimerülést igazolja.'),
+   option('consent','Kérjünk külön engedélyt a csoporttal megosztott részletekre.','Az időpontok megoszthatók, a személyes üzenetek magánügyek maradnak.')]),
+  say('narrator','Az egyikük társaságot, a másikuk elismerést keresett. A kimerülés és az elveszett idő mégis közös.')
+ ],['pattern'],'Két visszatérő embernél azonos a kimerülés és a kieső idő mintája, eltérő személyes indítékok mellett.',{evidence:['borrowed_voice']}),
+ shared(7,'A hiányos leírás','library',['marton','rebeka','boglarka','greta','julia','aron'],[
+  say('aron','Felügyelettel hozzáférhettek a régi kísérleti anyagokhoz. Másolatot jegyzőkönyv mellett készítünk.'),
+  say('greta','Soma neve szerepel annál a kötetnél, amelyikből kitéptek egy lapot. A félév előtt kérte ki.'),
+  say('julia','A korábbi tanúk sikertelen sötétmágiai kísérletekről beszélnek. Ezek nem bizonyítanak korábbi vámpírtámadásokat.'),
+  say('boglarka','A megmaradt rész önként végzett átalakulást ír le. Kölcsönzött életerőt említ; befejezés nélkül az állapot instabil.'),
+  say('rebeka','A lap szélén ugyanaz a pinceablak van, mint egy régi képen. A kör vége viszont leszakadt.'),
+  say('marton','A hiány is része a bizonyítéknak.','neutral',[
+   option('copy','Az egész megmaradt oldalt másoljuk, a hiánnyal együtt.','Áron hitelesíti, Júlia jelöli a bizonytalan olvasatot.'),
+   option('index','Az oldalszám alapján keressük a hiányzó mellékletet.','Egy régi karbantartási jegyzékhez jut az utalás.')]),
+  say('narrator','A leírás magyarázhatja a kimerülést. A befejezés helyét és módját még nem ismerik. Rebeka és Boglárka egymással egyeztet új időpontot.')
+ ],['ritual_fragment','archive_access'],'Soma kikérte az önkéntes, életerőt kölcsönző átalakulás hiányos leírását. A régi ügyek sikertelen kísérletek voltak.',{evidence:['pattern']}),
+ shared(8,'Kinek mondjuk el?','classroom',['marton','rebeka','boglarka','greta','denes','julia'],[
+  say('greta','Az esetek dátumai és Soma távollétei fedik egymást. Kell még tőle független megerősítés.'),
+  say('denes','A tanúk adatai nálam maradnak. A segítségük nem függ attól, kivel vagytok személyes kapcsolatban.'),
+  say('julia','Én a hiányzó szöveget keresem. Áron hozzáférést biztosít. Most a tervezett tájékoztatásról kell döntenünk.'),
+  say('marton','Az érintettek beleegyezése minden változatban szükséges.','neutral',[
+   option('public','Ellenőrzött, engedélyezett bizonyítékokra épülő nyilvános beszámolót készítünk.','A tanúk neve nem lesz a nyilvánosság ára.',{disclosure:'public'}),
+   option('limited','Egyelőre korlátozott hozzáférésű jelentést készítünk.','Dénes és Júlia külön példányt őriz.',{disclosure:'limited'}),
+   option('private','A csoport és a segítők között tartjuk az ügyet.','Ez védheti a magánszférát, de megkönnyítheti az intézményi hallgatást.',{disclosure:'private'})]),
+  say('rebeka','A közös munka attól még közös, ha a magánéletünk másfelé megy. A nyomozást ne egy kapcsolat oldja meg.'),
+  say('boglarka','A szándék sem kész kapcsolat. Elmondhatjuk, merre mennénk, de külön kell beszélnünk róla.'),
+  say('narrator','A tervezőben személyes irány választható: egyéni közeledés, óvatos közös lehetőség vagy barátság. Ez nem jelent mások helyett kimondott igent.')
+ ],['investigation_plan'],'Szétosztottuk a nyomozás feladatait és döntöttünk a tájékoztatásról. A romantikus irány egyelőre szándék.',{evidence:['archive_access','ritual_fragment']}),
+ shared(9,'Független ellenőrzés','department',['marton','greta','rebeka','boglarka','aron','denes'],[
+  say('aron','Az érintett engedélyével ellenőriztem a meghívót: Soma intézményi címéről küldték. A más által vezetett belépési napló ugyanazt az estét mutatja.'),
+  say('greta','Két külön rendszer, két külön kezelő. Az eredetik mellé tesszük a javításokat.'),
+  say('rebeka','A tanú a helyszínképen azonosította a lépcsőt. Magát nem akarta a sorozatba.'),
+  say('boglarka','A meghívó, a helyszín és a napló egymástól függetlenül mutat Somára. Ez már több, mint időbeli egybeesés.'),
+  say('denes','Kimerült tanúval nem rendezünk szembesítést. A következő lépésben a segítők mennek.'),
+  say('marton','Az állításaink mögött maradjon ellenőrizhető forrás.','neutral',[
+   option('document','Áronnal hitelesített másolatot kérünk.','A tanú saját példányt kap.'),
+   option('review','Júliával külön is átnézetjük az összefüggést.','Az ellenőrzés nem függ a személyes útvonaltól.')]),
+  say('narrator','Soma neve először kerül a jegyzet ellenőrzött részébe. A szándékát még tőle vagy további iratokból kell megtudni.')
+ ],['identity'],'Független meghívó-, belépési és helyszínadatok Somához kötik az eseteket.',{evidence:['investigation_plan','timeline']}),
+ shared(10,'A könnyű siker','department',['marton','soma'],[
+  say('narrator','Soma új plakátot hoz. A vendégelőadáson az ő neve áll az első sorban.'),
+  say('soma','Ha nem bolygatod az archívumot, a műhelyed megkapja a pénzt és a termet. Végre azt csinálhatod, amihez értesz.'),
+  say('marton','Mit tettél a leírással?'),
+  say('soma','Végigcsináltam. Magamtól, tudatosan. Elegem volt abból, hogy mindenki tehetségesebbnek és kívánatosabbnak látszik nálam. Most észrevesznek. Már csak be kell fejeznem.','displeased'),
+  say('marton','Az elismerés nem indok arra, hogy mások erejét elvedd.','neutral',[
+   option('refuse','A műhely jövőjét nem cserélem hallgatásra.','Soma leteszi a plakátot. Az ajánlatot nem fogadod el.'),
+   option('question','Ez nem válasz arra, mi történt az eltűnt emberekkel.','Soma elhárítja a kérdést. Megállapodást nem ígérsz.')]),
+  say('soma','Nem tudok bármit akaratni velük. Aki semmit nem akar tőlem, azt egy szép mondattal nem tartom ott. De mindig van valami, amire az ember vágyik.'),
+  say('narrator','Távozása után Márton leírja a beszélgetést. A tudatos átalakulás beismerés; a hatalom korlátait még ellenőrizni kell.')
+ ],['deliberate_transformation'],'Soma beismerte a tudatos átalakulást. Sikerért és figyelemért tette, a befejezésre készül.',{evidence:['identity','ritual_fragment']}),
+ shared(11,'A nemet nem írja felül','courtyard',['marton','soma','julia','denes','greta'],[
+  say('narrator','Júlia és Dénes felügyeli a találkozót; a kijáratok szabadok. Soma az archívumi másolatokat akarja vissza.'),
+  say('soma','Gréta, nálam nem maradnál mások táblázatai mögött. Hozd ide az iratokat, és beszéljünk a te nevedről is.'),
+  say('greta','Szeretném, hogy elismerjék a munkámat. Attól még nem adom oda, ami nem csak az enyém. Nem megyek veled.'),
+  say('narrator','Soma figyelme magára vonja a tekintetet. Gréta a lélegzetét számolja, és a kijáratnál marad. A nemet nem váltja igenre a hatás.'),
+  say('marton','Gréta döntését nem tárgyaljuk újra.','neutral',[
+   option('support','Lezárom a beszélgetést, és együtt megyünk vissza.','Dénes ellenőrzi Gréta állapotát. Az ajánlat vonzó része és az elutasítás egyszerre volt valós.'),
+   option('witness','Júlia rögzítse pontosan az elutasítást.','A felerősített figyelem nem írta át az akaratot.')]),
+  say('julia','A rajongás és az ambíció erősítése veszélyes, de nem szeretet teremtése. Ezt most már nem csak a leírásból tudjuk.')
+ ],['fascination_limit'],'Felügyelet mellett láttuk: a figyelem és ambíció erősítése ellenére hatásos marad az elutasítás. A vámpír nem teremthet szerelmet.',{evidence:['deliberate_transformation','grounding']}),
+ shared(12,'A kitépett lap másolata','library',['marton','boglarka','rebeka','greta','julia','aron'],[
+  say('aron','A régi karbantartási mellékletnél volt egy másodpéldány. Megvan a hiányzó lap, nem Soma hozta vissza.'),
+  say('boglarka','A kölcsönzött életerőt helyhez kötött horgony tartja össze. A nyitott rítus horgonyának megszakítása végzetes összeomlást okoz az átalakultnak.'),
+  say('julia','Ez ennek az instabil átalakulásnak a feltétele, nem általános vámpírellenes fegyver. A pontos helyet és időt is tudnunk kell.'),
+  say('greta','Soma a tizenötödik hétre kért éjszakai hozzáférést. Van határidőnk.'),
+  say('rebeka','A rajzon három padlóba süllyesztett rögzítés van. Az archív fotókon keresem meg, melyik helyiségben volt ilyen.'),
+  say('marton','A következményt nem hallgatjuk el.','neutral',[
+   option('explain','Mindenki értse, hogy Soma belehalhat a rítus megszakításába.','Senki nem kap hamis ígéretet veszélytelen megoldásról.'),
+   option('help','Dénest és Áront is bevonjuk a kivonulás tervébe.','A szakmai segítség románctól függetlenül jár.')]),
+  say('narrator','Külön helyeken őrzik a teljes másolatot. A végső gyengeség és az időpont még a konfrontáció előtt ismertté vált.')
+ ],['anchor_rule','completion_date'],'Megvan a teljes leírás: a nyitott horgony megszakítása halálos összeomlást okoz. Soma a 15. hétre készül.',{evidence:['ritual_fragment','fascination_limit']}),
+ shared(13,'A régi gépészeti kamra','chamber',['marton','rebeka','boglarka','greta','aron'],[
+  say('narrator','Áron nappal nyitja ki a kamrát. Régi vezetékek futnak a falon, a szerelőakna körül három rögzítés látszik.'),
+  say('rebeka','Ugyanaz a repedés, mint az archív fotón. Nem szép kép kell: a méretarány és a három pont legyen rajta.'),
+  say('boglarka','A kör kötés, nem ajtó vagy puszta jelkép. A három rögzítést együtt kell megszakítani, amíg a folyamat nyitott.'),
+  say('greta','Ez a kijárat a szolgálati lépcsőre vezet. Soma nem zárhatja le külön. A másik irány zsákutca.'),
+  say('aron','A rítus idején itt leszek. A kijárat akkor sem marad őrizetlen, ha ti nem bírjátok.'),
+  say('marton','Most ellenőrizzük a helyet; idő előtt nem bolygatjuk a horgonyt.','neutral',[
+   option('map','Felrajzolom a távolságot és a kijáratot.','A visszavonulási út mindenkinek ismert.'),
+   option('record','A képek mellé közösen írunk pontos leírást.','A helyszín rögzítése nem függ a személyes iránytól.')]),
+  say('narrator','A kamra a kastély valós alaprajzának része lett. Mindenki megkeresi a kijáratot, mielőtt visszazárják az ajtót.')
+ ],['chamber_location'],'Azonosítottuk a kamrát, a három rögzítést és a szolgálati kijáratot.',{evidence:['anchor_rule','completion_date']}),
+ shared(14,'A terv, aminek ára van','classroom',['marton','rebeka','boglarka','greta','denes','julia','aron'],[
+  say('narrator','Krétával jelölik a kamra méreteit. A visszatérő tanúk biztonságos helyen maradnak.'),
+  say('denes','A külön próba és a segítői beosztás javít az esélyeken. Ha kimaradnak, akkor is közbelépünk, csak nagyobb lehet a veszteség.'),
+  say('julia','A nyitott állapotot a három rögzítés egyszerre változó fénye jelzi. A leírást a kamra megfigyelése is alátámasztja.'),
+  say('aron','Soma tudja, hogy lent jártunk. Visszakérte a kulcsokat, de a felügyeletet nem mondtam le.'),
+  say('marton','Aki nem vállalja a veszélyt, más feladatot kap. A felkészülés nem szerelmi bizonyíték.','neutral',[
+   option('share','Megosztom a feladatokat, és elfogadom a segítséget.','A szerepek világosak; a szabad sávokban még lehet külön gyakorolni.'),
+   option('protect','Én a horgonyhoz megyek, a többiek a saját határukról döntenek.','Dénes nem ígér sérthetetlenséget. Az ellátás közös ügy.')]),
+  say('greta','A magánéleti ígéreteinket se a riadalom vigye helyettünk tovább.'),
+  say('narrator','Ez az utolsó hét a konfrontáció előtti személyes alkalmak pótlására. A két szabad sávban felkészülés, találkozó vagy pihenés választható.')
+ ],['intervention_plan'],'Megbeszéltük a nyitott rítus jelét, a feladatokat és a kijárat védelmét. A segítség nem személyes kapcsolatért jár.',{evidence:['chamber_location','anchor_rule']}),
+ shared(15,'A megszakított befejezés','chamber',['marton','soma','denes','julia','aron','rebeka','boglarka','greta'],[
+  say('narrator','A három rögzítés egyszerre világosodik ki. Soma a kör közepén áll. A kijáratnál Áron vár, Dénes mellette. A tanúk nem kerültek ide.'),
+  say('soma','Végre nem könyörgök azért, hogy figyeljenek rám. Hagyd befejezni. Holnapra mindenki a sikerem kezdeteként emlékszik erre.'),
+  say('marton','Az elveszett esték és az elvett erő nem a te sikered. A leírást ismerjük. A kötés most nyitott.'),
+  say('narrator','Soma hallott hangon hívja a csoportot a lépcső felé. Ugyanaz a mondat ismétlődik. Márton a földelésre emlékeztet, Dénes a megingó emberekhez lép. A hang nem dönthet helyettük.'),
+  say('marton','Most kell megszakítani a három kötést.','neutral',[
+   option('signal','Jelzek a segítőknek, együtt oldjuk a rögzítéseket.','Áron a kijáratot biztosítja, Júlia a nyitott állapotot ellenőrzi.'),
+   option('anchor','A horgonyhoz lépek, és fedezetet kérek.','Dénes átveszi, aki nem bírja tovább. A három rögzítés megszakad.')]),
+  say('narrator','A kör fénye megszűnik. Soma saját hangján próbál megszólalni, aztán a kölcsönzött életerő széthullik. A teste mozdulatlanná válik. Dénes ellenőrzi, majd kimondja: meghalt.'),
+  say('julia','Most kifelé. Az iratok csak akkor jönnek velünk, ha értük menni nem veszélyeztet senkit.'),
+  say('narrator','A külön felkészülés határozza meg, mennyi erő és bizonyíték marad náluk. A vámpír meghalt. A felépülés és a felelősség kérdése előttük áll.')
+ ],['vampire_dead'],'Megszakítottuk a horgonyt. Soma instabil átalakulása összeomlott, a vámpír meghalt. A segítők mindenkit kivezettek.',{evidence:['intervention_plan','borrowed_voice','fascination_limit']}),
+ shared(16,'A megmaradt idő','department',['marton','rebeka','boglarka','greta','denes','julia','aron'],[
+  say('denes','Lilla jobban van, de még hamar elfárad. A hiányzó emlékeket nem erőltetjük vissza. Mindenki más ütemben épül fel.'),
+  say('julia','A bizonytalan és sérült részleteket annak jelöltem. Nem készítünk szebb történetet a tények helyére.'),
+  say('aron','A vezetés várja a jelentést. A korábbi tájékoztatási döntést most megerősíthetitek vagy módosíthatjátok.'),
+  say('marton','A tanúk magánadatait egyik változat sem adja oda.','neutral',[
+   option('public','Az ellenőrzött, engedélyezett bizonyítékok alapján nyilvános elismerést kérek.','A bizonyítékok megőrzése számít abban, mennyit ismer el a főiskola.',{disclosure:'public'}),
+   option('limited','Korlátozott jelentést adunk, saját példányt is megőrizve.','Áron átvételi igazolást kér. A főiskola részleges magyarázatot adhat.',{disclosure:'limited'}),
+   option('private','A személyes védelmet választom, nyilvános ügy nélkül.','Az ellátás folytatódik. Az intézmény könnyebben hallgathat a lényegéről.',{disclosure:'private'})]),
+  say('rebeka','Nem a kamra képével akarom lezárni a sorozatot. Kell egy délután, amikor nem bizonyítékot keresünk.'),
+  say('boglarka','A nevemet írom a kész szövegre. Hogy kinek mutatom meg először, már nem a nyomozás feladata.'),
+  say('greta','Két szabad sávunk még van. A jelentés nem zárja be helyettünk a félévet.'),
+  say('narrator','Az intézményi választ rögzítik. A személyes utóbeszélgetésekre és a baráti találkozóra még a végső epilógus előtt sor kerülhet.')
+ ],['aftermath'],'Rendeztük a bizonyítékokat és a jelentést. A személyes utóbeszélgetésekre még két szabad sáv van.',{evidence:['vampire_dead']})
 ];
+spine[14].resolution='confrontation';spine[15].resolution='institution';
 
-export function horrorNode(week: number, seen: string[], seed: number): { node: DialogueNode; location: LocationId } | null {
-  // Keep missed events as catch-up candidates after their intended window. Otherwise a
-  // low roll count could permanently skip important cases and the late cloaked-figure attacks.
-  const unseen = HORROR_EVENTS.filter(
-    (event) => week >= event.minWeek && !seen.includes(event.node.id)
-  );
-  if (!unseen.length) return null;
-
-  const overdue = unseen
-    .filter((event) => week > event.maxWeek)
-    .sort((a, b) => a.maxWeek - b.maxWeek);
-  const earliestMissedDeadline = overdue[0]?.maxWeek;
-  const available = earliestMissedDeadline === undefined
-    ? unseen.filter((event) => week <= event.maxWeek)
-    : overdue.filter((event) => event.maxWeek === earliestMissedDeadline);
-  if (!available.length) return null;
-
-  const index = Math.abs(seed) % available.length;
-  const selected = available[index]!;
-  return { node: selected.node, location: selected.location };
-}
-
-export function weeklyHorrorSummary(week: number): { title: string; text: string } {
-  const beats: Array<{ title: string; text: string }> = [
-    { title: "Egy hiányzó negyvenhárom perc", text: "Varga Lilla, tizenkilenc éves biológushallgató a parkban tűnt el rövid időre, majd úgy került elő, hogy az út egy részére nem emlékezett. A hivatalos jelentés tájékozódási zavart említ; a hang, amely őt az ösvényre csalta, a szobatársa hangja volt." },
-    { title: "A hang, amelynek nem lett volna szabad ott lennie", text: "Lilla szobatársa igazolja, hogy nem hagyta el a kollégiumot. A vallomás ezért nem magyarázza meg az esetet — csak azt bizonyítja, hogy valami ismerős hangon szólíthatta a hallgatót." },
-    { title: "Az első ellentmondó felvétel", text: "Rebeka fényképén egy köpenyes alak áll a fák között, de a pocsolya csak a fákat tükrözi. Lehet optikai vagy technikai hiba; az eredeti fájl és a metaadatok megőrzése fontosabb a gyors következtetésnél." },
-    { title: "Egy második tanú", text: "Egy újabb hallgató ugyanazt a hangutánzó jelenséget írja le. A tanúvallomást csak engedéllyel lehet felhasználni; a főiskolán közben továbbra is rémhírként kezelik az ügyet." },
-    { title: "A régi akták", text: "Tóth Júlia korábbi esete azonos mintát mutat: rövid eltűnés, hiányos emlékezet, majd a jelentés átminősítése. Az időbélyeg módosítása arra utal, hogy az intézményi nyilvántartás nem megbízható." },
-    { title: "Aki már egyszer hallotta", text: "Németh Eszter, volt hallgató, évekkel korábbi találkozásról beszél. Nem tudja leírni a lényt, de emlékszik a saját hangjára a fák között és a válasz késleltetett visszhangjára." },
-    { title: "A hiányzó részlet", text: "A lezárt szárny rajzai és a régi térkép nem fedik egymást. Az épület nyugati fala mögött olyan átjáró húzódhat, amelyet a jelenlegi tervrajzok már nem jelölnek." },
-    { title: "A harang leltári nyoma", text: "A harangtest megvan, a nyelve hiányzik. A leszerelés dátuma egybeesik egy régi hallgatói incidenssel. A feljegyzések nem bizonyítják, hogy a harang árt az alaknak, de tiszta hangja megszakíthatja a hangutánzást." },
-    { title: "A zárt útvonal", text: "A nyomozás immár egy lezárt szervizalagút felé tart. A köpenyes árnyalak akkor a legveszélyesebb, amikor valakit leválaszt a többiekről; a biztonsági szabályokat ezért még a belépés előtt rögzíteni kell." },
-    { title: "A főhős hangja a rossz helyről", text: "Egy folyosói megszólítás a főhős hangját utánozza, miközben ő látható helyen áll. A csapat megtanulja: ismerős hang nem jelent megbízható hívást, és senki nem indulhat el egyedül." },
-    { title: "Nyomok a fal túloldalán", text: "A lezárt ajtónál friss, mély karcolások és fekete, hamuszerű por jelenik meg. Nincs bizonyíték arra, hogy az ajtót kívülről kinyitották volna; az épület alaprajzát és a fal mögötti üreget újra kell vizsgálni." },
-    { title: "Egy pillanatnyi teljes alak", text: "Három tanú ugyanabban az órában látja a magas, köpenyes alakot. Mindhárman említik, hogy a kapucni alatt nem volt kivehető arc, és az árnyék más ütemben mozdult, mint a test. Rebeka felvétele, Boglárka forrásai és Gréta iratai együtt teszik ellenőrizhetővé a mintát." },
-    { title: "A jelentések közös mintája", text: "A régi és új ügyekben ugyanaz a szerkesztési nyom szerepel. Ez az eltussolást valószínűsíti, de önmagában nem bizonyítja, ki és milyen szándékkal módosította az iratokat." },
-    { title: "A hangutánzás szabálya", text: "A vallomások és a régi feljegyzések egy irányba mutatnak: a köpenyes alak ismerős hanggal próbálja elszigetelni a célpontját. A hívás elutasítása, a társas jelzés és a harang tiszta hangja együtt növelheti a túlélés esélyét." },
-    { title: "A finálé előtti utolsó nyom", text: "A régi iratok már egy ember és vámpír közötti félvér származását említik, a felvételek pedig a tükörkép nélküli, köpenyes alakot mutatják. Ez erős nyom, de a bizonyítékokat még össze kell vetni; a csapat biztonsága nem függhet egyetlen feltevéstől." },
-    { title: "A történet végén", text: "A tanúvallomások és a régi iratok alapján a köpenyes alak félvér vámpír: hangutánzással szigeteli el a kiszemelt hallgatókat, vérre szomjazik, és ragadozó, kényszerítő szexuális vágyát a másik fölötti uralommal kapcsolja össze. Ez nem romantikus vonzalom, hanem fenyegetés. A finálé kimenetele attól függ, mennyire őriztétek meg a bizonyítékokat, a túlélők biztonságát és a csapat bizalmát." }
-  ];
-  return beats[Math.max(0, Math.min(beats.length - 1, Math.floor(week) - 1))]!;
-}
-
-export { NODES };
-
-export const STORY: StoryEvent[] = [
-  { id: "rebeka_intro", node: "rebeka_intro", girl: "rebeka", locations: ["holdkor", "classroom"], part: 1, priority: 10, minWeek: 1 },
-  { id: "rebeka_feny", node: "rebeka_feny", girl: "rebeka", locations: ["holdkor", "courtyard", "classroom"], part: 1, priority: 30, minWeek: 2 },
-  { id: "rebeka_foto", node: "rebeka_foto", girl: "rebeka", locations: ["apartment"], part: 1, priority: 35, minWeek: 3, minTrust: 2 },
-  { id: "rebeka_hatar", node: "rebeka_hatar", girl: "rebeka", locations: ["holdkor", "apartment", "classroom"], part: 1, priority: 40, minWeek: 5, minTrust: 2 },
-  { id: "rebeka_het8", node: "rebeka_het8", girl: "rebeka", locations: ["holdkor", "classroom"], part: 1, priority: 80, minWeek: 7, maxWeek: 8 },
-  { id: "rebeka_route", node: "rebeka_route", girl: "rebeka", locations: ["holdkor", "apartment", "classroom"], part: 2, priority: 82, minWeek: 10, minTrust: 3 },
-  { id: "rebeka_kiss", node: "rebeka_kiss", girl: "rebeka", locations: ["apartment"], part: 2, priority: 95, minWeek: 15, minTrust: 4, minClose: 60 },
-
-  { id: "boglarka_intro", node: "boglarka_intro", girl: "boglarka", locations: ["library", "classroom"], part: 1, priority: 10, minWeek: 1 },
-  { id: "boglarka_nev", node: "boglarka_nev", girl: "boglarka", locations: ["library", "classroom"], part: 1, priority: 20, minWeek: 2 },
-  { id: "boglarka_udvar", node: "boglarka_udvar", girl: "boglarka", locations: ["courtyard"], part: 1, priority: 35, minWeek: 4, minTrust: 2 },
-  { id: "boglarka_hatar", node: "boglarka_hatar", girl: "boglarka", locations: ["library", "apartment", "classroom"], part: 1, priority: 40, minWeek: 5, minTrust: 2 },
-  { id: "boglarka_het8", node: "boglarka_het8", girl: "boglarka", locations: ["library", "classroom"], part: 1, priority: 80, minWeek: 7, maxWeek: 8 },
-  { id: "boglarka_route", node: "boglarka_route", girl: "boglarka", locations: ["library", "apartment", "classroom"], part: 2, priority: 82, minWeek: 10, minTrust: 3 },
-  { id: "boglarka_kiss", node: "boglarka_kiss", girl: "boglarka", locations: ["apartment"], part: 2, priority: 95, minWeek: 15, minTrust: 4, minClose: 60 },
-
-  { id: "greta_intro", node: "greta_intro", girl: "greta", locations: ["department", "classroom"], part: 1, priority: 10, minWeek: 1 },
-  { id: "greta_hiba", node: "greta_hiba", girl: "greta", locations: ["department", "classroom"], part: 1, priority: 30, minWeek: 3 },
-  { id: "greta_hatar", node: "greta_hatar", girl: "greta", locations: ["department", "apartment", "classroom"], part: 1, priority: 40, minWeek: 5, minTrust: 2 },
-  { id: "greta_het8", node: "greta_het8", girl: "greta", locations: ["department", "classroom"], part: 1, priority: 80, minWeek: 7, maxWeek: 8 },
-  { id: "greta_route", node: "greta_route", girl: "greta", locations: ["department", "apartment", "classroom"], part: 2, priority: 82, minWeek: 10, minTrust: 3 },
-  { id: "greta_kiss", node: "greta_kiss", girl: "greta", locations: ["apartment"], part: 2, priority: 95, minWeek: 15, minTrust: 4, minClose: 60 },
+const foundations:Scene[]=[
+ scene('rebeka_1','Rebeka — A kép széle','relationship',1,14,'classroom',['marton','rebeka'],[
+  say('narrator','Rebeka három képet tesz az üres tanterem asztalára: egy elmosódott kezet, a radiátor fölötti ablakot és a kör helyét a padlón.'),
+  say('rebeka','A Holdkör szerint emberek nélkül nincs történet. Néha attól látszik valaki, amit nem mutatok meg róla. Melyiket hagynád bent?','amused'),
+  say('marton','Mit szeretnél, hogy észrevegyek?','neutral',[
+   option('interest','A kéz elmosódását. Benne van a mozdulat, mégsem mondja meg, kié.','Rebeka közelebb húzza a széket. „Végre valaki nem azt mondja, hogy élesítsek rajta.”',{bonds:{marton_rebeka:8},decisions:['rebeka_interest']}),
+   option('ask','Az ablakot választanám. Te miért fényképezted le?','„Mert a fűtés zúgása közben mindenki kifelé nézett.” Megmutatja a következő képet is.',{bonds:{marton_rebeka:6},decisions:['rebeka_interest']}),
+   option('leave','Most nem tudok igazán figyelni. Ezt inkább megmondom.','„Akkor ne játsszunk műkritikust.” A találkozó nem ígért közelséget.',{decisions:['rebeka_withdraw']})]),
+  say('rebeka','A munkacím: Ami kívül marad. Nem kell rá bók. Szólj, ha a saját magyarázatom is túl kényelmes.','vulnerable'),
+  say('marton','A műhelyt vezetem, de a képeidről nem én mondom ki az utolsó szót.'),
+  say('narrator','Rebeka visszarendezi a fotókat. Egy negyediket is letesz: ugyanaz az ablak, egy elhagyott kávéscsészével. Nem feladatnak szánja.')
+ ],{scenes:['shared_1']},[],'Rebeka megmutatta a fotóesszéjét. A kép és a magánélet határa az ő döntése maradt.'),
+ scene('boglarka_1','Boglárka — A saját nevem','relationship',2,14,'library',['marton','boglarka'],[
+  say('narrator','Boglárka három eltérő átiratot tesz az asztalra. Az egyikben a saját mondatai szerepelnek egy ismertebb kutató neve alatt.'),
+  say('boglarka','Nem akarok rögtön botrányt. De attól, hogy csendben javítok, még nem azé, aki hangosabban mondja el.'),
+  say('marton','Mit szeretnél kezdeni a gyűjtéssel?'),
+  say('boglarka','Egy rövid tanulmányt. A nevemmel. Egyetlen olyan lábjegyzet nélkül, amit csak azért írok oda, hogy valaki ne sértődjön meg.','amused'),
+  say('marton','Abban segítek, amire megkérsz.','neutral',[
+   option('interest','Elolvasom a változatokat, aztán a saját érveidet kérem.','„A harmadik mondatnál ne bólogass olyan gyorsan.” A saját lapját teszi előre.',{bonds:{marton_boglarka:8},decisions:['boglarka_interest']}),
+   option('ask','Melyik szóhoz ragaszkodsz leginkább?','Nem más tekintélyével indokolja a választ. Tovább marad a tervezettnél.',{bonds:{marton_boglarka:6},decisions:['boglarka_interest']}),
+   option('leave','Ma csak a könyvért ugrottam be.','Boglárka elteszi a szöveget. A rövid találkozó nem ígért személyes folytatást.',{decisions:['boglarka_withdraw']})])
+ ],{scenes:['shared_2']},[],'Boglárka a saját neve alatt szeretné kiadni a kutatását. A személyes figyelemről világos választ kapott.'),
+ scene('greta_1','Gréta — A lista mögött','relationship',2,14,'department',['marton','greta'],[
+  say('narrator','Gréta a teremfoglalást javítja. Az asztal szélén egy túraútvonal hever, ugyanolyan gondosan kiszínezve.'),
+  say('greta','A „megbízható Gréta” lassan munkaköri leírás a nevem helyett. A rosszul jelzett ösvényeket jobban szeretem a táblázatoknál.'),
+  say('marton','Melyik útra mennél most?'),
+  say('greta','A tó körüli rövid körre. Nem teljesítmény. Csak kint vagyok.','amused'),
+  say('marton','Az is érdekel, amit magadnak választasz.','neutral',[
+   option('interest','Nézzük meg a térképet; az iratokat ma én zárom le.','Nem újabb feladatot ad. A kedvenc kerülőjét mutatja.',{bonds:{marton_greta:8},decisions:['greta_interest']}),
+   option('ask','Hol szeretsz megállni a tónál?','„Ott, ahol nem kérdezik, hány lépést mentél.” Elmosolyodik.',{bonds:{marton_greta:6},decisions:['greta_interest']}),
+   option('leave','Ma csak a teremkulcsért jöttem.','A kulcsot megkapod. A térképet Gréta magának tartja meg.',{decisions:['greta_withdraw']})])
+ ],{scenes:['shared_2']},[],'Gréta a saját szabadidejéről beszélt. A személyes figyelmet nem az adminisztrációért kapta.')
 ];
-
-export const REQUIRED_FLAGS: Record<GirlId, string[]> = {
-  rebeka: ["rebeka_kor", "rebeka_feny", "rebeka_foto"],
-  boglarka: ["boglarka_margo", "boglarka_nev", "boglarka_udvar"],
-  greta: ["greta_lista", "greta_hiba", "greta_nem_vizsga"],
+const personal={
+ rebeka:{
+  name:'Rebeka',place:'holdkor' as LocationId,earliest:3,invite:6,
+  attraction:['A vetítés után csak a ventilátor hallatszik. Rebeka a képernyő helyett most rád néz.','A képeimről könnyű veled beszélni. Ha flörtölök, azt hiszik, mindent elmondtam. Pedig tetszel, csak nem szeretném, ha ettől a műhelyben másnak lenne igaza.','Lassan szeretnék közelebb kerülni. Nem akarom egyszerre elmondani az egész történetet.'],
+  invitation:['A tóparton Rebeka gép nélkül vár, két papírpohár kávéval.','Én hívtalak. Nem kép kell, és a Holdkörnek sem bizonyítunk semmit. Sétálnék veled. Megfoghatom a kezed? Bármikor mondhatjuk, hogy elég.','Jó itt veled. A következő kört nem kell senkinek megmutatnom.'],
+  conflict:['A műhely bemutatójának vázlatában a tóparti beszélgetésetek egyik gondolata szerepel.','Azt hittem, ami ott elhangzott, nem lesz reklámszöveg. Nem írtad bele a nevemet, mégis tudom, melyik mondat az enyém.','Ne azt mondd, hogy nem úgy gondoltad. Azt mondd, mit csinálsz most másképp.'],
+  repair:'Kiveszem a mondatot. A személyes részletek új felhasználásához külön kérdezek.',
+  commitment:'A képeket eltehetem. Azt kérdezem, velem szeretnél-e lenni akkor is, ha nincs mit megmutatnom.',
+  aftermath:'A kiállítás képét én választom. Utána viszont nem gratulálni szeretnélek látni, hanem hazasétálni veled.'
+ },
+ boglarka:{
+  name:'Boglárka',place:'library' as LocationId,earliest:4,invite:7,
+  attraction:['Boglárka két csészével érkezik. Az üres helyre most nem tesz füzetet.','A második teát neked hoztam. Nem azért, mert tanár vagy, és nem azért, hogy elolvasd a dolgozatomat.','Maradj tíz percig feladat nélkül. Azt hiszem, többet szeretnék a beszélgetéseinktől. Még nem tudom gyorsabban mondani.'],
+  invitation:['Boglárka csukva teszi le a könyvet az udvari padra. Veled szemben ül le.','Egy vers miatt akartalak hívni. Aztán rájöttem, megint más mondata helyettem lenne bátor. Szeretnék randizni veled.','És megcsókolnám az arcodat, ha te is akarod. Nem a tanulmányról akarok beszélgetni, és nem megköszönni jöttem valamit.'],
+  conflict:['Egy megbeszélésen Márton Boglárka helyett fejezett be egy magyarázatot. A könyvtárban Boglárka nem ül le rögtön.','Segíteni akartál, de mindenki megint téged hallott. Veled sem szeretnék lábjegyzet lenni.','A következő alkalommal várd ki a mondatomat. Akkor is, ha túl lassúnak tartasz.'],
+  repair:'Jelzem a csoportnak, hogy az értelmezés a tied, és visszaadom a szót.',
+  commitment:'A saját szavaimmal mondom: kapcsolatot szeretnék veled, nem meg nem nevezett mellékszálat valaki életében.',
+  aftermath:'A tanulmányra felkerült a nevem. A következő szabad délutánom mellé a tiédet szeretném, a saját szavaimmal.'
+ },
+ greta:{
+  name:'Gréta',place:'courtyard' as LocationId,earliest:5,invite:7,
+  attraction:['Az udvaron eláll az eső. Gréta egy üres naptármezőt mutat.','Ezt szándékosan hagytam üresen. Az irodában könnyű azt mondani, hogy szükséged van rám. Itt is maradnál, ha nincs mit megoldanom?','A saját nevemben kérdezem. Vonzódom hozzád; eddig minden mondatot egy elintézendő ügy mögé rejtettem.'],
+  invitation:['A tóparton Gréta telefonja felvillan. Ő lenémítja.','A jelentést holnap is leadhatom. A saját estém is számít. Legyen ez randi, ne tegyünk úgy, mintha hibát javítanánk közben.','A tó felé kerülőt választanék. Nem kell megmagyaráznom, miért az a leghatékonyabb út.'],
+  conflict:['Márton még egy javítandó iratot tesz a közös délután elé. Gréta nem nyitja ki a dossziét.','Ha minden találkozónk előtt van még egy apró feladat, honnan tudjam, hogy engem vársz? Ne attól legyek fontos, hogy elvégzem, ami másnak nem jutott eszébe.','Ma maradjon itt az irat. Nem megnyugtatást kérek, hanem egy üres délutánt.'],
+  repair:'Másnak adom a határidős ügyet; a többit holnap végzem el. Veled megyek.',
+  commitment:'Szeretnélek akkor is látni, amikor semmi hasznosat nem csinálok. Erre akarok időt vállalni, nem tökéletesnek lenni.',
+  aftermath:'A jelentés elkészült. Van még egy javítanivaló, de holnap megvár. Ma a tóhoz szeretnék menni veled.'
+ }
 };
-
-export const GIFTS: GiftDef[] = [
-  { id: "pen", name: "Fekete töltőtoll", price: 9000, blurb: "Nehéz, matt. Egy vonal, nem egy csokor." },
-  { id: "photo", name: "Üres fotófüzet", price: 4000, blurb: "Nincs benne kép. A szimbolika az övé." },
-  { id: "flowers", name: "Csokor virág", price: 6000, blurb: "Szép, és majdnem mindig lusta." },
-  { id: "novel", name: "Regény, üres margó", price: 5000, blurb: "Puha borító. A margó szándékosan tiszta." },
-  { id: "tea", name: "Tea és könyvjelző", price: 3000, blurb: "Nem kér semmit a mondat helyett." },
-  { id: "notes", name: "Sűrű lapú notesz", price: 4500, blurb: "Belefér egy jelenléti ív és egy hiba." },
-  { id: "article", name: "Ceruzabél és egy cikk", price: 2000, blurb: "A cikk pontosan idézve, nem nagyjából." },
-  { id: "card", name: "Képeslap", price: 3500, blurb: "Egy szív a sarkában. Korán ez sok." },
+for(const girl of ['rebeka','boglarka','greta'] as const){
+ const p=personal[girl],bond=('marton_'+girl) as 'marton_rebeka'|'marton_boglarka'|'marton_greta';
+ foundations.push(scene(girl+'_2',p.name+' — A kimondott vonzalom','relationship',p.earliest,14,p.place,['marton',girl],[
+  say('narrator',p.attraction[0]),say(girl,p.attraction[1],'vulnerable'),say('marton','Mit szeretnél, hogy most ne értsek félre?'),say(girl,p.attraction[2]),
+  say('marton','A vonzalom nem ad előnyt, és nem vesz el jogot a nemet mondásra.','neutral',[
+   option('yes','Én is keresem ezeket a találkozókat. Szeretnélek közelebbről megismerni.','A kölcsönös vonzalom kimondható, a tempóról továbbra is külön dönthettek.',{bonds:{[bond]:10},decisions:[girl+'_attraction','marton_'+girl+'_attraction_yes']}),
+   option('friend','Jó veled lenni, de baráti kapcsolatot szeretnék.','A határt tiszteletben tartjátok. A közös munka folytatódik, a közeledés nem.',{decisions:[girl+'_withdraw']})])
+ ],{scenes:[girl+'_1'],decisions:[girl+'_interest'],notDecisions:[girl+'_withdraw']},[],p.name+' és Márton beszéltek a vonzalomról és a személyes tempóról.'));
+ foundations.push(scene(girl+'_3',p.name+' — A saját meghívás','relationship',p.invite,14,girl==='boglarka'?'courtyard':'bekas',['marton',girl],[
+  say('narrator',p.invitation[0]),say(girl,p.invitation[1],'affectionate'),say('marton','Ezért jöttem. A kezdeményezésedet komolyan veszem.'),say(girl,p.invitation[2]),
+  say('marton','A mostani meghívásra válaszolok.','neutral',[
+   option('yes','Én is szeretném. A mai időt egymásnak választjuk.','A meghívásra saját igent mondasz. A beszélgetés nem a következő nyomról folytatódik.',{bonds:{[bond]:10},decisions:[girl+'_invitation']}),
+   option('slow','A közeledést nem szeretném romantikus irányban folytatni.','A visszautasítást nem teszitek a műhely közös témájává.',{decisions:[girl+'_withdraw']})])
+ ],{scenes:[girl+'_2'],decisions:[girl+'_attraction'],notDecisions:[girl+'_withdraw']},[],p.name+' saját személyes meghívására világos választ adtunk.'));
+ foundations.push(scene(girl+'_4',p.name+' — A valódi nézeteltérés','relationship',girl==='rebeka'?9:10,14,p.place,['marton',girl],[
+  say('narrator',p.conflict[0]),say(girl,p.conflict[1],'displeased'),say('marton','A közelség nem jogosít fel arra, hogy helyetted vagy a magánéletedből beszéljek.'),say(girl,p.conflict[2]),
+  say('marton','A javításnak legyen látható következménye.','neutral',[
+   option('repair',p.repair,'A jóvátételt végrehajtod; nem egy ajándékkal próbálod kiváltani.',{bonds:{[bond]:8},decisions:[girl+'_repair']}),
+   option('withdraw','Nem tudom ezt vállalni. Inkább megállok a kapcsolatunkban.','A személyes folytatás véget ér. A nyomozásban továbbra is együttműködtök.',{decisions:[girl+'_withdraw']})])
+ ],{scenes:[girl+'_3'],decisions:[girl+'_invitation'],notDecisions:[girl+'_withdraw']},[],p.name+' és Márton a saját konfliktusukról döntöttek; a jóvátételnek valódi következménye volt.'));
+ foundations.push(scene(girl+'_5',p.name+' — Amit vállalunk','relationship',13,14,'courtyard',['marton',girl],[
+  say('narrator','A csendes udvaron most nem a következő veszélyről beszéltek. A korábbi jóvátételnek azóta is érvényt kellett szerezni.'),
+  say(girl,p.commitment,'vulnerable'),say('marton','Nem ígérek olyat, amit más helyett kellene eldöntenem.'),
+  say(girl,'Én ezt választom. Külön időt, őszinteséget és újra megbeszélhető határokat szeretnék. Ha közös kapcsolatot választunk, nem teszünk titkos kizárólagossági ígéretet.','affectionate'),
+  say('marton','A vállalásomhoz a saját időmből és a kényelmes titkolózásból is engednem kell.','neutral',[
+   option('commit','Én is ezt a kapcsolatot szeretném, a közösen megbeszélt feltételekkel.','Mindketten saját igent mondtatok. A vállalt irányt a tervező többé nem írhatja át.',{decisions:[girl+'_commit',girl+'_yes','marton_'+girl+'_yes'],bonds:{[bond]:12},exposure:5}),
+   option('withdraw','Nem akarok elköteleződést ígérni. Itt megállok.','A döntés fájhat, de nem kell hibássá tenni érte valakit.',{decisions:[girl+'_withdraw']})])
+ ],{scenes:[girl+'_4'],decisions:[girl+'_repair',girl+'_invitation'],notDecisions:[girl+'_withdraw'],anyOf:girl==='greta'?[{directions:['greta']}]:[{directions:[girl]},{directions:['triad'],decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes']}]},[],p.name+' és Márton személyesen döntöttek arról, mit vállalnak.'));
+ foundations.push(scene(girl+'_6',p.name+' — A következő délután','relationship',16,16,girl==='greta'?'bekas':'courtyard',['marton',girl],[
+  say('narrator','A kamra után először találkoztok újabb ellenőrizendő nyom nélkül. A csendet nem siettetitek.'),
+  say(girl,p.aftermath,'affectionate'),say('marton','Az együtt átélt veszély nem dönti el helyettünk, hogyan maradunk együtt.'),
+  say(girl,'Én a kapcsolatunkat szeretném folytatni. A közös időt magamért is választom, nem azért, mert tartozom neked.'),
+  say('marton','A féléven túli választ is kimondom.','neutral',[
+   option('continue_together','Szeretnék veled maradni, a rendes napokon is.','Megbeszélitek a következő találkozót, még a félév lezárása előtt.',{decisions:[girl+'_aftermath'],bonds:{[bond]:6}}),
+   option('withdraw','A történtek után sem szeretném folytatni a kapcsolatot.','A közös nyomozás nem lesz szerelmi tartozás.',{decisions:[girl+'_withdraw']})])
+ ],{scenes:['shared_16',girl+'_5'],decisions:[girl+'_commit'],notDecisions:[girl+'_withdraw'],directions:[girl]},[],p.name+' és Márton a veszély után, a félév lezárása előtt döntöttek a személyes folytatásról.'));
+}
+const triad:Scene[]=[
+ scene('triad_1','T1 — Kinek a mondata?','relationship',4,14,'library',['marton','rebeka','boglarka'],[
+  say('narrator','Rebeka képaláírása: „Boglárka a kastély régi hangját keresi.” Boglárka maga elé húzza a lapot.'),
+  say('boglarka','Jól hangzik, de nem ezt csinálom. Nem vagyok a képedhez odatett misztikus lány. Azt kutatom, ki és mikor írta le a történetet.','displeased'),
+  say('rebeka','A kép nem tud három bekezdést elmondani. Nem akartalak elvenni a munkádtól, de nem akarok puszta dolgozatmellékletet sem.','displeased'),
+  say('marton','Mindkét munkának van saját nyelve. Nem döntöm el helyettetek, melyik számít.'),
+  say('rebeka','A következő változatot ketten csináljuk meg. Ne Márton legyen a döntőbíró.'),
+  say('boglarka','Előbb megmutatom, melyik szóval van bajom. Aztán meghallgatom, te mit akarsz megtartani.')
+ ],{scenes:['shared_4','rebeka_1','boglarka_1']},[],'Rebeka és Boglárka vitája közös javítás tervével zárult.',{bonds:{rebeka_boglarka:5},decisions:['rb_dispute']}),
+ scene('triad_2','T2 — Közös javítás','relationship',5,14,'library',['marton','rebeka','boglarka'],[
+  say('narrator','Az új képaláírás mellett két név áll. A fotó nagyobb helyet kapott, a forrásjelölés olvashatóbb lett.'),
+  say('rebeka','Boglárka mondata nélkül a kép elhitetné, hogy mindent értünk. Így maradt benne kérdés. Ez jobb.'),
+  say('boglarka','Nélküled meg úgy írtam volna le a folyosót, mintha csak levéltári tétel lenne. Most látni, miért állt ott meg valaki.'),
+  say('marton','A két szerző neve maradjon elöl. Én termet szerveztem.'),
+  say('rebeka','Kedden nélküled is összeülünk. Nem titokból. Most mi ketten dolgozunk rajta.','amused'),
+  say('boglarka','Hozok rendes teát. Az automata ezért a szövegért nem kap több pénzt.','amused')
+ ],{scenes:['triad_1']},[],'A kép–szöveg párost közösen javították, önálló következő találkozót terveztek.',{bonds:{rebeka_boglarka:8},decisions:['rb_correction']}),
+ scene('triad_3','T3 — Márton nélkül','relationship',7,14,'courtyard',['rebeka','boglarka'],[
+  say('narrator','Ez a beszélgetés Márton nélkül zajlik. A két nő később maga dönti el, mit mesél el belőle. A másolatok leadása után ülnek az udvarra.'),
+  say('rebeka','Azt hittem, utálsz a felirat miatt. Kiderült, csak nem hagyod, hogy egy szép mondatban elintézzelek.'),
+  say('boglarka','Nem utáltalak. Idegesített, hogy úgy nézel, mintha már tudnád, melyik oldalam mutat jól.'),
+  say('rebeka','Most nem tudom. Képet sem akarok rólad. Csak maradnék.','vulnerable'),
+  say('boglarka','Én is. És jó, hogy ezt nem Mártonnak kell közvetítenie.'),
+  say('narrator','Egy rossz kiállításról és egy befejezetlen könyvről beszélnek. Nem egy útvonal jutalma a délután: a saját kíváncsiságuk tartja ott őket.')
+ ],{scenes:['triad_2','shared_7']},[],'Rebeka és Boglárka önálló beszélgetésben került közelebb egymáshoz.',{bonds:{rebeka_boglarka:10},decisions:['rb_private']}),
+ scene('triad_4','T4 — Két külön igen','relationship',8,14,'courtyard',['rebeka','boglarka'],[
+  say('narrator','A következő találkozón sincs ott Márton. Boglárka két poharat hoz, füzet nélkül.'),
+  say('boglarka','Amikor téged várlak, nem csak az anyag miatt örülök. Vonzódom hozzád. Ezt nem Mártonról kérdezve mondom.','vulnerable'),
+  say('rebeka','Én is hozzád akarok közel lenni. Nem cseréből vagy kiegészítésként. Megfoghatom a kezed?','affectionate'),
+  say('boglarka','Igen. Megcsókolnálak, ha te is szeretnéd.'),
+  say('rebeka','Szeretném.','affectionate'),
+  say('narrator','A rövid csók után megbeszélik, hogy a közös lehetőségről csak akkor beszélnek Mártonnal, ha mindketten akarják. Az egymásnak mondott igenük független az ő válaszától.')
+ ],{scenes:['triad_3','shared_8']},[],'Rebeka és Boglárka kölcsönösen kimondta önálló romantikus vonzalmát.',{bonds:{rebeka_boglarka:15},decisions:['rb_rebeka_yes','rb_boglarka_yes']}),
+ scene('triad_5','T5 — Külön is elmondjuk','relationship',11,14,'classroom',['marton','rebeka','boglarka'],[
+  say('narrator','Két egymást követő beszélgetés ugyanazon a délutánon. Először Rebeka marad, aztán elmegy, és Boglárka érkezik. Egyikük sem szóvivő.'),
+  say('rebeka','Boglárkával közel kerültünk egymáshoz. Veled is szeretnék kapcsolatot, titkos verseny nélkül arról, kinek jut több idő rád.'),
+  say('marton','Nem kérek kizárólagosságot, miközben közös lehetőségről beszélünk.'),
+  say('narrator','Később Boglárka ugyanoda ül, de saját mondataival kezdi.'),
+  say('boglarka','Szeretem, ahogy Rebeka figyel rám. Téged is szeretnélek tovább megismerni. Nem leszek egy párhoz utólag hozzárakott ember.'),
+  say('marton','Külön is elmondhassuk a feltételeinket.','neutral',[
+   option('discuss','Szeretném a közös beszélgetést. Mások helyett nem ígérek választ.','Mindketten saját nevükben vállalják a beszélgetést. Ez még nem végleges igen.',{decisions:['triad_separate_talks']}),
+   option('decline','Nem szeretnék közös kapcsolatot. Egyéni irányról vagy barátságról tudok beszélni.','Ez nem teszi semmissé a nők egymásnak tett választását.',{decisions:['triad_declined'],direction:'friendship'})])
+ ],{scenes:['triad_4','shared_11','rebeka_4','boglarka_4'],decisions:['rb_rebeka_yes','rb_boglarka_yes','rebeka_repair','boglarka_repair'],directions:['triad']},[],'Külön beszélgetésben hallgattuk meg a két nő igényeit; a közös kapcsolat nem automatikus.'),
+ scene('triad_6','T6 — Hárman, egy asztalnál','relationship',12,14,'apartment',['marton','rebeka','boglarka'],[
+  say('narrator','Az asztalon nincsenek nyomozási iratok. Nem az kap szót, aki több bizonyítékot hozott.'),
+  say('rebeka','Szeretném ezt a kapcsolatot kettőtökkel. Külön estéket is akarok mindkettőtökkel. Szóljunk a féltékenységről; a képeim nyilvánosságáról továbbra is én döntök.','affectionate'),
+  say('boglarka','Én is szeretném, mindkettőtökkel. Az egyeztetett idő ne mindig az enyémből rövidüljön. Ha változtatunk, beszéljünk, ne találgassunk.','affectionate'),
+  say('marton','Az intézményi következményekből rám több jut. Nem használom a helyzetemet csend vagy közelség kérésére. A külön és közös időt egyeztetjük.'),
+  say('rebeka','Mi elmondtuk a saját igenünket. A te válaszod is legyen valódi, akkor is, ha nem az.'),
+  say('marton','A saját nevemben döntök.','neutral',[
+   option('yes','Én is szeretném, ezekkel az újra megbeszélhető határokkal.','Mindhárom résztvevő saját igenje elhangzott. Az egyéni jóvátétel és vállalás ettől külön is fontos.',{decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes'],bonds:{marton_rebeka:5,marton_boglarka:5,rebeka_boglarka:5}}),
+   option('decline','Nem tudom vállalni. Barátságot vagy külön megbeszélt egyéni irányt szeretnék.','Hiányzó igenből nem lesz közös kapcsolat. A tervezőben újragondolható a személyes irány.',{decisions:['triad_declined'],direction:'friendship'})])
+ ],{scenes:['triad_5','shared_12'],decisions:['triad_separate_talks'],notDecisions:['triad_declined'],directions:['triad']},[],'Hármas beszélgetésben időről, féltékenységről, magánszféráról és visszalépésről beszéltünk.'),
+ scene('triad_7','T7 — Egy rendes este','relationship',14,14,'apartment',['marton','rebeka','boglarka'],[
+  say('narrator','A tészta túlfőtt. Rebeka túl sok paprikát tett a szószba; Boglárka ezt nem engedi művészi döntésnek nevezni.'),
+  say('boglarka','Az első rendes házirend: az erős paprika nem a bátorság próbája.','amused'),
+  say('rebeka','Legközelebb te főzöl. Én nem írok képaláírást a vacsorához.','amused'),
+  say('marton','Több kenyeret veszek. A keddet pedig valóban üresen hagytam, nem csak átcímkéztem a munkát.'),
+  say('rebeka','Jó, hogy ma nem a veszély bizonyítja, hogy együtt vagyunk.'),
+  say('boglarka','Az iratokat holnap visszavesszük. Most maradjunk még egy teára.','affectionate')
+ ],{scenes:['triad_6','rebeka_5','boglarka_5','shared_14'],decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes','rebeka_commit','boglarka_commit'],notDecisions:['rebeka_withdraw','boglarka_withdraw'],directions:['triad']},[],'Egy közönséges közös estén nem a veszély tartotta össze a kapcsolatot.',{bonds:{marton_rebeka:5,marton_boglarka:5,rebeka_boglarka:8},decisions:['triad_evening']}),
+ scene('triad_8','T8 — A következő rendes este','relationship',16,16,'apartment',['marton','rebeka','boglarka'],[
+  say('narrator','A kamra után ugyanahhoz az asztalhoz ülnek. Van rendes kenyér. Senki nem tesz úgy, mintha az elmúlt hétnek nem volna súlya.'),
+  say('rebeka','A sorozatomat lezárom, a kapcsolatot nem szeretném. Boglárkával külön is tervezek időt, és veled is, Márton. A közös estékről közösen döntsünk.','affectionate'),
+  say('boglarka','Én is folytatni szeretném veletek. Elkészült a szövegem, de a következő találkozó nem jutalom érte. Magamnak választom.','affectionate'),
+  say('marton','A vállalást a rendes napokon kell betartani.'),
+  say('rebeka','Ma az is belefér, hogy fáradtak vagyunk. Ez nem újabb próba.'),
+  say('marton','A félév utáni időre is válaszolok.','neutral',[
+   option('continue_together','Szeretnék veletek maradni, külön és közösen is időt vállalva.','Mindhárman megerősítettétek a folytatást. Az egyetlen alkalom mindkét személyes utóbeszélgetést is rendezi.',{decisions:['triad_aftermath','rebeka_aftermath','boglarka_aftermath'],bonds:{marton_rebeka:6,marton_boglarka:6,rebeka_boglarka:6}}),
+   option('withdraw','Nem szeretném folytatni a közös kapcsolatot.','Egy korábbi ígéret nem tartja életben a közös kapcsolatot.',{decisions:['rebeka_withdraw','boglarka_withdraw'],direction:'friendship'})])
+ ],{scenes:['shared_16','triad_7'],decisions:['rebeka_commit','boglarka_commit','triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes'],directions:['triad']},[],'A közös utóbeszélgetésben mindhárom résztvevő megszólalt, egyetlen sávban rendezték a folytatást.')
 ];
-
-export const ACTIONS: ActionDef[] = [
-  { id: "department", label: "Tanszék", detail: "Gréta délelőtt", slots: ["morning"], icon: I.task, kind: "visit", location: "department", girl: "greta" },
-  { id: "paper", label: "Iratok", detail: "+12 000 Ft", slots: ["morning"], icon: I.task, kind: "job", location: "department", node: "paper" },
-  { id: "study", label: "Olvasás", detail: "Éleslátás", slots: ["morning"], icon: I.study, kind: "stat", location: "library", node: "study" },
-  { id: "rest-m", label: "Pihenés", detail: "Nyugalom, energia", slots: ["morning"], icon: I.rest, kind: "stat", location: "apartment", node: "rest" },
-  { id: "mohu-m", label: "MOHU", detail: "Palackok az udvar szélén", slots: ["morning"], icon: I.money, kind: "minigame", location: "mohu" },
-
-  { id: "library", label: "Könyvtár", detail: "Boglárka délután", slots: ["afternoon"], icon: I.library, kind: "visit", location: "library", girl: "boglarka" },
-  { id: "prep", label: "Tanterem", detail: "Jelenlét", slots: ["afternoon"], icon: I.classroom, kind: "stat", location: "classroom", node: "prep" },
-  { id: "lecture", label: "Előadás", detail: "+18 000 Ft", slots: ["afternoon"], icon: I.presence, kind: "job", location: "courtyard", node: "lecture" },
-  { id: "gym", label: "Edzés", detail: "Jelenlét", slots: ["afternoon"], icon: I.gym, kind: "stat", location: "courtyard", node: "gym" },
-  { id: "brick", label: "Kérdőív", detail: "Tanári javítás", slots: ["afternoon", "evening"], icon: I.study, kind: "minigame", location: "department" },
-  { id: "mohu-a", label: "MOHU", detail: "Palackok az udvar szélén", slots: ["afternoon"], icon: I.money, kind: "minigame", location: "mohu" },
-
-  { id: "holdkor", label: "Holdkör", detail: "Rebeka este", slots: ["evening"], icon: I.holdkor, kind: "visit", location: "holdkor", girl: "rebeka" },
-  { id: "apartment", label: "Lakosztály", detail: "Meghívott vendég", slots: ["evening"], icon: I.apartment, kind: "visit", location: "apartment" },
-  { id: "walk", label: "Udvar", detail: "Nyugalom", slots: ["evening"], icon: I.courtyard, kind: "stat", location: "courtyard", node: "walk" },
-  { id: "proof", label: "Korrektúra", detail: "+22 000 Ft", slots: ["evening"], icon: I.study, kind: "job", location: "apartment", node: "proof" },
-  { id: "rest-e", label: "Pihenés", detail: "Nyugalom, energia", slots: ["evening"], icon: I.rest, kind: "stat", location: "apartment", node: "rest" },
-  { id: "bekas", label: "Békás-tó", detail: "Kockázat, zárás után", slots: ["evening"], icon: I.courtyard, kind: "date", location: "bekas", node: "bekas", risk: 10 },
-  { id: "date-peron", label: "Éjszakai peron", detail: "2 000 Ft · Rebeka", slots: ["evening"], icon: I.holdkor, kind: "date", location: "peron", node: "rebeka_peron", girl: "rebeka", cost: 2000, risk: 14, once: true },
-  { id: "date-book", label: "Könyvesbolt", detail: "4 000 Ft · Boglárka", slots: ["evening"], icon: I.library, kind: "date", location: "bookshop", node: "boglarka_bolt", girl: "boglarka", cost: 4000, risk: 6, once: true },
-  { id: "date-cinema", label: "Kis mozi", detail: "9 000 Ft · Gréta", slots: ["evening"], icon: I.task, kind: "date", location: "cinema", node: "greta_mozi", girl: "greta", cost: 9000, risk: 12, once: true },
+const optional:Scene[]=[
+ scene('prepare_backup','Segítők és másolatok','preparation',12,14,'department',['marton','denes','julia','aron'],[
+  say('narrator','Nem új nyomot keresnek: az ismert adatokból készül használható beosztás.'),
+  say('denes','Megbeszéljük, kit hol várok. Az alapsegítség így is jár; a beosztás gyorsabbá teszi.'),
+  say('julia','Két hiteles másolatot őrzök külön. A bizonyíték nem egyetlen példányon múlik.'),
+  say('aron','A kulcs és a kijárat ellenőrzését aláírtam. A visszajelzés nem Soma asztalán marad.'),
+  say('marton','Egy délután most kisebb ár, mint utólag összerakni, kinek kellett volna szólnunk.')
+ ],{scenes:['shared_12']},[],'Előkészítettük a segítői beosztást és a külön bizonyítékmásolatokat.',{preparation:['backup']}),
+ scene('prepare_signals','A jelzés próbája','preparation',13,14,'classroom',['marton','rebeka','boglarka','greta','denes'],[
+  say('narrator','A három rögzítés helyét jelölik a teremben. Varázslat helyett a mozdulat és a visszavonulás jele számít.'),
+  say('greta','Ha nem halljuk egymást, ezt követjük. Aki elvéti, azzal újrakezdjük.'),
+  say('boglarka','A földelést ismerjük. Most azt próbáljuk, hogyan emlékeztessük rá egymást nyomás alatt.'),
+  say('rebeka','Egyszer szándékosan rossz helyre nézek. Lássuk, észreveszitek-e.'),
+  say('denes','Észrevettük. Még egyszer, lassabban. A segítség nem a hibátlanság jutalma.')
+ ],{scenes:['shared_13']},[],'Begyakoroltuk a jelzéseket és a visszavonulást.',{preparation:['signals']}),
+ scene('friendship_after','Nem kell többnek nevezni','relationship',16,16,'courtyard',['marton','rebeka','boglarka','greta'],[
+  say('narrator','A padra most nem tanúvallomások kerülnek. Gréta péksüteményt, Boglárka termoszt, Rebeka képet hoz az üres műhelyről.'),
+  say('rebeka','Ez a kép csak nekünk van. Nem kell bizonyítania, hogy hősök voltunk.'),
+  say('boglarka','A közös történet attól még történet, hogy nem lesz mindenkiből szerelmes.'),
+  say('greta','A szerdát szabadon hagytam. Egy kávé is számít.'),
+  say('marton','Szeretném megtartani ezt a barátságot. Köszönöm, hogy a saját dolgotokat is belehoztátok.'),
+  say('narrator','A következő alkalomnak nincs nyomozási feladata. A barátság a félév után is folytatódhat.')
+ ],{scenes:['shared_16'],directions:['friendship']},[],'Barátként terveztünk új találkozót; a nyomozás nem követelt szerelmet.',{decisions:['friendship_aftermath']})
 ];
-
-export const SLOT_LABEL = ["Délelőtt", "Délután", "Este"] as const;
-
-export function chapterName(week: number): string {
-  if (week <= 8) return "Közös szakasz";
-  if (week <= 15) return "Zárt útvonal";
-  return "Utolsó hét";
-}
-
-export function actNote(week: number): string {
-  if (week <= 8) return "Mindhárom nő a saját helyén van. A zárás a nyolcadik hét végén jön: egy lány, egy összeillő pár, vagy senki.";
-  if (week <= 15) return "Csak a zárt útvonal mélyül. Aki nincs rajta, hidegen marad. A mély jelenet a saját helyén vagy a lakosztályban nyílik.";
-  return "Ez az utolsó hét. Ami a bizalomból és a kockázatból összegyűlt, a záráson dől el.";
-}
-
-mergePart1(NODES, STORY);
-mergeLater(NODES, STORY);
-
-export function assertCatalog() {
-  for (const n of Object.values(NODES)) {
-    if (n.choices.length < 1 || n.choices.length > 4) throw new Error(n.id);
-  }
-  for (const e of STORY) {
-    if (!NODES[e.node]) throw new Error(e.id);
-  }
-}
+const all=[...spine,...foundations,...triad,...optional];
+if(new Set(all.map(s=>s.id)).size!==all.length)throw new Error('Duplicate scene ID');
+export const SCENES:Registry=Object.fromEntries(all.map(s=>[s.id,s]));
+const knowledge:Record<string,string>={
+ grounding:'Az önkéntes földelés segít észrevenni a figyelem eltérítését, de nem állítja helyre az emlékeket.',
+ returned_lilla:'Lilla kimerülten tért vissza egy hiányzó este után.',
+ phrase:'„Maradt még egy hely neked.” Lilla kétszer hallotta; a beszélő még ismeretlen.',
+ time_gap:'Lilla emlékei és a kártyaadatok között többórás, megmagyarázatlan rés van.',
+ timeline:'A korrigált fotóidő és a kártyanapló a lezárt lépcsőig vezeti a nyomot.',
+ borrowed_voice:'A hang hallott mondatot ismétel, új választ nem ad.',
+ pattern:'Két visszatérő embernél ugyanaz a kimerülés és időhiány jelentkezik.',
+ ritual_fragment:'Önkéntes, életerőt kölcsönző átalakulás; befejezés nélkül instabil.',
+ archive_access:'Soma kölcsönözte a leírást. A régi ügyek nem korábbi bizonyított vámpírtámadások.',
+ investigation_plan:'Dénes védi a tanúkat, Júlia a szöveget, Áron a hozzáférést ellenőrzi.',
+ identity:'Független meghívó-, helyszín- és belépési adatok mutatnak Somára.',
+ deliberate_transformation:'Soma saját döntésből, sikerért és vonzerőért hajtotta végre az átalakulást.',
+ fascination_limit:'A hatás felerősíti a figyelmet és az ambíciót, de nem teremthet szerelmet, és nem írja át az elutasítást.',
+ anchor_rule:'A nyitott rítus horgonyának három kötését megszakítva halálos összeomlás következik be.',
+ completion_date:'A rítus befejezését a tizenötödik hétre tervezi.',
+ chamber_location:'A gépészeti kamrában megvan a három rögzítés és a szolgálati kijárat.',
+ intervention_plan:'Az egyszerre változó fény jelzi a nyitott rítust; a segítők a kijáratot és ellátást biztosítják.',
+ vampire_dead:'A horgony megszakadt, Soma átalakulása összeomlott. Dénes megállapította a vámpír halálát.',
+ aftermath:'A bizonyítékokat rendeztük. A felépülés fokozatos; a személyes utóbeszélgetések még előttünk állnak.'
+};
+export const EVIDENCE:Record<string,Evidence>=Object.fromEntries(all.flatMap(s=>s.evidence.map(id=>[id,{id,scene:s.id,text:knowledge[id]}])));

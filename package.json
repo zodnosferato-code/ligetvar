@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest",
-    "test:headless": "jest --testPathPattern=src/tests",
-    "test:engine": "node --experimental-strip-types --test src/game/engine/logic.test.ts"
+    "test": "npm run test:engine",
+    "test:headless": "npm run test:engine",
+    "test:engine": "node --experimental-strip-types --test src/game/engine/*.test.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^18.3.1",
