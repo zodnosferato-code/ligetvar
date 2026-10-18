@@ -6,6 +6,7 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
   const [score, setScore] = useState(0);
   const scoreRef = useRef(0);
   const over = useRef(false);
+  const jumpRef = useRef(() => {});
   const onDoneRef = useRef(onDone);
   onDoneRef.current = onDone;
 
@@ -27,6 +28,7 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
     let raf = 0;
     let running = true;
 
+    jumpRef.current = () => { if (onGround) { vy = jump; onGround = false; } };
     const keys = new Set<string>();
     const onKey = (e: KeyboardEvent) => {
       if (["Space", "ArrowUp", "KeyW"].includes(e.code)) e.preventDefault();
@@ -39,7 +41,7 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
     const spawn = () => {
       const isHazard = Math.random() < 0.25;
       items.push({
-        x: canvas.width + 20,
+        x: canvas.getBoundingClientRect().width + 20,
         y: isHazard ? 180 : 160 + Math.random() * 40,
         v: isHazard ? 0 : 80 + Math.floor(Math.random() * 60),
         type: isHazard ? "hazard" : "bottle",
@@ -79,7 +81,7 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
 
       for (let i = items.length - 1; i >= 0; i--) {
         items[i]!.x -= 4;
-        if (items[i]!.x < -30) items.splice(i, 1);
+        if (items[i]!.x < -30) { items.splice(i, 1); continue; }
         const px = 80;
         const py = playerY;
         const ix = items[i]!.x;
@@ -132,10 +134,11 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
         <span>{score.toLocaleString("hu-HU")} Ft</span>
       </div>
       <p className="serif" style={{ marginTop: 0 }}>
-        Ugorj a palackokért (Space / fel). A sötét alakok elkerülendők.
+        Ugorj a palackokért (Space / fel / Ugrás gomb). A sötét alakok elkerülendők.
       </p>
-      <canvas ref={canvasRef} style={{ width: "100%", height: "16rem", background: "#1c1614" }} />
+      <canvas ref={canvasRef} onPointerDown={() => jumpRef.current()} style={{ width: "100%", height: "16rem", background: "#1c1614", touchAction: "none" }} />
       <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.7rem" }}>
+        <button type="button" onClick={() => jumpRef.current()}>Ugrás</button>
         <button type="button" className="primary" onClick={() => onDone(scoreRef.current)}>
           Visszaváltom
         </button>
@@ -148,36 +151,11 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
 }
 
 const TRIVIA = [
-  {
-    q: "Melyik a helyes médiaelélet-fogalom a dokumentációhoz?",
-    options: ["Rituális kommunikáció", "Csak szórakoztatás", "Kizárólag hír"],
-    a: 0,
-    pay: 1200,
-  },
-  {
-    q: "A folklór kutatásban mi a terepmunka?",
-    options: ["Könyvtári olvasás", "Helyszíni megfigyelés és beszélgetés", "Csak online forrás"],
-    a: 1,
-    pay: 1400,
-  },
-  {
-    q: "Egy fakultatív kurzus jelenléti ívén mi a minimum a tanszéki szabály szerint?",
-    options: ["50%", "70%", "Nincs minimum"],
-    a: 1,
-    pay: 1000,
-  },
-  {
-    q: "Rebeka dokumentációjában a misztikus gyakorlatok szimbolikája inkább...",
-    options: ["Nyilvános marketing", "Privát, közönség nélküli", "Vizsgaanyag"],
-    a: 1,
-    pay: 1300,
-  },
-  {
-    q: "Boglárka folklór dolgozatához melyik forrás a legalkalmasabb elsődlegesnek?",
-    options: ["Wikipedia összefoglaló", "Helyszíni jegyzet a kurzuson", "Csak tankönyv"],
-    a: 1,
-    pay: 1500,
-  },
+ {q:"Mi elsődleges forrás egy terepi eseménynél?",options:["A helyszínen készült jegyzet","Egy későbbi összefoglaló","Egy másik mű bibliográfiája"],a:0,pay:1200},
+ {q:"Mi a folklórkutatásban a terepmunka?",options:["Csak könyvtári olvasás","Helyszíni megfigyelés és beszélgetés","Csak online forrás"],a:1,pay:1400},
+ {q:"Hogyan jelöljük a nem ismert adatot?",options:["Kitaláljuk","Elhallgatjuk az eltérést","Ismeretlenként, elkülönítve a tényektől"],a:2,pay:1000},
+ {q:"Miért őrizzük meg a javított jegyzet eredetijét?",options:["Hogy több lap legyen","Hogy a változtatás ellenőrizhető legyen","Hogy ne kelljen forrást jelölni"],a:1,pay:1300},
+ {q:"Mikor osztható meg személyes tanúvallomás?",options:["Mindig","Az érintett beleegyezésével, a megbeszélt körben","Ha érdekes"],a:1,pay:1500}
 ];
 
 export function TriviaGame({ onDone, onCancel }: { onDone: (pay: number) => void; onCancel: () => void }) {

@@ -18,9 +18,9 @@ function Game(){
  return <div className="game" style={{'--text-scale':scale} as CSSProperties}>
  <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}>Ligetvár<span>Őszi félév</span></a><div className="tools"><label>Betűméret <select aria-label="Betűméret" value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}>{muted?'Hang be':'Hang ki'}</button></div></header>
  {g.saveMessage&&<p className="notice" role="alert">{g.saveMessage}</p>}
- {g.mode==='title'?<Title/>:<><div className="status"><strong>{s.week}. hét / 16</strong><span>{s.slot===0?'Közös történet':s.slot<3?s.slot+'. szabad sáv / 2':'Heti összegzés'}</span><span>Energia {s.energy}/100</span><span>{formatFt(s.money)}</span></div>
+ {g.mode==='title'?<Title/>:<><div className="status"><strong>{s.week}. hét / 16</strong><span>{s.phase==='ending'?'Félév lezárva':s.slot===0?'Közös történet':s.slot<3?s.slot+'. szabad sáv / 2':'Heti összegzés'}</span><span>Energia {s.energy}/100</span><span>{formatFt(s.money)}</span></div>
  {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<Planner/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<section className="panel"><h1>Opcionális munka</h1>{s.minigame==='mohu'?<MohuGame onDone={g.finishJob} onCancel={g.cancelJob}/>:<TriviaGame onDone={g.finishJob} onCancel={g.cancelJob}/>}</section>}
- {s.phase!=='scene'&&s.lastNote&&<p className="notice" role="status">{s.lastNote}</p>}<Journal/></>}
+ {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{s.lastNote}</p>}<Journal/></>}
  <footer>Átmeneti ruhás képek és jelölt képhelyőrzők. Az új manga készlet még nem végleges.</footer></div>;
 }
 function Title(){
