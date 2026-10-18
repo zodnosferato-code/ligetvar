@@ -72,3 +72,15 @@ Részletek: [ENGINE.md](ENGINE.md).
 ## Háttérjelenetek
 
 Az `assets/backgrounds/` mappában lévő jelenetképek (classroom.jpg, library.jpg, apartment.jpg, department.jpg, courtyard.jpg) az alapok. Minden képgenerálónak ezeket kell használnia bázisként. Mindegyik tartalmaz közeli ülő- vagy fekvőhelyet a kamerához, hogy a nők és a jövőbeli intim jelenetek rájuk rajzolhatók legyenek. Játékos POV.
+
+## Venice AI API (developer tooling)
+
+The repository includes a Node 22+ server-side smoke test for Venice's OpenAI-compatible chat API. Base URL: `https://api.venice.ai/api/v1`; model: `zai-org-glm-5-2`. The example does **not** run in the Vite browser application.
+
+1. Rotate any credential previously shared in chat, and create a new Venice API key.
+2. In GitHub, open **Settings → Secrets and variables → Actions → New repository secret**, name it `VENICE_API_KEY`, and paste the replacement key there. GitHub Actions secrets are not automatically available to local terminals or arbitrary agents.
+3. For a trusted local terminal, set `VENICE_API_KEY` in its environment without saving it in tracked files, then run `npm run venice:smoke`. Alternatively, explicitly map `secrets.VENICE_API_KEY` into the environment of a trusted GitHub Actions job that runs this command.
+
+The script calls `POST /chat/completions` with a short test message. It does not expose the key to the browser, and non-2xx responses fail without dumping potentially sensitive response bodies. Local `.env` files are ignored by Git, but this script reads the process environment directly; Node does not automatically load `.env` files here. This is a chat connectivity test, not an image-generation test.
+
+Venice documentation: https://docs.venice.ai
