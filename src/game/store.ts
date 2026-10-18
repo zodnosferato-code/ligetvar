@@ -1,139 +1,23 @@
-import { create } from "zustand";
-import { GIFTS } from "./content/catalog.ts";
-import {
-  applyChoice,
-  buyGift,
-  chooseAction,
-  commitRoute,
-  createInitial,
-  giveGift,
-  inviteGirl,
-  nextWeek,
-  resolveJob,
-  speakHonest,
-  type StageId,
-} from "./engine/logic.ts";
-import { SAVE_KEY, type GameState, type GirlId, type RouteId } from "./engine/types.ts";
-
-interface GameStore {
-  mode: "title" | "play";
-  state: GameState;
-  hasSave: boolean;
-  boot: () => void;
-  start: (name: string, stage?: StageId, route?: RouteId) => void;
-  resume: () => void;
-  toTitle: () => void;
-  act: (id: string) => void;
-  pick: (id: string) => void;
-  open: (phase: GameState["phase"]) => void;
-  backToPlanner: () => void;
-  call: (girl: GirlId) => void;
-  honest: (girl: GirlId) => void;
-  buy: (id: string) => void;
-  gift: (id: string) => void;
-  finishJob: (kind: "mohu" | "brick", pay: number) => void;
-  cancelJob: () => void;
-  advanceWeek: () => void;
-  lockRoute: (route: RouteId, told: boolean) => void;
-  showGirl: (girl: GirlId) => void;
+import {create} from 'zustand';
+import {SCENES} from './content/catalog.ts';
+import {activity,applyChoice,buyGift,createInitial,giveGift,nextWeek,openScene,resolveJob,setDirection} from './engine/logic.ts';
+import {legacyName,persist,readSave} from './engine/save.ts';
+import {LEGACY_SAVE_KEY,type GameState,type GirlId,type RouteId} from './engine/types.ts';
+interface GameStore{
+ mode:'title'|'play';state:GameState;hasSave:boolean;hasLegacy:boolean;saveMessage:string;
+ boot:()=>void;start:(name:string)=>void;resume:()=>void;toTitle:()=>void;importName:()=>string|null;
+ scene:(id:string)=>void;pick:(id:string)=>void;advance:()=>void;direction:(id:RouteId)=>void;
+ activity:(kind:'rest'|'talk'|'mohu'|'brick')=>void;finishJob:(pay:number)=>void;cancelJob:()=>void;buy:(id:string)=>void;gift:(girl:GirlId,id:string)=>void;
 }
-
-function persist(state: GameState) {
-  try {
-    localStorage.setItem(SAVE_KEY, JSON.stringify(state));
-  } catch {
-    /* ignore quota */
-  }
-}
-
-function readSave(): GameState | null {
-  try {
-    const raw = localStorage.getItem(SAVE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as GameState;
-    if (parsed.version !== 1 || !parsed.girls?.rebeka) return null;
-    return parsed;
-  } catch {
-    return null;
-  }
-}
-
-export const useGame = create<GameStore>((set, get) => ({
-  mode: "title",
-  state: createInitial("Márton Kelényi"),
-  hasSave: false,
-  boot: () => set({ hasSave: !!readSave() }),
-  start: (name, stage, route) => {
-    const state = createInitial(name, stage ?? 1, route ?? "boglarka");
-    persist(state);
-    set({ mode: "play", state, hasSave: true });
-  },
-  resume: () => {
-    const state = readSave();
-    if (!state) {
-      get().start(get().state.name);
-      return;
-    }
-    set({ mode: "play", state, hasSave: true });
-  },
-  toTitle: () => set({ mode: "title" }),
-  act: (id) => {
-    const state = chooseAction(get().state, id);
-    persist(state);
-    set({ state });
-  },
-  pick: (id) => {
-    const state = applyChoice(get().state, id);
-    persist(state);
-    set({ state });
-  },
-  open: (phase) => set({ state: { ...get().state, phase } }),
-  backToPlanner: () => {
-    const state = { ...get().state, phase: "planner" as const, dossier: null, minigame: null };
-    persist(state);
-    set({ state });
-  },
-  call: (girl) => {
-    const state = inviteGirl(get().state, girl);
-    persist(state);
-    set({ state });
-  },
-  honest: (girl) => {
-    const state = speakHonest(get().state, girl);
-    persist(state);
-    set({ state });
-  },
-  buy: (id) => {
-    const gift = GIFTS.find((g) => g.id === id);
-    if (!gift) return;
-    const state = buyGift(get().state, id, gift.price);
-    persist(state);
-    set({ state });
-  },
-  gift: (id) => {
-    const state = giveGift(get().state, id);
-    persist(state);
-    set({ state });
-  },
-  finishJob: (kind, pay) => {
-    const state = resolveJob(get().state, kind, pay);
-    persist(state);
-    set({ state });
-  },
-  cancelJob: () => {
-    const state = { ...get().state, phase: "planner" as const, minigame: null };
-    persist(state);
-    set({ state });
-  },
-  advanceWeek: () => {
-    const state = nextWeek(get().state);
-    persist(state);
-    set({ state });
-  },
-  lockRoute: (route, told) => {
-    const state = commitRoute(get().state, route, told);
-    persist(state);
-    set({ state });
-  },
-  showGirl: (girl) => set({ state: { ...get().state, phase: "dossier", dossier: girl } }),
-}));
+export const useGame=create<GameStore>((set,get)=>{
+ const update=(state:GameState)=>{if(state===get().state)return;let saved=false;try{saved=persist(localStorage,state);}catch{}set({state,hasSave:saved||get().hasSave,saveMessage:saved?'':'A mentés nem sikerült. A játék ezen a lapon folytatható, de bezárás előtt ellenőrizd a böngésző tárhelyét.'});};
+ return {
+ mode:'title',state:createInitial(''),hasSave:false,hasLegacy:false,saveMessage:'',
+ boot:()=>{let result:ReturnType<typeof readSave>={status:'invalid'},hasLegacy=false;try{result=readSave(localStorage,SCENES);hasLegacy=!!localStorage.getItem(LEGACY_SAVE_KEY);}catch{}set({hasSave:result.status==='ok',hasLegacy,saveMessage:result.status==='invalid'?'A mentés sérült vagy nem illik a történethez; nem töltöttük be.':result.status==='unsupported'?'Ez a mentésverzió nem támogatott; nem töltöttük be.':''});},
+ start:name=>{update(createInitial(name));set({mode:'play'});},
+ resume:()=>{let result:ReturnType<typeof readSave>={status:'invalid'};try{result=readSave(localStorage,SCENES);}catch{}if(result.status==='ok')set({state:result.state,mode:'play'});else set({hasSave:false,saveMessage:'A mentés nem tölthető be. Nem indítottunk új játékot a helyére.'});},
+ toTitle:()=>set({mode:'title'}),importName:()=>{try{return legacyName(localStorage);}catch{return null;}},
+ scene:id=>update(openScene(get().state,id,SCENES)),pick:id=>update(applyChoice(get().state,id,SCENES)),advance:()=>update(nextWeek(get().state,SCENES)),direction:id=>update(setDirection(get().state,id)),
+ activity:kind=>update(activity(get().state,kind)),finishJob:pay=>{const s=get().state;if(s.minigame)update(resolveJob(s,s.minigame,pay));},
+ cancelJob:()=>{const s=get().state;if(s.phase==='minigame')update({...s,phase:'planner',minigame:null});},buy:id=>update(buyGift(get().state,id)),gift:(girl,id)=>update(giveGift(get().state,girl,id))
+ };});

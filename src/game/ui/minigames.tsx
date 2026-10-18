@@ -136,10 +136,10 @@ export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; 
       </p>
       <canvas ref={canvasRef} style={{ width: "100%", height: "16rem", background: "#1c1614" }} />
       <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.7rem" }}>
-        <button type="button" className="pixel-btn good" onClick={() => onDone(scoreRef.current)}>
+        <button type="button" className="primary" onClick={() => onDone(scoreRef.current)}>
           Visszaváltom
         </button>
-        <button type="button" className="pixel-btn ghost" onClick={onCancel}>
+        <button type="button" className="button" onClick={onCancel}>
           Mégsem
         </button>
       </div>
@@ -213,12 +213,12 @@ export function TriviaGame({ onDone, onCancel }: { onDone: (pay: number) => void
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
         {current.options.map((opt, i) => (
-          <button key={i} type="button" className="pixel-btn" onClick={() => answer(i)}>
+          <button key={i} type="button" className="button" onClick={() => answer(i)}>
             {opt}
           </button>
         ))}
       </div>
-      <button type="button" className="pixel-btn ghost" style={{ marginTop: "0.7rem" }} onClick={onCancel}>
+      <button type="button" className="button" style={{ marginTop: "0.7rem" }} onClick={onCancel}>
         Mégsem
       </button>
     </div>

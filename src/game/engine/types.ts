@@ -1,216 +1,37 @@
-export type GirlId = "rebeka" | "boglarka" | "greta";
-export type SlotName = "morning" | "afternoon" | "evening";
-export type RouteId =
-  | "none"
-  | "alone"
-  | "rebeka"
-  | "boglarka"
-  | "greta"
-  | "boglarka_greta"
-  | "rebeka_greta";
-
-export type LocationId =
-  | "apartment"
-  | "classroom"
-  | "courtyard"
-  | "department"
-  | "holdkor"
-  | "library"
-  | "bekas"
-  | "bookshop"
-  | "cinema"
-  | "peron"
-  | "construction"
-  | "mohu";
-
-export type PhaseName =
-  | "planner"
-  | "scene"
-  | "minigame"
-  | "shop"
-  | "phone"
-  | "summary"
-  | "route"
-  | "ending"
-  | "dossier";
-
-export type GirlPhase =
-  | "unknown"
-  | "introduced"
-  | "warming"
-  | "private"
-  | "intimate_early"
-  | "route_candidate"
-  | "route_locked"
-  | "broken"
-  | "fulfilled";
-
-export type Quality = "very_good" | "good" | "bad" | "very_bad";
-export type NodeKind = "story" | "repeat" | "ambient" | "cold" | "refuse";
-
-export interface Effect {
-  closeness?: number;
-  trust?: number;
-  anger?: number;
-  risk?: number;
-  presence?: number;
-  insight?: number;
-  calm?: number;
-  money?: number;
-  energy?: number;
-  flags?: string[];
-  world?: string[];
-  soothe?: boolean;
+export const GIRLS=['rebeka','boglarka','greta'] as const;
+export type GirlId=typeof GIRLS[number];
+export type ActorId=GirlId|'marton'|'soma'|'denes'|'julia'|'aron'|'lilla'|'narrator';
+export type BondId='marton_rebeka'|'marton_boglarka'|'marton_greta'|'rebeka_boglarka';
+export type RouteId='friendship'|GirlId|'triad';
+export type LocationId='classroom'|'library'|'department'|'holdkor'|'courtyard'|'apartment'|'bekas'|'chamber';
+export type Expression='neutral'|'amused'|'displeased'|'vulnerable'|'affectionate';
+export const SAVE_KEY='ligetvar-save-v2';
+export const LEGACY_SAVE_KEY='ligetvar-save-v1';
+export interface Requirements { scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:RouteId[]; anyOf?:Requirements[] }
+export interface Effect { bonds?:Partial<Record<BondId,number>>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:RouteId; disclosure?:'public'|'limited'|'private' }
+export interface Choice { id:string; text:string; next?:string; effect?:Effect; reaction:string }
+export interface Line { id:string; speaker:ActorId; expression:Expression; text:string; next?:string; choices?:Choice[] }
+export interface Scene {
+ id:string; title:string; kind:'shared'|'relationship'|'preparation'; week:number; deadline:number;
+ participants:ActorId[]; location:LocationId; background:LocationId; lighting:'day'|'evening'|'night';
+ requires:Requirements; evidence:string[]; journal:string; entry:string; lines:Line[]; onComplete?:Effect; contentStatus:'authored'|'fixture';
+ resolution?:'confrontation'|'institution';
 }
-
-export interface ChoiceRequires {
-  insight?: number;
-  calm?: number;
-  presence?: number;
-  trust?: number;
+export type Registry=Record<string,Scene>;
+export interface Evidence { id:string; text:string; scene:string }
+export interface SceneCursor { id:string; line:string; pending:Effect[] }
+export interface WitnessedDecision { scene:string; week:number }
+export interface Ending {
+ threat:'resolved'|'pending'; cost:'supported'|'exhausting'|null;
+ institution:'acknowledged'|'incomplete'|'suppressed'|null;
+ relationship:'triad'|GirlId|'friendship'|'unresolved'|'estranged'|null;
 }
-
-export interface Choice {
-  id: string;
-  text: string;
-  quality: Quality;
-  effect: Effect;
-  reaction: string;
-  requires?: ChoiceRequires;
-  follow?: GirlId;
-  /** Next line in the same visit, shared by every authored dialogue part. */
-  followNode?: string;
-}
-
-export interface DialogueNode {
-  id: string;
-  speaker: GirlId | "narrator";
-  text: string;
-  choices: Choice[];
-  kind: NodeKind;
-  journal?: string;
-  /** Extra energy cost applied to every choice. Narrator nodes default to 0. */
-  cost?: number;
-  /** Display-only name for a narrator-driven NPC; it never creates romance stats. */
-  speakerLabel?: string;
-  /** Optional image caption shown in a labelled placeholder when art is not available. */
-  artCaption?: string;
-}
-
-export interface StoryEvent {
-  id: string;
-  node: string;
-  girl: GirlId;
-  locations: LocationId[];
-  part: 1 | 2;
-  priority: number;
-  minWeek?: number;
-  maxWeek?: number;
-  minTrust?: number;
-  minClose?: number;
-}
-
-export interface ActionDef {
-  id: string;
-  label: string;
-  detail: string;
-  slots: SlotName[];
-  icon: string;
-  kind: "visit" | "job" | "stat" | "minigame" | "date";
-  location: LocationId;
-  node?: string;
-  girl?: GirlId;
-  cost?: number;
-  risk?: number;
-  once?: boolean;
-}
-
-export interface GiftDef {
-  id: string;
-  name: string;
-  price: number;
-  blurb: string;
-}
-
-export interface GirlStats {
-  closeness: number;
-  trust: number;
-  anger: number;
-  flags: string[];
-}
-
-export interface SceneState {
-  node: DialogueNode;
-  location: LocationId;
-  source: string;
-  expression?: string;
-}
-
-export interface Snap {
-  money: number;
-  risk: number;
-  closeness: Record<GirlId, number>;
-  trust: Record<GirlId, number>;
-}
-
 export interface GameState {
-  version: 1;
-  name: string;
-  week: number;
-  slot: 0 | 1 | 2;
-  phase: PhaseName;
-  money: number;
-  energy: number;
-  presence: number;
-  insight: number;
-  calm: number;
-  risk: number;
-  girls: Record<GirlId, GirlStats>;
-  flags: string[];
-  route: RouteId;
-  inventory: Record<string, number>;
-  talkCounts: Record<GirlId, number>;
-  giftsWeek: Record<GirlId, number>;
-  seen: string[];
-  journal: string[];
-  invite: GirlId | null;
-  scene: SceneState | null;
-  minigame: "mohu" | "brick" | null;
-  doingPhysio: boolean;
-  rolled: boolean;
-  giftMeeting: boolean;
-  lastNote: string;
-  mohuWeek: number;
-  brickWeek: number;
-  bekasThisWeek: boolean;
-  riskSoothed: boolean;
-  strain: number;
-  workShifts: number;
-  snap: Snap;
-  dossier: GirlId | null;
-}
-
-export const GIRLS: GirlId[] = ["rebeka", "boglarka", "greta"];
-
-export const SAVE_KEY = "ligetvar-save-v1";
-
-export function emptyGirl(): GirlStats {
-  return { closeness: 0, trust: 0, anger: 0, flags: [] };
-}
-
-export function takeSnap(state: Pick<GameState, "money" | "risk" | "girls">): Snap {
-  return {
-    money: state.money,
-    risk: state.risk,
-    closeness: {
-      rebeka: state.girls.rebeka.closeness,
-      boglarka: state.girls.boglarka.closeness,
-      greta: state.girls.greta.closeness,
-    },
-    trust: {
-      rebeka: state.girls.rebeka.trust,
-      boglarka: state.girls.boglarka.trust,
-      greta: state.girls.greta.trust,
-    },
-  };
+ version:2; name:string; week:number; slot:0|1|2|3; phase:'planner'|'scene'|'summary'|'ending'|'minigame';
+ scene:SceneCursor|null; minigame:'mohu'|'brick'|null; money:number; energy:number; exposure:number;
+ bonds:Record<BondId,number>; direction:RouteId; decisions:Record<string,WitnessedDecision>;
+ evidence:Record<string,WitnessedDecision>; completed:Record<string,number>; preparation:string[];
+ disclosure:'public'|'limited'|'private'; inventory:Record<string,number>; giftsWeek:GirlId[];
+ jobsWeek:Record<'mohu'|'brick',number>; journal:{scene:string;week:number;text:string}[];
+ confrontation:Ending['cost']; institution:Ending['institution']; lastNote:string;
 }
