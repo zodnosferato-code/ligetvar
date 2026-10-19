@@ -43,3 +43,9 @@ A felhasználó kérése szerint közvetlenül `main`-re commitolj, külön ág 
 - Store the credential as the GitHub Actions repository secret `VENICE_API_KEY` when automation needs it. Never print or interpolate secrets into logs.
 - Validate chat connectivity with `npm run venice:smoke` in a trusted Node 22+ environment where the secret is available. The script sends a minimal non-sensitive `/chat/completions` request and reports HTTP failure without printing response bodies.
 - Chat completion configuration is not an image-generation integration; select and validate an image-capable endpoint/model separately for any permitted image workflows.
+
+## Venice art production
+
+A felhasználó 2026-10-19-én kérte a szükséges képek módszeres generálását a Venice-integrációval. A [gyártási leltár](docs/VENICE-PRODUCTION.md) 32 runtime képet és öt referencialapot sorol fel. A képi promptok és referenciafüggőségek a `scripts/venice/catalog.mjs` alatt vannak; az `art-jobs/venice/request.json` változása indítja az Actions-munkafolyamatot. A pilot Rebeka semleges portréja és a tanterem; ezeket együtt ellenőrizd a készlet bővítése előtt.
+
+Az `IMAGE_GENERATOR_KEY` kizárólag Actions secretként kerül a Node futtatókörnyezetbe. Kész képet és eredményt csak ténylegesen létrejött fájl alapján jelents. A `assets/generated/venice/` jelölt képeit prompt-, referencia- és fájlhash, méret, alpha és státusz kíséri. A generálás nem automatikus végső jóváhagyás; a runtime manifestbe vizuális ellenőrzés után kerülhet kép. A régi karakterképeket ne állítsd vissza.

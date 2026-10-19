@@ -11,6 +11,7 @@
 | [Redesign plan](../Ligetvar-Redesign-Plan.md) | Story canon and approved art direction; proposed details are marked as such |
 | [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
 | [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
+| [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |
 | [Art register](ART-REGISTER.md) | Active assets, art brief, placeholders, and production gates |
 | [Character voices](CHARACTER-VOICES.md) | Approved temperaments, speech patterns and writing coverage |
 | [Scene inventory](SCENE-INVENTORY.md) | Generated active scene list, locations, prerequisites, and evidence |

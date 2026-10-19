@@ -1,0 +1,52 @@
+name: Produce Venice game assets
+
+on:
+  push:
+    branches: [main]
+    paths: [art-jobs/venice/request.json]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: venice-asset-production
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate production request without credentials
+        run: node scripts/venice-generate-assets.mjs --dry-run
+      - name: Generate requested candidate images through Venice
+        run: node scripts/venice-generate-assets.mjs
+        env:
+          IMAGE_GENERATOR_KEY: ${{ secrets.IMAGE_GENERATOR_KEY }}
+      - name: Preserve candidates and checkpoint manifest
+        if: always()
+        run: |
+          if [ ! -d assets/generated/venice ]; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/generated/venice
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Save Venice asset candidates and production checkpoint'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Upload candidate images and provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: venice-asset-candidates-${{ github.run_id }}
+          path: assets/generated/venice/
+          if-no-files-found: ignore
+          retention-days: 30
