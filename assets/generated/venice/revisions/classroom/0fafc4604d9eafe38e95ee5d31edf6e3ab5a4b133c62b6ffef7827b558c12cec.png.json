@@ -1,0 +1,32 @@
+{
+  "id": "classroom",
+  "model": "firered-image-edit",
+  "method": "edit",
+  "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. Reillustrate the supplied old classroom as highly detailed anime, preserving its architectural character and atmosphere while recomposing the camera at a desk. Pointed stone window arches, autumn daylight, dark timber desks, chalkboard, electric task lamps. One empty chair across the desk facing the viewer. Restrained modern college, not a medieval candlelit tavern.",
+  "refs": [
+    {
+      "id": "repo:assets/backgrounds/classroom.jpg",
+      "sha256": "6c26ec7b388ac83e8f8ccedb3827ca6b4e67cf6093b5b2dcfc6b4e83029e76de"
+    }
+  ],
+  "parameters": {
+    "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. Reillustrate the supplied old classroom as highly detailed anime, preserving its architectural character and atmosphere while recomposing the camera at a desk. Pointed stone window arches, autumn daylight, dark timber desks, chalkboard, electric task lamps. One empty chair across the desk facing the viewer. Restrained modern college, not a medieval candlelit tavern.",
+    "safe_mode": true,
+    "aspect_ratio": "16:9",
+    "output_format": "png",
+    "model": "firered-image-edit"
+  },
+  "transparent": false,
+  "postprocess": null,
+  "file": "backgrounds/classroom.png",
+  "signature": "4a4dbbcfe9eb7ebab7d84c584a28b6528a695d47ec1d75ea4bfc32d297b9bcc5",
+  "sha256": "0fafc4604d9eafe38e95ee5d31edf6e3ab5a4b133c62b6ffef7827b558c12cec",
+  "bytes": 1901769,
+  "width": 1280,
+  "height": 720,
+  "colorType": 6,
+  "alphaChannel": true,
+  "status": "candidate-awaiting-visual-review",
+  "generatedAt": "2026-10-19T16:46:39.672Z",
+  "request": "2026-10-19-wai-firered-pilot-02"
+}

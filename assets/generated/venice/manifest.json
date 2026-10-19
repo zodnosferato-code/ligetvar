@@ -24,15 +24,25 @@
       "postprocess": null,
       "file": "backgrounds/classroom.png",
       "signature": "4a4dbbcfe9eb7ebab7d84c584a28b6528a695d47ec1d75ea4bfc32d297b9bcc5",
-      "sha256": "0fafc4604d9eafe38e95ee5d31edf6e3ab5a4b133c62b6ffef7827b558c12cec",
-      "bytes": 1901769,
+      "sha256": "7eb77c22b8aac2f28170af2479eff0fa7514394de754f4abf86d3af9e160cf3d",
+      "bytes": 1865277,
       "width": 1280,
       "height": 720,
-      "colorType": 6,
-      "alphaChannel": true,
+      "colorType": 2,
+      "alphaChannel": false,
       "status": "candidate-awaiting-visual-review",
       "generatedAt": "2026-10-19T16:46:39.672Z",
-      "request": "2026-10-19-wai-firered-pilot-02"
+      "request": "2026-10-19-wai-firered-pilot-02",
+      "refinements": [
+        {
+          "request": "2026-10-19-pilot-refinement-01",
+          "model": "firered-image-edit",
+          "prompt": "Preserve this empty anime gothic college classroom, window architecture, daylight, electric lamps, furniture materials and illustration style. Correct the conversational camera composition: the viewer is seated at the NEAR edge of the foreground table. REMOVE the chair currently BETWEEN the viewer and the table. Put ONE normal empty chair on the FAR SIDE of this table, FACING THE VIEWER; show its seat and front, with its backrest BEHIND the seat, at a natural conversational distance. No chair back may block the viewer in the foreground. The empty place opposite must be clearly usable by a companion. Keep natural seated eye level, 16:9. Erase all chalk writing so the boards are blank. No people, hands, reflections, text or watermark.",
+          "inputSha256": "0fafc4604d9eafe38e95ee5d31edf6e3ab5a4b133c62b6ffef7827b558c12cec",
+          "outputSha256": "7eb77c22b8aac2f28170af2479eff0fa7514394de754f4abf86d3af9e160cf3d",
+          "createdAt": "2026-10-19T16:52:56.844Z"
+        }
+      ]
     },
     "rebeka_neutral": {
       "id": "rebeka_neutral",
@@ -58,15 +68,25 @@
       "postprocess": "/image/background-remove",
       "file": "portraits/rebeka/neutral.png",
       "signature": "4fd81538fc79df7c01e62893eaa151cb10e451cdbbd1886b6f645dadec1cdb21",
-      "sha256": "fe0bd866524560e80116ba21a84f6e8bf8b8af8357f87b937dd9e3e631279fe6",
-      "bytes": 1493738,
-      "width": 1024,
-      "height": 1280,
-      "colorType": 2,
-      "alphaChannel": false,
+      "sha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
+      "bytes": 865022,
+      "width": 896,
+      "height": 1120,
+      "colorType": 6,
+      "alphaChannel": true,
       "status": "candidate-needs-alpha-and-visual-review",
       "generatedAt": "2026-10-19T16:46:46.147Z",
-      "request": "2026-10-19-wai-firered-pilot-02"
+      "request": "2026-10-19-wai-firered-pilot-02",
+      "refinements": [
+        {
+          "request": "2026-10-19-pilot-refinement-01",
+          "model": "firered-image-edit",
+          "prompt": "Edit this single adult woman portrait, preserving her recognizable adult face, eyes, beauty mark below her anatomical LEFT eye (viewer right), black hair and anime rendering. Zoom OUT to a head-and-shoulders bust with the COMPLETE TOP OF HER HEAD visible, 8 percent clear margin above hair, shoulders and upper chest fully inside the image. Add one distinct plum-purple hair STREAK only on her anatomical LEFT, viewer right; the rest of her hair is black. Replace the garment with a completely OPAQUE MATTE BLACK HIGH-NECK DRESS: solid fabric covering neck and upper chest, no mesh, sheer fabric, cutouts, straps or cleavage. Plain narrow silver choker. Restrained neutral confident expression, no blush. Flat white background, soft neutral light, 4:5 composition. One person only, no text or frame.",
+          "inputSha256": "fe0bd866524560e80116ba21a84f6e8bf8b8af8357f87b937dd9e3e631279fe6",
+          "outputSha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
+          "createdAt": "2026-10-19T16:51:26.255Z"
+        }
+      ]
     }
   },
   "runs": [
@@ -110,6 +130,18 @@
       ],
       "reused": [],
       "finishedAt": "2026-10-19T16:46:46.148Z"
+    },
+    {
+      "request": "2026-10-19-pilot-refinement-01",
+      "phase": "refine",
+      "startedAt": "2026-10-19T16:50:01.147Z",
+      "status": "completed-with-pending-review",
+      "generated": [
+        "rebeka_neutral",
+        "classroom"
+      ],
+      "reused": [],
+      "finishedAt": "2026-10-19T16:52:56.845Z"
     }
   ],
   "capabilities": {
