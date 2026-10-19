@@ -1,0 +1,44 @@
+{
+  "id": "rebeka_neutral",
+  "model": "wai-Illustrious",
+  "method": "generate",
+  "prompt": "masterpiece, best quality, very aesthetic, high resolution, finely detailed anime illustration, 1girl, solo, adult woman, mature female, normal adult proportions, close-up portrait, upper body, shoulders, looking at viewer, angular face, pale skin, long straight black hair, one plum-purple hair streak on viewer right, small beauty mark under eye on viewer right, berry lipstick, confident calm expression, black high-neck dress, simple silver choker, clean delicate lineart, crisp cel shading, softly lit face, centered head and shoulders, entire hair in frame, plain white background, single portrait",
+  "refs": [],
+  "parameters": {
+    "prompt": "masterpiece, best quality, very aesthetic, high resolution, finely detailed anime illustration, 1girl, solo, adult woman, mature female, normal adult proportions, close-up portrait, upper body, shoulders, looking at viewer, angular face, pale skin, long straight black hair, one plum-purple hair streak on viewer right, small beauty mark under eye on viewer right, berry lipstick, confident calm expression, black high-neck dress, simple silver choker, clean delicate lineart, crisp cel shading, softly lit face, centered head and shoulders, entire hair in frame, plain white background, single portrait",
+    "safe_mode": true,
+    "width": 1024,
+    "height": 1280,
+    "steps": 25,
+    "model": "wai-Illustrious",
+    "format": "png",
+    "return_binary": false,
+    "variants": 1,
+    "hide_watermark": true,
+    "embed_exif_metadata": false,
+    "negative_prompt": "chibi, child, loli, baby, multiple girls, multiple people, character sheet, reference sheet, turnaround, comic, panels, grid, border, ornament, text, Japanese text, Chinese text, watermark, signature, pixel art, photorealistic, lowres, blurry, extra limbs"
+  },
+  "transparent": true,
+  "postprocess": "/image/background-remove",
+  "file": "portraits/rebeka/neutral.png",
+  "signature": "4fd81538fc79df7c01e62893eaa151cb10e451cdbbd1886b6f645dadec1cdb21",
+  "sha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
+  "bytes": 865022,
+  "width": 896,
+  "height": 1120,
+  "colorType": 6,
+  "alphaChannel": true,
+  "status": "candidate-needs-alpha-and-visual-review",
+  "generatedAt": "2026-10-19T16:46:46.147Z",
+  "request": "2026-10-19-wai-firered-pilot-02",
+  "refinements": [
+    {
+      "request": "2026-10-19-pilot-refinement-01",
+      "model": "firered-image-edit",
+      "prompt": "Edit this single adult woman portrait, preserving her recognizable adult face, eyes, beauty mark below her anatomical LEFT eye (viewer right), black hair and anime rendering. Zoom OUT to a head-and-shoulders bust with the COMPLETE TOP OF HER HEAD visible, 8 percent clear margin above hair, shoulders and upper chest fully inside the image. Add one distinct plum-purple hair STREAK only on her anatomical LEFT, viewer right; the rest of her hair is black. Replace the garment with a completely OPAQUE MATTE BLACK HIGH-NECK DRESS: solid fabric covering neck and upper chest, no mesh, sheer fabric, cutouts, straps or cleavage. Plain narrow silver choker. Restrained neutral confident expression, no blush. Flat white background, soft neutral light, 4:5 composition. One person only, no text or frame.",
+      "inputSha256": "fe0bd866524560e80116ba21a84f6e8bf8b8af8357f87b937dd9e3e631279fe6",
+      "outputSha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
+      "createdAt": "2026-10-19T16:51:26.255Z"
+    }
+  ]
+}

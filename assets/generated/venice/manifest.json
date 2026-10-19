@@ -24,12 +24,12 @@
       "postprocess": null,
       "file": "backgrounds/classroom.png",
       "signature": "4a4dbbcfe9eb7ebab7d84c584a28b6528a695d47ec1d75ea4bfc32d297b9bcc5",
-      "sha256": "7eb77c22b8aac2f28170af2479eff0fa7514394de754f4abf86d3af9e160cf3d",
-      "bytes": 1865277,
+      "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a",
+      "bytes": 1944265,
       "width": 1280,
       "height": 720,
-      "colorType": 2,
-      "alphaChannel": false,
+      "colorType": 6,
+      "alphaChannel": true,
       "status": "candidate-awaiting-visual-review",
       "generatedAt": "2026-10-19T16:46:39.672Z",
       "request": "2026-10-19-wai-firered-pilot-02",
@@ -41,6 +41,14 @@
           "inputSha256": "0fafc4604d9eafe38e95ee5d31edf6e3ab5a4b133c62b6ffef7827b558c12cec",
           "outputSha256": "7eb77c22b8aac2f28170af2479eff0fa7514394de754f4abf86d3af9e160cf3d",
           "createdAt": "2026-10-19T16:52:56.844Z"
+        },
+        {
+          "request": "2026-10-19-pilot-refinement-02",
+          "model": "firered-image-edit",
+          "prompt": "Remove ONLY the large wooden chair closest to the camera, whose big backrest and two posts block the lower center-left foreground. Erase that whole near chair and naturally complete the foreground table edge and floor where it was. Keep the smaller chair on the FAR side of the table at middle-right, and preserve every other detail of the classroom exactly. The viewer should look directly across the foreground table with NO CHAIR BETWEEN CAMERA AND TABLE. No other changes.",
+          "inputSha256": "7eb77c22b8aac2f28170af2479eff0fa7514394de754f4abf86d3af9e160cf3d",
+          "outputSha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a",
+          "createdAt": "2026-10-19T16:58:27.010Z"
         }
       ]
     },
@@ -68,12 +76,12 @@
       "postprocess": "/image/background-remove",
       "file": "portraits/rebeka/neutral.png",
       "signature": "4fd81538fc79df7c01e62893eaa151cb10e451cdbbd1886b6f645dadec1cdb21",
-      "sha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
-      "bytes": 865022,
+      "sha256": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05",
+      "bytes": 909986,
       "width": 896,
       "height": 1120,
-      "colorType": 6,
-      "alphaChannel": true,
+      "colorType": 2,
+      "alphaChannel": false,
       "status": "candidate-needs-alpha-and-visual-review",
       "generatedAt": "2026-10-19T16:46:46.147Z",
       "request": "2026-10-19-wai-firered-pilot-02",
@@ -85,6 +93,14 @@
           "inputSha256": "fe0bd866524560e80116ba21a84f6e8bf8b8af8357f87b937dd9e3e631279fe6",
           "outputSha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
           "createdAt": "2026-10-19T16:51:26.255Z"
+        },
+        {
+          "request": "2026-10-19-pilot-refinement-02",
+          "model": "firered-image-edit",
+          "prompt": "Keep this adult anime portrait unchanged except these two precise corrections. The purple hair currently appears on the LEFT SIDE OF THE IMAGE. Turn ALL purple strands on the LEFT HALF OF THE IMAGE black. Place ONE plum-purple strand along the RIGHT SIDE OF THE IMAGE instead. Add one small black beauty mark immediately below the eye on the RIGHT SIDE OF THE IMAGE. These directions refer to the image borders, not the woman's perspective. Do not mirror. Preserve face, eyes, opaque high-neck black dress, choker, crop and lighting.",
+          "inputSha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
+          "outputSha256": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05",
+          "createdAt": "2026-10-19T16:57:15.255Z"
         }
       ]
     }
@@ -142,6 +158,18 @@
       ],
       "reused": [],
       "finishedAt": "2026-10-19T16:52:56.845Z"
+    },
+    {
+      "request": "2026-10-19-pilot-refinement-02",
+      "phase": "refine",
+      "startedAt": "2026-10-19T16:56:00.278Z",
+      "status": "completed-with-pending-review",
+      "generated": [
+        "rebeka_neutral",
+        "classroom"
+      ],
+      "reused": [],
+      "finishedAt": "2026-10-19T16:58:27.010Z"
     }
   ],
   "capabilities": {
