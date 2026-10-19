@@ -1,5 +1,7 @@
 # Active scene inventory
 
+> **Status:** Generated snapshot. | **Purpose:** Active scene metadata from the typed runtime registry.
+
 Generated from the sole typed registry, not a parallel scene source. 45 authored scenes: 16 shared, 18 individual foundations, 8 triad scenes, 2 optional preparation scenes, 1 friendship aftermath. Every scene declares Hungarian dialogue, participants, explicit speakers/expressions, location/background, prerequisites and completion records.
 
 | Scene ID | Kind | Week window | Location | Direct scene/decision prerequisites |

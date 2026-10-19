@@ -1,5 +1,7 @@
 # Játékmotor — átdolgozott félév, v2
 
+> **Status:** Active. | **Purpose:** Runtime architecture, scheduling, saves, and ending rules.
+
 | Réteg | Aktív forrás | Szerep |
 | --- | --- | --- |
 | Állapot | `src/game/engine/types.ts` | verziózott félév, négy kapcsolódás, tanúsított döntések és bizonyítékok |

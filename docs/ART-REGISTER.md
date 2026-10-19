@@ -1,5 +1,7 @@
 # Art register — transitional runtime
 
+> **Status:** Active. | **Purpose:** Runtime art inventory, accepted direction, and open art gates.
+
 No image generation was invoked. No artwork was created or edited. Existing character art has been archived and is no longer used by the runtime. The current backgrounds remain transitional; none is being promoted to final anime approval. The user likes the current backgrounds' atmosphere and wants them preserved as the visual baseline. Missing explicit illustrations are outside every engine/story gate. The final 31 non-explicit runtime assets and reference sheets remain an open art gate.
 
 Approved direction: highly detailed, non-pixel anime illustration with crisp cel shading. Redraw character art from scratch while retaining key identifiers such as recognizable hair colors, silhouettes, or signature details; old images are not style templates. Compose backgrounds from the player's seated point of view, with a clear, natural seat for the girl opposite. Keep the existing gothic mood and add subtle modern college cues. Per-character identifiers and exact framing can be confirmed in the style sample before production.
