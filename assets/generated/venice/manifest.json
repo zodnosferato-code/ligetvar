@@ -1,7 +1,74 @@
 {
   "schema": 1,
   "provider": "Venice AI",
-  "assets": {},
+  "assets": {
+    "classroom": {
+      "id": "classroom",
+      "model": "firered-image-edit",
+      "method": "edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. Reillustrate the supplied old classroom as highly detailed anime, preserving its architectural character and atmosphere while recomposing the camera at a desk. Pointed stone window arches, autumn daylight, dark timber desks, chalkboard, electric task lamps. One empty chair across the desk facing the viewer. Restrained modern college, not a medieval candlelit tavern.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/classroom.jpg",
+          "sha256": "6c26ec7b388ac83e8f8ccedb3827ca6b4e67cf6093b5b2dcfc6b4e83029e76de"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. Reillustrate the supplied old classroom as highly detailed anime, preserving its architectural character and atmosphere while recomposing the camera at a desk. Pointed stone window arches, autumn daylight, dark timber desks, chalkboard, electric task lamps. One empty chair across the desk facing the viewer. Restrained modern college, not a medieval candlelit tavern.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "model": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/classroom.png",
+      "signature": "4a4dbbcfe9eb7ebab7d84c584a28b6528a695d47ec1d75ea4bfc32d297b9bcc5",
+      "sha256": "0fafc4604d9eafe38e95ee5d31edf6e3ab5a4b133c62b6ffef7827b558c12cec",
+      "bytes": 1901769,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-19T16:46:39.672Z",
+      "request": "2026-10-19-wai-firered-pilot-02"
+    },
+    "rebeka_neutral": {
+      "id": "rebeka_neutral",
+      "model": "wai-Illustrious",
+      "method": "generate",
+      "prompt": "masterpiece, best quality, very aesthetic, high resolution, finely detailed anime illustration, 1girl, solo, adult woman, mature female, normal adult proportions, close-up portrait, upper body, shoulders, looking at viewer, angular face, pale skin, long straight black hair, one plum-purple hair streak on viewer right, small beauty mark under eye on viewer right, berry lipstick, confident calm expression, black high-neck dress, simple silver choker, clean delicate lineart, crisp cel shading, softly lit face, centered head and shoulders, entire hair in frame, plain white background, single portrait",
+      "refs": [],
+      "parameters": {
+        "prompt": "masterpiece, best quality, very aesthetic, high resolution, finely detailed anime illustration, 1girl, solo, adult woman, mature female, normal adult proportions, close-up portrait, upper body, shoulders, looking at viewer, angular face, pale skin, long straight black hair, one plum-purple hair streak on viewer right, small beauty mark under eye on viewer right, berry lipstick, confident calm expression, black high-neck dress, simple silver choker, clean delicate lineart, crisp cel shading, softly lit face, centered head and shoulders, entire hair in frame, plain white background, single portrait",
+        "safe_mode": true,
+        "width": 1024,
+        "height": 1280,
+        "steps": 25,
+        "model": "wai-Illustrious",
+        "format": "png",
+        "return_binary": false,
+        "variants": 1,
+        "hide_watermark": true,
+        "embed_exif_metadata": false,
+        "negative_prompt": "chibi, child, loli, baby, multiple girls, multiple people, character sheet, reference sheet, turnaround, comic, panels, grid, border, ornament, text, Japanese text, Chinese text, watermark, signature, pixel art, photorealistic, lowres, blurry, extra limbs"
+      },
+      "transparent": true,
+      "postprocess": "/image/background-remove",
+      "file": "portraits/rebeka/neutral.png",
+      "signature": "4fd81538fc79df7c01e62893eaa151cb10e451cdbbd1886b6f645dadec1cdb21",
+      "sha256": "fe0bd866524560e80116ba21a84f6e8bf8b8af8357f87b937dd9e3e631279fe6",
+      "bytes": 1493738,
+      "width": 1024,
+      "height": 1280,
+      "colorType": 2,
+      "alphaChannel": false,
+      "status": "candidate-needs-alpha-and-visual-review",
+      "generatedAt": "2026-10-19T16:46:46.147Z",
+      "request": "2026-10-19-wai-firered-pilot-02"
+    }
+  },
   "runs": [
     {
       "request": "2026-10-19-pilot-01",
@@ -31,6 +98,24 @@
       "reused": [],
       "finishedAt": "2026-10-19T16:42:02.622Z",
       "failure": "Venice /image/background-remove failed: HTTP 403"
+    },
+    {
+      "request": "2026-10-19-wai-firered-pilot-02",
+      "phase": "pilot",
+      "startedAt": "2026-10-19T16:45:17.508Z",
+      "status": "completed-with-pending-alpha",
+      "generated": [
+        "classroom",
+        "rebeka_neutral"
+      ],
+      "reused": [],
+      "finishedAt": "2026-10-19T16:46:46.148Z"
     }
-  ]
+  ],
+  "capabilities": {
+    "backgroundRemove": {
+      "available": false,
+      "httpStatus": 403
+    }
+  }
 }
