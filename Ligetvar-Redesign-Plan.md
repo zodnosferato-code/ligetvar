@@ -13,7 +13,7 @@ Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 
 - Support three single romances and a carefully written shared route with Rebeka and Boglárka. Those two also fall in love with each other.
 - Each woman has a distinct romantic pace.
 - Replace the pixel effect with highly detailed, non-pixel anime illustration. Ordinary dialogue uses large expressive portraits beside the text, over reusable backgrounds.
-- Restart the character artwork from a clean slate. Previous character images, visual locks, and generation prompts are archived and are not canonical references. The characters' story roles and personalities remain; their visual designs and expression sheets need a new user-approved direction.
+- Restart the character artwork from a clean slate. Previous character images, visual locks, and generation prompts are archived and are not canonical references. The characters' story roles and personalities remain. Redrawn art should preserve key identifiers such as recognizable hair colors, silhouettes, or signature details, but old images are not style templates; confirm the exact identifiers in the style sample. Approved rendering is crisp cel shading. Backgrounds retain their current gothic mood with subtle modern college cues and player-seated POV compositions with a clear seat opposite.
 
 Everything more specific below is a design recommendation, open to revision. In particular, the assistant's name and appearance, the magic's exact rules, and the mechanics of the vampire's death remain proposed details.
 
