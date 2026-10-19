@@ -6,7 +6,7 @@
 | Szabályok | `src/game/engine/logic.ts` | változatlan bemenetből új állapotot adó reducerek; sávok, előfeltételek, hatások, lezárás |
 | Történet | `src/game/content/catalog.ts` | 45 magyar jelenet; egyetlen aktív jelenetregiszter |
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
-| Képmanifest | `src/game/content/assets.ts` | pontos helyszín, ruhás átmeneti portré, biztonságos semleges tartalék, jelölt helyőrző |
+| Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
 | Mentés | `src/game/engine/save.ts`, `store.ts` | v2 validálás és külön kulcs; Zustand/localStorage integráció |
 | UI | `src/game/ui/` | heti tervező, nagy portrés dialógus, mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
