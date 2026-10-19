@@ -49,3 +49,7 @@ Final art acceptance: stable identity and framing, all five expressions per woma
 ## Venice production
 
 See [VENICE-PRODUCTION.md](VENICE-PRODUCTION.md) for 32 runtime images (the 31 planned images plus Lilla) and five production references. The initial pilot is Rebeka neutral plus classroom. Generation alone does not satisfy final visual acceptance.
+
+## WAI + FireRed pilot review
+
+The user selected WAI Illustrious + FireRed. Two style candidates now exist (Rebeka neutral and classroom), with raw sources and refinement history under `assets/generated/venice/`. The first WAI attempt was rejected and archived. The revised portrait is an adult anime bust with an opaque high-neck dress and correct-side plum streak; the classroom has no blocking near chair. Minor portrait cleanup and final user acceptance remain open. Venice background removal returned HTTP 403, so portrait alpha remains a separate unfinished item. See `pilot-review.json` for hashes and actual review scope. The next requested batch is seven additional neutral character portraits; no candidate has been promoted to runtime.

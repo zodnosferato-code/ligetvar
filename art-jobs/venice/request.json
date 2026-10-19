@@ -1,21 +1,17 @@
 {
-  "id": "2026-10-19-pilot-refinement-02",
-  "phase": "refine",
-  "assets": [],
-  "maxNewImages": 2,
+  "id": "2026-10-19-neutral-masters-01",
+  "phase": "masters",
+  "assets": [
+    "boglarka_neutral",
+    "greta_neutral",
+    "soma_neutral",
+    "denes_neutral",
+    "julia_neutral",
+    "aron_neutral",
+    "lilla_neutral"
+  ],
+  "maxNewImages": 7,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
-  "resolution": "1K",
-  "refinements": [
-    {
-      "asset": "rebeka_neutral",
-      "expectedSha256": "e2cb3087f1a9757cb2c57a3532f10801fcde464db9639306a63527a556551741",
-      "prompt": "Keep this adult anime portrait unchanged except these two precise corrections. The purple hair currently appears on the LEFT SIDE OF THE IMAGE. Turn ALL purple strands on the LEFT HALF OF THE IMAGE black. Place ONE plum-purple strand along the RIGHT SIDE OF THE IMAGE instead. Add one small black beauty mark immediately below the eye on the RIGHT SIDE OF THE IMAGE. These directions refer to the image borders, not the woman's perspective. Do not mirror. Preserve face, eyes, opaque high-neck black dress, choker, crop and lighting."
-    },
-    {
-      "asset": "classroom",
-      "expectedSha256": "7eb77c22b8aac2f28170af2479eff0fa7514394de754f4abf86d3af9e160cf3d",
-      "prompt": "Remove ONLY the large wooden chair closest to the camera, whose big backrest and two posts block the lower center-left foreground. Erase that whole near chair and naturally complete the foreground table edge and floor where it was. Keep the smaller chair on the FAR side of the table at middle-right, and preserve every other detail of the classroom exactly. The viewer should look directly across the foreground table with NO CHAIR BETWEEN CAMERA AND TABLE. No other changes."
-    }
-  ]
+  "resolution": "1K"
 }
