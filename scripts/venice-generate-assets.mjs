@@ -39,6 +39,10 @@ async function call(endpoint,body){
 try{
  key=process.env.IMAGE_GENERATOR_KEY;if(!key)throw new Error('IMAGE_GENERATOR_KEY is missing from the trusted runtime');
  const models=await (await call('/models?type=all')).json();
+ const available=(models.data??[]).filter(m=>m.type==='image'||m.type==='inpaint');
+ await writeFile(join(ROOT,'available-models.json'),JSON.stringify({checkedAt:new Date().toISOString(),models:available.map(m=>({id:m.id,type:m.type,model_spec:m.model_spec??null}))},null,2)+'\n');
+ console.log('Available image/edit model IDs:',available.map(m=>m.id).join(', '));
+ if(request.phase==='models'){run.status='completed';run.finishedAt=new Date().toISOString();await checkpoint();console.log('Model inventory saved; no image generation requested.');process.exit(0);}
  const find=id=>{const m=models.data?.find(m=>m.id===id);if(!m)throw new Error('Configured Venice model unavailable: '+id);return m;};
  const gen=find(request.generationModel),edit=find(request.editModel);
  const constraints=m=>m.model_spec?.constraints??m.constraints??{};
