@@ -2,7 +2,7 @@
 
 > **Status:** Active. | **Purpose:** Runtime art inventory, accepted direction, and open art gates.
 
-No image generation was invoked. No artwork was created or edited. Existing character art has been archived and is no longer used by the runtime. The current backgrounds remain transitional; none is being promoted to final anime approval. The user likes the current backgrounds' atmosphere and wants them preserved as the visual baseline. Missing explicit illustrations are outside every engine/story gate. The final 31 non-explicit runtime assets and reference sheets remain an open art gate.
+The user requested systematic Venice generation on 19 October 2026. The production inventory and two-image pilot request are prepared; actual generated outputs and review results must be recorded after the workflow runs. Existing character art has been archived and is no longer used by the runtime. The current backgrounds remain transitional; none is being promoted to final anime approval. The user likes the current backgrounds' atmosphere and wants them preserved as the visual baseline. Missing explicit illustrations are outside every engine/story gate. The final 31 non-explicit runtime assets and reference sheets remain an open art gate.
 
 Approved direction: highly detailed, non-pixel anime illustration with crisp cel shading. Redraw character art from scratch while retaining key identifiers such as recognizable hair colors, silhouettes, or signature details; old images are not style templates. Compose backgrounds from the player's seated point of view, with a clear, natural seat for the girl opposite. Keep the existing gothic mood and add subtle modern college cues. Per-character identifiers and exact framing can be confirmed in the style sample before production.
 
@@ -45,3 +45,7 @@ Earlier character images, prompts, and visual locks have been archived under `as
 These are 31 requested production records, not 31 completed images. Reference sheets (three clothed character identity sheets, assistant sheet, architecture/layout sheet) are still pending. The combined portrait/background style sample has not been generated or approved; runtime portraits remain placeholders while existing backgrounds continue as transitional scene art. A visual review of layout does not satisfy identity/style approval.
 
 Final art acceptance: stable identity and framing, all five expressions per woman with neutral fallback, exact locations, consistent modern college details and lighting, no mirroring of identity marks, clean mobile readability. Production must follow redesign sections 8–9.
+
+## Venice production
+
+See [VENICE-PRODUCTION.md](VENICE-PRODUCTION.md) for 32 runtime images (the 31 planned images plus Lilla) and five production references. The initial pilot is Rebeka neutral plus classroom. Generation alone does not satisfy final visual acceptance.

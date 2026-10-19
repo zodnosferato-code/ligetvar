@@ -1,0 +1,10 @@
+{
+  "id": "2026-10-19-pilot-01",
+  "phase": "pilot",
+  "assets": ["rebeka_neutral", "classroom"],
+  "maxNewImages": 2,
+  "generationModel": "gpt-image-2-5-flare",
+  "editModel": "gpt-image-2-5-flare-edit",
+  "resolution": "2K",
+  "quality": "high"
+}
