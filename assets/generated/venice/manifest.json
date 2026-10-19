@@ -21,6 +21,16 @@
       "generated": [],
       "reused": [],
       "finishedAt": "2026-10-19T16:35:11.506Z"
+    },
+    {
+      "request": "2026-10-19-wai-firered-pilot-01",
+      "phase": "pilot",
+      "startedAt": "2026-10-19T16:41:54.539Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [],
+      "finishedAt": "2026-10-19T16:42:02.622Z",
+      "failure": "Venice /image/background-remove failed: HTTP 403"
     }
   ]
 }
