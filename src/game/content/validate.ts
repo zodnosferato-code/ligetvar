@@ -1,4 +1,4 @@
-import type { Evidence, Registry, Requirements, Scene } from '../engine/types.ts';
+import type { Evidence, Registry, Requirements, Scene } from './types.ts';
 export function validateRegistry(registry:Registry,evidence:Record<string,Evidence>,backgrounds:ReadonlySet<string>):void{
  const scenes=Object.values(registry),producers=new Map<string,string[]>();
  const fail=(message:string):never=>{throw new Error(message);};
@@ -16,7 +16,8 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
    if(l.speaker!=='narrator'&&!s.participants.includes(l.speaker))fail('Absent speaker: '+s.id);
    if(!['neutral','amused','displeased','vulnerable','affectionate'].includes(l.expression))fail('Invalid expression: '+s.id);
    if(l.choices&&(l.choices.length<1||l.choices.length>4||new Set(l.choices.map(c=>c.id)).size!==l.choices.length))fail('Maximum 4 unique choices: '+s.id);
-   for(const c of l.choices??[])if(!c.text.trim()||!c.reaction.trim())fail('Missing choice text: '+s.id);
+   if(l.choices?.length&&!l.choices.some(c=>!c.requires))fail('Choice needs an unconditional fallback: '+s.id);
+   for(const c of l.choices??[])if(!c.text.trim()||(!c.next&&!c.reaction.trim()))fail('Missing choice text: '+s.id);
    for(const target of [l.next,...(l.choices??[]).map(c=>c.next)].filter(Boolean))if(!ids.has(target!))fail('Unknown next: '+s.id);
   }
   const seen=new Set<string>(),stack=new Set<string>();
@@ -28,7 +29,7 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
   }
   visit(s.entry);if(seen.size!==ids.size)fail('Unreachable line: '+s.id);
   for(const id of s.evidence)if(evidence[id]?.scene!==s.id)fail('Evidence source: '+id);
-  for(const r of requirements(s.requires)){
+  for(const r of [s.requires,...s.lines.flatMap(l=>(l.choices??[]).flatMap(c=>c.requires?[c.requires]:[]))].flatMap(requirements)){
    for(const id of r.scenes??[])if(!registry[id])fail('Unknown prerequisite scene: '+id);
    for(const id of r.evidence??[])if(!evidence[id]||!registry[evidence[id].scene])fail('Unknown evidence: '+id);
    for(const id of r.decisions??[])if(!producers.has(id))fail('Unknown decision: '+id);

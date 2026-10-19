@@ -1,5 +1,5 @@
 import { SCENES } from "./content/catalog.ts";
-import type { GameState, LocationId } from "./engine/types.ts";
+import type { GameState, LocationId } from "./content/types.ts";
 
 export type MoodId =
   | "classroom_calm"
