@@ -1,9 +1,9 @@
 # Karakter képi assetek
 
-**Kanonikus forrás**: minden kép a GitHub repó `assets/` mappájában él. A Google Drive csak archívum, nem forrás.
+**Kanonikus forrás**: a játék képi assetei az `assets/` mappában vannak; a runtime azokat a fájlokat tölti be, amelyeket a `src/game/content/assets.ts` manifest felsorol.
 
-A vizuális leírások a dokumentációban (04-vizualis-biblia.md, 11-kepgeneralasi-szabaly.md, 23-teljes-test-referencia.md, 33-kepgeneralo-promptok.md) vannak részletezve, hogy AI képgeneráló eszközök konzisztensen reprodukálhassák a karaktereket.
+A jelenetek a játékos első személyű nézőpontjából készülnek. A meglévő háttérképek hangulatát a felhasználó megfelelőnek tartja; új vagy frissített háttérnél őrizzük meg ezt a hangulatot, és hagyjunk jól olvasható helyet a karakternek leülni a játékossal szemben.
 
-A jelenetek a játékos első személyű nézőpontjából (POV) vannak. A leírások tartalmazzák a helyszíneket is.
+A végleges képi stílus még egyeztetés alatt van. A kért irány: nem pixel art, részletgazdag anime illusztráció. A konkrét vonalvezetést, festési módot, palettát és képkivágást az art register és a jóváhagyott stílusminta rögzíti majd.
 
-Új képek generálásakor mindig a zárt stílus-sablont, a pontos karakterblokkokat és a repóban már meglévő referencia képeket használd alapként.
+A korábbi, már nem aktív képi referenciák az `assets/archive/` alatt vannak. Ne hasznhasználd ezeket automatikusan stílus- vagy karakterkanonként; a végleges generáláshoz az egyeztetett karakter-lockokat és az elfogadott referenciákat használd.

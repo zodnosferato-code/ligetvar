@@ -1,6 +1,6 @@
 # Ligetvár — útmutató fejlesztőknek
 
-A [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), különösen a 10. fejezet az irányadó. A számozott korábbi dokumentumok történeti források; ellentmondás esetén nem írják felül az új tervet. A jelenlegi motor működését az [ENGINE.md](ENGINE.md), a tényleges ellenőrzéseket és hátralévő munkát a [haladási napló](docs/REDESIGN-PROGRESS.md) írja le.
+A [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), különösen a 10. fejezet az irányadó. A számozott korábbi dokumentumok a [docs/archive/legacy-design/](docs/archive/legacy-design/) mappába kerültek; történeti források, ellentmondás esetén nem írják felül az új tervet. A jelenlegi motor működését az [ENGINE.md](ENGINE.md), a tényleges ellenőrzéseket és hátralévő munkát a [haladási napló](docs/REDESIGN-PROGRESS.md) írja le.
 
 ## Aktív rendszer
 
@@ -17,7 +17,7 @@ A [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), különösen a 10. fej
 
 A v2 külön kulcsot használ; a régi v1 változatlanul megmarad, történetét újra kell kezdeni. Csak a játékosnév vehető át külön kérésre. Régi páros útvonalat vagy flaget ne fordíts új vállalássá.
 
-A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. Az átmeneti ruhás portré nem végleges manga grafika; a hiányzó képek helyőrzők. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. Nincs aktív hivatkozás a történeti `assets/references/intim/` fájlokra; ezeket a build sem publikálja.
+A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. Az átmeneti ruhás portré nem végleges manga grafika; a hiányzó képek helyőrzők. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. A történeti, nem aktív képek az `assets/archive/` alatt vannak. A játék csak a manifestben felsorolt eszközöket használja; az archívum nem kerül publikált assetútvonalakra.
 
 ## Ellenőrzés és munkafolyamat
 
