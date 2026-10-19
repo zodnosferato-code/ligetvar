@@ -170,6 +170,18 @@
       ],
       "reused": [],
       "finishedAt": "2026-10-19T16:58:27.010Z"
+    },
+    {
+      "request": "2026-10-19-neutral-masters-01",
+      "phase": "masters",
+      "startedAt": "2026-10-19T17:01:20.367Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [
+        "rebeka_neutral"
+      ],
+      "finishedAt": "2026-10-19T17:01:21.642Z",
+      "failure": "Venice /image/multi-edit failed: HTTP 402"
     }
   ],
   "capabilities": {
