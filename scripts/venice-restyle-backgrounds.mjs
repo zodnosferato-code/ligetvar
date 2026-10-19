@@ -51,7 +51,7 @@ const manifest = {
 async function fail(sceneId, reason, httpStatus = null) {
   manifest.status = manifest.assets.length ? "partial-draft-not-approved" : "failed";
   manifest.failure = { scene: sceneId, reason, httpStatus };
-  await writeFile(join(outputDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\\n");
+  await writeFile(join(outputDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
   console.error(`Generation stopped for ${sceneId}: ${reason}`);
   process.exit(1);
 }
