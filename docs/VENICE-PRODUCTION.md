@@ -53,3 +53,7 @@ Candidates are saved to the repository and uploaded as an Actions artifact. They
 Final acceptance checks: adult character identity; correct left/right marks; no drift between expressions; same crop/eye line/outfit; usable alpha; no text or watermark; clear seated player viewpoint; an empty natural companion seat; recognizable locations; consistent daylight and evening variants; desktop/mobile readability. The assistant and supporting cast are design proposals until reviewed. The architecture sheet is a visual materials reference, not a measured plan.
 
 The initial request has a two-new-image budget. A follow-up production request can reuse verified outputs and request the remaining dependency-ordered images. Interrupted runs preserve completed outputs and their hashes; a rerun never silently replaces a different prompt/reference signature.
+
+## Actual execution status
+
+**2/37 candidates generated; 35 remain.** Current files: `portraits/rebeka/neutral.png` and `backgrounds/classroom.png` under `assets/generated/venice/`. Source images, rejected output and refinement history are preserved. The next seven-neutral-master batch stopped at Boglárka with Venice HTTP 402; check account USD/DIEM balance or key spend limits before resuming. No paid retries are scheduled. Venice background removal separately returned HTTP 403. These are draft candidates with final art acceptance and alpha still open; no generated portrait is in the runtime manifest.

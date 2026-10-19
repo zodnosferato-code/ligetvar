@@ -53,3 +53,11 @@ See [VENICE-PRODUCTION.md](VENICE-PRODUCTION.md) for 32 runtime images (the 31 p
 ## WAI + FireRed pilot review
 
 The user selected WAI Illustrious + FireRed. Two style candidates now exist (Rebeka neutral and classroom), with raw sources and refinement history under `assets/generated/venice/`. The first WAI attempt was rejected and archived. The revised portrait is an adult anime bust with an opaque high-neck dress and correct-side plum streak; the classroom has no blocking near chair. Minor portrait cleanup and final user acceptance remain open. Venice background removal returned HTTP 403, so portrait alpha remains a separate unfinished item. See `pilot-review.json` for hashes and actual review scope. The next requested batch is seven additional neutral character portraits; no candidate has been promoted to runtime.
+
+## Current provider block — 19 October 2026
+
+**2 of 37 candidate images exist; 35 remain.** The seven-neutral-master run [39290511812](https://github.com/zodnosferato-code/ligetvar/actions/runs/39290511812) reused the current Rebeka style candidate, then Venice returned **HTTP 402** on the first new request (`boglarka_neutral`, `/image/multi-edit`). No other neutral master was generated. Check the account's USD/DIEM balance and the API key's spending limits before resuming; the exact provider error category was not captured, so do not assert which balance or limit is responsible. No paid retries are scheduled.
+
+The separate alpha endpoint returned HTTP 403. A local, deterministic white-background extraction was tested on the pilot and inspected on dark blue; edge halos remain, so the trial is not a production export and has not been promoted. Source art remains unchanged. Final art, transparency, identity cleanup and runtime registration are still open.
+
+Machine-readable checkpoint: `assets/generated/venice/production-status.json`. The current request remains the seven-neutral-master batch, with existing candidate/source hashes checked before reuse. The most recent 30-test and Pages workflows succeeded; no unreviewed candidate is shipped by runtime paths.
