@@ -21,3 +21,18 @@ test('generation graph is ordered, inputs exist, and pilot is bounded',()=>{
  assert.deepEqual(orderedAssets(PILOT).map(a=>a.id),PILOT);
  assert.throws(()=>orderedAssets(['unknown']),/Unknown asset/);
 });
+
+import {readFileSync} from 'node:fs';
+import {imageRequest} from './profile.mjs';
+test('the complete WAI/FireRed job fits actual model constraints before billing',()=>{
+ const request={generationModel:'wai-Illustrious',editModel:'firered-image-edit',resolution:'1K'};
+ const {models}=JSON.parse(readFileSync('assets/generated/venice/available-models.json','utf8'));
+ for(const asset of ASSETS){
+  const r=imageRequest(asset,asset.refs.map(()=>'<reference>'),request,models);
+  assert.ok(r.body.prompt.length<=1500,asset.id);assert.equal('transparent_background' in r.body,false);
+  if(asset.method==='generate'){assert.equal(r.body.width,1024);assert.equal(r.body.height,1280);assert.equal('resolution' in r.body,false);}
+  if(asset.transparent)assert.equal(r.backgroundRemove,true);
+ }
+ const bad={...ASSETS[0],prompt:'x'.repeat(1501)};
+ assert.throws(()=>imageRequest(bad,[],request,models),/Prompt exceeds/);
+});

@@ -3,6 +3,7 @@ import {readFile,mkdir,writeFile,rename} from 'node:fs/promises';
 import {resolve,dirname,join,relative} from 'node:path';
 import {createHash} from 'node:crypto';
 import {ASSETS,orderedAssets} from './venice/catalog.mjs';
+import {imageRequest} from './venice/profile.mjs';
 const BASE='https://api.venice.ai/api/v1';
 const ROOT=resolve('assets/generated/venice');
 const digest=b=>createHash('sha256').update(b).digest('hex');
@@ -46,13 +47,16 @@ try{
  const find=id=>{const m=models.data?.find(m=>m.id===id);if(!m)throw new Error('Configured Venice model unavailable: '+id);return m;};
  const gen=find(request.generationModel),edit=find(request.editModel);
  const constraints=m=>m.model_spec?.constraints??m.constraints??{};
- if(selected.some(a=>a.transparent)&&[gen,edit].some(m=>constraints(m).supportsTransparentBackground===false))throw new Error('Configured Venice model does not support transparent portraits');
+ // Validate every prompt and parameter before any billable request.
+ for(const a of selected)imageRequest(a,a.refs.map(()=>'<validated-at-runtime>'),request,available);
  // Persist only model specifications and non-sensitive request metadata, never HTTP responses/headers.
  await writeFile(join(ROOT,'models.json'),JSON.stringify({checkedAt:new Date().toISOString(),models:[gen,edit].map(m=>({id:m.id,type:m.type,model_spec:m.model_spec??null}))},null,2)+'\n');
  for(const a of selected){
   const refs=await Promise.all(a.refs.map(reference));
-  const model=a.method==='generate'?request.generationModel:request.editModel;
-  const spec={id:a.id,model,method:a.method,prompt:a.prompt,refs:refs.map(({id,sha256})=>({id,sha256})),aspect:a.aspect,resolution:request.resolution,quality:request.quality,transparent:a.transparent};
+  const prepared=imageRequest(a,refs.map(r=>r.base64),request,available);
+  const {model,endpoint,body,backgroundRemove}=prepared;
+  const parameters={...body};delete parameters.image;delete parameters.images;
+  const spec={id:a.id,model,method:a.method,prompt:a.prompt,refs:refs.map(({id,sha256})=>({id,sha256})),parameters,transparent:a.transparent,postprocess:backgroundRemove?'/image/background-remove':null};
   const signature=digest(JSON.stringify(spec));const previous=manifest.assets[a.id];
   if(previous){
    const existing=await readFile(join(ROOT,a.file));
@@ -61,17 +65,21 @@ try{
   }
   if(run.generated.length>=request.maxNewImages)throw new Error('Explicit new-image budget reached before '+a.id);
   console.log('Generating',a.id,'with',model,'references:',refs.map(r=>r.id).join(', ')||'none');
-  let endpoint,body;
-  const shared={prompt:a.prompt,aspect_ratio:a.aspect,resolution:request.resolution,quality:request.quality,safe_mode:true,transparent_background:a.transparent,enhance_prompt:false};
-  if(a.method==='generate'){endpoint='/image/generate';body={...shared,model,format:'png',return_binary:false,variants:1,hide_watermark:true,embed_exif_metadata:false};}
-  else if(a.method==='edit'){endpoint='/image/edit';body={...shared,model,output_format:'png',image:refs[0].base64};}
-  else{endpoint='/image/multi-edit';body={...shared,modelId:model,output_format:'png',images:refs.map(r=>r.base64)};}
-  const res=await call(endpoint,body);let bytes;
-  if(res.headers.get('content-type')?.includes('json')){
-   const result=await res.json(),encoded=result.images?.[0];
-   if(typeof encoded!=='string'||!encoded)throw new Error('Venice returned no base64 image for '+a.id);
-   bytes=Buffer.from(encoded.replace(/^data:image\/[^;]+;base64,/,''),'base64');
-  }else bytes=Buffer.from(await res.arrayBuffer());
+  // Preserve raw billed output before alpha extraction so a failed extraction can resume without regenerating it.
+  const rawPath=join(ROOT,'raw',a.id+'.png'),rawMeta=join(ROOT,'raw',a.id+'.json');
+  let bytes,rawRecord;
+  try{rawRecord=JSON.parse(await readFile(rawMeta,'utf8'));bytes=await readFile(rawPath);if(rawRecord.signature!==signature||rawRecord.sha256!==digest(bytes))throw new Error('Raw candidate signature mismatch: '+a.id);}
+  catch(e){if(e.code!=='ENOENT')throw e;bytes=null;}
+  if(!bytes){
+   const res=await call(endpoint,body);
+   if(res.headers.get('content-type')?.includes('json')){
+    const result=await res.json(),encoded=result.images?.[0];
+    if(typeof encoded!=='string'||!encoded)throw new Error('Venice returned no base64 image for '+a.id);
+    bytes=Buffer.from(encoded.replace(/^data:image\/[^;]+;base64,/,''),'base64');
+   }else bytes=Buffer.from(await res.arrayBuffer());
+   pngInfo(bytes);await mkdir(dirname(rawPath),{recursive:true});await writeFile(rawPath,bytes);await writeFile(rawMeta,JSON.stringify({signature,sha256:digest(bytes),model,createdAt:new Date().toISOString()},null,2)+'\n');
+  }else console.log('Reusing billed raw output:',a.id);
+  if(backgroundRemove){console.log('Extracting alpha through Venice:',a.id);const extracted=await call('/image/background-remove',{image:bytes.toString('base64')});bytes=Buffer.from(await extracted.arrayBuffer());}
   const image=pngInfo(bytes);
   if(a.transparent&&!image.alphaChannel)throw new Error('Portrait has no alpha channel: '+a.id);
   const output=resolve(ROOT,a.file);if(!output.startsWith(ROOT+'/'))throw new Error('Invalid output path');
