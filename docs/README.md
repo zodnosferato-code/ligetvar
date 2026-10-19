@@ -12,6 +12,7 @@
 | [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
 | [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
 | [Art register](ART-REGISTER.md) | Active assets, art brief, placeholders, and production gates |
+| [Character voices](CHARACTER-VOICES.md) | Approved temperaments, speech patterns and writing coverage |
 | [Scene inventory](SCENE-INVENTORY.md) | Generated active scene list, locations, prerequisites, and evidence |
 | [Asset index](../assets/README.md) | Runtime manifest and art locations |
 

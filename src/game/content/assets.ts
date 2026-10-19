@@ -1,4 +1,4 @@
-import type {ActorId,Expression,LocationId} from '../engine/types.ts';
+import type {ActorId,Expression,LocationId} from './types.ts';
 export interface ArtAsset{file:string|null;status:'transitional'|'placeholder';note:string}
 const bg=(file:string,note:string):ArtAsset=>({file:'backgrounds/'+file,status:'transitional',note});
 export const BACKGROUNDS:Record<LocationId,ArtAsset>={

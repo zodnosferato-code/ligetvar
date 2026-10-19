@@ -1,0 +1,194 @@
+/** Authored opening pass. Stable legacy node IDs remain valid for v2 saves. */
+import type {ActorId,Expression,Line,Scene} from './types.ts';
+type Beat=[ActorId,string,Expression?];
+function chain(prefix:string,beats:Beat[],next?:string):Line[]{return beats.map(([speaker,text,expression='neutral'],i)=>({id:prefix+'_'+i,speaker,text,expression,next:i<beats.length-1?prefix+'_'+(i+1):next}));}
+function after(s:Scene,id:string,prefix:string,beats:Beat[]){const l=s.lines.find(l=>l.id===id)!;const added=chain(prefix,beats,l.next);l.next=added[0].id;s.lines.push(...added);}
+function branch(s:Scene,id:string,choice:string,prefix:string,beats:Beat[],terminal=false){const l=s.lines.find(l=>l.id===id)!,c=l.choices!.find(c=>c.id===choice)!;const added=chain(prefix,beats,terminal?undefined:l.next);c.next=added[0].id;s.lines.push(...added);}
+export function expandOpening(original:Scene):Scene{
+ const s=structuredClone(original);
+ if(s.id==='shared_1'){
+  s.lines[2].text='Rebeka Dorn. Húsz. Fotóesszét készítek, ha lesz itt valami azon kívül, hogy mindenki szépen figyel. A szórólapon az áll, visszavesszük az irányítást a figyelmünk fölött. Ezt az ember a telefonjáról is elhiszi két percig. Neked meddig működik?';
+  s.lines[3].text='Fazekas Boglárka. Tizenkilenc. A mozdulatsorok helyi változatait kutatom. A szórólapot nem én írtam. Ezt a tudományos pontosság kedvéért már most szeretném leszögezni.';
+  after(s,'line_3','opening_questions',[
+   ['greta','Mielőtt szétszedjük a szórólapot: az ajtót hagyjuk szabadon, a székeket beljebb. Rebeka, a kábeled keresztben van.'],
+   ['rebeka','Még elő sem vettem a gépet. Ez előzetes bizalmatlanság?','amused'],
+   ['greta','Előzetes botlásmegelőzés. A tegnapi szakkör után ketten küldtek hibabejelentést ugyanarra a hosszabbítóra.'],
+   ['boglarka','Lehet, hogy ez a helyi mozdulatsor. Átlépés, káromkodás, hibabejelentés.','amused'],
+   ['narrator','Rebeka felnevet, Gréta pedig egy pillanatra abbahagyja a székek igazítását. A kör még ferde. Márton nem igazítja ki helyette.']
+  ]);
+  branch(s,'line_4','demonstrate','opening_demonstrate',[
+   ['marton','Kezdem én. Nézzétek meg, mikor fordulok a zaj felé. Aztán valaki próbáljon kizökkenteni.'],
+   ['rebeka','Veszélyes ajánlat. Tényleg ebből akarsz első benyomást?','amused'],
+   ['marton','Abból, hogy észreveszem, ha nem sikerül.'],
+   ['boglarka','Akkor nem az a feladat, hogy végig mozdulatlan maradjunk. Jó. Abban a falióra már most mindenkinél jobb.'],
+   ['greta','Harminc másodpercet mérek. Nem kell mindenkinek egyszerre kezdenie.']
+  ]);
+  branch(s,'line_4','observe','opening_observe',[
+   ['marton','Először én próbálom. Ti figyelitek, mi történik; aztán mondjátok el, amit tényleg láttatok.'],
+   ['rebeka','És ha azt látom, hogy ez nem működik?'],
+   ['marton','Akkor azt. A bemutató nem kér jó kritikát.'],
+   ['boglarka','Én innen nézem az órát. Ha elálljátok, szólok. Ezt könnyebb megígérni, mint hogy az ember figyelme nem kalandozik el.'],
+   ['greta','Rendben. Az első körhöz senkit nem írok fel résztvevőnek csak azért, mert bejött a terembe.']
+  ]);
+  after(s,'line_7','soma_departure',[
+   ['soma','Persze. A műhely a tiéd, a jelentésben meg az lesz, hogy az eszközellátás megfelelő volt. Azt a sort legalább nem küldik vissza javításra.','displeased'],
+   ['greta','A leltárt holnap együtt csináljuk. A hibás lámpát külön jelöltem, ne vidd le a pincébe.'],
+   ['soma','A pincébe mindig jut hely annak, ami odafent senkinek sem kell.'],
+   ['narrator','A kulcsok röviden összecsendülnek. Rebeka utánanéz, de mire megszólalna, Soma már kint van. Boglárka a mozdulatsor nevét húzza alá a jegyzetében.']
+  ]);
+ }
+ if(s.id==='shared_2'){
+  after(s,'line_0','missing_inventory',[
+   ['marton','Mikor beszéltél vele utoljára?'],
+   ['greta','Tegnap négykor. Azt mondta, zárásra visszaér. Fél hatkor már én hívtam; nem vette fel. A raktárnál vártam húsz percet.'],
+   ['rebeka','És ma minden kész. Akkor biztos nincs itt semmi látnivaló. Ezt mondta?','displeased'],
+   ['greta','Azt mondta, ne csináljak a leltárból személyes ügyet. Pedig csak azt akartam tudni, bezárhatom-e az ajtót.'],
+   ['boglarka','A kihagyott találkozó biztos. A húsz percet honnan tudjuk?'],
+   ['greta','Ott álltam mellette. Nem elbeszélés, Boglárka. Bárcsak az lenne, akkor legalább nem nekem kellene újraszámolni.']
+  ]);
+  branch(s,'line_5','ask','lilla_contact',[
+   ['marton','Nem megyünk oda csoportosan. Dénes, megadod neki az elérhetőségemet, és ő választ időt?'],
+   ['denes','Igen. Ha nem jelentkezik, nem tekintjük beleegyezésnek a hallgatását.'],
+   ['rebeka','A gépet itthon hagyom. Az is elég rossz lehet, hogy az emberről már azelőtt kész a történet, mielőtt el tudná mondani.'],
+   ['greta','Egy üres termet tudok foglalni. Ne neki kelljen helyet keresnie.'],
+   ['boglarka','Előbb derüljön ki, akar-e termet. Lehet, hogy egy padot könnyebb otthagyni.'],
+   ['narrator','Gréta kihúzza a foglalást, de a szabad időpontot a lap szélén hagyja. Dénes csak Márton elérhetőségét viszi tovább.']
+  ]);
+  branch(s,'line_5','space','lilla_space',[
+   ['rebeka','Holnapig kibírja a kíváncsiságunk. A folyosón viszont már kérdezgetik, hol volt.'],
+   ['greta','Szólok a műhelynek, hogy ne keressék külön. Nem fogok helyette magyarázatot gyártani.'],
+   ['boglarka','A „nem tudjuk” rövid mondat. Kár, hogy mindenki szeret utána még hármat mondani.'],
+   ['marton','Dénes, azt azért mondd el neki, hogy nem neki kell utánunk járnia, ha segítséget kérne.'],
+   ['denes','Megmondom. Aztán hagyjuk aludni.'],
+   ['narrator','Másnap délelőtt Lilla üzen. Nem magyarázatot küld, hanem helyet és időt: könyvtár, tíz perc.']
+  ]);
+ }
+ if(s.id==='shared_3'){
+  after(s,'line_1','interview_seating',[
+   ['greta','Az ablaknál csendesebb. Odaüljünk?'],
+   ['lilla','Inkább ide, az ajtóhoz.'],
+   ['narrator','Gréta már húzná ki a távolabbi széket. Megáll, és a kijárat melletti helyet hagyja Lillának.'],
+   ['boglarka','Csak kulcsszavakat írok. A végén megmutatom. Amit kihúzol, az nem kerül a közös lapra.'],
+   ['lilla','Azt ne írjátok, hogy eltűnt lány. Mintha most is valami plakáton lennék.'],
+   ['rebeka','Akkor nem írjuk. Én is utálom, ha valaki címet ad nekem, aztán már csak azt hallja, ami belefér.']
+  ]);
+  branch(s,'line_2','listen','interview_listen',[
+   ['lilla','A könyvtárban voltam. Nem valami titkos helyen. Vissza akartam vinni egy könyvet, hogy ne számítsanak fel még egy napot.'],
+   ['marton','Melyik részre emlékszel még tisztán?'],
+   ['lilla','A pultnál nem működött a vonalkódolvasó. A könyvtárosnak ragasztószalag volt a kezén. Teljesen hülye részlet.'],
+   ['boglarka','Nem hülye. Csak attól még nem kell megmagyaráznunk, miért ez maradt meg.'],
+   ['lilla','Utána a lépcső. Ott mondta valaki, hogy van még hely. Azt hittem, lemaradtam valamiről.']
+  ]);
+  branch(s,'line_2','timeline','interview_timeline',[
+   ['greta','Ezen a lapon két időpont van. Ha valamelyik nem stimmel, javítsd ki.'],
+   ['lilla','Nem kedden mentem vissza. Szerdán. Kedden azt hittem, még nálam lehet a könyv.'],
+   ['greta','Igazad van. Elcsúsztattam a dátumot, amikor átírtam. Javítom.'],
+   ['rebeka','Na, ezért nem csinálunk a táblázatból szentírást.'],
+   ['greta','Ezért kérdeztem meg. Lilla, a következő bejegyzés előtt van bármi, amit biztosan felismersz?'],
+   ['lilla','A lépcső hangja. Valaki hívott. Nem gondoltam, hogy idegen lenne.']
+  ]);
+  after(s,'line_6','interview_finish',[
+   ['greta','Lejárt a tíz perc. A buszmegállóig elkísérjelek?'],
+   ['lilla','Dénest várom. Ti maradjatok.'],
+   ['rebeka','A képeket akkor sem teszem ki, ha valaki azt mondja, így fontos ügyet szolgálnának. Ha később kérsz egyet a helyről, megmutatom.'],
+   ['lilla','Majd eldöntöm. Most nem szeretném látni azt a lépcsőt.'],
+   ['narrator','Boglárka átadja a lapot. Lilla két jelzőt kihúz, a mondatot meghagyja. A széket nem tolja vissza egészen. Senki nem szól utána.']
+  ]);
+ }
+ if(s.id==='rebeka_1'){
+  s.lines[1].text='A Holdkör szerint arc nélkül nincs történet. Szerintem csak könnyebb ráfogni valakire egyet. Na, melyiket mentenéd meg a háromból? A „mind érdekes” nem válasz.';
+  s.lines[4].text='A műhelyben én adom a feladatot. Itt te mondod meg, mit kezdesz a véleményemmel.';
+  after(s,'line_1','rebeka_scrutiny',[
+   ['marton','Azért kell választanom, mert neked is nehéz, vagy mert tudni akarod, mellébeszélek-e?'],
+   ['rebeka','Miért ne lehetne mindkettő?','amused'],
+   ['narrator','Rebeka a hátlapjára fordítja az egyik fotót. Alul zsűrimegjegyzés látszik: technikailag bizonytalan. A hüvelykujja eltakarja a szerző nevét.'],
+   ['marton','Ezt valaki már elbírálta.'],
+   ['rebeka','Az ember attól még nézhet rá újra. Vagy a tanszéken csak egyszer lehet véleménye?']
+  ]);
+  branch(s,'line_2','interest','rebeka_motion',[
+   ['rebeka','Az egész körben ez az egy kép nem éles. Természetesen erre sikerült ráírniuk, hogy bizonytalan.'],
+   ['marton','A kéz gazdája akart rajta maradni?'],
+   ['rebeka','Nem. Megmutattam neki. Azt mondta, így igen.'],
+   ['marton','Akkor ez nem csak technikai döntés volt.'],
+   ['rebeka','Vigyázz, még a végén érted, miért nem élesítem ki. Utána már nehezebb lesz okos tanácsot adni.','amused'],
+   ['narrator','Közelebb tolja a kontaktmásolatot. A vállatok még nem ér össze; nem is húzódik arrébb, amikor fölé hajolsz.']
+  ]);
+  branch(s,'line_2','ask','rebeka_window',[
+   ['rebeka','Mert a harmadik gyakorlatnál mindenki arrafelé nézett. A képen mégsem tudod, mi volt odakint.'],
+   ['marton','Volt valami?'],
+   ['rebeka','Egy levél. Vagy egy varjú. Én is néztem, úgyhogy a döntő pillanatról természetesen lemaradtam.'],
+   ['marton','Ezért lett az ablak a kép közepe?'],
+   ['rebeka','Ezért nem teszek úgy, mintha mindent elkaptam volna. Elég sokan csinálják már.'],
+   ['narrator','Az ablakos képet külön teszi. Egy pillanatig azt hiszed, neked adja, aztán a saját mappájába csúsztatja.']
+  ]);
+  branch(s,'line_2','leave','rebeka_leave',[
+   ['rebeka','Legalább nem tettél úgy, mintha ráérnél. A képek nem szaladnak el. Én néha igen.'],
+   ['marton','Köszönöm, hogy megmutattad őket.'],
+   ['narrator','Rebeka összeszedi a lapokat. Nem kér új időpontot, és Márton sem csinál ígéretet egy udvarias búcsúból.']
+  ],true);
+ }
+ if(s.id==='boglarka_1'){
+  after(s,'line_1','boglarka_margins',[
+   ['marton','Megmutatod, hol változott meg a szöveg?'],
+   ['boglarka','Itt. Az eredeti adatközlő azt mondta, talán. Az átiratban ebből bizonyosan lett. Nagyon sikeres szó: egy tollvonással megszűnt tőle minden kétség.','amused'],
+   ['marton','És a neved?'],
+   ['boglarka','A köszönetnyilvánításban elfért. A munkám kevésbé.'],
+   ['narrator','Nem emeli fel a hangját. A lapot viszont most úgy fordítja feléd, hogy az ujját a saját neve mellett tartja.'],
+   ['boglarka','Nem kell helyettem felhívnod senkit. Előbb szeretném rendesen megírni, miért kérek javítást.']
+  ]);
+  branch(s,'line_4','interest','boglarka_versions',[
+   ['boglarka','Az első változatban háromszor is azt írom, hogy elnézést. A másodikban már csak egyszer. Ez jelentős stilisztikai fejlődés.','amused'],
+   ['marton','Mi maradna, ha azt is kivennéd?'],
+   ['boglarka','A mondat, amit közölni szeretnék. Kínos, milyen kevés munkám lenne utána.'],
+   ['narrator','Kihúzza a szót, aztán egy percig nem ír semmit. Márton kivárja.'],
+   ['boglarka','A gyűjtés az enyém. A helyneveket is én ellenőriztem. Ezt nem kérdezni akarom tőlük.'],
+   ['marton','Ez már levélkezdésnek is jó.'],
+   ['boglarka','Igen. Azt hiszem, most először én is elolvasnám.']
+  ]);
+  branch(s,'line_4','ask','boglarka_word',[
+   ['boglarka','A „talán”-hoz. Nem túl hősies válasz.'],
+   ['marton','Miért épp ahhoz?'],
+   ['boglarka','Mert aki mondta, nem volt biztos benne. Hetven év után én sem leszek biztosabb helyette attól, hogy nyomtatott betűvel írom.'],
+   ['marton','A nevedet mégis biztosan szeretnéd ráírni.'],
+   ['boglarka','A kételyeimre legalább hadd legyen szerzői jogom.','amused'],
+   ['narrator','A csészéje már üres. Nem áll fel; elővesz egy negyedik lapot is, amelyet eddig a táskában tartott.'],
+   ['boglarka','Ezt még senkinek sem mutattam. Az első bekezdés valószínűleg túl hosszú. A harmadiknál viszont ne bólogass csak azért, hogy kedves legyél.']
+  ]);
+  branch(s,'line_4','leave','boglarka_leave',[
+   ['boglarka','Akkor azt adom. A többit nem kell az ajtóban elintéznünk.'],
+   ['narrator','Kiveszi a kért könyvet a saját lapjai alól. Nem mentegetőzik azért, hogy a beszélgetés végére most ő tesz pontot.']
+  ],true);
+ }
+ if(s.id==='greta_1'){
+  after(s,'line_1','greta_calendar',[
+   ['greta','Pénteken elindultam volna, aztán valaki rossz kulcsot vett fel. Mire megtaláltam a pótot, már sötétedett.'],
+   ['marton','Egyedül csak te tudsz pótkulcsot keresni?'],
+   ['greta','Nem. Csak nálam biztosan meglesz. Ez a mondat szokott minden pénteket megenni.'],
+   ['narrator','A térképen határozott vonal vezet a tóhoz. Gréta a körmét a kanyarhoz teszi, mintha az útvonalnak is bizonyítania kellene, hogy belefér a napba.'],
+   ['greta','Ne ajánld fel, hogy megtanítasz nemet mondani. A szót ismerem. Azt kéne kibírnom, ami utána történik.']
+  ]);
+  branch(s,'line_4','interest','greta_map',[
+   ['greta','Az iratokat ne rakd a felső fiókba, az a hétfői... Jó. Bocsánat. Már megint én csinálom.'],
+   ['marton','Megkérdezem, ha elakadok. Most mutasd a kerülőt.'],
+   ['greta','Itt megy mindenki a rövid úton. Itt meg van egy elhajlott fűz, alatta le lehet ülni. Onnan nem látszik az épület.'],
+   ['marton','Ezért szereted?'],
+   ['greta','Részben. Másrészt a kacsák nem mondják, hogy csak egy percre zavarnak.','amused'],
+   ['narrator','Márton elveszi az iratokat. Gréta egyszer még utánuk nyúl, aztán inkább a térképet hajtja félbe.'],
+   ['greta','Ha mész egyszer, a második hídon fordulj. Az elsőnél az ember még meggondolja magát és visszasiet dolgozni.']
+  ]);
+  branch(s,'line_4','ask','greta_lakeside',[
+   ['greta','A fűznél. Vagy feljebb, ahol köves a part. Attól függ, mennyire elegem van az emberekből.'],
+   ['marton','Ma melyiket választanád?'],
+   ['greta','A fűzet. Ez most nem személyes sértés, mielőtt megsértődsz.','amused'],
+   ['marton','Ott elfér két ember is?'],
+   ['greta','Elfér. De aki stopperrel jön, az állva marad.'],
+   ['narrator','Elhúzza a térképet a teremfoglalás alól. Most először van az asztalon úgy, hogy semmi nem takarja.'],
+   ['greta','Jövő péntekre nem írok be helyette semmit. Ezt most hallottad. Ha én felejtem el, emlékeztethetsz.']
+  ]);
+  branch(s,'line_4','leave','greta_leave',[
+   ['greta','Rendben. Itt a kulcs. A térképet akkor elteszem, mielőtt azt is valami feladatnak nézem.'],
+   ['narrator','A kulcsot átadja, a félbehagyott túrát nem kell megmagyaráznia. Márton becsukja maga mögött az irodaajtót.']
+  ],true);
+ }
+ return s;
+}

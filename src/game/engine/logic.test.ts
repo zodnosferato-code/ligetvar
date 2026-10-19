@@ -1,162 +1,40 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {existsSync,readFileSync} from 'node:fs';
-import {SCENES,EVIDENCE} from '../content/catalog.ts';
-import {BACKGROUNDS,portraitFor} from '../content/assets.ts';
-import {validateRegistry} from '../content/validate.ts';
-import {activity,applyChoice,applyEffect,availableScenes,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,resolveJob,setDirection} from './logic.ts';
-import {decodeSave,legacyName,persist} from './save.ts';
-import {LEGACY_SAVE_KEY,SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
-function complete(s:GameState,id:string,choose?:(ids:string[])=>string,r:Registry=SCENES){
- const opened=openScene(s,id,r);assert.notEqual(opened,s,'Cannot open '+id+' w'+s.week+' slot'+s.slot);s=opened;
- for(let i=0;i<50;i++){if(s.phase!=='scene')return s;const ids=currentLine(s,r)!.choices?.map(c=>c.id)??['continue'];s=applyChoice(s,choose?.(ids)??ids[0],r);}throw new Error('Loop: '+id);
-}
-function fixtures():Registry{return Object.fromEntries(Array.from({length:16},(_,i)=>{const week=i+1;return ['shared_'+week,{
- id:'shared_'+week,title:'Teszt '+week,kind:'shared',week,deadline:week,participants:['soma'],location:'classroom',background:'classroom',lighting:'day',requires:i?{scenes:['shared_'+i]}:{},evidence:[],journal:'Tanúsított '+week,entry:'first',contentStatus:'fixture',
- resolution:week===15?'confrontation':week===16?'institution':undefined,
- lines:[{id:'first',speaker:'soma',expression:'neutral',text:'Első sor',choices:[{id:'yes',text:'Rendben',next:'last',reaction:'Válasz',effect:{decisions:['witness_'+week]}}]},{id:'last',speaker:'narrator',expression:'neutral',text:'Második sor'}]
- }];})) as Registry;}
-const TRIAD:Record<number,string[]>={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['triad_6'],13:['rebeka_5','boglarka_5'],14:['triad_7'],16:['triad_8']};
-const solo=(g:string):Record<number,string[]>=>({2:[g+'_1'],5:[g+'_2'],7:[g+'_3'],10:[g+'_4'],13:[g+'_5'],16:[g+'_6']});
-function assertKnowledge(s:GameState){
- for(const [id,record] of Object.entries(s.evidence)){assert.ok(record.scene in s.completed,id);assert.equal(EVIDENCE[id].scene,record.scene);assert.ok(record.week<=s.week,id);}
- for(const record of Object.values(s.decisions))assert.equal(s.completed[record.scene],record.week);
- for(const j of s.journal)assert.ok(j.scene in s.completed);
-}
-function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad?:boolean;withdraw?:boolean}={}){
- let s=createInitial('Márton'),slots=0,minEnergy=100;const plan=structuredClone(route==='triad'?TRIAD:route==='friendship'?{16:['friendship_after']}:solo(route));
- if(opts.missTwo){plan[1]=[];plan[2].push('rebeka_1');plan[5]=[];plan[6].push('triad_2');}
- if(opts.prepared){plan[12]=[...(plan[12]??[]),'prepare_backup'];plan[14]=[...(plan[14]??[]),'prepare_signals'];}
- for(let week=1;week<=16;week++){
-  assert.equal(s.week,week);assert.equal(evaluateEnding(s).relationship,null);assert.equal(nextWeek(s,SCENES),s);
-  const known=structuredClone(s.evidence);s=openScene(s,'shared_'+week,SCENES);
-  for(let line=0;s.phase==='scene'&&line<50;line++){
-   assert.deepEqual(s.evidence,known,'No knowledge before witnessed completion');
-   const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok','save before '+s.scene?.id+'/'+s.scene?.line);
-   if(restored.status==='ok')s=restored.state;
-   s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
-  }
-  assert.equal(s.slot,1);if(week===8)s=setDirection(s,route);
-  if(opts.declineTriad&&week===13)s=setDirection(s,'rebeka');
-  if(week===15){assert.ok(s.confrontation);assert.equal(s.evidence.vampire_dead.scene,'shared_15');assert.equal(s.institution,null);}
-  if(week===16){assert.ok(s.institution);assert.equal(s.phase,'planner');assert.equal(evaluateEnding(s).relationship,null);}
-  let appointments=plan[week]??[];
-  if(opts.declineTriad&&week===13)appointments=['rebeka_5'];
-  if(opts.declineTriad&&week===14)appointments=opts.prepared?['prepare_signals']:[];
-  if(opts.declineTriad&&week===16)appointments=['rebeka_6'];
-  for(const id of appointments){
-   const prior=s.slot;s=complete(s,id,ids=>opts.declineTriad&&id==='triad_6'&&ids.includes('decline')?'decline':opts.withdraw&&id.endsWith('_6')&&ids.includes('withdraw')?'withdraw':ids[0]);
-   assert.equal(s.slot,prior+1);slots++;minEnergy=Math.min(minEnergy,s.energy);assertKnowledge(s);
-  }
-  while(s.phase==='planner')s=activity(s,'rest');
-  assert.equal(s.phase,'summary');assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');s=nextWeek(s,SCENES);
+import {readFileSync} from 'node:fs';
+import {activity,applyChoice,availableScenes,createInitial,currentLine,nextWeek,openScene,setDirection} from './logic.ts';
+import {decodeSave} from './save.ts';
+import type {GameState,Registry,RuntimeRules} from './types.ts';
+interface Voyage extends GameState { arrived:boolean }
+const rules:RuntimeRules<Voyage>={
+ weeks:3,saveKey:'voyage',legacySaveKey:'voyage-old',initial:name=>({version:7,name,week:1,slot:0,phase:'planner',scene:null,minigame:null,money:0,energy:50,exposure:0,bonds:{crew:0},direction:'north',decisions:{},evidence:{},completed:{},preparation:[],inventory:{},giftsWeek:[],jobsWeek:{},journal:[],lastNote:'',arrived:false}),
+ economy:{sharedEnergy:0,sceneEnergy:-2,weeklyEnergy:10,weeklyMoney:0,restEnergy:20,gifts:{},jobs:{}},notes:{initial:'',newWeek:'',rest:'',purchase:'',gift:'',job:()=>''},
+ canFinish:s=>s.arrived,directionChange:(_s,d)=>({allowed:d==='south'}),validateState:s=>typeof s.arrived==='boolean',completeScene:(s,x)=>{if(x.resolution==='landfall')s.arrived=true;}
+};
+const registry:Registry=Object.fromEntries([1,2,3].map(week=>['voyage_'+week,{id:'voyage_'+week,title:'Deck',kind:'shared',week,deadline:week,participants:['navigator'],location:'deck',background:'deck',lighting:'day',requires:{},evidence:[],journal:'Log',entry:'start',contentStatus:'fixture',resolution:week===3?'landfall':undefined,lines:[{id:'start',speaker:'navigator',text:'Choose',expression:'neutral',choices:[{id:'north',text:'North',reaction:'',next:'north',effect:{decisions:['charted_'+week]}},{id:'secret',text:'Unknown chart',reaction:'',requires:{decisions:['unseen']},next:'north'}]},{id:'north',speaker:'navigator',text:'Sailing',expression:'neutral'}]}]));
+test('a three-week unrelated campaign runs, saves and finishes through injected rules',()=>{
+ let s=createInitial('Ada',rules);
+ for(let week=1;week<=3;week++){
+  assert.equal(availableScenes(s,registry)[0].id,'voyage_'+week);
+  s=openScene(s,'voyage_'+week,registry);
+  assert.equal(applyChoice(s,'secret',registry,rules),s,'inaccessible choice cannot be invoked by ID');
+  assert.deepEqual(currentLine(s,registry)?.choices?.map(c=>c.id),['north']);
+  s=applyChoice(s,'north',registry,rules);assert.equal(s.decisions['charted_'+week],undefined);
+  assert.equal(decodeSave(JSON.stringify(s),registry,rules).status,'ok');
+  s=applyChoice(s,'continue',registry,rules);assert.ok(s.decisions['charted_'+week]);
+  s=nextWeek(activity(activity(s,'rest',rules),'rest',rules),registry,rules);
  }
- assert.equal(s.phase,'ending');assert.equal(s.week,16);assertKnowledge(s);
- assert.equal(Object.keys(s.evidence).length,Object.keys(EVIDENCE).length);
- assert.equal(Object.keys(s.completed).filter(id=>SCENES[id].kind==='shared').length,16);
- assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');return {state:s,slots,minEnergy};
-}
-test('authoritative registry resolves every Hungarian line, asset and prerequisite',()=>{
- validateRegistry(SCENES,EVIDENCE,new Set(Object.keys(BACKGROUNDS)));
- assert.equal(Object.keys(SCENES).length,45);assert.equal(Object.values(SCENES).some(x=>x.contentStatus!=='authored'),false);
- for(const art of Object.values(BACKGROUNDS))if(art.file)assert.ok(existsSync('public/'+art.file),art.file);
- for(const x of Object.values(SCENES))for(const l of x.lines){const p=portraitFor(l.speaker,l.expression);if(p.file)assert.ok(existsSync('public/'+p.file));}
+ assert.equal(s.phase,'ending');assert.equal(s.arrived,true);assert.equal(s.version,7);
+ assert.equal(decodeSave(JSON.stringify(s),registry,rules).status,'ok');
 });
-test('opening has all introductions, one complete optional scene and causal knowledge',()=>{
- let s=createInitial('');assert.deepEqual(s.evidence,{});s=complete(s,'shared_1');
- assert.deepEqual(new Set(SCENES.shared_1.participants),new Set(['marton','rebeka','boglarka','greta','soma']));
- assert.ok(s.evidence.grounding);assert.equal(s.evidence.phrase,undefined);
- s=complete(s,'rebeka_1');assert.ok(s.decisions.rebeka_interest);assert.equal(s.slot,2);assert.equal(openScene(s,'rebeka_1',SCENES),s);
- s=nextWeek(activity(s,'rest'),SCENES);s=complete(s,'shared_2');assert.ok(s.evidence.returned_lilla);assert.equal(s.evidence.phrase,undefined);
- s=nextWeek(activity(activity(s,'rest'),'rest'),SCENES);s=complete(s,'shared_3');assert.ok(s.evidence.phrase);assert.ok(s.evidence.time_gap);assertKnowledge(s);
+test('direction policy and unsupported activities are supplied by content',()=>{
+ const s=createInitial('Ada',rules);assert.equal(setDirection(s,'east',rules),s);assert.equal(setDirection(s,'south',rules).direction,'south');
+ assert.equal(activity(s,'invented',rules),s);
+ const r=structuredClone(registry);r.voyage_1.lines[0].choices=r.voyage_1.lines[0].choices!.filter(c=>c.requires);
+ const blocked=openScene(s,'voyage_1',r);assert.deepEqual(currentLine(blocked,r)?.choices,[]);assert.equal(applyChoice(blocked,'continue',r,rules),blocked,'continue cannot bypass hidden decisions');
 });
-test('salary, optional jobs and gifts retain useful money behavior without work gates',()=>{
- let s=complete(createInitial(''),'shared_1');assert.equal(s.money,105000);
- s=buyGift(s,'photo');assert.equal(s.inventory.photo,1);s=giveGift(s,'rebeka','photo');assert.equal(s.bonds.marton_rebeka,2);
- assert.deepEqual(s.decisions,{});assert.equal(giveGift(s,'rebeka','photo'),s);
- s=activity(s,'talk');assert.deepEqual(s.decisions,{});
- s=activity(s,'mohu');const n=resolveJob(s,'mohu',1000);assert.equal(n.money,s.money+1000);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
- assert.equal(nextWeek(n,SCENES).money,n.money+60000);
-});
-test('unavailable emotions safely fall back to neutral, never blush',()=>{
- assert.equal(portraitFor('boglarka','displeased').file,portraitFor('boglarka','neutral').file);
- assert.equal(portraitFor('greta','displeased').file,portraitFor('greta','neutral').file);assert.equal(portraitFor('soma','affectionate').file,null);
-});
-test('synthetic scheduler exercises 16 required slots and atomic continuations before content',()=>{
- const r=fixtures();validateRegistry(r,{},new Set(['classroom']));let s=createInitial('');
- for(let w=1;w<=16;w++){
-  assert.equal(s.week,w);assert.equal(activity(s,'rest'),s);assert.equal(nextWeek(s,r),s);
-  s=openScene(s,'shared_'+w,r);s=applyChoice(s,'yes',r);assert.equal(s.slot,0);assert.equal(s.decisions['witness_'+w],undefined);
-  assert.equal(decodeSave(JSON.stringify(s),r).status,'ok');s=applyChoice(s,'continue',r);assert.equal(s.slot,1);assert.ok(s.decisions['witness_'+w]);
-  s=nextWeek(activity(activity(s,'rest'),'rest'),r);
+test('production engine has no campaign imports, identities, milestones or ending logic',()=>{
+ for(const file of ['types.ts','logic.ts','save.ts']){
+  const source=readFileSync('src/game/engine/'+file,'utf8');
+  assert.doesNotMatch(source,/content\/|rebeka|boglarka|greta|marton|soma|triad|vampire|confrontation|institution|shared_8|ligetvar|hu-HU/);
  }
- assert.equal(s.phase,'ending');assert.equal(s.confrontation,'exhausting');assert.equal(evaluateEnding(s).relationship,'friendship');
-});
-test('targeted immutable effects do not change the previous speaker bond',()=>{
- const r=fixtures();const s=openScene(createInitial(''),'shared_1',r),before=structuredClone(s);
- assert.equal(applyChoice(s,'unknown',r),s);const n=applyChoice(applyChoice(s,'yes',r),'continue',r);assert.deepEqual(s,before);
- applyEffect(n,{bonds:{rebeka_boglarka:7}},'shared_1');assert.equal(n.bonds.rebeka_boglarka,7);assert.equal(n.bonds.marton_boglarka,0);
-});
-test('save restart boundary preserves v1 bytes and permits name-only opt-in',()=>{
- const data=new Map([[LEGACY_SAVE_KEY,JSON.stringify({version:1,name:'Régi név',route:'rebeka_greta',flags:['commit']})]]),storage={getItem:(k:string)=>data.get(k)??null,setItem:(k:string,v:string)=>{data.set(k,v);}},original=data.get(LEGACY_SAVE_KEY)!;
- assert.equal(decodeSave(original,SCENES).status,'unsupported');assert.equal(legacyName(storage),'Régi név');
- const s=createInitial('Új név');assert.equal(persist(storage,s),true);assert.equal(data.get(LEGACY_SAVE_KEY),original);
- assert.deepEqual(decodeSave(data.get(SAVE_KEY)!,SCENES),{status:'ok',state:s});
- for(const raw of ['{','null','{}','{"version":999}',JSON.stringify({...s,bonds:null}),JSON.stringify({...s,phase:'ending'})])assert.notEqual(decodeSave(raw,SCENES).status,'ok');
-});
-test('registry rejects unresolved references, over-four choices and both cycle types',()=>{
- let r=fixtures();r.shared_1.lines[0].choices![0].next='missing';assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/Unknown next/);
- r=fixtures();r.shared_1.lines[0].choices=Array.from({length:5},(_,i)=>({id:String(i),text:'x',reaction:'x'}));assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/Maximum 4/);
- r=fixtures();r.shared_1.lines[1].next='first';assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/Line cycle/);
- r=fixtures();r.shared_1.requires.scenes=['shared_1'];assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/cycle/);
- r=fixtures();r.shared_2.requires.decisions=['not-a-decision'];assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/Unknown decision/);
-});
-for(const girl of ['rebeka','boglarka','greta'] as const)test('authored 16-week single romance: '+girl,()=>{
- const {state:s,slots,minEnergy}=run(girl,{prepared:true});assert.equal(evaluateEnding(s).relationship,girl);assert.equal(slots,8);assert.ok(minEnergy>0);assert.equal(s.institution,'acknowledged');
- for(const key of [girl+'_yes','marton_'+girl+'_yes',girl+'_repair']){const n=structuredClone(s);delete n.decisions[key];assert.equal(evaluateEnding(n).relationship,'unresolved');}
-});
-test('triad costs 18 slots and requires three separate affirmations plus the women bond',()=>{
- const {state:s,slots,minEnergy}=run('triad');assert.equal(slots,18);assert.ok(minEnergy>0);assert.equal(evaluateEnding(s).relationship,'triad');
- assert.equal(s.completed.triad_7,14);assert.equal(s.completed.triad_8,16);assert.ok(s.bonds.rebeka_boglarka>0);
- for(const id of ['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes','rb_rebeka_yes','rb_boglarka_yes']){const n=structuredClone(s);delete n.decisions[id];assert.equal(evaluateEnding(n).relationship,'unresolved',id);}
- assert.ok(s.decisions.rebeka_aftermath);assert.ok(s.decisions.boglarka_aftermath);
-});
-test('two missed triad appointments recover within 20 slots including preparation',()=>{
- const {state:s,slots,minEnergy}=run('triad',{missTwo:true,prepared:true});assert.equal(s.completed.rebeka_1,2);assert.equal(s.completed.triad_2,6);assert.equal(slots,20);assert.ok(minEnergy>0);assert.equal(evaluateEnding(s).relationship,'triad');assert.equal(s.confrontation,'supported');
-});
-test('friendship has all evidence, institutional outcome and aftermath before closure',()=>{
- const {state:s}=run('friendship',{prepared:true});assert.equal(evaluateEnding(s).relationship,'friendship');assert.equal(s.completed.friendship_after,16);assert.equal(s.institution,'acknowledged');
- assert.deepEqual(s.bonds,{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0});
-});
-test('poor preparation still kills the vampire and changes costs and response',()=>{
- const {state:s}=run('friendship');assert.equal(s.confrontation,'exhausting');assert.equal(s.institution,'incomplete');assert.equal(evaluateEnding(s).threat,'resolved');assert.equal(evaluateEnding(s).relationship,'friendship');
-});
-test('declined triad permits an agreed single without penalizing the women bond',()=>{
- const {state:s}=run('triad',{declineTriad:true});assert.ok(s.decisions.triad_declined);assert.equal(s.decisions.triad_marton_yes,undefined);assert.equal(evaluateEnding(s).relationship,'rebeka');assert.ok(s.bonds.rebeka_boglarka>0);
-});
-test('late refusal yields estrangement and no automatic new commitment',()=>{
- const {state:s}=run('greta',{withdraw:true});assert.equal(evaluateEnding(s).relationship,'estranged');assert.equal(setDirection(s,'rebeka'),s);
-});
-test('pre-confrontation danger/romance cannot be replayed in week 15',()=>{
- let s=createInitial('');for(let w=1;w<=14;w++)s=nextWeek(activity(activity(complete(s,'shared_'+w),'rest'),'rest'),SCENES);
- s=complete(s,'shared_15');assert.equal(availableScenes(s,SCENES).some(x=>x.deadline<15),false);assert.equal(openScene(s,'rebeka_1',SCENES),s);assert.ok(s.evidence.vampire_dead);
-});
-test('institutional suppression is independent of romance and never preserves the vampire',()=>{
- let s=createInitial('');for(let w=1;w<=15;w++)s=nextWeek(activity(activity(complete(s,'shared_'+w),'rest'),'rest'),SCENES);
- s=complete(s,'shared_16',ids=>ids.includes('private')?'private':ids[0]);s=nextWeek(activity(activity(s,'rest'),'rest'),SCENES);
- assert.equal(evaluateEnding(s).institution,'suppressed');assert.equal(evaluateEnding(s).threat,'resolved');
-});
-test('damaged saves cannot omit required evidence or contain forged pending effects',()=>{
- let s=complete(createInitial(''),'shared_1');const n=structuredClone(s);delete n.evidence.grounding;assert.equal(decodeSave(JSON.stringify(n),SCENES).status,'invalid');
- s=openScene(s,'rebeka_1',SCENES);s.scene!.pending=[{decisions:['invented_commit']}];assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'invalid');
-});
-test('mandatory scenes remain reachable at zero energy and money',()=>{
- let s=createInitial('');s.energy=0;s.money=0;
- s=complete(s,'shared_1');assert.equal(s.slot,1);assert.ok(s.evidence.grounding);assert.equal(nextWeek(s,SCENES),s);
-});
-test('active application has no retired routes, content adapters or explicit artwork aliases',()=>{
- for(const file of ['src/game/content/catalog.ts','src/game/engine/logic.ts','src/game/ui/GameApp.tsx','src/game/content/assets.ts']){
-  const source=readFileSync(file,'utf8');assert.doesNotMatch(source,/boglarka_greta|rebeka_greta|weeklyHorrorSummary|references\/intim|mergePart1|mergeLater/);
- }
- assert.equal(existsSync('src/core/DialogueEngine.ts'),false);assert.equal(existsSync('public/references'),false);
 });

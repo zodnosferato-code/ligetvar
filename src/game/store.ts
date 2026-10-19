@@ -1,13 +1,13 @@
 import {create} from 'zustand';
 import {SCENES} from './content/catalog.ts';
-import {activity,applyChoice,buyGift,createInitial,giveGift,nextWeek,openScene,resolveJob,setDirection} from './engine/logic.ts';
-import {legacyName,persist,readSave} from './engine/save.ts';
-import {LEGACY_SAVE_KEY,type GameState,type GirlId,type RouteId} from './engine/types.ts';
+import {activity,applyChoice,buyGift,createInitial,giveGift,nextWeek,openScene,resolveJob,setDirection} from './content/runtime.ts';
+import {legacyName,persist,readSave} from './content/saves.ts';
+import {LEGACY_SAVE_KEY,type GameState,type GirlId,type RouteId} from './content/types.ts';
 interface GameStore{
  mode:'title'|'play';state:GameState;hasSave:boolean;hasLegacy:boolean;saveMessage:string;
  boot:()=>void;start:(name:string)=>void;resume:()=>void;toTitle:()=>void;importName:()=>string|null;
  scene:(id:string)=>void;pick:(id:string)=>void;advance:()=>void;direction:(id:RouteId)=>void;
- activity:(kind:'rest'|'talk'|'mohu'|'brick')=>void;finishJob:(pay:number)=>void;cancelJob:()=>void;buy:(id:string)=>void;gift:(girl:GirlId,id:string)=>void;
+ activity:(kind:'rest'|'mohu'|'brick')=>void;finishJob:(pay:number)=>void;cancelJob:()=>void;buy:(id:string)=>void;gift:(girl:GirlId,id:string)=>void;
 }
 export const useGame=create<GameStore>((set,get)=>{
  const update=(state:GameState)=>{if(state===get().state)return;let saved=false;try{saved=persist(localStorage,state);}catch{}set({state,hasSave:saved||get().hasSave,saveMessage:saved?'':'A mentés nem sikerült. A játék ezen a lapon folytatható, de bezárás előtt ellenőrizd a böngésző tárhelyét.'});};

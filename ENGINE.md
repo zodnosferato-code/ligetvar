@@ -4,14 +4,21 @@
 
 | Réteg | Aktív forrás | Szerep |
 | --- | --- | --- |
-| Állapot | `src/game/engine/types.ts` | verziózott félév, négy kapcsolódás, tanúsított döntések és bizonyítékok |
-| Szabályok | `src/game/engine/logic.ts` | változatlan bemenetből új állapotot adó reducerek; sávok, előfeltételek, hatások, lezárás |
-| Történet | `src/game/content/catalog.ts` | 45 magyar jelenet; egyetlen aktív jelenetregiszter |
+| Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, a v2 mentési alak megőrzésével |
+| Motor | `src/game/engine/logic.ts` | általános reducerek, sávok, előfeltételek, célzott hatások; történeti azonosítók nélkül |
+| Kampányszabályok | `src/game/content/rules.ts`, `runtime.ts` | kezdeti állapot, 16 hét, gazdaság, kapcsolati irányok, konfrontáció, intézmény és végértékelés |
+| Történet | `src/game/content/catalog.ts` | 54 magyar jelenet; külön TypeScript modulokból összeállított egyetlen regiszter |
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
 | Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
-| Mentés | `src/game/engine/save.ts`, `store.ts` | v2 validálás és külön kulcs; Zustand/localStorage integráció |
+| Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v2 kulcs; Zustand/localStorage integráció |
 | UI | `src/game/ui/` | heti tervező, nagy portrés dialógus, mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
+
+## Motor és tartalom határa
+
+A motor nem importál a `content/` könyvtárból. A `RuntimeRules` szerződésen át kapja a kezdeti állapotot, a hetek számát, a gazdasági adatokat, a mentési kulcsokat és a kampányhoz tartozó hatás-, jelenetbefejezési, irányváltási és validálási szabályokat. A motor önálló, háromhetes, más szereplőkkel és más végfeltétellel futó tesztkampánnyal is ellenőrzött. A `content/runtime.ts` a Ligetvár alkalmazási belépési pontja; nem régi tartalmi adapter.
+
+A `content/epilogues.ts` tartalmazza a végszövegeket. A felület a tartalmi belépési pontot hívja. A történet szerkesztéséhez a motor átírása nem szükséges.
 
 ## Heti hurok
 
@@ -20,6 +27,12 @@ A `slot=0` a garantált közös alkalom. Pénz, energia, véletlen és románc n
 A személyes jelenet költsége 8 energia, a közös alkalom +4, az új hét +24, a pihenő +32. Alacsony energia nem zárja el a történetet. A 15. heti konfrontáció támogatott felkészüléssel további 8, hiányos felkészüléssel 28 energiát vesz el. Az opcionális munkák külön szabad sávot használnak, a vásárlás és találkozó nem igényel műszakot. Ajándék személyenként hetente egyszer adható, legfeljebb csekély kapcsolódási bónusszal.
 
 Az előfeltétel explicit jelenet-, bizonyíték- és döntéshivatkozás; összetett alternatívákhoz `anyOf` használható. A személyes alkalmak az ajánlott héttől a 14. hét végéig pótolhatók. T7 kizárólag a 14. héten; személyes utóbeszélgetések kizárólag a 16. héten. A UI kiírja a tényleges határidőt. A kihagyott alkalom nem teljesül automatikusan.
+
+## Elágazó és kontextuális beszélgetések
+
+A `Choice.next` eltérő szövegcsomópontra vezet. A `Choice.requires` korábban tanúsított döntéshez, jelenethez vagy bizonyítékhoz kötheti egy válasz megjelenését. Az el nem érhető választást a reducer közvetlen azonosítóval sem fogadja el. A válasz hatása az ág végéig függőben marad; közben menthető és folytatható. Az új nyitóágak megőrzik a korábbi `line_*` azonosítókat és választási hatásokat a v2 kurzorokhoz.
+
+A kilenc opcionális kávés beszélgetés három időszakot fed le: 1–7., 8–14. és 15–16. hét. Karakterenként és időszakonként egyszer játszhatók, egy szabad sávba és 8 energiába kerülnek. A középső visszautaló választás csak a korábbi megfelelő témát befejező játékosnak jelenik meg. Romantikus vállalást vagy kapcsolatpontot nem adnak, és a nyomozás nem igényli őket. A régi, csak állapotüzenetet adó `talk` tevékenység megszűnt.
 
 ## Tanúsított tudás és döntés
 

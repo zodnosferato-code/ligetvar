@@ -6,8 +6,10 @@ A teljes [dokumentációs index](docs/README.md) felsorolja az aktív és archiv
 
 ## Aktív rendszer
 
-- React, Zustand, Vite; változatlan technológiai keret, UI nélkül tesztelhető reducer logika a `src/game/engine/` alatt.
-- Egyetlen aktív történetforrás: `src/game/content/catalog.ts`. Ne tölts vissza dialógust a régi JSON/lokalizációs állományokból.
+- React, Zustand, Vite; változatlan technológiai keret, UI nélkül tesztelhető reducer logika a `src/game/engine/` alatt, befecskendezett kampányszabályokkal.
+- Egyetlen aktív történetregiszter: `src/game/content/catalog.ts`, a `shared.ts`, `relationships.ts`, `triad.ts`, `optional.ts`, `opening.ts` és `conversations.ts` tartalommodulokból összeállítva. Ne tölts vissza dialógust az archív JSON/lokalizációs állományokból.
+- A motor (`src/game/engine/`) nem ismerhet konkrét szereplőt, jelenetazonosítót, történeti mérföldkövet vagy befejezést. A kampány szabályai a `content/rules.ts`, típusai a `content/types.ts`, epilógusai a `content/epilogues.ts` alatt vannak. A `content/runtime.ts` köti össze őket az általános motorral.
+- A felhasználó dönt a további implementációs irányokról. A 2026-10-19-én jóváhagyott TypeScript tartalommodulok és habitusok szerint dolgozz; új architektúrát vagy új karakterirányt ne nyilváníts jóváhagyottnak. A [karakterhangok](docs/CHARACTER-VOICES.md) rögzítik az irányt és a még ki nem bontott részeket.
 - 16 hét; hetente egy garantált közös történeti sáv, két szabad sáv. A jelenet folytatása ingyenes, a befejezése egy sávot használ. Nincs extra automatikus műhely.
 - Minden jelenetnek explicit résztvevői, beszélője, helyszíne, háttere, kifejezése, előfeltételei és határideje van. Legfeljebb négy kontextuális választás; kötelező jó/rossz ranglétra nincs.
 - A tudás és az igenek tanúsított jelenetbefejezésből származnak. Ismételt beszélgetés, pénz vagy ajándék nem ad elköteleződést.

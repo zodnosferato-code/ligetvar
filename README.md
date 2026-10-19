@@ -4,7 +4,7 @@
 
 Magyar, tizenhat hetes gótikus romantikus történetjáték egy kastélyban működő főiskolán. A fakultatív műhely résztvevői eltűnések és hiányzó emlékek nyomát követik. Három egyéni románc, Rebeka–Boglárka–Márton közös kapcsolat, barátság, visszalépés és gyenge felkészülésű történeti kimenetel játszható.
 
-Az átdolgozott motor és a 45 magyar jelenet implementálva van. A végleges képkészlet még nincs kész: a karakterportrék jelenleg helyőrzők, a meglévő háttérképek pedig átmenetiek, és a játék ezeket továbbra is használja. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
+Az általános motor és a történet külön TypeScript modulokban működik. Az aktív regiszter 54 jelenetet tartalmaz; az első három hét és a három első személyes találkozó kibontott választási ágakat kapott, és kilenc helyzetfüggő kávés beszélgetés is játszható. A félév későbbi jelenetei még rövidek, további írói kidolgozásra várnak. A végleges képkészlet még nincs kész: a karakterportrék jelenleg helyőrzők, a meglévő háttérképek pedig átmenetiek, és a játék ezeket továbbra is használja. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
 
 ```bash
 npm ci
@@ -20,7 +20,7 @@ Hetente egy garantált közös történeti alkalom és két szabad sáv van. A n
 
 A v2 külön mentést használ. A v1 megmarad, de az új történetet újra kell kezdeni. A címoldalon csak a régi játékosnév vehető át külön kérésre; régi páros útvonalat vagy mérföldkövet nem alakítunk át automatikusan.
 
-A dokumentumok áttekintése: [dokumentációs index](docs/README.md). Fejlesztéshez először [AGENT.md](AGENT.md), [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), [ENGINE.md](ENGINE.md). Az aktuális ellenőrzések és hátralévő munka a [haladási naplóban](docs/REDESIGN-PROGRESS.md), a vizuális hiányok az [art registerben](docs/ART-REGISTER.md) találhatók. A régi számozott tervek a [dokumentációs archívumban](docs/archive/legacy-design/) vannak. A korábbi, nem aktív képi referenciák és a régi képlog az [assets/archive/](assets/archive/) mappában maradtak meg; a játék kizárólag a `src/game/content/assets.ts` manifestből használ képeket. A régi dialógus- és lokalizációs állományok történeti források, nem aktív tartalom.
+A dokumentumok áttekintése: [dokumentációs index](docs/README.md). Fejlesztéshez először [AGENT.md](AGENT.md), [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), [ENGINE.md](ENGINE.md). Az aktuális ellenőrzések és hátralévő munka a [haladási naplóban](docs/REDESIGN-PROGRESS.md), a vizuális hiányok az [art registerben](docs/ART-REGISTER.md) találhatók. A régi számozott tervek a [dokumentációs archívumban](docs/archive/legacy-design/) vannak. A korábbi, nem aktív képi referenciák és a régi képlog az [assets/archive/](assets/archive/) mappában maradtak meg; a játék kizárólag a `src/game/content/assets.ts` manifestből használ képeket. A régi dialógus- és lokalizációs állományok a [történeti dialógusarchívumban](docs/archive/legacy-narrative/README.md) találhatók, nem aktív tartalom. A jóváhagyott [karakterhangok](docs/CHARACTER-VOICES.md) vezetik a további írói munkát.
 
 ## Venice AI API (developer tooling)
 
