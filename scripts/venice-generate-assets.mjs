@@ -52,6 +52,25 @@ try{
  for(const a of selected)imageRequest(a,a.refs.map(()=>'<validated-at-runtime>'),request,available);
  // Persist only model specifications and non-sensitive request metadata, never HTTP responses/headers.
  await writeFile(join(ROOT,'models.json'),JSON.stringify({checkedAt:new Date().toISOString(),models:[gen,edit].map(m=>({id:m.id,type:m.type,model_spec:m.model_spec??null}))},null,2)+'\n');
+ if(request.phase==='refine'){
+  const fixes=request.refinements??[];
+  if(!fixes.length||fixes.length>request.maxNewImages)throw new Error('Refinement budget mismatch');
+  for(const fix of fixes){
+   const a=ASSETS.find(a=>a.id===fix.asset),previous=manifest.assets[fix.asset];if(!a||!previous)throw new Error('Missing refinement asset: '+fix.asset);
+   if(previous.refinements?.some(r=>r.request===request.id)){run.reused.push(fix.asset);continue;}
+   const path=join(ROOT,a.file),input=await readFile(path),inputHash=digest(input);
+   if(inputHash!==fix.expectedSha256||inputHash!==previous.sha256)throw new Error('Refinement source changed: '+fix.asset);
+   const revision=join(ROOT,'revisions',fix.asset,inputHash+'.png');await mkdir(dirname(revision),{recursive:true});await writeFile(revision,input);
+   await writeFile(revision+'.json',JSON.stringify(previous,null,2)+'\n');
+   const prepared=imageRequest({...a,method:'edit',refs:['reviewed-source'],prompt:fix.prompt},[input.toString('base64')],request,available);
+   console.log('Refining reviewed candidate:',fix.asset);
+   const res=await call(prepared.endpoint,prepared.body);const bytes=Buffer.from(await res.arrayBuffer()),info=pngInfo(bytes),sha256=digest(bytes);
+   await writeFile(path,bytes);
+   manifest.assets[fix.asset]={...previous,...info,sha256,bytes:bytes.length,status:a.transparent?'candidate-needs-alpha-and-visual-review':'candidate-awaiting-visual-review',refinements:[...(previous.refinements??[]),{request:request.id,model:prepared.model,prompt:fix.prompt,inputSha256:inputHash,outputSha256:sha256,createdAt:new Date().toISOString()}]};
+   run.generated.push(fix.asset);await checkpoint();
+  }
+  run.status='completed-with-pending-review';run.finishedAt=new Date().toISOString();await checkpoint();console.log('Refinement candidates saved.');process.exit(0);
+ }
  for(const a of selected){
   const refs=await Promise.all(a.refs.map(reference));
   const prepared=imageRequest(a,refs.map(r=>r.base64),request,available);

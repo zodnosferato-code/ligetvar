@@ -1,12 +1,21 @@
 {
-  "id": "2026-10-19-wai-firered-pilot-02",
-  "phase": "pilot",
-  "assets": [
-    "classroom",
-    "rebeka_neutral"
-  ],
+  "id": "2026-10-19-pilot-refinement-01",
+  "phase": "refine",
+  "assets": [],
   "maxNewImages": 2,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
-  "resolution": "1K"
+  "resolution": "1K",
+  "refinements": [
+    {
+      "asset": "rebeka_neutral",
+      "expectedSha256": "fe0bd866524560e80116ba21a84f6e8bf8b8af8357f87b937dd9e3e631279fe6",
+      "prompt": "Edit this single adult woman portrait, preserving her recognizable adult face, eyes, beauty mark below her anatomical LEFT eye (viewer right), black hair and anime rendering. Zoom OUT to a head-and-shoulders bust with the COMPLETE TOP OF HER HEAD visible, 8 percent clear margin above hair, shoulders and upper chest fully inside the image. Add one distinct plum-purple hair STREAK only on her anatomical LEFT, viewer right; the rest of her hair is black. Replace the garment with a completely OPAQUE MATTE BLACK HIGH-NECK DRESS: solid fabric covering neck and upper chest, no mesh, sheer fabric, cutouts, straps or cleavage. Plain narrow silver choker. Restrained neutral confident expression, no blush. Flat white background, soft neutral light, 4:5 composition. One person only, no text or frame."
+    },
+    {
+      "asset": "classroom",
+      "expectedSha256": "0fafc4604d9eafe38e95ee5d31edf6e3ab5a4b133c62b6ffef7827b558c12cec",
+      "prompt": "Preserve this empty anime gothic college classroom, window architecture, daylight, electric lamps, furniture materials and illustration style. Correct the conversational camera composition: the viewer is seated at the NEAR edge of the foreground table. REMOVE the chair currently BETWEEN the viewer and the table. Put ONE normal empty chair on the FAR SIDE of this table, FACING THE VIEWER; show its seat and front, with its backrest BEHIND the seat, at a natural conversational distance. No chair back may block the viewer in the foreground. The empty place opposite must be clearly usable by a companion. Keep natural seated eye level, 16:9. Erase all chalk writing so the boards are blank. No people, hands, reflections, text or watermark."
+    }
+  ]
 }
