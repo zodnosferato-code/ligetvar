@@ -18,7 +18,7 @@ export function imageRequest(asset,images,request,models){
    Object.assign(shared,{width,height});
   }
   if(limits.steps)shared.steps=limits.steps.default;
-  return {model,backgroundRemove:asset.transparent&&!nativeAlpha,endpoint:'/image/generate',body:{...shared,model,format:'png',return_binary:false,variants:1,hide_watermark:true,embed_exif_metadata:false,negative_prompt:'pixel art, photorealistic, chibi, child, text, watermark, signature, lowres, blurry, extra limbs, duplicate people'}};
+  return {model,backgroundRemove:asset.transparent&&!nativeAlpha,endpoint:'/image/generate',body:{...shared,model,format:'png',return_binary:false,variants:1,hide_watermark:true,embed_exif_metadata:false,negative_prompt:'chibi, child, loli, baby, multiple girls, multiple people, character sheet, reference sheet, turnaround, comic, panels, grid, border, ornament, text, Japanese text, Chinese text, watermark, signature, pixel art, photorealistic, lowres, blurry, extra limbs'}};
  }
  if(images.length!==asset.refs.length||!images.length)throw new Error('Missing input references: '+asset.id);
  const body={...shared,output_format:'png'};

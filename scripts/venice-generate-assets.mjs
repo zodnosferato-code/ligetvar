@@ -22,6 +22,7 @@ await mkdir(ROOT,{recursive:true});
 let manifest={schema:1,provider:'Venice AI',assets:{},runs:[]};
 try{manifest=JSON.parse(await readFile(join(ROOT,'manifest.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
 const run={request:request.id,phase:request.phase,startedAt:new Date().toISOString(),status:'running',generated:[],reused:[]};manifest.runs.push(run);
+if(manifest.runs.some(r=>r.failure?.includes('/image/background-remove failed: HTTP 403'))){manifest.capabilities??={};manifest.capabilities.backgroundRemove={available:false,httpStatus:403};}
 async function checkpoint(){const path=join(ROOT,'manifest.json');await writeFile(path+'.tmp',JSON.stringify(manifest,null,2)+'\n');await rename(path+'.tmp',path);}
 async function reference(ref){
  const path=ref.startsWith('repo:')?resolve(ref.slice(5)):resolve(ROOT,ASSETS.find(a=>a.id===ref)?.file??'missing');
@@ -33,7 +34,7 @@ async function reference(ref){
 let key;
 async function call(endpoint,body){
  const res=await fetch(BASE+endpoint,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+key,...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(240000)});
- if(!res.ok){await res.body?.cancel();throw new Error('Venice '+endpoint+' failed: HTTP '+res.status);}
+ if(!res.ok){await res.body?.cancel();const error=new Error('Venice '+endpoint+' failed: HTTP '+res.status);error.httpStatus=res.status;throw error;}
  if(res.headers.get('x-venice-is-blurred')==='true'){await res.body?.cancel();throw new Error('Venice returned a blurred image; candidate rejected');}
  return res;
 }
@@ -79,15 +80,20 @@ try{
    }else bytes=Buffer.from(await res.arrayBuffer());
    pngInfo(bytes);await mkdir(dirname(rawPath),{recursive:true});await writeFile(rawPath,bytes);await writeFile(rawMeta,JSON.stringify({signature,sha256:digest(bytes),model,createdAt:new Date().toISOString()},null,2)+'\n');
   }else console.log('Reusing billed raw output:',a.id);
-  if(backgroundRemove){console.log('Extracting alpha through Venice:',a.id);const extracted=await call('/image/background-remove',{image:bytes.toString('base64')});bytes=Buffer.from(await extracted.arrayBuffer());}
+  let alphaPending=false;
+  if(backgroundRemove){
+   if(manifest.capabilities?.backgroundRemove?.available===false)alphaPending=true;
+   else try{console.log('Extracting alpha through Venice:',a.id);const extracted=await call('/image/background-remove',{image:bytes.toString('base64')});bytes=Buffer.from(await extracted.arrayBuffer());}
+   catch(e){if(e.httpStatus!==403)throw e;manifest.capabilities??={};manifest.capabilities.backgroundRemove={available:false,httpStatus:403};alphaPending=true;console.log('Venice alpha endpoint unavailable; preserving opaque candidate for review.');}
+  }
   const image=pngInfo(bytes);
-  if(a.transparent&&!image.alphaChannel)throw new Error('Portrait has no alpha channel: '+a.id);
+  if(a.transparent&&!image.alphaChannel&&!alphaPending)throw new Error('Portrait has no alpha channel: '+a.id);
   const output=resolve(ROOT,a.file);if(!output.startsWith(ROOT+'/'))throw new Error('Invalid output path');
   await mkdir(dirname(output),{recursive:true});await writeFile(output,bytes);
-  manifest.assets[a.id]={...spec,file:a.file,signature,sha256:digest(bytes),bytes:bytes.length,...image,status:'candidate-awaiting-visual-review',generatedAt:new Date().toISOString(),request:request.id};
+  manifest.assets[a.id]={...spec,file:a.file,signature,sha256:digest(bytes),bytes:bytes.length,...image,status:alphaPending?'candidate-needs-alpha-and-visual-review':'candidate-awaiting-visual-review',generatedAt:new Date().toISOString(),request:request.id};
   run.generated.push(a.id);await checkpoint();console.log('Saved candidate:',relative(process.cwd(),output),image.width+'x'+image.height);
  }
- run.status='completed';run.finishedAt=new Date().toISOString();await checkpoint();
+ run.status=run.generated.some(id=>manifest.assets[id].status.includes('needs-alpha'))?'completed-with-pending-alpha':'completed';run.finishedAt=new Date().toISOString();await checkpoint();
  console.log('Completed:',run.generated.length,'new images,',run.reused.length,'reused. Candidates await visual review.');
 }catch(e){
  // Errors are deliberately limited to our messages, status codes and asset IDs. Never dump request bodies or provider responses.
