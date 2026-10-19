@@ -1,5 +1,7 @@
 # Karakter képi assetek
 
+> **Állapot:** Aktív. | **Cél:** Karakterképek helyőrzői és egyeztetett art brief.
+
 **Kanonikus forrás**: a játék képi assetei az `assets/` mappában vannak; a runtime azokat a fájlokat tölti be, amelyeket a `src/game/content/assets.ts` manifest felsorol.
 
 A jelenetek a játékos első személyű nézőpontjából készülnek. A meglévő háttérképek hangulatát a felhasználó megfelelőnek tartja; új vagy frissített háttérnél őrizzük meg ezt a hangulatot, és hagyjunk jól olvasható helyet a karakternek leülni a játékossal szemben.

@@ -1,0 +1,168 @@
+# Archived asset inventory
+
+> **Status:** Archived snapshot. | **Purpose:** Inventory retained non-runtime artwork and notes.
+
+Generated from the repository tree on 19 October 2026. These files are preserved for provenance and are not active references. New character art starts from the approved brief in [the art register](../../docs/ART-REGISTER.md); current backgrounds remain at `assets/backgrounds/`.
+
+## Contents by group
+
+- **Character archive:** 25 files, including the archive note; 18 image files; previous character locks, generation prompts, and per-character notes.
+- **Legacy intimate references:** 126 files under `references/intim/`, including the folder README and two upload-test text files.
+- **Old asset review log:** `IMAGE_ASSET_LOG-2026-10-16.md`, which describes a superseded pixel-art direction.
+
+## File paths
+
+- `IMAGE_ASSET_LOG-2026-10-16.md`
+- `characters/CHARACTER_LOCKS.md`
+- `characters/GENERATED-2026-10-16.md`
+- `characters/README.md`
+- `characters/WORKING_PROMPTS.md`
+- `characters/boglarka/boglarka-emotion-blush.jpg`
+- `characters/boglarka/boglarka-emotion-smile.jpg`
+- `characters/boglarka/boglarka-emotion-trust.jpg`
+- `characters/boglarka/boglarka-face-front.jpg`
+- `characters/boglarka/boglarka-full-front-clothed.jpg`
+- `characters/farkas-denes/README.md`
+- `characters/farkas-denes/VeniceAI_Yiad6OlhWzRPMD_0.png`
+- `characters/greta/greta-emotion-flustered.jpg`
+- `characters/greta/greta-emotion-smile.jpg`
+- `characters/greta/greta-emotion-yielding.jpg`
+- `characters/greta/greta-full-front-clothed.jpg`
+- `characters/kerekes-aron/README.md`
+- `characters/kerekes-aron/VeniceAI_Yiad6OlhWzRPMD_2.png`
+- `characters/rebeka/rebeka-emotion-anger.jpg`
+- `characters/rebeka/rebeka-emotion-halfsmile.jpg`
+- `characters/rebeka/rebeka-emotion-vulnerable.jpg`
+- `characters/rebeka/rebeka-emotion-yielding.jpg`
+- `characters/rebeka/rebeka-face-front.jpg`
+- `characters/rebeka/rebeka-full-front-clothed.jpg`
+- `characters/sarkozy-julia/README.md`
+- `characters/sarkozy-julia/VeniceAI_g1K-OAzd3-0Mgr_0.png`
+- `references/intim/README.md`
+- `references/intim/boglarka-allfours-rear-angle.jpg`
+- `references/intim/boglarka-bent-over-rear.jpg`
+- `references/intim/boglarka-bent-over-robe.jpg`
+- `references/intim/boglarka-cleavage-squeeze.jpg`
+- `references/intim/boglarka-close-rear.jpg`
+- `references/intim/boglarka-greta-kiss-bed.jpg`
+- `references/intim/boglarka-greta-kiss-standing.jpg`
+- `references/intim/boglarka-greta-sit-kiss.jpg`
+- `references/intim/boglarka-hallway-flash.jpg`
+- `references/intim/boglarka-hardcore-lingerie-lying.jpg`
+- `references/intim/boglarka-hardcore-nude-bed-v2.jpg`
+- `references/intim/boglarka-hardcore-nude-bed.jpg`
+- `references/intim/boglarka-kneel-open.jpg`
+- `references/intim/boglarka-kneeling-oral-ready.jpg`
+- `references/intim/boglarka-library-table.jpg`
+- `references/intim/boglarka-light-library-cardigan.jpg`
+- `references/intim/boglarka-light-library-v2.jpg`
+- `references/intim/boglarka-medium-lingerie-bed.jpg`
+- `references/intim/boglarka-medium-lingerie-sitting.jpg`
+- `references/intim/boglarka-medium-lingerie-v2.jpg`
+- `references/intim/boglarka-mirror.jpg`
+- `references/intim/boglarka-nude-allfours.jpg`
+- `references/intim/boglarka-nude-reclining.jpg`
+- `references/intim/boglarka-nude-sitting-bed.jpg`
+- `references/intim/boglarka-nude-standing.jpg`
+- `references/intim/boglarka-nude-wet-bath.jpg`
+- `references/intim/boglarka-prone-rear.jpg`
+- `references/intim/boglarka-rain-balcony.jpg`
+- `references/intim/boglarka-rear-kneel.jpg`
+- `references/intim/boglarka-rebeka-neck-kiss.jpg`
+- `references/intim/boglarka-reverse-chair.jpg`
+- `references/intim/boglarka-self-touch.jpg`
+- `references/intim/boglarka-sexy-lace-bodysuit.jpg`
+- `references/intim/boglarka-sitting-open.jpg`
+- `references/intim/boglarka-soft-rope.jpg`
+- `references/intim/boglarka-spread-recline.jpg`
+- `references/intim/boglarka-standing-rear.jpg`
+- `references/intim/boglarka-straddle-open-thigh.jpg`
+- `references/intim/boglarka-wall-press.jpg`
+- `references/intim/boglarka-window-sill.jpg`
+- `references/intim/greta-allfours-rear-angle.jpg`
+- `references/intim/greta-bent-over-desk-rear.jpg`
+- `references/intim/greta-bent-over-desk.jpg`
+- `references/intim/greta-cleavage-desk-open.jpg`
+- `references/intim/greta-cleavage-open-shirt.jpg`
+- `references/intim/greta-close-rear.jpg`
+- `references/intim/greta-hallway-flash.jpg`
+- `references/intim/greta-hardcore-bound-v2.jpg`
+- `references/intim/greta-hardcore-bound-yield.jpg`
+- `references/intim/greta-hardcore-desk-nude.jpg`
+- `references/intim/greta-hardcore-nude-standing-v2.jpg`
+- `references/intim/greta-kneel-open.jpg`
+- `references/intim/greta-kneeling-oral-ready.jpg`
+- `references/intim/greta-library-table.jpg`
+- `references/intim/greta-light-office-open-shirt.jpg`
+- `references/intim/greta-medium-cuffed-bed.jpg`
+- `references/intim/greta-medium-desk-lingerie.jpg`
+- `references/intim/greta-medium-desk-v2.jpg`
+- `references/intim/greta-mirror.jpg`
+- `references/intim/greta-nude-allfours-desk.jpg`
+- `references/intim/greta-nude-reclining.jpg`
+- `references/intim/greta-nude-sitting-desk.jpg`
+- `references/intim/greta-nude-standing.jpg`
+- `references/intim/greta-nude-wet-bath.jpg`
+- `references/intim/greta-prone-rear.jpg`
+- `references/intim/greta-rain-balcony.jpg`
+- `references/intim/greta-rear-kneel.jpg`
+- `references/intim/greta-reverse-chair.jpg`
+- `references/intim/greta-self-touch.jpg`
+- `references/intim/greta-sexy-office-remix.jpg`
+- `references/intim/greta-sitting-open.jpg`
+- `references/intim/greta-soft-rope.jpg`
+- `references/intim/greta-spread-recline.jpg`
+- `references/intim/greta-standing-rear.jpg`
+- `references/intim/greta-straddle-open-thigh.jpg`
+- `references/intim/greta-wall-press.jpg`
+- `references/intim/greta-window-sill.jpg`
+- `references/intim/rebeka-allfours-rear-angle.jpg`
+- `references/intim/rebeka-bent-over-lingerie.jpg`
+- `references/intim/rebeka-bent-over-rear.jpg`
+- `references/intim/rebeka-bent-over-strappy.jpg`
+- `references/intim/rebeka-boglarka-bed-makeout.jpg`
+- `references/intim/rebeka-boglarka-kiss-bed.jpg`
+- `references/intim/rebeka-boglarka-kiss-standing.jpg`
+- `references/intim/rebeka-cleavage-squeeze.jpg`
+- `references/intim/rebeka-close-rear.jpg`
+- `references/intim/rebeka-greta-bed-makeout.jpg`
+- `references/intim/rebeka-greta-body-press.jpg`
+- `references/intim/rebeka-greta-kiss-soft.jpg`
+- `references/intim/rebeka-greta-kiss-standing.jpg`
+- `references/intim/rebeka-greta-neck-kiss.jpg`
+- `references/intim/rebeka-hallway-flash.jpg`
+- `references/intim/rebeka-hardcore-kneeling-nude-v2.jpg`
+- `references/intim/rebeka-hardcore-nude-standing.jpg`
+- `references/intim/rebeka-hardcore-yield-kneeling.jpg`
+- `references/intim/rebeka-kneel-open.jpg`
+- `references/intim/rebeka-kneeling-oral-ready.jpg`
+- `references/intim/rebeka-library-table.jpg`
+- `references/intim/rebeka-light-classroom-keyhole.jpg`
+- `references/intim/rebeka-light-classroom-v2.jpg`
+- `references/intim/rebeka-medium-apartment-bed.jpg`
+- `references/intim/rebeka-medium-pulled-dress-v2.jpg`
+- `references/intim/rebeka-mirror.jpg`
+- `references/intim/rebeka-nude-allfours.jpg`
+- `references/intim/rebeka-nude-reclining.jpg`
+- `references/intim/rebeka-nude-sitting-bed.jpg`
+- `references/intim/rebeka-nude-standing.jpg`
+- `references/intim/rebeka-nude-wet-bath.jpg`
+- `references/intim/rebeka-prone-rear.jpg`
+- `references/intim/rebeka-rain-balcony.jpg`
+- `references/intim/rebeka-rear-kneel.jpg`
+- `references/intim/rebeka-reverse-chair.jpg`
+- `references/intim/rebeka-self-touch.jpg`
+- `references/intim/rebeka-sexy-harness-outfit.jpg`
+- `references/intim/rebeka-sitting-open.jpg`
+- `references/intim/rebeka-soft-rope.jpg`
+- `references/intim/rebeka-spread-recline.jpg`
+- `references/intim/rebeka-standing-rear.jpg`
+- `references/intim/rebeka-straddle-open-thigh.jpg`
+- `references/intim/rebeka-wall-press.jpg`
+- `references/intim/rebeka-window-sill.jpg`
+- `references/intim/test-b64.txt`
+- `references/intim/test-upload.txt`
+- `references/intim/trio-bed-entangled.jpg`
+- `references/intim/trio-cuddle-kiss.jpg`
+
+Do not import archived assets into the runtime manifest without a new review and decision.

@@ -1,5 +1,7 @@
 # Redesign implementation record
 
+> **Status:** Active implementation record. | **Purpose:** Verified work, remaining gates, and workflow results.
+
 Baseline checked: main `84e01edbc809e727cbc095ff4d522784a4557232`, with no newer changes before implementation. Authority: [redesign plan](../Ligetvar-Redesign-Plan.md), section 10. Implementation was published directly to main as [37f6458](https://github.com/zodnosferato-code/ligetvar/commit/37f64586a506dfb402f1bb7ba056ab8033327172). No branch or pull request was created; no force-push was used. Concurrent Venice tooling commits through 50c8d0b were inspected and preserved, including their script, package command, .gitignore and README/AGENT guidance; the unrelated authenticated smoke test was not run.
 
 ## Implemented phases and remaining gates
