@@ -1,6 +1,6 @@
 # Ligetvár — story and basic art redesign
 
-Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign. The v2 runtime and 45 Hungarian scenes are now implemented; final manga production and the complete art/release gates remain open. See docs/REDESIGN-PROGRESS.md for actual verification. Planning revision: 18 October 2026, following engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
+Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign. The v2 runtime and 45 Hungarian scenes are now implemented; final non-pixel anime asset production and the complete art/release gates remain open. See docs/REDESIGN-PROGRESS.md for actual verification. Planning revision: 19 October 2026, following user art-direction update and engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
 
 ## 1. Decisions established with Miki
 
@@ -12,8 +12,8 @@ Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 
 - The final confrontation ends in the vampire's death.
 - Support three single romances and a carefully written shared route with Rebeka and Boglárka. Those two also fall in love with each other.
 - Each woman has a distinct romantic pace.
-- Replace the pixel effect with clean illustrated manga art. Ordinary dialogue uses large expressive portraits beside the text, over reusable backgrounds.
-- Preserve recognizable faces, hair, body types, and signature outfits. Remove emphasized belly fat and the pencil in the hair; simplify hairstyles.
+- Replace the pixel effect with highly detailed, non-pixel anime illustration. Ordinary dialogue uses large expressive portraits beside the text, over reusable backgrounds.
+- Restart the character artwork from a clean slate. Previous character images, visual locks, and generation prompts are archived and are not canonical references. The characters' story roles and personalities remain; their visual designs and expression sheets need a new user-approved direction.
 
 Everything more specific below is a design recommendation, open to revision. In particular, the assistant's name and appearance, the magic's exact rules, and the mechanics of the vampire's death remain proposed details.
 
@@ -31,7 +31,7 @@ The original dating-simulation framework and the later supernatural plot operate
 | Art instructions conflict internally | The visual documents mix downscaled painting and crisp pixels; one Rebeka prompt says 172 cm while the character canon says 175 cm | One updated visual bible, explicit dimensions, and image references; superseded instructions marked historical |
 | Some prose contradicts visual locks | Gréta's ending mentions a pencil in her hair despite the visual lock excluding it | Scene-level continuity checks cover text as well as images |
 
-Visual inspection of the existing backgrounds and clothed portraits also shows differences in rendering, framing, and proportions. Many rooms read as candlelit historical interiors with few signs of a functioning modern college. Preserve their atmosphere, but introduce consistent electric lighting, radiators, laptops, noticeboards, and modern furniture where appropriate.
+The existing backgrounds have the atmosphere the user wants, so preserve that mood. New or revised backgrounds should be staged from the player's point of view and leave a clear, natural seat where a character can sit facing the player. Many rooms read as candlelit historical interiors with few signs of a functioning modern college; how far to modernize details such as electric lighting, radiators, laptops, noticeboards, and furniture remains an open art-direction question.
 
 ## 3. New story premise
 
