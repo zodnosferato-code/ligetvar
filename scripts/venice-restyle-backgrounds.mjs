@@ -66,6 +66,7 @@ for (const scene of scenes) {
       resolution: "2K",
       quality: "high",
       format: "png",
+      style_preset: "Anime",
       return_binary: false,
       variants: 1,
       safe_mode: true,
