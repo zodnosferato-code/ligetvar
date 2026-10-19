@@ -54,4 +54,4 @@ Generated from the sole typed registry, not a parallel scene source. 45 authored
 
 Evidence IDs: `grounding`, `returned_lilla`, `phrase`, `time_gap`, `timeline`, `borrowed_voice`, `pattern`, `ritual_fragment`, `archive_access`, `investigation_plan`, `identity`, `deliberate_transformation`, `fascination_limit`, `anchor_rule`, `completion_date`, `chamber_location`, `intervention_plan`, `vampire_dead`, `aftermath`.
 
-Routes: friendship, rebeka, boglarka, greta, triad. The old boglarka_greta and rebeka_greta IDs are historical only and never migrated. Localization is Hungarian scene-local text; zero active legacy localization keys. Historical dialogues/part1–3 and locales/*.json have zero active runtime imports.
+Routes: friendship, rebeka, boglarka, greta, triad. The old boglarka_greta and rebeka_greta IDs are historical only and never migrated. Localization is Hungarian scene-local text; zero active legacy localization keys. Historical dialogue trees and localization are preserved under `docs/archive/legacy-narrative/`, with zero active runtime imports.
