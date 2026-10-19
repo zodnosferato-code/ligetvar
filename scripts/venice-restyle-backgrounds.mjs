@@ -8,14 +8,14 @@ if (!apiKey) {
   process.exit(1);
 }
 
-const model = "wai-Illustrious";
+const model = "gpt-image-2-5-flare";
 const outputDir = "artifacts/venice-backgrounds";
 const common = [
   "Create a highly detailed, polished anime background illustration for a gothic-romantic university story game.",
   "Non-pixel-art painted anime environment, fine hand-drawn linework, layered material detail, cinematic depth, atmospheric but readable lighting.",
   "Camera is the player's direct first-person viewpoint at natural seated eye level, looking toward the place where a companion would sit.",
-  "Show a clear, comfortable empty chair or bench across a small table, facing the viewer and plainly visible in the scene.",
-  "Environment background plate only. Absolutely no people, no characters, no silhouettes, no faces, no body parts, no hands, no reflections of people, and no character-shaped statues.",
+  "Include one ordinary, clearly unoccupied chair or bench across a small table, facing the viewer. Its seat is visibly empty.",
+  "Environment-only background plate: show an entirely empty scene. Absolutely no people, no characters, no mannequins, no statues, no silhouettes, no faces, no body parts, no hands, and no human reflections.",
   "No over-the-shoulder framing, no visible player avatar, no pixel art, no isometric view, no text, no UI, no logos, no watermark.",
   "Keep an open, calm conversational composition with readable space for the game's separate dialogue portrait."
 ].join(" ");
@@ -61,13 +61,15 @@ for (const scene of scenes) {
     body: JSON.stringify({
       model,
       prompt,
-      negative_prompt: "person, people, woman, man, girl, boy, human, character, silhouette, over-the-shoulder, visible body, hands, reflection, pixel art, pixelated, sprite, isometric, text, watermark",
+      negative_prompt: "person, people, woman, man, girl, boy, human, mannequin, statue, character, silhouette, face, body, hands, human reflection, over-the-shoulder, pixel art, pixelated, sprite, isometric, text, watermark",
       aspect_ratio: "16:9",
-      resolution: "1K",
+      resolution: "2K",
+      quality: "high",
       format: "png",
       return_binary: false,
       variants: 1,
-      safe_mode: true
+      safe_mode: true,
+      hide_watermark: true
     }),
     signal: AbortSignal.timeout(240_000)
   });
