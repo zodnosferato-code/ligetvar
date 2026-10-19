@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - .github/workflows/venice-background-drafts.yml
+      - scripts/venice-restyle-backgrounds.mjs
   workflow_dispatch:
 
 permissions:
@@ -19,14 +20,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Generate three background drafts
+      - name: Generate three environment-only background drafts
         run: node scripts/venice-restyle-backgrounds.mjs
         env:
           IMAGE_GENERATOR_KEY: ${{ secrets.IMAGE_GENERATOR_KEY }}
       - name: Upload drafts for review
         uses: actions/upload-artifact@v4
         with:
-          name: venice-background-drafts
+          name: venice-background-drafts-pov
           path: artifacts/venice-backgrounds/
           if-no-files-found: error
           retention-days: 14
