@@ -48,6 +48,14 @@ const manifest = {
   assets: []
 };
 
+async function fail(sceneId, reason, httpStatus = null) {
+  manifest.status = manifest.assets.length ? "partial-draft-not-approved" : "failed";
+  manifest.failure = { scene: sceneId, reason, httpStatus };
+  await writeFile(join(outputDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\\n");
+  console.error(`Generation stopped for ${sceneId}: ${reason}`);
+  process.exit(1);
+}
+
 for (const scene of scenes) {
   const prompt = common + " Scene: " + scene.setting;
   console.log("Generating environment-only draft:", scene.id);
@@ -76,21 +84,18 @@ for (const scene of scenes) {
   });
 
   if (!response.ok) {
-    console.error(`Venice image generation failed for ${scene.id} (HTTP ${response.status}).`);
-    process.exit(1);
+    await fail(scene.id, "Venice image generation request failed", response.status);
   }
 
   const result = await response.json();
   let encoded = result.images?.[0];
   if (typeof encoded !== "string" || !encoded) {
-    console.error(`Venice returned no image data for ${scene.id}.`);
-    process.exit(1);
+    await fail(scene.id, "Venice returned no image data");
   }
   encoded = encoded.replace(/^data:image\/[^;]+;base64,/, "");
   const image = Buffer.from(encoded, "base64");
   if (image.length < 1024) {
-    console.error(`Venice returned an unexpectedly small image for ${scene.id}.`);
-    process.exit(1);
+    await fail(scene.id, "Venice returned an unexpectedly small image");
   }
 
   const outputPath = join(outputDir, scene.output);
