@@ -1,11 +1,6 @@
 name: Generate Venice background drafts
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/venice-background-drafts.yml
-      - scripts/venice-restyle-backgrounds.mjs
   workflow_dispatch:
 
 permissions:
@@ -25,9 +20,10 @@ jobs:
         env:
           IMAGE_GENERATOR_KEY: ${{ secrets.IMAGE_GENERATOR_KEY }}
       - name: Upload drafts for review
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: venice-background-drafts-pov
           path: artifacts/venice-backgrounds/
-          if-no-files-found: error
+          if-no-files-found: ignore
           retention-days: 14
