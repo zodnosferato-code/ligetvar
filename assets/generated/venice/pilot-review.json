@@ -1,0 +1,21 @@
+{
+  "reviewer": "Codex visual inspection",
+  "reviewedAt": "2026-10-19",
+  "purpose": "Provisional style references for candidate production, not final user art acceptance",
+  "sources": {
+    "classroom": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a",
+    "rebeka_neutral": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05"
+  },
+  "checks": [
+    "adult anime portrait rather than chibi sheet",
+    "opaque high-neck outfit",
+    "plum streak on anatomical left/viewer right",
+    "foreground chair removed",
+    "readable empty companion seat and daylight castle classroom"
+  ],
+  "remaining": [
+    "portrait alpha endpoint returns HTTP 403",
+    "minor duplicate beauty mark and head margin cleanup",
+    "final user approval of character design and style"
+  ]
+}
