@@ -1,9 +1,9 @@
 {
-  "id": "2026-10-19-wai-firered-pilot-01",
+  "id": "2026-10-19-wai-firered-pilot-02",
   "phase": "pilot",
   "assets": [
-    "rebeka_neutral",
-    "classroom"
+    "classroom",
+    "rebeka_neutral"
   ],
   "maxNewImages": 2,
   "generationModel": "wai-Illustrious",
