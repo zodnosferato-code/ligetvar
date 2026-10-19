@@ -1,0 +1,20 @@
+{
+  "targetImages": 37,
+  "generatedCandidateImages": 2,
+  "remainingImages": 35,
+  "state": "blocked-by-provider-payment-or-key-spend-limit",
+  "models": {
+    "generation": "wai-Illustrious",
+    "edit": "firered-image-edit"
+  },
+  "failedAsset": "boglarka_neutral",
+  "failedEndpoint": "/image/multi-edit",
+  "httpStatus": 402,
+  "run": "https://github.com/zodnosferato-code/ligetvar/actions/runs/39290511812",
+  "alphaEndpoint": {
+    "endpoint": "/image/background-remove",
+    "httpStatus": 403
+  },
+  "paidRetriesScheduled": false,
+  "nextAction": "User checks Venice API USD/DIEM balance and this key spending limits; then resume the seven-neutral-master request. No payment or spend-limit change is authorized by this record."
+}
