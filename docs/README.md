@@ -19,6 +19,7 @@
 
 The [archive index](archive/README.md) explains why material was retired and links to complete inventories. Historical files are preserved for provenance only and do not override active guidance.
 
+- [Legacy dialogue and localization inventory](archive/legacy-narrative/README.md)
 - [Legacy design document inventory](archive/legacy-design/README.md)
 - [Archived asset inventory](../assets/archive/INVENTORY.md)
 

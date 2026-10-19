@@ -8,6 +8,7 @@ The archive preserves superseded planning material without giving it authority o
 
 | Location | Contents | Current source |
 | --- | --- | --- |
+| [`legacy-narrative/`](legacy-narrative/) | Nine retired dialogue trees and four localization files, with original paths and hashes | [Active narrative](../../src/game/content/catalog.ts) |
 | [`legacy-design/`](legacy-design/) | 37 numbered pre-redesign plans and the superseded UI/art/minigame plan | [Redesign plan](../../Ligetvar-Redesign-Plan.md), [engine](../../ENGINE.md), [art register](../ART-REGISTER.md) |
 | [`../../assets/archive/`](../../assets/archive/) | Retired character imagery and prompts, legacy intimate references, and the 2026-10-16 pixel-art review log | [Asset index](../../assets/README.md), [art register](../ART-REGISTER.md) |
 
