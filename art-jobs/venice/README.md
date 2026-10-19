@@ -20,3 +20,7 @@ API references checked on 19 October 2026:
 - https://docs.venice.ai/api-reference/endpoint/image/edit
 - https://docs.venice.ai/api-reference/endpoint/image/multi-edit
 - https://docs.venice.ai/api-reference/endpoint/models/list
+
+## Selected models
+
+The user selected **WAI Illustrious + FireRed** on 19 October 2026 after the live Venice model list showed the earlier GPT models unavailable. `wai-Illustrious` generates the initial anime portrait at 1024×1280; `firered-image-edit` edits referenced portraits and locations. All 37 prompts fit the live 1500-character limits. The runner sends only supported model parameters. Portrait alpha is extracted through Venice's `/image/background-remove`; raw billed output is checkpointed first so an extraction failure does not require another generation charge. No local background-removal model or other image provider is used.
