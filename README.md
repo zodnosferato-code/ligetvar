@@ -2,7 +2,7 @@
 
 Magyar, tizenhat hetes gótikus romantikus történetjáték egy kastélyban működő főiskolán. A fakultatív műhely résztvevői eltűnések és hiányzó emlékek nyomát követik. Három egyéni románc, Rebeka–Boglárka–Márton közös kapcsolat, barátság, visszalépés és gyenge felkészülésű történeti kimenetel játszható.
 
-Az átdolgozott motor és a 45 magyar jelenet implementálva van. A végleges manga képkészlet még nincs kész: jelenleg ruhás átmeneti portrék, meglévő hátterek és kifejezetten jelölt helyőrzők láthatók. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
+Az átdolgozott motor és a 45 magyar jelenet implementálva van. A végleges képkészlet még nincs kész: a karakterportrék jelenleg helyőrzők, a meglévő háttérképek pedig átmenetiek, és a játék ezeket továbbra is használja. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
 
 ```bash
 npm ci
