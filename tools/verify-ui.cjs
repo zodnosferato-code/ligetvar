@@ -33,7 +33,19 @@ let browser;
  await page.locator('.choices button').first().click();await page.locator('.choices button').first().click();
  await page.locator('.portrait-placeholder').waitFor();await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
  await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).scene.line,'line_2');
- for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();await page.screenshot({path:path.join(output,'mobile-'+width+'-portrait.png'),fullPage:true});}
+ for(const width of [390,320]){
+  await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();
+  const layout=await page.evaluate(()=>{const view=document.querySelector('.scene-view'),panel=document.querySelector('.dialogue-panel'),copy=document.querySelector('.dialogue-copy');return {view:view.getBoundingClientRect().toJSON(),panel:panel.getBoundingClientRect().toJSON(),copyHeight:copy.clientHeight,scrollHeight:copy.scrollHeight,background:getComputedStyle(view).backgroundImage};});
+  assert.ok(layout.view.height>=180,'mobile reserves unobstructed scenery');assert.ok(layout.panel.y>=layout.view.bottom,'dialogue stays below the scenery');
+  assert.ok(layout.copyHeight<=300,'long passages have a bounded reading area');assert.ok(layout.scrollHeight>layout.copyHeight,'long text remains scrollable at enlarged size');assert.notEqual(layout.background,'none');
+  await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop=copy.scrollHeight);assert.ok(await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop)>0);
+  await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop=0);
+  await page.screenshot({path:path.join(output,'mobile-'+width+'-portrait.png'),fullPage:true});
+ }
+ await page.locator('.choices button').first().click();assert.equal(await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop),0);
+ assert.ok((await page.locator('.scene-view').boundingBox()).y>=0,'advancing mobile dialogue keeps scenery in view');
+ await page.screenshot({path:path.join(output,'mobile-scene-viewport.png')});
+ if(process.env.UI_DIALOGUE_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Mobile scenery, text scrolling, focus, save/resume and desktop layout checks passed.');return;}
  await finish();
  for(const width of [1440,390,320]){
   await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
@@ -85,5 +97,5 @@ let browser;
  await page.screenshot({path:path.join(output,'desktop-conversation-callback.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();}
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'passed',checks:['distinct activity cards and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
+ console.log(JSON.stringify({result:'passed',checks:['unobstructed mobile scenery and scrollable text','distinct activity cards and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});
