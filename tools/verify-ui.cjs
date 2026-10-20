@@ -16,6 +16,24 @@ let browser;
  const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  const scene=async id=>{await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
  const finish=async()=>{for(let i=0;i<60;i++){if((await state()).phase!=='scene')return;await page.locator('.choices button').first().click();}throw new Error('Scene did not finish');};
+ if(process.env.UI_CONTROLS_ONLY==='1'){
+  for(const [width,scale] of [[1440,'1'],[390,'1'],[320,'1.3']]){
+   await page.setViewportSize({width,height:width===1440?1000:844});await page.goto(url);
+   await page.getByLabel('Betűméret').selectOption(scale);await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();await scene('shared_1');
+   let anchor=null,lines=0,speakers=new Set();
+   while((await state()).phase==='scene'){
+    const cursor=(await state()).scene.line;speakers.add(SCENES.shared_1.lines.find(line=>line.id===cursor).speaker);
+    const button=page.locator('.choices button').first();await button.waitFor();
+    const box=await button.boundingBox();const relative=await page.locator('.dialogue').boundingBox();
+    const point={x:box.x,y:box.y-relative.y,viewportY:box.y,width:box.width};
+    if(anchor)for(const key of ['x','y','viewportY','width'])assert.ok(Math.abs(point[key]-anchor[key])<1,`control ${key} moved at ${width}px, line ${cursor}: ${JSON.stringify({anchor,point})}`);else anchor=point;
+    await noOverflow();if(lines===2)await page.screenshot({path:path.join(output,'fixed-controls-'+width+'.png')});
+    await button.click();lines++;assert.ok(lines<60);
+   }
+   assert.ok(speakers.has('narrator')&&speakers.has('marton')&&speakers.has('rebeka'));console.log(JSON.stringify({width,scale,lines,anchor,result:'stable controls'}));
+  }
+  assert.deepEqual(errors,[]);return;
+ }
  await page.goto(url);
  await page.screenshot({path:path.join(output,'desktop-title.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();await page.screenshot({path:path.join(output,'mobile-'+width+'-title.png'),fullPage:true});}

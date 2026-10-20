@@ -123,3 +123,11 @@ User direction: layer the person being spoken to over the scene background; the 
 - This layout rule is recorded in AGENT.md, ENGINE.md and the redesign plan's dialogue-composition section.
 - `npm test`: 30 passed; TypeScript and build passed. Opened desktop NPC, 320px NPC overlay and player-reply screenshots. Browser checks cover the overlay staying inside the scenery, absence of a player portrait, enlarged mobile text, background visibility and save/resume.
 - Full browser verification also passed friendship/triad playthroughs, runner, conditional callbacks and ending order, with no overflow or page errors.
+
+## Stable dialogue controls — 20 October 2026
+
+User direction: keep dialogue buttons in one place so advancing does not require aiming again as text length changes.
+
+- Reserved consistent heading, scrollable text and scroll-hint rows before the controls. Narrator, partner and player lines use the same panel column and geometry. A hidden/empty scroll hint keeps its row, so appearing or disappearing hints cannot move buttons.
+- The first control row stays anchored; extra answer buttons grow below it. Long passages scroll within their reading area at all viewport sizes. No story, save or scheduling changes.
+- 30 tests, TypeScript and production build passed. Browser coordinate checks traversed 23 opening dialogue steps on 1440px desktop, 390px mobile and 320px/130% text. Screenshots were opened for visual review.
