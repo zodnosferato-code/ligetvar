@@ -20,6 +20,8 @@ A beszélgetőpartner képe külön réteg a helyszínháttéren, nem a pergamen
 
 Asztali nézetben a portré a háttér bal oldali területén, a szöveg mellette jelenik meg. Mobilon a helyszín külön, jól látható felső területén van a portré; a teljes szélességű szöveg és a választások alatta maradnak. Az arckép nem takarhat szöveget vagy választást. A hosszú mobil szöveg külön görgethető, a játékos neve csak szöveges beszélőnévként szerepel. E szabályok a felhasználó 2026-10-20-i irányát rögzítik; nem igényelnek mentésformátum-változást.
 
+A párbeszéd vezérlői azonos méretű fejléc- és szövegterület után, állandó első gombsorban jelennek meg. A narrátor-, NPC- és játékosforduló ugyanazt a panelgeometriát használja; a görgetési jelzés helye akkor is foglalt, ha nincs jelzés. A hosszabb szöveg a saját területén görgethető. Több válasz az első gombsor alatt bővülhet, így minden választás elérhető marad; a rövid vagy hosszú szöveg nem mozdítja el a Tovább gombot.
+
 ## Motor és tartalom határa
 
 A motor nem importál a `content/` könyvtárból. A `RuntimeRules` szerződésen át kapja a kezdeti állapotot, a hetek számát, a gazdasági adatokat, a mentési kulcsokat és a kampányhoz tartozó hatás-, jelenetbefejezési, irányváltási és validálási szabályokat. A motor önálló, háromhetes, más szereplőkkel és más végfeltétellel futó tesztkampánnyal is ellenőrzött. A `content/runtime.ts` a Ligetvár alkalmazási belépési pontja; nem régi tartalmi adapter.
