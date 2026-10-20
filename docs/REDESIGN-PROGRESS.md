@@ -131,3 +131,14 @@ User direction: keep dialogue buttons in one place so advancing does not require
 - Reserved consistent heading, scrollable text and scroll-hint rows before the controls. Narrator, partner and player lines use the same panel column and geometry. A hidden/empty scroll hint keeps its row, so appearing or disappearing hints cannot move buttons.
 - The first control row stays anchored; extra answer buttons grow below it. Long passages scroll within their reading area at all viewport sizes. No story, save or scheduling changes.
 - 30 tests, TypeScript and production build passed. Browser coordinate checks traversed 23 opening dialogue steps on 1440px desktop, 390px mobile and 320px/130% text. Screenshots were opened for visual review.
+
+## Office and personal-room object menus — 20 October 2026
+
+Approved user decisions: everyday planning uses an office and personal room; clickable objects have no permanent markers and an explicit reveal-hints button; the phone arranges in-person meetings.
+
+- Replaced the permanent planner action list with the existing uncropped office/personal-room backgrounds. The desk/book opens shared story and preparation, phone opens available personal meetings and coffee, notebook/books open journal and direction, chair opens rest, shelves open gifts and bag opens optional work. Door and room navigation switch rooms freely.
+- Object panels appear only on selection. Hints are off by default. Keyboard focus reveals labels and focus outlines, Enter activates the object, and closing a panel restores focus. Percentage coordinates remain aligned with the complete image; at mobile size each target is at least 44px and targets do not overlap.
+- Room choice persists across scene transitions as UI state, not save data. Opening objects, toggling hints and switching rooms do not mutate game state or consume slots. Existing mandatory-story, scene prerequisites, gifts, jobs, saves and route decisions are preserved. Phone selection starts the existing in-person scene at its declared location; no phone-dialogue or future-invitation mechanic was introduced.
+- Extracted shared icons/cards and journal components so the planner can open their contextual panels without duplicating story logic. Documented controls in README, AGENT, ENGINE and the redesign plan.
+- 30 engine/content tests, TypeScript and production build passed. Full browser verification passed both rooms at desktop, 390px and 320px/130% text, hidden/revealed hints, phone/preparation/rest/work/gift/journal access, non-overlapping touch targets and unchanged game state after browsing. Full 16-week friendship/triad paths, save/resume, runner and conditional callbacks passed with no horizontal overflow or page errors. Desktop room and mobile hints screenshots were opened and inspected.
+- Final focused room checks also passed actual Tab/Enter navigation, focus restoration after closing panels, both doors and zero-cost browsing after the final UI revision.
