@@ -105,3 +105,11 @@ User direction: activities must be distinguishable at a glance while keeping the
 - Coffee uses a cup symbol; rest, recycling and office work are full activity cards with a short explanation rather than similar small buttons. Scene titles and scheduling actions are preserved.
 - `npm test`: 30 passed. Typecheck and production build passed. Browser activity screenshots were opened at desktop and 320px/130% text; cards retain their labels and do not overflow.
 - Extended browser verification passed category-card distinctions, week-13 preparation, desktop and 390px/320px at 130% text, save/resume, runner, full friendship/triad paths and contextual callbacks, with no overflow or page errors.
+
+## Mobile scenery visibility — 20 October 2026
+
+User direction: the mobile dialogue box obscured almost the entire background.
+
+- Mobile scenes now reserve a separate, unobstructed background view above the parchment dialogue; the image no longer stretches behind the full text panel. The scenery area is 30% of the small viewport height, bounded to 180–280px. Desktop keeps its existing composition.
+- Reduced the mobile portrait/header height. Long passages scroll in a keyboard-focusable reading region, with a visible scroll cue when text overflows. Choices stay outside that region. Enlarged text remains supported. Each new line resets text scrolling and keeps the scene in view; focusing the heading no longer jumps past the background.
+- 30 engine/content tests, TypeScript and build passed. Extended browser verification passed scenery height/non-overlap, scrollable enlarged passages, save/resume, full friendship/triad routes, runner and callbacks, with no horizontal overflow or page errors. The final scroll-cue revision was checked with the focused desktop/mobile dialogue verification.
