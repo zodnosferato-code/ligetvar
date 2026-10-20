@@ -7,6 +7,7 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
   for(const d of e?.decisions??[])producers.set(d,[...(producers.get(d)??[]),s.id]);
  for(const s of scenes){
   if(registry[s.id]!==s)fail('Scene ID/key mismatch: '+s.id);
+  if(s.periods&&(!s.periods.length||new Set(s.periods).size!==s.periods.length||s.periods.some(p=>!['day','night'].includes(p))||s.kind==='shared'))fail('Invalid activity periods: '+s.id);
   if(!s.title.trim()||!s.journal.trim()||!s.participants.length)fail('Missing scene text: '+s.id);
   if(!Number.isInteger(s.week)||s.week<1||s.deadline>16||s.week>s.deadline)fail('Invalid window: '+s.id);
   if(!backgrounds.has(s.background)||s.background!==s.location)fail('Wrong background: '+s.id);

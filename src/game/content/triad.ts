@@ -23,7 +23,7 @@ export const triad:Scene[]=[
   say('boglarka','Nem utáltalak. Idegesített, hogy úgy nézel, mintha már tudnád, melyik oldalam mutat jól.'),
   say('rebeka','Most nem tudom. Képet sem akarok rólad. Csak maradnék.','vulnerable'),
   say('boglarka','Én is. És jó, hogy ezt nem Mártonnak kell közvetítenie.'),
-  say('narrator','Egy rossz kiállításról és egy befejezetlen könyvről beszélnek. Nem egy útvonal jutalma a délután: a saját kíváncsiságuk tartja ott őket.')
+  say('narrator','Egy rossz kiállításról és egy befejezetlen könyvről beszélnek. Nem egy útvonal jutalma az együtt töltött idő: a saját kíváncsiságuk tartja ott őket.')
  ],{scenes:['triad_2','shared_7']},[],'Rebeka és Boglárka önálló beszélgetésben került közelebb egymáshoz.',{bonds:{rebeka_boglarka:10},decisions:['rb_private']}),
  scene('triad_4','T4 — Két külön igen','relationship',8,14,'courtyard',['rebeka','boglarka'],[
   say('narrator','A következő találkozón sincs ott Márton. Boglárka két poharat hoz, füzet nélkül.'),
@@ -34,7 +34,7 @@ export const triad:Scene[]=[
   say('narrator','A rövid csók után megbeszélik, hogy a közös lehetőségről csak akkor beszélnek Mártonnal, ha mindketten akarják. Az egymásnak mondott igenük független az ő válaszától.')
  ],{scenes:['triad_3','shared_8']},[],'Rebeka és Boglárka kölcsönösen kimondta önálló romantikus vonzalmát.',{bonds:{rebeka_boglarka:15},decisions:['rb_rebeka_yes','rb_boglarka_yes']}),
  scene('triad_5','T5 — Külön is elmondjuk','relationship',11,14,'classroom',['marton','rebeka','boglarka'],[
-  say('narrator','Két egymást követő beszélgetés ugyanazon a délutánon. Először Rebeka marad, aztán elmegy, és Boglárka érkezik. Egyikük sem szóvivő.'),
+  say('narrator','Két egymást követő beszélgetés, ugyanazon az alkalmon. Először Rebeka marad, aztán elmegy, és Boglárka érkezik. Egyikük sem szóvivő.'),
   say('rebeka','Boglárkával közel kerültünk egymáshoz. Veled is szeretnék kapcsolatot, titkos verseny nélkül arról, kinek jut több idő rád.'),
   say('marton','Nem kérek kizárólagosságot, miközben közös lehetőségről beszélünk.'),
   say('narrator','Később Boglárka ugyanoda ül, de saját mondataival kezdi.'),
@@ -60,7 +60,7 @@ export const triad:Scene[]=[
   say('marton','Több kenyeret veszek. A keddet pedig valóban üresen hagytam, nem csak átcímkéztem a munkát.'),
   say('rebeka','Jó, hogy ma nem a veszély bizonyítja, hogy együtt vagyunk.'),
   say('boglarka','Az iratokat holnap visszavesszük. Most maradjunk még egy teára.','affectionate')
- ],{scenes:['triad_6','rebeka_5','boglarka_5','shared_14'],decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes','rebeka_commit','boglarka_commit'],notDecisions:['rebeka_withdraw','boglarka_withdraw'],directions:['triad']},[],'Egy közönséges közös estén nem a veszély tartotta össze a kapcsolatot.',{bonds:{marton_rebeka:5,marton_boglarka:5,rebeka_boglarka:8},decisions:['triad_evening']}),
+ ],{scenes:['triad_6','rebeka_5','boglarka_5','shared_14'],decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes','rebeka_commit','boglarka_commit'],notDecisions:['rebeka_withdraw','boglarka_withdraw'],directions:['triad']},[],'Egy közönséges közös estén nem a veszély tartotta össze a kapcsolatot.',{bonds:{marton_rebeka:5,marton_boglarka:5,rebeka_boglarka:8},decisions:['triad_evening']},['night']),
  scene('triad_8','T8 — A következő rendes este','relationship',16,16,'apartment',['marton','rebeka','boglarka'],[
   say('narrator','A kamra után ugyanahhoz az asztalhoz ülnek. Van rendes kenyér. Senki nem tesz úgy, mintha az elmúlt hétnek nem volna súlya.'),
   say('rebeka','A sorozatomat lezárom, a kapcsolatot nem szeretném. Boglárkával külön is tervezek időt, és veled is, Márton. A közös estékről közösen döntsünk.','affectionate'),
@@ -70,5 +70,5 @@ export const triad:Scene[]=[
   say('marton','A félév utáni időre is válaszolok.','neutral',[
    option('continue_together','Szeretnék veletek maradni, külön és közösen is időt vállalva.','Mindhárman megerősítettétek a folytatást. Az egyetlen alkalom mindkét személyes utóbeszélgetést is rendezi.',{decisions:['triad_aftermath','rebeka_aftermath','boglarka_aftermath'],bonds:{marton_rebeka:6,marton_boglarka:6,rebeka_boglarka:6}}),
    option('withdraw','Nem szeretném folytatni a közös kapcsolatot.','Egy korábbi ígéret nem tartja életben a közös kapcsolatot.',{decisions:['rebeka_withdraw','boglarka_withdraw'],direction:'friendship'})])
- ],{scenes:['shared_16','triad_7'],decisions:['rebeka_commit','boglarka_commit','triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes'],directions:['triad']},[],'A közös utóbeszélgetésben mindhárom résztvevő megszólalt, egyetlen sávban rendezték a folytatást.')
+ ],{scenes:['shared_16','triad_7'],decisions:['rebeka_commit','boglarka_commit','triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes'],directions:['triad']},[],'A közös utóbeszélgetésben mindhárom résztvevő megszólalt, egyetlen sávban rendezték a folytatást.',undefined,['night'])
 ];

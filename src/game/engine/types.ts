@@ -1,4 +1,6 @@
 /** Story-agnostic runtime contracts. IDs and rules are supplied by content. */
+export type ActivityPeriod='day'|'night';
+export interface Schedule { slots:Partial<Record<0|1|2,ActivityPeriod>>; activities:Record<string,readonly ActivityPeriod[]> }
 export type ActorId=string;
 export type BondId=string;
 export type RouteId=string;
@@ -10,6 +12,7 @@ export interface Choice { requires?:Requirements; id:string; text:string; next?:
 export interface Line { id:string; speaker:string; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
  id:string; title:string; kind:'shared'|'relationship'|'preparation'|'conversation'; week:number; deadline:number;
+ periods?:readonly ActivityPeriod[];
  participants:string[]; location:string; background:string; lighting:'day'|'evening'|'night'; requires:Requirements;
  evidence:string[]; journal:string; entry:string; lines:Line[]; onComplete?:Effect; contentStatus:'authored'|'fixture'; resolution?:string;
 }
@@ -27,6 +30,7 @@ export interface GameState {
 export interface Gift { name:string; price:number; person:string; bonus:number }
 export interface Job { energy:number; maxPay:number; rates:number[] }
 export interface RuntimeRules<S extends GameState> {
+ schedule?:Schedule;
  weeks:number; saveKey:string; legacySaveKey:string; initial:(name:string)=>S;
  economy:{sharedEnergy:number;sceneEnergy:number;weeklyEnergy:number;weeklyMoney:number;restEnergy:number;gifts:Record<string,Gift>;jobs:Record<string,Job>};
  notes:{initial:string;newWeek:string;rest:string;purchase:string;gift:string;job:(pay:number)=>string};

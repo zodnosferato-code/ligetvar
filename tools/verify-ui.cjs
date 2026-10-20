@@ -4,7 +4,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
 const output=path.resolve(process.env.UI_OUTPUT_DIR||'ui-review');fs.mkdirSync(output,{recursive:true});
 const root=path.resolve('dist');const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.jpg':'image/jpeg','.png':'image/png','.mp3':'audio/mpeg'};
 const server=http.createServer((req,res)=>{const relative=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/ligetvar\//,'');const file=path.resolve(root,relative||'index.html');if(!file.startsWith(root+path.sep)&&file!==root){res.writeHead(403).end();return;}fs.readFile(file,(err,data)=>{if(err)res.writeHead(404).end();else res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'}).end(data);});});
-const TRIAD={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['triad_6','prepare_backup'],13:['rebeka_5','boglarka_5'],14:['triad_7','prepare_signals'],16:['triad_8']};
+const TRIAD={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['prepare_backup','triad_6'],13:['rebeka_5','boglarka_5'],14:['prepare_signals','triad_7'],16:['triad_8']};
 let browser;
 (async()=>{
  const {SCENES}=await import('../src/game/content/catalog.ts');
@@ -14,9 +14,8 @@ let browser;
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v2')));
  const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- const OBJECT_LABEL={desk:'Műhely és felkészülés',phone:'Telefon — Találkozók',journal:'Napló — Nyomok és kapcsolatok',chair:'Fotel — Pihenés',shelf:'Polc — Ajándékok',bag:'Zsák — Opcionális munka',travel:'Ajtó — Úticélok'};
- const openObject=async id=>{if((id==='desk'||id==='bag')&&await page.locator('.spot-'+id).count()===0)await page.getByRole('navigation',{name:'Szobák'}).getByRole('button',{name:'Iroda',exact:true}).click();await page.getByRole('button',{name:OBJECT_LABEL[id],exact:true}).click();};
- const rest=async()=>{await openObject('chair');await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();};
+ const openObject=async id=>{await page.locator('.spot-'+(id==='travel'?'door':id)).click();};
+ const rest=async()=>{await openObject('chair');await page.getByRole('button',{name:(await state()).slot===2?'Alvás · +32 energia':'Pihenés · +32 energia',exact:true}).click();};
  const scene=async id=>{await openObject(SCENES[id].kind==='shared'||SCENES[id].kind==='preparation'?'desk':'phone');await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
  const finish=async()=>{for(let i=0;i<60;i++){if((await state()).phase!=='scene')return;await page.locator('.choices button').first().click();}throw new Error('Scene did not finish');};
  if(process.env.UI_CONTROLS_ONLY==='1'){
@@ -72,9 +71,9 @@ let browser;
  await page.screenshot({path:path.join(output,'mobile-player-reply.png')});
  if(process.env.UI_DIALOGUE_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Mobile scenery, text scrolling, focus, save/resume and desktop layout checks passed.');return;}
  await finish();
- const beforeBrowsing=await state();
  for(const room of ['Iroda','Hálószoba']){
-  await page.getByRole('navigation',{name:'Szobák'}).getByRole('button',{name:room,exact:true}).click();
+  const beforeBrowsing=await state();assert.equal(beforeBrowsing.slot,room==='Iroda'?1:2);
+  assert.equal(await page.locator('.week-rhythm [aria-current=step]').textContent(),room==='Iroda'?'2Nappal':'3Éjszaka');
   for(const width of [1440,390,320]){
    await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
    const boxes=await page.locator('.room-hotspot').evaluateAll(spots=>spots.map(spot=>{const r=spot.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,label:spot.getAttribute('aria-label')};}));
@@ -92,25 +91,26 @@ let browser;
   await page.locator('.spot-phone').focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');assert.equal(await page.locator('.spot-phone .spot-label').evaluate(label=>getComputedStyle(label).opacity),'1');await page.keyboard.press('Enter');
   await page.getByRole('button',{name:'Tárgymenü bezárása',exact:true}).click();assert.equal(await page.locator('.spot-phone').evaluate(button=>button===document.activeElement),true);
   if(room==='Hálószoba'){assert.equal(await page.locator('.spot-desk,.spot-bag').count(),0,'bedroom excludes daytime workshop/work');assert.ok((await page.locator('.room-toolbar .eyebrow').textContent()).includes('Éjszakai'));}
-  const otherDestination=room==='Iroda'?'Hálószoba':'Tanszéki iroda',otherEntry=room==='Iroda'?'Belépek a hálószobába':'Belépek az irodába';
-  const backDestination=room==='Iroda'?'Tanszéki iroda':'Hálószoba',backEntry=room==='Iroda'?'Belépek az irodába':'Belépek a hálószobába';
   await openObject('travel');await page.getByRole('heading',{name:'Hová indulsz?',exact:true}).waitFor();await noOverflow();await page.screenshot({path:path.join(output,`destinations-${room==='Iroda'?'office':'bedroom'}.png`),fullPage:true});
-  await page.locator('.destination-card').filter({hasText:otherDestination}).click();assert.equal(await page.locator('.destination-detail h3').evaluate(heading=>heading===document.activeElement),true);await page.getByRole('button',{name:otherEntry,exact:true}).click();
-  await page.getByRole('heading',{name:room==='Iroda'?'Hálószoba':'Tanszéki iroda',exact:true}).waitFor();
-  await openObject('travel');await page.locator('.destination-card').filter({hasText:backDestination}).click();await page.getByRole('button',{name:backEntry,exact:true}).click();
+  await page.locator('.destination-card').filter({hasText:room==='Iroda'?'Tanszéki iroda':'Hálószoba'}).click();
+  assert.equal(await page.locator('.destination-detail h3').evaluate(heading=>heading===document.activeElement),true);
+  assert.equal(await page.getByRole('navigation',{name:'Szobák'}).count(),0,'room navigation cannot bypass time');
   await openObject('phone');assert.ok(await page.locator('.activity-conversation').count());assert.ok(await page.locator('.activity-relationship').count());
-  await openObject('bag');for(const kind of ['recycling','paperwork'])assert.equal(await page.locator('.activity-'+kind).count(),1);
+  if(room==='Iroda'){await openObject('bag');for(const kind of ['recycling','paperwork'])assert.equal(await page.locator('.activity-'+kind).count(),1);}
   await openObject('chair');assert.equal(await page.locator('.activity-rest').count(),1);
   await openObject('shelf');await page.getByRole('heading',{name:'Ajándékok',exact:true}).waitFor();
   await openObject('journal');await page.getByText('Amit már tudunk',{exact:true}).waitFor();
+  assert.deepEqual(await state(),beforeBrowsing,'destination and object browsing spend no time or resources');
+  if(room==='Iroda'){await rest();assert.equal((await state()).slot,2);await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal(await page.locator('.room-home').count(),1,'reload restores night hub');}
  }
- assert.deepEqual(await state(),beforeBrowsing,'room navigation and object browsing spend no time or resources');
  if(process.env.UI_ROOM_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Day office/night bedroom, destination travel, permanent cues, touch targets, keyboard navigation and free browsing passed.');return;}
- await scene('rebeka_1');await finish();
- await openObject('bag');await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).phase,'summary');
- await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();
+ await scene('rebeka_1');assert.equal(await page.locator('.dialogue.lighting-evening').count(),1,'night meeting uses evening lighting');await finish();assert.equal((await state()).phase,'summary');
+ await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();await scene('shared_2');await finish();
+ const beforeWork=await state();await openObject('bag');await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Mégsem',exact:true}).click();assert.deepEqual(await state(),beforeWork,'cancelling a job spends no time or energy');
+ await openObject('bag');await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).slot,2);await rest();
+ await page.getByRole('button',{name:'3. hét kezdése',exact:true}).click();
  // An authored friendship path through the real UI, including aftermath before closure.
- for(let w=2;w<=16;w++){
+ for(let w=3;w<=16;w++){
   await scene('shared_'+w);await finish();
   if(w===13){await openObject('desk');assert.ok(await page.locator('.activity-preparation').count());await noOverflow();await page.screenshot({path:path.join(output,'activities-preparation-320.png'),fullPage:true});}
   if(w===16){assert.equal((await state()).phase,'planner');assert.equal((await state()).slot,1);await scene('friendship_after');await finish();}
@@ -123,7 +123,7 @@ let browser;
  for(let w=1;w<=16;w++){
   await scene('shared_'+w);await finish();
   if(w===8){await openObject('journal');await page.getByRole('button',{name:'Rebeka, Boglárka és Márton',exact:true}).click();}
-  for(const id of TRIAD[w]||[]){await scene(id);await finish();}
+  for(const id of TRIAD[w]||[]){if((await state()).slot===1&&SCENES[id].periods?.length===1&&SCENES[id].periods[0]==='night'){assert.ok(await page.getByRole('heading',{name:'Éjszakára tervezhető',exact:true}).count());await rest();}await scene(id);await finish();}
   while((await state()).phase==='planner')await rest();
   await page.getByRole('button',{name:w===16?'Félév lezárása és epilógusok':w+1+'. hét kezdése',exact:true}).click();
  }
@@ -148,5 +148,5 @@ let browser;
  await page.screenshot({path:path.join(output,'desktop-conversation-callback.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();}
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'passed',checks:['partner portrait over scenery and no player portrait','unobstructed mobile scenery and scrollable text','two room object navigation, hints, phone and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
+ console.log(JSON.stringify({result:'passed',checks:['partner portrait over scenery and no player portrait','unobstructed mobile scenery and scrollable text','fixed daytime/nighttime hubs, free browsing, reload, hints, phone and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});

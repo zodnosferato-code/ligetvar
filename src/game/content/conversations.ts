@@ -8,7 +8,7 @@ function coffee(girl:GirlId,period:'early'|'middle'|'late',title:string,intro:Be
  add('intro',intro,'topics');
  const choices:Choice[]=topics.map(t=>({id:t.id,text:t.text,reaction:'',next:add(t.id,t.reply,'outro_0'),effect:t.effect,requires:t.requires}));
  lines.push({id:'topics',speaker:'marton',text:'Még van idő a következő csésze előtt.',expression:'neutral',choices});add('outro',outro);
- return {id:'coffee_'+girl+'_'+period,title,kind:'conversation',week,deadline,participants:['marton',girl],location:'courtyard',background:'courtyard',lighting:'day',requires:{scenes:['shared_'+(period==='early'?1:period==='middle'?8:15)]},evidence:[],journal:title+' — egy szabad délutánt beszélgetéssel töltöttünk.',entry:'intro_0',lines,contentStatus:'authored'};
+ return {periods:['day','night'],id:'coffee_'+girl+'_'+period,title,kind:'conversation',week,deadline,participants:['marton',girl],location:'courtyard',background:'courtyard',lighting:'day',requires:{scenes:['shared_'+(period==='early'?1:period==='middle'?8:15)]},evidence:[],journal:title+' — egy szabad alkalmat beszélgetéssel töltöttünk.',entry:'intro_0',lines,contentStatus:'authored'};
 }
 export const conversations:Scene[]=[
  coffee('rebeka','early','Rebeka — A rossz kávé védelmében',[
@@ -55,13 +55,13 @@ export const conversations:Scene[]=[
  ],[
   {id:'callback',text:'Megkapta végül a mellékszereplő a saját befejezését?',requires:{decisions:['coffee_boglarka_ending']},reply:[['boglarka','A könyvben nem. A margón igen. Most egy kertje van, és nem engedi be a főhőst.'],['marton','Ez elég határozott folytatás.'],['boglarka','Csak ceruzával írtam. Az ember ne váljon rögtön zsarnokká a második kiadásban.'],['narrator','A termosz kupakját feléd fordítja. Nem kérdezi meg, emlékszel-e még a könyvre; a kérdéseddel már válaszoltál.']]},
   {id:'want',text:'Mihez lenne kedved, ha most nem hívna vissza a könyvtár?',reply:[['boglarka','Nem hív vissza. Csak én szoktam úgy tenni, mintha nélkülem megváltoznának a polcjelek.'],['marton','Akkor?'],['boglarka','Meghallgatnék egy koncertet. Olyat, ahol nem kell okosat mondani utána. Csak hogy melyik résznél nem tudtam nyugton maradni.'],['narrator','Az utolsó mondatot gyorsabban mondja. Aztán megnevez egy együttest, és most ő kérdezi, ismered-e.']]},
-  {id:'joke',text:'A kéziratot elkobozhatjuk a délután végéig.',reply:[['boglarka','Azt nem. De lecsukhatjuk. A tulajdonviszonyokat szeretném rendben tartani.'],['marton','Szigorú feltételek.'],['boglarka','Várd meg a kölcsönzési szabályzatot. Külön fejezet a kéretlen piros toll.'],['narrator','Ezúttal nem nyeli el a nevetését. A saját viccén még egyszer elmosolyodik, amikor kitölti a teát.']]}
+  {id:'joke',text:'A kéziratot elkobozhatjuk a találkozó végéig.',reply:[['boglarka','Azt nem. De lecsukhatjuk. A tulajdonviszonyokat szeretném rendben tartani.'],['marton','Szigorú feltételek.'],['boglarka','Várd meg a kölcsönzési szabályzatot. Külön fejezet a kéretlen piros toll.'],['narrator','Ezúttal nem nyeli el a nevetését. A saját viccén még egyszer elmosolyodik, amikor kitölti a teát.']]}
  ],[['boglarka','A következő csészénél mesélj te is valamit, amihez nem kell forrásjegyzék.'],['narrator','A kérdés után marad csönd. Boglárka most nem siet kitölteni.']]),
  coffee('greta','middle','Gréta — A kikapcsolt telefon',[
   ['narrator','Gréta már a padon ül. A telefon a táskájában van, a táska be van cipzározva.'],
   ['greta','Ma valaki más zárja az irodát. Kétszer ellenőriztem, hogy tudja-e. A harmadik üzenetet nem küldtem el. Szerintem ezt ünnepelni kell.']
  ],[
-  {id:'callback',text:'A nagy kapun át jöttél, ahogy a kerülőt tervezted?',requires:{decisions:['coffee_greta_detour']},reply:[['greta','Igen. A portás tényleg megkérdezte, eltévedtem-e. Neked ezt nem kellett volna ilyen pontosan megjósolni.'],['marton','Mit mondtál?'],['greta','Hogy ma igen. Egész nap jókedve volt tőle.'],['narrator','Kinyújtja a lábát a napon. A kerülőt már nem kezdi percekre bontani.']]},
+  {id:'callback',text:'A nagy kapun át jöttél, ahogy a kerülőt tervezted?',requires:{decisions:['coffee_greta_detour']},reply:[['greta','Igen. A portás tényleg megkérdezte, eltévedtem-e. Neked ezt nem kellett volna ilyen pontosan megjósolni.'],['marton','Mit mondtál?'],['greta','Hogy ma igen. Egész nap jókedve volt tőle.'],['narrator','Kinyújtja a lábát a pad előtt. A kerülőt már nem kezdi percekre bontani.']]},
   {id:'celebrate',text:'Mivel ünnepelnéd?',reply:[['greta','Sós pereccel. A közértben maradt kettő, de az egyik ferde.'],['marton','Az akadály?'],['greta','A ferde több sajtot kapott. Ezen már gondolkodtam.'],['narrator','Feláll, aztán nem indul el rögtön.'],['greta','Jössz? Ha nem, visszahozom. Ha igen, most én választok útvonalat.']]},
   {id:'hard',text:'Mi volt nehezebb: átadni a kulcsot vagy nem rákérdezni?',reply:[['greta','Nem rákérdezni. A kulcsot könnyű odaadni. A fejemben még fél óráig én nyitogattam az ajtókat.'],['marton','Most is?'],['greta','Most kevésbé. Beszélj még valamit. Lehetőleg olyat, amire nem az a válasz, hogy majd én megoldom.'],['narrator','Nem veszi elő a telefonját, amikor az irodaablakban felkapcsolódik a fény.']]}
  ],[['greta','Legközelebb nem fogom végig kommentálni, hogy szünetet tartok. Vagy legalább megpróbálom.'],['narrator','A padon töltött időnek ezúttal nincs jegyzőkönyve.']]),
@@ -78,7 +78,7 @@ export const conversations:Scene[]=[
  ],[
   {id:'listen',text:'Nem kell most rögtön sikerülnie.',reply:[['boglarka','Tudom. Csak türelmetlen vagyok magammal. Kívülről ez kevésbé látszik, mert közben nem beszélek.'],['marton','Mit csináljunk helyette?'],['boglarka','Üljünk. Aztán mesélj valami kicsit. Például hogy miért olyan rossz itt az automata.'],['narrator','A poharat most saját magának tölti először. Aztán megkérdezi, kérsz-e.']]},
   {id:'book',text:'Keressünk egy könyvet, amiben semmi különös nem történik.',reply:[['boglarka','Akkor ne a katalógus ajánlása alapján. Ott minden családi ebéd sorsfordító.'],['marton','Egy kertészeti könyv?'],['boglarka','Abban a kártevők. De elfogadom. Legalább valaki pontosan leírja, mi rágta meg a levelet.'],['narrator','Felír egy címet. Ezúttal nem tesz mellé határidőt.']]}
- ],[['boglarka','Köszönöm a délutánt. Nem tudom még szebben mondani, úgyhogy így hagyom.']]),
+ ],[['boglarka','Köszönöm a beszélgetést. Nem tudom még szebben mondani, úgyhogy így hagyom.']]),
  coffee('greta','late','Gréta — Ma valaki más zár',[
   ['narrator','Gréta kabátban érkezik. A kezében nincs dosszié.'],
   ['greta','A kulcsot leadtam. A pótkulcsot is. Mielőtt megkérdeznéd, mindet.'],

@@ -176,7 +176,7 @@ Production references are additional non-runtime material: three clothed identit
 
 ### Planning room interface
 
-User decisions, 20 October 2026: use an office and a personal room for everyday planning. Updated user direction, 21 October 2026: keep every interactive outline and hint label permanently visible, with visible keyboard focus. Remove the hide-hints toggle. Where the artwork has no fitting object, provide an explicit labelled icon button rather than an invisible hotspot. The office is the daytime planning room; the bedroom is the night activity hub, with meetings, rest, journal and gifts. Workshop/preparation and work controls stay in the office. The door opens a destination menu with available scenes, rather than directly toggling rooms. These are room roles, not a new calendar clock or forced slot-to-time mapping. The phone arranges in-person meetings, not new phone conversations. Open contextual action panels only after an object is selected. Room navigation and browsing cost no time; selecting an actual scene/activity uses the existing scheduling rules. Preserve the guaranteed shared slot and current save schema. Keep the room image uncropped so hotspot coordinates continue to align with the objects on phones as well as desktop.
+User decisions, 20 October 2026: use an office and a personal room for everyday planning. Updated user direction, 21 October 2026: keep every interactive outline and hint label permanently visible, with visible keyboard focus. Remove the hide-hints toggle. Where the artwork has no fitting object, provide an explicit labelled icon button rather than an invisible hotspot. The office is the daytime planning room; the bedroom is the night activity hub, with meetings, rest, journal and gifts. Workshop/preparation and work controls stay in the office. The door opens a destination menu with available scenes, rather than directly toggling rooms. The user’s subsequent 21 October activity-review decision replaces the earlier cosmetic day/night labels with fixed weekly shared → daytime → nighttime → recap slots. Work and preparation are daytime-only; T7/T8 are nighttime-only; other meetings and coffee support either period with matching lighting. The current saved slot selects the hub automatically; room navigation cannot bypass time. This is a weekly rhythm, not a seven-day simulation. Existing in-progress v2 scenes/jobs can finish under their original admission; new starts use the period gates. The phone arranges in-person meetings, not new phone conversations. Open contextual action panels only after an object is selected. Destination and object browsing cost no time; completing an actual scene/activity advances exactly one slot. Show the active period, what completion advances to, and eligible upcoming night-only evenings. Preserve the guaranteed shared slot and current save schema. Keep the room image uncropped so hotspot coordinates continue to align with the objects on phones as well as desktop.
 
 ### Dialogue composition
 
@@ -251,7 +251,7 @@ Unchecked items below are implementation work, not claims of completion.
 
 The shared-story slot uses the corresponding beat in section 5. This table budgets only the other two slots, showing a demanding triad path. A numbered foundation is one substantial individual scene: shared interest, attraction, invitation, disagreement, repair/commitment, aftermath. On the triad path, commitment means agreeing to that relationship's terms, not promising exclusivity. The eight additional scenes are T1–T8. The runtime now implements this budget; the authored triad simulation and two-appointment recovery test verify it. Final art remains transitional.
 
-| Week | Discretionary slot A | Discretionary slot B |
+| Week | Daytime discretionary slot | Nighttime discretionary slot |
 | --- | --- | --- |
 | 1 | Rebeka foundation 1 | Free / rest |
 | 2 | Boglárka foundation 1 | Free / rest |
@@ -266,9 +266,11 @@ The shared-story slot uses the corresponding beat in section 5. This table budge
 | 11 | T5: separate conversations with Márton | Free / rest |
 | 12 | T6: three-way discussion | Free / catch-up |
 | 13 | Rebeka foundation 5 | Boglárka foundation 5 |
-| 14 | T7: ordinary shared evening | Free / preparation or rest |
+| 14 | Free / preparation or rest | T7: ordinary shared evening |
 | 15 | Free / recovery after confrontation | Free / catch-up |
-| 16 | T8: shared aftermath, including both foundation-6 resolutions | Free / closing activity |
+| 16 | Free / closing activity | T8: shared aftermath, including both foundation-6 resolutions |
+
+For supported preparation on this route, use week 12 daytime for backup and week 12 nighttime for T6, then week 14 daytime for signals and week 14 nighttime for T7. T8 uses week 16 nighttime. Both preparation scenes cannot fit within a single week’s one daytime slot. The full route and two-missed-appointment recovery simulations verify this schedule.
 
 This path costs **18 distinct optional slots**, including 12 individual milestones (two resolved within T8) and eight additional triad scenes. It leaves **14 flexible slots**. T5 contains two sequential conversations within one authored scene and one slot. T8 deliberately combines the two personal aftermath resolutions with the shared aftermath; do not charge three separate slots for that content. T4 can begin within week 8's shared beat, but its substantive relationship scene is budgeted separately. The women-only scene opportunity in week 12 may reprise T3/T4 rather than adding an unbudgeted mandatory scene.
 

@@ -4,7 +4,7 @@ import {existsSync,readFileSync} from 'node:fs';
 import {SCENES,EVIDENCE} from './catalog.ts';
 import {BACKGROUNDS,portraitFor} from './assets.ts';
 import {validateRegistry} from './validate.ts';
-import {activity,applyChoice,applyEffect,availableScenes,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,resolveJob,setDirection} from './runtime.ts';
+import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,resolveJob,setDirection} from './runtime.ts';
 import {decodeSave,legacyName,persist} from './saves.ts';
 import {LEGACY_SAVE_KEY,SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
 function complete(s:GameState,id:string,choose?:(ids:string[])=>string,r:Registry=SCENES){
@@ -23,10 +23,10 @@ function assertKnowledge(s:GameState){
  for(const record of Object.values(s.decisions))assert.equal(s.completed[record.scene],record.week);
  for(const j of s.journal)assert.ok(j.scene in s.completed);
 }
-function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad?:boolean;withdraw?:boolean}={}){
+function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad?:boolean;withdraw?:boolean;onPlanner?:(s:GameState)=>void}={}){
  let s=createInitial('Márton'),slots=0,minEnergy=100;const plan=structuredClone(route==='triad'?TRIAD:route==='friendship'?{16:['friendship_after']}:solo(route));
  if(opts.missTwo){plan[1]=[];plan[2].push('rebeka_1');plan[5]=[];plan[6].push('triad_2');}
- if(opts.prepared){plan[12]=[...(plan[12]??[]),'prepare_backup'];plan[14]=[...(plan[14]??[]),'prepare_signals'];}
+ if(opts.prepared){plan[12]=['prepare_backup',...(plan[12]??[])];plan[14]=['prepare_signals',...(plan[14]??[])];}
  for(let week=1;week<=16;week++){
   assert.equal(s.week,week);assert.equal(evaluateEnding(s).relationship,null);assert.equal(nextWeek(s,SCENES),s);
   const known=structuredClone(s.evidence);s=openScene(s,'shared_'+week,SCENES);
@@ -40,11 +40,13 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
   if(opts.declineTriad&&week===13)s=setDirection(s,'rebeka');
   if(week===15){assert.ok(s.confrontation);assert.equal(s.evidence.vampire_dead.scene,'shared_15');assert.equal(s.institution,null);}
   if(week===16){assert.ok(s.institution);assert.equal(s.phase,'planner');assert.equal(evaluateEnding(s).relationship,null);}
+  opts.onPlanner?.(s);
   let appointments=plan[week]??[];
   if(opts.declineTriad&&week===13)appointments=['rebeka_5'];
   if(opts.declineTriad&&week===14)appointments=opts.prepared?['prepare_signals']:[];
   if(opts.declineTriad&&week===16)appointments=['rebeka_6'];
   for(const id of appointments){
+   if(s.slot===1&&SCENES[id].periods?.length===1&&SCENES[id].periods?.[0]==='night')s=activity(s,'rest');
    const prior=s.slot;s=complete(s,id,ids=>opts.declineTriad&&id==='triad_6'&&ids.includes('decline')?'decline':opts.withdraw&&id.endsWith('_6')&&ids.includes('withdraw')?'withdraw':ids[0]);
    assert.equal(s.slot,prior+1);slots++;minEnergy=Math.min(minEnergy,s.energy);assertKnowledge(s);
   }
@@ -74,8 +76,8 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
  let s=complete(createInitial(''),'shared_1');assert.equal(s.money,105000);
  s=buyGift(s,'photo');assert.equal(s.inventory.photo,1);s=giveGift(s,'rebeka','photo');assert.equal(s.bonds.marton_rebeka,2);
  assert.deepEqual(s.decisions,{});assert.equal(giveGift(s,'rebeka','photo'),s);
- s=complete(s,'coffee_rebeka_early');assert.equal(s.decisions.rebeka_commit,undefined);
- s=activity(s,'mohu');const n=resolveJob(s,'mohu',1000);assert.equal(n.money,s.money+1000);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
+ s=activity(s,'mohu');const paid=resolveJob(s,'mohu',1000);assert.equal(paid.money,s.money+1000);assert.equal(paid.slot,2);
+ const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
  assert.equal(nextWeek(n,SCENES).money,n.money+60000);
 });
 test('unavailable emotions safely fall back to neutral, never blush',()=>{
@@ -231,5 +233,52 @@ test('a real pre-refactor v2 cursor and pending decision retain their save repre
   assert.deepEqual(restored.state,JSON.parse(raw));assert.equal(restored.state.scene!.line,'line_3');
   let s=restored.state;while(s.phase==='scene')s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
   assert.ok(s.decisions.rebeka_interest);assert.equal(s.slot,2);assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');
+ }
+});
+
+
+test('fixed day/night periods gate reducer actions and advance only on completion',()=>{
+ let s=createInitial('');assert.equal(currentPeriod(s),null);
+ for(const kind of ['mohu','brick','rest'] as const)assert.equal(activity(s,kind),s);
+ s=complete(s,'shared_1');assert.equal(currentPeriod(s),'day');
+ for(const kind of ['mohu','brick','rest'])assert.equal(activityAvailable(s,kind),true);
+ const browsing=structuredClone(s);availableScenes(s,SCENES);assert.deepEqual(s,browsing);
+ s=openScene(s,'rebeka_1',SCENES);assert.equal(currentPeriod(s),'day');
+ s=applyChoice(s,'continue',SCENES);assert.equal(s.slot,1,'continuation does not advance time');
+ while(s.phase==='scene')s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
+ assert.equal(currentPeriod(s),'night');assert.equal(s.slot,2);
+ for(const kind of ['mohu','brick'] as const){assert.equal(activityAvailable(s,kind),false);assert.equal(activity(s,kind),s);}
+ assert.equal(sceneLighting(s,SCENES.coffee_rebeka_early),'evening');
+ const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok');
+ if(restored.status==='ok')assert.equal(currentPeriod(restored.state),'night');
+ s=activity(s,'rest');assert.equal(s.phase,'summary');assert.equal(currentPeriod(s),null);
+ assert.equal(activity(s,'rest'),s);s=nextWeek(s,SCENES);assert.equal(s.slot,0);assert.equal(s.week,2);
+});
+
+test('night-only shared evenings and daytime preparation respect both slots and deadlines',()=>{
+ const snapshots:GameState[]=[];run('triad',{prepared:true,onPlanner:s=>{if(s.week===14)snapshots.push(structuredClone(s));}});
+ const s=snapshots[0];assert.equal(s.slot,1);
+ assert.equal(openScene(s,'triad_7',SCENES),s);
+ assert.ok(availableScenes({...s,slot:2},SCENES).some(x=>x.id==='triad_7'));
+ assert.equal(sceneLighting({...s,slot:2},SCENES.triad_7),'evening');
+ const prep=s;
+ assert.ok(availableScenes(prep,SCENES).some(x=>x.id==='prepare_signals'));
+ assert.equal(openScene({...prep,slot:2},'prepare_signals',SCENES).phase,'planner');
+ assert.equal(availableScenes({...s,week:15,slot:2},SCENES).some(x=>x.id==='triad_7'),false);
+});
+
+test('job admission and legacy night-job completion preserve slot accounting',()=>{
+ const day=complete(createInitial(''),'shared_1'),job=activity(day,'brick');
+ assert.equal(job.phase,'minigame');assert.equal(currentPeriod(job),'day');
+ assert.equal(resolveJob(job,'mohu',1000),job);
+ const legacy={...job,slot:2 as const};assert.equal(decodeSave(JSON.stringify(legacy),SCENES).status,'ok');
+ const done=resolveJob(legacy,'brick',1000);assert.equal(done.phase,'summary');assert.equal(done.minigame,null);
+ assert.equal(activity({...legacy,phase:'planner',minigame:null},'brick').phase,'planner');
+});
+
+test('registry rejects empty, duplicate, unknown or shared-scene period restrictions',()=>{
+ for(const periods of [[],['day','day'],['dawn'],['day']]){
+  const r=structuredClone(SCENES);r[periods.length===1&&periods[0]==='day'?'shared_1':'rebeka_1'].periods=periods as ['day'];
+  assert.throws(()=>validateRegistry(r,EVIDENCE,new Set(Object.keys(BACKGROUNDS))),/Invalid activity periods/);
  }
 });
