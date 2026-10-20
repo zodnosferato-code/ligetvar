@@ -34,12 +34,22 @@ let browser;
  await page.locator('.portrait-placeholder').waitFor();await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
  await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).scene.line,'line_2');
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();await page.screenshot({path:path.join(output,'mobile-'+width+'-portrait.png'),fullPage:true});}
- await finish();await scene('rebeka_1');await finish();
+ await finish();
+ for(const width of [1440,390,320]){
+  await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
+  await page.screenshot({path:path.join(output,'activities-'+width+'.png'),fullPage:true});
+ }
+ assert.ok(await page.locator('.activity-relationship').count());assert.ok(await page.locator('.activity-conversation').count());
+ for(const kind of ['rest','recycling','paperwork'])assert.equal(await page.locator('.activity-'+kind+' .activity-emblem').count(),1);
+ const surfaces=await page.locator('.activity-card').evaluateAll(cards=>new Set(cards.map(card=>getComputedStyle(card).backgroundImage)).size);
+ assert.ok(surfaces>=5,'activity categories have distinct card treatments');
+ await scene('rebeka_1');await finish();
  await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).phase,'summary');
  await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();
  // An authored friendship path through the real UI, including aftermath before closure.
  for(let w=2;w<=16;w++){
   await scene('shared_'+w);await finish();
+  if(w===13){assert.ok(await page.locator('.activity-preparation').count());await noOverflow();await page.screenshot({path:path.join(output,'activities-preparation-320.png'),fullPage:true});}
   if(w===16){assert.equal((await state()).phase,'planner');assert.equal((await state()).slot,1);await scene('friendship_after');await finish();}
   while((await state()).phase==='planner')await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();
   await page.getByRole('button',{name:w===16?'Félév lezárása és epilógusok':w+1+'. hét kezdése',exact:true}).click();
@@ -75,5 +85,5 @@ let browser;
  await page.screenshot({path:path.join(output,'desktop-conversation-callback.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();}
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'passed',checks:['castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
+ console.log(JSON.stringify({result:'passed',checks:['distinct activity cards and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});
