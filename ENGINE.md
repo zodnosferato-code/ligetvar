@@ -11,8 +11,23 @@
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
 | Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
 | Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v2 kulcs; Zustand/localStorage integráció |
-| UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; ikonokkal jelölt heti tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
+| UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; tárgyakkal vezérelt iroda/saját szoba tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
+
+## Tárgyakkal vezérelt tervező
+
+A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. Az ajtó vagy a szobaválasztó ingyenesen vált helyiséget. A tárgyak alapból jelöletlenek; a „Segítség mutatása” felfedi az ikonokat és címkéket. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
+
+| Tárgy | Megnyitott műveletek |
+| --- | --- |
+| Íróasztal / nyitott könyv | Garantált közös alkalom és elérhető felkészülés |
+| Telefon | Elérhető személyes találkozók és kávés beszélgetések; a kiválasztott jelenet a saját helyszínén indul |
+| Jegyzetfüzet / könyvek | Napló, ismert bizonyítékok, kapcsolatok és választható személyes irány |
+| Fotel | Pihenés |
+| Polc | Ajándékok vásárlása és átadása |
+| Zsák | MOHU és iratellenőrző munka |
+
+A szoba és a segítség állapota csak felületi állapot; jelenetből visszatérve a szobaválasztás megmarad, újratöltéskor az iroda az alapértelmezett. A tárgyak böngészése nem módosítja a mentést, energiát vagy heti sávot. Nincs új telefonos dialógus, meghívás- vagy időpont-állapot: a meglévő jelenetek előfeltételei és befejezéskori sávköltsége változatlanok. Az első sávban az íróasztal közös jelenete elérhető, az opcionális tevékenységek csak utána indíthatók.
 
 ## Portrék és jelenetkompozíció
 

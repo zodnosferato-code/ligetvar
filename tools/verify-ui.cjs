@@ -14,7 +14,10 @@ let browser;
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v2')));
  const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- const scene=async id=>{await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
+ const OBJECT_LABEL={desk:'Íróasztal — Műhely és felkészülés',phone:'Telefon — Találkozók',journal:'Napló — Nyomok és kapcsolatok',chair:'Fotel — Pihenés',shelf:'Polc — Ajándékok',bag:'Zsák — Opcionális munka'};
+ const openObject=async id=>page.getByRole('button',{name:OBJECT_LABEL[id],exact:true}).click();
+ const rest=async()=>{await openObject('chair');await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();};
+ const scene=async id=>{await openObject(SCENES[id].kind==='shared'||SCENES[id].kind==='preparation'?'desk':'phone');await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
  const finish=async()=>{for(let i=0;i<60;i++){if((await state()).phase!=='scene')return;await page.locator('.choices button').first().click();}throw new Error('Scene did not finish');};
  if(process.env.UI_CONTROLS_ONLY==='1'){
   for(const [width,scale] of [[1440,'1'],[390,'1'],[320,'1.3']]){
@@ -40,7 +43,7 @@ let browser;
  await page.setViewportSize({width:1440,height:1000});await page.getByLabel('Betűméret').selectOption('1');
  await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
  await page.screenshot({path:path.join(output,'desktop-planner.png'),fullPage:true});
- assert.ok(await page.locator('.scene-card .ui-icon').count(),'planner uses the existing activity icons');
+ assert.equal(await page.locator('.room-hotspot').count(),7);assert.equal(await page.locator('.scene-card').count(),0,'the room starts without an action list');
  await scene('shared_1');
  assert.equal(await page.locator('.narration .portrait').count(),0,'narration is prose, without a character portrait');
  assert.equal(await page.locator('.narration .dialogue-heading h1').textContent(),SCENES.shared_1.title);
@@ -69,23 +72,42 @@ let browser;
  await page.screenshot({path:path.join(output,'mobile-player-reply.png')});
  if(process.env.UI_DIALOGUE_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Mobile scenery, text scrolling, focus, save/resume and desktop layout checks passed.');return;}
  await finish();
- for(const width of [1440,390,320]){
-  await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
-  await page.screenshot({path:path.join(output,'activities-'+width+'.png'),fullPage:true});
+ const beforeBrowsing=await state();
+ for(const room of ['Iroda','Saját szoba']){
+  await page.getByRole('navigation',{name:'Szobák'}).getByRole('button',{name:room,exact:true}).click();
+  for(const width of [1440,390,320]){
+   await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
+   const boxes=await page.locator('.room-hotspot').evaluateAll(spots=>spots.map(spot=>{const r=spot.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,label:spot.getAttribute('aria-label')};}));
+   for(const box of boxes)assert.ok(box.width>=44&&box.height>=44,box.label);
+   for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert.ok(a.x+a.width<=b.x||b.x+b.width<=a.x||a.y+a.height<=b.y||b.y+b.height<=a.y,'touch targets overlap: '+a.label+' / '+b.label);}
+   await page.screenshot({path:path.join(output,`room-${room==='Iroda'?'office':'home'}-${width}.png`),fullPage:true});
+  }
+  await page.getByRole('button',{name:'Segítség mutatása',exact:true}).click();
+  assert.equal(await page.locator('.spot-mark').first().evaluate(mark=>getComputedStyle(mark).opacity),'1');
+  await page.screenshot({path:path.join(output,`room-${room==='Iroda'?'office':'home'}-hints.png`),fullPage:true});
+  await page.getByRole('button',{name:'Segítség elrejtése',exact:true}).click();
+  assert.equal(await page.locator('.spot-mark').first().evaluate(mark=>getComputedStyle(mark).opacity),'0');
+  await page.locator('.spot-phone').focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');assert.equal(await page.locator('.spot-phone .spot-label').evaluate(label=>getComputedStyle(label).opacity),'1');await page.keyboard.press('Enter');
+  await page.getByRole('button',{name:'Tárgymenü bezárása',exact:true}).click();assert.equal(await page.locator('.spot-phone').evaluate(button=>button===document.activeElement),true);
+  await page.getByRole('button',{name:'Ajtó — '+(room==='Iroda'?'Saját szoba':'Tanszéki iroda'),exact:true}).click();await page.getByRole('heading',{name:room==='Iroda'?'Saját szoba':'Tanszéki iroda',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Ajtó — '+(room==='Iroda'?'Tanszéki iroda':'Saját szoba'),exact:true}).click();
+  await openObject('phone');assert.ok(await page.locator('.activity-conversation').count());assert.ok(await page.locator('.activity-relationship').count());
+  await openObject('bag');for(const kind of ['recycling','paperwork'])assert.equal(await page.locator('.activity-'+kind).count(),1);
+  await openObject('chair');assert.equal(await page.locator('.activity-rest').count(),1);
+  await openObject('shelf');await page.getByRole('heading',{name:'Ajándékok',exact:true}).waitFor();
+  await openObject('journal');await page.getByText('Amit már tudunk',{exact:true}).waitFor();
  }
- assert.ok(await page.locator('.activity-relationship').count());assert.ok(await page.locator('.activity-conversation').count());
- for(const kind of ['rest','recycling','paperwork'])assert.equal(await page.locator('.activity-'+kind+' .activity-emblem').count(),1);
- const surfaces=await page.locator('.activity-card').evaluateAll(cards=>new Set(cards.map(card=>getComputedStyle(card).backgroundImage)).size);
- assert.ok(surfaces>=5,'activity categories have distinct card treatments');
+ assert.deepEqual(await state(),beforeBrowsing,'room navigation, hints and object browsing spend no time or resources');
+ if(process.env.UI_ROOM_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Both rooms, responsive hotspots, hints, keyboard/door navigation, object menus and free browsing passed.');return;}
  await scene('rebeka_1');await finish();
- await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).phase,'summary');
+ await openObject('bag');await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).phase,'summary');
  await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();
  // An authored friendship path through the real UI, including aftermath before closure.
  for(let w=2;w<=16;w++){
   await scene('shared_'+w);await finish();
-  if(w===13){assert.ok(await page.locator('.activity-preparation').count());await noOverflow();await page.screenshot({path:path.join(output,'activities-preparation-320.png'),fullPage:true});}
+  if(w===13){await openObject('desk');assert.ok(await page.locator('.activity-preparation').count());await noOverflow();await page.screenshot({path:path.join(output,'activities-preparation-320.png'),fullPage:true});}
   if(w===16){assert.equal((await state()).phase,'planner');assert.equal((await state()).slot,1);await scene('friendship_after');await finish();}
-  while((await state()).phase==='planner')await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();
+  while((await state()).phase==='planner')await rest();
   await page.getByRole('button',{name:w===16?'Félév lezárása és epilógusok':w+1+'. hét kezdése',exact:true}).click();
  }
  assert.equal((await state()).phase,'ending');await page.getByRole('heading',{name:'Ami megmarad',exact:true}).waitFor();await noOverflow();await page.screenshot({path:path.join(output,'mobile-friendship-ending.png'),fullPage:true});
@@ -93,9 +115,9 @@ let browser;
  await page.locator('.brand').click();await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();await page.setViewportSize({width:1440,height:1000});
  for(let w=1;w<=16;w++){
   await scene('shared_'+w);await finish();
-  if(w===8)await page.getByRole('button',{name:'Rebeka, Boglárka és Márton',exact:true}).click();
+  if(w===8){await openObject('journal');await page.getByRole('button',{name:'Rebeka, Boglárka és Márton',exact:true}).click();}
   for(const id of TRIAD[w]||[]){await scene(id);await finish();}
-  while((await state()).phase==='planner')await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();
+  while((await state()).phase==='planner')await rest();
   await page.getByRole('button',{name:w===16?'Félév lezárása és epilógusok':w+1+'. hét kezdése',exact:true}).click();
  }
  const end=await state();assert.equal(end.phase,'ending');assert.ok(end.decisions.triad_aftermath);assert.equal(end.confrontation,'supported');await noOverflow();
@@ -107,11 +129,11 @@ let browser;
  await page.getByRole('button',{name:'Mit fotóznál akkor, ha senki nem pontozná?',exact:true}).click();
  const cursor=(await state()).scene.line;await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();
  assert.equal((await state()).scene.line,cursor);await finish();
- while((await state()).phase==='planner')await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();
+ while((await state()).phase==='planner')await rest();
  await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();
  for(let w=2;w<=8;w++){
   await scene('shared_'+w);await finish();
-  if(w<8){while((await state()).phase==='planner')await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();await page.getByRole('button',{name:w+1+'. hét kezdése',exact:true}).click();}
+  if(w<8){while((await state()).phase==='planner')await rest();await page.getByRole('button',{name:w+1+'. hét kezdése',exact:true}).click();}
  }
  await scene('coffee_rebeka_middle');while((await state()).scene.line!=='topics')await page.locator('.choices button').first().click();
  await page.getByRole('button',{name:'Ez is olyasmi, amit pontozás nélkül fotóznál?',exact:true}).click();
@@ -119,5 +141,5 @@ let browser;
  await page.screenshot({path:path.join(output,'desktop-conversation-callback.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();}
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'passed',checks:['partner portrait over scenery and no player portrait','unobstructed mobile scenery and scrollable text','distinct activity cards and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
+ console.log(JSON.stringify({result:'passed',checks:['partner portrait over scenery and no player portrait','unobstructed mobile scenery and scrollable text','two room object navigation, hints, phone and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});

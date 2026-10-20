@@ -174,6 +174,10 @@ Victims can initially be presented through narrated interviews and existing scen
 
 Production references are additional non-runtime material: three clothed identity sheets, an assistant identity sheet, and a castle architecture/layout sheet. Each identity sheet contains a face close-up and simple full-body view in the same outfit. Do not spend the first batch on elaborate turnarounds, multiple costumes, or pose collections.
 
+### Planning room interface
+
+User decisions, 20 October 2026: use an office and a personal room for everyday planning. Make objects in the artwork clickable, with no permanent markers; provide an explicit reveal-hints button and visible keyboard focus. The phone arranges in-person meetings, not new phone conversations. Open contextual action panels only after an object is selected. Room navigation and browsing cost no time; selecting an actual scene/activity uses the existing scheduling rules. Preserve the guaranteed shared slot and current save schema. Keep the room image uncropped so hotspot coordinates continue to align with the objects on phones as well as desktop.
+
 ### Dialogue composition
 
 Use a 16:9 background with a separate transparent conversation-partner portrait layered over the scenery, outside the dialogue panel. Updated user direction, 20 October 2026: desktop places the partner over the background beside the text; mobile places the partner inside the dedicated upper scenery area, with full-width dialogue and choices below. Preserve the image proportions and show it without an opaque portrait card or frame. The player/Márton never receives a portrait, monogram or empty portrait placeholder; player replies show a text speaker name only. Narration has no character portrait. Missing NPC art uses a small labelled placeholder over the scenery until approved cutouts exist. Keep the location visible, keep portraits clear of text and choices, and support text scaling and scrollable long mobile passages.
