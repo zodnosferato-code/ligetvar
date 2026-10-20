@@ -11,7 +11,7 @@
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
 | Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
 | Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v2 kulcs; Zustand/localStorage integráció |
-| UI | `src/game/ui/` | heti tervező, nagy portrés dialógus, mobil fejléc, napló, összegzés, epilógus |
+| UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; ikonokkal jelölt heti tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
 
 ## Motor és tartalom határa

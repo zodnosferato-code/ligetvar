@@ -86,3 +86,13 @@ The user selected WAI Illustrious + FireRed. The 37-output inventory consists of
 Actual result: **two candidate images, not a completed art set**. Opaque high-neck clothing, correct-side plum streak and removal of the blocking foreground chair were visually checked; a duplicated beauty mark, head margin and portrait alpha still need final cleanup/acceptance. The assistant and supporting cast designs remain proposals. The first additional neutral portrait request failed with HTTP 402; see ART-REGISTER.md. A separate alpha request failed with HTTP 403. No payment, spending-limit change or automatic paid retry was performed.
 
 The generation catalog has three actual local tests covering runtime actor/location/expression coverage, dependency references, pilot scope and all 37 prompts against the live WAI/FireRed model constraints. All three passed; syntax checks passed. The GitHub 30-test suite and Pages deployment for the latest production-request code succeeded. The art-generation run failed on the provider's HTTP 402, which is not a successful generation or release gate.
+
+## Castle romance UI restoration — 20 October 2026
+
+User direction: restore the medieval castle romance atmosphere and icons; narration must not appear as a character named Ligetvár.
+
+- Restored warm parchment, dark wood/plum and brass colors, serif dialogue typography, decorative borders and arched portrait frames. The title screen uses the existing castle courtyard background.
+- Reused the existing book, heart, energy, money, chair, bottle, door, insight and shelf icons for status, activities, navigation and journal controls. Icons are decorative alongside text labels. Sound uses a speaker symbol. No archived character artwork or generated candidates were activated.
+- Narration has no portrait or character nameplate. It displays the scene title and prose over the background; named speakers keep their portrait layout. The internal `narrator` identifier and save cursors remain unchanged.
+- Existing engine/content tests: 30 passed; TypeScript and production build passed. The first browser pass completed friendship and triad routes, save/resume, contextual callbacks and the runner. Extended title-screen checks then caught a 320px/130% title overflow; responsive type sizing fixed it.
+- Final extended browser verification passed: castle title and production icon resolution; narration without a character portrait; 1440px desktop and 390px/320px mobile at 130% text; real save/resume; runner; full friendship and triad routes; aftermath ordering; conditional coffee callback; no overflow or page errors. Opened and inspected the resulting desktop title/narration/dialogue and 320px title/dialogue screenshots. Final artwork and overall release gates remain open.
