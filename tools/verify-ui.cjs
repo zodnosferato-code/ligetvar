@@ -14,8 +14,8 @@ let browser;
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v2')));
  const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- const OBJECT_LABEL={desk:'Műhely és felkészülés',phone:'Telefon — Találkozók',journal:'Napló — Nyomok és kapcsolatok',chair:'Fotel — Pihenés',shelf:'Polc — Ajándékok',bag:'Zsák — Opcionális munka'};
- const openObject=async id=>page.getByRole('button',{name:OBJECT_LABEL[id],exact:true}).click();
+ const OBJECT_LABEL={desk:'Műhely és felkészülés',phone:'Telefon — Találkozók',journal:'Napló — Nyomok és kapcsolatok',chair:'Fotel — Pihenés',shelf:'Polc — Ajándékok',bag:'Zsák — Opcionális munka',travel:'Ajtó — Úticélok'};
+ const openObject=async id=>{if((id==='desk'||id==='bag')&&await page.locator('.spot-'+id).count()===0)await page.getByRole('navigation',{name:'Szobák'}).getByRole('button',{name:'Iroda',exact:true}).click();await page.getByRole('button',{name:OBJECT_LABEL[id],exact:true}).click();};
  const rest=async()=>{await openObject('chair');await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();};
  const scene=async id=>{await openObject(SCENES[id].kind==='shared'||SCENES[id].kind==='preparation'?'desk':'phone');await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
  const finish=async()=>{for(let i=0;i<60;i++){if((await state()).phase!=='scene')return;await page.locator('.choices button').first().click();}throw new Error('Scene did not finish');};
@@ -44,7 +44,7 @@ let browser;
  await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
  await page.screenshot({path:path.join(output,'desktop-planner.png'),fullPage:true});
  assert.equal(await page.locator('.room-hotspot').count(),7);assert.equal(await page.locator('.scene-card').count(),0,'the room starts without an action list');
- await scene('shared_1');
+ await openObject('travel');await page.locator('.destination-card').filter({hasText:'Tanterem'}).click();await page.getByRole('button',{name:SCENES.shared_1.title,exact:true}).click();
  assert.equal(await page.locator('.narration .portrait').count(),0,'narration is prose, without a character portrait');
  assert.equal(await page.locator('.narration .dialogue-heading h1').textContent(),SCENES.shared_1.title);
  await page.screenshot({path:path.join(output,'desktop-narration.png'),fullPage:true});
@@ -73,7 +73,7 @@ let browser;
  if(process.env.UI_DIALOGUE_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Mobile scenery, text scrolling, focus, save/resume and desktop layout checks passed.');return;}
  await finish();
  const beforeBrowsing=await state();
- for(const room of ['Iroda','Saját szoba']){
+ for(const room of ['Iroda','Hálószoba']){
   await page.getByRole('navigation',{name:'Szobák'}).getByRole('button',{name:room,exact:true}).click();
   for(const width of [1440,390,320]){
    await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
@@ -87,12 +87,17 @@ let browser;
   assert.equal(await page.locator('.hint-toggle').count(),0,'interaction hints cannot be hidden');
   const cues=await page.locator('.room-hotspot').evaluateAll(spots=>spots.map(spot=>({opacity:getComputedStyle(spot.querySelector('.spot-label')).opacity,border:getComputedStyle(spot).borderTopColor,borderWidth:parseFloat(getComputedStyle(spot).borderTopWidth)})));
   for(const cue of cues){assert.equal(cue.opacity,'1');assert.ok(cue.borderWidth>=2);assert.notEqual(cue.border,'rgba(0, 0, 0, 0)');}
-  assert.equal(await page.locator('.room-hotspot.is-fallback .ui-icon').count(),room==='Iroda'?0:1,'missing room object has a visible icon');
+  assert.equal(await page.locator('.room-hotspot.is-fallback .ui-icon').count(),0,'both hubs use only fitting painted objects');
   await page.screenshot({path:path.join(output,`room-${room==='Iroda'?'office':'home'}-permanent-hints.png`),fullPage:true});
   await page.locator('.spot-phone').focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');assert.equal(await page.locator('.spot-phone .spot-label').evaluate(label=>getComputedStyle(label).opacity),'1');await page.keyboard.press('Enter');
   await page.getByRole('button',{name:'Tárgymenü bezárása',exact:true}).click();assert.equal(await page.locator('.spot-phone').evaluate(button=>button===document.activeElement),true);
-  await page.getByRole('button',{name:'Ajtó — '+(room==='Iroda'?'Saját szoba':'Tanszéki iroda'),exact:true}).click();await page.getByRole('heading',{name:room==='Iroda'?'Saját szoba':'Tanszéki iroda',exact:true}).waitFor();
-  await page.getByRole('button',{name:'Ajtó — '+(room==='Iroda'?'Tanszéki iroda':'Saját szoba'),exact:true}).click();
+  if(room==='Hálószoba'){assert.equal(await page.locator('.spot-desk,.spot-bag').count(),0,'bedroom excludes daytime workshop/work');assert.ok((await page.locator('.room-toolbar .eyebrow').textContent()).includes('Éjszakai'));}
+  const otherDestination=room==='Iroda'?'Hálószoba':'Tanszéki iroda',otherEntry=room==='Iroda'?'Belépek a hálószobába':'Belépek az irodába';
+  const backDestination=room==='Iroda'?'Tanszéki iroda':'Hálószoba',backEntry=room==='Iroda'?'Belépek az irodába':'Belépek a hálószobába';
+  await openObject('travel');await page.getByRole('heading',{name:'Hová indulsz?',exact:true}).waitFor();await noOverflow();await page.screenshot({path:path.join(output,`destinations-${room==='Iroda'?'office':'bedroom'}.png`),fullPage:true});
+  await page.locator('.destination-card').filter({hasText:otherDestination}).click();assert.equal(await page.locator('.destination-detail h3').evaluate(heading=>heading===document.activeElement),true);await page.getByRole('button',{name:otherEntry,exact:true}).click();
+  await page.getByRole('heading',{name:room==='Iroda'?'Hálószoba':'Tanszéki iroda',exact:true}).waitFor();
+  await openObject('travel');await page.locator('.destination-card').filter({hasText:backDestination}).click();await page.getByRole('button',{name:backEntry,exact:true}).click();
   await openObject('phone');assert.ok(await page.locator('.activity-conversation').count());assert.ok(await page.locator('.activity-relationship').count());
   await openObject('bag');for(const kind of ['recycling','paperwork'])assert.equal(await page.locator('.activity-'+kind).count(),1);
   await openObject('chair');assert.equal(await page.locator('.activity-rest').count(),1);
@@ -100,7 +105,7 @@ let browser;
   await openObject('journal');await page.getByText('Amit már tudunk',{exact:true}).waitFor();
  }
  assert.deepEqual(await state(),beforeBrowsing,'room navigation and object browsing spend no time or resources');
- if(process.env.UI_ROOM_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Both rooms, permanent labels/outlines, fallback icon, touch targets, keyboard/door navigation and free browsing passed.');return;}
+ if(process.env.UI_ROOM_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Day office/night bedroom, destination travel, permanent cues, touch targets, keyboard navigation and free browsing passed.');return;}
  await scene('rebeka_1');await finish();
  await openObject('bag');await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).phase,'summary');
  await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();

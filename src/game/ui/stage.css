@@ -215,3 +215,10 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
  .room-actions-heading h2{font-size:1.1em}
  .room-actions-heading>button{font-size:.65em;padding:.6em}
 }
+
+.destination-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin:18px 0}
+.destination-card{display:flex;flex-wrap:wrap;align-items:center;gap:8px 0;min-width:0}
+.destination-card strong{font:400 1.15em Georgia,serif;flex:1}
+.destination-card small{flex-basis:100%;font-size:.75em}
+.destination-detail{border-top:1px solid #856542;padding-top:10px;margin-top:18px}
+.destination-detail>.scene-grid{margin-top:16px}
