@@ -96,3 +96,12 @@ User direction: restore the medieval castle romance atmosphere and icons; narrat
 - Narration has no portrait or character nameplate. It displays the scene title and prose over the background; named speakers keep their portrait layout. The internal `narrator` identifier and save cursors remain unchanged.
 - Existing engine/content tests: 30 passed; TypeScript and production build passed. The first browser pass completed friendship and triad routes, save/resume, contextual callbacks and the runner. Extended title-screen checks then caught a 320px/130% title overflow; responsive type sizing fixed it.
 - Final extended browser verification passed: castle title and production icon resolution; narration without a character portrait; 1440px desktop and 390px/320px mobile at 130% text; real save/resume; runner; full friendship and triad routes; aftermath ordering; conditional coffee callback; no overflow or page errors. Opened and inspected the resulting desktop title/narration/dialogue and 320px title/dialogue screenshots. Final artwork and overall release gates remain open.
+
+## Activity recognition — 20 October 2026
+
+User direction: activities must be distinguishable at a glance while keeping the castle romance styling.
+
+- Each activity now has a large emblem, category label, distinct accent/surface and purpose/time information. Shared story is gold, personal meetings rose, preparation blue, coffee amber, rest moss green, recycling teal and office work violet. Emblem shapes and labels distinguish them without relying only on color.
+- Coffee uses a cup symbol; rest, recycling and office work are full activity cards with a short explanation rather than similar small buttons. Scene titles and scheduling actions are preserved.
+- `npm test`: 30 passed. Typecheck and production build passed. Browser activity screenshots were opened at desktop and 320px/130% text; cards retain their labels and do not overflow.
+- Extended browser verification passed category-card distinctions, week-13 preparation, desktop and 390px/320px at 130% text, save/resume, runner, full friendship/triad paths and contextual callbacks, with no overflow or page errors.
