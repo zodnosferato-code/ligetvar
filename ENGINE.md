@@ -16,18 +16,19 @@
 
 ## Tárgyakkal vezérelt tervező
 
-A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. Az ajtó vagy a szobaválasztó ingyenesen vált helyiséget. A tárgyak körvonala és műveleti címkéje mindig látható, elrejtő kapcsoló nélkül. Megfelelő háttértárgy hiányában a szoba `fallbacks` listája kijelöli a külön, címkézett ikongombbal megjelenő műveletet. A saját szobában a Műhely külön ikon, az asztali könyv pedig a napló. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
+A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. A szobaválasztó ingyenesen vált a nappali iroda és az éjszakai hálószoba között. Az ajtó „Hová indulsz?” úti célmenüt nyit: a két tervező mindig elérhető, más helyszín csak az ott aktuálisan játszható jelenettel jelenik meg. A cél kiválasztása ingyenes; egy jelenet sávköltségét továbbra is annak befejezése számolja el. A tárgyak körvonala és műveleti címkéje mindig látható, elrejtő kapcsoló nélkül. Megfelelő háttértárgy hiányában a szoba `fallbacks` listája kijelöli a külön, címkézett ikongombbal megjelenő műveletet. A hálószobában az asztali könyv a napló; ott nincs műhely- vagy munkavezérlő. A nappali műhely/felkészülés és munka az irodában van, az éjszakai központ a telefon, pihenés, napló és ajándékok tárgyait kínálja. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
 
 | Tárgy | Megnyitott műveletek |
 | --- | --- |
-| Íróasztal / nyitott könyv | Garantált közös alkalom és elérhető felkészülés |
+| Irodai íróasztal | Garantált közös alkalom és elérhető felkészülés |
+| Ajtó | Úti célok és az ott aktuálisan elérhető jelenetek; belépés a nappali/éjszakai tervezőbe |
 | Telefon | Elérhető személyes találkozók és kávés beszélgetések; a kiválasztott jelenet a saját helyszínén indul |
 | Jegyzetfüzet / könyvek | Napló, ismert bizonyítékok, kapcsolatok és választható személyes irány |
 | Fotel | Pihenés |
 | Polc | Ajándékok vásárlása és átadása |
 | Zsák | MOHU és iratellenőrző munka |
 
-A szobaválasztás csak felületi állapot; jelenetből visszatérve a szobaválasztás megmarad, újratöltéskor az iroda az alapértelmezett. A tárgyak böngészése nem módosítja a mentést, energiát vagy heti sávot. Nincs új telefonos dialógus, meghívás- vagy időpont-állapot: a meglévő jelenetek előfeltételei és befejezéskori sávköltsége változatlanok. Az első sávban az íróasztal közös jelenete elérhető, az opcionális tevékenységek csak utána indíthatók.
+A nappali/éjszakai megnevezés a helyiség szerepe és megjelenése, nem új naptári óra vagy sávkorlátozás. Az eredeti egy közös + két szabad heti sáv és a jelenetek saját megvilágítása változatlan. A szobaválasztás csak felületi állapot; jelenetből visszatérve a szobaválasztás megmarad, újratöltéskor az iroda az alapértelmezett. A tárgyak böngészése nem módosítja a mentést, energiát vagy heti sávot. Nincs új telefonos dialógus, meghívás- vagy időpont-állapot: a meglévő jelenetek előfeltételei és befejezéskori sávköltsége változatlanok. Az első sávban az íróasztal közös jelenete elérhető, az opcionális tevékenységek csak utána indíthatók.
 
 ## Portrék és jelenetkompozíció
 

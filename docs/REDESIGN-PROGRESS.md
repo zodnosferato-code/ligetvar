@@ -151,3 +151,13 @@ User direction replaces hidden-by-default hints: users must always see which obj
 - Added explicit per-room `fallbacks` metadata for actions without a fitting painted object. The personal room's workshop uses a visible labelled icon button; its actual open book now opens the journal. Ordinary painted objects keep clear outlines without extra icon badges covering them.
 - Adjusted mobile label placement to prevent overlapping hints. Updated README, AGENT, ENGINE and the design canon to the new visibility rule.
 - `npm ci`, all 30 engine/content tests, TypeScript and production build passed. Focused browser checks passed both rooms at 1440px, 390px and 320px with 130% mobile text: permanent cues without hover, missing-object icon, non-overlapping labels and 44px touch targets, keyboard/door navigation, focus restoration, action panels, unchanged game state after browsing and no horizontal overflow or page errors. Opened and inspected both mobile-room screenshots.
+
+## Bedroom night hub and destination doors — 21 October 2026
+
+User direction: the bedroom serves as the night activity hub, and the door is for leaving for a destination.
+
+- The office is labelled as the daytime planner; the bedroom as the night hub. Bedroom objects offer in-person meeting arrangements, rest, journal and gifts. Workshop/preparation and work controls remain in the office instead of appearing as bedroom hotspots.
+- Doors now open “Hová indulsz?” destination panels rather than directly toggling rooms. Office and bedroom planning hubs are always reachable; other destinations come only from currently available scene locations. Selecting a destination offers its actual eligible scenes. Opening destinations or entering a planning hub does not consume a slot or change resources; finishing a scene/activity uses the existing budget.
+- These are room roles, not a newly invented hour/day simulation or forced mapping of weekly slots to night. Save format, the guaranteed shared scene plus two optional slots, original scene prerequisites and authored lighting remain unchanged. Rest feedback is now time-neutral.
+- Updated README, AGENT, ENGINE and the redesign plan. All 30 engine/content tests, typecheck and build passed. Focused browser checks passed office/bedroom roles, door destinations, starting a shared scene through travel, free browsing, persistent outlines/labels, non-overlapping mobile touch targets, keyboard navigation and focus restoration. Opened mobile bedroom and travel screenshots for visual review.
+- Full 16-week friendship/triad browser paths, runner, save/resume and conditional callbacks also passed with no overflow or page errors. Final destination-focus checks passed after making the selected destination and its actions scroll into view.
