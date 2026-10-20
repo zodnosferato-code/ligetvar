@@ -176,7 +176,7 @@ Production references are additional non-runtime material: three clothed identit
 
 ### Dialogue composition
 
-Use a 16:9 background with a separate portrait and dialogue panel. Desktop: large portrait beside the text, leaving enough room for four choices. Mobile: portrait beside the speaker/header area above the text and choices; keep expressions readable without burying the background or forcing horizontal scrolling. Support text scaling.
+Use a 16:9 background with a separate transparent conversation-partner portrait layered over the scenery, outside the dialogue panel. Updated user direction, 20 October 2026: desktop places the partner over the background beside the text; mobile places the partner inside the dedicated upper scenery area, with full-width dialogue and choices below. Preserve the image proportions and show it without an opaque portrait card or frame. The player/Márton never receives a portrait, monogram or empty portrait placeholder; player replies show a text speaker name only. Narration has no character portrait. Missing NPC art uses a small labelled placeholder over the scenery until approved cutouts exist. Keep the location visible, keep portraits clear of text and choices, and support text scaling and scrollable long mobile passages.
 
 Suggested delivery sizes: backgrounds 1920×1080 PNG/WebP; portrait masters 1024×1280 transparent PNG, with a fixed head-and-shoulders crop and eye-line guide. Derive smaller runtime files from approved masters. Portrait light is soft and neutral enough for several rooms. CSS may add subtle scene tint, not reshape or repaint the face. No pixelated image-rendering rule.
 

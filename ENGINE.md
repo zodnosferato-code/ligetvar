@@ -14,6 +14,12 @@
 | UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; ikonokkal jelölt heti tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
 
+## Portrék és jelenetkompozíció
+
+A beszélgetőpartner képe külön réteg a helyszínháttéren, nem a pergamenes szövegdoboz része. A portré aránytartó, vágás nélküli, átlátszó hátterű kép; a motor aktuális NPC-beszélője és kifejezése választja ki. A jelenleg hiányzó végleges NPC-képet kis, jelölt helyőrző képviseli. Márton/játékos saját megszólalásánál nincs kép, üres portrékeret vagy monogramos helyőrző. Az elbeszélés szintén kép nélküli próza.
+
+Asztali nézetben a portré a háttér bal oldali területén, a szöveg mellette jelenik meg. Mobilon a helyszín külön, jól látható felső területén van a portré; a teljes szélességű szöveg és a választások alatta maradnak. Az arckép nem takarhat szöveget vagy választást. A hosszú mobil szöveg külön görgethető, a játékos neve csak szöveges beszélőnévként szerepel. E szabályok a felhasználó 2026-10-20-i irányát rögzítik; nem igényelnek mentésformátum-változást.
+
 ## Motor és tartalom határa
 
 A motor nem importál a `content/` könyvtárból. A `RuntimeRules` szerződésen át kapja a kezdeti állapotot, a hetek számát, a gazdasági adatokat, a mentési kulcsokat és a kampányhoz tartozó hatás-, jelenetbefejezési, irányváltási és validálási szabályokat. A motor önálló, háromhetes, más szereplőkkel és más végfeltétellel futó tesztkampánnyal is ellenőrzött. A `content/runtime.ts` a Ligetvár alkalmazási belépési pontja; nem régi tartalmi adapter.

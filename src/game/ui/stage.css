@@ -87,18 +87,21 @@ details>summary{cursor:pointer;min-height:44px;padding:.4em 0;font-weight:500;li
 .gift{display:flex;flex-wrap:wrap;align-items:center;gap:.5em;padding:1em 0;border-bottom:1px solid #76563e}
 .gift span{flex:1 1 240px}
 .gift button{font-size:.8em}
-.dialogue{border:1px solid #ac8654;border-radius:4px;overflow:hidden;background-color:#2b2025;background-image:linear-gradient(90deg,#0f141933,#0f1419b3),var(--scene-background,none);background-size:cover;background-position:center;min-height:650px;margin-bottom:20px;box-shadow:0 12px 45px #0004}
-.scene-view,.reading-hint{display:none}
+.dialogue{position:relative;border:1px solid #ac8654;border-radius:4px;overflow:hidden;background-color:#2b2025;background-image:linear-gradient(90deg,#0f141933,#0f1419b3),var(--scene-background,none);background-size:cover;background-position:center;min-height:650px;margin-bottom:20px;box-shadow:0 12px 45px #0004}
+.reading-hint{display:none}
+.scene-view{position:absolute;top:78px;bottom:32px;left:32px;width:36%;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
 .dialogue-copy:focus-visible{outline:2px solid #89563c;outline-offset:3px}
 .scene-meta{display:flex;gap:1rem;justify-content:space-between;background:#21151de8;padding:14px 24px;font-size:.8em;color:#e2c59b;border-bottom:1px solid #a8844f77}
 .dialogue-layout{display:grid;grid-template-columns:minmax(240px,.85fr) minmax(0,1.4fr);align-items:center;gap:clamp(16px,3vw,40px);padding:32px;min-height:590px}
-.portrait{margin:0;align-self:center;min-width:0}
-.portrait-frame{overflow:hidden;border-radius:44% 44% 4px 4px;aspect-ratio:4/5;max-height:620px;border:1px solid #ba995e}
-.portrait img{display:block;width:100%;max-height:620px;aspect-ratio:4/5;object-fit:cover;object-position:center 22%}
-.portrait figcaption{font-size:.6em;letter-spacing:.1em;text-transform:uppercase;color:#ecdbc0;padding-top:10px;text-align:center;text-shadow:0 1px 4px #000}
-.portrait-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px;padding:25px;background:linear-gradient(140deg,#24161fe8,#4c3033d9);border:1px solid #b18c57;border-radius:44% 44% 4px 4px;box-shadow:inset 0 0 0 6px #160f1755,inset 0 0 0 7px #a5824b66;text-align:center}
-.portrait-placeholder>span{font:4rem Georgia,serif;color:#e3c38e}
-.portrait-placeholder p{font-size:.85em;color:#d9c4a4;max-width:18em}
+.portrait{margin:0;position:relative;width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;min-width:0}
+.portrait-frame{width:100%;height:100%}
+.portrait img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 5px 12px #0005)}
+.portrait-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:110px;min-height:120px;padding:12px;background:#291a24d9;border:1px solid #b18c57;border-radius:44% 44% 4px 4px;box-shadow:inset 0 0 0 4px #160f1755;text-align:center}
+.portrait-placeholder>span{font:3rem Georgia,serif;color:#e3c38e}
+.portrait-placeholder p{font-size:.65em;color:#d9c4a4;margin:.4em 0 0}
+.dialogue-layout>.dialogue-panel{grid-column:2}
+.no-portrait .dialogue-layout{display:flex;align-items:flex-end;justify-content:center;padding-top:160px}
+.no-portrait .dialogue-panel{width:min(100%,800px)}
 .dialogue-panel{position:relative;padding:clamp(24px,3vw,42px);background:radial-gradient(ellipse at top left,#fff7e199,transparent 70%),linear-gradient(120deg,#f3e6d0,#e6d2af);color:var(--ink);border:1px solid #c3a06c;border-radius:3px;box-shadow:inset 0 0 0 5px #f9edda,inset 0 0 0 6px #9f7f4f88,0 14px 40px #0006}
 .dialogue-panel::before{content:'◆';position:absolute;top:9px;right:17px;font-size:.7em;color:#9c724b}
 .dialogue-panel .eyebrow{color:#7a4a58;letter-spacing:.12em}
@@ -146,16 +149,15 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
  .title .eyebrow{letter-spacing:.1em}
  .scene-meta{font-size:.65em;padding:10px 14px;flex-direction:column;gap:3px}
  .dialogue{min-height:0;background-image:none;scroll-margin-top:8px}
- .scene-view{display:block;height:clamp(180px,30svh,280px);background-image:var(--scene-background,none);background-size:cover;background-position:center;border-bottom:1px solid #ac8654}
+ .scene-view{position:relative;top:auto;bottom:auto;left:auto;width:100%;display:block;height:clamp(180px,30svh,280px);background-image:var(--scene-background,none);background-size:cover;background-position:center;border-bottom:1px solid #ac8654}
  .dialogue-layout{position:relative;display:block;padding:10px;min-height:0}
- .portrait{position:absolute;top:28px;left:28px;width:62px;z-index:1}
- .portrait-frame{height:82px;width:62px;aspect-ratio:auto}
- .portrait img{height:82px;width:62px;aspect-ratio:auto;object-fit:cover}
- .portrait-placeholder{min-height:82px;padding:8px;box-shadow:inset 0 0 0 3px #160f1755}
+ .scene-view .portrait{position:absolute;bottom:0;right:12px;width:min(45%,170px);height:95%;z-index:1}
+ .portrait-frame{height:100%;width:100%}
+ .portrait img{height:100%;width:100%;object-fit:contain;object-position:center bottom}
+ .portrait-placeholder{width:76px;min-height:90px;padding:8px;margin-bottom:10px;box-shadow:inset 0 0 0 3px #160f1755}
  .portrait-placeholder>span{font-size:1.8rem}
  .portrait-placeholder p{display:none}
- .portrait figcaption{display:none}
- .dialogue-heading{padding-left:78px;min-height:90px;display:flex;flex-direction:column;justify-content:center}
+ .dialogue-heading{padding-left:0;min-height:0;display:block}
  .dialogue-heading .eyebrow{display:none}
  .dialogue-heading h1{overflow-wrap:anywhere}
  .dialogue-panel{padding:18px}
@@ -165,7 +167,7 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
  .dialogue .choices{margin-top:16px}
  .spoken{font-size:1em;line-height:1.7}
  .dialogue-panel h1{font-size:1.4em}
- .narration .dialogue-layout{min-height:0;padding:10px}
+ .no-portrait .dialogue-layout,.narration .dialogue-layout{min-height:0;padding:10px}
  .narration .dialogue-heading{padding:0 0 12px;min-height:0;display:block}
  .journal-grid{grid-template-columns:1fr;gap:12px}
  .actions button{flex:1 1 170px}
