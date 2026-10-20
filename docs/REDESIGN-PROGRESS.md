@@ -142,3 +142,12 @@ Approved user decisions: everyday planning uses an office and personal room; cli
 - Extracted shared icons/cards and journal components so the planner can open their contextual panels without duplicating story logic. Documented controls in README, AGENT, ENGINE and the redesign plan.
 - 30 engine/content tests, TypeScript and production build passed. Full browser verification passed both rooms at desktop, 390px and 320px/130% text, hidden/revealed hints, phone/preparation/rest/work/gift/journal access, non-overlapping touch targets and unchanged game state after browsing. Full 16-week friendship/triad paths, save/resume, runner and conditional callbacks passed with no horizontal overflow or page errors. Desktop room and mobile hints screenshots were opened and inspected.
 - Final focused room checks also passed actual Tab/Enter navigation, focus restoration after closing panels, both doors and zero-cost browsing after the final UI revision.
+
+## Permanent interaction cues — 21 October 2026
+
+User direction replaces hidden-by-default hints: users must always see which objects are interactive.
+
+- Every room hotspot, including doors, has a permanent brass outline and visible action label. Removed the hint toggle and its state so cues cannot disappear after navigation or reload.
+- Added explicit per-room `fallbacks` metadata for actions without a fitting painted object. The personal room's workshop uses a visible labelled icon button; its actual open book now opens the journal. Ordinary painted objects keep clear outlines without extra icon badges covering them.
+- Adjusted mobile label placement to prevent overlapping hints. Updated README, AGENT, ENGINE and the design canon to the new visibility rule.
+- `npm ci`, all 30 engine/content tests, TypeScript and production build passed. Focused browser checks passed both rooms at 1440px, 390px and 320px with 130% mobile text: permanent cues without hover, missing-object icon, non-overlapping labels and 44px touch targets, keyboard/door navigation, focus restoration, action panels, unchanged game state after browsing and no horizontal overflow or page errors. Opened and inspected both mobile-room screenshots.
