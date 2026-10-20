@@ -16,7 +16,20 @@ let browser;
  const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  const scene=async id=>{await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
  const finish=async()=>{for(let i=0;i<60;i++){if((await state()).phase!=='scene')return;await page.locator('.choices button').first().click();}throw new Error('Scene did not finish');};
- await page.goto(url);await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();await scene('shared_1');
+ await page.goto(url);
+ await page.screenshot({path:path.join(output,'desktop-title.png'),fullPage:true});
+ for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();await page.screenshot({path:path.join(output,'mobile-'+width+'-title.png'),fullPage:true});}
+ await page.setViewportSize({width:1440,height:1000});await page.getByLabel('Betűméret').selectOption('1');
+ await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
+ await page.screenshot({path:path.join(output,'desktop-planner.png'),fullPage:true});
+ assert.ok(await page.locator('.scene-card .ui-icon').count(),'planner uses the existing activity icons');
+ await scene('shared_1');
+ assert.equal(await page.locator('.narration .portrait').count(),0,'narration is prose, without a character portrait');
+ assert.equal(await page.locator('.narration .dialogue-heading h1').textContent(),SCENES.shared_1.title);
+ await page.screenshot({path:path.join(output,'desktop-narration.png'),fullPage:true});
+ for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();await page.screenshot({path:path.join(output,'mobile-'+width+'-narration.png'),fullPage:true});}
+ await page.setViewportSize({width:1440,height:1000});await page.getByLabel('Betűméret').selectOption('1');
+ assert.equal(await page.locator('img.ui-icon').evaluateAll(images=>images.every(image=>image.complete&&image.naturalWidth>0)),true,'icons resolve in the production build');
  await page.locator('.choices button').first().click();await page.locator('.choices button').first().click();
  await page.locator('.portrait-placeholder').waitFor();await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
  await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).scene.line,'line_2');
@@ -62,5 +75,5 @@ let browser;
  await page.screenshot({path:path.join(output,'desktop-conversation-callback.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();}
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'passed',checks:['1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
+ console.log(JSON.stringify({result:'passed',checks:['castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});
