@@ -1,4 +1,4 @@
-import type {GameState as CoreState} from '../engine/types.ts';
+import type {GameState as CoreState,ActivityPeriod} from '../engine/types.ts';
 export const GIRLS=['rebeka','boglarka','greta'] as const;
 export type GirlId=typeof GIRLS[number];
 export type ActorId=GirlId|'marton'|'soma'|'denes'|'julia'|'aron'|'lilla'|'narrator';
@@ -13,6 +13,7 @@ export interface Effect { bonds?:Partial<Record<BondId,number>>; decisions?:stri
 export interface Choice { requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
 export interface Line { id:string; speaker:ActorId; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
+ periods?:readonly ActivityPeriod[];
  id:string; title:string; kind:'shared'|'relationship'|'preparation'|'conversation'; week:number; deadline:number;
  participants:ActorId[]; location:LocationId; background:LocationId; lighting:'day'|'evening'|'night';
  requires:Requirements; evidence:string[]; journal:string; entry:string; lines:Line[]; onComplete?:Effect; contentStatus:'authored'|'fixture';

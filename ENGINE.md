@@ -16,19 +16,33 @@
 
 ## Tárgyakkal vezérelt tervező
 
-A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. A szobaválasztó ingyenesen vált a nappali iroda és az éjszakai hálószoba között. Az ajtó „Hová indulsz?” úti célmenüt nyit: a két tervező mindig elérhető, más helyszín csak az ott aktuálisan játszható jelenettel jelenik meg. A cél kiválasztása ingyenes; egy jelenet sávköltségét továbbra is annak befejezése számolja el. A tárgyak körvonala és műveleti címkéje mindig látható, elrejtő kapcsoló nélkül. Megfelelő háttértárgy hiányában a szoba `fallbacks` listája kijelöli a külön, címkézett ikongombbal megjelenő műveletet. A hálószobában az asztali könyv a napló; ott nincs műhely- vagy munkavezérlő. A nappali műhely/felkészülés és munka az irodában van, az éjszakai központ a telefon, pihenés, napló és ajándékok tárgyait kínálja. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
+A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. A mentett heti sáv választja a központot: közös alkalom előtt és nappal az iroda, éjszaka a hálószoba. Nincs időt megkerülő szobaválasztó. Az ajtó „Hová indulsz?” úti célmenüt nyit: az aktuális központ és minden olyan helyszín elérhető, ahol az aktuális sávban játszható jelenet van. Másik központba eső személyes jelenet elindítható, de ettől a tervező ideje nem változik. A cél kiválasztása ingyenes; egy jelenet sávköltségét továbbra is annak befejezése számolja el. A tárgyak körvonala és műveleti címkéje mindig látható, elrejtő kapcsoló nélkül. Megfelelő háttértárgy hiányában a szoba `fallbacks` listája kijelöli a külön, címkézett ikongombbal megjelenő műveletet. A hálószobában az asztali könyv a napló; ott nincs műhely- vagy munkavezérlő. A nappali műhely/felkészülés és munka az irodában van, az éjszakai központ a telefon, pihenés, napló és ajándékok tárgyait kínálja. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
 
 | Tárgy | Megnyitott műveletek |
 | --- | --- |
 | Irodai íróasztal | Garantált közös alkalom és elérhető felkészülés |
-| Ajtó | Úti célok és az ott aktuálisan elérhető jelenetek; belépés a nappali/éjszakai tervezőbe |
+| Ajtó | Úti célok és az aktuális napszakban elérhető jelenetek |
 | Telefon | Elérhető személyes találkozók és kávés beszélgetések; a kiválasztott jelenet a saját helyszínén indul |
 | Jegyzetfüzet / könyvek | Napló, ismert bizonyítékok, kapcsolatok és választható személyes irány |
 | Fotel | Pihenés |
 | Polc | Ajándékok vásárlása és átadása |
 | Zsák | MOHU és iratellenőrző munka |
 
-A nappali/éjszakai megnevezés a helyiség szerepe és megjelenése, nem új naptári óra vagy sávkorlátozás. Az eredeti egy közös + két szabad heti sáv és a jelenetek saját megvilágítása változatlan. A szobaválasztás csak felületi állapot; jelenetből visszatérve a szobaválasztás megmarad, újratöltéskor az iroda az alapértelmezett. A tárgyak böngészése nem módosítja a mentést, energiát vagy heti sávot. Nincs új telefonos dialógus, meghívás- vagy időpont-állapot: a meglévő jelenetek előfeltételei és befejezéskori sávköltsége változatlanok. Az első sávban az íróasztal közös jelenete elérhető, az opcionális tevékenységek csak utána indíthatók.
+A felhasználó 2026-10-21-i választása rögzített nappali/éjszakai sávokra cseréli a korábbi, csak szobaszerepet jelölő megoldást. A sorrend: `slot=0` garantált közös alkalom → `slot=1` nappali tevékenység → `slot=2` éjszakai tevékenység → `slot=3` heti összegzés. Nem hét napon át futó óraszimuláció: a félév továbbra is 16 közös + 32 szabad alkalom. A közös jelenetek saját megvilágítása és belső időugrásai megmaradnak.
+
+| Tevékenység | Mikor? | Időköltség |
+| --- | --- | --- |
+| Garantált közös alkalom | Heti első sáv; saját történeti napszak | Közös sáv, befejezéskor |
+| MOHU, iratellenőrzés | Nappal | Nappali sáv, az eredmény elfogadásakor |
+| Felkészülés | Nappal | Nappali sáv; a két alkalom külön hétre tervezendő |
+| Személyes találkozó, kávé | Nappal vagy éjszaka | Az aktuális szabad sáv |
+| T7/T8 közös este | Éjszaka; változatlan 14./16. heti határidő | Éjszakai sáv |
+| Pihenés / alvás | Nappal / éjszaka | Az aktuális szabad sáv, legfeljebb +32 energia |
+| Napló, irány, vásárlás, ajándék, menük és úti célok böngészése | Meglévő előfeltételeik szerint | Ingyenes |
+
+A kampány `RULES.schedule` adatai mondják meg a sávok napszakát és az aktivitások megengedett időszakait; a generikus motor nem importál történeti adatot. A jelenet opcionális `periods` mezője adja a napszak-korlátot. Az `availableScenes`, `openScene` és `activity` ugyanazt a szabályt ellenőrzi, tehát közvetlen reducerhívás sem indít éjszakai munkát. Más kampány számára a schedule elhagyható. A két napszakban elérhető jelenetek világítása nappal `day`, éjszaka `evening`; a szövegek érintett délután-hivatkozásai idősemlegesek. A T7/T8 esti világítást kap. A tervező mindig a sávból áll helyre, újratöltéskor is. Nappal külön előnézet jelzi a már teljesített előfeltételű, csak éjszaka indítható estéket.
+
+A párbeszéd sorközi folytatása, munka megnyitása vagy megszakítása nem léptet időt; a befejezés pontosan egy sávot használ. A kötelező jelenet nem hagyható ki. Nincs új meghívás-, óra-, vagy mentésmező. A v2 mentések megmaradnak, az 1./2. sáv nappalnak/éjszakának számít. A korábban már megkezdett, az új szabály szerinti napszakon kívüli jelenet vagy munkajáték befejezhető: a mentésbetöltő és a befejezés szándékosan nem alkalmaz utólagos napszak-kaput. Megszakított régi éjszakai munka újra már csak nappal indítható.
 
 ## Portrék és jelenetkompozíció
 
@@ -46,7 +60,7 @@ A `content/epilogues.ts` tartalmazza a végszövegeket. A felület a tartalmi be
 
 ## Heti hurok
 
-A `slot=0` a garantált közös alkalom. Pénz, energia, véletlen és románc nem akadályozza. Az `1` és `2` szabad sáv, a `3` heti összegzés. Csak a közös alkalom befejezése és mindhárom sáv felhasználása után váltható hét. Jelenet közbeni sorváltás nem kerül újabb sávba. Külön automatikus gyógytorna nincs; a közös jelenetek tartalmazzák a műhelyt.
+A `slot=0` a garantált közös alkalom. Pénz, energia, véletlen és románc nem akadályozza. Az `1` nappali, a `2` éjszakai szabad sáv, a `3` heti összegzés. Csak a közös alkalom befejezése és mindhárom sáv felhasználása után váltható hét. Jelenet közbeni sorváltás nem kerül újabb sávba. Külön automatikus gyógytorna nincs; a közös jelenetek tartalmazzák a műhelyt.
 
 A személyes jelenet költsége 8 energia, a közös alkalom +4, az új hét +24, a pihenő +32. Alacsony energia nem zárja el a történetet. A 15. heti konfrontáció támogatott felkészüléssel további 8, hiányos felkészüléssel 28 energiát vesz el. Az opcionális munkák külön szabad sávot használnak, a vásárlás és találkozó nem igényel műszakot. Ajándék személyenként hetente egyszer adható, legfeljebb csekély kapcsolódási bónusszal.
 

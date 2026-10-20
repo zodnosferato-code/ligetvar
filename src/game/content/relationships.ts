@@ -50,13 +50,13 @@ const personal={
   conflict:['Egy megbeszélésen Márton Boglárka helyett fejezett be egy magyarázatot. A könyvtárban Boglárka nem ül le rögtön.','Segíteni akartál, de mindenki megint téged hallott. Veled sem szeretnék lábjegyzet lenni.','A következő alkalommal várd ki a mondatomat. Akkor is, ha túl lassúnak tartasz.'],
   repair:'Jelzem a csoportnak, hogy az értelmezés a tied, és visszaadom a szót.',
   commitment:'A saját szavaimmal mondom: kapcsolatot szeretnék veled, nem meg nem nevezett mellékszálat valaki életében.',
-  aftermath:'A tanulmányra felkerült a nevem. A következő szabad délutánom mellé a tiédet szeretném, a saját szavaimmal.'
+  aftermath:'A tanulmányra felkerült a nevem. A következő szabad alkalmam mellé a tiédet szeretném, a saját szavaimmal.'
  },
  greta:{
   name:'Gréta',place:'courtyard' as LocationId,earliest:5,invite:7,
   attraction:['Az udvaron eláll az eső. Gréta egy üres naptármezőt mutat.','Ezt szándékosan hagytam üresen. Az irodában könnyű azt mondani, hogy szükséged van rám. Itt is maradnál, ha nincs mit megoldanom?','A saját nevemben kérdezem. Vonzódom hozzád; eddig minden mondatot egy elintézendő ügy mögé rejtettem.'],
   invitation:['A tóparton Gréta telefonja felvillan. Ő lenémítja.','A jelentést holnap is leadhatom. A saját estém is számít. Legyen ez randi, ne tegyünk úgy, mintha hibát javítanánk közben.','A tó felé kerülőt választanék. Nem kell megmagyaráznom, miért az a leghatékonyabb út.'],
-  conflict:['Márton még egy javítandó iratot tesz a közös délután elé. Gréta nem nyitja ki a dossziét.','Ha minden találkozónk előtt van még egy apró feladat, honnan tudjam, hogy engem vársz? Ne attól legyek fontos, hogy elvégzem, ami másnak nem jutott eszébe.','Ma maradjon itt az irat. Nem megnyugtatást kérek, hanem egy üres délutánt.'],
+  conflict:['Márton még egy javítandó iratot tesz a közös találkozó elé. Gréta nem nyitja ki a dossziét.','Ha minden találkozónk előtt van még egy apró feladat, honnan tudjam, hogy engem vársz? Ne attól legyek fontos, hogy elvégzem, ami másnak nem jutott eszébe.','Ma maradjon itt az irat. Nem megnyugtatást kérek, hanem egy szabad alkalmat.'],
   repair:'Másnak adom a határidős ügyet; a többit holnap végzem el. Veled megyek.',
   commitment:'Szeretnélek akkor is látni, amikor semmi hasznosat nem csinálok. Erre akarok időt vállalni, nem tökéletesnek lenni.',
   aftermath:'A jelentés elkészült. Van még egy javítanivaló, de holnap megvár. Ma a tóhoz szeretnék menni veled.'
@@ -90,7 +90,7 @@ for(const girl of ['rebeka','boglarka','greta'] as const){
    option('commit','Én is ezt a kapcsolatot szeretném, a közösen megbeszélt feltételekkel.','Mindketten saját igent mondtatok. A vállalt irányt a tervező többé nem írhatja át.',{decisions:[girl+'_commit',girl+'_yes','marton_'+girl+'_yes'],bonds:{[bond]:12},exposure:5}),
    option('withdraw','Nem akarok elköteleződést ígérni. Itt megállok.','A döntés fájhat, de nem kell hibássá tenni érte valakit.',{decisions:[girl+'_withdraw']})])
  ],{scenes:[girl+'_4'],decisions:[girl+'_repair',girl+'_invitation'],notDecisions:[girl+'_withdraw'],anyOf:girl==='greta'?[{directions:['greta']}]:[{directions:[girl]},{directions:['triad'],decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes']}]},[],p.name+' és Márton személyesen döntöttek arról, mit vállalnak.'));
- foundations.push(scene(girl+'_6',p.name+' — A következő délután','relationship',16,16,girl==='greta'?'bekas':'courtyard',['marton',girl],[
+ foundations.push(scene(girl+'_6',p.name+' — A következő találkozó','relationship',16,16,girl==='greta'?'bekas':'courtyard',['marton',girl],[
   say('narrator','A kamra után először találkoztok újabb ellenőrizendő nyom nélkül. A csendet nem siettetitek.'),
   say(girl,p.aftermath,'affectionate'),say('marton','Az együtt átélt veszély nem dönti el helyettünk, hogyan maradunk együtt.'),
   say(girl,'Én a kapcsolatunkat szeretném folytatni. A közös időt magamért is választom, nem azért, mert tartozom neked.'),

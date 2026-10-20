@@ -15,11 +15,12 @@ export function evaluateEnding(s:GameState):Ending{
  return {threat:'resolved',cost:s.confrontation,institution:s.institution,relationship};
 }
 export const RULES:RuntimeRules<GameState>={
+ schedule:{slots:{1:'day',2:'night'},activities:{rest:['day','night'],mohu:['day'],brick:['day']}},
  weeks:16,saveKey:SAVE_KEY,legacySaveKey:LEGACY_SAVE_KEY,
  initial:name=>({version:2,name:name.trim().slice(0,32)||'Márton Kelényi',week:1,slot:0,phase:'planner',scene:null,minigame:null,money:105000,energy:78,exposure:0,
-  bonds:{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0},direction:'friendship',decisions:{},evidence:{},completed:{},preparation:[],disclosure:'limited',inventory:{},giftsWeek:[],jobsWeek:{mohu:0,brick:0},journal:[],confrontation:null,institution:null,lastNote:'Minden héten egy közös alkalom és két szabad sáv.'}),
+  bonds:{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0},direction:'friendship',decisions:{},evidence:{},completed:{},preparation:[],disclosure:'limited',inventory:{},giftsWeek:[],jobsWeek:{mohu:0,brick:0},journal:[],confrontation:null,institution:null,lastNote:'Minden héten egy közös alkalom, egy nappali és egy éjszakai tevékenység.'}),
  economy:{sharedEnergy:4,sceneEnergy:-8,weeklyEnergy:24,weeklyMoney:60000,restEnergy:32,gifts:GIFTS,jobs:{mohu:{energy:18,maxPay:20000,rates:[1,.6,.35]},brick:{energy:22,maxPay:20000,rates:[1,.7]}}},
- notes:{initial:'Minden héten egy közös alkalom és két szabad sáv.',newWeek:'Új hét. A még határidőn belüli alkalmak pótolhatók.',rest:'Nyugodt pihenés. A pihenő nem helyettesít személyes döntést.',purchase:'A tárgy nem helyettesít személyes döntést.',gift:'Átadva. Egy ajándék hetente; vállalást és jóvátételt csak a megfelelő beszélgetés hoz.',job:pay=>'Opcionális munka: '+formatFt(pay)+'. Sem találkozó, sem vásárlás nem függ műszaktól.'},
+ notes:{initial:'Minden héten egy közös alkalom, egy nappali és egy éjszakai tevékenység.',newWeek:'Új hét. A még határidőn belüli alkalmak pótolhatók.',rest:'Nyugodt pihenés. A pihenő nem helyettesít személyes döntést.',purchase:'A tárgy nem helyettesít személyes döntést.',gift:'Átadva. Egy ajándék hetente; vállalást és jóvátételt csak a megfelelő beszélgetés hoz.',job:pay=>'Opcionális munka: '+formatFt(pay)+'. Sem találkozó, sem vásárlás nem függ műszaktól.'},
  applyEffect:(s,e)=>{const effect=e as Effect;if(effect.disclosure)s.disclosure=effect.disclosure;},
  completeScene:(s,x)=>{
   if(x.resolution==='confrontation'){
