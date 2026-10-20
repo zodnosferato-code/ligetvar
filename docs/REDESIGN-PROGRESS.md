@@ -113,3 +113,13 @@ User direction: the mobile dialogue box obscured almost the entire background.
 - Mobile scenes now reserve a separate, unobstructed background view above the parchment dialogue; the image no longer stretches behind the full text panel. The scenery area is 30% of the small viewport height, bounded to 180–280px. Desktop keeps its existing composition.
 - Reduced the mobile portrait/header height. Long passages scroll in a keyboard-focusable reading region, with a visible scroll cue when text overflows. Choices stay outside that region. Enlarged text remains supported. Each new line resets text scrolling and keeps the scene in view; focusing the heading no longer jumps past the background.
 - 30 engine/content tests, TypeScript and build passed. Extended browser verification passed scenery height/non-overlap, scrollable enlarged passages, save/resume, full friendship/triad routes, runner and callbacks, with no horizontal overflow or page errors. The final scroll-cue revision was checked with the focused desktop/mobile dialogue verification.
+
+## Partner portrait overlay and player viewpoint — 20 October 2026
+
+User direction: layer the person being spoken to over the scene background; the player does not need a picture.
+
+- NPC portraits now live inside the scenery layer, separate from the parchment dialogue. Desktop places them to the left of the text; mobile anchors them inside the upper background view. Approved transparent images will be shown proportionally with `object-fit: contain`, without a frame or opaque portrait panel. Current missing NPC art uses a small labelled placeholder, not an archived or unapproved image.
+- Player/Márton lines and narration render no portrait, monogram, empty frame or image placeholder. Player speech keeps its text name. Mobile headings no longer reserve portrait space inside the dialogue panel. No save data or narrative behavior changed.
+- This layout rule is recorded in AGENT.md, ENGINE.md and the redesign plan's dialogue-composition section.
+- `npm test`: 30 passed; TypeScript and build passed. Opened desktop NPC, 320px NPC overlay and player-reply screenshots. Browser checks cover the overlay staying inside the scenery, absence of a player portrait, enlarged mobile text, background visibility and save/resume.
+- Full browser verification also passed friendship/triad playthroughs, runner, conditional callbacks and ending order, with no overflow or page errors.

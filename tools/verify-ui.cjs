@@ -31,11 +31,12 @@ let browser;
  await page.setViewportSize({width:1440,height:1000});await page.getByLabel('Betűméret').selectOption('1');
  assert.equal(await page.locator('img.ui-icon').evaluateAll(images=>images.every(image=>image.complete&&image.naturalWidth>0)),true,'icons resolve in the production build');
  await page.locator('.choices button').first().click();await page.locator('.choices button').first().click();
- await page.locator('.portrait-placeholder').waitFor();await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
+ await page.locator('.scene-view .portrait-placeholder').waitFor();assert.equal(await page.locator('.dialogue-panel .portrait').count(),0);await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
  await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).scene.line,'line_2');
  for(const width of [390,320]){
   await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();
   const layout=await page.evaluate(()=>{const view=document.querySelector('.scene-view'),panel=document.querySelector('.dialogue-panel'),copy=document.querySelector('.dialogue-copy');return {view:view.getBoundingClientRect().toJSON(),panel:panel.getBoundingClientRect().toJSON(),copyHeight:copy.clientHeight,scrollHeight:copy.scrollHeight,background:getComputedStyle(view).backgroundImage};});
+  const overlay=await page.locator('.scene-view .portrait').boundingBox();assert.ok(overlay.y>=layout.view.y&&overlay.y+overlay.height<=layout.view.bottom+1,'partner portrait stays over the scenery');
   assert.ok(layout.view.height>=180,'mobile reserves unobstructed scenery');assert.ok(layout.panel.y>=layout.view.bottom,'dialogue stays below the scenery');
   assert.ok(layout.copyHeight<=300,'long passages have a bounded reading area');assert.ok(layout.scrollHeight>layout.copyHeight,'long text remains scrollable at enlarged size');assert.notEqual(layout.background,'none');
   await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop=copy.scrollHeight);assert.ok(await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop)>0);
@@ -45,6 +46,9 @@ let browser;
  await page.locator('.choices button').first().click();assert.equal(await page.locator('.dialogue-copy').evaluate(copy=>copy.scrollTop),0);
  assert.ok((await page.locator('.scene-view').boundingBox()).y>=0,'advancing mobile dialogue keeps scenery in view');
  await page.screenshot({path:path.join(output,'mobile-scene-viewport.png')});
+ for(let i=0;i<20;i++){const cursor=(await state()).scene.line;if(SCENES.shared_1.lines.find(line=>line.id===cursor)?.speaker==='marton')break;await page.locator('.choices button').first().click();}
+ assert.equal(await page.locator('.portrait').count(),0,'the player never receives a portrait or placeholder');
+ await page.screenshot({path:path.join(output,'mobile-player-reply.png')});
  if(process.env.UI_DIALOGUE_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Mobile scenery, text scrolling, focus, save/resume and desktop layout checks passed.');return;}
  await finish();
  for(const width of [1440,390,320]){
@@ -97,5 +101,5 @@ let browser;
  await page.screenshot({path:path.join(output,'desktop-conversation-callback.png'),fullPage:true});
  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();}
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'passed',checks:['unobstructed mobile scenery and scrollable text','distinct activity cards and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
+ console.log(JSON.stringify({result:'passed',checks:['partner portrait over scenery and no player portrait','unobstructed mobile scenery and scrollable text','distinct activity cards and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});
