@@ -11,7 +11,7 @@ import {Journal} from './Journal.tsx';
 export type RoomId='office'|'home';
 type ObjectId='desk'|'phone'|'journal'|'chair'|'shelf'|'bag';
 const OBJECTS:Record<ObjectId,{label:string;title:string;icon:'book'|'heart'|'rest'|'gift'|'bottles'|'insight'|'phone'}>={
- desk:{label:'Íróasztal — Műhely és felkészülés',title:'Műhely és felkészülés',icon:'insight'},
+ desk:{label:'Műhely és felkészülés',title:'Műhely és felkészülés',icon:'insight'},
  phone:{label:'Telefon — Találkozók',title:'Találkozó egyeztetése',icon:'phone'},
  journal:{label:'Napló — Nyomok és kapcsolatok',title:'Napló és kapcsolatok',icon:'book'},
  chair:{label:'Fotel — Pihenés',title:'Egy csendes óra',icon:'rest'},
@@ -20,12 +20,12 @@ const OBJECTS:Record<ObjectId,{label:string;title:string;icon:'book'|'heart'|'re
 };
 // Coordinates are percentages of the uncropped source image. Every hotspot has a 44px minimum target.
 const ROOMS={
- office:{title:'Tanszéki iroda',background:BACKGROUNDS.department.file!,door:[17,42],objects:{desk:[51,73],phone:[84,79],journal:[68,85],chair:[74,55],shelf:[92,33],bag:[17,86]}},
- home:{title:'Saját szoba',background:BACKGROUNDS.apartment.file!,door:[21,43],objects:{desk:[76,59],phone:[85,26],journal:[92,52],chair:[44,73],shelf:[92,81],bag:[8,76]}}
+ office:{title:'Tanszéki iroda',background:BACKGROUNDS.department.file!,door:[17,42],fallbacks:[] as ObjectId[],objects:{desk:[51,73],phone:[84,79],journal:[68,85],chair:[74,55],shelf:[92,33],bag:[17,86]}},
+ home:{title:'Saját szoba',background:BACKGROUNDS.apartment.file!,door:[21,43],fallbacks:['desk'] as ObjectId[],objects:{desk:[64,22],phone:[85,28],journal:[76,59],chair:[44,73],shelf:[92,81],bag:[8,76]}}
 } as const;
 const SHORT_LABEL:Record<ObjectId,string>={desk:'Műhely',phone:'Telefon',journal:'Napló',chair:'Pihenés',shelf:'Ajándék',bag:'Munka'};
 
-export function RoomPlanner({room,onRoomChange,hints,onHintsChange}:{room:RoomId;onRoomChange:(room:RoomId)=>void;hints:boolean;onHintsChange:(show:boolean)=>void}){
+export function RoomPlanner({room,onRoomChange}:{room:RoomId;onRoomChange:(room:RoomId)=>void}){
  const g=useGame(),s=g.state,available=availableScenes(s,SCENES),[selected,setSelected]=useState<ObjectId|null>(null),heading=useRef<HTMLHeadingElement>(null),hotspots=useRef<Partial<Record<ObjectId,HTMLButtonElement>>>({});
  const current=ROOMS[room],other:RoomId=room==='office'?'home':'office';
  useEffect(()=>{if(selected){heading.current?.focus({preventScroll:true});heading.current?.scrollIntoView({block:'center'});}},[selected]);
@@ -38,12 +38,12 @@ export function RoomPlanner({room,onRoomChange,hints,onHintsChange}:{room:RoomId
  const blocked=Object.values(SCENES).filter(x=>(x.kind==='relationship'||x.kind==='conversation')&&x.week<=s.week&&x.deadline>=s.week&&!(x.id in s.completed)&&!available.includes(x));
  const committed=isCommitted(s);
  return <main className="room-planner">
-  <div className="room-toolbar"><div><p className="eyebrow">{s.week}. hét · {s.slot===0?'A közös alkalom előtt':'Szabad idő'}</p><h1>{current.title}</h1></div><div className="room-navigation"><nav aria-label="Szobák"><button aria-pressed={room==='office'} onClick={()=>changeRoom('office')}>Iroda</button><button aria-pressed={room==='home'} onClick={()=>changeRoom('home')}>Saját szoba</button></nav><button className="hint-toggle" aria-pressed={hints} onClick={()=>onHintsChange(!hints)}><Icon name="insight"/>{hints?'Segítség elrejtése':'Segítség mutatása'}</button></div></div>
-  <p className="room-guidance">{s.slot===0?'A közös alkalom az íróasztalnál vár.':'Érintsd meg a szoba tárgyait. A telefonon személyes találkozót egyeztethetsz.'} A körülnézés és a szobaváltás nem használ időt.</p>
-  <div className={'hub-room'+(hints?' show-hints':'')}>
+  <div className="room-toolbar"><div><p className="eyebrow">{s.week}. hét · {s.slot===0?'A közös alkalom előtt':'Szabad idő'}</p><h1>{current.title}</h1></div><div className="room-navigation"><nav aria-label="Szobák"><button aria-pressed={room==='office'} onClick={()=>changeRoom('office')}>Iroda</button><button aria-pressed={room==='home'} onClick={()=>changeRoom('home')}>Saját szoba</button></nav></div></div>
+  <p className="room-guidance">{s.slot===0?room==='home'?'A közös alkalmat a Műhely ikonnal indíthatod.':'A közös alkalom az íróasztalnál vár.':'Érintsd meg a szoba tárgyait. A telefonon személyes találkozót egyeztethetsz.'} A körülnézés és a szobaváltás nem használ időt.</p>
+  <div className={'hub-room room-'+room}>
    <img className="hub-art" src={assetUrl(current.background)} alt={room==='office'?'Kastélybeli iroda íróasztallal, telefonnal, füzettel, fotellel, polccal, zsákkal és ajtóval.':'Kastélyszoba fali telefonnal, asztali könyvvel, fotellel, könyvespolccal, zsákkal és ajtóval.'}/>
-   {(Object.keys(OBJECTS) as ObjectId[]).map(id=><button key={id} ref={button=>{hotspots.current[id]=button??undefined;}} className={'room-hotspot spot-'+id} style={{'--spot-x':current.objects[id][0]+'%','--spot-y':current.objects[id][1]+'%'} as CSSProperties} aria-label={OBJECTS[id].label} aria-expanded={selected===id} aria-controls="room-actions" onClick={()=>open(id)}><span className="spot-mark" aria-hidden="true"><Icon name={OBJECTS[id].icon}/></span><span className="spot-label" aria-hidden="true">{SHORT_LABEL[id]}</span></button>)}
-   <button className="room-hotspot spot-door" style={{'--spot-x':current.door[0]+'%','--spot-y':current.door[1]+'%'} as CSSProperties} aria-label={'Ajtó — '+ROOMS[other].title} onClick={()=>changeRoom(other)}><span className="spot-mark" aria-hidden="true"><Icon name="door"/></span><span className="spot-label" aria-hidden="true">{ROOMS[other].title}</span></button>
+   {(Object.keys(OBJECTS) as ObjectId[]).map(id=><button key={id} ref={button=>{hotspots.current[id]=button??undefined;}} className={'room-hotspot spot-'+id+(current.fallbacks.includes(id)?' is-fallback':'')} style={{'--spot-x':current.objects[id][0]+'%','--spot-y':current.objects[id][1]+'%'} as CSSProperties} aria-label={OBJECTS[id].label} aria-expanded={selected===id} aria-controls="room-actions" onClick={()=>open(id)}>{current.fallbacks.includes(id)&&<span className="spot-mark" aria-hidden="true"><Icon name={OBJECTS[id].icon}/></span>}<span className="spot-label" aria-hidden="true">{SHORT_LABEL[id]}</span></button>)}
+   <button className="room-hotspot spot-door" style={{'--spot-x':current.door[0]+'%','--spot-y':current.door[1]+'%'} as CSSProperties} aria-label={'Ajtó — '+ROOMS[other].title} onClick={()=>changeRoom(other)}><span className="spot-label" aria-hidden="true">{ROOMS[other].title}</span></button>
   </div>
   {selected&&<section className="room-actions panel" id="room-actions" aria-labelledby="room-actions-title"><div className="room-actions-heading"><h2 id="room-actions-title" ref={heading} tabIndex={-1}><Icon name={OBJECTS[selected].icon}/>{OBJECTS[selected].title}</h2><button aria-label="Tárgymenü bezárása" onClick={close}>Bezárás</button></div>
    {selected==='desk'&&<><p>{s.slot===0?'A közös alkalom mindig elérhető, pénztől és energiától függetlenül.':'A következő közös alkalom a jövő héten lesz. Most a felkészülésre szánhatsz időt.'}</p><div className="scene-grid">{workshops.map(sceneCard)}</div>{!workshops.length&&<p className="muted">Erre a hétre nincs további felkészülési alkalom.</p>}</>}

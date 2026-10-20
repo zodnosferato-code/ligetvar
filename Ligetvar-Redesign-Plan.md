@@ -176,7 +176,7 @@ Production references are additional non-runtime material: three clothed identit
 
 ### Planning room interface
 
-User decisions, 20 October 2026: use an office and a personal room for everyday planning. Make objects in the artwork clickable, with no permanent markers; provide an explicit reveal-hints button and visible keyboard focus. The phone arranges in-person meetings, not new phone conversations. Open contextual action panels only after an object is selected. Room navigation and browsing cost no time; selecting an actual scene/activity uses the existing scheduling rules. Preserve the guaranteed shared slot and current save schema. Keep the room image uncropped so hotspot coordinates continue to align with the objects on phones as well as desktop.
+User decisions, 20 October 2026: use an office and a personal room for everyday planning. Updated user direction, 21 October 2026: keep every interactive outline and hint label permanently visible, with visible keyboard focus. Remove the hide-hints toggle. Where the artwork has no fitting object, provide an explicit labelled icon button rather than an invisible hotspot. The phone arranges in-person meetings, not new phone conversations. Open contextual action panels only after an object is selected. Room navigation and browsing cost no time; selecting an actual scene/activity uses the existing scheduling rules. Preserve the guaranteed shared slot and current save schema. Keep the room image uncropped so hotspot coordinates continue to align with the objects on phones as well as desktop.
 
 ### Dialogue composition
 

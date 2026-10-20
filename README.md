@@ -18,7 +18,7 @@ A Vite alapútvonala `/ligetvar/`, a helyi cím `http://localhost:5173/ligetvar/
 
 Hetente egy garantált közös történeti alkalom és két szabad sáv van. A nyomozásnak nem feltétele románc, pénzkereső műszak vagy magas energia. A személyes kapcsolatokhoz tanúsított beszélgetés és igen szükséges; a pontszám és ajándék nem pótolja. A 15. heti konfrontáció után a 16. heti intézményi és személyes utóélet még a félév lezárása előtt megtörténik.
 
-A heti tervezőben az iroda és a saját szoba tárgyait használod: íróasztal a közös alkalomhoz, telefon a személyes találkozókhoz, fotel a pihenéshez, zsák a munkához, polc az ajándékokhoz, füzet a naplóhoz. A „Segítség mutatása” felfedi a tárgyak címkéit. A körülnézés és szobaváltás nem fogyaszt időt.
+A heti tervezőben az iroda és a saját szoba tárgyait használod: íróasztal a közös alkalomhoz, telefon a személyes találkozókhoz, fotel a pihenéshez, zsák a munkához, polc az ajándékokhoz, füzet a naplóhoz. Minden kattintható tárgy körvonala és címkéje mindig látható; a képből hiányzó műveleti tárgyat külön ikongomb jelöli. A körülnézés és szobaváltás nem fogyaszt időt.
 
 A v2 külön mentést használ. A v1 megmarad, de az új történetet újra kell kezdeni. A címoldalon csak a régi játékosnév vehető át külön kérésre; régi páros útvonalat vagy mérföldkövet nem alakítunk át automatikusan.
 

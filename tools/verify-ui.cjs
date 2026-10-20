@@ -14,7 +14,7 @@ let browser;
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v2')));
  const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- const OBJECT_LABEL={desk:'Íróasztal — Műhely és felkészülés',phone:'Telefon — Találkozók',journal:'Napló — Nyomok és kapcsolatok',chair:'Fotel — Pihenés',shelf:'Polc — Ajándékok',bag:'Zsák — Opcionális munka'};
+ const OBJECT_LABEL={desk:'Műhely és felkészülés',phone:'Telefon — Találkozók',journal:'Napló — Nyomok és kapcsolatok',chair:'Fotel — Pihenés',shelf:'Polc — Ajándékok',bag:'Zsák — Opcionális munka'};
  const openObject=async id=>page.getByRole('button',{name:OBJECT_LABEL[id],exact:true}).click();
  const rest=async()=>{await openObject('chair');await page.getByRole('button',{name:'Pihenés · +32 energia',exact:true}).click();};
  const scene=async id=>{await openObject(SCENES[id].kind==='shared'||SCENES[id].kind==='preparation'?'desk':'phone');await page.getByRole('button',{name:new RegExp(SCENES[id].title.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();};
@@ -79,14 +79,16 @@ let browser;
    await page.setViewportSize({width,height:width===1440?1000:844});await page.getByLabel('Betűméret').selectOption(width===1440?'1':'1.3');await noOverflow();
    const boxes=await page.locator('.room-hotspot').evaluateAll(spots=>spots.map(spot=>{const r=spot.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,label:spot.getAttribute('aria-label')};}));
    for(const box of boxes)assert.ok(box.width>=44&&box.height>=44,box.label);
+   const labels=await page.locator('.spot-label').evaluateAll(labels=>labels.map(label=>{const r=label.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,text:label.textContent};}));
+   for(let i=0;i<labels.length;i++)for(let j=i+1;j<labels.length;j++){const a=labels[i],b=labels[j];assert.ok(a.x+a.width<=b.x||b.x+b.width<=a.x||a.y+a.height<=b.y||b.y+b.height<=a.y,'hint labels overlap: '+a.text+' / '+b.text);}
    for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert.ok(a.x+a.width<=b.x||b.x+b.width<=a.x||a.y+a.height<=b.y||b.y+b.height<=a.y,'touch targets overlap: '+a.label+' / '+b.label);}
    await page.screenshot({path:path.join(output,`room-${room==='Iroda'?'office':'home'}-${width}.png`),fullPage:true});
   }
-  await page.getByRole('button',{name:'Segítség mutatása',exact:true}).click();
-  assert.equal(await page.locator('.spot-mark').first().evaluate(mark=>getComputedStyle(mark).opacity),'1');
-  await page.screenshot({path:path.join(output,`room-${room==='Iroda'?'office':'home'}-hints.png`),fullPage:true});
-  await page.getByRole('button',{name:'Segítség elrejtése',exact:true}).click();
-  assert.equal(await page.locator('.spot-mark').first().evaluate(mark=>getComputedStyle(mark).opacity),'0');
+  assert.equal(await page.locator('.hint-toggle').count(),0,'interaction hints cannot be hidden');
+  const cues=await page.locator('.room-hotspot').evaluateAll(spots=>spots.map(spot=>({opacity:getComputedStyle(spot.querySelector('.spot-label')).opacity,border:getComputedStyle(spot).borderTopColor,borderWidth:parseFloat(getComputedStyle(spot).borderTopWidth)})));
+  for(const cue of cues){assert.equal(cue.opacity,'1');assert.ok(cue.borderWidth>=2);assert.notEqual(cue.border,'rgba(0, 0, 0, 0)');}
+  assert.equal(await page.locator('.room-hotspot.is-fallback .ui-icon').count(),room==='Iroda'?0:1,'missing room object has a visible icon');
+  await page.screenshot({path:path.join(output,`room-${room==='Iroda'?'office':'home'}-permanent-hints.png`),fullPage:true});
   await page.locator('.spot-phone').focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');assert.equal(await page.locator('.spot-phone .spot-label').evaluate(label=>getComputedStyle(label).opacity),'1');await page.keyboard.press('Enter');
   await page.getByRole('button',{name:'Tárgymenü bezárása',exact:true}).click();assert.equal(await page.locator('.spot-phone').evaluate(button=>button===document.activeElement),true);
   await page.getByRole('button',{name:'Ajtó — '+(room==='Iroda'?'Saját szoba':'Tanszéki iroda'),exact:true}).click();await page.getByRole('heading',{name:room==='Iroda'?'Saját szoba':'Tanszéki iroda',exact:true}).waitFor();
@@ -97,8 +99,8 @@ let browser;
   await openObject('shelf');await page.getByRole('heading',{name:'Ajándékok',exact:true}).waitFor();
   await openObject('journal');await page.getByText('Amit már tudunk',{exact:true}).waitFor();
  }
- assert.deepEqual(await state(),beforeBrowsing,'room navigation, hints and object browsing spend no time or resources');
- if(process.env.UI_ROOM_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Both rooms, responsive hotspots, hints, keyboard/door navigation, object menus and free browsing passed.');return;}
+ assert.deepEqual(await state(),beforeBrowsing,'room navigation and object browsing spend no time or resources');
+ if(process.env.UI_ROOM_ONLY==='1'){assert.deepEqual(errors,[]);console.log('Both rooms, permanent labels/outlines, fallback icon, touch targets, keyboard/door navigation and free browsing passed.');return;}
  await scene('rebeka_1');await finish();
  await openObject('bag');await page.getByRole('button',{name:'MOHU visszaváltás',exact:true}).click();await page.getByRole('button',{name:'Ugrás',exact:true}).click();await page.waitForTimeout(5000);await page.getByRole('button',{name:'Visszaváltom',exact:true}).click();assert.equal((await state()).phase,'summary');
  await page.getByRole('button',{name:'2. hét kezdése',exact:true}).click();

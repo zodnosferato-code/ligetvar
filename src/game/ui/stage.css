@@ -184,15 +184,17 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
 .room-guidance{font-size:.85em;color:var(--muted);margin:12px 0 18px;max-width:55em}
 .hub-room{position:relative;border:1px solid #ad8654;border-radius:4px;isolation:isolate;overflow:hidden}
 .hub-art{display:block;width:100%;height:auto}
-.room-hotspot{position:absolute;left:var(--spot-x);top:var(--spot-y);transform:translate(-50%,-50%);width:9%;height:13%;min-width:44px;min-height:44px;border:2px solid transparent;border-radius:12px;background:transparent;padding:0;box-shadow:none;display:grid;place-items:center}
+.room-hotspot{position:absolute;left:var(--spot-x);top:var(--spot-y);transform:translate(-50%,-50%);width:9%;height:13%;min-width:44px;min-height:44px;border:2px solid #e4bd7bcc;border-radius:12px;background:#291a241a;padding:0;box-shadow:0 0 0 1px #281b2399;display:grid;place-items:center}
 .room-hotspot:hover:not(:disabled),.room-hotspot[aria-expanded=true]{background:#e0bd8014;border-color:#e4bd7b88;box-shadow:none}
 .room-hotspot:focus-visible{outline:3px solid #ffe1a8;outline-offset:2px;background:#1c141866}
-.spot-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid #d4ad72;background:#291a24ee;border-radius:50%;opacity:0;pointer-events:none}
+.spot-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid #d4ad72;background:#291a24ee;border-radius:50%;opacity:1;pointer-events:none}
 .spot-mark .ui-icon{margin:0;width:22px;height:22px}
-.spot-label{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#281b23f5;border:1px solid #b99560;border-radius:3px;padding:4px 8px;color:#f5e3c5;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none}
-.show-hints .spot-mark,.show-hints .spot-label,.room-hotspot:focus-visible .spot-mark,.room-hotspot:focus-visible .spot-label,.room-hotspot:hover .spot-label{opacity:1}
+.spot-label{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#281b23f5;border:1px solid #b99560;border-radius:3px;padding:4px 8px;color:#f5e3c5;font-size:12px;white-space:nowrap;opacity:1;pointer-events:none}
+.room-hotspot.is-fallback{background:#291a24ed}
+.room-hotspot.is-fallback .spot-label{bottom:auto;top:calc(100% + 4px)}
 .spot-shelf .spot-label,.spot-phone .spot-label,.spot-journal .spot-label{left:auto;right:0;transform:none}
 .spot-bag .spot-label{left:0;transform:none}
+.spot-journal .spot-label,.room-home .spot-shelf .spot-label{bottom:0}
 .room-actions-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .room-actions-heading h2{margin:0;min-width:0}
 .room-actions-heading h2:focus{outline:none}

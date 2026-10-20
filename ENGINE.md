@@ -16,7 +16,7 @@
 
 ## Tárgyakkal vezérelt tervező
 
-A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. Az ajtó vagy a szobaválasztó ingyenesen vált helyiséget. A tárgyak alapból jelöletlenek; a „Segítség mutatása” felfedi az ikonokat és címkéket. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
+A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. Az ajtó vagy a szobaválasztó ingyenesen vált helyiséget. A tárgyak körvonala és műveleti címkéje mindig látható, elrejtő kapcsoló nélkül. Megfelelő háttértárgy hiányában a szoba `fallbacks` listája kijelöli a külön, címkézett ikongombbal megjelenő műveletet. A saját szobában a Műhely külön ikon, az asztali könyv pedig a napló. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
 
 | Tárgy | Megnyitott műveletek |
 | --- | --- |
@@ -27,7 +27,7 @@ A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a m
 | Polc | Ajándékok vásárlása és átadása |
 | Zsák | MOHU és iratellenőrző munka |
 
-A szoba és a segítség állapota csak felületi állapot; jelenetből visszatérve a szobaválasztás megmarad, újratöltéskor az iroda az alapértelmezett. A tárgyak böngészése nem módosítja a mentést, energiát vagy heti sávot. Nincs új telefonos dialógus, meghívás- vagy időpont-állapot: a meglévő jelenetek előfeltételei és befejezéskori sávköltsége változatlanok. Az első sávban az íróasztal közös jelenete elérhető, az opcionális tevékenységek csak utána indíthatók.
+A szobaválasztás csak felületi állapot; jelenetből visszatérve a szobaválasztás megmarad, újratöltéskor az iroda az alapértelmezett. A tárgyak böngészése nem módosítja a mentést, energiát vagy heti sávot. Nincs új telefonos dialógus, meghívás- vagy időpont-állapot: a meglévő jelenetek előfeltételei és befejezéskori sávköltsége változatlanok. Az első sávban az íróasztal közös jelenete elérhető, az opcionális tevékenységek csak utána indíthatók.
 
 ## Portrék és jelenetkompozíció
 
