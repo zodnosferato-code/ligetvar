@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "purpose": "First reviewed runtime portrait batch; source candidates remain unchanged",
+  "assets": [
+    {
+      "actor": "rebeka",
+      "expression": "neutral",
+      "veniceSource": "assets/generated/venice/portraits/rebeka/neutral.png",
+      "veniceSourceSha256": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05",
+      "veniceModel": "wai-Illustrious",
+      "cutoutProvider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based identity cleanup and transparent cutout",
+      "promptSummary": "Preserve adult face, purple eyes, expression, black hair with viewer-right plum stripe, opaque high-neck dress and silver choker. Remove white background to alpha. Reduce duplicate beauty marks to one below viewer-right eye. Extend cropped crown and shoulders; complete head with transparent margin. Do not mirror or redesign.",
+      "additionalStyleReference": null,
+      "master": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+      "masterSha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/rebeka/neutral-v1.webp",
+      "runtimeSha256": "da2a7e4d6feff3b94b9907678761a0e961ed0f7267c63c32ee23eaa3d300ce6c",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "export": "Sharp resize contain, transparent padding; WebP quality 95, alphaQuality 100",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-21",
+      "finalUserStyleApproval": false
+    },
+    {
+      "actor": "boglarka",
+      "expression": "neutral",
+      "veniceSource": "assets/generated/venice/portraits/boglarka/neutral.png",
+      "veniceSourceSha256": "736111e15ac54068de110b8486647e007b6c512bcfd7ffcc97846761ff1ba933",
+      "veniceModel": "firered-image-edit",
+      "cutoutProvider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based identity cleanup and transparent cutout",
+      "promptSummary": "Preserve adult face, brown eyes, natural freckles, moss-green cardigan and cream dress. Remove white background to alpha. Move single brown braid to anatomical RIGHT / viewer LEFT without mirroring the face. Show complete crown and shoulders. Keep neutral attentive expression and original anime cel shading.",
+      "additionalStyleReference": null,
+      "master": "assets/generated/portrait-cutouts/boglarka-neutral-v1.png",
+      "masterSha256": "57349d7a9e28f6a993d35f2ec155e6f8295f7885f66a683885eab4cba1820a20",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/boglarka/neutral-v1.webp",
+      "runtimeSha256": "b6350a5a7b3d95bc29042223216afece371f929751eae8c83eca9090c8f18b16",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "export": "Sharp resize contain, transparent padding; WebP quality 95, alphaQuality 100",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-21",
+      "finalUserStyleApproval": false
+    },
+    {
+      "actor": "greta",
+      "expression": "neutral",
+      "veniceSource": "assets/generated/venice/portraits/greta/neutral.png",
+      "veniceSourceSha256": "36323e93db75969236034e719908aec3e9d8780704a25e467d04c225b93e767a",
+      "veniceModel": "firered-image-edit",
+      "cutoutProvider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based identity cleanup and transparent cutout",
+      "promptSummary": "Preserve rectangular adult face, blue eyes, copper ponytail, forest-green vest and white shirt. Remove erroneously copied beauty marks. Keep rectangular clear-lens glasses. Button shirt to collar. Reframe as head-and-shoulders at Rebeka reference scale. Transparent alpha; no pencil, text or new accessories.",
+      "additionalStyleReference": "rebeka-neutral-v1.png",
+      "master": "assets/generated/portrait-cutouts/greta-neutral-v1.png",
+      "masterSha256": "1e1589c266b53cb0d65e21fea5dbdfb971f6cd4ffb3835e41ec04d62ba535eaa",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/greta/neutral-v1.webp",
+      "runtimeSha256": "082f0ac5ff63c3e4ccb7403988605b33d533c636291760388fc95675338f008d",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "export": "Sharp resize contain, transparent padding; WebP quality 95, alphaQuality 100",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-21",
+      "finalUserStyleApproval": false
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "classroom",
+      "source": "assets/generated/venice/backgrounds/classroom.png",
+      "sourceSha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a",
+      "runtime": "assets/backgrounds/classroom-anime-v1.webp",
+      "runtimeSha256": "59539584b3bb4cf0392f85b61bc4b0cefeb85d68c34b4c0478cc165d6bc80102",
+      "size": [
+        1280,
+        720
+      ],
+      "export": "Sharp WebP quality 95; no composition edits",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-21"
+    }
+  ]
+}

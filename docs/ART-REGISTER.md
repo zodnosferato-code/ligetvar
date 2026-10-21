@@ -1,63 +1,67 @@
-# Art register — transitional runtime
+# Art register — reviewed first batch
 
-> **Status:** Active. | **Purpose:** Runtime art inventory, accepted direction, and open art gates.
+> **Status:** Partial runtime integration. | **Purpose:** Exact art coverage, visual review and remaining production work.
 
-The user requested systematic Venice generation on 19 October 2026. The production inventory and two-image pilot request are prepared; actual generated outputs and review results must be recorded after the workflow runs. Existing character art has been archived and is no longer used by the runtime. The current backgrounds remain transitional; none is being promoted to final anime approval. The user likes the current backgrounds' atmosphere and wants them preserved as the visual baseline. Missing explicit illustrations are outside every engine/story gate. The final 31 non-explicit runtime assets and reference sheets remain an open art gate.
+On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Four of the 32 required runtime images are now visually reviewed and integrated; 28 remain, plus five production reference sheets. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
 
-Approved direction: highly detailed, non-pixel anime illustration with crisp cel shading. Redraw character art from scratch while retaining key identifiers such as recognizable hair colors, silhouettes, or signature details; old images are not style templates. Compose backgrounds from the player's seated point of view, with a clear, natural seat for the girl opposite. Keep the existing gothic mood and add subtle modern college cues. Per-character identifiers and exact framing can be confirmed in the style sample before production.
+## Character review
 
-Earlier character images, prompts, and visual locks have been archived under `assets/archive/characters/`. No prior visual character design is treated as canonical. The runtime portraits are placeholders until new designs are approved. Historical artwork/provenance is outside active runtime paths and the manifest; `public/references` was removed.
+| Character | Identity and temperament preserved | Cleanup in this batch |
+| --- | --- | --- |
+| Rebeka, 20 | Proud/direct gothic silhouette, long black hair, viewer-right plum streak, high-neck black dress, silver choker | One viewer-right beauty mark; complete crown; transparent background |
+| Boglárka, 19 | Quietly observant adult face, freckles, brown eyes/hair, moss-green cardigan and cream dress | Braid over anatomical right shoulder (viewer left); complete crown; transparent background |
+| Gréta, 21 | Practical/direct presence, copper ponytail, rectangular glasses, white shirt and green vest | Removed copied beauty marks; buttoned shirt; matched head-and-shoulders framing; transparent background |
+
+The portraits remain distinct while sharing linework, cel shading and soft neutral light. Neutral portraits are deliberately reused for missing expressions; no amused/affectionate image substitutes for displeasure. Márton is the viewpoint character and has no portrait; narration has none. The five other human NPCs and Soma's transformed portrait remain pending. Their proposed written designs must be reviewed before deriving variants.
+
+## Runtime coverage
 
 | Required asset | Current source or fallback | Status |
 | --- | --- | --- |
-| rebeka / neutral | — | Placeholder; new design pending |
-| rebeka / amused | — | Placeholder; new design pending |
-| rebeka / displeased | — | Placeholder; new design pending |
-| rebeka / vulnerable | — | Placeholder; new design pending |
-| rebeka / affectionate | — | Placeholder; new design pending |
-| boglarka / neutral | — | Placeholder; new design pending |
-| boglarka / amused | — | Placeholder; new design pending |
-| boglarka / displeased | — | Placeholder; new design pending |
-| boglarka / vulnerable | — | Placeholder; new design pending |
-| boglarka / affectionate | — | Placeholder; new design pending |
-| greta / neutral | — | Placeholder; new design pending |
-| greta / amused | — | Placeholder; new design pending |
-| greta / displeased | — | Placeholder; new design pending |
-| greta / vulnerable | — | Placeholder; new design pending |
-| greta / affectionate | — | Placeholder; new design pending |
-| soma_human | Labelled text placeholder | Final portrait pending |
-| soma_vampire | Labelled text placeholder | Final portrait pending |
-| denes | Labelled text placeholder | Final portrait pending |
-| julia | Labelled text placeholder | Final portrait pending |
-| aron | Labelled text placeholder | Final portrait pending |
-| classroom | backgrounds/classroom.jpg | transitional; final approved background pending |
-| library | backgrounds/library.jpg | transitional; final approved background pending |
-| department | backgrounds/department.jpg | transitional; final approved background pending |
-| holdkor | backgrounds/holdkor-night.jpg | transitional; final approved background pending |
-| courtyard | backgrounds/courtyard.jpg | transitional; final approved background pending |
-| apartment | backgrounds/apartment.jpg | transitional; final approved background pending |
-| bekas | backgrounds/bekas-to.jpg | transitional; final approved background pending |
-| chamber | Képhelyőrző: gépészeti kamra, kőfal, régi vezetékek és szerelőakna. | placeholder; final approved background pending |
-| classroom_dusk | Time metadata only; no approved derived image | Pending |
-| courtyard_night | Time metadata only; no approved derived image | Pending |
-| library_evening | Time metadata only; no approved derived image | Pending |
+| rebeka / neutral | characters/rebeka/neutral-v1.webp | Reviewed; integrated |
+| rebeka / amused | Own neutral portrait | Variant pending |
+| rebeka / displeased | Own neutral portrait | Variant pending |
+| rebeka / vulnerable | Own neutral portrait | Variant pending |
+| rebeka / affectionate | Own neutral portrait | Variant pending |
+| boglarka / neutral | characters/boglarka/neutral-v1.webp | Reviewed; integrated |
+| boglarka / amused | Own neutral portrait | Variant pending |
+| boglarka / displeased | Own neutral portrait | Variant pending |
+| boglarka / vulnerable | Own neutral portrait | Variant pending |
+| boglarka / affectionate | Own neutral portrait | Variant pending |
+| greta / neutral | characters/greta/neutral-v1.webp | Reviewed; integrated |
+| greta / amused | Own neutral portrait | Variant pending |
+| greta / displeased | Own neutral portrait | Variant pending |
+| greta / vulnerable | Own neutral portrait | Variant pending |
+| greta / affectionate | Own neutral portrait | Variant pending |
+| soma / neutral | Labelled NPC placeholder | Pending |
+| soma / transformed | Labelled NPC placeholder | Pending |
+| denes | Labelled NPC placeholder | Pending |
+| julia | Labelled NPC placeholder | Pending |
+| aron | Labelled NPC placeholder | Pending |
+| lilla | Labelled NPC placeholder | Pending |
+| classroom | backgrounds/classroom-anime-v1.webp | Reviewed; integrated |
+| library | backgrounds/library.jpg | Transitional; replacement pending |
+| department | backgrounds/department.jpg | Transitional; replacement pending |
+| holdkor | backgrounds/holdkor-night.jpg | Transitional; replacement pending |
+| courtyard | backgrounds/courtyard.jpg | Transitional; replacement pending |
+| apartment | backgrounds/apartment.jpg | Transitional; replacement pending |
+| bekas | backgrounds/bekas-to.jpg | Transitional; replacement pending |
+| chamber | Labelled missing room or existing base with CSS lighting | Pending |
+| classroom_dusk | Labelled missing room or existing base with CSS lighting | Pending |
+| courtyard_night | Labelled missing room or existing base with CSS lighting | Pending |
+| library_evening | Labelled missing room or existing base with CSS lighting | Pending |
 
-These are 31 requested production records, not 31 completed images. Reference sheets (three clothed character identity sheets, assistant sheet, architecture/layout sheet) are still pending. The combined portrait/background style sample has not been generated or approved; runtime portraits remain placeholders while existing backgrounds continue as transitional scene art. A visual review of layout does not satisfy identity/style approval.
+## Sources and export review
 
-Final art acceptance: stable identity and framing, all five expressions per woman with neutral fallback, exact locations, consistent modern college details and lighting, no mirroring of identity marks, clean mobile readability. Production must follow redesign sections 8–9.
+Venice WAI Illustrious/FireRed candidate sources and refinement history remain under `assets/generated/venice/`. The classroom was inspected as an empty daytime college interior with electric desk lamps and an unobstructed foreground table. Its 1280×720 WebP export retains the source composition. Office/bedroom planning art and hotspot alignment are unchanged.
 
-## Venice production
+Built-in imagegen performed the three identity cleanups and generated genuine portrait alpha; Venice alpha was not available in the earlier run and was not retested. Full-resolution 1122×1402 PNG cutouts, source hashes and export metadata are in `assets/generated/portrait-cutouts/manifest.json`. Runtime portraits are 640×800 WebP (quality 95, alphaQuality 100), approximately 88–112 KiB each. Full-resolution masters and provenance are not publicly shipped. Alpha was checked numerically and on actual desktop/mobile dialogue backgrounds. Opening controls remain fixed at 1440px, 390px and 320px/130% text.
 
-See [VENICE-PRODUCTION.md](VENICE-PRODUCTION.md) for 32 runtime images (the 31 planned images plus Lilla) and five production references. The initial pilot is Rebeka neutral plus classroom. Generation alone does not satisfy final visual acceptance.
+## Production order and remaining gates
 
-## WAI + FireRed pilot review
+1. Use the cleaned neutral PNG masters for twelve expression edits, one image at a time. Preserve face geometry, outfit, side-specific marks, crop and eye line. The older opaque Venice candidates must not seed expression production without the cleanup.
+2. Review Soma, Dénes, Júlia, Áron and Lilla neutral portraits; derive Soma's transformed form from the accepted human master.
+3. Review seven remaining base locations, then three lighting variants derived from accepted architecture. Keep the seated player viewpoint and a natural companion seat.
+4. Create the five production reference sheets from reviewed masters/locations.
 
-The user selected WAI Illustrious + FireRed. Two style candidates now exist (Rebeka neutral and classroom), with raw sources and refinement history under `assets/generated/venice/`. The first WAI attempt was rejected and archived. The revised portrait is an adult anime bust with an opaque high-neck dress and correct-side plum streak; the classroom has no blocking near chair. Minor portrait cleanup and final user acceptance remain open. Venice background removal returned HTTP 403, so portrait alpha remains a separate unfinished item. See `pilot-review.json` for hashes and actual review scope. The next requested batch is seven additional neutral character portraits; no candidate has been promoted to runtime.
-
-## Current provider block — 19 October 2026
-
-**2 of 37 candidate images exist; 35 remain.** The seven-neutral-master run [39290511812](https://github.com/zodnosferato-code/ligetvar/actions/runs/39290511812) reused the current Rebeka style candidate, then Venice returned **HTTP 402** on the first new request (`boglarka_neutral`, `/image/multi-edit`). No other neutral master was generated. Check the account's USD/DIEM balance and the API key's spending limits before resuming; the exact provider error category was not captured, so do not assert which balance or limit is responsible. No paid retries are scheduled.
-
-The separate alpha endpoint returned HTTP 403. A local, deterministic white-background extraction was tested on the pilot and inspected on dark blue; edge halos remain, so the trial is not a production export and has not been promoted. Source art remains unchanged. Final art, transparency, identity cleanup and runtime registration are still open.
-
-Machine-readable checkpoint: `assets/generated/venice/production-status.json`. The current request remains the seven-neutral-master batch, with existing candidate/source hashes checked before reuse. The most recent 30-test and Pages workflows succeeded; no unreviewed candidate is shipped by runtime paths.
+Historical HTTP 402 stopped the 19 October batch; the two 21 October one-image generations succeeded. The previous `/image/background-remove` HTTP 403 remains historical, not a claim about current capability. No payment settings changed and no automatic paid retries are scheduled. All 28 missing runtime records and five reference sheets remain open; this batch does not complete the redesign or final art acceptance. Prior archived character art remains outside runtime.
