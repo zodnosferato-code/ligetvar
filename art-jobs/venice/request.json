@@ -1,16 +1,10 @@
 {
-  "id": "2026-10-19-neutral-masters-01",
+  "id": "2026-10-21-boglarka-master-01",
   "phase": "masters",
   "assets": [
-    "boglarka_neutral",
-    "greta_neutral",
-    "soma_neutral",
-    "denes_neutral",
-    "julia_neutral",
-    "aron_neutral",
-    "lilla_neutral"
+    "boglarka_neutral"
   ],
-  "maxNewImages": 7,
+  "maxNewImages": 1,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
