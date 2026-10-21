@@ -167,6 +167,42 @@
       "status": "candidate-needs-alpha-and-visual-review",
       "generatedAt": "2026-10-21T12:34:30.268Z",
       "request": "2026-10-21-greta-master-01"
+    },
+    "library": {
+      "id": "library",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. A quiet castle-college library in daytime. Tall dark wooden bookcases, pointed stone arches, electric reading lamps, slate-blue autumn light from windows. Seated player at a shared reading table, one empty chair opposite.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/library.jpg",
+          "sha256": "0819b8073a1b82a5fc38fd5a91894d1952d5fd74193bb7c696886f34c5ae00a2"
+        },
+        {
+          "id": "classroom",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. A quiet castle-college library in daytime. Tall dark wooden bookcases, pointed stone arches, electric reading lamps, slate-blue autumn light from windows. Seated player at a shared reading table, one empty chair opposite.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/library.png",
+      "signature": "e1f34a76f0d9885fa743aa4b3b84f5f959d178674b967d29589d69206653047c",
+      "sha256": "0f8015be37b975b64e29183a1915d8b44dccb8f556cc9a1cf1c1cf679a84dadd",
+      "bytes": 2006400,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-21T15:25:00.440Z",
+      "request": "2026-10-21-locations-01"
     }
   },
   "runs": [
@@ -272,6 +308,20 @@
         "rebeka_neutral"
       ],
       "finishedAt": "2026-10-21T12:34:30.268Z"
+    },
+    {
+      "request": "2026-10-21-locations-01",
+      "phase": "backgrounds",
+      "startedAt": "2026-10-21T15:23:02.731Z",
+      "status": "failed",
+      "generated": [
+        "library"
+      ],
+      "reused": [
+        "classroom"
+      ],
+      "finishedAt": "2026-10-21T15:26:47.447Z",
+      "failure": "terminated"
     }
   ],
   "capabilities": {
