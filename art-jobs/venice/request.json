@@ -1,8 +1,8 @@
 {
-  "id": "2026-10-21-boglarka-master-01",
+  "id": "2026-10-21-greta-master-01",
   "phase": "masters",
   "assets": [
-    "boglarka_neutral"
+    "greta_neutral"
   ],
   "maxNewImages": 1,
   "generationModel": "wai-Illustrious",
