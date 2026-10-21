@@ -23,7 +23,7 @@ A teljes [dokumentációs index](docs/README.md) felsorolja az aktív és archiv
 
 A v2 külön kulcsot használ; a régi v1 változatlanul megmarad, történetét újra kell kezdeni. Csak a játékosnév vehető át külön kérésre. Régi páros útvonalat vagy flaget ne fordíts új vállalássá.
 
-A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. A korábbi karakterképek és képzési instrukciók az archívumba kerültek; a runtime karakterportrék jelenleg helyőrzők. Új vizuális karakter-lock még nincs jóváhagyva. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. A történeti, nem aktív képek az `assets/archive/` alatt vannak. A játék csak a manifestben felsorolt eszközöket használja; az archívum nem kerül publikált assetútvonalakra.
+A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. A korábbi karakterképek és képzési instrukciók az archívumba kerültek; Rebeka, Boglárka és Gréta átnézett semleges runtime portréja az `assets/characters/` alatt van; a többi szereplő helyőrző. A hiányzó kifejezések az adott szereplő semleges képére esnek vissza. A teljes képi készlet végső felhasználói jóváhagyása még nyitott. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. A történeti, nem aktív képek az `assets/archive/` alatt vannak. A játék csak a manifestben felsorolt eszközöket használja; az archívum nem kerül publikált assetútvonalakra.
 
 ## Ellenőrzés és munkafolyamat
 
@@ -53,3 +53,8 @@ A felhasználó 2026-10-19-én kérte a szükséges képek módszeres generálá
 Az `IMAGE_GENERATOR_KEY` kizárólag Actions secretként kerül a Node futtatókörnyezetbe. Kész képet és eredményt csak ténylegesen létrejött fájl alapján jelents. A `assets/generated/venice/` jelölt képeit prompt-, referencia- és fájlhash, méret, alpha és státusz kíséri. A generálás nem automatikus végső jóváhagyás; a runtime manifestbe vizuális ellenőrzés után kerülhet kép. A régi karakterképeket ne állítsd vissza.
 
 Jóváhagyott képmodellpáros (2026-10-19): `wai-Illustrious` + `firered-image-edit`. Portré-alpha: Venice `/image/background-remove`. A korábbi GPT-modellazonosítók a tényleges kulccsal nem érhetők el; ne állítsd őket vissza ellenőrzés nélkül. A modellképességekhez igazított paramétereket a `scripts/venice/profile.mjs` állítja össze.
+
+
+## Reviewed runtime art — 21 October 2026
+
+The first playable art batch contains three neutral women portraits and the classroom. Use the cleaned masters in `assets/generated/portrait-cutouts/` as identity references for subsequent expressions, not the older opaque Venice candidates. Their manifest records both source and export hashes. WAI/FireRed sources were cleaned into transparent cutouts with the built-in imagegen tool; do not claim Venice produced alpha. Only the 640×800 WebP exports enter `assets/characters/`; generation masters, prompts and rejected candidates stay outside public paths. The reviewed classroom is `backgrounds/classroom-anime-v1.webp`; existing office/bedroom hotspot backgrounds stay unchanged. `reviewed` means assistant visual/runtime review, not final user approval of the entire art set. Produce and inspect one dependent image at a time.

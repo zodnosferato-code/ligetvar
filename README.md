@@ -4,7 +4,7 @@
 
 Magyar, tizenhat hetes gótikus romantikus történetjáték egy kastélyban működő főiskolán. A fakultatív műhely résztvevői eltűnések és hiányzó emlékek nyomát követik. Három egyéni románc, Rebeka–Boglárka–Márton közös kapcsolat, barátság, visszalépés és gyenge felkészülésű történeti kimenetel játszható.
 
-Az általános motor és a történet külön TypeScript modulokban működik. Az aktív regiszter 54 jelenetet tartalmaz; az első három hét és a három első személyes találkozó kibontott választási ágakat kapott, és kilenc helyzetfüggő kávés beszélgetés is játszható. A félév későbbi jelenetei még rövidek, további írói kidolgozásra várnak. A végleges képkészlet még nincs kész: a karakterportrék jelenleg helyőrzők, a meglévő háttérképek pedig átmenetiek, és a játék ezeket továbbra is használja. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
+Az általános motor és a történet külön TypeScript modulokban működik. Az aktív regiszter 54 jelenetet tartalmaz; az első három hét és a három első személyes találkozó kibontott választási ágakat kapott, és kilenc helyzetfüggő kávés beszélgetés is játszható. A félév későbbi jelenetei még rövidek, további írói kidolgozásra várnak. A végleges képkészlet még nincs kész: Rebeka, Boglárka és Gréta átlátszó semleges portréja és az anime tanterem már a játékban van. A többi szereplő helyőrzőt kap; a hiányzó kifejezések semleges portréra esnek vissza. A többi meglévő háttér átmeneti. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
 
 ```bash
 npm ci
@@ -35,3 +35,4 @@ The repository includes a Node 22+ server-side smoke test for Venice's OpenAI-co
 The script calls `POST /chat/completions` with a short test message. It does not expose the key to the browser, and non-2xx responses fail without dumping potentially sensitive response bodies. Local `.env` files are ignored by Git, but this script reads the process environment directly; Node does not automatically load `.env` files here. This is a chat connectivity test, not an image-generation test.
 
 Venice documentation: https://docs.venice.ai
+

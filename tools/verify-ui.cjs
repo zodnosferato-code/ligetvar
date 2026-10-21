@@ -2,14 +2,14 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
 const output=path.resolve(process.env.UI_OUTPUT_DIR||'ui-review');fs.mkdirSync(output,{recursive:true});
-const root=path.resolve('dist');const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.jpg':'image/jpeg','.png':'image/png','.mp3':'audio/mpeg'};
+const root=path.resolve('dist');const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.mp3':'audio/mpeg'};
 const server=http.createServer((req,res)=>{const relative=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/ligetvar\//,'');const file=path.resolve(root,relative||'index.html');if(!file.startsWith(root+path.sep)&&file!==root){res.writeHead(403).end();return;}fs.readFile(file,(err,data)=>{if(err)res.writeHead(404).end();else res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'}).end(data);});});
 const TRIAD={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['prepare_backup','triad_6'],13:['rebeka_5','boglarka_5'],14:['prepare_signals','triad_7'],16:['triad_8']};
 let browser;
 (async()=>{
  const {SCENES}=await import('../src/game/content/catalog.ts');
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port+'/ligetvar/';
- const args=['--no-sandbox','--disable-dev-shm-usage','--no-zygote','--disable-gpu'];if(process.env.CHROMIUM_SERVERLESS==='1')args.push('--single-process');
+ const args=['--no-sandbox','--disable-dev-shm-usage','--no-zygote','--disable-gpu'];if(process.env.CHROMIUM_SERVERLESS==='1')args.push('--single-process','--use-angle=swiftshader','--use-gl=angle');
  browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||undefined,args});
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v2')));
@@ -24,7 +24,13 @@ let browser;
    await page.getByLabel('Betűméret').selectOption(scale);await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();await scene('shared_1');
    let anchor=null,lines=0,speakers=new Set();
    while((await state()).phase==='scene'){
-    const cursor=(await state()).scene.line;speakers.add(SCENES.shared_1.lines.find(line=>line.id===cursor).speaker);
+    const cursor=(await state()).scene.line,actor=SCENES.shared_1.lines.find(line=>line.id===cursor).speaker;
+    if(['rebeka','boglarka','greta'].includes(actor)){
+     const image=page.locator('.scene-view .portrait img');await image.waitFor();await image.evaluate(img=>img.decode());
+     assert.ok(await image.evaluate(img=>img.naturalWidth===640&&img.naturalHeight===800),'runtime portrait export loads');
+     if(!speakers.has(actor))await page.screenshot({path:path.join(output,actor+'-'+width+'.png'),fullPage:true});
+    }else if(actor==='marton'||actor==='narrator')assert.equal(await page.locator('.portrait').count(),0);
+    speakers.add(actor);
     const button=page.locator('.choices button').first();await button.waitFor();
     const box=await button.boundingBox();const relative=await page.locator('.dialogue').boundingBox();
     const point={x:box.x,y:box.y-relative.y,viewportY:box.y,width:box.width};
@@ -51,7 +57,7 @@ let browser;
  await page.setViewportSize({width:1440,height:1000});await page.getByLabel('Betűméret').selectOption('1');
  assert.equal(await page.locator('img.ui-icon').evaluateAll(images=>images.every(image=>image.complete&&image.naturalWidth>0)),true,'icons resolve in the production build');
  await page.locator('.choices button').first().click();await page.locator('.choices button').first().click();
- await page.locator('.scene-view .portrait-placeholder').waitFor();assert.equal(await page.locator('.dialogue-panel .portrait').count(),0);await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
+ await page.locator('.scene-view .portrait img').waitFor();assert.ok(await page.locator('.scene-view .portrait img').evaluate(img=>img.complete&&img.naturalWidth>0),'reviewed portrait loads');assert.equal(await page.locator('.dialogue-panel .portrait').count(),0);await page.screenshot({path:path.join(output,'desktop-portrait.png'),fullPage:true});await noOverflow();
  await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).scene.line,'line_2');
  for(const width of [390,320]){
   await page.setViewportSize({width,height:844});await page.getByLabel('Betűméret').selectOption('1.3');await noOverflow();
@@ -150,3 +156,4 @@ let browser;
  assert.deepEqual(errors,[]);
  console.log(JSON.stringify({result:'passed',checks:['partner portrait over scenery and no player portrait','unobstructed mobile scenery and scrollable text','fixed daytime/nighttime hubs, free browsing, reload, hints, phone and preparation','castle title and icon assets','narration without a character portrait','1440px desktop','390px/320px mobile at 130% text','real save/resume','touch runner and offscreen items','16-week friendship UI','16-week triad UI','aftermath before closure','no horizontal overflow','no page errors','coffee choice branch save/resume','witnessed week-8 callback'],screenshots:fs.readdirSync(output)},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.close();});
+
