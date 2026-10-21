@@ -103,6 +103,38 @@
           "createdAt": "2026-10-19T16:57:15.255Z"
         }
       ]
+    },
+    "boglarka_neutral": {
+      "id": "boglarka_neutral",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. One fully clothed adult, head-and-shoulders, slight turn toward viewer, both eyes visible. Whole hair and shoulders in frame; eyes at 30% height. 4:5 composition, consistent cast scale, soft neutral light, attentive neutral expression. Flat white background for alpha extraction, no scenery or checkerboard. Boglárka Fazekas, clearly adult 19-year-old woman, unmistakably adult facial proportions. 150 cm tall, softly fuller overall figure without exaggerated abdomen, round adult face, natural freckles, warm brown eyes and brown hair in a simple loose side braid over her anatomical RIGHT shoulder (viewer left in frontal view). Moss-green cardigan over cream dress. No glasses. Quietly observant gaze, understated warmth; do not make her look childlike. The supplied portrait is a RENDERING STYLE reference only. Create a completely different adult person with the identity specified here; do not copy the reference face, hair, clothing or identity marks.",
+      "refs": [
+        {
+          "id": "rebeka_neutral",
+          "sha256": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. One fully clothed adult, head-and-shoulders, slight turn toward viewer, both eyes visible. Whole hair and shoulders in frame; eyes at 30% height. 4:5 composition, consistent cast scale, soft neutral light, attentive neutral expression. Flat white background for alpha extraction, no scenery or checkerboard. Boglárka Fazekas, clearly adult 19-year-old woman, unmistakably adult facial proportions. 150 cm tall, softly fuller overall figure without exaggerated abdomen, round adult face, natural freckles, warm brown eyes and brown hair in a simple loose side braid over her anatomical RIGHT shoulder (viewer left in frontal view). Moss-green cardigan over cream dress. No glasses. Quietly observant gaze, understated warmth; do not make her look childlike. The supplied portrait is a RENDERING STYLE reference only. Create a completely different adult person with the identity specified here; do not copy the reference face, hair, clothing or identity marks.",
+        "safe_mode": true,
+        "aspect_ratio": "4:5",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": true,
+      "postprocess": "/image/background-remove",
+      "file": "portraits/boglarka/neutral.png",
+      "signature": "01467fd43d520f6063ea757cc3222efa63b8b3a81dc6db4514473e843a1dc626",
+      "sha256": "736111e15ac54068de110b8486647e007b6c512bcfd7ffcc97846761ff1ba933",
+      "bytes": 1064313,
+      "width": 896,
+      "height": 1120,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-needs-alpha-and-visual-review",
+      "generatedAt": "2026-10-21T12:29:12.192Z",
+      "request": "2026-10-21-boglarka-master-01"
     }
   },
   "runs": [
@@ -182,6 +214,19 @@
       ],
       "finishedAt": "2026-10-19T17:01:21.642Z",
       "failure": "Venice /image/multi-edit failed: HTTP 402"
+    },
+    {
+      "request": "2026-10-21-boglarka-master-01",
+      "phase": "masters",
+      "startedAt": "2026-10-21T12:28:24.493Z",
+      "status": "completed-with-pending-alpha",
+      "generated": [
+        "boglarka_neutral"
+      ],
+      "reused": [
+        "rebeka_neutral"
+      ],
+      "finishedAt": "2026-10-21T12:29:12.193Z"
     }
   ],
   "capabilities": {
