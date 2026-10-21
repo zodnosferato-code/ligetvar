@@ -203,6 +203,186 @@
       "status": "candidate-awaiting-visual-review",
       "generatedAt": "2026-10-21T15:25:00.440Z",
       "request": "2026-10-21-locations-01"
+    },
+    "department": {
+      "id": "department",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. A working university department office in a gothic castle, daytime. Dark timber shelves, stone window surround, ordinary folders without readable labels, a laptop closed on a side desk, subtle electric light. The player sits at a meeting table with an empty visitor chair opposite.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/department.jpg",
+          "sha256": "f64db54cca34c499fce2903d841bf6756fa60b8f04033b544ab81762d05f8b35"
+        },
+        {
+          "id": "classroom",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. A working university department office in a gothic castle, daytime. Dark timber shelves, stone window surround, ordinary folders without readable labels, a laptop closed on a side desk, subtle electric light. The player sits at a meeting table with an empty visitor chair opposite.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/department.png",
+      "signature": "fee7d467af5a6cc8afaf6ff2e35b9eace8bfbb210bec7b4dbec471d2c9b34c0e",
+      "sha256": "8ed3f2420c9a02a158760e823238829c60495530761bb784db3aa9730fcd47d6",
+      "bytes": 1967454,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-21T15:31:10.354Z",
+      "request": "2026-10-21-locations-02"
+    },
+    "holdkor": {
+      "id": "holdkor",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. Holdkör student arts club in the castle basement at night: vaulted stone ceiling, intimate amber electric lamps, simple small projection screen and dark timber furniture. Seated player at a small conversational table, empty chair opposite. No ritual props invented here.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/holdkor-night.jpg",
+          "sha256": "c2e5b86832d4e14227dfa0757d280f681fc00dde49b59502b28ee94ab21421fe"
+        },
+        {
+          "id": "classroom",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. Holdkör student arts club in the castle basement at night: vaulted stone ceiling, intimate amber electric lamps, simple small projection screen and dark timber furniture. Seated player at a small conversational table, empty chair opposite. No ritual props invented here.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/holdkor.png",
+      "signature": "29c67e09764396e4c491e3c87272d2952432745e9bfa23d65ac829c9216998e4",
+      "sha256": "7f6dd6593774ed6a06c8c81663d2a2dc50e9a26e079ea277e5e43ed8a361e3aa",
+      "bytes": 1807632,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-21T15:32:51.304Z",
+      "request": "2026-10-21-locations-02"
+    },
+    "courtyard": {
+      "id": "courtyard",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. The college inner courtyard by day under a cool autumn sky: weathered stone arcades, ivy, a mature tree, restrained electric wall lamps. Player seated at a small courtyard table, a natural empty bench facing the player, no giant throne.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/courtyard.jpg",
+          "sha256": "e23a6acc8da51f0c690bfd864373fdbe494a8b59369917df24860fc2d1ddc98a"
+        },
+        {
+          "id": "classroom",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. The college inner courtyard by day under a cool autumn sky: weathered stone arcades, ivy, a mature tree, restrained electric wall lamps. Player seated at a small courtyard table, a natural empty bench facing the player, no giant throne.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/courtyard.png",
+      "signature": "00bfaaa1f7e35aeb0a234777fc25806ae5aa534f5901dfc800379afbb2bdfa67",
+      "sha256": "c29190d3b5f8eff5cc9ee0e08d930cf58e048383f5010c09c76ec488bc594fe2",
+      "bytes": 2256480,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-21T15:34:32.411Z",
+      "request": "2026-10-21-locations-02"
+    },
+    "apartment": {
+      "id": "apartment",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. Márton's modest adult faculty apartment inside the castle: lived-in books, plain kitchenette visible at the side, timber floor, old stone window surround with autumn daylight, warm desk lamp. Player seated at a small ordinary table with an empty chair opposite. No person, no portrait of the viewpoint character.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/apartment.jpg",
+          "sha256": "cec489cbda53d60fad5ae1e5034494d9327b6c282c068ea4b697f65e07d02bfc"
+        },
+        {
+          "id": "classroom",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. Márton's modest adult faculty apartment inside the castle: lived-in books, plain kitchenette visible at the side, timber floor, old stone window surround with autumn daylight, warm desk lamp. Player seated at a small ordinary table with an empty chair opposite. No person, no portrait of the viewpoint character.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/apartment.png",
+      "signature": "9cb921db4ad53a88be830587a0f2d92ab88158eed160b7567aea6b0d72d0a53f",
+      "sha256": "f1b45a24a47675dc45968c7bbf743c4a3e3afc2869733814d2934e126d2521b2",
+      "bytes": 2027910,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-21T15:36:06.951Z",
+      "request": "2026-10-21-locations-02"
+    },
+    "bekas": {
+      "id": "bekas",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. Békás-tó beside the college during autumn daytime: reeds, muted lake reflections, weathered path and distant castle stonework. Player seated at a low lakeside conversational picnic table with an empty bench opposite; natural eye height, clear place for a companion.",
+      "refs": [
+        {
+          "id": "repo:assets/backgrounds/bekas-to.jpg",
+          "sha256": "13e9b1bcff565d21c31995250a1e87cf97ce30f2ecfe29b9d30fa0a32bc153d4"
+        },
+        {
+          "id": "classroom",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. Empty 16:9 environment, first-person camera at seated player eye height. A clearly empty natural companion chair or bench faces the viewer across a small table. Calm conversation composition. No people, silhouettes, body parts, player avatar, human reflections, mannequins or statues. Preserve the gothic location mood with subtle modern college electric fixtures. Day scenes remain visibly daytime. First input is the LOCATION identity and mood; second input is only the anime rendering/material/college architecture reference. Preserve the first location's identity, not the classroom furniture. Békás-tó beside the college during autumn daytime: reeds, muted lake reflections, weathered path and distant castle stonework. Player seated at a low lakeside conversational picnic table with an empty bench opposite; natural eye height, clear place for a companion.",
+        "safe_mode": true,
+        "aspect_ratio": "16:9",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "backgrounds/bekas.png",
+      "signature": "ed7bfbfcb6dcd4c15f27e483cd4526652a1c248644037db8a4ae415a0e81fe59",
+      "sha256": "3b5595cbf02a1ece873c26e1286e1b8f35038cdbdcbbc6c5731d2e650c6e7070",
+      "bytes": 2470800,
+      "width": 1280,
+      "height": 720,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-21T15:37:47.359Z",
+      "request": "2026-10-21-locations-02"
     }
   },
   "runs": [
@@ -322,6 +502,23 @@
       ],
       "finishedAt": "2026-10-21T15:26:47.447Z",
       "failure": "terminated"
+    },
+    {
+      "request": "2026-10-21-locations-02",
+      "phase": "backgrounds",
+      "startedAt": "2026-10-21T15:29:17.426Z",
+      "status": "completed",
+      "generated": [
+        "department",
+        "holdkor",
+        "courtyard",
+        "apartment",
+        "bekas"
+      ],
+      "reused": [
+        "classroom"
+      ],
+      "finishedAt": "2026-10-21T15:37:47.360Z"
     }
   ],
   "capabilities": {
