@@ -135,6 +135,38 @@
       "status": "candidate-needs-alpha-and-visual-review",
       "generatedAt": "2026-10-21T12:29:12.192Z",
       "request": "2026-10-21-boglarka-master-01"
+    },
+    "greta_neutral": {
+      "id": "greta_neutral",
+      "model": "firered-image-edit",
+      "method": "multi-edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. One fully clothed adult, head-and-shoulders, slight turn toward viewer, both eyes visible. Whole hair and shoulders in frame; eyes at 30% height. 4:5 composition, consistent cast scale, soft neutral light, attentive neutral expression. Flat white background for alpha extraction, no scenery or checkerboard. Gréta Váradi, clearly adult 21-year-old woman. 168 cm tall, slim athletic silhouette, rectangular adult face, copper hair in a simple practical ponytail, thin rectangular glasses. White fully buttoned shirt, forest-green vest and graphite skirt. Alert, direct, energetic presence. No pencil in her hair, no elaborate hairstyle. The supplied portrait is a RENDERING STYLE reference only. Create a completely different adult person with the identity specified here; do not copy the reference face, hair, clothing or identity marks.",
+      "refs": [
+        {
+          "id": "rebeka_neutral",
+          "sha256": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. One fully clothed adult, head-and-shoulders, slight turn toward viewer, both eyes visible. Whole hair and shoulders in frame; eyes at 30% height. 4:5 composition, consistent cast scale, soft neutral light, attentive neutral expression. Flat white background for alpha extraction, no scenery or checkerboard. Gréta Váradi, clearly adult 21-year-old woman. 168 cm tall, slim athletic silhouette, rectangular adult face, copper hair in a simple practical ponytail, thin rectangular glasses. White fully buttoned shirt, forest-green vest and graphite skirt. Alert, direct, energetic presence. No pencil in her hair, no elaborate hairstyle. The supplied portrait is a RENDERING STYLE reference only. Create a completely different adult person with the identity specified here; do not copy the reference face, hair, clothing or identity marks.",
+        "safe_mode": true,
+        "aspect_ratio": "4:5",
+        "output_format": "png",
+        "modelId": "firered-image-edit"
+      },
+      "transparent": true,
+      "postprocess": "/image/background-remove",
+      "file": "portraits/greta/neutral.png",
+      "signature": "9cb8640d8bda55781914d276638e2d7353ac4d6c76b64222349cf02367151f93",
+      "sha256": "36323e93db75969236034e719908aec3e9d8780704a25e467d04c225b93e767a",
+      "bytes": 842486,
+      "width": 896,
+      "height": 1120,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-needs-alpha-and-visual-review",
+      "generatedAt": "2026-10-21T12:34:30.268Z",
+      "request": "2026-10-21-greta-master-01"
     }
   },
   "runs": [
@@ -227,6 +259,19 @@
         "rebeka_neutral"
       ],
       "finishedAt": "2026-10-21T12:29:12.193Z"
+    },
+    {
+      "request": "2026-10-21-greta-master-01",
+      "phase": "masters",
+      "startedAt": "2026-10-21T12:33:46.710Z",
+      "status": "completed-with-pending-alpha",
+      "generated": [
+        "greta_neutral"
+      ],
+      "reused": [
+        "rebeka_neutral"
+      ],
+      "finishedAt": "2026-10-21T12:34:30.268Z"
     }
   ],
   "capabilities": {
