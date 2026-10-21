@@ -1,15 +1,14 @@
 {
-  "id": "2026-10-21-locations-01",
+  "id": "2026-10-21-locations-02",
   "phase": "backgrounds",
   "assets": [
-    "library",
     "department",
     "holdkor",
     "courtyard",
     "apartment",
     "bekas"
   ],
-  "maxNewImages": 6,
+  "maxNewImages": 5,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
