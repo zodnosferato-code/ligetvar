@@ -1,10 +1,15 @@
 {
-  "id": "2026-10-21-greta-master-01",
-  "phase": "masters",
+  "id": "2026-10-21-locations-01",
+  "phase": "backgrounds",
   "assets": [
-    "greta_neutral"
+    "library",
+    "department",
+    "holdkor",
+    "courtyard",
+    "apartment",
+    "bekas"
   ],
-  "maxNewImages": 1,
+  "maxNewImages": 6,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
