@@ -12,17 +12,24 @@ const courtyardNight=lit('courtyard-night-anime-v1.webp','Átnézett éjszakai u
 export const BACKGROUND_VARIANTS:Partial<Record<LocationId,Partial<Record<Lighting,ArtAsset>>>>={
  classroom:{evening:lit('classroom-dusk-anime-v1.webp','Átnézett alkonyati tanterem, megőrzött berendezés.')},
  library:{evening:lit('library-evening-anime-v1.webp','Átnézett esti könyvtár, megőrzött berendezés.')},
- courtyard:{evening:courtyardNight,night:courtyardNight}
+ courtyard:{evening:courtyardNight,night:courtyardNight},
+ bekas:{night:lit('bekas-night-anime-v1.webp','Holdfényes tópart, nappali égbolt nélkül.')},
+ department:{night:lit('department-night-v1.webp','Éjszakai iroda; megőrzött bútorok és tárgykoordináták.')},
+ apartment:{night:{...BACKGROUNDS.apartment,lightingBaked:true}},
+ holdkor:{night:{...BACKGROUNDS.holdkor,lightingBaked:true}}
 };
-export function backgroundFor(location:LocationId,lighting:Lighting):ArtAsset{return BACKGROUND_VARIANTS[location]?.[lighting]??BACKGROUNDS[location];}
+export function backgroundFor(location:LocationId,lighting:Lighting):ArtAsset{
+ const variants=BACKGROUND_VARIANTS[location];
+ return variants?.[lighting]??(lighting==='night'?variants?.evening:lighting==='evening'?variants?.night:undefined)??BACKGROUNDS[location];
+}
 export const ACTOR_NAME:Record<ActorId,string>={rebeka:'Rebeka Dorn',boglarka:'Boglárka Fazekas',greta:'Gréta Váradi',marton:'Márton',soma:'Végh Soma',denes:'Dr. Farkas Dénes',julia:'Dr. Sárközi Júlia',aron:'Dr. Kerekes Áron',lilla:'Lilla',narrator:'Elbeszélés'};
 export const SHORT:Record<ActorId,string>={rebeka:'Rebeka',boglarka:'Boglárka',greta:'Gréta',marton:'Márton',soma:'Soma',denes:'Dénes',julia:'Júlia',aron:'Áron',lilla:'Lilla',narrator:'Elbeszélés'};
 export const LOCATIONS:Record<LocationId,string>={classroom:'Tanterem',library:'Könyvtár',department:'Tanszéki iroda',holdkor:'Holdkör pincéje',courtyard:'Kastélyudvar',apartment:'Márton lakosztálya',bekas:'Békás-tó',chamber:'Gépészeti kamra'};
 // Only visually reviewed exports belong here; generation candidates stay private to tooling.
 export const PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,ArtAsset>>>>={
- rebeka:{neutral:{file:'characters/rebeka/neutral-v1.webp',status:'reviewed',note:'Átnézett semleges portré; további kifejezésváltozatok készülnek.'},amused:{file:'characters/rebeka/amused-v1.webp',status:'reviewed',note:'Átnézett visszafogott, ironikus mosoly; a tisztított semleges mesterből.'},displeased:{file:'characters/rebeka/displeased-v1.webp',status:'reviewed',note:'Átnézett elégedetlen arckifejezés, megőrzött arc, haj, anyajegy és ruházat.'}},
- boglarka:{neutral:{file:'characters/boglarka/neutral-v1.webp',status:'reviewed',note:'Átnézett semleges portré; kifejezésváltozatok készülnek.'}},
- greta:{neutral:{file:'characters/greta/neutral-v1.webp',status:'reviewed',note:'Átnézett semleges portré; kifejezésváltozatok készülnek.'}}
+ rebeka:{neutral:{file:'characters/rebeka/neutral-v1.webp',status:'reviewed',note:'Átnézett neutral portré, megőrzött karakterazonosság és átlátszóság.'},amused:{file:'characters/rebeka/amused-v1.webp',status:'reviewed',note:'Átnézett amused portré, megőrzött karakterazonosság és átlátszóság.'},displeased:{file:'characters/rebeka/displeased-v1.webp',status:'reviewed',note:'Átnézett displeased portré, megőrzött karakterazonosság és átlátszóság.'},vulnerable:{file:'characters/rebeka/vulnerable-v1.webp',status:'reviewed',note:'Átnézett vulnerable portré, megőrzött karakterazonosság és átlátszóság.'},affectionate:{file:'characters/rebeka/affectionate-v1.webp',status:'reviewed',note:'Átnézett affectionate portré, megőrzött karakterazonosság és átlátszóság.'}},
+ boglarka:{neutral:{file:'characters/boglarka/neutral-v1.webp',status:'reviewed',note:'Átnézett neutral portré, megőrzött karakterazonosság és átlátszóság.'},amused:{file:'characters/boglarka/amused-v1.webp',status:'reviewed',note:'Átnézett amused portré, megőrzött karakterazonosság és átlátszóság.'},displeased:{file:'characters/boglarka/displeased-v1.webp',status:'reviewed',note:'Átnézett displeased portré, megőrzött karakterazonosság és átlátszóság.'},vulnerable:{file:'characters/boglarka/vulnerable-v1.webp',status:'reviewed',note:'Átnézett vulnerable portré, megőrzött karakterazonosság és átlátszóság.'},affectionate:{file:'characters/boglarka/affectionate-v1.webp',status:'reviewed',note:'Átnézett affectionate portré, megőrzött karakterazonosság és átlátszóság.'}},
+ greta:{neutral:{file:'characters/greta/neutral-v1.webp',status:'reviewed',note:'Átnézett neutral portré, megőrzött karakterazonosság és átlátszóság.'},amused:{file:'characters/greta/amused-v1.webp',status:'reviewed',note:'Átnézett amused portré, megőrzött karakterazonosság és átlátszóság.'},displeased:{file:'characters/greta/displeased-v1.webp',status:'reviewed',note:'Átnézett displeased portré, megőrzött karakterazonosság és átlátszóság.'},vulnerable:{file:'characters/greta/vulnerable-v1.webp',status:'reviewed',note:'Átnézett vulnerable portré, megőrzött karakterazonosság és átlátszóság.'},affectionate:{file:'characters/greta/affectionate-v1.webp',status:'reviewed',note:'Átnézett affectionate portré, megőrzött karakterazonosság és átlátszóság.'}},
 };
 export function portraitFor(actor:ActorId,expression:Expression):ArtAsset{
  if(actor==='marton'||actor==='narrator')return {file:null,status:'placeholder',note:''};

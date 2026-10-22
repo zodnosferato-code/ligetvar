@@ -62,3 +62,7 @@ The first playable art batch contains three neutral women portraits and the clas
 ## ChatGPT art production — 22 October 2026
 
 The user reports Venice credits are exhausted and requests ChatGPT generation. Use the built-in imagegen tool, one image at a time; do not launch Venice requests or paid retries. Current production and review checkpoint: [CHATGPT-PRODUCTION.md](docs/CHATGPT-PRODUCTION.md). Keep the cleaned neutral portraits as identity masters. Record full prompts, source/output hashes and honest assistant review status under `assets/generated/chatgpt/`; only reviewed WebP exports enter runtime. Preserve office/bedroom hotspot backgrounds until a replacement and its hotspot alignment have both been checked. Final user acceptance remains open.
+
+### User workflow update — 22 October 2026
+
+The user now asks to generate as quickly as possible and inspect afterward. Independent edits may be generated concurrently from the existing cleaned neutral masters, followed by batch visual/alpha/runtime review before promotion. Do not chain unreviewed outputs as identity references. This supersedes the earlier one-image-at-a-time production instruction for independent jobs. Continue using built-in imagegen, no Venice calls.

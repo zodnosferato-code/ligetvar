@@ -7,7 +7,9 @@ export {GIFTS,ROUTES,evaluateEnding,isCommitted,canChooseDirection} from './rule
 export const currentPeriod=(s:GameState)=>engine.currentPeriod(s,RULES.schedule);
 export const activityAvailable=(s:GameState,kind:string)=>engine.activityAvailable(s,kind,RULES);
 export const sceneAvailable=(s:GameState,x:Scene)=>engine.sceneAvailable(s,x,RULES.schedule);
-export const sceneLighting=(s:GameState,x:Scene)=>x.periods?.length===2?(currentPeriod(s)==='night'?'evening':'day'):x.lighting;
+// Free-slot scenes follow the saved period, including legacy scenes without periods.
+// Shared story scenes retain their authored lighting and internal time jumps.
+export const sceneLighting=(s:GameState,x:Scene)=>x.kind!=='shared'&&currentPeriod(s)==='night'?'night':x.periods?.length===2?'day':x.lighting;
 export const createInitial=(name:string)=>engine.createInitial(name,RULES);
 export const availableScenes=(s:GameState,r:Registry)=>engine.availableScenes(s,r,RULES.schedule) as Scene[];
 export const currentLine=(s:GameState,r:Registry)=>engine.currentLine(s,r) as Line|undefined;

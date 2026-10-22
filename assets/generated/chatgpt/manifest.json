@@ -268,6 +268,330 @@
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false,
       "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
+    },
+    {
+      "id": "bekas_night",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "time-of-day lighting edit",
+      "source": "assets/generated/chatgpt/bekas-v1.png",
+      "sourceSha256": "2249b0e384baa452230c3ecc8e693ada4c29b2bf5a785ef139032fbc88c2cb0f",
+      "master": "assets/generated/chatgpt/bekas-night-v1.png",
+      "masterSha256": "2f31b2cb5a24e395481fc4e41515c35a72c13aa9c1591ea893acc8b01b8b0678",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/bekas-night-anime-v1.webp",
+      "runtimeSha256": "ac7d20691d1b3c9bac901af907b92e929cdfd9531d4d57aac9485f683081bcdf",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "hasUsefulAlpha": false,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "bekas_night",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "department_night",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "time-of-day lighting edit",
+      "source": "assets/backgrounds/department.jpg",
+      "sourceSha256": "f64db54cca34c499fce2903d841bf6756fa60b8f04033b544ab81762d05f8b35",
+      "master": "assets/generated/chatgpt/department-night-v1.png",
+      "masterSha256": "b050ad52a895ef00ab5469f901950f5d0be4c4a1d99edcf7686cf672b73ca2f5",
+      "masterSize": [
+        1531,
+        1027
+      ],
+      "runtime": "assets/backgrounds/department-night-v1.webp",
+      "runtimeSha256": "ee7e874b33f30d2993db75c4c08097e5e5ac82430512426c3be20fafce195b7f",
+      "runtimeSize": [
+        1168,
+        784
+      ],
+      "hasUsefulAlpha": false,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "department_night",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "rebeka_vulnerable",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+      "sourceSha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+      "master": "assets/generated/chatgpt/rebeka-vulnerable-v1.png",
+      "masterSha256": "a837d8c2620c46065ab945a6ecd2426d0efbd2d940f74de0472e845491b995bb",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/rebeka/vulnerable-v1.webp",
+      "runtimeSha256": "5f6f4aeeb0675c0b1774a51a2aae122681125550b40ef1fed44ed37f2f753eb5",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "rebeka_vulnerable",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "rebeka_affectionate",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+      "sourceSha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+      "master": "assets/generated/chatgpt/rebeka-affectionate-v1.png",
+      "masterSha256": "d8f4856d84b966159d207a6eae687576edef150bbea0432a336ac1f02bcff52d",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/rebeka/affectionate-v1.webp",
+      "runtimeSha256": "88d98f0ac4b58c40d6a67f2ee34a5eb778c834dc0a29bdb9d42423cf84ef9ff7",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "rebeka_affectionate",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "boglarka_amused",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/boglarka-neutral-v1.png",
+      "sourceSha256": "57349d7a9e28f6a993d35f2ec155e6f8295f7885f66a683885eab4cba1820a20",
+      "master": "assets/generated/chatgpt/boglarka-amused-v1.png",
+      "masterSha256": "54848addfae8d3ee42014df829e319dceeb698d250cfb29d031a8965b9e74338",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/boglarka/amused-v1.webp",
+      "runtimeSha256": "5f288061c6aa25f97d63fcd7cd8671fd8863c347105f859ef5273b5783a1e478",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "boglarka_amused",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "boglarka_displeased",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/boglarka-neutral-v1.png",
+      "sourceSha256": "57349d7a9e28f6a993d35f2ec155e6f8295f7885f66a683885eab4cba1820a20",
+      "master": "assets/generated/chatgpt/boglarka-displeased-v1.png",
+      "masterSha256": "eccee41441863c8c9e390f25ad1d2ecb4f242d87ab20a82ad1a64150f84dcf3f",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/boglarka/displeased-v1.webp",
+      "runtimeSha256": "d32256c3446ddcb9623ea4733baa0452560b0831b64f75e1650de4ae3b492819",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "boglarka_displeased",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "boglarka_vulnerable",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/boglarka-neutral-v1.png",
+      "sourceSha256": "57349d7a9e28f6a993d35f2ec155e6f8295f7885f66a683885eab4cba1820a20",
+      "master": "assets/generated/chatgpt/boglarka-vulnerable-v1.png",
+      "masterSha256": "bf187570050805d7d92bc6e3e7a8663909dca4f5587a2cd2695f03f6622a4bac",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/boglarka/vulnerable-v1.webp",
+      "runtimeSha256": "d1d3ea45776fdc6a4f03056dd291794d954afdc4d69526cfc03f7564f6c1f8cb",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "boglarka_vulnerable",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "boglarka_affectionate",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/boglarka-neutral-v1.png",
+      "sourceSha256": "57349d7a9e28f6a993d35f2ec155e6f8295f7885f66a683885eab4cba1820a20",
+      "master": "assets/generated/chatgpt/boglarka-affectionate-v1.png",
+      "masterSha256": "a7c5e21681d01c3505c0baa7f7bcbd4958415112b0eebc5bacee9de4ecb4c2f3",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/boglarka/affectionate-v1.webp",
+      "runtimeSha256": "79fa4018974bdd53a5b2c10b193f86fab1c8c133b5d43f80f496e4b6bb47097a",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "boglarka_affectionate",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "greta_amused",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/greta-neutral-v1.png",
+      "sourceSha256": "1e1589c266b53cb0d65e21fea5dbdfb971f6cd4ffb3835e41ec04d62ba535eaa",
+      "master": "assets/generated/chatgpt/greta-amused-v1.png",
+      "masterSha256": "f81f1cb2c49f8f312f127dd52391e91137c3f5790ab046875b7aac28ed3c4a80",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/greta/amused-v1.webp",
+      "runtimeSha256": "f0689ce97e38cc7a58324e4e6a94678cd1bc1c2d2c62a7cba28f97947de9594b",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "greta_amused",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "greta_displeased",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/greta-neutral-v1.png",
+      "sourceSha256": "1e1589c266b53cb0d65e21fea5dbdfb971f6cd4ffb3835e41ec04d62ba535eaa",
+      "master": "assets/generated/chatgpt/greta-displeased-v1.png",
+      "masterSha256": "388907a51e2cb6966d01ba36ecfec3626a2d30039d34e3f9e4e9012407aa2a09",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/greta/displeased-v1.webp",
+      "runtimeSha256": "78f41c8543b166157e751e789c181cd7dc61d0e2d3f3ca87ab4af798947bc631",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "greta_displeased",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "greta_vulnerable",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/greta-neutral-v1.png",
+      "sourceSha256": "1e1589c266b53cb0d65e21fea5dbdfb971f6cd4ffb3835e41ec04d62ba535eaa",
+      "master": "assets/generated/chatgpt/greta-vulnerable-v1.png",
+      "masterSha256": "3406a5181f97018041939a4c77095602905e939278e9debce47ecbb8cea57004",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/greta/vulnerable-v1.webp",
+      "runtimeSha256": "11ee216e7a8a31560be26e8bec432c2b7ae28ef890a8d0bf6cda5ac32e817e1b",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "greta_vulnerable",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "greta_affectionate",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "source": "assets/generated/portrait-cutouts/greta-neutral-v1.png",
+      "sourceSha256": "1e1589c266b53cb0d65e21fea5dbdfb971f6cd4ffb3835e41ec04d62ba535eaa",
+      "master": "assets/generated/chatgpt/greta-affectionate-v1.png",
+      "masterSha256": "5583a3fa287895fd7f97aff57c5c39eeb95fe059c92d3ce293eb69cc4fbd09d1",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/greta/affectionate-v1.webp",
+      "runtimeSha256": "92657ca75eefbcc1c89d39d637acb068b54b8f5c372ac41605bc3b13ac830c30",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "greta_affectionate",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 > **Status:** Partial runtime integration. | **Purpose:** Exact art coverage, visual review and remaining production work.
 
-On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Fourteen of the 32 required runtime images are now visually reviewed and integrated; 18 remain, plus five production reference sheets. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
+On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Twenty-four of the original 32 required runtime images are now visually reviewed and integrated; 8 remain, plus five production reference sheets. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
 
 ## Character review
 
@@ -12,7 +12,7 @@ On 21 October 2026 the user requested gradual, consistent asset production and i
 | Boglárka, 19 | Quietly observant adult face, freckles, brown eyes/hair, moss-green cardigan and cream dress | Braid over anatomical right shoulder (viewer left); complete crown; transparent background |
 | Gréta, 21 | Practical/direct presence, copper ponytail, rectangular glasses, white shirt and green vest | Removed copied beauty marks; buttoned shirt; matched head-and-shoulders framing; transparent background |
 
-The portraits remain distinct while sharing linework, cel shading and soft neutral light. Neutral portraits are deliberately reused for missing expressions; no amused/affectionate image substitutes for displeasure. Márton is the viewpoint character and has no portrait; narration has none. The five other human NPCs and Soma's transformed portrait remain pending. Their proposed written designs must be reviewed before deriving variants.
+The portraits remain distinct while sharing linework, cel shading and soft neutral light. All three main women now have all five distinct expression exports; unknown future expressions still fall back to neutral. Márton is the viewpoint character and has no portrait; narration has none. The five other human NPCs and Soma's transformed portrait remain pending. Their proposed written designs must be reviewed before deriving variants.
 
 ## Runtime coverage
 
@@ -21,18 +21,18 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | rebeka / neutral | characters/rebeka/neutral-v1.webp | Reviewed; integrated |
 | rebeka / amused | characters/rebeka/amused-v1.webp | Reviewed; integrated 22 October |
 | rebeka / displeased | characters/rebeka/displeased-v1.webp | Reviewed; integrated 22 October |
-| rebeka / vulnerable | Own neutral portrait | Variant pending |
-| rebeka / affectionate | Own neutral portrait | Variant pending |
+| rebeka / vulnerable | characters/rebeka/vulnerable-v1.webp | Reviewed; integrated 22 October |
+| rebeka / affectionate | characters/rebeka/affectionate-v1.webp | Reviewed; integrated 22 October |
 | boglarka / neutral | characters/boglarka/neutral-v1.webp | Reviewed; integrated |
-| boglarka / amused | Own neutral portrait | Variant pending |
-| boglarka / displeased | Own neutral portrait | Variant pending |
-| boglarka / vulnerable | Own neutral portrait | Variant pending |
-| boglarka / affectionate | Own neutral portrait | Variant pending |
+| boglarka / amused | characters/boglarka/amused-v1.webp | Reviewed; integrated 22 October |
+| boglarka / displeased | characters/boglarka/displeased-v1.webp | Reviewed; integrated 22 October |
+| boglarka / vulnerable | characters/boglarka/vulnerable-v1.webp | Reviewed; integrated 22 October |
+| boglarka / affectionate | characters/boglarka/affectionate-v1.webp | Reviewed; integrated 22 October |
 | greta / neutral | characters/greta/neutral-v1.webp | Reviewed; integrated |
-| greta / amused | Own neutral portrait | Variant pending |
-| greta / displeased | Own neutral portrait | Variant pending |
-| greta / vulnerable | Own neutral portrait | Variant pending |
-| greta / affectionate | Own neutral portrait | Variant pending |
+| greta / amused | characters/greta/amused-v1.webp | Reviewed; integrated 22 October |
+| greta / displeased | characters/greta/displeased-v1.webp | Reviewed; integrated 22 October |
+| greta / vulnerable | characters/greta/vulnerable-v1.webp | Reviewed; integrated 22 October |
+| greta / affectionate | characters/greta/affectionate-v1.webp | Reviewed; integrated 22 October |
 | soma / neutral | Labelled NPC placeholder | Pending |
 | soma / transformed | Labelled NPC placeholder | Pending |
 | denes | Labelled NPC placeholder | Pending |
@@ -62,13 +62,19 @@ Built-in imagegen performed the three identity cleanups and generated genuine po
 Current provider and batch checkpoint: [ChatGPT production](CHATGPT-PRODUCTION.md). Venice is paused per user instruction. Three repaired location masters and Rebeka amused are recorded in `assets/generated/chatgpt/manifest.json`. The original candidate files remain preserved.
 
 
-1. Use the cleaned neutral PNG masters for ten remaining expression edits, one image at a time. Preserve face geometry, outfit, side-specific marks, crop and eye line. The older opaque Venice candidates must not seed expression production without the cleanup.
+1. Completed: all fifteen main-woman expression portraits. Continue deriving any future edits from the cleaned neutral masters, preserving face geometry, outfit, marks, crop and eye line.
 2. Review Soma, Dénes, Júlia, Áron and Lilla neutral portraits; derive Soma's transformed form from the accepted human master.
 3. Replace the two transitional planning backgrounds only after matching their clickable objects and verifying hotspot alignment. All three planned lighting variants are integrated; other unmatched location/lighting combinations retain CSS fallback.
 4. Create the five production reference sheets from reviewed masters/locations.
 
-Historical HTTP 402 stopped the 19 October batch; the two 21 October one-image generations succeeded. The previous `/image/background-remove` HTTP 403 remains historical, not a claim about current capability. No payment settings changed and no automatic paid retries are scheduled. All 18 missing runtime records and five reference sheets remain open; this batch does not complete the redesign or final art acceptance. Prior archived character art remains outside runtime.
+Historical HTTP 402 stopped the 19 October batch; the two 21 October one-image generations succeeded. The previous `/image/background-remove` HTTP 403 remains historical, not a claim about current capability. No payment settings changed and no automatic paid retries are scheduled. All 8 missing original runtime records and five reference sheets remain open; this batch does not complete the redesign or final art acceptance. Prior archived character art remains outside runtime.
 
 Second 22 October batch adds Holdkör, the service chamber and Rebeka displeased. The chamber has exactly three anchor fittings, utility cables/pipes, a service trench and an open service-stair exit; no figures. Holdkör removes the candidate busts and obstructing bench, retains the projector and supplies a seated viewpoint. Rebeka displeased preserves the neutral master geometry, one viewer-right beauty mark/plum streak and useful alpha. All source/output hashes and prompts are in the ChatGPT manifest.
 
 Third 22 October batch: classroom dusk, courtyard night and library evening were derived individually from reviewed masters. Layout, furniture and empty companion seats were visually compared. `backgroundFor` selects them by effective scene lighting (courtyard night also serves evening-labelled night-slot visits). The dedicated variants bypass the extra evening/night background tint. Daytime images and planner hotspots remain unchanged.
+
+## Accelerated batch and nighttime correction — 22 October 2026
+
+Ten independent expression edits were generated from cleaned neutral masters, then reviewed together as requested. All fifteen main-character portraits now resolve to distinct 640×800 transparent WebP exports. Night variants for Békás-tó and the department were added beyond the original 32-image plan: total reviewed coverage is 24/32 original requirements plus two additional night images. The department night image deliberately retains the transitional base style and object geometry; it does not close the planned anime office restyle. Its export preserves the original 1168×784 aspect ratio.
+
+All seven locations reachable through the night hub resolve to an evening/night image, not a tinted sunny base. Classroom/library reuse their reviewed dusk/evening variants; courtyard, lake and office use night variants; Holdkör/apartment use their already-night bases without extra darkening. Remaining: six supporting/transformed portraits, two planner restyles, five reference sheets; final user acceptance open.

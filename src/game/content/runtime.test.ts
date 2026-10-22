@@ -80,9 +80,14 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
  const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
  assert.equal(nextWeek(n,SCENES).money,n.money+60000);
 });
-test('unavailable emotions safely fall back to neutral, never blush',()=>{
- assert.equal(portraitFor('boglarka','displeased').file,portraitFor('boglarka','neutral').file);
- assert.equal(portraitFor('greta','displeased').file,portraitFor('greta','neutral').file);assert.equal(portraitFor('soma','affectionate').file,null);
+test('all main-character expressions have distinct exports and missing NPC art remains a placeholder',()=>{
+ for(const actor of ['rebeka','boglarka','greta'] as const){
+  const files=(['neutral','amused','displeased','vulnerable','affectionate'] as const).map(expression=>portraitFor(actor,expression).file);
+  assert.equal(new Set(files).size,5,actor);
+  for(const file of files)assert.ok(file&&existsSync('public/'+file),file??actor);
+ }
+ assert.equal(portraitFor('soma','affectionate').file,null);
+ assert.equal(portraitFor('marton','neutral').file,null);
 });
 test('scene lighting selects reviewed variants while preserving daytime and fallback locations',()=>{
  const s=createInitial('');
@@ -98,8 +103,27 @@ test('scene lighting selects reviewed variants while preserving daytime and fall
  }
  assert.equal(backgroundFor('courtyard','night'),backgroundFor('courtyard','evening'));
  assert.equal(backgroundFor('classroom','evening').file,'backgrounds/classroom-dusk-anime-v1.webp');
- assert.equal(backgroundFor('department','evening'),BACKGROUNDS.department);
- assert.equal(backgroundFor('apartment','night'),BACKGROUNDS.apartment);
+ assert.equal(backgroundFor('department','evening').file,'backgrounds/department-night-v1.webp');
+ assert.equal(backgroundFor('apartment','night').file,BACKGROUNDS.apartment.file);
+});
+test('every destination reachable from the night hub uses night lighting and a non-daytime background',()=>{
+ const visited=new Set<string>();
+ run('triad',{prepared:true,onPlanner:s=>{
+  const night:GameState={...s,slot:2};
+  for(const scene of availableScenes(night,SCENES)){
+   if(scene.kind==='shared')continue;
+   assert.equal(sceneLighting(night,scene),'night',scene.id);
+   const art=backgroundFor(scene.background,sceneLighting(night,scene));
+   assert.ok(art.lightingBaked,scene.id+' must not fall back to a tinted daytime picture');
+   assert.ok(art.file&&existsSync('public/'+art.file));visited.add(scene.background);
+  }
+ }});
+ for(const location of ['classroom','library','department','holdkor','courtyard','apartment','bekas'])assert.ok(visited.has(location),location);
+ const s:GameState={...createInitial(''),slot:2};
+ assert.equal(sceneLighting(s,{...SCENES.greta_1,periods:undefined}),'night','legacy free scenes still follow the saved night slot');
+ assert.equal(sceneLighting(s,SCENES.shared_1),SCENES.shared_1.lighting,'shared-story authored time is preserved');
+ assert.equal(backgroundFor('bekas','day'),BACKGROUNDS.bekas);
+ assert.equal(backgroundFor('department','day'),BACKGROUNDS.department);
 });
 test('synthetic scheduler exercises 16 required slots and atomic continuations before content',()=>{
  const r=fixtures();validateRegistry(r,{},new Set(['classroom']));let s=createInitial('');
@@ -265,7 +289,7 @@ test('fixed day/night periods gate reducer actions and advance only on completio
  while(s.phase==='scene')s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
  assert.equal(currentPeriod(s),'night');assert.equal(s.slot,2);
  for(const kind of ['mohu','brick'] as const){assert.equal(activityAvailable(s,kind),false);assert.equal(activity(s,kind),s);}
- assert.equal(sceneLighting(s,SCENES.coffee_rebeka_early),'evening');
+ assert.equal(sceneLighting(s,SCENES.coffee_rebeka_early),'night');
  const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok');
  if(restored.status==='ok')assert.equal(currentPeriod(restored.state),'night');
  s=activity(s,'rest');assert.equal(s.phase,'summary');assert.equal(currentPeriod(s),null);
@@ -277,7 +301,7 @@ test('night-only shared evenings and daytime preparation respect both slots and 
  const s=snapshots[0];assert.equal(s.slot,1);
  assert.equal(openScene(s,'triad_7',SCENES),s);
  assert.ok(availableScenes({...s,slot:2},SCENES).some(x=>x.id==='triad_7'));
- assert.equal(sceneLighting({...s,slot:2},SCENES.triad_7),'evening');
+ assert.equal(sceneLighting({...s,slot:2},SCENES.triad_7),'night');
  const prep=s;
  assert.ok(availableScenes(prep,SCENES).some(x=>x.id==='prepare_signals'));
  assert.equal(openScene({...prep,slot:2},'prepare_signals',SCENES).phase,'planner');
