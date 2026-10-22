@@ -22,7 +22,7 @@ const OBJECTS:Record<ObjectId,{label:string;title:string;icon:'book'|'heart'|'re
 // Coordinates are percentages of the uncropped source image. Every hotspot has a 44px minimum target.
 const ROOMS={
  office:{title:'Tanszéki iroda',background:BACKGROUNDS.department.file!,door:[17,42],fallbacks:[] as ObjectId[],objects:{desk:[51,73],phone:[84,79],journal:[68,85],chair:[74,55],shelf:[92,33],bag:[17,86]}},
- home:{title:'Hálószoba',background:BACKGROUNDS.apartment.file!,door:[21,43],fallbacks:[] as ObjectId[],objects:{desk:[64,22],phone:[85,28],journal:[76,59],chair:[44,73],shelf:[92,81],bag:[8,76]}}
+ home:{title:'Hálószoba',background:BACKGROUNDS.apartment.file!,door:[21,43],fallbacks:[] as ObjectId[],objects:{desk:[64,22],phone:[85,37],journal:[76,59],chair:[44,73],shelf:[92,81],bag:[8,76]}}
 } as const;
 const SHORT_LABEL:Record<ObjectId,string>={desk:'Műhely',phone:'Telefon',journal:'Napló',chair:'Pihenés',shelf:'Ajándék',bag:'Munka'};
 

@@ -698,6 +698,35 @@
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false,
       "export": "WebP quality 95; non-runtime reference sheet"
+    },
+    {
+      "id": "apartment_anime",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "night bedroom anime restyle with hotspot alignment",
+      "source": "assets/backgrounds/apartment.jpg",
+      "sourceSha256": "cec489cbda53d60fad5ae1e5034494d9327b6c282c068ea4b697f65e07d02bfc",
+      "master": "assets/generated/chatgpt/apartment-anime-v1.webp",
+      "masterSha256": "ad8248efe81d24ffce2524c80bb11bb07d2c742f82f24988e7e3dff214d3c441",
+      "masterSize": [
+        1586,
+        992
+      ],
+      "masterBytes": 736104,
+      "runtime": "assets/backgrounds/apartment-anime-v1.webp",
+      "runtimeSha256": "5fdaaaeb400eb61628c8de43deac3adabdc1336de5f573c38dcd86ab596d5936",
+      "runtimeSize": [
+        1168,
+        784
+      ],
+      "runtimeBytes": 363258,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "apartment_anime",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize to 1168x784, WebP quality 95; full-resolution WebP quality 98 master",
+      "hotspotReview": "Visual overlay checked door, phone, journal, chair, shelf against RoomPlanner.tsx; phone hotspot moved from y=28% to y=37% to match the pictured phone."
     }
   ]
 }

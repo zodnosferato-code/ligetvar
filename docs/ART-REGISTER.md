@@ -44,7 +44,7 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | department | backgrounds/department.jpg | Transitional; replacement pending |
 | holdkor | backgrounds/holdkor-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | courtyard | backgrounds/courtyard-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
-| apartment | backgrounds/apartment.jpg | Transitional; replacement pending |
+| apartment | backgrounds/apartment-anime-v1.webp | ChatGPT anime restyle visually reviewed; integrated 22 October |
 | bekas | backgrounds/bekas-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | chamber | backgrounds/chamber-anime-v1.webp | ChatGPT generation reviewed; integrated 22 October |
 | classroom_dusk | backgrounds/classroom-dusk-anime-v1.webp | Reviewed; integrated 22 October |
