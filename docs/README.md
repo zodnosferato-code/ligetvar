@@ -28,3 +28,4 @@ The [archive index](archive/README.md) explains why material was retired and lin
 ## Format and authority
 
 Active documentation begins with a title and a one-line status/purpose note. Keep the body organized with descriptive headings, link to the current source of truth instead of copying it, and mark proposed or unverified material clearly. Generated inventories identify the source that produces them. Archived files remain unchanged; their index explains their historical scope and points to current replacements.
+- [Current ChatGPT art production and review checkpoint](CHATGPT-PRODUCTION.md)

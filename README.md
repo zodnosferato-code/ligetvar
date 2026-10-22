@@ -36,3 +36,7 @@ The script calls `POST /chat/completions` with a short test message. It does not
 
 Venice documentation: https://docs.venice.ai
 
+
+### Current image production
+
+Venice production is paused following the user's report of exhausted credits. New assets use ChatGPT built-in image generation, one reviewed image at a time. See [the current art checkpoint](docs/CHATGPT-PRODUCTION.md) for integrated assets and remaining work.

@@ -1,6 +1,6 @@
 # Venice production inventory
 
-> **Status:** Requested candidates; not final approved art. | **Purpose:** Trace every requested image to runtime or production-reference needs.
+> **Status:** Historical Venice production; paused 22 October 2026. | **Purpose:** Trace every requested image to runtime or production-reference needs.
 
 Generated with `node --experimental-strip-types tools/art-inventory.mjs`. Source: `scripts/venice/catalog.mjs` plus the active scene registry. 32 runtime images and 5 reference sheets. Lilla's portrait is added to the plan's 31-image minimum because her direct interview dialogue is now present in the runtime. Márton remains the viewpoint character and needs no invented face.
 
@@ -54,10 +54,14 @@ Final acceptance checks: adult character identity; correct left/right marks; no 
 
 The initial request has a two-new-image budget. A follow-up production request can reuse verified outputs and request the remaining dependency-ordered images. Interrupted runs preserve completed outputs and their hashes; a rerun never silently replaces a different prompt/reference signature.
 
-## Actual execution status — 21 October 2026
+## Historical execution status — 21 October 2026
 
 **4/37 Venice candidates generated; 33 remain.** The one-image Boglárka and Gréta requests succeeded (Actions runs 39599840142 and 39600565764), so the historical HTTP 402 is no longer the current block. No billing settings were changed. The previous alpha endpoint HTTP 403 was not retested.
 
 Three neutral portraits and the classroom are now reviewed and registered in the runtime. Built-in imagegen produced transparent identity-cleaned derivatives of the Venice portraits: Rebeka's single beauty mark/crown, Boglárka's correct-side braid/crown, Gréta's removal of copied marks/buttoned shirt/matching crop. Original Venice candidates remain unchanged. Full-resolution cutouts and export hashes are in `assets/generated/portrait-cutouts/manifest.json`; runtime uses 640×800 WebP portraits and a 1280×720 classroom WebP. This is four reviewed runtime assets, not completion of the 32-image set or final user art approval.
 
 Next: derive the twelve main-character expressions from the CLEANED neutral masters, one at a time. Then review supporting cast, Soma's transformation, remaining locations and lighting variants, and finally reference sheets. The current production catalog still describes the opaque Venice-source dependency chain; do not run expression batches from those uncorrected sources. Retain the existing backgrounds until their replacements pass review. No unattended production or paid retry is scheduled.
+
+## Current provider — 22 October 2026
+
+The preceding counts describe an earlier checkpoint. The repository now preserves ten Venice candidates (three portraits and seven locations), not four. Five newer location candidates contain unwanted people; Holdkör has forbidden busts and an unsuitable camera. They are not promoted. Venice is paused because the user reports exhausted credits. Continue through [ChatGPT production](CHATGPT-PRODUCTION.md); no API balance was queried and no paid request was made.

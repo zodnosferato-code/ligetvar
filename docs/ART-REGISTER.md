@@ -2,7 +2,7 @@
 
 > **Status:** Partial runtime integration. | **Purpose:** Exact art coverage, visual review and remaining production work.
 
-On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Four of the 32 required runtime images are now visually reviewed and integrated; 28 remain, plus five production reference sheets. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
+On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Eight of the 32 required runtime images are now visually reviewed and integrated; 24 remain, plus five production reference sheets. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
 
 ## Character review
 
@@ -19,7 +19,7 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | Required asset | Current source or fallback | Status |
 | --- | --- | --- |
 | rebeka / neutral | characters/rebeka/neutral-v1.webp | Reviewed; integrated |
-| rebeka / amused | Own neutral portrait | Variant pending |
+| rebeka / amused | characters/rebeka/amused-v1.webp | Reviewed; integrated 22 October |
 | rebeka / displeased | Own neutral portrait | Variant pending |
 | rebeka / vulnerable | Own neutral portrait | Variant pending |
 | rebeka / affectionate | Own neutral portrait | Variant pending |
@@ -40,12 +40,12 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | aron | Labelled NPC placeholder | Pending |
 | lilla | Labelled NPC placeholder | Pending |
 | classroom | backgrounds/classroom-anime-v1.webp | Reviewed; integrated |
-| library | backgrounds/library.jpg | Transitional; replacement pending |
+| library | backgrounds/library-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | department | backgrounds/department.jpg | Transitional; replacement pending |
 | holdkor | backgrounds/holdkor-night.jpg | Transitional; replacement pending |
-| courtyard | backgrounds/courtyard.jpg | Transitional; replacement pending |
+| courtyard | backgrounds/courtyard-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | apartment | backgrounds/apartment.jpg | Transitional; replacement pending |
-| bekas | backgrounds/bekas-to.jpg | Transitional; replacement pending |
+| bekas | backgrounds/bekas-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | chamber | Labelled missing room or existing base with CSS lighting | Pending |
 | classroom_dusk | Labelled missing room or existing base with CSS lighting | Pending |
 | courtyard_night | Labelled missing room or existing base with CSS lighting | Pending |
@@ -59,9 +59,12 @@ Built-in imagegen performed the three identity cleanups and generated genuine po
 
 ## Production order and remaining gates
 
-1. Use the cleaned neutral PNG masters for twelve expression edits, one image at a time. Preserve face geometry, outfit, side-specific marks, crop and eye line. The older opaque Venice candidates must not seed expression production without the cleanup.
+Current provider and batch checkpoint: [ChatGPT production](CHATGPT-PRODUCTION.md). Venice is paused per user instruction. Three repaired location masters and Rebeka amused are recorded in `assets/generated/chatgpt/manifest.json`. The original candidate files remain preserved.
+
+
+1. Use the cleaned neutral PNG masters for eleven remaining expression edits, one image at a time. Preserve face geometry, outfit, side-specific marks, crop and eye line. The older opaque Venice candidates must not seed expression production without the cleanup.
 2. Review Soma, Dénes, Júlia, Áron and Lilla neutral portraits; derive Soma's transformed form from the accepted human master.
 3. Review seven remaining base locations, then three lighting variants derived from accepted architecture. Keep the seated player viewpoint and a natural companion seat.
 4. Create the five production reference sheets from reviewed masters/locations.
 
-Historical HTTP 402 stopped the 19 October batch; the two 21 October one-image generations succeeded. The previous `/image/background-remove` HTTP 403 remains historical, not a claim about current capability. No payment settings changed and no automatic paid retries are scheduled. All 28 missing runtime records and five reference sheets remain open; this batch does not complete the redesign or final art acceptance. Prior archived character art remains outside runtime.
+Historical HTTP 402 stopped the 19 October batch; the two 21 October one-image generations succeeded. The previous `/image/background-remove` HTTP 403 remains historical, not a claim about current capability. No payment settings changed and no automatic paid retries are scheduled. All 24 missing runtime records and five reference sheets remain open; this batch does not complete the redesign or final art acceptance. Prior archived character art remains outside runtime.
