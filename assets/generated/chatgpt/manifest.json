@@ -592,6 +592,78 @@
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false,
       "export": "Pillow LANCZOS contain/pad for portraits, WebP quality 95; alpha_quality 100"
+    },
+    {
+      "id": "rebeka_identity_sheet",
+      "kind": "reference",
+      "actor": "rebeka",
+      "heightCm": 175,
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "full-body identity sheet derived from neutral portrait",
+      "source": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+      "sourceSha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+      "master": "assets/generated/chatgpt/references/rebeka-identity-v1.png",
+      "masterSha256": "e9ef6dc408c4fc595de13335877bd2e6c8dbff3e2f73eb7b8d6be5e14b0b3277",
+      "masterSize": [
+        1536,
+        1024
+      ],
+      "runtime": null,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "rebeka_identity_sheet",
+      "status": "reviewed-production-reference",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "proposedDetails": "Simple sleeves and black low-heeled ankle boots; lower dress construction is a production proposal."
+    },
+    {
+      "id": "boglarka_identity_sheet",
+      "kind": "reference",
+      "actor": "boglarka",
+      "heightCm": 150,
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "full-body identity sheet derived from neutral portrait",
+      "source": "assets/generated/portrait-cutouts/boglarka-neutral-v1.png",
+      "sourceSha256": "57349d7a9e28f6a993d35f2ec155e6f8295f7885f66a683885eab4cba1820a20",
+      "master": "assets/generated/chatgpt/references/boglarka-identity-v1.png",
+      "masterSha256": "2dd19cc8b7f4b3e666dafe34d297daca2e14beb21a98dcb01231c7dfd5bf4f5b",
+      "masterSize": [
+        1536,
+        1024
+      ],
+      "runtime": null,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "boglarka_identity_sheet",
+      "status": "reviewed-production-reference",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "proposedDetails": "Below-knee skirt, hip-length cardigan and plain brown flat shoes are production proposals."
+    },
+    {
+      "id": "greta_identity_sheet",
+      "kind": "reference",
+      "actor": "greta",
+      "heightCm": 168,
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "full-body identity sheet derived from neutral portrait",
+      "source": "assets/generated/portrait-cutouts/greta-neutral-v1.png",
+      "sourceSha256": "1e1589c266b53cb0d65e21fea5dbdfb971f6cd4ffb3835e41ec04d62ba535eaa",
+      "master": "assets/generated/chatgpt/references/greta-identity-v1.png",
+      "masterSha256": "a05d6f914c3150fc48c24be5199064c87523fe381e49d1a4cc7ad64ff6c4954d",
+      "masterSize": [
+        1536,
+        1024
+      ],
+      "runtime": null,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "greta_identity_sheet",
+      "status": "reviewed-production-reference",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "proposedDetails": "Knee-length skirt construction and plain black low-heeled loafers are production proposals."
     }
   ]
 }
