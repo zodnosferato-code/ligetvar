@@ -37,7 +37,7 @@ Active routes: friendship, rebeka, boglarka, greta, triad. The scene inventory e
 
 ## Provisional creative choices (not previously approved canon)
 
-The separate university assistant is **Végh Soma**, provisionally 32, responsible for archive access/equipment. He deliberately transforms between weeks 1 and 2, seeking recognition and desirability. The plan's proposed grounding, vitality-drain, borrowed-voice and vulnerable-anchor rules are used. The fatal ritual collapse is low-gore and established before the confrontation. No final appearance is invented or approved; his human/transformed art remains a labelled placeholder. Women-only T3/T4 use an explicitly introduced viewpoint interlude; Márton is absent and does not choose their attraction for them.
+The separate university assistant is **Végh Soma**, provisionally 32, responsible for archive access/equipment. He deliberately transforms between weeks 1 and 2, seeking recognition and desirability. The plan's proposed grounding, vitality-drain, borrowed-voice and vulnerable-anchor rules are used. The fatal ritual collapse is low-gore and established before the confrontation. The user's 22 October direction specifies short black hair, a thick moustache, a slightly stocky build, and a modestly leaner transformed form with vampire fangs and glowing red eyes; matching art proposals are being prepared. Women-only T3/T4 use an explicitly introduced viewpoint interlude; Márton is absent and does not choose their attraction for them.
 
 ## Actual verification
 
@@ -255,3 +255,8 @@ Generated one adult faculty-administrator portrait using Dénes only as a style/
 ## Lilla semleges portréjának javaslata — 22 October 2026
 
 Generated one adult student/witness portrait using Rebeka only as a rendering-style and framing reference. The candidate has transparent alpha and is uploaded at `assets/generated/chatgpt/supporting/lilla-neutral-v1.webp`, outside runtime assets. Prompt, source/output hashes, dimensions and status are in the ChatGPT manifest and `supporting/lilla-neutral.json`. Its appearance is a proposal pending user review, not canon. No local tests/build were run; GitHub Actions are checked after upload.
+
+
+## Soma semleges portréjának frissített javaslata — 22 October 2026
+
+Updated the portrait to follow the user's direction: an ordinary, less conventionally handsome adult Hungarian man with short black hair, a thick moustache and a slightly stocky build. The new transparent candidate is `assets/generated/chatgpt/supporting/soma-neutral-v2.webp`; the former v1 proposal is superseded. It remains outside runtime assets pending visual review. The prompt, source/output hashes and dimensions are recorded in the ChatGPT manifest and `supporting/soma-neutral-v2.json`. No local tests/build were run; GitHub Actions are checked after upload.
