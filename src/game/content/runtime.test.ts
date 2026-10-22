@@ -86,7 +86,14 @@ test('main-character art resolves and Soma switches from neutral to transformed 
   assert.equal(new Set(files).size,5,actor);
   for(const file of files)assert.ok(file&&existsSync('public/'+file),file??actor);
  }
- assert.equal(portraitFor('soma','affectionate').file,null);
+ const somaNeutral=portraitFor('soma','neutral',1).file;
+ const somaTransformed=portraitFor('soma','neutral',2).file;
+ assert.equal(somaNeutral,'characters/soma/neutral-v1.webp');
+ assert.equal(somaTransformed,'characters/soma/transformed-v1.webp');
+ assert.equal(portraitFor('soma','affectionate',1).file,somaNeutral);
+ assert.equal(portraitFor('soma','affectionate',2).file,somaTransformed);
+ for(const file of [somaNeutral,somaTransformed])assert.ok(file&&existsSync('public/'+file),file??'soma');
+ assert.equal(portraitFor('aron','neutral').file,null);
  assert.equal(portraitFor('marton','neutral').file,null);
 });
 test('scene lighting selects reviewed variants while preserving daytime and fallback locations',()=>{
