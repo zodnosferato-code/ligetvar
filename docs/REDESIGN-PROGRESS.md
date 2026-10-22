@@ -245,3 +245,8 @@ Generated and refined the anime daytime planning office from the existing image.
 ## Soma semleges portréjának javaslata — 22 October 2026
 
 Generated one adult-human portrait using Dénes only as a style/framing reference. The candidate has transparent alpha and is uploaded to `assets/generated/chatgpt/supporting/soma-neutral-v1.webp`, outside runtime assets. The prompt, source and output hashes, dimensions and candidate status are in the ChatGPT manifest and `supporting/soma-neutral.json`. Its appearance is explicitly not canon; wait for Miki's approval before creating the transformed identity variant or Soma reference sheet. No local tests/build were run; Actions are checked after upload.
+
+
+## Áron semleges portréjának javaslata — 22 October 2026
+
+Generated one adult faculty-administrator portrait using Dénes only as a style/framing reference. The candidate has transparent alpha and is uploaded at `assets/generated/chatgpt/supporting/aron-neutral-v1.webp`, outside runtime assets. Prompt, source/output hashes, dimensions and review status are recorded in the ChatGPT manifest and `supporting/aron-neutral.json`. This is a proposal pending user review, not canon. No local tests/build were run; GitHub Actions are checked after upload.
