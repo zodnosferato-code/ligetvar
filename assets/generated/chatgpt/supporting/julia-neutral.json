@@ -1,0 +1,28 @@
+{
+  "actor": "julia",
+  "expression": "neutral",
+  "prompt": "Use case: stylized-concept. Asset type: transparent game dialogue portrait. Input image is ONLY rendering style and head-and-shoulders framing reference, NOT character identity. Create this different person: Dr. Sárközi Júlia, proposed adult female faculty design, about 48. Mature oval face, light olive complexion, dark curly chin-length bob with a few silver strands, brown eyes, no glasses. Navy jacket over muted sage blouse, simple small silver earrings. Thoughtful and quietly incisive. One adult, entire crown and hair visible with margin, eyes at 30% height, shoulders and upper torso fill bottom of 4:5 vertical canvas. Detailed anime fine linework, crisp cel shading matching supplied style. Soft neutral light, attentive neutral expression. Fully clothed, transparent empty background, no glow, halo, backdrop, props or text. Do not copy the reference woman's face, hair, outfit or beauty mark.",
+  "references": [
+    "assets/generated/portrait-cutouts/rebeka-neutral-v1.png"
+  ],
+  "review": "Adult identity, wardrobe, full crown and distinct face visually inspected; transparent alpha; neutral falls back for unproduced expressions.",
+  "provider": "OpenAI built-in imagegen",
+  "master": "assets/generated/chatgpt/supporting/julia-neutral-v1.png",
+  "runtime": "assets/characters/julia/neutral-v1.webp",
+  "masterSha256": "75cd16f17bc4a911fcc86e3bb49f2c08b74deb32a65b5d1e1322d1b684ad371f",
+  "runtimeSha256": "322d946ce40f2e619aae9135e02a85b3fb4880c086480486fcb0d76c55bcfd55",
+  "masterSize": [
+    1122,
+    1402
+  ],
+  "runtimeSize": [
+    640,
+    800
+  ],
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "status": "assistant-visually-reviewed",
+  "finalUserStyleApproval": false
+}
