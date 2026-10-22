@@ -2,7 +2,7 @@
 
 > **Status:** Partial runtime integration. | **Purpose:** Exact art coverage, visual review and remaining production work.
 
-On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Twenty-nine of the original 32 required runtime images are now visually reviewed and integrated; 3 remain, plus Soma's reference sheet. Miki has approved Soma's final appearance. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
+On 21 October 2026 the user requested gradual, consistent asset production and integration. The active manifest is `src/game/content/assets.ts`. Thirty of the original 32 required runtime images are now visually reviewed and integrated; 2 remain, plus Soma's reference sheet. Miki has approved Soma's final appearance. Reviewed means assistant inspection and runtime checks, not final user acceptance of the entire art direction.
 
 ## Character review
 
@@ -12,7 +12,7 @@ On 21 October 2026 the user requested gradual, consistent asset production and i
 | Boglárka, 19 | Quietly observant adult face, freckles, brown eyes/hair, moss-green cardigan and cream dress | Braid over anatomical right shoulder (viewer left); complete crown; transparent background |
 | Gréta, 21 | Practical/direct presence, copper ponytail, rectangular glasses, white shirt and green vest | Removed copied beauty marks; buttoned shirt; matched head-and-shoulders framing; transparent background |
 
-The portraits remain distinct while sharing linework, cel shading and soft neutral light. All three main women now have all five distinct expression exports; unknown future expressions still fall back to neutral. Márton is the viewpoint character and has no portrait; narration has none. Dénes and Júlia are reviewed and integrated. Soma's updated appearance and subtle vampire transformation are approved as final by Miki. The neutral portrait is integrated; the transformed portrait is being wired to the week-two transition. Áron and Lilla portraits remain proposals pending review.
+The portraits remain distinct while sharing linework, cel shading and soft neutral light. All three main women now have all five distinct expression exports; unknown future expressions still fall back to neutral. Márton is the viewpoint character and has no portrait; narration has none. Dénes and Júlia are reviewed and integrated. Soma's updated appearance and subtle vampire transformation are approved as final by Miki. Both final portraits are integrated, with the transformed portrait selected from week two to match the story's transformation. Áron and Lilla portraits remain proposals pending review.
 
 ## Runtime coverage
 
@@ -34,7 +34,7 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | greta / vulnerable | characters/greta/vulnerable-v1.webp | Reviewed; integrated 22 October |
 | greta / affectionate | characters/greta/affectionate-v1.webp | Reviewed; integrated 22 October |
 | soma / neutral | characters/soma/neutral-v1.webp | Final, user-approved; integrated |
-| soma / transformed | ChatGPT proposal in generated/chatgpt/supporting/soma-transformed-v1.webp | Final, user-approved; runtime integration next |
+| soma / transformed | characters/soma/transformed-v1.webp | Final, user-approved; integrated from week 2 |
 | denes | characters/denes/neutral-v1.webp | Reviewed; integrated |
 | julia | characters/julia/neutral-v1.webp | Reviewed; integrated |
 | aron | ChatGPT proposal in generated/chatgpt/supporting/aron-neutral-v1.webp | Uploaded for user design review; not runtime |
