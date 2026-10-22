@@ -230,3 +230,8 @@ Three full-body swimwear costume references saved in assets/generated/chatgpt/sw
 ## Architecture reference — 22 October 2026
 
 Generated one three-panel reference sheet from the reviewed classroom, courtyard and service-chamber backgrounds. Visually inspected that it contains only environment studies and preserves the project’s Gothic stone/ivy/utility-pipe language. The generated image is saved at `assets/generated/chatgpt/references/architecture-v1.webp`; prompt, source hashes, output hash and dimensions are recorded in the ChatGPT manifest. It is a non-runtime reference, so no game asset manifest changed. Soma's sheet and the final user art approval remain open. No tests or build were run for this non-runtime reference; GitHub Actions are checked after upload.
+
+
+## Apartment night-hub restyle — 22 October 2026
+
+Generated a detailed anime bedroom from the existing room image, preserving its Gothic window, bed, stone walls and night lighting. Visually checked the door, wall phone, open journal, armchair and shelf against their visible hotspot rectangles; moved only the phone hotspot vertically to align with the illustrated phone. The runtime export is `assets/backgrounds/apartment-anime-v1.webp` at 1168×784; the full-resolution WebP master, exact prompt, source/output hashes and review status are recorded in the ChatGPT manifest. Updated the bedroom art selection and hotspot coordinate. No local tests/build were run; GitHub Actions are checked after upload.
