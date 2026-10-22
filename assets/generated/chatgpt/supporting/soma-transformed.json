@@ -1,8 +1,8 @@
 {
   "id": "soma_transformed_candidate_v1",
   "character": "Végh Soma",
-  "status": "proposal-pending-user-review",
-  "canonical": false,
+  "status": "approved-final",
+  "canonical": true,
   "concept": "Identity-preserving, subtly leaner vampire form with fangs and glowing red eyes; proposal for review.",
   "source": {
     "path": "assets/generated/chatgpt/supporting/soma-neutral-v2.webp",
@@ -20,5 +20,17 @@
     "format": "WebP",
     "hasUsefulAlpha": true
   },
-  "prompt": "Create an identity-preserving portrait of Végh Soma in his transformed vampire state, using the neutral portrait as the exact identity reference. Keep his face, short black hair, thick neat moustache, age, expression, clothing, pose, framing and art style almost unchanged. He is only slightly leaner: subtly less round cheeks and a modestly reduced belly under the same dark brown knit vest. Add two small clearly visible vampire canine fangs, and vivid glowing red eyes. The transformation remains subtle, recognizable as the same ordinary Hungarian man. Preserve his dark brown knitted vest and cream button-up shirt. Clean anime linework, restrained cel shading, natural proportions. Truly transparent background. No checkerboard pattern, no background, no scenery, no symbols, no text, no watermark, no blood, no wounds, and no other supernatural additions."
+  "prompt": "Create an identity-preserving portrait of Végh Soma in his transformed vampire state, using the neutral portrait as the exact identity reference. Keep his face, short black hair, thick neat moustache, age, expression, clothing, pose, framing and art style almost unchanged. He is only slightly leaner: subtly less round cheeks and a modestly reduced belly under the same dark brown knit vest. Add two small clearly visible vampire canine fangs, and vivid glowing red eyes. The transformation remains subtle, recognizable as the same ordinary Hungarian man. Preserve his dark brown knitted vest and cream button-up shirt. Clean anime linework, restrained cel shading, natural proportions. Truly transparent background. No checkerboard pattern, no background, no scenery, no symbols, no text, no watermark, no blood, no wounds, and no other supernatural additions.",
+  "finalUserStyleApproval": true,
+  "runtime": {
+    "path": "assets/characters/soma/transformed-v1.webp",
+    "sha256": "6097a4f8f0686209d1df43dec640e2ddb802db1d349728a4d95d50461dcc68f6",
+    "size": [
+      640,
+      800
+    ],
+    "format": "WebP",
+    "bytes": 96266,
+    "hasUsefulAlpha": true
+  }
 }

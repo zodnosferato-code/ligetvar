@@ -34,9 +34,12 @@ export const PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,ArtAsset
  boglarka:{neutral:{file:'characters/boglarka/neutral-v1.webp',status:'reviewed',note:'Átnézett neutral portré, megőrzött karakterazonosság és átlátszóság.'},amused:{file:'characters/boglarka/amused-v1.webp',status:'reviewed',note:'Átnézett amused portré, megőrzött karakterazonosság és átlátszóság.'},displeased:{file:'characters/boglarka/displeased-v1.webp',status:'reviewed',note:'Átnézett displeased portré, megőrzött karakterazonosság és átlátszóság.'},vulnerable:{file:'characters/boglarka/vulnerable-v1.webp',status:'reviewed',note:'Átnézett vulnerable portré, megőrzött karakterazonosság és átlátszóság.'},affectionate:{file:'characters/boglarka/affectionate-v1.webp',status:'reviewed',note:'Átnézett affectionate portré, megőrzött karakterazonosság és átlátszóság.'}},
  greta:{neutral:{file:'characters/greta/neutral-v1.webp',status:'reviewed',note:'Átnézett neutral portré, megőrzött karakterazonosság és átlátszóság.'},amused:{file:'characters/greta/amused-v1.webp',status:'reviewed',note:'Átnézett amused portré, megőrzött karakterazonosság és átlátszóság.'},displeased:{file:'characters/greta/displeased-v1.webp',status:'reviewed',note:'Átnézett displeased portré, megőrzött karakterazonosság és átlátszóság.'},vulnerable:{file:'characters/greta/vulnerable-v1.webp',status:'reviewed',note:'Átnézett vulnerable portré, megőrzött karakterazonosság és átlátszóság.'},affectionate:{file:'characters/greta/affectionate-v1.webp',status:'reviewed',note:'Átnézett affectionate portré, megőrzött karakterazonosság és átlátszóság.'}},
 };
-export function portraitFor(actor:ActorId,expression:Expression):ArtAsset{
+const TRANSFORMED_PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,ArtAsset>>>>={
+ soma:{neutral:{file:'characters/soma/transformed-v1.webp',status:'reviewed',note:'Miki által véglegesített vámpírportré; a 2. héttől aktív.'}}
+};
+export function portraitFor(actor:ActorId,expression:Expression,week=1):ArtAsset{
  if(actor==='marton'||actor==='narrator')return {file:null,status:'placeholder',note:''};
- const portraits=PORTRAITS[actor];
+ const portraits=week>=2?(TRANSFORMED_PORTRAITS[actor]??PORTRAITS[actor]):PORTRAITS[actor];
  return portraits?.[expression]??portraits?.neutral??{file:null,status:'placeholder',note:'Új portré készül: '+ACTOR_NAME[actor]};
 }
 export function assetUrl(file:string){const env=(import.meta as ImportMeta&{env?:{BASE_URL?:string}}).env;return (env?.BASE_URL??'/')+file;}
