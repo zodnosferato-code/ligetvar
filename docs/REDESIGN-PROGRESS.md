@@ -240,3 +240,8 @@ Generated a detailed anime bedroom from the existing room image, preserving its 
 ## Department office restyle — 22 October 2026
 
 Generated and refined the anime daytime planning office from the existing image. The final image has no people and exactly one rotary phone; the open journal sits beside it. Visually checked door, desk, phone, journal, chair, shelf and satchel overlays against the existing coordinates. Runtime image: `assets/backgrounds/department-anime-v1.webp` (1168×784). The full-size WebP master, generation and refinement prompts, source/output hashes and review are recorded in the ChatGPT manifest. Existing hotspot coordinates required no change. No local tests/build were run; GitHub Actions are checked after upload.
+
+
+## Soma semleges portréjának javaslata — 22 October 2026
+
+Generated one adult-human portrait using Dénes only as a style/framing reference. The candidate has transparent alpha and is uploaded to `assets/generated/chatgpt/supporting/soma-neutral-v1.webp`, outside runtime assets. The prompt, source and output hashes, dimensions and candidate status are in the ChatGPT manifest and `supporting/soma-neutral.json`. Its appearance is explicitly not canon; wait for Miki's approval before creating the transformed identity variant or Soma reference sheet. No local tests/build were run; Actions are checked after upload.
