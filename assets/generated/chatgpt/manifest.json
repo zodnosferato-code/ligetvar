@@ -804,6 +804,30 @@
       "status": "proposal-pending-user-review",
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false
+    },
+    {
+      "id": "lilla_neutral_candidate",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "proposed neutral portrait; awaiting user design approval",
+      "source": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+      "sourceSha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+      "sourceRole": "rendering style and framing only, not identity",
+      "generatedPngSha256": "0f8ee11e0ac3b1de8dbbe751abe307e024eab2e3c35c4ef379648fb11e0da20a",
+      "master": "assets/generated/chatgpt/supporting/lilla-neutral-v1.webp",
+      "masterSha256": "0083072a0e087410e24e9746437ec196dcee444de32b5251acd749b0683348be",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "masterBytes": 342920,
+      "runtime": null,
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "lilla_neutral_candidate",
+      "status": "proposal-pending-user-review",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false
     }
   ]
 }

@@ -1,0 +1,24 @@
+{
+  "id": "lilla_neutral_candidate",
+  "character": "Lilla",
+  "status": "proposal-pending-user-review",
+  "canonical": false,
+  "concept": "Adult university student and witness; proposed appearance for user review.",
+  "source": {
+    "path": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+    "sha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+    "role": "rendering style and framing only; not identity"
+  },
+  "generatedPngSha256": "0f8ee11e0ac3b1de8dbbe751abe307e024eab2e3c35c4ef379648fb11e0da20a",
+  "savedImage": {
+    "path": "assets/generated/chatgpt/supporting/lilla-neutral-v1.webp",
+    "sha256": "0083072a0e087410e24e9746437ec196dcee444de32b5251acd749b0683348be",
+    "size": [
+      1122,
+      1402
+    ],
+    "format": "WebP",
+    "hasUsefulAlpha": true
+  },
+  "prompt": "Use case: stylized-concept. Asset type: proposed neutral dialogue portrait for the Ligetvár anime visual novel. Image 1 is a RENDERING STYLE AND HEAD-AND-SHOULDERS FRAMING reference only; create a different person and do not copy Rebeka’s face, violet eyes, long black hair, plum streak, beauty mark, choker or gothic outfit. Subject: Lilla, a clearly adult woman in her early twenties, a university student whose report of missing time and exhaustion begins the current investigation. Her appearance is a proposal awaiting approval. Suggested design: soft but mature face, shoulder-length warm chestnut hair gathered loosely behind one ear, hazel-brown eyes, light natural freckles, fair skin with subtle signs of tiredness but no distress. A modest muted teal cardigan over a pale cream blouse, fully buttoned and ordinary student clothing. Calm, quietly wary neutral expression; no visible injury, supernatural effect, or exaggerated fear. Frame from crown to upper chest, vertical 4:5 portrait, centered face, eyes around 30% image height, complete hair crown within frame. Fine controlled anime linework and clean sharp cel shading matching the style reference; adult natural proportions. Fully clothed. Truly transparent empty background with clean opaque character silhouette: no halo, color wash, gradient, haze, scenery, props, text, labels or watermark. This is a reviewable proposal, not final character canon."
+}
