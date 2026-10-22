@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {existsSync,readFileSync} from 'node:fs';
 import {SCENES,EVIDENCE} from './catalog.ts';
-import {BACKGROUNDS,portraitFor} from './assets.ts';
+import {BACKGROUNDS,BACKGROUND_VARIANTS,backgroundFor,portraitFor} from './assets.ts';
 import {validateRegistry} from './validate.ts';
 import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,resolveJob,setDirection} from './runtime.ts';
 import {decodeSave,legacyName,persist} from './saves.ts';
@@ -83,6 +83,23 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
 test('unavailable emotions safely fall back to neutral, never blush',()=>{
  assert.equal(portraitFor('boglarka','displeased').file,portraitFor('boglarka','neutral').file);
  assert.equal(portraitFor('greta','displeased').file,portraitFor('greta','neutral').file);assert.equal(portraitFor('soma','affectionate').file,null);
+});
+test('scene lighting selects reviewed variants while preserving daytime and fallback locations',()=>{
+ const s=createInitial('');
+ for(const location of Object.keys(BACKGROUNDS) as (keyof typeof BACKGROUNDS)[])assert.equal(backgroundFor(location,'day'),BACKGROUNDS[location]);
+ for(const variants of Object.values(BACKGROUND_VARIANTS))for(const art of Object.values(variants)){
+  assert.ok(art.file&&existsSync('public/'+art.file));assert.equal(art.lightingBaked,true);
+ }
+ for(const [id,prefix] of [['coffee_rebeka_early','courtyard'],['boglarka_1','library']] as const){
+  const scene=SCENES[id];
+  assert.equal(backgroundFor(scene.background,sceneLighting({...s,slot:1},scene)),BACKGROUNDS[scene.background]);
+  const night=backgroundFor(scene.background,sceneLighting({...s,slot:2},scene));
+  assert.ok(night.file?.includes(prefix));assert.equal(night.lightingBaked,true);assert.notEqual(night,BACKGROUNDS[scene.background]);
+ }
+ assert.equal(backgroundFor('courtyard','night'),backgroundFor('courtyard','evening'));
+ assert.equal(backgroundFor('classroom','evening').file,'backgrounds/classroom-dusk-anime-v1.webp');
+ assert.equal(backgroundFor('department','evening'),BACKGROUNDS.department);
+ assert.equal(backgroundFor('apartment','night'),BACKGROUNDS.apartment);
 });
 test('synthetic scheduler exercises 16 required slots and atomic continuations before content',()=>{
  const r=fixtures();validateRegistry(r,{},new Set(['classroom']));let s=createInitial('');

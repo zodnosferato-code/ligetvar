@@ -95,3 +95,7 @@ Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egye
 ## Ellenőrzés
 
 `npm test` / `npm run test:engine` / `npm run test:headless`: ugyanaz a Node headless készlet. `npm run typecheck`: TypeScript. `npm run build`: Vite production build. A régi `src/core/`, JSON-összefésülők és Jest belépési pont megszűntek a hasznos ellenőrzések átültetése után. A történeti JSON és lokalizáció a `docs/archive/legacy-narrative/` alatt maradt meg forrás/proveniencia céljára, aktív import nélkül. A tényleges eredményeket a [haladási napló](docs/REDESIGN-PROGRESS.md) rögzíti.
+
+## Reviewed lighting variants — 22 October 2026
+
+The UI passes effective `sceneLighting` to `backgroundFor` in the content asset manifest. Classroom evening selects dusk, library evening selects evening, and courtyard evening/night selects night (flexible night-slot scenes are labelled evening). Day selection and unavailable variants fall back to the base background. Reviewed variants set `lightingBaked`; their background bypasses the extra evening/night CSS tint on desktop and mobile. Other locations retain the CSS fallback. Engine and saves are unchanged.
