@@ -664,6 +664,40 @@
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false,
       "proposedDetails": "Knee-length skirt construction and plain black low-heeled loafers are production proposals."
+    },
+    {
+      "id": "architecture_reference",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "three-panel architectural reference sheet",
+      "sources": [
+        {
+          "path": "assets/backgrounds/classroom-anime-v1.webp",
+          "sha256": "67baa1233c0666b76b2483f44a773b0401d8c3ed6a75789742888e326c33b7ab"
+        },
+        {
+          "path": "assets/backgrounds/courtyard-anime-v1.webp",
+          "sha256": "847deb1cdd3d78cabbd2ef0c130c98e5840d77aa898b3dd29248e3edb6f26a5a"
+        },
+        {
+          "path": "assets/backgrounds/chamber-anime-v1.webp",
+          "sha256": "0262a7d0626b21f0dc22d1ccf87ce6108e7b7215eac0c0ed55614bb7cdd8b9f3"
+        }
+      ],
+      "master": "assets/generated/chatgpt/references/architecture-v1.webp",
+      "masterSha256": "dd4e770c4e822a1193c838e0471be9648701fda36e6764f52ebee59cccc534b6",
+      "masterSize": [
+        2012,
+        781
+      ],
+      "masterBytes": 653778,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "architecture_reference",
+      "runtime": null,
+      "status": "assistant-reviewed-reference",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "WebP quality 95; non-runtime reference sheet"
     }
   ]
 }

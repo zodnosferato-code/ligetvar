@@ -34,7 +34,7 @@ Built-in imagegen repaired Holdkör (removed human busts, removed obstructing be
 
 1. Completed: architecture-preserving classroom dusk, courtyard night and library evening variants. `backgroundFor` selects by effective lighting; courtyard night also covers evening-labelled visits in the night slot. Extra CSS background tint is bypassed for these variants.
 2. Completed: all ten remaining main-woman expression variants. Ask about supporting-cast appearance if uncertain before creating five human NPC portraits and Soma's transformation.
-3. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. Two production reference sheets and final user style approval remain open.
+3. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. One production reference sheet (Soma) and final user style approval remain open.
 
 First-batch commit `ed72ccd978b367433becc0875ba3e37ebcee7831`: GitHub Tests run 39785805351 and Pages run 39785805963 both completed successfully. No unattended continuation or automatic paid retry is scheduled. See REDESIGN-PROGRESS.md for actual validation commands/results.
 
@@ -50,4 +50,4 @@ Ten expression edits were generated concurrently from existing neutral masters a
 
 ## Full-body references — 22 October 2026
 
-Three clothed face/full-body sheets for Rebeka, Boglárka and Gréta were generated from the approved neutral identity masters, then visually reviewed. See [character references](CHARACTER-REFERENCES.md) for images, canonical heights and proposed footwear/clothing details. Source/output hashes and prompts are recorded; the sheets have no runtime export. Three of five planned references are complete; Soma and architecture remain. Final user approval stays open.
+Three clothed face/full-body sheets for Rebeka, Boglárka and Gréta were generated from the approved neutral identity masters, then visually reviewed. See [character references](CHARACTER-REFERENCES.md) for images, canonical heights and proposed footwear/clothing details. Source/output hashes and prompts are recorded; the sheets have no runtime export. Four reference sheets are complete; Soma remains. Final user approval stays open.

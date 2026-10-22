@@ -65,7 +65,7 @@ Current provider and batch checkpoint: [ChatGPT production](CHATGPT-PRODUCTION.m
 1. Completed: all fifteen main-woman expression portraits. Continue deriving any future edits from the cleaned neutral masters, preserving face geometry, outfit, marks, crop and eye line.
 2. Review Soma, Dénes, Júlia, Áron and Lilla neutral portraits; derive Soma's transformed form from the accepted human master.
 3. Replace the two transitional planning backgrounds only after matching their clickable objects and verifying hotspot alignment. All three planned lighting variants are integrated; other unmatched location/lighting combinations retain CSS fallback.
-4. Completed: three main-woman reference sheets. Create the remaining Soma and architecture sheets from reviewed masters/locations.
+4. Completed: three main-woman reference sheets and the architecture sheet are complete. Create Soma's sheet after his neutral design is approved.
 
 Historical HTTP 402 stopped the 19 October batch; the two 21 October one-image generations succeeded. The previous `/image/background-remove` HTTP 403 remains historical, not a claim about current capability. No payment settings changed and no automatic paid retries are scheduled. All 8 missing original runtime records and two reference sheets remain open; this batch does not complete the redesign or final art acceptance. Prior archived character art remains outside runtime.
 
@@ -77,7 +77,7 @@ Third 22 October batch: classroom dusk, courtyard night and library evening were
 
 Ten independent expression edits were generated from cleaned neutral masters, then reviewed together as requested. All fifteen main-character portraits now resolve to distinct 640×800 transparent WebP exports. Night variants for Békás-tó and the department were added beyond the original 32-image plan: total reviewed coverage is 24/32 original requirements plus two additional night images. The department night image deliberately retains the transitional base style and object geometry; it does not close the planned anime office restyle. Its export preserves the original 1168×784 aspect ratio.
 
-All seven locations reachable through the night hub resolve to an evening/night image, not a tinted sunny base. Classroom/library reuse their reviewed dusk/evening variants; courtyard, lake and office use night variants; Holdkör/apartment use their already-night bases without extra darkening. Remaining: six supporting/transformed portraits, two planner restyles, two reference sheets; final user acceptance open.
+All seven locations reachable through the night hub resolve to an evening/night image, not a tinted sunny base. Classroom/library reuse their reviewed dusk/evening variants; courtyard, lake and office use night variants; Holdkör/apartment use their already-night bases without extra darkening. Remaining: six supporting/transformed portraits, two planner restyles and Soma's reference sheet; final user acceptance open.
 
 ## Full-body references — 22 October 2026
 
