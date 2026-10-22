@@ -80,7 +80,7 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
  const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
  assert.equal(nextWeek(n,SCENES).money,n.money+60000);
 });
-test('all main-character expressions have distinct exports and missing NPC art remains a placeholder',()=>{
+test('main-character art resolves and Soma switches from neutral to transformed at week two',()=>{
  for(const actor of ['rebeka','boglarka','greta'] as const){
   const files=(['neutral','amused','displeased','vulnerable','affectionate'] as const).map(expression=>portraitFor(actor,expression).file);
   assert.equal(new Set(files).size,5,actor);
