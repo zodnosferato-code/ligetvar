@@ -1,6 +1,6 @@
 import {Component,useEffect,useRef,useState,type CSSProperties,type ReactNode} from 'react';
 import {SCENES} from '../content/catalog.ts';
-import {ACTOR_NAME,SHORT,BACKGROUNDS,LOCATIONS,assetUrl,portraitFor} from '../content/assets.ts';
+import {ACTOR_NAME,SHORT,backgroundFor,LOCATIONS,assetUrl,portraitFor} from '../content/assets.ts';
 import {currentLine,currentPeriod,sceneLighting,evaluateEnding,formatFt} from '../content/runtime.ts';
 import {institutions,relationships} from '../content/epilogues.ts';
 import {useGame} from '../store.ts';
@@ -34,10 +34,10 @@ function Title(){
  <p className="muted">Minden héten egy közös jelenet, egy nappali és egy éjszakai tevékenység. A személyes jelenetek valódi határidőig pótolhatók; a folytatás nem kerül újabb sávba.</p></div></main>;
 }
 function Dialogue(){
- const g=useGame(),s=g.state,x=SCENES[s.scene!.id],l=currentLine(s,SCENES)!,portrait=portraitFor(l.speaker,l.expression),bg=BACKGROUNDS[x.background],lighting=sceneLighting(s,x),narration=l.speaker==='narrator',showPortrait=l.speaker!=='narrator'&&l.speaker!=='marton',heading=useRef<HTMLHeadingElement>(null),stage=useRef<HTMLElement>(null),copy=useRef<HTMLDivElement>(null),[hasMoreText,setHasMoreText]=useState(false);
+ const g=useGame(),s=g.state,x=SCENES[s.scene!.id],l=currentLine(s,SCENES)!,portrait=portraitFor(l.speaker,l.expression),lighting=sceneLighting(s,x),bg=backgroundFor(x.background,lighting),narration=l.speaker==='narrator',showPortrait=l.speaker!=='narrator'&&l.speaker!=='marton',heading=useRef<HTMLHeadingElement>(null),stage=useRef<HTMLElement>(null),copy=useRef<HTMLDivElement>(null),[hasMoreText,setHasMoreText]=useState(false);
  useEffect(()=>{if(window.matchMedia('(max-width:700px)').matches)stage.current?.scrollIntoView({block:'start'});},[x.id,l.id]);
  useEffect(()=>{heading.current?.focus({preventScroll:true});const element=copy.current;if(!element)return;element.scrollTop=0;const measure=()=>setHasMoreText(element.scrollHeight>element.clientHeight+1);measure();const observer=new ResizeObserver(measure);observer.observe(element);return ()=>observer.disconnect();},[x.id,l.id]);
- return <main ref={stage} className={'dialogue lighting-'+lighting+(narration?' narration':'')+(!showPortrait?' no-portrait':'')} style={bg.file?{'--scene-background':'url("'+assetUrl(bg.file)+'")'} as CSSProperties:undefined}>
+ return <main ref={stage} className={'dialogue lighting-'+lighting+(bg.lightingBaked?' lighting-baked':'')+(narration?' narration':'')+(!showPortrait?' no-portrait':'')} style={bg.file?{'--scene-background':'url("'+assetUrl(bg.file)+'")'} as CSSProperties:undefined}>
  <div className="scene-meta"><span>{LOCATIONS[x.location]} · {lighting==='day'?'Nappal':lighting==='evening'?'Este':'Éjjel'}</span><span>{x.title}</span></div><div className="scene-view">{showPortrait&&<figure className={'portrait actor-'+l.speaker}>{portrait.file?<div className="portrait-frame"><img src={assetUrl(portrait.file)} alt={ACTOR_NAME[l.speaker]}/></div>:<div className="portrait-placeholder" aria-label={portrait.note}><span aria-hidden="true">{SHORT[l.speaker][0]}</span><p>Portré készül</p></div>}</figure>}</div>{!bg.file&&<p className="art-label">{bg.note}</p>}
  <div className="dialogue-layout">
  <section className="dialogue-panel"><div className="dialogue-heading">{!narration&&<p className="eyebrow">{x.participants.filter(p=>p!=='marton'&&p!=='narrator').map(p=>SHORT[p]).join(' · ')}</p>}<h1 ref={heading} tabIndex={-1}>{narration?x.title:l.speaker==='marton'?s.name:ACTOR_NAME[l.speaker]}</h1></div>

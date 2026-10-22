@@ -190,6 +190,84 @@
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false,
       "export": "Pillow LANCZOS resize, WebP quality 95; portrait alpha_quality 100"
+    },
+    {
+      "id": "classroom_dusk",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "architecture-preserving time-of-day edit",
+      "source": "assets/generated/venice/backgrounds/classroom.png",
+      "sourceSha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a",
+      "master": "assets/generated/chatgpt/classroom-dusk-v1.png",
+      "masterSha256": "48b8090851fba99e7df47614ca88cd74ce7fd3ef38f2f5c44d9b49b98e9ee8bd",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/classroom-dusk-anime-v1.webp",
+      "runtimeSha256": "dcef469844cf16234053a3e03149f090d093c49bb9066bac5c1a07454f6b92e2",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "classroom_dusk",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
+    },
+    {
+      "id": "courtyard_night",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "architecture-preserving time-of-day edit",
+      "source": "assets/generated/chatgpt/courtyard-v1.png",
+      "sourceSha256": "d0eafda396fa9a52f4b13d6b28ad0a989a0020c2fdb5c3278d94fbb1dce5d8a6",
+      "master": "assets/generated/chatgpt/courtyard-night-v1.png",
+      "masterSha256": "dff71ddb0b8d3e2b51faa1837882b328ce6171fb9a5f118d6c0cc19288e2513a",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/courtyard-night-anime-v1.webp",
+      "runtimeSha256": "60f5116984f4ae8a4d848a0db0ecacad3c8d6ebef42c01919f4a7ddb8b184fc1",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "courtyard_night",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
+    },
+    {
+      "id": "library_evening",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "architecture-preserving time-of-day edit",
+      "source": "assets/generated/chatgpt/library-v1.png",
+      "sourceSha256": "76319f51ccfc60590213c03b38836c893fddf266ef15565f21687e885ead3533",
+      "master": "assets/generated/chatgpt/library-evening-v1.png",
+      "masterSha256": "a44639117dad3275e66ea8499be942a8e9c71e6d978c67ce71723964cfb807ab",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/library-evening-anime-v1.webp",
+      "runtimeSha256": "3a137df0c188ea530bc94fc90ac2f94443d7c4518f1f10d4378c879db812b133",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "library_evening",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
     }
   ]
 }

@@ -197,3 +197,12 @@ Following the user's “Folytasd”, generated and visually inspected Holdkör r
 Actually ran `npm test` (34/34), `npm run typecheck`, `npm run build`, `git diff --check`. Playwright visual fixtures rendered Holdkör, chamber discovery/finale and Rebeka displeased at 1440px/390px: no failed resources, horizontal overflow or browser errors. Inspected desktop chamber and mobile Holdkör/chamber/Rebeka screenshots. Both authored chamber scenes use their existing daytime setting; no dedicated chamber-night artwork is claimed. Office/bedroom hotspot backgrounds remain unchanged.
 
 Verified previous commit ed72ccd: GitHub Tests 39785805351 and Pages 39785805963 both successful. Second-batch Actions results checked after publishing. No Venice API calls or paid retries.
+
+## 22 October 2026 — ChatGPT lighting batch
+
+- Added classroom dusk, courtyard night and library evening as individual built-in imagegen edits from reviewed masters. Visually compared architecture, furniture, empty seating and lighting. Full prompts and SHA-256 provenance are in `assets/generated/chatgpt/`; 1280×720 WebP exports enter runtime.
+- `backgroundFor` selects by effective scene lighting, including flexible night-slot conversations; courtyard evening/night share the night image. Dedicated variants bypass duplicate CSS background tint. Day assets, planning hotspots, engine and saves are unchanged.
+- Art coverage: 14/32 runtime requirements reviewed/integrated; 18 pending (ten expressions, six supporting-cast/transformation portraits, two planning backgrounds), plus five reference sheets. Final user style acceptance remains open. No Venice calls or paid retries.
+- Executed `npm ci`, `npm test` (35 passed, 0 failed), `npm run typecheck`, `npm run build`, and `git diff --check` successfully.
+- Executed `tools/verify-ui.cjs` with `UI_CONTROLS_ONLY=1` using Playwright and Chromium: stable controls across all 23 opening lines at 1440px, 390px and 320px/130% text. A temporary focused browser check loaded real saved night-slot scenes `rebeka_1`, `coffee_rebeka_early` and `boglarka_1` at 1440px and 390px; all three variants loaded, with no horizontal overflow, page errors or duplicate mobile tint. Inspected resulting desktop/mobile screenshots.
+- Browser setup: Playwright's standard browser download returned a truncated archive; a temporary npm-distributed Chromium supplied the successful checks. No browser dependency was added to the project.
