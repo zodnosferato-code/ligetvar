@@ -215,3 +215,9 @@ Verified previous commit ed72ccd: GitHub Tests 39785805351 and Pages 39785805963
 - Executed `npm test`: 36 passed, 0 failed. The new regression walks a complete triad campaign and checks every available night destination for night lighting and baked late-day artwork, covering all seven locations. `npm run typecheck`, `npm run build` and `git diff --check` succeeded after fixing test-fixture slot typing.
 - Executed `tools/verify-ui.cjs` with `UI_CONTROLS_ONLY=1`: stable controls across 23 opening lines at desktop 1440px, mobile 390px and 320px/130% text. Temporary Playwright night-travel check followed actual home hub → door → destination → scene for office, lake, classroom and library at 1440px and 390px; correct image, unchanged saved night slot, no horizontal overflow/page errors, no duplicate mobile tint. Inspected office desktop and lake mobile screenshots. Browser test initially selected Gréta's week-2 meeting in week 1; corrected the fixture to week 2 and all eight cases passed.
 - All full prompts, source/master/export hashes and review states are in `assets/generated/chatgpt/{prompts,manifest}.json`. No unreviewed generated expression was used as an identity source.
+
+## Full-body reference sheets — 22 October 2026
+
+Added three 1536×1024 clothed identity sheets (Rebeka, Boglárka, Gréta), each derived directly from its cleaned neutral portrait. Visually reviewed face identity, characteristic marks/accessories, clothing, full-body framing and visible shoes. Footwear and newly specified garment details remain proposals. No runtime code or active asset selection changed.
+
+Validation: all three PNGs decoded successfully; manifest source/master SHA-256 hashes and dimensions matched local files; git diff --check passed. Runtime tests were not rerun for these non-runtime reference/doc additions. Upload and Actions status are reported in the delivery message.

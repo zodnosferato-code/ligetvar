@@ -2,7 +2,7 @@
 
 > **Status:** Four batches integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
 
-The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use built-in imagegen. The user now requests fast independent generation followed by batch review; retain approved masters as sources. The original 32 runtime requirements have 24 reviewed/integrated, 8 pending; two additional night images are also integrated; five reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
+The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use built-in imagegen. The user now requests fast independent generation followed by batch review; retain approved masters as sources. The original 32 runtime requirements have 24 reviewed/integrated, 8 pending; two additional night images are also integrated; two reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
 
 ## Review of existing candidates
 
@@ -34,7 +34,7 @@ Built-in imagegen repaired Holdkör (removed human busts, removed obstructing be
 
 1. Completed: architecture-preserving classroom dusk, courtyard night and library evening variants. `backgroundFor` selects by effective lighting; courtyard night also covers evening-labelled visits in the night slot. Extra CSS background tint is bypassed for these variants.
 2. Completed: all ten remaining main-woman expression variants. Ask about supporting-cast appearance if uncertain before creating five human NPC portraits and Soma's transformation.
-3. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. Five production reference sheets and final user style approval remain open.
+3. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. Two production reference sheets and final user style approval remain open.
 
 First-batch commit `ed72ccd978b367433becc0875ba3e37ebcee7831`: GitHub Tests run 39785805351 and Pages run 39785805963 both completed successfully. No unattended continuation or automatic paid retry is scheduled. See REDESIGN-PROGRESS.md for actual validation commands/results.
 
@@ -46,4 +46,8 @@ Three built-in imagegen edits preserve the reviewed room/courtyard composition, 
 
 The user reported daytime pictures after leaving the night hub, then requested faster generation with review afterward. The missing Békás-tó/department night variants were the immediate cause: CSS darkened the sunny image without replacing its sky. Both now have generated night images. Free-slot scenes always use the saved night period (including legacy scenes without explicit periods); shared scenes retain authored time. `backgroundFor` can reuse evening for night and vice versa but never changes day selection. Already-night apartment/Holdkör backgrounds bypass duplicate tint. The office destination label also changes to night meetings.
 
-Ten expression edits were generated concurrently from existing neutral masters and then reviewed for identity, expression, crop and alpha. No generated variant was used as an unreviewed identity source. Exact prompts, original/output hashes and export dimensions are in the ChatGPT manifest. Remaining original requirements: eight images plus five reference sheets. No Venice calls.
+Ten expression edits were generated concurrently from existing neutral masters and then reviewed for identity, expression, crop and alpha. No generated variant was used as an unreviewed identity source. Exact prompts, original/output hashes and export dimensions are in the ChatGPT manifest. Remaining original requirements: eight images plus two reference sheets. No Venice calls.
+
+## Full-body references — 22 October 2026
+
+Three clothed face/full-body sheets for Rebeka, Boglárka and Gréta were generated from the approved neutral identity masters, then visually reviewed. See [character references](CHARACTER-REFERENCES.md) for images, canonical heights and proposed footwear/clothing details. Source/output hashes and prompts are recorded; the sheets have no runtime export. Three of five planned references are complete; Soma and architecture remain. Final user approval stays open.

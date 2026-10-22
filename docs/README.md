@@ -12,6 +12,7 @@
 | [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
 | [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
 | [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |
+| [Full-body character references](CHARACTER-REFERENCES.md) | Reviewed sheets, heights and proposed clothing details |
 | [Art register](ART-REGISTER.md) | Active assets, art brief, placeholders, and production gates |
 | [Character voices](CHARACTER-VOICES.md) | Approved temperaments, speech patterns and writing coverage |
 | [Scene inventory](SCENE-INVENTORY.md) | Generated active scene list, locations, prerequisites, and evidence |
