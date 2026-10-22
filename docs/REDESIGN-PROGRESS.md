@@ -260,3 +260,7 @@ Generated one adult student/witness portrait using Rebeka only as a rendering-st
 ## Soma semleges portréjának frissített javaslata — 22 October 2026
 
 Updated the portrait to follow the user's direction: an ordinary, less conventionally handsome adult Hungarian man with short black hair, a thick moustache and a slightly stocky build. The new transparent candidate is `assets/generated/chatgpt/supporting/soma-neutral-v2.webp`; the former v1 proposal is superseded. It remains outside runtime assets pending visual review. The prompt, source/output hashes and dimensions are recorded in the ChatGPT manifest and `supporting/soma-neutral-v2.json`. No local tests/build were run; GitHub Actions are checked after upload.
+
+## Soma átváltozott portréjának javaslata — 22 October 2026
+
+Generated the transformed form as a small identity-preserving change to the updated neutral portrait: slightly leaner, with vampire fangs and glowing red eyes, while retaining his black hair, moustache, face and clothing. The transparent candidate is `assets/generated/chatgpt/supporting/soma-transformed-v1.webp`, outside runtime assets. Prompt, source/output hashes, dimensions and review status are recorded in the ChatGPT manifest and `supporting/soma-transformed.json`. No local tests/build were run; GitHub Actions are checked after upload.

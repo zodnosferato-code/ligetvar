@@ -34,7 +34,7 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | greta / vulnerable | characters/greta/vulnerable-v1.webp | Reviewed; integrated 22 October |
 | greta / affectionate | characters/greta/affectionate-v1.webp | Reviewed; integrated 22 October |
 | soma / neutral | ChatGPT proposal in generated/chatgpt/supporting/soma-neutral-v2.webp | User-directed design proposal; not runtime |
-| soma / transformed | Pending identity-preserving edit from soma-neutral-v2.webp | Not runtime |
+| soma / transformed | ChatGPT proposal in generated/chatgpt/supporting/soma-transformed-v1.webp | Uploaded for user design review; not runtime |
 | denes | characters/denes/neutral-v1.webp | Reviewed; integrated |
 | julia | characters/julia/neutral-v1.webp | Reviewed; integrated |
 | aron | ChatGPT proposal in generated/chatgpt/supporting/aron-neutral-v1.webp | Uploaded for user design review; not runtime |

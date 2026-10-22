@@ -854,6 +854,30 @@
       "status": "proposal-pending-user-review",
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false
+    },
+    {
+      "id": "soma_transformed_candidate_v1",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "identity-preserving vampire transformation",
+      "source": "assets/generated/chatgpt/supporting/soma-neutral-v2.webp",
+      "sourceSha256": "e5ea5cf29938e483e10cb34ab752b5f34555992d4ea3bc351b2600daf5ad153a",
+      "sourceRole": "identity and appearance reference",
+      "generatedPngSha256": "dc21ceb80747d83614aac7ef27491c28756a8868f0ef93f14c3b392fb746d467",
+      "master": "assets/generated/chatgpt/supporting/soma-transformed-v1.webp",
+      "masterSha256": "d92159520bbc49930a67fc880693348395f62c2a083b6703f99ea8b324e9f293",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "masterBytes": 231590,
+      "runtime": null,
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "soma_transformed_candidate_v1",
+      "status": "proposal-pending-user-review",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false
     }
   ]
 }
