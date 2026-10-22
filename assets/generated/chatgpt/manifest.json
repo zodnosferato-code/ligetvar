@@ -96,6 +96,100 @@
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false,
       "export": "Pillow LANCZOS resize 640x800, WebP quality 95 alpha_quality 100"
+    },
+    {
+      "id": "holdkor",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based environment repair",
+      "sources": [
+        {
+          "path": "assets/generated/venice/backgrounds/holdkor.png",
+          "sha256": "7f6dd6593774ed6a06c8c81663d2a2dc50e9a26e079ea277e5e43ed8a361e3aa"
+        }
+      ],
+      "master": "assets/generated/chatgpt/holdkor-v1.png",
+      "masterSha256": "f0b5cd88ab5d6de5b516a9a438db7af0be849c31e11d5655a53d835a843980d5",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/holdkor-anime-v1.webp",
+      "runtimeSha256": "5e430fae242ef9675c5a40d32dbc1f93104a1900b8c14281e2738dc429a46c3a",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "hasUsefulAlpha": false,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize, WebP quality 95; portrait alpha_quality 100"
+    },
+    {
+      "id": "chamber",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "new location using material/style references",
+      "sources": [
+        {
+          "path": "assets/generated/venice/backgrounds/classroom.png",
+          "sha256": "10ad141ee461192427ac3053048c97f5d16f82edfc8e9eb9dd76c9822bf4d89a"
+        },
+        {
+          "path": "assets/generated/chatgpt/holdkor-v1.png",
+          "sha256": "f0b5cd88ab5d6de5b516a9a438db7af0be849c31e11d5655a53d835a843980d5"
+        }
+      ],
+      "master": "assets/generated/chatgpt/chamber-v1.png",
+      "masterSha256": "0b4d42544d564b0639bfe7eb0941663be1ab1b6c1d1ca4de590775250b13b6a6",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/chamber-anime-v1.webp",
+      "runtimeSha256": "0262a7d0626b21f0dc22d1ccf87ce6108e7b7215eac0c0ed55614bb7cdd8b9f3",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "hasUsefulAlpha": false,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize, WebP quality 95; portrait alpha_quality 100"
+    },
+    {
+      "id": "rebeka_displeased",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "expression-only identity-preserving edit",
+      "sources": [
+        {
+          "path": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+          "sha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b"
+        }
+      ],
+      "master": "assets/generated/chatgpt/rebeka-displeased-v1.png",
+      "masterSha256": "7244299b9d9f61763545b5a52657714cf7fe475b87b47805fa645cc467dc3e8f",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "runtime": "assets/characters/rebeka/displeased-v1.webp",
+      "runtimeSha256": "c1f4cf475b700f4fbf7dc4a268aeff51006ba9300c7914ced16e578558544029",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize, WebP quality 95; portrait alpha_quality 100"
     }
   ]
 }

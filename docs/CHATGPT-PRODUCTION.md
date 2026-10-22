@@ -1,8 +1,8 @@
 # ChatGPT art production — 22 October 2026
 
-> **Status:** First small replacement batch integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
+> **Status:** Two small replacement batches integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
 
-The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use the built-in imagegen tool and inspect one dependent image at a time. The 32 runtime requirements are unchanged: 8 reviewed/integrated, 24 pending; five reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
+The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use the built-in imagegen tool and inspect one dependent image at a time. The 32 runtime requirements are unchanged: 11 reviewed/integrated, 21 pending; five reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
 
 ## Review of existing candidates
 
@@ -15,7 +15,7 @@ The user reports Venice credits have run out and requests ChatGPT generation. No
 | Békás-tó | Two men, outdoor desk lamp, third-person camera | Replaced by ChatGPT repair |
 | Department | Two men; furniture differs from hotspot background | Reject candidate; keep existing empty runtime office |
 | Apartment | Man in armchair; furniture differs from hotspot background | Reject candidate; keep existing empty runtime bedroom |
-| Holdkör | Human busts, foreground bench obscures seated viewpoint | Keep transitional runtime; repair later |
+| Holdkör | Human busts, foreground bench obscures seated viewpoint | Replaced by ChatGPT repair in second batch |
 | Recovered Rebeka amused | Matches clean neutral identity/crop; restrained wry smile and alpha | Export and integrate |
 
 Original Venice sources remain unchanged for provenance. Rejection here means do not use in runtime or as accepted variant masters.
@@ -26,11 +26,14 @@ Built-in imagegen repaired the library, courtyard and lakeside individually. All
 
 Only `src/game/content/assets.ts` changes active selection. Existing office/bedroom hotspot coordinates and background selection remain intact. Existing CSS still supplies evening/night treatment; dedicated lighting variants remain pending and must preserve accepted architecture. The title screen retains its existing courtyard illustration.
 
+## Second batch
+
+Built-in imagegen repaired Holdkör (removed human busts, removed obstructing bench, established seated player viewpoint and warm electric night lighting), generated the missing service chamber from classroom/Holdkör material references, and derived Rebeka displeased from the cleaned neutral master. The chamber visibly contains exactly three anchor fittings around a service trench, old utility cables/pipes, and an open service stair exit. Its companion folding chair leaves the trench readable. No people or invented ritual imagery. Both backgrounds export at 1280×720; portrait at 640×800 with genuine alpha. Source PNGs, full prompts and hashes remain in the ChatGPT production folder.
+
 ## Next image checkpoint
 
-1. Repair Holdkör from its saved candidate: remove busts and obstructing foreground bench, establish player-side table and empty companion chair, preserve projection screen and college basement identity.
-2. Produce the missing service chamber, then architecture-preserving lighting variants from accepted masters.
-3. Derive eleven remaining expressions individually from cleaned neutral portrait masters. Ask about supporting-cast appearance if uncertain before creating five human NPC portraits and Soma's transformation.
-4. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. Five production reference sheets and final user style approval remain open.
+1. Generate architecture-preserving classroom dusk, courtyard night and library evening variants from reviewed masters, then wire them to lighting selection. Current CSS supplies lighting treatment; dedicated variants remain pending.
+2. Derive ten remaining expressions individually from cleaned neutral portrait masters. Ask about supporting-cast appearance if uncertain before creating five human NPC portraits and Soma's transformation.
+3. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. Five production reference sheets and final user style approval remain open.
 
-No unattended continuation or automatic paid retry is scheduled. See REDESIGN-PROGRESS.md for actual validation commands/results.
+First-batch commit `ed72ccd978b367433becc0875ba3e37ebcee7831`: GitHub Tests run 39785805351 and Pages run 39785805963 both completed successfully. No unattended continuation or automatic paid retry is scheduled. See REDESIGN-PROGRESS.md for actual validation commands/results.
