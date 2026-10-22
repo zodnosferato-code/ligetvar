@@ -37,7 +37,7 @@ Active routes: friendship, rebeka, boglarka, greta, triad. The scene inventory e
 
 ## Provisional creative choices (not previously approved canon)
 
-The separate university assistant is **Végh Soma**, provisionally 32, responsible for archive access/equipment. He deliberately transforms between weeks 1 and 2, seeking recognition and desirability. The plan's proposed grounding, vitality-drain, borrowed-voice and vulnerable-anchor rules are used. The fatal ritual collapse is low-gore and established before the confrontation. The user's 22 October direction specifies short black hair, a thick moustache, a slightly stocky build, and a modestly leaner transformed form with vampire fangs and glowing red eyes; matching art proposals are being prepared. Women-only T3/T4 use an explicitly introduced viewpoint interlude; Márton is absent and does not choose their attraction for them.
+The separate university assistant is **Végh Soma**, provisionally 32, responsible for archive access/equipment. He deliberately transforms between weeks 1 and 2, seeking recognition and desirability. The plan's proposed grounding, vitality-drain, borrowed-voice and vulnerable-anchor rules are used. The fatal ritual collapse is low-gore and established before the confrontation. The user's 22 October direction specifies short black hair, a thick moustache, a slightly stocky build, and a modestly leaner transformed form with vampire fangs and glowing red eyes; the approved neutral and transformed portraits are recorded as final, with week-two runtime selection being integrated. Women-only T3/T4 use an explicitly introduced viewpoint interlude; Márton is absent and does not choose their attraction for them.
 
 ## Actual verification
 
