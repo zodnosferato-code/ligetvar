@@ -221,3 +221,7 @@ Verified previous commit ed72ccd: GitHub Tests 39785805351 and Pages 39785805963
 Added three 1536×1024 clothed identity sheets (Rebeka, Boglárka, Gréta), each derived directly from its cleaned neutral portrait. Visually reviewed face identity, characteristic marks/accessories, clothing, full-body framing and visible shoes. Footwear and newly specified garment details remain proposals. No runtime code or active asset selection changed.
 
 Validation: all three PNGs decoded successfully; manifest source/master SHA-256 hashes and dimensions matched local files; git diff --check passed. Runtime tests were not rerun for these non-runtime reference/doc additions. Upload and Actions status are reported in the delivery message.
+
+## Incremental swimsuit delivery — 22 October 2026
+
+Three full-body swimwear costume references saved in assets/generated/chatgpt/swimwear with exact prompts, source references and output hashes. Costume-only references, not active runtime portraits: generated alpha retains a soft surrounding halo, so clean-sprite acceptance remains open. No local tests, typecheck or build run, per explicit user instruction. Upload in small commits and check GitHub Actions after each batch.

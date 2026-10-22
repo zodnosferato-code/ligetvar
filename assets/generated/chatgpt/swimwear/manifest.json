@@ -1,0 +1,44 @@
+[
+  {
+    "id": "rebeka",
+    "prompt": "Use case: identity-preserve. Asset type: full-body swimwear costume reference for Ligetvar anime visual novel lakeside excursion. Use attached character identity sheet as exact face, hairstyle, eyes, body proportions and rendering reference. Create ONE full-length front three-quarter standing figure, head to bare feet with margin, neutral relaxed standing pose and hands naturally at sides. 20-year-old Rebeka, tall slender adult, black and plum purple classic halter bikini with normal coverage, restrained wry smile. Preserve facial identity and anatomical side of hair details, freckles/beauty mark/glasses. Normal casual beach outing, opaque swimwear, fine linework and crisp cel shading matching reference, soft daylight, no scenery, no props, no text, no extra figures. Transparent background for compositing.",
+    "cleanupPrompt": "Use case: background-extraction. Preserve this exact adult woman's figure, face, swimsuit, pose, full body framing and colors. Remove ALL surrounding background including the colored blurred glow/halo behind and around the figure. Produce a clean game sprite cutout with truly empty transparent alpha right up to the hair and skin silhouette. No haze, no aura, no gradient, no shadow on background, no dark backdrop. Keep the figure opaque. Change only the background and edge cleanup.",
+    "master": "assets/generated/chatgpt/swimwear/rebeka-swimwear-v1.png",
+    "sha256": "ebb68e9da7e89df2ae93f9e08c51a15ca9c0bc4c014af9999c39b38755e67770",
+    "size": [
+      1024,
+      1536
+    ],
+    "provider": "OpenAI built-in imagegen",
+    "status": "costume-reference; alpha edge cleanup requires further review",
+    "runtime": false
+  },
+  {
+    "id": "boglarka",
+    "prompt": "Use case: identity-preserve. Asset type: full-body swimwear costume reference for Ligetvar anime visual novel lakeside excursion. Use attached character identity sheet as exact face, hairstyle, eyes, body proportions and rendering reference. Create ONE full-length front three-quarter standing figure, head to bare feet with margin, neutral relaxed standing pose and hands naturally at sides. 19-year-old Boglarka, short adult woman with mature adult proportions and softly fuller build, moss green and cream classic two-piece swimsuit with high-waisted bottoms, quiet warm smile. Preserve facial identity and anatomical side of hair details, freckles/beauty mark/glasses. Normal casual beach outing, opaque swimwear, fine linework and crisp cel shading matching reference, soft daylight, no scenery, no props, no text, no extra figures. Transparent background for compositing.",
+    "cleanupPrompt": "Use case: background-extraction. Preserve this exact adult woman's figure, face, swimsuit, pose, full body framing and colors. Remove ALL surrounding background including the colored blurred glow/halo behind and around the figure. Produce a clean game sprite cutout with truly empty transparent alpha right up to the hair and skin silhouette. No haze, no aura, no gradient, no shadow on background, no dark backdrop. Keep the figure opaque. Change only the background and edge cleanup.",
+    "master": "assets/generated/chatgpt/swimwear/boglarka-swimwear-v1.png",
+    "sha256": "f862aefcf16a7add6542a96c8d5ff401a1ec8d944f31515ed893dbdc423397db",
+    "size": [
+      1024,
+      1536
+    ],
+    "provider": "OpenAI built-in imagegen",
+    "status": "costume-reference; alpha edge cleanup requires further review",
+    "runtime": false
+  },
+  {
+    "id": "greta",
+    "prompt": "Use case: identity-preserve. Asset type: full-body swimwear costume reference for Ligetvar anime visual novel lakeside excursion. Use attached character identity sheet as exact face, hairstyle, eyes, body proportions and rendering reference. Create ONE full-length front three-quarter standing figure, head to bare feet with margin, neutral relaxed standing pose and hands naturally at sides. 21-year-old Greta, adult slim athletic woman, sporty forest green two-piece swimsuit with secure sports top and swim shorts, practical relaxed smile. Preserve facial identity and anatomical side of hair details, freckles/beauty mark/glasses. Normal casual beach outing, opaque swimwear, fine linework and crisp cel shading matching reference, soft daylight, no scenery, no props, no text, no extra figures. Transparent background for compositing.",
+    "cleanupPrompt": "Use case: background-extraction. Preserve this exact adult woman's figure, face, swimsuit, pose, full body framing and colors. Remove ALL surrounding background including the colored blurred glow/halo behind and around the figure. Produce a clean game sprite cutout with truly empty transparent alpha right up to the hair and skin silhouette. No haze, no aura, no gradient, no shadow on background, no dark backdrop. Keep the figure opaque. Change only the background and edge cleanup.",
+    "master": "assets/generated/chatgpt/swimwear/greta-swimwear-v1.png",
+    "sha256": "8e4db4ec8983f7eff39b9e0d2a0efbd74accc83d693e150bfeb3d1739c70d80d",
+    "size": [
+      1024,
+      1536
+    ],
+    "provider": "OpenAI built-in imagegen",
+    "status": "costume-reference; alpha edge cleanup requires further review",
+    "runtime": false
+  }
+]
