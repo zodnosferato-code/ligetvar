@@ -756,6 +756,30 @@
       "finalUserStyleApproval": false,
       "export": "Pillow LANCZOS resize to 1168x784, WebP quality 95; full-resolution WebP quality 98 master",
       "hotspotReview": "Overlay checked door, desk, single rotary phone, open journal, chair, shelf, satchel against RoomPlanner.tsx; all existing office coordinates align."
+    },
+    {
+      "id": "soma_neutral_candidate",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "proposed human portrait; awaiting user design approval",
+      "source": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
+      "sourceSha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
+      "sourceRole": "rendering style and framing only, not identity",
+      "generatedPngSha256": "05867602c79795092428828533e60f7f07424cee6c885022e44eaedc72171e5c",
+      "master": "assets/generated/chatgpt/supporting/soma-neutral-v1.webp",
+      "masterSha256": "ca32b8e63720e95a6b15608ce0496dce1bfd8219222e7601601d062f187c68e7",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "masterBytes": 341354,
+      "runtime": null,
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "soma_neutral_candidate",
+      "status": "proposal-pending-user-review",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false
     }
   ]
 }

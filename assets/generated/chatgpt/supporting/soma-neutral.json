@@ -1,0 +1,24 @@
+{
+  "id": "soma_neutral_candidate",
+  "character": "Végh Soma",
+  "status": "proposal-pending-user-review",
+  "canonical": false,
+  "concept": "Adult university research assistant drawn to obscure dark-art studies; the appearance is a reviewable proposal.",
+  "source": {
+    "path": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
+    "sha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
+    "role": "rendering style and framing only; not identity"
+  },
+  "generatedPngSha256": "05867602c79795092428828533e60f7f07424cee6c885022e44eaedc72171e5c",
+  "savedImage": {
+    "path": "assets/generated/chatgpt/supporting/soma-neutral-v1.webp",
+    "sha256": "ca32b8e63720e95a6b15608ce0496dce1bfd8219222e7601601d062f187c68e7",
+    "size": [
+      1122,
+      1402
+    ],
+    "format": "WebP",
+    "hasUsefulAlpha": true
+  },
+  "prompt": "Use case: stylized-concept. Asset type: proposed neutral dialogue portrait for the Ligetvár anime visual novel. Image 1 is a RENDERING STYLE AND HEAD-AND-SHOULDERS FRAMING reference only; create a clearly different person and do not copy the older doctor's face, hair, age, complexion or clothing. Subject: Végh Soma, a clearly adult man in his mid-twenties, a university research assistant who has been drawn to obscure dark-art studies. Proposed appearance, not final character canon: lean build, youthful adult face, slightly uneven dark-brown hair that falls forward, tired deep-brown eyes, pale olive skin, faint under-eye shadows; modest charcoal cardigan over a rumpled white shirt, no lab coat. Neutral, thoughtful expression with a trace of private intensity, never monstrous or supernatural in this human portrait. Frame from crown to upper chest, vertical 4:5 portrait, centered face, eyes around 30% of image height, full hair crown within frame. Fine controlled anime linework, clean sharp cel shading, restrained colors matching the style reference. Fully clothed, natural adult anatomy. Truly transparent empty background with a clean opaque silhouette: no halo, color wash, gradient, haze, scenery, symbols, prop, text or watermark. This image is only a visual proposal awaiting user approval."
+}
