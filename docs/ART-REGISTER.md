@@ -12,7 +12,7 @@ On 21 October 2026 the user requested gradual, consistent asset production and i
 | Boglárka, 19 | Quietly observant adult face, freckles, brown eyes/hair, moss-green cardigan and cream dress | Braid over anatomical right shoulder (viewer left); complete crown; transparent background |
 | Gréta, 21 | Practical/direct presence, copper ponytail, rectangular glasses, white shirt and green vest | Removed copied beauty marks; buttoned shirt; matched head-and-shoulders framing; transparent background |
 
-The portraits remain distinct while sharing linework, cel shading and soft neutral light. All three main women now have all five distinct expression exports; unknown future expressions still fall back to neutral. Márton is the viewpoint character and has no portrait; narration has none. Dénes and Júlia are reviewed and integrated. Soma's human portrait is uploaded as a proposal, not canon or runtime; its approval must precede a transformed variant. Áron and Lilla still need proposed neutral portraits.
+The portraits remain distinct while sharing linework, cel shading and soft neutral light. All three main women now have all five distinct expression exports; unknown future expressions still fall back to neutral. Márton is the viewpoint character and has no portrait; narration has none. Dénes and Júlia are reviewed and integrated. Soma's earlier human portrait (`soma-neutral-v1.webp`) is superseded by the user's updated appearance direction. The matching neutral redesign (`soma-neutral-v2.webp`) is uploaded as a proposal, not runtime; the transformed variant should preserve this identity. Áron and Lilla still need proposed neutral portraits.
 
 ## Runtime coverage
 
@@ -33,8 +33,8 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | greta / displeased | characters/greta/displeased-v1.webp | Reviewed; integrated 22 October |
 | greta / vulnerable | characters/greta/vulnerable-v1.webp | Reviewed; integrated 22 October |
 | greta / affectionate | characters/greta/affectionate-v1.webp | Reviewed; integrated 22 October |
-| soma / neutral | ChatGPT proposal in generated/chatgpt/supporting/soma-neutral-v1.webp | Uploaded for user design review; not runtime |
-| soma / transformed | Labelled NPC placeholder | Pending Soma approval and identity-preserving edit |
+| soma / neutral | ChatGPT proposal in generated/chatgpt/supporting/soma-neutral-v2.webp | User-directed design proposal; not runtime |
+| soma / transformed | Pending identity-preserving edit from soma-neutral-v2.webp | Not runtime |
 | denes | characters/denes/neutral-v1.webp | Reviewed; integrated |
 | julia | characters/julia/neutral-v1.webp | Reviewed; integrated |
 | aron | ChatGPT proposal in generated/chatgpt/supporting/aron-neutral-v1.webp | Uploaded for user design review; not runtime |

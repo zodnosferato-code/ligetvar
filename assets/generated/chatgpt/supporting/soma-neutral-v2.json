@@ -1,0 +1,24 @@
+{
+  "id": "soma_neutral_candidate_v2",
+  "character": "Végh Soma",
+  "status": "proposal-pending-user-review",
+  "canonical": false,
+  "concept": "User-directed adult Hungarian university research assistant portrait; proposal for review.",
+  "source": {
+    "path": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
+    "sha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
+    "role": "rendering style and framing only; not identity"
+  },
+  "generatedPngSha256": "1504e9db813133f8b022a2e4959e6c04fddafee790e4c315de164b4046f8dcb0",
+  "savedImage": {
+    "path": "assets/generated/chatgpt/supporting/soma-neutral-v2.webp",
+    "sha256": "e5ea5cf29938e483e10cb34ab752b5f34555992d4ea3bc351b2600daf5ad153a",
+    "size": [
+      1122,
+      1402
+    ],
+    "format": "WebP",
+    "hasUsefulAlpha": true
+  },
+  "prompt": "Use case: stylized-concept. Asset type: user-directed proposed neutral dialogue portrait for the Ligetvár visual novel. Image 1 was an intermediate draft used only to refine this same subject; retain the established rendering style and framing. Subject: Végh Soma, clearly adult Hungarian university research assistant, about 32. Follow the user's appearance direction: an ordinary, slightly ungainly and less conventionally handsome man, with short simple black hair, thick neat black moustache, rounder cheeks, broad nose, heavy natural brows and a slightly stocky build with a modest potbelly visible in the wider upper torso. Keep him plausible and dignified, not comic or caricatured. Brown eyes, neutral thoughtful expression with mild tiredness. Old-fashioned everyday academic clothing: plain dark brown knitted vest over a cream button-up shirt, no tie or lab coat. Vertical 4:5 portrait from crown to mid-torso; centered, full head and shoulders. Clean anime linework, restrained cel shading, soft realistic proportions. Fully human: no fangs, glow or supernatural signs. Truly transparent background and clean silhouette. No scenery, props, text, watermark."
+}

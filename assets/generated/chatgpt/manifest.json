@@ -761,7 +761,7 @@
       "id": "soma_neutral_candidate",
       "provider": "OpenAI built-in imagegen",
       "modelId": "not exposed by tool",
-      "operation": "proposed human portrait; awaiting user design approval",
+      "operation": "earlier appearance proposal; superseded by user's later design direction",
       "source": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
       "sourceSha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
       "sourceRole": "rendering style and framing only, not identity",
@@ -777,9 +777,11 @@
       "hasUsefulAlpha": true,
       "promptFile": "assets/generated/chatgpt/prompts.json",
       "promptKey": "soma_neutral_candidate",
-      "status": "proposal-pending-user-review",
+      "status": "superseded-by-user-direction",
       "reviewedAt": "2026-10-22",
-      "finalUserStyleApproval": false
+      "finalUserStyleApproval": false,
+      "supersededBy": "soma_neutral_candidate_v2",
+      "supersededAt": "2026-10-22"
     },
     {
       "id": "aron_neutral_candidate",
@@ -825,6 +827,30 @@
       "hasUsefulAlpha": true,
       "promptFile": "assets/generated/chatgpt/prompts.json",
       "promptKey": "lilla_neutral_candidate",
+      "status": "proposal-pending-user-review",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false
+    },
+    {
+      "id": "soma_neutral_candidate_v2",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "user-directed neutral appearance refinement",
+      "source": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
+      "sourceSha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
+      "sourceRole": "rendering style and framing only, not identity",
+      "generatedPngSha256": "1504e9db813133f8b022a2e4959e6c04fddafee790e4c315de164b4046f8dcb0",
+      "master": "assets/generated/chatgpt/supporting/soma-neutral-v2.webp",
+      "masterSha256": "e5ea5cf29938e483e10cb34ab752b5f34555992d4ea3bc351b2600daf5ad153a",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "masterBytes": 268228,
+      "runtime": null,
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "soma_neutral_candidate_v2",
       "status": "proposal-pending-user-review",
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false
