@@ -727,6 +727,35 @@
       "finalUserStyleApproval": false,
       "export": "Pillow LANCZOS resize to 1168x784, WebP quality 95; full-resolution WebP quality 98 master",
       "hotspotReview": "Visual overlay checked door, phone, journal, chair, shelf against RoomPlanner.tsx; phone hotspot moved from y=28% to y=37% to match the pictured phone."
+    },
+    {
+      "id": "department_anime",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "daytime office anime restyle; hotspot-preserving object placement",
+      "source": "assets/backgrounds/department.jpg",
+      "sourceSha256": "f64db54cca34c499fce2903d841bf6756fa60b8f04033b544ab81762d05f8b35",
+      "master": "assets/generated/chatgpt/department-anime-v1.webp",
+      "masterSha256": "545980d49dafa221e7c9972af0c81545c779b0ed165ef728c9f98ebff25234f0",
+      "masterSize": [
+        1586,
+        992
+      ],
+      "masterBytes": 645428,
+      "runtime": "assets/backgrounds/department-anime-v1.webp",
+      "runtimeSha256": "33e60c1fbd87b839f08097465a3909bd2cae23d4529d42599a8b7f587488c64c",
+      "runtimeSize": [
+        1168,
+        784
+      ],
+      "runtimeBytes": 339456,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "department_anime",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize to 1168x784, WebP quality 95; full-resolution WebP quality 98 master",
+      "hotspotReview": "Overlay checked door, desk, single rotary phone, open journal, chair, shelf, satchel against RoomPlanner.tsx; all existing office coordinates align."
     }
   ]
 }

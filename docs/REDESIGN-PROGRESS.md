@@ -235,3 +235,8 @@ Generated one three-panel reference sheet from the reviewed classroom, courtyard
 ## Apartment night-hub restyle — 22 October 2026
 
 Generated a detailed anime bedroom from the existing room image, preserving its Gothic window, bed, stone walls and night lighting. Visually checked the door, wall phone, open journal, armchair and shelf against their visible hotspot rectangles; moved only the phone hotspot vertically to align with the illustrated phone. The runtime export is `assets/backgrounds/apartment-anime-v1.webp` at 1168×784; the full-resolution WebP master, exact prompt, source/output hashes and review status are recorded in the ChatGPT manifest. Updated the bedroom art selection and hotspot coordinate. No local tests/build were run; GitHub Actions are checked after upload.
+
+
+## Department office restyle — 22 October 2026
+
+Generated and refined the anime daytime planning office from the existing image. The final image has no people and exactly one rotary phone; the open journal sits beside it. Visually checked door, desk, phone, journal, chair, shelf and satchel overlays against the existing coordinates. Runtime image: `assets/backgrounds/department-anime-v1.webp` (1168×784). The full-size WebP master, generation and refinement prompts, source/output hashes and review are recorded in the ChatGPT manifest. Existing hotspot coordinates required no change. No local tests/build were run; GitHub Actions are checked after upload.

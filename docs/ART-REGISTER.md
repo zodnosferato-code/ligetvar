@@ -41,7 +41,7 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | lilla | Labelled NPC placeholder | Pending |
 | classroom | backgrounds/classroom-anime-v1.webp | Reviewed; integrated |
 | library | backgrounds/library-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
-| department | backgrounds/department.jpg | Transitional; replacement pending |
+| department | backgrounds/department-anime-v1.webp | ChatGPT anime restyle visually reviewed; integrated 22 October |
 | holdkor | backgrounds/holdkor-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | courtyard | backgrounds/courtyard-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | apartment | backgrounds/apartment-anime-v1.webp | ChatGPT anime restyle visually reviewed; integrated 22 October |
