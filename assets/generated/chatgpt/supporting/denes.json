@@ -1,0 +1,12 @@
+{
+  "id": "denes_neutral",
+  "provider": "OpenAI built-in imagegen",
+  "source": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+  "referenceRole": "rendering style and framing only; not identity",
+  "master": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
+  "runtime": "assets/characters/denes/neutral-v1.webp",
+  "masterSha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
+  "runtimeSha256": "7e647c0e7d5159a36e47f00a428738da4c0bef82ca2d1a97ea09d046b98525e3",
+  "review": "mature male, salt and pepper hair/stubble, medical coat, complete crown, transparent silhouette, visually reviewed",
+  "finalUserStyleApproval": false
+}
