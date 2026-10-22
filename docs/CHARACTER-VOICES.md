@@ -1,6 +1,6 @@
 # Character voices
 
-> **Status:** Approved direction; first implementation pass. | **Purpose:** Keep the three women's temperaments distinct in authored dialogue.
+> **Status:** Approved direction; opening and romantic writing passes. | **Purpose:** Keep the three women's temperaments distinct in authored dialogue.
 
 The user approved these contrasts on 19 October 2026. They guide speech, initiative, humor and reactions; none is a compulsory good/bad choice ladder. The redesign plan's goals, ages and relationship routes remain authoritative.
 
@@ -18,6 +18,6 @@ The user approved these contrasts on 19 October 2026. They guide speech, initiat
 
 ## Coverage and remaining writing
 
-The expanded pass covers shared weeks 1–3, each first individual relationship scene, and three contextual coffee conversations per woman. Later relationship stages 2–6 and most shared weeks 4–16 remain compact and still need a dedicated writing pass; the existing shared stage template is not the intended final character writing. Do not call the entire story rewritten.
+The opening pass covers shared weeks 1–3, each first individual relationship scene, and three contextual coffee conversations per woman. The 22 October romantic pass expands all three individual stages 2–6 (15 scenes) and T3/T4/T7/T8 (four scenes). It adds reciprocal personal disclosure, authored topic branches, separately chosen physical pace, repair conversations, everyday plans and witnessed callbacks. Rebeka keeps her defensive humor, Boglárka gains initiative without losing her quiet voice, and Gréta learns to accept company without organizing it. Slower physical closeness retains the same relationship progress; rejecting romance remains a separate choice. Most shared weeks 4–16 and T1/T2/T5/T6 remain compact. Do not call the entire story rewritten.
 
-Keep new text in `src/game/content/`. `catalog.ts` assembles one registry; `opening.ts` expands the stable opening nodes, and `conversations.ts` contains optional coffee graphs. The general engine must not infer a personality, route, clue or ending from an actor's name or scene ID.
+Keep new text in `src/game/content/`. `catalog.ts` assembles one registry; `opening.ts` expands the stable opening nodes, and `conversations.ts` contains optional coffee graphs. `romance.ts` expands the existing romantic nodes while preserving v2 scene/line/choice IDs; it introduces no extra activity slots or engine rules. The general engine must not infer a personality, route, clue or ending from an actor's name or scene ID.
