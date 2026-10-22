@@ -72,6 +72,8 @@ A `Choice.next` eltérő szövegcsomópontra vezet. A `Choice.requires` korábba
 
 A kilenc opcionális kávés beszélgetés három időszakot fed le: 1–7., 8–14. és 15–16. hét. Karakterenként és időszakonként egyszer játszhatók, egy szabad sávba és 8 energiába kerülnek. A középső visszautaló választás csak a korábbi megfelelő témát befejező játékosnak jelenik meg. Romantikus vállalást vagy kapcsolatpontot nem adnak, és a nyomozás nem igényli őket. A régi, csak állapotüzenetet adó `talk` tevékenység megszűnt.
 
+A `romance.ts` kibővíti a három egyéni útvonal 2–6. jelenetét és a T3/T4/T7/T8 jeleneteket. A randira és az érintésre külön válaszolunk: a `slow_touch` ugyanazt a romantikus folytatást és kapcsolódást engedi, mint a közelség elfogadása. A visszautasítás továbbra is külön választás. A személyes beszélgetés emlékei csak jelenetbefejezéskor kerülnek a meglévő tanúsított döntések közé; később feltételes válaszok idézik fel őket, mindig feltétel nélküli alternatívával. Nem keletkezik új mentésmező, kötelező alkalom vagy sávköltség. A korábbi v2 jelenet-, sor- és választásazonosítók megmaradnak; a már befejezett jelenetek nem játszódnak újra automatikusan.
+
 ## Tanúsított tudás és döntés
 
 A jelenetben a választási hatás a kurzor `pending` listájában vár. Csak a végső sor befejezése írja a `completed`, `evidence`, `decisions` és `journal` mezőket. A napló és heti összegzés ezekből épül, nem a naptári hétszámból. A hatás név szerint céloz kapcsolódást, soha nem örökli az előző beszélő romantikus statját.
