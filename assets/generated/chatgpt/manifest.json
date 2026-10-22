@@ -847,13 +847,21 @@
         1402
       ],
       "masterBytes": 268228,
-      "runtime": null,
+      "runtime": "assets/characters/soma/neutral-v1.webp",
       "hasUsefulAlpha": true,
       "promptFile": "assets/generated/chatgpt/prompts.json",
       "promptKey": "soma_neutral_candidate_v2",
-      "status": "proposal-pending-user-review",
+      "status": "approved-final",
       "reviewedAt": "2026-10-22",
-      "finalUserStyleApproval": false
+      "finalUserStyleApproval": true,
+      "canonical": true,
+      "runtimeSha256": "5a390112c32570b59560d4e91cfb77de96bf25c78ff79c786e302efdc21455a3",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "runtimeBytes": 106154,
+      "export": "Pillow LANCZOS resize 640x800, WebP quality 95, alpha_quality 100"
     },
     {
       "id": "soma_transformed_candidate_v1",

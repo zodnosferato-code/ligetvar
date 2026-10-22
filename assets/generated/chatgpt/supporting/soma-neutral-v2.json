@@ -1,8 +1,8 @@
 {
   "id": "soma_neutral_candidate_v2",
   "character": "Végh Soma",
-  "status": "proposal-pending-user-review",
-  "canonical": false,
+  "status": "approved-final",
+  "canonical": true,
   "concept": "User-directed adult Hungarian university research assistant portrait; proposal for review.",
   "source": {
     "path": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
@@ -20,5 +20,17 @@
     "format": "WebP",
     "hasUsefulAlpha": true
   },
-  "prompt": "Use case: stylized-concept. Asset type: user-directed proposed neutral dialogue portrait for the Ligetvár visual novel. Image 1 was an intermediate draft used only to refine this same subject; retain the established rendering style and framing. Subject: Végh Soma, clearly adult Hungarian university research assistant, about 32. Follow the user's appearance direction: an ordinary, slightly ungainly and less conventionally handsome man, with short simple black hair, thick neat black moustache, rounder cheeks, broad nose, heavy natural brows and a slightly stocky build with a modest potbelly visible in the wider upper torso. Keep him plausible and dignified, not comic or caricatured. Brown eyes, neutral thoughtful expression with mild tiredness. Old-fashioned everyday academic clothing: plain dark brown knitted vest over a cream button-up shirt, no tie or lab coat. Vertical 4:5 portrait from crown to mid-torso; centered, full head and shoulders. Clean anime linework, restrained cel shading, soft realistic proportions. Fully human: no fangs, glow or supernatural signs. Truly transparent background and clean silhouette. No scenery, props, text, watermark."
+  "prompt": "Use case: stylized-concept. Asset type: user-directed proposed neutral dialogue portrait for the Ligetvár visual novel. Image 1 was an intermediate draft used only to refine this same subject; retain the established rendering style and framing. Subject: Végh Soma, clearly adult Hungarian university research assistant, about 32. Follow the user's appearance direction: an ordinary, slightly ungainly and less conventionally handsome man, with short simple black hair, thick neat black moustache, rounder cheeks, broad nose, heavy natural brows and a slightly stocky build with a modest potbelly visible in the wider upper torso. Keep him plausible and dignified, not comic or caricatured. Brown eyes, neutral thoughtful expression with mild tiredness. Old-fashioned everyday academic clothing: plain dark brown knitted vest over a cream button-up shirt, no tie or lab coat. Vertical 4:5 portrait from crown to mid-torso; centered, full head and shoulders. Clean anime linework, restrained cel shading, soft realistic proportions. Fully human: no fangs, glow or supernatural signs. Truly transparent background and clean silhouette. No scenery, props, text, watermark.",
+  "finalUserStyleApproval": true,
+  "runtime": {
+    "path": "assets/characters/soma/neutral-v1.webp",
+    "sha256": "5a390112c32570b59560d4e91cfb77de96bf25c78ff79c786e302efdc21455a3",
+    "size": [
+      640,
+      800
+    ],
+    "format": "WebP",
+    "bytes": 106154,
+    "hasUsefulAlpha": true
+  }
 }
