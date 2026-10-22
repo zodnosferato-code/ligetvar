@@ -38,7 +38,7 @@ The portraits remain distinct while sharing linework, cel shading and soft neutr
 | denes | characters/denes/neutral-v1.webp | Reviewed; integrated |
 | julia | characters/julia/neutral-v1.webp | Reviewed; integrated |
 | aron | ChatGPT proposal in generated/chatgpt/supporting/aron-neutral-v1.webp | Uploaded for user design review; not runtime |
-| lilla | Labelled NPC placeholder | Neutral proposal pending |
+| lilla | ChatGPT proposal in generated/chatgpt/supporting/lilla-neutral-v1.webp | Uploaded for user design review; not runtime |
 | classroom | backgrounds/classroom-anime-v1.webp | Reviewed; integrated |
 | library | backgrounds/library-anime-v1.webp | ChatGPT repair reviewed; integrated 22 October |
 | department | backgrounds/department-anime-v1.webp | ChatGPT anime restyle visually reviewed; integrated 22 October |

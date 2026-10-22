@@ -250,3 +250,8 @@ Generated one adult-human portrait using Dénes only as a style/framing referenc
 ## Áron semleges portréjának javaslata — 22 October 2026
 
 Generated one adult faculty-administrator portrait using Dénes only as a style/framing reference. The candidate has transparent alpha and is uploaded at `assets/generated/chatgpt/supporting/aron-neutral-v1.webp`, outside runtime assets. Prompt, source/output hashes, dimensions and review status are recorded in the ChatGPT manifest and `supporting/aron-neutral.json`. This is a proposal pending user review, not canon. No local tests/build were run; GitHub Actions are checked after upload.
+
+
+## Lilla semleges portréjának javaslata — 22 October 2026
+
+Generated one adult student/witness portrait using Rebeka only as a rendering-style and framing reference. The candidate has transparent alpha and is uploaded at `assets/generated/chatgpt/supporting/lilla-neutral-v1.webp`, outside runtime assets. Prompt, source/output hashes, dimensions and status are in the ChatGPT manifest and `supporting/lilla-neutral.json`. Its appearance is a proposal pending user review, not canon. No local tests/build were run; GitHub Actions are checked after upload.

@@ -33,7 +33,7 @@ Built-in imagegen repaired Holdkör (removed human busts, removed obstructing be
 ## Next image checkpoint
 
 1. Completed: architecture-preserving classroom dusk, courtyard night and library evening variants. `backgroundFor` selects by effective lighting; courtyard night also covers evening-labelled visits in the night slot. Extra CSS background tint is bypassed for these variants.
-2. Completed: all ten remaining main-woman expression variants. Dénes/Júlia are integrated; Soma's human design is a proposal pending user approval. Áron and Lilla still need proposed portraits; Soma's transformation depends on approval.
+2. Completed: all ten remaining main-woman expression variants. Dénes/Júlia are integrated; Soma, Áron and Lilla appearance proposals are uploaded pending user review. Soma's transformation and reference sheet depend on his design approval.
 3. Apartment night-hub and department office restyles are integrated after hotspot overlay review. One production reference sheet (Soma) and final user style approval remain open.
 
 First-batch commit `ed72ccd978b367433becc0875ba3e37ebcee7831`: GitHub Tests run 39785805351 and Pages run 39785805963 both completed successfully. No unattended continuation or automatic paid retry is scheduled. See REDESIGN-PROGRESS.md for actual validation commands/results.
