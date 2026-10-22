@@ -780,6 +780,30 @@
       "status": "proposal-pending-user-review",
       "reviewedAt": "2026-10-22",
       "finalUserStyleApproval": false
+    },
+    {
+      "id": "aron_neutral_candidate",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "proposed neutral portrait; awaiting user design approval",
+      "source": "assets/generated/chatgpt/supporting/denes-neutral-v1.png",
+      "sourceSha256": "95118705af50be0d94e83aca3f07ada8c08aef36493a2097b90df188a9697675",
+      "sourceRole": "rendering style and framing only, not identity",
+      "generatedPngSha256": "23543f9e3fb87400ad492606aab0e6287ae6ea039d76adcfa0bfff867467903d",
+      "master": "assets/generated/chatgpt/supporting/aron-neutral-v1.webp",
+      "masterSha256": "3c03749b26cde83727fad8e1a085081207b366e51b74b1d8660be6bd2a582e14",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "masterBytes": 345276,
+      "runtime": null,
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "aron_neutral_candidate",
+      "status": "proposal-pending-user-review",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false
     }
   ]
 }
