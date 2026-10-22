@@ -1,0 +1,36 @@
+{
+  "id": "lilla_neutral_candidate_v2",
+  "character": "Lilla",
+  "status": "approved-final",
+  "canonical": true,
+  "concept": "User-directed older final appearance for Lilla, age 32, adult student and witness.",
+  "source": {
+    "path": "assets/generated/chatgpt/supporting/lilla-neutral-v1.webp",
+    "sha256": "0083072a0e087410e24e9746437ec196dcee444de32b5251acd749b0683348be",
+    "role": "identity, composition, hair and clothing reference"
+  },
+  "generatedPngSha256": "9ff1469343aebcfe6cc531ecbe546d080ed1de54db869b8efc53377214fae5d6",
+  "savedImage": {
+    "path": "assets/generated/chatgpt/supporting/lilla-neutral-v2.webp",
+    "sha256": "b2e104c3d6deea796622b22ad50e4836e46d9e41befe40f85933c2dfa68dfe84",
+    "size": [
+      1122,
+      1402
+    ],
+    "format": "WebP",
+    "hasUsefulAlpha": true
+  },
+  "prompt": "Use case: stylized-concept. Create a user-directed final neutral dialogue portrait for Lilla, an adult university student and witness, editing her current portrait to look clearly older while preserving her identity, rendering style, chestnut hair, hazel eyes, freckles, clothing and transparent cutout. She is around 32, in her early thirties, and should read clearly as an adult student who returned to university, not as a youthful undergraduate. Give her slightly more defined mature cheeks and jaw, faint smile lines beside the mouth, light crow's-feet at the outer eyes, gentle under-eye tiredness and natural skin texture. Keep her healthy and self-possessed, not middle-aged or elderly. Preserve light freckles, shoulder-length warm chestnut hair loosely gathered behind one ear, hazel-brown eyes, a modest muted teal cardigan over a fully buttoned pale cream blouse, and her calm, quietly wary expression. Same vertical head-and-shoulders framing, adult natural proportions, clean anime linework and restrained cel shading. Truly transparent background. No checkerboard, scenery, text, symbols or watermark.",
+  "runtime": {
+    "path": "assets/characters/lilla/neutral-v1.webp",
+    "sha256": "8011e97d950cd041589bf9bda8380af74b2dad9ca1b4389394c6f829fe9e1972",
+    "size": [
+      640,
+      800
+    ],
+    "format": "WebP",
+    "bytes": 151598,
+    "hasUsefulAlpha": true
+  },
+  "finalUserStyleApproval": true
+}
