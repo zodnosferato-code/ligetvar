@@ -28,6 +28,7 @@ export const LOCATIONS:Record<LocationId,string>={classroom:'Tanterem',library:'
 // Only visually reviewed exports belong here; generation candidates stay private to tooling.
 export const PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,ArtAsset>>>>={
  julia:{neutral:{file:'characters/julia/neutral-v1.webp',status:'reviewed',note:'ChatGPT portré; asszisztensi vizuális ellenőrzés, végső stílusjóváhagyás nyitott.'}},
+ lilla:{neutral:{file:'characters/lilla/neutral-v1.webp',status:'reviewed',note:'Miki véglegesítette; érettebb, harmincas évei elején járó Lilla.'}},
  aron:{neutral:{file:'characters/aron/neutral-v1.webp',status:'reviewed',note:'Miki véglegesítette; idősebb, késő hatvanas éveiben járó Áron.'}},
  soma:{neutral:{file:'characters/soma/neutral-v1.webp',status:'reviewed',note:'Miki által véglegesített és jóváhagyott semleges portré.'}},
  denes:{neutral:{file:'characters/denes/neutral-v1.webp',status:'reviewed',note:'ChatGPT semleges portré; asszisztensi vizuális ellenőrzés, végső felhasználói jóváhagyás nyitott.'}},

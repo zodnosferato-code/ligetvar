@@ -2,7 +2,7 @@
 
 > **Status:** Four batches integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
 
-The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use built-in imagegen. The user now requests fast independent generation followed by batch review; retain approved masters as sources. The original 32 runtime requirements have 24 reviewed/integrated, 8 pending; two additional night images are also integrated; two reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
+The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use built-in imagegen. The user now requests fast independent generation followed by batch review; retain approved masters as sources. All 32 original runtime requirements are now integrated; Soma's reference sheet remains. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
 
 ## Review of existing candidates
 
