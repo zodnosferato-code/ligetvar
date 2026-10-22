@@ -803,9 +803,12 @@
       "hasUsefulAlpha": true,
       "promptFile": "assets/generated/chatgpt/prompts.json",
       "promptKey": "aron_neutral_candidate",
-      "status": "proposal-pending-user-review",
+      "status": "superseded-by-age-direction",
       "reviewedAt": "2026-10-22",
-      "finalUserStyleApproval": false
+      "finalUserStyleApproval": false,
+      "canonical": false,
+      "supersededBy": "aron_neutral_candidate_v2",
+      "supersededAt": "2026-10-22"
     },
     {
       "id": "lilla_neutral_candidate",
@@ -893,6 +896,38 @@
         800
       ],
       "runtimeBytes": 96266,
+      "export": "Pillow LANCZOS resize 640x800, WebP quality 95, alpha_quality 100"
+    },
+    {
+      "id": "aron_neutral_candidate_v2",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "user-directed age refinement and finalization",
+      "source": "assets/generated/chatgpt/supporting/aron-neutral-v1.webp",
+      "sourceSha256": "3c03749b26cde83727fad8e1a085081207b366e51b74b1d8660be6bd2a582e14",
+      "sourceRole": "identity, composition and clothing reference",
+      "generatedPngSha256": "3db1865cd9ec0fe40cee30a80c84ce91347f20633d5b94a134899f46865a2690",
+      "master": "assets/generated/chatgpt/supporting/aron-neutral-v2.webp",
+      "masterSha256": "f3dc4cd5ea3c7ce5893ebd8980ab8cb852975d820eb54bd94480c0e835cb66ea",
+      "masterSize": [
+        1122,
+        1402
+      ],
+      "masterBytes": 334188,
+      "runtime": "assets/characters/aron/neutral-v1.webp",
+      "runtimeSha256": "7b432609cda6c3fe0a0f9f741c021e86947ed88b1c7e4a45b014bd7e93f207ef",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "runtimeBytes": 134816,
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "promptKey": "aron_neutral_candidate_v2",
+      "status": "approved-final",
+      "reviewedAt": "2026-10-22",
+      "canonical": true,
+      "finalUserStyleApproval": true,
       "export": "Pillow LANCZOS resize 640x800, WebP quality 95, alpha_quality 100"
     }
   ]

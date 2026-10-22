@@ -1,0 +1,36 @@
+{
+  "id": "aron_neutral_candidate_v2",
+  "character": "Dr. Kerekes Áron",
+  "status": "approved-final",
+  "canonical": true,
+  "concept": "User-directed older final appearance for Dr. Kerekes Áron, late sixties.",
+  "source": {
+    "path": "assets/generated/chatgpt/supporting/aron-neutral-v1.webp",
+    "sha256": "3c03749b26cde83727fad8e1a085081207b366e51b74b1d8660be6bd2a582e14",
+    "role": "identity, composition and clothing reference"
+  },
+  "generatedPngSha256": "3db1865cd9ec0fe40cee30a80c84ce91347f20633d5b94a134899f46865a2690",
+  "savedImage": {
+    "path": "assets/generated/chatgpt/supporting/aron-neutral-v2.webp",
+    "sha256": "f3dc4cd5ea3c7ce5893ebd8980ab8cb852975d820eb54bd94480c0e835cb66ea",
+    "size": [
+      1122,
+      1402
+    ],
+    "format": "WebP",
+    "hasUsefulAlpha": true
+  },
+  "prompt": "Use case: stylized-concept. Create a user-directed final neutral dialogue portrait for the Ligetvár visual novel, editing the current Dr. Kerekes Áron portrait to look clearly older while preserving his identity, anime rendering, glasses, academic clothing, expression and transparent cutout. He is a university faculty administrator, visibly in his late sixties, about 68. Add deeper forehead lines and crow's feet, subtle age spots and natural mature skin, slight cheek and jaw sagging, and thinner short silver-white hair with a modest receding hairline. Keep him clean-shaven, composed and observant, not frail, ill or sinister. Preserve silver rectangular glasses, charcoal academic jacket, pale gray shirt and muted burgundy tie. Same head-and-shoulders vertical framing, natural proportions, clean anime linework and cel shading. Truly transparent background. No checkerboard, scenery, symbols, text or watermark.",
+  "runtime": {
+    "path": "assets/characters/aron/neutral-v1.webp",
+    "sha256": "7b432609cda6c3fe0a0f9f741c021e86947ed88b1c7e4a45b014bd7e93f207ef",
+    "size": [
+      640,
+      800
+    ],
+    "format": "WebP",
+    "bytes": 134816,
+    "hasUsefulAlpha": true
+  },
+  "finalUserStyleApproval": true
+}

@@ -93,7 +93,9 @@ test('main-character art resolves and Soma switches from neutral to transformed 
  assert.equal(portraitFor('soma','affectionate',1).file,somaNeutral);
  assert.equal(portraitFor('soma','affectionate',2).file,somaTransformed);
  for(const file of [somaNeutral,somaTransformed])assert.ok(file&&existsSync('public/'+file),file??'soma');
- assert.equal(portraitFor('aron','neutral').file,null);
+ const aron=portraitFor('aron','neutral').file;
+ assert.equal(aron,'characters/aron/neutral-v1.webp');
+ assert.ok(aron&&existsSync('public/'+aron),aron??'aron');
  assert.equal(portraitFor('marton','neutral').file,null);
 });
 test('scene lighting selects reviewed variants while preserving daytime and fallback locations',()=>{
