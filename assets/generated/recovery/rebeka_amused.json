@@ -1,1 +1,12 @@
-{"id":"rebeka_amused","prompt":"Edit ONLY the facial expression of supplied adult Rebeka master to AMUSED: restrained wry asymmetric closed-mouth smile, tiny eyebrow lift, amused purple eyes. Preserve EXACT adult face geometry, head placement, black hair with ONE viewer-RIGHT plum streak, ONE viewer-RIGHT beauty mark, opaque high-neck black dress, silver choker, shoulders, crop, eye line, canvas and neutral light. No tilt, mirror, blush, new marks, props or outfit changes. Change only eyes/brows/mouth. Same fine anime linework and crisp cel shading. Genuine transparent alpha background, one same-size 4:5 portrait, no text.","provider":"built-in imagegen","sources":["assets/generated/portrait-cutouts/rebeka-neutral-v1.png"],"transparent":true,"status":"candidate-awaiting-review"}
+{
+  "id": "rebeka_amused",
+  "prompt": "Edit ONLY the facial expression of supplied adult Rebeka master to AMUSED: restrained wry asymmetric closed-mouth smile, tiny eyebrow lift, amused purple eyes. Preserve EXACT adult face geometry, head placement, black hair with ONE viewer-RIGHT plum streak, ONE viewer-RIGHT beauty mark, opaque high-neck black dress, silver choker, shoulders, crop, eye line, canvas and neutral light. No tilt, mirror, blush, new marks, props or outfit changes. Change only eyes/brows/mouth. Same fine anime linework and crisp cel shading. Genuine transparent alpha background, one same-size 4:5 portrait, no text.",
+  "provider": "built-in imagegen",
+  "sources": [
+    "assets/generated/portrait-cutouts/rebeka-neutral-v1.png"
+  ],
+  "transparent": true,
+  "status": "reviewed-for-runtime",
+  "reviewedAt": "2026-10-22",
+  "runtime": "assets/characters/rebeka/amused-v1.webp"
+}

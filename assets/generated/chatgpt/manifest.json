@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "assets": [
+    {
+      "id": "library",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based people removal and seated viewpoint correction",
+      "source": "assets/generated/venice/backgrounds/library.png",
+      "sourceSha256": "0f8015be37b975b64e29183a1915d8b44dccb8f556cc9a1cf1c1cf679a84dadd",
+      "master": "assets/generated/chatgpt/library-v1.png",
+      "masterSha256": "76319f51ccfc60590213c03b38836c893fddf266ef15565f21687e885ead3533",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/library-anime-v1.webp",
+      "runtimeSha256": "67baa1233c0666b76b2483f44a773b0401d8c3ed6a75789742888e326c33b7ab",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
+    },
+    {
+      "id": "courtyard",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based people removal and seated viewpoint correction",
+      "source": "assets/generated/venice/backgrounds/courtyard.png",
+      "sourceSha256": "c29190d3b5f8eff5cc9ee0e08d930cf58e048383f5010c09c76ec488bc594fe2",
+      "master": "assets/generated/chatgpt/courtyard-v1.png",
+      "masterSha256": "d0eafda396fa9a52f4b13d6b28ad0a989a0020c2fdb5c3278d94fbb1dce5d8a6",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/courtyard-anime-v1.webp",
+      "runtimeSha256": "847deb1cdd3d78cabbd2ef0c130c98e5840d77aa898b3dd29248e3edb6f26a5a",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
+    },
+    {
+      "id": "bekas",
+      "provider": "OpenAI built-in imagegen",
+      "modelId": "not exposed by tool",
+      "operation": "reference-based people removal and seated viewpoint correction",
+      "source": "assets/generated/venice/backgrounds/bekas.png",
+      "sourceSha256": "3b5595cbf02a1ece873c26e1286e1b8f35038cdbdcbbc6c5731d2e650c6e7070",
+      "master": "assets/generated/chatgpt/bekas-v1.png",
+      "masterSha256": "2249b0e384baa452230c3ecc8e693ada4c29b2bf5a785ef139032fbc88c2cb0f",
+      "masterSize": [
+        1672,
+        941
+      ],
+      "runtime": "assets/backgrounds/bekas-anime-v1.webp",
+      "runtimeSha256": "ec90439937c93a3f591415c81cdc491bbe297a56375c6c977b0569e3ca902fa9",
+      "runtimeSize": [
+        1280,
+        720
+      ],
+      "promptFile": "assets/generated/chatgpt/prompts.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 1280x720, WebP quality 95"
+    },
+    {
+      "id": "rebeka_amused",
+      "provider": "OpenAI built-in imagegen (recovered existing candidate)",
+      "modelId": "not exposed by tool",
+      "source": "assets/generated/portrait-cutouts/rebeka-neutral-v1.png",
+      "sourceSha256": "67045d24d9b5d1306273f5e28692156c061e9ff5fded69e5d68b909470c6363b",
+      "master": "assets/generated/recovery/rebeka_amused.png",
+      "masterSha256": "c8d8305035a103ceb16fbef1757947948a1db0a2b1f98d46332675961029ae3f",
+      "runtime": "assets/characters/rebeka/amused-v1.webp",
+      "runtimeSha256": "c2ec832a84a4c211b350cd3da16c1b318c16a2cde7bcc9c23633b0be392cdba2",
+      "runtimeSize": [
+        640,
+        800
+      ],
+      "hasUsefulAlpha": true,
+      "promptFile": "assets/generated/recovery/rebeka_amused.json",
+      "status": "reviewed-for-runtime",
+      "reviewedAt": "2026-10-22",
+      "finalUserStyleApproval": false,
+      "export": "Pillow LANCZOS resize 640x800, WebP quality 95 alpha_quality 100"
+    }
+  ]
+}
