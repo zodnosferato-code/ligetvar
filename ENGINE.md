@@ -99,3 +99,7 @@ Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egye
 ## Reviewed lighting variants — 22 October 2026
 
 The UI passes effective `sceneLighting` to `backgroundFor` in the content asset manifest. Classroom evening selects dusk, library evening selects evening, and courtyard evening/night selects night (flexible night-slot scenes are labelled evening). Day selection and unavailable variants fall back to the base background. Reviewed variants set `lightingBaked`; their background bypasses the extra evening/night CSS tint on desktop and mobile. Other locations retain the CSS fallback. Engine and saves are unchanged.
+
+### Night destination correction — 22 October 2026
+
+Every non-shared scene in the saved night slot now resolves to `night`, including older scene definitions without `periods`. Shared-story scenes keep their authored lighting. `backgroundFor` first uses the exact variant, then the other late-day variant (evening/night), then the base. All seven currently reachable night destinations have real evening/night art: new lake/office night images, existing courtyard night and classroom/library late-day variants, and already-night apartment/Holdkör bases. Their `lightingBaked` flag avoids duplicate background tint. The daytime planner and its hotspots are unchanged; the office night image is used for dialogue only.

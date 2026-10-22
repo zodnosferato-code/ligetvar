@@ -1,8 +1,8 @@
 # ChatGPT art production — 22 October 2026
 
-> **Status:** Three small batches integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
+> **Status:** Four batches integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
 
-The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use the built-in imagegen tool and inspect one dependent image at a time. The 32 runtime requirements are unchanged: 14 reviewed/integrated, 18 pending; five reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
+The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use built-in imagegen. The user now requests fast independent generation followed by batch review; retain approved masters as sources. The original 32 runtime requirements have 24 reviewed/integrated, 8 pending; two additional night images are also integrated; five reference sheets remain pending. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
 
 ## Review of existing candidates
 
@@ -33,7 +33,7 @@ Built-in imagegen repaired Holdkör (removed human busts, removed obstructing be
 ## Next image checkpoint
 
 1. Completed: architecture-preserving classroom dusk, courtyard night and library evening variants. `backgroundFor` selects by effective lighting; courtyard night also covers evening-labelled visits in the night slot. Extra CSS background tint is bypassed for these variants.
-2. Derive ten remaining expressions individually from cleaned neutral portrait masters. Ask about supporting-cast appearance if uncertain before creating five human NPC portraits and Soma's transformation.
+2. Completed: all ten remaining main-woman expression variants. Ask about supporting-cast appearance if uncertain before creating five human NPC portraits and Soma's transformation.
 3. Office/bedroom restyles require preserving all clickable objects or a jointly verified hotspot update. Five production reference sheets and final user style approval remain open.
 
 First-batch commit `ed72ccd978b367433becc0875ba3e37ebcee7831`: GitHub Tests run 39785805351 and Pages run 39785805963 both completed successfully. No unattended continuation or automatic paid retry is scheduled. See REDESIGN-PROGRESS.md for actual validation commands/results.
@@ -41,3 +41,9 @@ First-batch commit `ed72ccd978b367433becc0875ba3e37ebcee7831`: GitHub Tests run 
 ## Third batch — lighting variants
 
 Three built-in imagegen edits preserve the reviewed room/courtyard composition, furniture and empty seating while changing daylight to dusk/evening/night. Masters and exact prompts/hashes are recorded under `assets/generated/chatgpt/`; runtime exports are 1280×720 WebP. No Venice call was made. Day assets and planner hotspots are unchanged. This is assistant review, with final user style acceptance open.
+
+## Fourth batch — night destinations and complete main-woman expressions
+
+The user reported daytime pictures after leaving the night hub, then requested faster generation with review afterward. The missing Békás-tó/department night variants were the immediate cause: CSS darkened the sunny image without replacing its sky. Both now have generated night images. Free-slot scenes always use the saved night period (including legacy scenes without explicit periods); shared scenes retain authored time. `backgroundFor` can reuse evening for night and vice versa but never changes day selection. Already-night apartment/Holdkör backgrounds bypass duplicate tint. The office destination label also changes to night meetings.
+
+Ten expression edits were generated concurrently from existing neutral masters and then reviewed for identity, expression, crop and alpha. No generated variant was used as an unreviewed identity source. Exact prompts, original/output hashes and export dimensions are in the ChatGPT manifest. Remaining original requirements: eight images plus five reference sheets. No Venice calls.
