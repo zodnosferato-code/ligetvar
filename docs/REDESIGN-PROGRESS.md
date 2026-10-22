@@ -225,3 +225,8 @@ Validation: all three PNGs decoded successfully; manifest source/master SHA-256 
 ## Incremental swimsuit delivery — 22 October 2026
 
 Three full-body swimwear costume references saved in assets/generated/chatgpt/swimwear with exact prompts, source references and output hashes. Costume-only references, not active runtime portraits: generated alpha retains a soft surrounding halo, so clean-sprite acceptance remains open. No local tests, typecheck or build run, per explicit user instruction. Upload in small commits and check GitHub Actions after each batch.
+
+
+## Architecture reference — 22 October 2026
+
+Generated one three-panel reference sheet from the reviewed classroom, courtyard and service-chamber backgrounds. Visually inspected that it contains only environment studies and preserves the project’s Gothic stone/ivy/utility-pipe language. The generated image is saved at `assets/generated/chatgpt/references/architecture-v1.webp`; prompt, source hashes, output hash and dimensions are recorded in the ChatGPT manifest. It is a non-runtime reference, so no game asset manifest changed. Soma's sheet and the final user art approval remain open. No tests or build were run for this non-runtime reference; GitHub Actions are checked after upload.
