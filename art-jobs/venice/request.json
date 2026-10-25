@@ -1,11 +1,12 @@
 {
-  "id": "2026-10-25-explicit-virag-01",
+  "id": "2026-10-25-explicit-greta-01",
   "phase": "explicit",
   "assets": [
-    "explicit_virag_oral",
-    "explicit_virag_wall"
+    "explicit_greta_desk_oral",
+    "explicit_greta_desk_bent",
+    "explicit_greta_after"
   ],
-  "maxNewImages": 2,
+  "maxNewImages": 3,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
