@@ -586,6 +586,18 @@
       ],
       "finishedAt": "2026-10-25T14:51:28.260Z",
       "failure": "Venice returned a blurred image; candidate rejected"
+    },
+    {
+      "request": "2026-10-25-explicit-rebeka-03-sexier",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T14:53:41.814Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [
+        "rebeka_neutral"
+      ],
+      "finishedAt": "2026-10-25T14:53:48.593Z",
+      "failure": "Venice returned a blurred image; candidate rejected"
     }
   ],
   "capabilities": {
