@@ -1,11 +1,19 @@
 {
-  "id": "2026-10-25-explicit-virag-02",
+  "id": "2026-10-25-explicit-retry-01",
   "phase": "explicit",
   "assets": [
+    "explicit_virag_oral",
+    "explicit_virag_wall",
     "explicit_virag_lake_oral",
-    "explicit_virag_lake_sex"
+    "explicit_virag_lake_sex",
+    "explicit_greta_desk_oral",
+    "explicit_greta_desk_bent",
+    "explicit_greta_after",
+    "explicit_triad_kiss",
+    "explicit_triad_oral",
+    "explicit_triad_riding"
   ],
-  "maxNewImages": 2,
+  "maxNewImages": 10,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
