@@ -24,7 +24,7 @@ Update the status column as work advances. Agents: claim a row, mark In Progress
 | boglarka_1 to boglarka_6 | Boglárka | Slow praise, full body acceptance, sex | In Progress (boglarka_3) | Grok – claiming boglarka_3 next; praise-focused slow explore + oral/sex |
 | greta_1 to greta_6 | Gréta | Rule-break, desk, light restraint, sex | In Progress (greta_3) | Grok – greta_3 hand path expanded with desk oral + bent-over + spanking + aftercare |
 | triad_3 to triad_8 | Triad | Girl-girl + three-way oral/sex | In Progress (triad_7) | Grok – triad_7 expanded with girl-girl kiss + sequential oral + riding/multiple finishes |
-| virag_1 to virag_8 | Virág | Immediate + repeated explicit | In Progress (virag_1) | Grok – virag_1 private path expanded with explicit oral + wall sex; assets requested |
+| virag_1 to virag_8 | Virág | Immediate + repeated explicit | In Progress (virag_1 + virag_4) | Grok – virag_1 private path expanded with explicit oral + wall sex; assets requested |
 | coffee_* / outing_* | All | Repeat shorter acts | Planned | Optional heat |
 | Asset set | All | 40+ explicit pose images | In Progress | explicit_rebeka_oral_kneeling requested; workflow run 40203070117 queued |
 
@@ -63,3 +63,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - greta_3 hand path expanded in romance.ts (desk scene: vest off, skirt up, oral, bent-over, light spanking, finish inside, “Don’t put it in the minutes”). Assets: explicit_greta_desk_oral/bent/after using edit+greta_neutral. request.json = 2026-10-25-explicit-greta-01.
 
 - triad_7 expanded in triad.ts: after tea, Rebeka/Boglárka deep kiss, sequential oral, full sex (riding + side-by-side), multiple finishes, sleep tangled. Assets: explicit_triad_kiss/oral/riding (multi-edit + both neutrals). request.json = 2026-10-25-explicit-triad-01.
+
+- virag_4 kiss path expanded: oral in lake shadows + sex against the bench + witty after. Assets: explicit_virag_lake_oral/sex (edit + full-body). request.json = 2026-10-25-explicit-virag-02.
