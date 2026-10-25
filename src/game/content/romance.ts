@@ -97,7 +97,14 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
   {id:'lost',text:'Volt már olyan kirándulásod, amin minden rosszul sikerült?',beats:[['greta','Az elsőn az ellenkező irányba indultam. Két órán át magyaráztam a többieknek, miért jó ez így.'],['marton','És jó volt?'],['greta','A végén igen. Csak előbb be kellett vallanom, hogy fogalmam sincs, hol vagyunk.'],['marton','Ma is jöhet egy rossz kanyar.'],['greta','Akkor nem kérsz majd helyzetjelentést?','amused']]},
   {id:'share',text:'Szeretném, ha ma te is kérdeznél rólam. Én is könnyen elbújok a munka mögé.',beats:[['greta','Jó. Mikor csináltál utoljára valamit, amiben ügyetlen voltál?'],['marton','Főzni próbáltam. A recept azt írta, egyszerű. Személyes sértésnek vettem.'],['greta','Én is. A receptek túl magabiztosak.','amused'],['narrator','Gréta nem ajánlja fel, hogy legközelebb megcsinálja helyetted. Inkább megkérdezi, mi lett belőle.']]}
  ],touch:[
-  {id:'hand',text:'Szeretnék közelebb sétálni hozzád. Megfoghatom a kezed?',memory:'greta_date_hand',beats:[['greta','Igen. Ezt a kerülőt ketten is elférjük.','affectionate'],['narrator','Feléd nyújtja a kezét. A hídnál lassít, hogy ne kelljen egymás mögé lépnetek.'],['greta','Na, most már tudom, miért volt érdemes félretenni a telefont.']]},
+  {id:'hand',text:'Szeretnék közelebb sétálni hozzád. Megfoghatom a kezed?',memory:'greta_date_hand',beats:[
+    ['greta','Igen. Ezt a kerülőt ketten is elférjük.','affectionate'],
+    ['narrator','Feléd nyújtja a kezét. A hídnál lassít, aztán a tanszéki iroda felé int. „Ma nincs napirend. A mellény marad le, a szoknya fel.”'],
+    ['greta','Az asztalnál. A kezeim a hátam mögött. És ne írd bele a jegyzőkönyvbe.','amused'],
+    ['narrator','Az irodában Gréta leveszi a mellényt, kigombolja az inget. A grafitszürke szoknya felcsúszik. Már nedves. Térdre ereszkedik az asztal mellett, szájával rajtad, szemével felnéz. Aztán feláll, az asztalra hajol, fél-egyenruhában. Könnyű ütések a fenekén; csak nyög és „igen”. Beléd hatolsz; bent maradsz. Utána egy percig az asztalon marad, aztán egyszer röviden felnevet.'],
+    ['greta','Ne tedd bele a jegyzőkönyvbe.','affectionate'],
+    ['narrator','Megigazítja a szoknyát, a mellényt a székre dobja. A telefonja a táskában marad.']
+  ]},
   {id:'slow_touch',text:'Ma még csak sétálnék veled. Jólesik, hogy ráérünk.',memory:'greta_date_slow',beats:[['greta','Akkor sétálunk. Nem kell ma mindent bepótolni.'],['narrator','Gréta a korlátra támaszkodik. Egy biciklist engedtek el, aztán folytatja a félbehagyott történetét.'],['greta','Egyébként itt szoktam visszafordulni. Ma nem sietek.']]}
  ],end:[['greta','Legközelebb hozhatunk valamit enni. Egyikünknek sem kell vendéglátást rendeznie.'],['marton','A recept kiválasztását még megbeszéljük.'],['greta','Jogos. Az egyszerűvel óvatosak leszünk.','amused']]}
 };
