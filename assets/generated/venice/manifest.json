@@ -657,6 +657,16 @@
       ],
       "finishedAt": "2026-10-25T15:00:58.950Z",
       "failure": "Venice /image/multi-edit failed: HTTP 402"
+    },
+    {
+      "request": "2026-10-25-explicit-virag-02",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T15:01:39.134Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [],
+      "finishedAt": "2026-10-25T15:01:39.775Z",
+      "failure": "Venice /image/edit failed: HTTP 402"
     }
   ],
   "capabilities": {
