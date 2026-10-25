@@ -1,11 +1,11 @@
 {
-  "id": "2026-10-25-pilot-seedream-relaxed-aspect-01",
+  "id": "2026-10-25-pilot-wai-illustrious-01",
   "phase": "explicit",
   "assets": [
     "explicit_virag_oral"
   ],
   "maxNewImages": 1,
-  "generationModel": "lustify-v8",
-  "editModel": "seedream-v5-pro-edit",
+  "generationModel": "wai-Illustrious",
+  "editModel": "qwen-image-3-edit",
   "resolution": "1K"
 }
