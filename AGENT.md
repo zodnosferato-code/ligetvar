@@ -70,3 +70,7 @@ The user now asks to generate as quickly as possible and inspect afterward. Inde
 ## Approved leisure direction — 25 October 2026
 
 The user selected relaxed move-limited puzzles, money plus spendable activity points, and full-slot jobs with substantial rewards. [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) is authoritative for the implemented economy. Jobs remain daytime-only. The phone now includes persistent gift replies and six optional paid outings, extending the earlier meetings-only rule. Save every puzzle move; never accept arbitrary UI reward amounts or permit reward duplication. Do not maintain backward compatibility. Require the complete current save schema; old saves require a fresh game. Personalized gifts never substitute for commitment or required-story evidence.
+
+## Ordered implementation objectives — 25 October 2026
+
+Follow [IMPLEMENTATION-ROADMAP.md](docs/IMPLEMENTATION-ROADMAP.md): first game/save versioning and clear breaking-save messages, then a fully playable agent/proofreader CLI with concise visual asset descriptions, then localisation and complete English text. Detection of incompatible saves is required; migration and backward-compatible gameplay are not. Update its task checkboxes, evidence and handoff log as work progresses. Planned APIs are proposals until implemented; do not describe them as existing commands.

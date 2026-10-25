@@ -42,3 +42,7 @@ Venice documentation: https://docs.venice.ai
 ### Current image production
 
 Venice production is paused following the user's report of exhausted credits. New assets use ChatGPT built-in image generation, one reviewed image at a time. See [the current art checkpoint](docs/CHATGPT-PRODUCTION.md) for integrated assets and remaining work.
+
+## Next implementation objectives
+
+The [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) tracks versioned releases and save incompatibility notices, then a playable CLI for agent testers and proofreaders with visual descriptions, followed by localisation and complete English text. These are planned features; `test:headless` currently runs tests, not playable CLI sessions.
