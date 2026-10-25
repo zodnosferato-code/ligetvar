@@ -84,3 +84,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - Venice uncensored retry queued (2026-10-25): request id=2026-10-25-explicit-uncensored-qwen-01. editModel=qwen-edit-uncensored, generationModel=lustify-v8 (non-Grok). Transparent:true still set. Triggered on push.
 
 - Venice blur acceptance enabled (2026-10-25): generator no longer rejects x-venice-is-blurred. Candidates will be checkpointed (status candidate-blurred-awaiting-review) and alpha extraction still attempted. Request id=2026-10-25-explicit-accept-blur-01.
+
+- Uncensored model pilot (2026-10-25): live model list shows qwen-image-3-edit (uncensored=true, supports 4:5) and seedream-v5-pro-edit (uncensored, no 4:5). Request id=2026-10-25-pilot-qwen-image-3-edit-01, maxNewImages=1 on explicit_virag_oral to test blur behavior before full batch.
