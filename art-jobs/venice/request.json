@@ -1,12 +1,11 @@
 {
-  "id": "2026-10-25-explicit-triad-01",
+  "id": "2026-10-25-explicit-virag-02",
   "phase": "explicit",
   "assets": [
-    "explicit_triad_kiss",
-    "explicit_triad_oral",
-    "explicit_triad_riding"
+    "explicit_virag_lake_oral",
+    "explicit_virag_lake_sex"
   ],
-  "maxNewImages": 3,
+  "maxNewImages": 2,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
