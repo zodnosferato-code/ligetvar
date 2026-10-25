@@ -62,3 +62,9 @@ export function orderedAssets(ids){
 }
 
 assets.push(portrait('virag')); // WAI pilot
+
+// Full-body natural poses for explicit participants (WAI generate)
+const FULLBODY='One fully clothed adult woman, full body visible head to toe, standing natural pose, slight turn, both eyes visible, consistent cast scale, soft neutral light, plain white background for alpha extraction, no scenery.';
+for(const [actor,identity] of Object.entries({rebeka:'Rebeka, adult 20-year-old, long straight black hair with plum streak, pale skin, beauty mark, black high-neck dress',boglarka:'Boglárka, adult 19-year-old, freckles, brown side braid, cream dress',virag:'Virág, adult 19-year-old, short cobalt-blue pixie, grey-blue eyes, white blouse and charcoal skirt',greta:'Gréta, adult 19-year-old, short dark hair, half-uniform white shirt and graphite skirt'})){
+  assets.push({id:actor+'_fullbody',kind:'portrait',actor,expression:'neutral',file:'portraits/'+actor+'/fullbody.png',method:'generate',refs:[],transparent:true,aspect:'2:3',prompt:STYLE+' masterpiece, best quality, adult woman, mature female, normal adult proportions, tall, realistic adult body, '+FULLBODY+' '+identity+'. Crisp cel-shaded anime, clean lines, no text, no watermark.'});
+}

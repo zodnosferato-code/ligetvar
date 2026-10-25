@@ -161,3 +161,5 @@ Completed Venice candidates are backed up under `backups/venice/YYYY-MM-DD/` so 
 
 ### Current backup
 Commit `c694b63` stores the 2026-10-25 set (4 neutrals + 17 explicit + raw). These are not yet wired into the game engine.
+
+- Complete women batch (2026-10-25): request id=2026-10-25-wai-complete-women-01 queues neutrals, full-body, expressions (rebeka/boglarka/greta), and all explicit scenes in one WAI generate pass.
