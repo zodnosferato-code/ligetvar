@@ -667,6 +667,16 @@
       "reused": [],
       "finishedAt": "2026-10-25T15:01:39.775Z",
       "failure": "Venice /image/edit failed: HTTP 402"
+    },
+    {
+      "request": "2026-10-25-explicit-retry-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T15:36:50.737Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [],
+      "finishedAt": "2026-10-25T15:36:51.079Z",
+      "failure": "Venice /image/edit failed: HTTP 402"
     }
   ],
   "capabilities": {
