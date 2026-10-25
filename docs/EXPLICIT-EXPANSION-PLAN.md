@@ -78,3 +78,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - Consent language continued (2026-10-25): remaining formal permission asks in intimate beats rewritten in triad_4 (Rebeka/Boglárka hand/kiss), romance.ts rebeka_date_hand choice, virag.ts kiss line, and relationships.ts invitation texts. Choice IDs, scene structure, and slower paths preserved. Heat shown via short decisive speech and action.
 
 - Stage 6 private continuations densified (2026-10-25): rebeka/boglarka/greta short private beats expanded to match stage-3 heat density (strip, oral, sex, voice-specific aftercare). Choice IDs and structure preserved.
+
+- Venice transparent retry queued (2026-10-25): request.json id=2026-10-25-explicit-transparent-retry-01. 10 explicit assets set to transparent:true (background-remove postprocess) and method=edit/multi-edit with identity references. Workflow will trigger on push.
