@@ -24,7 +24,18 @@ export function imageRequest(asset,images,request,models){
    let [width,height]=sizes[asset.aspect]??sizes['4:5'];
    if(!width||!height)throw new Error('No supported pixel size: '+asset.id);
    const divisor=limits.widthHeightDivisor??1;
-   width=Math.round(width/divisor)*divisor;height=Math.round(height/divisor)*divisor;
+   const maxDim=1280; // Venice /image/generate hard cap for width and height
+   if(width>maxDim||height>maxDim){
+    const scale=maxDim/Math.max(width,height);
+    width=Math.round(width*scale);
+    height=Math.round(height*scale);
+   }
+   width=Math.round(width/divisor)*divisor;
+   height=Math.round(height/divisor)*divisor;
+   if(width>maxDim)width-=divisor;
+   if(height>maxDim)height-=divisor;
+   if(width<divisor||height<divisor)throw new Error('Computed size too small: '+asset.id);
+   console.log('Pixel size for',asset.id,':',width+'x'+height,'(divisor',divisor+')');
    Object.assign(shared,{width,height});
   }
   if(limits.steps)shared.steps=limits.steps.default;

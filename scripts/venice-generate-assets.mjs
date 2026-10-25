@@ -34,7 +34,13 @@ async function reference(ref){
 let key;
 async function call(endpoint,body){
  const res=await fetch(BASE+endpoint,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+key,...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(240000)});
- if(!res.ok){await res.body?.cancel();const error=new Error('Venice '+endpoint+' failed: HTTP '+res.status);error.httpStatus=res.status;throw error;}
+ if(!res.ok){
+  let detail='';
+  try{detail=(await res.text()).slice(0,800).replace(/[\r\n]+/g,' ').trim();}catch(e){}
+  const error=new Error('Venice '+endpoint+' failed: HTTP '+res.status+(detail?': '+detail:''));
+  error.httpStatus=res.status;
+  throw error;
+ }
  const blurred=res.headers.get('x-venice-is-blurred')==='true';
  if(blurred)console.log('Venice returned a blurred image; accepting for review:',endpoint);
  res.blurred=blurred;
