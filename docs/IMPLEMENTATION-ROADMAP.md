@@ -1,6 +1,6 @@
 # Implementation roadmap — versions, CLI and localisation
 
-> **Status:** Planned; not implemented. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
+> **Status:** Phase 1 implemented; CLI and localisation planned. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
 
 ## Scope and authority
 
@@ -14,7 +14,7 @@ The user explicitly does **not** require backward compatibility. Do not reintrod
 
 This document is authoritative for these new objectives and supersedes conflicting save-policy guidance. The [redesign plan](../Ligetvar-Redesign-Plan.md) remains authoritative for story canon; [engine reference](../ENGINE.md), [economy](LEISURE-ECONOMY.md) and [character voices](CHARACTER-VOICES.md) define current gameplay. Preserve the separation between generic engine, campaign content and presentation. Do not redesign story or economic balance as part of tooling work.
 
-The outcomes above are user requirements. The interfaces and module boundaries below are proposed implementation defaults, not already implemented APIs. Adjust details when inspection justifies it, record the decision, and preserve the acceptance gates.
+The outcomes above are user requirements. The phase 1 contract is implemented as documented in [VERSIONING.md](VERSIONING.md). Later-phase interfaces and module boundaries below are proposed defaults, not already implemented APIs. Adjust details when inspection justifies it, record the decision, and preserve the acceptance gates.
 
 ## Verified starting point
 
@@ -59,10 +59,10 @@ Disable unusable Continue actions. Never silently restart or overwrite on failed
 
 ### Tasks and gate
 
-- [ ] **V1** Establish release metadata and independent save/content version constants; define bump rules and update release documentation.
-- [ ] **V2** Implement current save envelope, stable discovery, detection-only handling of older keys and structured load results.
-- [ ] **V3** Show versions and actionable incompatible/corrupt-save messages in the browser; remove the remaining ambiguity between missing and unusable saves.
-- [ ] **V4** Verify current round-trip; same-epoch different-release load; schema/content breaks; newer save; unknown metadata; malformed JSON; missing required fields; multiple-key precedence; failed loads never modify stored bytes. Check title-screen behavior on mobile.
+- [x] **V1** Establish release metadata and independent save/content version constants; define bump rules and update release documentation.
+- [x] **V2** Implement current save envelope, stable discovery, detection-only handling of older keys and structured load results.
+- [x] **V3** Show versions and actionable incompatible/corrupt-save messages in the browser; remove the remaining ambiguity between missing and unusable saves.
+- [x] **V4** Verify current round-trip; same-epoch different-release load; schema/content breaks; newer save; unknown metadata; malformed JSON; missing required fields; multiple-key precedence; failed loads never modify stored bytes. Check title-screen behavior on mobile.
 
 **Exit gate:** Users can identify their game version and understand why an existing save cannot continue. No compatibility engine or migration is introduced. All current gameplay/save tests and relevant browser checks pass. Record the first release and epoch values actually implemented; this roadmap does not assign a future release number.
 
@@ -128,7 +128,7 @@ Allow locale selection in browser and CLI. Production must not display raw keys 
 
 | Milestone | Depends on | Status | Completion commit / evidence |
 | --- | --- | --- | --- |
-| V1–V4: versions and save incompatibility | Current runtime | Not started | — |
+| V1–V4: versions and save incompatibility | Current runtime | Implemented | 0.2.0; 57 tests, typecheck/build, versioning and gameplay browser checks at 320/390/1440px |
 | C1–C2: shared CLI gameplay and saves | V1–V4 | Not started | — |
 | C3: asset descriptions | C1 view contract | Not started | — |
 | C4–C6: proofreading, route coverage and CI | C1–C3 | Not started | — |
@@ -163,3 +163,11 @@ Next task and exact reproduction command:
 ### 25 October 2026 — roadmap created
 
 Documentation only. Inspected the current runtime, save codec, package commands and asset manifest at `db24833`. Recorded the user's ordered objectives and acceptance gates. No release metadata, save envelope, CLI or localisation feature has been implemented by this planning change. Next task: **V1**, then **V2**; inspect save-discovery behavior before changing storage keys.
+
+### 25 October 2026 — V1–V4 implemented in 0.2.0
+
+Starting commit: `7dd79ae`. Added package-sourced release identity, schema 4/content epoch 1 save envelope, stable storage discovery, historical-key detection without loaders, structured failure results and title-screen messages. New-game replacement now requires an explicit confirmation. Full contract: [VERSIONING.md](VERSIONING.md).
+
+Validation: `npm test` (57 passing), `npm run typecheck`, `npm run build`; `tools/verify-leisure.cjs` passed at 320/390/1440px, covering old/corrupt/newer-save notices, disabled Continue, cancel/confirm restart without unintended writes, both puzzles, save/resume, gifts and outings. Playwright used `CHROMIUM_EXECUTABLE_PATH=/tmp/ligetvar-browser-libs/chromium`, `CHROMIUM_SERVERLESS=1`, and runtime Playwright dependencies. No migration added.
+
+Next task: **C1** — shared action/query adapter and playable CLI protocol. Read `src/game/content/runtime.ts`, `src/game/store.ts`, and `src/game/content/saves.ts`; run `npm test` for the current baseline. CLI and English remain not implemented.

@@ -1,4 +1,5 @@
 import {Component,useEffect,useRef,useState,type CSSProperties,type ReactNode} from 'react';
+import {GAME_VERSION,BUILD_ID} from '../release.ts';
 import {SCENES} from '../content/catalog.ts';
 import {ACTOR_NAME,SHORT,backgroundFor,LOCATIONS,assetUrl,portraitFor} from '../content/assets.ts';
 import {currentLine,currentPeriod,sceneLighting,evaluateEnding,formatFt} from '../content/runtime.ts';
@@ -30,8 +31,9 @@ function Game(){
 function Title(){
  const g=useGame(),[name,setName]=useState('Márton Kelényi');
  const audio=()=>{try{unlockAudio();}catch{/* Audio is optional. */}};
- return <main className="title panel" style={{backgroundImage:'linear-gradient(90deg,rgba(24,14,21,.96),rgba(24,14,21,.82) 55%,rgba(24,14,21,.22)),url("'+assetUrl('backgrounds/courtyard.jpg')+'")'}}><div className="title-copy"><div className="title-crest" aria-hidden="true"><Icon name="heart"/></div><p className="eyebrow">Romantika · rejtély · tizenhat hét</p><h1>Ami a kastélyban marad</h1><p>Egy különös műhely, három eltérő közelség és esték, amelyekre valaki nem emlékszik. A nyomozás barátságban is végigjátszható.</p>
- <label className="name">A neved<input maxLength={32} value={name} onChange={e=>setName(e.target.value)}/></label><div className="actions">{g.hasSave&&<button className="primary" onClick={()=>{audio();g.resume();}}><Icon name="book"/>Félév folytatása</button>}<button onClick={()=>{audio();g.start(name);}}><Icon name="door"/>Új félév indítása</button></div>
+ return <main className="title panel" style={{backgroundImage:'linear-gradient(90deg,rgba(24,14,21,.96),rgba(24,14,21,.82) 55%,rgba(24,14,21,.22)),url("'+assetUrl('backgrounds/courtyard.jpg')+'")'}}><div className="title-copy"><div className="title-crest" aria-hidden="true"><Icon name="heart"/></div><p className="eyebrow">Romantika · rejtély · tizenhat hét</p><p className="muted" title={BUILD_ID??undefined}>Ligetvár {GAME_VERSION}</p><h1>Ami a kastélyban marad</h1><p>Egy különös műhely, három eltérő közelség és esték, amelyekre valaki nem emlékszik. A nyomozás barátságban is végigjátszható.</p>
+ <label className="name">A neved<input maxLength={32} value={name} onChange={e=>setName(e.target.value)}/></label><div className="actions">{g.savePresent&&<button disabled={!g.hasSave} className="primary" onClick={()=>{audio();g.resume();}}><Icon name="book"/>Félév folytatása</button>}<button onClick={()=>{audio();g.start(name);}}><Icon name="door"/>Új félév indítása</button></div>
+ {g.confirmNewGame&&<section className="notice" role="alert"><p>Az új félév a jelenlegi mentési helyen felülírja az eddigi játékot. Biztosan újrakezded?</p><button onClick={()=>{audio();g.start(name,true);}}>Igen, új félévet kezdek</button><button onClick={g.cancelNewGame}>Mégsem</button></section>}
  <p className="muted">Minden héten egy közös jelenet, egy nappali és egy éjszakai tevékenység. A személyes jelenetek valódi határidőig pótolhatók; a folytatás nem kerül újabb sávba.</p></div></main>;
 }
 function Dialogue(){

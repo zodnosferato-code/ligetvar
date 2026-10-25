@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {SCENES} from './catalog.ts';
-import {decodeSave} from './saves.ts';
+import {encodeSave,decodeSave} from './saves.ts';
 import {activity,applyChoice,createInitial,currentLine,evaluateEnding,nextWeek,openScene,setDirection} from './runtime.ts';
 import type {GameState,GirlId,RouteId} from './types.ts';
 const triadPlan:Record<number,string[]>={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['triad_6'],13:['rebeka_5','boglarka_5'],14:['triad_7'],16:['triad_8']};
@@ -46,13 +46,13 @@ test('every new romantic branch saves, resumes and completes atomically in one s
   while(pending.length){
    const s=pending.pop()!;
    assert.equal(s.slot,start.slot);assert.deepEqual(s.decisions,start.decisions,'no decisions before completion: '+id);
-   const decoded=decodeSave(JSON.stringify(s),SCENES);assert.equal(decoded.status,'ok',id+'/'+s.scene?.line);
+   const decoded=decodeSave(encodeSave(s),SCENES);assert.equal(decoded.status,'ok',id+'/'+s.scene?.line);
    if(decoded.status!=='ok')throw new Error('Save rejected');
    const l=currentLine(s,SCENES)!;
    for(const choice of l.choices?.map(c=>c.id)??['continue']){
     const n=applyChoice(decoded.state,choice,SCENES);
     if(n.phase==='scene')pending.push(n);
-    else {terminals++;assert.equal(n.slot,start.slot+1);assert.ok(n.completed[id]);assert.equal(n.journal.length,start.journal.length+1);assert.equal(decodeSave(JSON.stringify(n),SCENES).status,'ok');}
+    else {terminals++;assert.equal(n.slot,start.slot+1);assert.ok(n.completed[id]);assert.equal(n.journal.length,start.journal.length+1);assert.equal(decodeSave(encodeSave(n),SCENES).status,'ok');}
    }
   }
   assert.ok(terminals>=(SCENES[id].lines.some(l=>l.choices)?2:1),id+' completes each kind of branch');

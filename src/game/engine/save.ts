@@ -1,13 +1,27 @@
 import {periodAllowed} from './logic.ts';
 import type {GameState,Registry,RuntimeRules} from './types.ts';
 export interface StorageLike{getItem(key:string):string|null;setItem(key:string,value:string):void}
-export type SaveResult<S extends GameState=GameState>={status:'ok';state:S}|{status:'missing'|'unsupported'|'invalid'};
+export interface SaveMetadata {gameVersion:string;saveSchemaVersion:number;contentCompatibilityVersion:number;buildId?:string}
+export type SaveResult<S extends GameState=GameState>=
+ |{status:'ok';state:S;metadata:SaveMetadata}
+ |{status:'missing'|'invalid'|'unavailable'}
+ |{status:'unsupported';reason:'pre_envelope'|'schema'|'content'|'newer';saved:Partial<SaveMetadata>&{legacyVersion?:number};current:SaveMetadata};
+export const encodeSave=<S extends GameState>(state:S,rules:RuntimeRules<S>)=>JSON.stringify({...rules.saveVersions,state});
 const object=(x:unknown):x is Record<string,any>=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const strings=(x:unknown):x is string[]=>Array.isArray(x)&&x.every(v=>typeof v==='string');
 export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules:RuntimeRules<S>):SaveResult<S>{
- if(!raw)return {status:'missing'};
+ if(raw===null)return {status:'missing'};
  try{
-  const s=JSON.parse(raw);if(!object(s))return {status:'invalid'};if(s.version!==rules.initial('').version)return {status:'unsupported'};
+  const data=JSON.parse(raw);if(!object(data))return {status:'invalid'};
+  const current=rules.saveVersions;
+  if(!('saveSchemaVersion' in data)&&!('state' in data)&&Number.isSafeInteger(data.version)&&data.version>0)return {status:'unsupported',reason:'pre_envelope',saved:{legacyVersion:data.version},current};
+  if(typeof data.gameVersion!=='string'||!/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/.test(data.gameVersion)||!['saveSchemaVersion','contentCompatibilityVersion'].every(k=>Number.isSafeInteger(data[k])&&data[k]>0)||(data.buildId!==undefined&&(typeof data.buildId!=='string'||data.buildId.length>128)))return {status:'invalid'};
+  const metadata:SaveMetadata={gameVersion:data.gameVersion,saveSchemaVersion:data.saveSchemaVersion,contentCompatibilityVersion:data.contentCompatibilityVersion,...(data.buildId!==undefined?{buildId:data.buildId}:{})};
+  if(metadata.saveSchemaVersion!==current.saveSchemaVersion||metadata.contentCompatibilityVersion!==current.contentCompatibilityVersion){
+   const reason=metadata.saveSchemaVersion>current.saveSchemaVersion||metadata.contentCompatibilityVersion>current.contentCompatibilityVersion?'newer':metadata.saveSchemaVersion!==current.saveSchemaVersion?'schema':'content';
+   return {status:'unsupported',reason,saved:metadata,current};
+  }
+  const s=data.state;if(!object(s))return {status:'invalid'};
   const valid=typeof s.name==='string'&&s.name.length<=32&&Number.isInteger(s.week)&&s.week>=1&&s.week<=rules.weeks
    &&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=3&&['planner','scene','summary','ending','minigame'].includes(s.phase)
    &&typeof s.direction==='string'
@@ -43,8 +57,7 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
    if(!periodAllowed(s as S,x.periods,rules.schedule)||s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
   }else if(s.scene!==null)return {status:'invalid'};
   if(s.phase==='minigame'?!(s.minigame in rules.economy.jobs)||s.slot<1||s.slot>2||!periodAllowed(s as S,rules.schedule?.activities[s.minigame],rules.schedule):s.minigame!==null)return {status:'invalid'};
-  return {status:'ok',state:s as S};
+  return {status:'ok',state:s as S,metadata};
  }catch{return {status:'invalid'};}
 }
-export function readSave<S extends GameState>(storage:StorageLike,r:Registry,rules:RuntimeRules<S>):SaveResult<S>{try{return decodeSave(storage.getItem(rules.saveKey),r,rules);}catch{return {status:'invalid'};}}
-export function persist<S extends GameState>(storage:StorageLike,s:S,rules:RuntimeRules<S>){try{storage.setItem(rules.saveKey,JSON.stringify(s));return true;}catch{return false;}}
+export function persist<S extends GameState>(storage:StorageLike,s:S,rules:RuntimeRules<S>){try{storage.setItem(rules.saveKey,encodeSave(s,rules));return true;}catch{return false;}}

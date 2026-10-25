@@ -51,7 +51,7 @@ First-time suited gifts give +2 bond; a mismatched or repeated item gives no bon
 
 ## Saves and source boundaries
 
-Only `ligetvar-save-v3` / version 3 is read and written. `activityPoints`, `puzzle` and `giftHistory` are required fields. Active jobs must have a valid saved board and occupy the daytime slot; outside a job, `puzzle` must be null. Missing fields are rejected rather than backfilled. There is no migration or name import: earlier versions require a new game.
+Current saves use the versioned envelope under the stable `ligetvar-save` key; see [VERSIONING.md](VERSIONING.md). Historical keys are detected only to explain incompatibility. `activityPoints`, `puzzle` and `giftHistory` are required fields. Active jobs must have a valid saved board and occupy the daytime slot; outside a job, `puzzle` must be null. Missing fields are rejected rather than backfilled. There is no migration or name import: earlier versions require a new game.
 
 `content/puzzles.ts`, `gifting.ts` and `outings.ts` contain game-specific rules and writing. `runtime.ts` binds them to the store. The generic engine understands only optional scene costs and a generic points balance, not characters or minigame identities. Gift history is separate from the scene journal so deliveries cannot fabricate witnessed story evidence. New save fields are validated when present.
 
