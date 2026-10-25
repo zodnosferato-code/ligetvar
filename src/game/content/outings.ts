@@ -73,4 +73,17 @@ export const outings:Scene[]=[
   say('narrator','A rajzon a pad mellett egy apró csillag áll. Gréta elteszi a telefonját, és visszaül melléd.')
  ],{scenes:['outing_greta_1']},[],'Gréta megmutatta a saját pihenőhelyét, és kézzel rajzolt térképet adott hozzá.',{bonds:{marton_greta:3},decisions:['keepsake_greta']}),6000,6)
 ];
+// Close each paid outing in the fiction before handing control back to the planner.
+const farewells:Record<string,string>={
+ outing_rebeka_1:'A vetítés végén összeszeditek a poharakat. Rebeka elteszi a fotókat, a kijáratnál még egyszer visszafordul, és jó utat kíván. Külön indultok haza.',
+ outing_rebeka_2:'A kapunál még váltotok néhány szót. Aztán Rebeka integet, és elindul; te a képet óvatosan a táskádba teszed, mielőtt hazamész.',
+ outing_boglarka_1:'Végül elöblítitek a csészéket, és elteszed a kölcsönkapott könyvet. Boglárka az ajtóig kísér, ott elköszöntök. A közös történetet legközelebb folytatjátok.',
+ outing_boglarka_2:'Meghallgatod a kedvenc mondatát, aztán lassan összepakoltok. Az ajtónál Boglárka megköszöni, hogy elhoztad a folytatást. Elköszöntök, és külön indultok tovább.',
+ outing_greta_1:'Az uzsonna után visszacsomagoljátok a maradékot, és együtt sétáltok az elágazásig. Gréta megköszöni a közös kitérőt. Ott elköszöntök egymástól.',
+ outing_greta_2:'Még maradtok egy kicsit, aztán Gréta elteszi a bögréket. Visszasétáltok a fő sétányig; a térképet magaddal viszed, amikor elköszöntök és külön indultok haza.'
+};
+for(const outing of outings){
+ const last=outing.lines.at(-1)!;last.next='outing_goodbye';
+ outing.lines.push({id:'outing_goodbye',speaker:'narrator',expression:'neutral',text:farewells[outing.id]});
+}
 export function outingGirl(scene:Scene):GirlId|undefined{return scene.cost?scene.participants.find((p):p is GirlId=>p==='rebeka'||p==='boglarka'||p==='greta'):undefined;}

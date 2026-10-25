@@ -77,3 +77,57 @@ test('naming insecurity on the shared evening keeps the triad and all three affi
  assert.equal(evaluateEnding(s).relationship,'triad');assert.ok(s.decisions.triad_named_insecurity);
  for(const actor of ['marton','rebeka','boglarka'])assert.ok(s.decisions['triad_'+actor+'_yes']);
 });
+
+// Exercise the new stage graph through real earned campaign states, not edited save cursors.
+for(const girl of ['rebeka','boglarka','greta'] as const)test(girl+': private destination, local memory, kiss and goodbye share one saved activity',async()=>{
+ const {gameView}=await import('./view.ts');
+ const {sceneStage}=await import('./runtime.ts');
+ let start:GameState|undefined;
+ campaign(girl,undefined,(s,id)=>{if(id===girl+'_3')start=s;});
+ assert.ok(start);
+ function until(s:GameState,target:string,slow=false):GameState {
+  for(let i=0;i<100;i++){
+   assert.equal(s.phase,'scene');if(s.scene!.line===target)return s;
+   const l=currentLine(s,SCENES)!;
+   s=applyChoice(s,slow&&l.id==='romance_closeness'?'slow_touch':l.choices?.[0].id??'continue',SCENES);
+  }
+  throw new Error('Missing node '+target);
+ }
+ const opened=openScene(start,girl+'_3',SCENES);
+ const destination=until(opened,'date_destination');
+ assert.ok(currentLine(destination,SCENES)!.choices!.some(c=>c.id==='together'));
+ assert.equal(destination.decisions[girl+'_invitation'],undefined,'local choices do not certify global decisions');
+ const expected={rebeka:'holdkor',boglarka:'library',greta:'courtyard'}[girl];
+ const privateState=until(applyChoice(destination,'quiet_place',SCENES),'date_private_choice');
+ const decoded=decodeSave(encodeSave(privateState),SCENES);assert.equal(decoded.status,'ok');
+ if(decoded.status!=='ok')throw new Error('Save rejected');
+ assert.equal(sceneStage(decoded.state,SCENES[girl+'_3']).location,expected);
+ assert.equal(gameView(decoded.state).scene!.staging.location,expected);
+ assert.notEqual(gameView(decoded.state).assets[0].file,gameView(destination).assets[0].file);
+ assert.equal(decoded.state.slot,start.slot);
+ const kissed=applyChoice(decoded.state,'kiss',SCENES);
+ assert.equal(gameView(kissed).scene!.staging.proximity,'close');
+ const returned=until(kissed,'date_goodbye_0');
+ assert.equal(sceneStage(returned,SCENES[girl+'_3']).location,SCENES[girl+'_3'].location);
+ const done=finish(returned);
+ assert.equal(done.slot,start.slot+1);assert.ok(done.decisions[girl+'_date_romantic_kiss']);
+ assert.equal(done.journal.length,start.journal.length+1);
+ const slowDestination=until(opened,'date_destination',true);
+ assert.ok(!currentLine(slowDestination,SCENES)!.choices!.some(c=>c.id==='together'));
+ assert.equal(applyChoice(slowDestination,'together',SCENES),slowDestination);
+ const slowPrivate=until(applyChoice(slowDestination,'quiet_place',SCENES),'date_private_choice');
+ assert.ok(!currentLine(slowPrivate,SCENES)!.choices!.some(c=>c.id==='kiss'));
+ assert.equal(applyChoice(slowPrivate,'kiss',SCENES),slowPrivate);
+ const slowDone=finish(slowPrivate);
+ assert.equal(slowDone.decisions[girl+'_date_romantic_kiss'],undefined);
+ assert.equal(slowDone.bonds['marton_'+girl as keyof typeof slowDone.bonds],done.bonds['marton_'+girl as keyof typeof done.bonds]);
+ for(const choice of ['head_home','stay_outside']){
+  const goodbye=applyChoice(destination,choice,SCENES);
+  assert.equal(goodbye.scene!.line,'date_goodbye_0');
+  assert.equal(finish(goodbye).slot,start.slot+1);
+ }
+ const invitation=until(opened,'line_4');
+ const declined=applyChoice(invitation,'slow',SCENES);
+ assert.equal(declined.scene!.line,'date_declined_0');
+ assert.equal(finish(declined).decisions[girl+'_invitation'],undefined);
+});

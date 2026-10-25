@@ -113,3 +113,7 @@ The approved puzzle/points redesign is implemented. [Puzzles and economy](docs/L
 ## Playable CLI
 
 Release 0.3.0 adds `src/game/cli/` for Node terminal and protocol-1 JSON sessions. The browser store and CLI both dispatch through `content/actions.ts`; `content/view.ts` exposes only player-visible state. Shared save envelopes are atomically persisted to an explicitly chosen file with exclusive ownership. `asset-descriptions.ts` supplies visually reviewed text using the existing background/portrait resolvers. Proofreading findings and transcripts are separate from campaign state. [CLI.md](docs/CLI.md) contains the complete command/protocol contract and reproduction examples.
+
+## Staged dates — 0.4.0
+
+Scenes may declare named stages selected explicitly by `Line.stage`, with location, background, cast, proximity and optional lighting. The shared `sceneStage` resolver drives browser and CLI. Staging is derived from the saved node; changing place does not finish or charge another activity. `Choice.localRequires` reads only pending decision IDs from this scene; ordinary prerequisites still read completed events. All effects remain atomic at scene completion. The three individual dates now have optional quieter destinations, separate mutually chosen kissing, and explicit departures; all six paid outings have closing beats. See [SCENE-STAGING.md](docs/SCENE-STAGING.md) for the contract, route details and remaining work. Campaign duration remains 16 weeks. Content epoch is 2; schema remains 4.

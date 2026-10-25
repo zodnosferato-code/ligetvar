@@ -1,4 +1,5 @@
 /** Authored romance scene expansion. */
+import {dateConclusion} from './date-staging.ts';
 import type {ActorId,Choice,Expression,GirlId,Scene} from './types.ts';
 type Beat=[ActorId,string,Expression?];
 type Reply={id:string;text:string;beats:Beat[];memory?:string;requires?:Choice['requires']};
@@ -133,11 +134,12 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
   s.lines.find(l=>l.id==='line_2')!.text='Örülök, hogy elhívtál. Én is ezért jöttem.';
   s.lines.find(l=>l.id==='line_4')!.text='Szeretnék világos választ adni a randira.';
   after(s,'line_3','romance_date_intro',d.intro);
-  const end=add(s,'romance_date_end',d.end);
+  const end=dateConclusion(s,girl,d.end);
   const touch=menu(s,'romance_closeness',girl==='boglarka'?'Boglárka közelebb hajol. „Megcsókolhatom az arcodat?”':girl==='rebeka'?'Rebeka rád néz. „Megfoghatom a kezed?”':'A hídnál egymás mellé lépünk. Jólesik, hogy nem sietünk.',d.touch,end);
   s.lines.find(l=>l.id==='romance_closeness')!.speaker='narrator';
   const topics=menu(s,'romance_date_topic','Végre nem a műhelyről beszélünk.',d.replies,touch);
   follow(s,'line_4','yes',topics);
+  for(const line of s.lines)if(!line.stage)line.stage=line.id.startsWith('romance_closeness_')&&!line.id.includes('slow_touch')?'start_beside':'start';
  }
  if(stage===4){
   s.lines.find(l=>l.id==='line_2')!.text='Szeretném megérteni, mi történt köztünk, mielőtt válaszolok.';

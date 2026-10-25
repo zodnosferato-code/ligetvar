@@ -309,3 +309,9 @@ Implemented independent game/schema/content versions, envelope encoding, stable-
 ## C1–C6 — playable CLI and proofreader tooling, 0.3.0
 
 Completed the CLI phase in [IMPLEMENTATION-ROADMAP.md](IMPLEMENTATION-ROADMAP.md); usage and protocol in [CLI.md](CLI.md). Browser and CLI share the action dispatcher. Implemented text/JSON play, file saves, asset descriptions, transcripts, findings, author inspection and route examples. Actual verification: 57 engine/content + 22 CLI tests, typecheck/build, browser flows at 320/390/1440px. Six full campaigns pass through an external JSON client. Existing save epochs remain 4/1. Art discovery: Gréta's empty affectionate image was removed and now uses neutral fallback; replacement art is still needed. Next objective: L1 localisation inventory.
+
+## 25 October 2026 — staged dates, release 0.4.0
+
+Implemented optional movement to quieter locations on all three individual dates, shared per-node browser/CLI staging, portrait distance framing, local conversational memory, mutually chosen romantic kisses and explicit departures. Six paid outings now also close naturally. All movement stays inside one activity. See [SCENE-STAGING.md](SCENE-STAGING.md) for exact scope and remaining art/campaign-length work. Schema 4/content epoch 2; earlier content saves are explicitly rejected without migration.
+
+Verification: 83 passing engine/content/CLI tests, TypeScript and production build; dedicated browser date flows passed at 320/390/1440px. Existing portraits are framed differently; dedicated kissing/embracing art is not implemented. Campaign duration remains 16 weeks.

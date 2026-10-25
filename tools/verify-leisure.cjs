@@ -6,6 +6,7 @@ const root=path.resolve('dist'),mime={'.html':'text/html','.js':'text/javascript
 const server=http.createServer((req,res)=>{const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/ligetvar\//,'');const file=path.resolve(root,relative||'index.html');if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(err,data)=>{if(err)res.writeHead(404).end();else res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'}).end(data);});});
 let browser,currentPage;
 (async()=>{
+ const {RELEASE}=await import('../src/game/release.ts');
  const R=await import('../src/game/content/runtime.ts'),{SCENES}=await import('../src/game/content/catalog.ts'),{encodeSave}=await import('../src/game/content/saves.ts'),{legalSwap,puzzleDone}=await import('../src/game/content/puzzles.ts');
  const finish=(s,id)=>{s=R.openScene(s,id,SCENES);while(s.phase==='scene'){const l=R.currentLine(s,SCENES);s=R.applyChoice(s,l.choices?.[0].id??'continue',SCENES);}return s;};
  const initial=finish(R.createInitial('Mobil próba'),'shared_1');
@@ -21,7 +22,7 @@ let browser,currentPage;
   // Versioning: old saves are visible, failed loads never replace them, and restarting is explicit.
   await page.goto(url);
   await page.evaluate(()=>{localStorage.clear();localStorage.setItem('ligetvar-save-v3','{"version":3,"name":"Old"}');});
-  await page.reload();await page.getByText(/Ligetvár 0\.3\.0/).waitFor();
+  await page.reload();await page.getByText('Ligetvár '+RELEASE.gameVersion,{exact:true}).waitFor();
   await page.getByRole('alert').filter({hasText:'már nem használható'}).waitFor();
   assert.equal(await page.getByRole('button',{name:'Félév folytatása',exact:true}).isDisabled(),true);
   await overflow();await page.screenshot({path:path.join(output,`save-incompatible-${width}.png`),fullPage:true});
@@ -32,7 +33,7 @@ let browser,currentPage;
   await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
   await page.getByRole('button',{name:'Igen, új félévet kezdek',exact:true}).click();
   const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save')));
-  assert.equal(saved.gameVersion,'0.3.0');assert.equal(saved.saveSchemaVersion,4);assert.equal(saved.contentCompatibilityVersion,1);
+  assert.equal(saved.gameVersion,RELEASE.gameVersion);assert.equal(saved.saveSchemaVersion,RELEASE.saveSchemaVersion);assert.equal(saved.contentCompatibilityVersion,RELEASE.contentCompatibilityVersion);
   assert.equal(await page.evaluate(()=>localStorage.getItem('ligetvar-save-v3')),'{"version":3,"name":"Old"}');
   for(const [raw,message] of [['{','sérült vagy hiányos'],[JSON.stringify({...saved,contentCompatibilityVersion:99}),'újabb, nem támogatott']]){
    await page.evaluate(raw=>localStorage.setItem('ligetvar-save',raw),raw);await page.reload();

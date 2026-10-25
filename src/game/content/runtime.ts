@@ -4,7 +4,7 @@ import {outingGirl} from './outings.ts';
 import {deliverGift,type GiftNote,type Delivery} from './gifting.ts';
 import {newPuzzle,puzzleMove,closePair,puzzleDone,puzzleReward} from './puzzles.ts';
 import {RULES} from './rules.ts';
-import type {Effect,GameState,GirlId,Line,Registry,RouteId,Scene} from './types.ts';
+import type {Effect,GameState,GirlId,Line,Registry,RouteId,Scene,SceneStage} from './types.ts';
 export {clamp,meets,sharedFor} from '../engine/logic.ts';
 export {GIFTS,ROUTES,evaluateEnding,isCommitted,canChooseDirection} from './rules.ts';
 export const currentPeriod=(s:GameState)=>engine.currentPeriod(s,RULES.schedule);
@@ -12,7 +12,11 @@ export const activityAvailable=(s:GameState,kind:string)=>engine.activityAvailab
 export const sceneAvailable=(s:GameState,x:Scene)=>engine.sceneAvailable(s,x,RULES.schedule);
 // Free-slot scenes follow the current activity period.
 // Shared story scenes retain their authored lighting and internal time jumps.
-export const sceneLighting=(s:GameState,x:Scene)=>x.kind!=='shared'&&currentPeriod(s)==='night'?'night':x.periods?.length===2?'day':x.lighting;
+export function sceneStage(s:GameState,x:Scene):SceneStage {
+ const line=s.scene?.id===x.id?x.lines.find(l=>l.id===s.scene?.line):undefined;
+ return (line?.stage?x.stages?.[line.stage]:undefined)??{label:'',location:x.location,background:x.background,participants:x.participants,proximity:'apart'};
+}
+export const sceneLighting=(s:GameState,x:Scene)=>sceneStage(s,x).lighting??(x.kind!=='shared'&&currentPeriod(s)==='night'?'night':x.periods?.length===2?'day':x.lighting);
 export const createInitial=(name:string)=>engine.createInitial(name,RULES);
 export const availableScenes=(s:GameState,r:Registry)=>engine.availableScenes(s,r,RULES.schedule) as Scene[];
 export const currentLine=(s:GameState,r:Registry)=>{

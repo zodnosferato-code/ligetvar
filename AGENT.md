@@ -80,3 +80,7 @@ Release/save policy: [VERSIONING.md](docs/VERSIONING.md). Runtime release comes 
 ## CLI gameplay testing — 0.3.0
 
 Use [CLI.md](docs/CLI.md) and `npm run play:cli -- --save PATH`; agents should use `npm run --silent play:cli -- --json --save PATH`. Browser and CLI share `content/actions.ts`. Normal observations hide unearned evidence and face-down cards; full catalog inspection requires explicit `--author`. Do not turn proofreader findings into story changes automatically. `npm test` now runs engine/content plus CLI process tests; `npm run test:headless` remains the engine-only alias. Keep each agent's save path separate. Localisation/English is the next roadmap phase.
+
+## Staged scene direction — 25 October 2026
+
+The user prioritized multi-location scenes, physical closeness/kissing, natural date endings, same-scene conversational memory and eventual adjustable campaign length. The first four have an initial implementation in 0.4.0; [SCENE-STAGING.md](docs/SCENE-STAGING.md) is the authoring contract and scope tracker. Use explicit `Line.stage` references and the shared `sceneStage` resolver; do not infer stage state from previously rendered lines. `localRequires` reads only pending decisions within the active scene and must not certify global evidence early. Moving to a quieter place is a separate choice from physical closeness. Current campaign duration remains 16 weeks; configurable milestone scheduling is still outstanding. This user-prioritized work supersedes localisation as the immediate task; retain the localisation backlog.

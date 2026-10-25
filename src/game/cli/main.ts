@@ -14,7 +14,7 @@ function printHuman(response:ReturnType<Session['execute']>,showVisuals=true){
  const v=r.view;if(!v){console.log(`Ligetvár ${GAME_VERSION} — no active game. Use new <name> or help.`);return;}
  console.log(`\nWeek ${v.week} | ${v.phase} | ${v.period??'shared/recap'} | ${v.money} Ft | ${v.activityPoints} points | energy ${v.energy} | revision ${r.revision}`);
  if(showVisuals)for(const a of v.assets)console.log(`[${a.role}${a.fallback?' / neutral fallback':''}] ${a.description}`);
- if(v.scene)console.log(`${v.scene.title} [${v.scene.id}/${v.scene.lineId}]\n${v.scene.speaker}: ${v.scene.text}`);
+ if(v.scene)console.log(`${v.scene.title} [${v.scene.id}/${v.scene.lineId}]\n${v.scene.location}${v.scene.staging.label?' · '+v.scene.staging.label:''} [${v.scene.staging.proximity}]\n${v.scene.speaker}: ${v.scene.text}`);
  if(v.lastNote)console.log(v.lastNote);
  if(v.puzzle){console.log(v.puzzle.instructions);console.log(v.puzzle.legend.join(' | '));for(let row=0;row<v.puzzle.tiles.length;row+=v.puzzle.width)console.log(v.puzzle.tiles.slice(row,row+v.puzzle.width).map((x:number|null,i:number)=>`${row+i}:${x===null?'?':x}`).join('  '));console.log(`${v.puzzle.movesLeft} moves left; score ${v.puzzle.score}; reward ${v.puzzle.reward.money} Ft + ${v.puzzle.reward.points} points`);}
  if(v.recap)for(const j of v.recap)console.log(j.text);
