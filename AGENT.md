@@ -21,7 +21,7 @@ A teljes [dokumentációs index](docs/README.md) felsorolja az aktív és archiv
 
 ## Mentés és képek
 
-**Asset work and uploads:** Follow [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md). Never expose base64, binary patches or image payloads in model context. Transfer bytes programmatically, reuse uploaded blob SHAs, publish images sequentially to `main`, and checkpoint each successful publication. Verify using remote tree hashes, not downloaded image contents.
+**Asset work and uploads:** Follow [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md), including its executable GitHub connector recipe. Use the GitHub connection for remote reads/writes; shell GitHub credentials and `git push` are unnecessary. Never expose base64, binary patches or image payloads in model context. Transfer bytes programmatically, reuse uploaded blob SHAs, publish images sequentially to `main`, and checkpoint each successful publication. Verify using remote tree hashes, not downloaded image contents.
 
 A felhasználó 2026-10-25-i döntése szerint visszafelé kompatibilitás nem követelmény. Csak a jelenlegi, verziózott mentésborítékot támogatjuk (`ligetvar-save`); ne tarts fenn régi azonosítókat, migrációkat, névimportot vagy alternatív játékszabályokat korábbi mentések miatt.
 
