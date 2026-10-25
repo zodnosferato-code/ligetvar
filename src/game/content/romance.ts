@@ -78,9 +78,9 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
   {id:'music',text:'Mit mutatnál meg magadból, amihez nem könyvet hoznál?',beats:[['boglarka','A zenéimet. De az egyiknél meg kell ígérned, hogy nem elemzed a szöveget.'],['marton','Ennyire rossz?'],['boglarka','Ennyire szeretem. Nem akarok rögtön érvelni mellette.'],['narrator','Elmondja a szám címét. A refrént csak félhangosan kezdi el, aztán kineveti magát.'],['marton','Most már meg szeretném hallgatni.']]},
   {id:'self',text:'Én képes vagyok előre elpróbálni egy egyszerű meghívást is.',beats:[['boglarka','És működik?'],['marton','Addig, amíg a másik nem mond valamit, amire nem készültem.'],['boglarka','Akkor most azt mondom, hogy örülök, hogy izgulsz. Nem rosszindulatból. Ettől kevésbé érzem úgy, hogy vizsgázom.','vulnerable'],['marton','Ma én sem szeretnék vizsgáztatni.']]}
  ],touch:[
-  {id:'kiss',text:'Szeretném, hogy megcsókolj.',memory:'boglarka_date_kiss',beats:[
+  {id:'kiss',text:'Gyere közelebb. Most.',memory:'boglarka_date_kiss',beats:[
    ['narrator','Boglárka közelebb hajol, és röviden megcsókolja az arcodat. Hátrébb húzódva rád néz, nem a könyvére.'],
-   ['boglarka','Ezt kevésbé volt nehéz megtenni, mint megkérdezni.','affectionate'],
+   ['boglarka','Már rég akartam.','affectionate'],
    ['marton','Jólesett. A kardigánod meleg. Leveted?'],
    ['boglarka','Igen. És… szeretném, ha látnád.','vulnerable'],
    ['narrator','Leveszi a mohazöld kardigánt, aztán lassan a krém ruhát is. Puha, telt mellek, csípő, combok. Figyeli az arcodat, ahogy elpirul.'],
@@ -97,7 +97,7 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
   {id:'lost',text:'Volt már olyan kirándulásod, amin minden rosszul sikerült?',beats:[['greta','Az elsőn az ellenkező irányba indultam. Két órán át magyaráztam a többieknek, miért jó ez így.'],['marton','És jó volt?'],['greta','A végén igen. Csak előbb be kellett vallanom, hogy fogalmam sincs, hol vagyunk.'],['marton','Ma is jöhet egy rossz kanyar.'],['greta','Akkor nem kérsz majd helyzetjelentést?','amused']]},
   {id:'share',text:'Szeretném, ha ma te is kérdeznél rólam. Én is könnyen elbújok a munka mögé.',beats:[['greta','Jó. Mikor csináltál utoljára valamit, amiben ügyetlen voltál?'],['marton','Főzni próbáltam. A recept azt írta, egyszerű. Személyes sértésnek vettem.'],['greta','Én is. A receptek túl magabiztosak.','amused'],['narrator','Gréta nem ajánlja fel, hogy legközelebb megcsinálja helyetted. Inkább megkérdezi, mi lett belőle.']]}
  ],touch:[
-  {id:'hand',text:'Szeretnék közelebb sétálni hozzád. Megfoghatom a kezed?',memory:'greta_date_hand',beats:[
+  {id:'hand',text:'Fogd meg. Most.',memory:'greta_date_hand',beats:[
     ['greta','Igen. Ezt a kerülőt ketten is elférjük.','affectionate'],
     ['narrator','Feléd nyújtja a kezét. A hídnál lassít, aztán a tanszéki iroda felé int. „Ma nincs napirend. A mellény marad le, a szoknya fel.”'],
     ['greta','Az asztalnál. A kezeim a hátam mögött. És ne írd bele a jegyzőkönyvbe.','amused'],
@@ -160,7 +160,7 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
   s.lines.find(l=>l.id==='line_4')!.text='Szeretnék világos választ adni a randira.';
   after(s,'line_3','romance_date_intro',d.intro);
   const end=dateConclusion(s,girl,d.end);
-  const touch=menu(s,'romance_closeness',girl==='boglarka'?'Boglárka közelebb hajol. „Megcsókolhatom az arcodat?”':girl==='rebeka'?'Rebeka rád néz. „Megfoghatom a kezed?”':'A hídnál egymás mellé lépünk. Jólesik, hogy nem sietünk.',d.touch,end);
+  const touch=menu(s,'romance_closeness',girl==='boglarka'?'Boglárka közelebb húzódik. A lélegzete a nyakadon; nem kérdez, csak várja, hogy te is akarod.':girl==='rebeka'?'Rebeka ujjai a csuklódhoz érnek. „Most.” — és a hangja már nem a műhelyé.':'Gréta megáll a hídnál. A mellénye nyitva, a tekintete egyértelmű. Nem kell mondania.',d.touch,end);
   s.lines.find(l=>l.id==='romance_closeness')!.speaker='narrator';
   const topics=menu(s,'romance_date_topic','Végre nem a műhelyről beszélünk.',d.replies,touch);
   follow(s,'line_4','yes',topics);

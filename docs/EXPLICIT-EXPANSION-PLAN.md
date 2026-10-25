@@ -72,3 +72,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
   - All registered backgrounds and portraits in assets.ts exist on disk (no missing files).
   - Planned Virág moments (arm, kiss, cuddle) created as reviewed animated WebP clips + posters under assets/animations/virag/ and promoted in animations.ts.
   - Explicit sex-scene assets remain blocked: Venice recent runs return HTTP 402 (credits); Grok generate_image also moderates explicit prompts. Catalog entries and request.json are ready for when credits are available.
+
+- Consent language revised (2026-10-25): stage-3 closeness prompts and Virág private_offer rewritten from formal asks to heat/subtle desire. Choice IDs and decision keys preserved.

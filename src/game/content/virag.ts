@@ -16,12 +16,12 @@ export const viragScenes:Scene[]=[
   line('near','virag','Szabad? — a karodra mutat. — A térképem megbízhatatlan, de legalább jó társaságot választottam.',undefined,[choice('arm','Nyújtom a karom.','arm','Könnyedén beléd karol.','virag_arm'),choice('space','Sétáljunk inkább egymás mellett.','space','Virág visszahúzza a kezét.')]),
   line('arm','narrator','Virág beléd karol, és néhány lépésig közel marad. Az iroda előtt elenged, és most már térkép nélkül fordul feléd.','private_offer'),
   line('space','virag','Rendben. A szellemes társalgás szerencsére érintés nélkül is veszélyes.','private_offer'),
-  line('private_offer','virag','Egy dolgot tisztázzunk: felnőtt vagyok, és nem vagyok a hallgatód. Az elsőéves szerep csak megkönnyíti, hogy beszéljenek velem. Tetszel. Szívesen lennék veled most, különösebb szertartás nélkül.',undefined,[
-   choice('private_yes','Én is szeretném. Menjünk fel hozzám.','private_confirm','Virág elteszi a térképet.'),
-   choice('private_later','Szívesen flörtölök, de most nem megyek tovább.','private_later_reply','Virág a folyosón marad.'),
-   choice('private_no','Nem szeretném.','private_no_reply','Virág elfogadja a választ.')]),
-  line('private_confirm','virag','Én is ezt szeretném. Ettől még nem ígérünk egymásnak kapcsolatot. És az ajtó előtt is meggondolhatod magad.',undefined,[
-   choice('confirm','Rendben. Ezt most mindketten akarjuk.','private_after','Közösen indultok el.','virag_first_intimacy'),
+  line('private_offer','virag','Felnőtt vagyok, nem a hallgatód. És most nagyon akarlak. Gyere.',undefined,[
+   choice('private_yes','Én is. Most.','private_confirm','Virág elteszi a térképet.'),
+   choice('private_later','Most nem.','private_later_reply','Virág a folyosón marad.'),
+   choice('private_no','Nem.','private_no_reply','Virág elfogadja a választ.')]),
+  line('private_confirm','virag','Jó. Az ajtó előtt még meggondolhatod. Utána már nem fogok kérdezni.',undefined,[
+   choice('confirm','Nem gondolom meg.','private_after','Közösen indultok el.','virag_first_intimacy'),
    choice('reconsider','Mégis inkább elköszönök.','private_no_reply','Virág nem próbál visszatartani.')]),
   line('private_after','narrator','A folyosó alkóvában megálltok. Virág blúza már nyitva a gallér alatt, szoknyája felcsúszik. Mély, gyors csók; nyelve azonnal ott van.','oral'),
   line('oral','narrator','Térdre ereszkedik, szemével felnéz, mosolyogva. Szája rajtad, lassú majd éhes, közben kacsint. Amikor elhúzódik:','wall'),
