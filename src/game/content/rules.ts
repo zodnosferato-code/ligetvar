@@ -4,7 +4,9 @@ import {clamp} from '../engine/logic.ts';
 import {formatFt} from './format.ts';
 import {GIRLS,LEGACY_SAVE_KEY,SAVE_KEY,type Effect,type Ending,type GameState,type GirlId,type RouteId} from './types.ts';
 export const ROUTES:Record<RouteId,string>={friendship:'Barátság',rebeka:'Rebeka',boglarka:'Boglárka',greta:'Gréta',triad:'Rebeka, Boglárka és Márton'};
-export const GIFTS={photo:{name:'Fotófüzet',price:2500,girl:'rebeka',person:'rebeka',bonus:2},tea:{name:'Tea',price:1200,girl:'boglarka',person:'boglarka',bonus:2},notes:{name:'Jegyzetfüzet',price:1800,girl:'greta',person:'greta',bonus:2}} as const;
+export {GIFTS} from './gifting.ts';
+import {GIFTS,validGiftHistory} from './gifting.ts';
+import {validPuzzle} from './puzzles.ts';
 export function isCommitted(s:GameState){return GIRLS.some(g=>g+'_commit' in s.decisions);}
 export function canChooseDirection(s:GameState){return s.week>=8&&s.phase==='planner'&&'shared_8' in s.completed;}
 export function evaluateEnding(s:GameState):Ending{
@@ -17,9 +19,9 @@ export function evaluateEnding(s:GameState):Ending{
 export const RULES:RuntimeRules<GameState>={
  schedule:{slots:{1:'day',2:'night'},activities:{rest:['day','night'],mohu:['day'],brick:['day']}},
  weeks:16,saveKey:SAVE_KEY,legacySaveKey:LEGACY_SAVE_KEY,
- initial:name=>({version:2,name:name.trim().slice(0,32)||'Márton Kelényi',week:1,slot:0,phase:'planner',scene:null,minigame:null,money:105000,energy:78,exposure:0,
+ initial:name=>({version:2,name:name.trim().slice(0,32)||'Márton Kelényi',week:1,slot:0,phase:'planner',scene:null,minigame:null,money:12000,activityPoints:0,puzzle:null,giftHistory:[],energy:78,exposure:0,
   bonds:{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0},direction:'friendship',decisions:{},evidence:{},completed:{},preparation:[],disclosure:'limited',inventory:{},giftsWeek:[],jobsWeek:{mohu:0,brick:0},journal:[],confrontation:null,institution:null,lastNote:'Minden héten egy közös alkalom, egy nappali és egy éjszakai tevékenység.'}),
- economy:{sharedEnergy:4,sceneEnergy:-8,weeklyEnergy:24,weeklyMoney:60000,restEnergy:32,gifts:GIFTS,jobs:{mohu:{energy:18,maxPay:20000,rates:[1,.6,.35]},brick:{energy:22,maxPay:20000,rates:[1,.7]}}},
+ economy:{sharedEnergy:4,sceneEnergy:-8,weeklyEnergy:24,weeklyMoney:3000,restEnergy:32,gifts:GIFTS,jobs:{mohu:{energy:12,maxPay:20000,rates:[1]},brick:{energy:12,maxPay:20000,rates:[1]}}},
  notes:{initial:'Minden héten egy közös alkalom, egy nappali és egy éjszakai tevékenység.',newWeek:'Új hét. A még határidőn belüli alkalmak pótolhatók.',rest:'Nyugodt pihenés. A pihenő nem helyettesít személyes döntést.',purchase:'A tárgy nem helyettesít személyes döntést.',gift:'Átadva. Egy ajándék hetente; vállalást és jóvátételt csak a megfelelő beszélgetés hoz.',job:pay=>'Opcionális munka: '+formatFt(pay)+'. Sem találkozó, sem vásárlás nem függ műszaktól.'},
  applyEffect:(s,e)=>{const effect=e as Effect;if(effect.disclosure)s.disclosure=effect.disclosure;},
  completeScene:(s,x)=>{
@@ -33,6 +35,9 @@ export const RULES:RuntimeRules<GameState>={
  canFinish:s=>!!s.confrontation&&!!s.institution,
  directionChange:(s,direction)=>!Object.hasOwn(ROUTES,direction)||!canChooseDirection(s)?{allowed:false}:isCommitted(s)?{allowed:false,note:'A vállalt kapcsolati irányt a tervező nem írhatja át újabb személyes beszélgetés nélkül.'}:{allowed:true,note:'Szándékot jelöltél, nem döntöttél más helyett. A vállalás külön beszélgetést igényel.'},
  validateState:(s,r)=>{
+  if(s.activityPoints!==undefined&&(!Number.isSafeInteger(s.activityPoints)||s.activityPoints<0))return false;
+  if(s.puzzle!=null&&(!validPuzzle(s.puzzle)||s.phase!=='minigame'||s.puzzle.kind!==s.minigame))return false;
+  if(s.giftHistory!==undefined&&!validGiftHistory(s.giftHistory,s.week))return false;
   if(!Object.hasOwn(ROUTES,s.direction)||!['public','limited','private'].includes(s.disclosure)||!['supported','exhausting',null].includes(s.confrontation)||!['acknowledged','incomplete','suppressed',null].includes(s.institution)||!s.giftsWeek.every(g=>GIRLS.includes(g as GirlId)))return false;
   const confrontation=Object.values(r).find(x=>x.resolution==='confrontation'),institution=Object.values(r).find(x=>x.resolution==='institution');
   return !!s.confrontation===!!(confrontation&&confrontation.id in s.completed)&&!!s.institution===!!(institution&&institution.id in s.completed);

@@ -1,208 +1,35 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect,useRef} from 'react';
+import {useGame} from '../store.ts';
+import {newPuzzle,puzzleDone,puzzleReward,MOVE_LIMIT,cluster} from '../content/puzzles.ts';
+import {formatFt} from '../content/format.ts';
+const BOTTLES=['●','▲','■','◆'],NAMES=['Zöld üveg','Kék palack','Réz doboz','Lila üveg'];
+const CARDS=['Kulcs','Levél','Hold','Torony','Könyv','Térkép','Pecsét','Toll'];
+const SYMBOLS=['⚿','✉','☾','♜','▤','⌘','✿','✎'];
+export function PuzzleGame(){
+ const g=useGame(),s=g.state,kind=s.minigame!,p=s.puzzle??newPuzzle(kind,s.week),done=puzzleDone(p),reward=puzzleReward(p),memory=kind==='brick';
+ const after=s.slot===2?'heti összegzés':'éjszaka';
+ const title=useRef<HTMLHeadingElement>(null);
+ useEffect(()=>{title.current?.focus({preventScroll:true});title.current?.scrollIntoView({block:'start'});},[]);
+ const started=p.moves>0||p.selected.length>0;
+ return <main className="puzzle panel" aria-labelledby="puzzle-title">
+  <p className="eyebrow">Nappali műszak · nincs időmérő · 12 energia</p>
+  <h1 id="puzzle-title" ref={title} tabIndex={-1}>{memory?'Archívumpárok':'Palackmozaik'}</h1>
+  <p>{memory?'Keresd meg a 8 párt. Fordíts fel két lapot, aztán lépj tovább.':'Koppints 2 vagy több szomszédos, azonos jelre. Nagy csoport = több pont.'}</p>
+  <div className="puzzle-stats" aria-live="polite"><strong>{MOVE_LIMIT[kind]-p.moves} lépés maradt</strong><span>{memory?`${p.score} / 8 pár`:`${p.score} / 180 célpont`}</span><span>{formatFt(reward.money)} + {reward.points} programpont</span></div>
 
-// Infinite runner for MOHU bottle collection
-export function MohuGame({ onDone, onCancel }: { onDone: (pay: number) => void; onCancel: () => void }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [score, setScore] = useState(0);
-  const scoreRef = useRef(0);
-  const over = useRef(false);
-  const jumpRef = useRef(() => {});
-  const onDoneRef = useRef(onDone);
-  onDoneRef.current = onDone;
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let playerY = 150;
-    let vy = 0;
-    let onGround = true;
-    const gravity = 0.6;
-    const jump = -12;
-    let items: { x: number; y: number; v: number; type: "bottle" | "hazard" }[] = [];
-    let spawnTimer = 0;
-    let time = 40;
-    let last = performance.now();
-    let raf = 0;
-    let running = true;
-
-    jumpRef.current = () => { if (onGround) { vy = jump; onGround = false; } };
-    const keys = new Set<string>();
-    const onKey = (e: KeyboardEvent) => {
-      if (["Space", "ArrowUp", "KeyW"].includes(e.code)) e.preventDefault();
-      if (e.type === "keydown") keys.add(e.code);
-      else keys.delete(e.code);
-    };
-    window.addEventListener("keydown", onKey);
-    window.addEventListener("keyup", onKey);
-
-    const spawn = () => {
-      const isHazard = Math.random() < 0.25;
-      items.push({
-        x: canvas.getBoundingClientRect().width + 20,
-        y: isHazard ? 180 : 160 + Math.random() * 40,
-        v: isHazard ? 0 : 80 + Math.floor(Math.random() * 60),
-        type: isHazard ? "hazard" : "bottle",
-      });
-    };
-
-    const finish = () => {
-      if (over.current) return;
-      over.current = true;
-      running = false;
-      cancelAnimationFrame(raf);
-      onDoneRef.current(scoreRef.current);
-    };
-
-    const frame = (now: number) => {
-      if (!running) return;
-      const dt = Math.min(0.05, (now - last) / 1000);
-      last = now;
-      time -= dt;
-      spawnTimer -= dt;
-      if (spawnTimer <= 0) {
-        spawn();
-        spawnTimer = 1.2 + Math.random() * 0.8;
-      }
-
-      if ((keys.has("Space") || keys.has("ArrowUp") || keys.has("KeyW")) && onGround) {
-        vy = jump;
-        onGround = false;
-      }
-      vy += gravity;
-      playerY += vy;
-      if (playerY >= 150) {
-        playerY = 150;
-        vy = 0;
-        onGround = true;
-      }
-
-      for (let i = items.length - 1; i >= 0; i--) {
-        items[i]!.x -= 4;
-        if (items[i]!.x < -30) { items.splice(i, 1); continue; }
-        const px = 80;
-        const py = playerY;
-        const ix = items[i]!.x;
-        const iy = items[i]!.y;
-        if (Math.abs(px - ix) < 30 && Math.abs(py - iy) < 30) {
-          if (items[i]!.type === "bottle") {
-            scoreRef.current += items[i]!.v;
-            setScore(scoreRef.current);
-          } else {
-            scoreRef.current = Math.max(0, scoreRef.current - 40);
-            setScore(scoreRef.current);
-          }
-          items.splice(i, 1);
-        }
-      }
-
-      const rect = canvas.getBoundingClientRect();
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.fillStyle = "#1c1614";
-      ctx.fillRect(0, 0, rect.width, rect.height);
-      ctx.fillStyle = "#2a2420";
-      ctx.fillRect(0, 200, rect.width, rect.height - 200);
-      ctx.fillStyle = "#f3e6d0";
-      ctx.fillRect(60, playerY, 24, 40);
-      for (const it of items) {
-        ctx.fillStyle = it.type === "bottle" ? "#6d8a62" : "#7a4458";
-        ctx.fillRect(it.x, it.y, 20, 28);
-      }
-
-      if (time <= 0) finish();
-      else raf = requestAnimationFrame(frame);
-    };
-    raf = requestAnimationFrame(frame);
-
-    return () => {
-      running = false;
-      cancelAnimationFrame(raf);
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("keyup", onKey);
-    };
-  }, []);
-
-  return (
-    <div className="scroll" style={{ padding: "0.8rem 1rem 1rem" }}>
-      <div className="nameplate">
-        <span>MOHU visszaváltás</span>
-        <span>{score.toLocaleString("hu-HU")} Ft</span>
-      </div>
-      <p className="serif" style={{ marginTop: 0 }}>
-        Ugorj a palackokért (Space / fel / Ugrás gomb). A sötét alakok elkerülendők.
-      </p>
-      <canvas ref={canvasRef} onPointerDown={() => jumpRef.current()} style={{ width: "100%", height: "16rem", background: "#1c1614", touchAction: "none" }} />
-      <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.7rem" }}>
-        <button type="button" onClick={() => jumpRef.current()}>Ugrás</button>
-        <button type="button" className="primary" onClick={() => onDone(scoreRef.current)}>
-          Visszaváltom
-        </button>
-        <button type="button" className="button" onClick={onCancel}>
-          Mégsem
-        </button>
-      </div>
-    </div>
-  );
-}
-
-const TRIVIA = [
- {q:"Mi elsődleges forrás egy terepi eseménynél?",options:["A helyszínen készült jegyzet","Egy későbbi összefoglaló","Egy másik mű bibliográfiája"],a:0,pay:1200},
- {q:"Mi a folklórkutatásban a terepmunka?",options:["Csak könyvtári olvasás","Helyszíni megfigyelés és beszélgetés","Csak online forrás"],a:1,pay:1400},
- {q:"Hogyan jelöljük a nem ismert adatot?",options:["Kitaláljuk","Elhallgatjuk az eltérést","Ismeretlenként, elkülönítve a tényektől"],a:2,pay:1000},
- {q:"Miért őrizzük meg a javított jegyzet eredetijét?",options:["Hogy több lap legyen","Hogy a változtatás ellenőrizhető legyen","Hogy ne kelljen forrást jelölni"],a:1,pay:1300},
- {q:"Mikor osztható meg személyes tanúvallomás?",options:["Mindig","Az érintett beleegyezésével, a megbeszélt körben","Ha érdekes"],a:1,pay:1500}
-];
-
-export function TriviaGame({ onDone, onCancel }: { onDone: (pay: number) => void; onCancel: () => void }) {
-  const [idx, setIdx] = useState(0);
-  const [score, setScore] = useState(0);
-  const [done, setDone] = useState(false);
-  const current = TRIVIA[idx];
-
-  const answer = (choice: number) => {
-    if (done) return;
-    if (choice === current.a) setScore((s) => s + current.pay);
-    if (idx + 1 >= TRIVIA.length) {
-      setDone(true);
-      onDone(score + (choice === current.a ? current.pay : 0));
-    } else {
-      setIdx((i) => i + 1);
-    }
-  };
-
-  if (done) return null;
-
-  return (
-    <div className="scroll" style={{ padding: "0.8rem 1rem 1rem" }}>
-      <div className="nameplate">
-        <span>Iratellenőrzés / kérdőív</span>
-        <span>{score.toLocaleString("hu-HU")} Ft</span>
-      </div>
-      <p className="serif" style={{ marginTop: 0 }}>
-        A tanszéki munkád része: javítsd ki a kérdőíveket. Helyes válasz pénzt hoz.
-      </p>
-      <p className="serif" style={{ fontWeight: 600 }}>
-        {current.q}
-      </p>
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
-        {current.options.map((opt, i) => (
-          <button key={i} type="button" className="button" onClick={() => answer(i)}>
-            {opt}
-          </button>
-        ))}
-      </div>
-      <button type="button" className="button" style={{ marginTop: "0.7rem" }} onClick={onCancel}>
-        Mégsem
-      </button>
-    </div>
-  );
-}
-
-export function BrickGame(props: { onDone: (pay: number) => void; onCancel: () => void }) {
-  return <TriviaGame {...props} />;
+  <div className={'puzzle-board '+(memory?'archive-board':'bottle-board')} role="group" aria-label={memory?'Iratpárosító tábla':'Palackcsoportok'}>
+   {p.board.map((value,i)=>{
+    const face=!memory||p.selected.includes(i)||p.matched.includes(i),matched=memory&&p.matched.includes(i),group=memory?0:cluster(p.board,i).length;
+    return <button key={i} type="button" className={'puzzle-tile '+(memory?'archive-tile':'bottle-'+value)+(matched?' is-matched':'')+(memory&&!face?' is-hidden':'')} disabled={done||matched||memory&&(p.selected.length===2||p.selected.includes(i))} onClick={()=>g.movePuzzle(i)} aria-label={memory?`${i+1}. lap: ${face?CARDS[value]:'lefordítva'}${matched?', megtalált pár':''}`:`${Math.floor(i/5)+1}. sor ${i%5+1}. oszlop: ${NAMES[value]}, ${group} darabos csoport`}>
+     <span aria-hidden="true">{face?(memory?SYMBOLS[value]:BOTTLES[value]):'?'}</span>{memory&&<small>{face?CARDS[value]:'Lap '+(i+1)}</small>}
+    </button>;
+   })}
+  </div>
+  {memory&&p.selected.length===2&&!done&&<div className="pair-feedback" role="status"><p>{p.board[p.selected[0]]===p.board[p.selected[1]]?'Megvan a pár!':'Ez a két jel eltér. Jegyezd meg a helyüket.'}</p><button className="primary" onClick={g.nextPair}>Következő pár</button></div>}
+  <details className="puzzle-help"><summary>Szabályok, jutalom és mentés</summary>
+  <p className="muted">Teljesítsd a műszakot: 8 000–20 000 Ft és 3–6 programpont. A jutalom átvétele után {after} következik. Az első lépéstől minden lépés mentődik; később folytathatod.</p>
+  <p>{memory?'Egy pár felfordítása egy lépés. Nincs időkorlát: a két lapot a Következő pár gombig nézheted.':'Csak az oldalukon érintkező darabok alkotnak csoportot. Az üres helyekre új darabok csúsznak. Egy magányos darabra koppintás nem használ lépést.'}</p></details>
+  {!memory&&!done&&<p className="muted">Pontozás: 2 darab = 2 pont · 3 = 6 · 5 = 20 · 10 = 90. Az egyedül álló darabra koppintás nem használ lépést.</p>}
+  {done?<section className="puzzle-result" aria-live="polite"><h2>Műszak kész</h2><p>{memory?`${p.score} iratpárt rendeztél.`:`${p.score} pontot gyűjtöttél.`} Jutalmad: <strong>{formatFt(reward.money)} és {reward.points} programpont.</strong></p><p>A telefon különleges alkalmai 4 vagy 6 programpontba kerülnek. A pénzből ajándékot és programot választhatsz.</p><button className="primary" onClick={g.finishJob}>Jutalom átvétele · {after}</button></section>:!started?<button onClick={g.cancelJob}>Vissza · még nem kezdtem el</button>:<p className="muted">A műszak folyamatban van. A címoldalra visszalépve vagy az ablakot bezárva később ugyaninnen folytathatod.</p>}
+ </main>;
 }

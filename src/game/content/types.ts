@@ -1,3 +1,5 @@
+import type {PuzzleState} from './puzzles.ts';
+import type {GiftReceipt} from './gifting.ts';
 import type {GameState as CoreState,ActivityPeriod} from '../engine/types.ts';
 export const GIRLS=['rebeka','boglarka','greta'] as const;
 export type GirlId=typeof GIRLS[number];
@@ -13,6 +15,7 @@ export interface Effect { bonds?:Partial<Record<BondId,number>>; decisions?:stri
 export interface Choice { requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
 export interface Line { id:string; speaker:ActorId; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
+ cost?:{money:number;points:number};
  periods?:readonly ActivityPeriod[];
  id:string; title:string; kind:'shared'|'relationship'|'preparation'|'conversation'; week:number; deadline:number;
  participants:ActorId[]; location:LocationId; background:LocationId; lighting:'day'|'evening'|'night';
@@ -29,6 +32,7 @@ export interface Ending {
  relationship:'triad'|GirlId|'friendship'|'unresolved'|'estranged'|null;
 }
 export interface GameState extends CoreState {
+ puzzle?:PuzzleState|null; giftHistory?:GiftReceipt[];
  version:2; name:string; week:number; slot:0|1|2|3; phase:'planner'|'scene'|'summary'|'ending'|'minigame';
  scene:SceneCursor|null; minigame:'mohu'|'brick'|null; money:number; energy:number; exposure:number;
  bonds:Record<BondId,number>; direction:RouteId; decisions:Record<string,WitnessedDecision>;

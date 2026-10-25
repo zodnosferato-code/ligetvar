@@ -7,7 +7,7 @@
 | Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, a v2 mentési alak megőrzésével |
 | Motor | `src/game/engine/logic.ts` | általános reducerek, sávok, előfeltételek, célzott hatások; történeti azonosítók nélkül |
 | Kampányszabályok | `src/game/content/rules.ts`, `runtime.ts` | kezdeti állapot, 16 hét, gazdaság, kapcsolati irányok, konfrontáció, intézmény és végértékelés |
-| Történet | `src/game/content/catalog.ts` | 54 magyar jelenet; külön TypeScript modulokból összeállított egyetlen regiszter |
+| Történet | `src/game/content/catalog.ts` | 60 magyar jelenet; külön TypeScript modulokból összeállított egyetlen regiszter |
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
 | Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
 | Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v2 kulcs; Zustand/localStorage integráció |
@@ -26,14 +26,14 @@ A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a m
 | Jegyzetfüzet / könyvek | Napló, ismert bizonyítékok, kapcsolatok és választható személyes irány |
 | Fotel | Pihenés |
 | Polc | Ajándékok vásárlása és átadása |
-| Zsák | MOHU és iratellenőrző munka |
+| Zsák | Palackmozaik és Archívumpárok |
 
 A felhasználó 2026-10-21-i választása rögzített nappali/éjszakai sávokra cseréli a korábbi, csak szobaszerepet jelölő megoldást. A sorrend: `slot=0` garantált közös alkalom → `slot=1` nappali tevékenység → `slot=2` éjszakai tevékenység → `slot=3` heti összegzés. Nem hét napon át futó óraszimuláció: a félév továbbra is 16 közös + 32 szabad alkalom. A közös jelenetek saját megvilágítása és belső időugrásai megmaradnak.
 
 | Tevékenység | Mikor? | Időköltség |
 | --- | --- | --- |
 | Garantált közös alkalom | Heti első sáv; saját történeti napszak | Közös sáv, befejezéskor |
-| MOHU, iratellenőrzés | Nappal | Nappali sáv, az eredmény elfogadásakor |
+| Palackmozaik, Archívumpárok | Nappal | Nappali sáv, az eredmény elfogadásakor |
 | Felkészülés | Nappal | Nappali sáv; a két alkalom külön hétre tervezendő |
 | Személyes találkozó, kávé | Nappal vagy éjszaka | Az aktuális szabad sáv |
 | T7/T8 közös este | Éjszaka; változatlan 14./16. heti határidő | Éjszakai sáv |
@@ -105,3 +105,7 @@ The UI passes effective `sceneLighting` to `backgroundFor` in the content asset 
 ### Night destination correction — 22 October 2026
 
 Every non-shared scene in the saved night slot now resolves to `night`, including older scene definitions without `periods`. Shared-story scenes keep their authored lighting. `backgroundFor` first uses the exact variant, then the other late-day variant (evening/night), then the base. All seven currently reachable night destinations have real evening/night art: new lake/office night images, existing courtyard night and classroom/library late-day variants, and already-night apartment/Holdkör bases. Their `lightingBaked` flag avoids duplicate background tint. The daytime planner and its hotspots are unchanged; the office night image is used for dialogue only.
+
+## Move-limited jobs and personal spending — 25 October 2026
+
+The approved puzzle/points redesign is implemented. [Puzzles and economy](docs/LEISURE-ECONOMY.md) documents the authoritative amounts, six paid optional scenes, six gifts, visible delivery replies, saved puzzle moves and backwards-compatible optional v2 fields. Starting a paid scene atomically deducts money and activity points; completion still consumes one slot. Core story and relationship commitments retain their existing witnessed requirements. The phone now also displays gift replies and paid outings; this supersedes the earlier meetings-only phone description.
