@@ -1,5 +1,5 @@
-import type {ActorId,Effect,LocationId,Scene} from './types.ts';
-import {say,option,scene,shared} from './authoring.ts';
+import type {LocationId,Scene} from './types.ts';
+import {say,option,scene} from './authoring.ts';
 export const foundations:Scene[]=[
  scene('rebeka_1','Rebeka — A kép széle','relationship',1,14,'classroom',['marton','rebeka'],[
   say('narrator','Rebeka három képet tesz az üres tanterem asztalára: egy elmosódott kezet, a radiátor fölötti ablakot és a kör helyét a padlón.'),

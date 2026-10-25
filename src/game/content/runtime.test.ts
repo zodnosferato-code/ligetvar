@@ -4,9 +4,13 @@ import {existsSync,readFileSync} from 'node:fs';
 import {SCENES,EVIDENCE} from './catalog.ts';
 import {BACKGROUNDS,BACKGROUND_VARIANTS,backgroundFor,portraitFor} from './assets.ts';
 import {validateRegistry} from './validate.ts';
-import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,resolveJob,setDirection} from './runtime.ts';
+import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,finishPuzzle,movePuzzle,nextPair,setDirection} from './runtime.ts';
 import {decodeSave,legacyName,persist} from './saves.ts';
 import {LEGACY_SAVE_KEY,SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
+function finishArchive(s:GameState){
+ for(let v=0;v<8;v++){const pair=s.puzzle!.board.flatMap((value,i)=>value===v?[i]:[]);s=movePuzzle(s,pair[0]);s=movePuzzle(s,pair[1]);if(v<7)s=nextPair(s);}
+ return finishPuzzle(s);
+}
 function complete(s:GameState,id:string,choose?:(ids:string[])=>string,r:Registry=SCENES){
  const opened=openScene(s,id,r);assert.notEqual(opened,s,'Cannot open '+id+' w'+s.week+' slot'+s.slot);s=opened;
  for(let i=0;i<50;i++){if(s.phase!=='scene')return s;const ids=currentLine(s,r)!.choices?.map(c=>c.id)??['continue'];s=applyChoice(s,choose?.(ids)??ids[0],r);}throw new Error('Loop: '+id);
@@ -76,8 +80,8 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
  let s=complete(createInitial(''),'shared_1');assert.equal(s.money,12000);
  s=buyGift(s,'photo');assert.equal(s.inventory.photo,1);s=giveGift(s,'rebeka','photo');assert.equal(s.bonds.marton_rebeka,2);
  assert.deepEqual(s.decisions,{});assert.equal(giveGift(s,'rebeka','photo'),s);
- s=activity(s,'mohu');const paid=resolveJob(s,'mohu',1000);assert.equal(paid.money,s.money+1000);assert.equal(paid.slot,2);
- const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
+ s=activity(s,'brick');const paid=finishArchive(s);assert.equal(paid.money,s.money+20000);assert.equal(paid.slot,2);
+ const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(finishPuzzle(n),n);
  assert.equal(nextWeek(n,SCENES).money,n.money+3000);
 });
 test('main-character art resolves and Soma switches from neutral to transformed at week two',()=>{
@@ -323,9 +327,9 @@ test('night-only shared evenings and daytime preparation respect both slots and 
 test('job admission and legacy night-job completion preserve slot accounting',()=>{
  const day=complete(createInitial(''),'shared_1'),job=activity(day,'brick');
  assert.equal(job.phase,'minigame');assert.equal(currentPeriod(job),'day');
- assert.equal(resolveJob(job,'mohu',1000),job);
+ assert.equal(finishPuzzle(job),job);
  const legacy={...job,slot:2 as const};assert.equal(decodeSave(JSON.stringify(legacy),SCENES).status,'ok');
- const done=resolveJob(legacy,'brick',1000);assert.equal(done.phase,'summary');assert.equal(done.minigame,null);
+ const done=finishArchive(legacy);assert.equal(done.phase,'summary');assert.equal(done.minigame,null);
  assert.equal(activity({...legacy,phase:'planner',minigame:null},'brick').phase,'planner');
 });
 

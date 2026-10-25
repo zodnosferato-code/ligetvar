@@ -39,7 +39,6 @@ export const finishPuzzle=(s:GameState)=>{
  const reward=puzzleReward(s.puzzle),n=engine.resolveJob(s,s.minigame,reward.money,RULES);
  return {...n,puzzle:null,activityPoints:(s.activityPoints??0)+reward.points,lastNote:`Műszak kész: ${reward.money.toLocaleString('hu-HU')} Ft és ${reward.points} programpont. A telefonon különleges alkalmakra költheted.`};
 };
-export const resolveJob=(s:GameState,id:'mohu'|'brick',pay:number)=>{const n=engine.resolveJob(s,id,pay,RULES);return n===s?s:{...n,puzzle:null};};
 export const buyGift=(s:GameState,id:string)=>s.slot<1||s.slot>2?s:engine.buyGift(s,id,RULES);
 export const giveGift=(s:GameState,girl:GirlId,id:string,note?:GiftNote,delivery?:Delivery)=>deliverGift(s,girl,id,note,delivery);
 

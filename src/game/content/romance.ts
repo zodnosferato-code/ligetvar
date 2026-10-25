@@ -1,5 +1,5 @@
 /** Romantic writing pass. Keep existing scene/line/choice IDs for in-progress v2 saves. */
-import type {ActorId,Choice,Expression,GirlId,Line,Scene} from './types.ts';
+import type {ActorId,Choice,Expression,GirlId,Scene} from './types.ts';
 type Beat=[ActorId,string,Expression?];
 type Reply={id:string;text:string;beats:Beat[];memory?:string;requires?:Choice['requires']};
 function add(s:Scene,prefix:string,beats:Beat[],next?:string):string{

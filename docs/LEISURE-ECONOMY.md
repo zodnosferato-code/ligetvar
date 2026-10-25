@@ -10,14 +10,14 @@ The user chose relaxed puzzles with limited moves, money plus spendable activity
 
 | Activity | Rules | Maximum target |
 | --- | --- | --- |
-| Palackmozaik (`mohu`) | Tap orthogonally connected groups of 2+ matching shapes; gravity/refill; 12 moves. Singles cost no move. | 180 score; group of n earns n × (n − 1) |
+| Újrahasznosítás / Recycling (`mohu`) | Tap two neighbouring pieces to swap; match 3+ in a row or column; gravity/refill and cascades; 12 successful swaps. Invalid swaps are free. | 1,200 score; 10 per cleared tile, cascade multipliers ×2 then ×3 |
 | Archívumpárok (`brick`) | Eight pairs on a 4 × 4 board; 18 pair attempts. Two revealed cards remain visible until Next Pair. | Eight matched pairs |
 
 No timers, reflex requirements, drag gestures or timed card hiding. Distinct shapes supplement colors. Touch targets are at least 44px at the tested phone widths; keyboard buttons have visible focus. Both games use the existing job IDs for save compatibility, replacing the runner and fixed quiz.
 
 Completion pays **8,000–20,000 Ft and 3–6 programpont**, proportional to score, with a floor even for a poor shift. The player explicitly claims the displayed result. Claiming consumes exactly one daytime slot and 12 energy. The state reducer derives rewards from the saved board; the UI cannot submit an arbitrary payout. Claims outside a completed active puzzle do nothing.
 
-The first move starts the shift. Returning to the planner is available only before play; after starting, the player can return to the title or close the page and resume. Board, seed, moves, score, matched cards and a half-revealed pair persist on each interaction. Reopening does not reset the puzzle. Boards vary deterministically by week and game; starting/cancelling cannot reroll for better rewards. A board without any legal bottle group ends normally.
+The first move starts the shift. Returning to the planner is available only before play; after starting, the player can return to the title or close the page and resume. Board, seed, moves, score, matched cards and a half-revealed pair persist on each interaction. Reopening does not reset the puzzle. Boards vary deterministically by week and game; starting/cancelling cannot reroll for better rewards. New Recycling boards start without matches and automatically regenerate when no legal swap remains. Cascades resolve atomically, with a 20-wave safety bound followed by a fresh playable board. Existing unfinished group-clearing saves retain their old rules and 180-point target; new shifts use the optional `match3` mode. The internal `mohu` ID remains solely for save compatibility.
 
 ## Spending balance
 

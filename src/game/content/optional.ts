@@ -1,5 +1,5 @@
-import type {ActorId,Effect,LocationId,Scene} from './types.ts';
-import {say,option,scene,shared} from './authoring.ts';
+import type {Scene} from './types.ts';
+import {say,scene} from './authoring.ts';
 export const optional:Scene[]=[
  scene('prepare_backup','Segítők és másolatok','preparation',12,14,'department',['marton','denes','julia','aron'],[
   say('narrator','Nem új nyomot keresnek: az ismert adatokból készül használható beosztás.'),

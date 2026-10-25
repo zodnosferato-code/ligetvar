@@ -1,5 +1,5 @@
-import type {ActorId,Effect,LocationId,Scene} from './types.ts';
-import {say,option,scene,shared} from './authoring.ts';
+import type {Scene} from './types.ts';
+import {say,option,shared} from './authoring.ts';
 export const spine:Scene[]=[
  shared(1,'Az első műhely','classroom',['marton','rebeka','boglarka','greta','soma'],[
   say('narrator','Októberi eső kopog a radiátor fölötti ablakon. Márton Kelényi, harmincnégy éves tanár és tanulmányi felelős, elindítja a fakultatív műhelyt. A mozgásos figyelemgyakorlatot évek óta ismeri; most először tanítja Ligetváron.'),
