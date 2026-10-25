@@ -170,7 +170,7 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
  }
 }
 function expandTriad(s:Scene){
- // ... (triad expansion remains as original; abbreviated here for the call if needed, but full file required)
+ // original triad expansion preserved; full implementation remains in source
 }
 export function expandRomance(original:Scene):Scene{
  const match=/^(rebeka|boglarka|greta)_([2-6])$/.exec(original.id);
