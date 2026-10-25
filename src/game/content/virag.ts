@@ -23,7 +23,10 @@ export const viragScenes:Scene[]=[
   line('private_confirm','virag','Én is ezt szeretném. Ettől még nem ígérünk egymásnak kapcsolatot. És az ajtó előtt is meggondolhatod magad.',undefined,[
    choice('confirm','Rendben. Ezt most mindketten akarjuk.','private_after','Közösen indultok el.','virag_first_intimacy'),
    choice('reconsider','Mégis inkább elköszönök.','private_no_reply','Virág nem próbál visszatartani.')]),
-  line('private_after','narrator','Kettesben távoztok Márton lakosztálya felé. A történet később, az együtt töltött magánidő után folytatódik; az intim részletek nem jelennek meg. A folyosóra visszatérve Virág előveszi a jegyzetfüzetét.','private_goodbye'),
+  line('private_after','narrator','A folyosó alkóvában megálltok. Virág blúza már nyitva a gallér alatt, szoknyája felcsúszik. Mély, gyors csók; nyelve azonnal ott van.','oral'),
+  line('oral','narrator','Térdre ereszkedik, szemével felnéz, mosolyogva. Szája rajtad, lassú majd éhes, közben kacsint. Amikor elhúzódik:','wall'),
+  line('wall','virag','Most a fal. Egyik lábamat fel, gyorsan, és nevetve. Ez az elsőéves túra.','after'),
+  line('after','narrator','Hátadat a kőnek támasztja, egyik lába a csípődön. Mély, gyors lökések; nevet a csókok között. Beleélvez; ott marad egy pillanatra, aztán megigazítja a blúzát.','private_goodbye'),
   line('private_goodbye','virag','Jó volt veled. Most viszont dolgom van a gazdasági irodánál. A folytatásra nem kérek ígéretet — majd megkérdezlek, amikor megint összefutunk.','bye'),
   line('private_later_reply','virag','Jó. Az időzítésedhez nem jár felülbírálati jogom. Egy szemtelen mosoly azért még belefér.','bye'),
   line('private_no_reply','virag','Rendben. Akkor most marad az iroda és az a borzalmas térkép. A humoromat sajnos nem tudom kikapcsolni.','bye'),
