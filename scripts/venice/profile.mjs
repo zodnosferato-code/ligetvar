@@ -21,9 +21,10 @@ export function imageRequest(asset,images,request,models){
  if(asset.method==='generate'){
   if(!limits.aspectRatios){
    const sizes={'4:5':[1024,1280],'16:9':[1280,720],'3:2':[1152,768],'3:4':[1024,1365],'2:3':[1024,1536],'4:3':[1365,1024],'1:1':[1024,1024],'9:16':[720,1280]};
-   const [width,height]=sizes[asset.aspect]??sizes['4:5'];
+   let [width,height]=sizes[asset.aspect]??sizes['4:5'];
    if(!width||!height)throw new Error('No supported pixel size: '+asset.id);
-   const divisor=limits.widthHeightDivisor??1;if(width%divisor||height%divisor)throw new Error('Pixel size violates model divisor');
+   const divisor=limits.widthHeightDivisor??1;
+   width=Math.round(width/divisor)*divisor;height=Math.round(height/divisor)*divisor;
    Object.assign(shared,{width,height});
   }
   if(limits.steps)shared.steps=limits.steps.default;
