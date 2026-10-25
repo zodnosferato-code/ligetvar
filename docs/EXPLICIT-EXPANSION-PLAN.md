@@ -74,3 +74,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
   - Explicit sex-scene assets remain blocked: Venice recent runs return HTTP 402 (credits); Grok generate_image also moderates explicit prompts. Catalog entries and request.json are ready for when credits are available.
 
 - Consent language revised (2026-10-25): stage-3 closeness prompts and Virág private_offer rewritten from formal asks to heat/subtle desire. Choice IDs and decision keys preserved.
+
+- Consent language continued (2026-10-25): remaining formal permission asks in intimate beats rewritten in triad_4 (Rebeka/Boglárka hand/kiss), romance.ts rebeka_date_hand choice, virag.ts kiss line, and relationships.ts invitation texts. Choice IDs, scene structure, and slower paths preserved. Heat shown via short decisive speech and action.

@@ -59,7 +59,7 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
   {id:'wish',text:'Milyen lenne egy este, amit csak magadnak választanál?',beats:[['rebeka','Rossz film. Közepes pizza. Valaki, aki nem akarja megjavítani az ízlésemet.'],['marton','Vitatkozni szabad?'],['rebeka','Muszáj. De ne engem próbálj megnyerni azzal, hogy mindenben igazat adsz.'],['marton','A pizzában már most nem értünk egyet.'],['rebeka','Végre egy komoly akadály.','amused']]},
   {id:'fear',text:'Nekem az a nehéz, hogy ne akarjam rögtön bebizonyítani, jó választás vagyok.',beats:[['rebeka','Én meg egy jó mondatot szeretnék, amitől egész hazáig rám gondolsz.'],['marton','Ez eddig működött.'],['rebeka','Tudom. Csak nem akarok minden alkalommal jobbat kitalálni.','vulnerable'],['marton','Akkor ma sétáljunk egyet akkor is, ha elfogynak.']]}
  ],touch:[
-  {id:'hand',text:'Igen, szeretném megfogni a kezed.',memory:'rebeka_date_hand',beats:[
+  {id:'hand',text:'Fogd meg. Most.',memory:'rebeka_date_hand',beats:[
    ['narrator','Rebeka szabad kezét nyújtja. Előbb óvatosan, aztán biztosabban kulcsolja az ujjait a tieid közé. A tópart sötét, csak a lámpa fénye marad.'],
    ['rebeka','Most valami nagyon rossz viccet kellene mondanom. De nincs közönség.','vulnerable'],
    ['marton','Akkor ne mondj. Csak maradj.'],

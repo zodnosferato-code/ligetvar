@@ -67,8 +67,8 @@ export const viragScenes:Scene[]=[
   line('case','virag','Megjött a válasz: az ösztöndíjpénzt egy közvetítőnél tartották, miközben teljesítettként jelentették. A felújításnál ugyanaz a kapcsolattartó szerepel. A szerkesztőm ellenőrizteti a céges kapcsolatot.','date'),
   line('date','marton','Minden találkozásunkra jut egy ügyirat?','honest'),
   line('honest','virag','Eleinte biztosan. Hozzád is azért mentem oda, mert hasznos lehettél. Most már az is érdekel, miért mosolyogsz akkor is, amikor átlátsz rajtam.','kiss'),
-  line('kiss','virag','Megcsókolnál? Egyenes kérdés. Meglepő, tudom.',undefined,[
-   choice('kiss_yes','Igen. Közelebb hajolok.','kissed','Virág kimondja: „Én is szeretném.”','virag_kissed'),
+  line('kiss','virag','Most. Csókolj meg. Egyenes vagyok, meglepő, tudom.',undefined,[
+   choice('kiss_yes','Igen. Közelebb hajolok.','kissed','Virág kimondja: „Most.”','virag_kissed'),
    choice('tease','Még udvarolhatsz egy kicsit.','tease_reply','Virág felnevet.'),
    choice('kiss_no','Nem szeretnék csókot.','no','Virág hátrébb húzódik.')]),
   line('kissed','narrator','Virág közelebb hajol, és röviden megcsókoljátok egymást. Aztán a tóparti pad árnyékában térdre ereszkedik.','oral'),

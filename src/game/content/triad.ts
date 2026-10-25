@@ -28,9 +28,9 @@ export const triad:Scene[]=[
  scene('triad_4','T4 — Két külön igen','relationship',8,14,'courtyard',['rebeka','boglarka'],[
   say('narrator','A következő találkozón sincs ott Márton. Boglárka két poharat hoz, füzet nélkül.'),
   say('boglarka','Amikor téged várlak, nem csak az anyag miatt örülök. Vonzódom hozzád. Ezt nem Mártonról kérdezve mondom.','vulnerable'),
-  say('rebeka','Én is hozzád akarok közel lenni. Nem cseréből vagy kiegészítésként. Megfoghatom a kezed?','affectionate'),
-  say('boglarka','Igen. Megcsókolnálak, ha te is szeretnéd.'),
-  say('rebeka','Szeretném.','affectionate'),
+  say('rebeka','Én is hozzád akarok közel lenni. Nem cseréből vagy kiegészítésként. Gyere.','affectionate'),
+  say('boglarka','Most.','affectionate'),
+  say('rebeka','Igen.','affectionate'),
   say('narrator','A rövid csók után megbeszélik, hogy a közös lehetőségről csak akkor beszélnek Mártonnal, ha mindketten akarják. Az egymásnak mondott igenük független az ő válaszától.')
  ],{scenes:['triad_3','shared_8']},[],'Rebeka és Boglárka kölcsönösen kimondta önálló romantikus vonzalmát.',{bonds:{rebeka_boglarka:15},decisions:['rb_rebeka_yes','rb_boglarka_yes']}),
  scene('triad_5','T5 — Külön is elmondjuk','relationship',11,14,'classroom',['marton','rebeka','boglarka'],[

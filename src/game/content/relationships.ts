@@ -37,7 +37,7 @@ const personal={
  rebeka:{
   name:'Rebeka',place:'holdkor' as LocationId,earliest:3,invite:6,
   attraction:['A vetítés után csak a ventilátor hallatszik. Rebeka a képernyő helyett most rád néz.','A képeimről könnyű veled beszélni. Ha flörtölök, azt hiszik, mindent elmondtam. Pedig tetszel, csak nem szeretném, ha ettől a műhelyben másnak lenne igaza.','Lassan szeretnék közelebb kerülni. Nem akarom egyszerre elmondani az egész történetet.'],
-  invitation:['A tóparton Rebeka gép nélkül vár, két papírpohár kávéval.','Én hívtalak. Nem kép kell, és a Holdkörnek sem bizonyítunk semmit. Sétálnék veled. Megfoghatom a kezed? Bármikor mondhatjuk, hogy elég.','Jó itt veled. A következő kört nem kell senkinek megmutatnom.'],
+  invitation:['A tóparton Rebeka gép nélkül vár, két papírpohár kávéval.','Én hívtalak. Nem kép kell, és a Holdkörnek sem bizonyítunk semmit. Sétálnék veled. Most.','Jó itt veled. A következő kört nem kell senkinek megmutatnom.'],
   conflict:['A műhely bemutatójának vázlatában a tóparti beszélgetésetek egyik gondolata szerepel.','Azt hittem, ami ott elhangzott, nem lesz reklámszöveg. Nem írtad bele a nevemet, mégis tudom, melyik mondat az enyém.','Ne azt mondd, hogy nem úgy gondoltad. Azt mondd, mit csinálsz most másképp.'],
   repair:'Kiveszem a mondatot. A személyes részletek új felhasználásához külön kérdezek.',
   commitment:'A képeket eltehetem. Azt kérdezem, velem szeretnél-e lenni akkor is, ha nincs mit megmutatnom.',
@@ -46,7 +46,7 @@ const personal={
  boglarka:{
   name:'Boglárka',place:'library' as LocationId,earliest:4,invite:7,
   attraction:['Boglárka két csészével érkezik. Az üres helyre most nem tesz füzetet.','A második teát neked hoztam. Nem azért, mert tanár vagy, és nem azért, hogy elolvasd a dolgozatomat.','Maradj tíz percig feladat nélkül. Azt hiszem, többet szeretnék a beszélgetéseinktől. Még nem tudom gyorsabban mondani.'],
-  invitation:['Boglárka csukva teszi le a könyvet az udvari padra. Veled szemben ül le.','Egy vers miatt akartalak hívni. Aztán rájöttem, megint más mondata helyettem lenne bátor. Szeretnék randizni veled.','És megcsókolnám az arcodat, ha te is akarod. Nem a tanulmányról akarok beszélgetni, és nem megköszönni jöttem valamit.'],
+  invitation:['Boglárka csukva teszi le a könyvet az udvari padra. Veled szemben ül le.','Egy vers miatt akartalak hívni. Aztán rájöttem, megint más mondata helyettem lenne bátor. Szeretnék randizni veled.','Gyere közelebb. Most. Nem a tanulmányról akarok beszélgetni, és nem megköszönni jöttem valamit.'],
   conflict:['Egy megbeszélésen Márton Boglárka helyett fejezett be egy magyarázatot. A könyvtárban Boglárka nem ül le rögtön.','Segíteni akartál, de mindenki megint téged hallott. Veled sem szeretnék lábjegyzet lenni.','A következő alkalommal várd ki a mondatomat. Akkor is, ha túl lassúnak tartasz.'],
   repair:'Jelzem a csoportnak, hogy az értelmezés a tied, és visszaadom a szót.',
   commitment:'A saját szavaimmal mondom: kapcsolatot szeretnék veled, nem meg nem nevezett mellékszálat valaki életében.',
