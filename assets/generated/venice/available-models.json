@@ -1,0 +1,873 @@
+{
+  "checkedAt": "2026-10-25T19:52:31.426Z",
+  "models": [
+    {
+      "id": "venice-sd35",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "constraints": {
+          "promptCharacterLimit": 1500,
+          "steps": {
+            "default": 25,
+            "max": 30
+          },
+          "widthHeightDivisor": 16
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Venice SD35",
+        "modelSource": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large",
+        "offline": false,
+        "privacy": "private",
+        "traits": [
+          "eliza-default"
+        ]
+      }
+    },
+    {
+      "id": "grok-imagine-image-2-0",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "resolutions": {
+            "1K": {
+              "usd": 0.07,
+              "diem": 0.07
+            },
+            "2K": {
+              "usd": 0.1,
+              "diem": 0.1
+            }
+          },
+          "quality": {
+            "1K": {
+              "low": {
+                "usd": 0.05,
+                "diem": 0.05
+              },
+              "medium": {
+                "usd": 0.07,
+                "diem": 0.07
+              }
+            },
+            "2K": {
+              "low": {
+                "usd": 0.07,
+                "diem": 0.07
+              },
+              "medium": {
+                "usd": 0.1,
+                "diem": 0.1
+              }
+            }
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations",
+          "featured"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 7500,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "defaultQuality": "medium",
+          "qualities": [
+            "low",
+            "medium"
+          ],
+          "aspectRatios": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "3:2",
+            "2:3"
+          ],
+          "defaultAspectRatio": "1:1",
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 1
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Grok Imagine 2.0",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "grok-imagine-image-quality",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "resolutions": {
+            "1K": {
+              "usd": 0.06,
+              "diem": 0.06
+            },
+            "2K": {
+              "usd": 0.09,
+              "diem": 0.09
+            }
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations",
+          "featured"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 7500,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "aspectRatios": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "3:2",
+            "2:3"
+          ],
+          "defaultAspectRatio": "1:1",
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 1
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Grok Imagine High Quality (SOTA)",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "krea-2-turbo",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "resolutions": {
+            "1K": {
+              "usd": 0.04,
+              "diem": 0.04
+            },
+            "2K": {
+              "usd": 0.06,
+              "diem": 0.06
+            }
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 5000,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "aspectRatios": [
+            "1:1",
+            "3:2",
+            "16:9",
+            "21:9",
+            "9:16",
+            "2:3",
+            "3:4",
+            "4:5"
+          ],
+          "defaultAspectRatio": "1:1",
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 1
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Krea 2 Turbo",
+        "modelSource": "https://huggingface.co/krea/Krea-2-Turbo",
+        "offline": false,
+        "privacy": "private",
+        "traits": [],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "hunyuan-image-v3",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.09,
+            "diem": 0.09
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "constraints": {
+          "promptCharacterLimit": 3000,
+          "aspectRatios": [
+            "1:1",
+            "3:2",
+            "16:9",
+            "21:9",
+            "9:16",
+            "2:3",
+            "3:4",
+            "4:5"
+          ],
+          "defaultAspectRatio": "1:1",
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 1
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Hunyuan Image 3.0",
+        "modelSource": "https://huggingface.co/tencent/HunyuanImage-3.0-Instruct",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "grok-imagine-image",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "resolutions": {
+            "1K": {
+              "usd": 0.03,
+              "diem": 0.03
+            },
+            "2K": {
+              "usd": 0.04,
+              "diem": 0.04
+            }
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "constraints": {
+          "promptCharacterLimit": 7500,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "aspectRatios": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "3:2",
+            "2:3"
+          ],
+          "defaultAspectRatio": "1:1",
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 1
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Grok Imagine",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "lustify-sdxl",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "constraints": {
+          "promptCharacterLimit": 1500,
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 8
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Lustify SDXL",
+        "modelSource": "https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint",
+        "offline": false,
+        "privacy": "private",
+        "traits": [],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "lustify-v7",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 1500,
+          "steps": {
+            "default": 20,
+            "max": 50
+          },
+          "widthHeightDivisor": 8
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Lustify v7",
+        "modelSource": "https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint",
+        "offline": false,
+        "privacy": "private",
+        "traits": [
+          "most_uncensored"
+        ],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "lustify-v8",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 1500,
+          "steps": {
+            "default": 30,
+            "max": 50
+          },
+          "widthHeightDivisor": 8
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Lustify v8",
+        "modelSource": "https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint",
+        "offline": false,
+        "privacy": "private",
+        "traits": [
+          "most_uncensored"
+        ],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "wai-Illustrious",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 1500,
+          "steps": {
+            "default": 25,
+            "max": 30
+          },
+          "widthHeightDivisor": 16
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Anime (WAI)",
+        "modelSource": "https://civitai.com/models/827184?modelVersionId=1761560",
+        "offline": false,
+        "privacy": "private",
+        "traits": [],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "z-image-turbo",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 7500,
+          "steps": {
+            "default": 8,
+            "max": 8
+          },
+          "widthHeightDivisor": 8
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Z-Image Turbo",
+        "modelSource": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+        "offline": false,
+        "privacy": "private",
+        "traits": [
+          "default",
+          "fastest"
+        ]
+      }
+    },
+    {
+      "id": "chroma",
+      "type": "image",
+      "model_spec": {
+        "pricing": {
+          "generation": {
+            "usd": 0.01,
+            "diem": 0.01
+          },
+          "upscale": {
+            "2x": {
+              "usd": 0.02,
+              "diem": 0.02
+            },
+            "4x": {
+              "usd": 0.08,
+              "diem": 0.08
+            }
+          }
+        },
+        "model_sets": [
+          "venice_recommendations",
+          "featured"
+        ],
+        "constraints": {
+          "promptCharacterLimit": 7500,
+          "steps": {
+            "default": 10,
+            "max": 10
+          },
+          "widthHeightDivisor": 8
+        },
+        "supportsWebSearch": false,
+        "supportsOptimizePromptThinking": false,
+        "supportsStyleReferences": false,
+        "name": "Chroma",
+        "modelSource": "https://huggingface.co/lodestones/Chroma1-HD",
+        "offline": false,
+        "privacy": "private",
+        "traits": [],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "firered-image-edit",
+      "type": "inpaint",
+      "model_spec": {
+        "pricing": {
+          "inpaint": {
+            "usd": 0.04,
+            "diem": 0.04
+          }
+        },
+        "constraints": {
+          "aspectRatios": [
+            "auto",
+            "1:1",
+            "3:2",
+            "16:9",
+            "21:9",
+            "9:16",
+            "2:3",
+            "3:4",
+            "4:5"
+          ],
+          "promptCharacterLimit": 1500,
+          "combineImages": true,
+          "singleImageAspectRatio": true
+        },
+        "supportsOptimizePromptThinking": false,
+        "name": "FireRed",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "qwen-edit-uncensored",
+      "type": "inpaint",
+      "model_spec": {
+        "pricing": {
+          "inpaint": {
+            "usd": 0.04,
+            "diem": 0.04
+          }
+        },
+        "constraints": {
+          "aspectRatios": [
+            "auto",
+            "1:1",
+            "3:2",
+            "16:9",
+            "21:9",
+            "9:16",
+            "2:3",
+            "3:4",
+            "4:5"
+          ],
+          "promptCharacterLimit": 1500,
+          "combineImages": true,
+          "singleImageAspectRatio": true
+        },
+        "supportsOptimizePromptThinking": false,
+        "name": "Qwen Edit Uncensored",
+        "offline": false,
+        "privacy": "private",
+        "traits": [],
+        "uncensored": true
+      }
+    },
+    {
+      "id": "grok-imagine-edit",
+      "type": "inpaint",
+      "model_spec": {
+        "pricing": {
+          "inpaint": {
+            "usd": 0.03,
+            "diem": 0.03
+          },
+          "resolutions": {
+            "1K": {
+              "usd": 0.03,
+              "diem": 0.03
+            },
+            "2K": {
+              "usd": 0.04,
+              "diem": 0.04
+            }
+          },
+          "inputImages": {
+            "included": 0,
+            "additional": {
+              "usd": 0.0023000000000000004,
+              "diem": 0.0023000000000000004
+            }
+          }
+        },
+        "constraints": {
+          "aspectRatios": [
+            "auto",
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "3:2",
+            "2:3"
+          ],
+          "promptCharacterLimit": 7500,
+          "combineImages": true,
+          "singleImageAspectRatio": true,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ]
+        },
+        "supportsOptimizePromptThinking": false,
+        "name": "Grok Imagine",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "grok-imagine-quality-edit",
+      "type": "inpaint",
+      "model_spec": {
+        "pricing": {
+          "inpaint": {
+            "usd": 0.06,
+            "diem": 0.06
+          },
+          "resolutions": {
+            "1K": {
+              "usd": 0.06,
+              "diem": 0.06
+            },
+            "2K": {
+              "usd": 0.09,
+              "diem": 0.09
+            }
+          },
+          "inputImages": {
+            "included": 0,
+            "additional": {
+              "usd": 0.011500000000000002,
+              "diem": 0.011500000000000002
+            }
+          }
+        },
+        "constraints": {
+          "aspectRatios": [
+            "auto",
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "3:2",
+            "2:3"
+          ],
+          "promptCharacterLimit": 7500,
+          "combineImages": true,
+          "singleImageAspectRatio": true,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ]
+        },
+        "supportsOptimizePromptThinking": false,
+        "name": "Grok Imagine High Quality",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    },
+    {
+      "id": "grok-imagine-image-2-0-edit",
+      "type": "inpaint",
+      "model_spec": {
+        "pricing": {
+          "inpaint": {
+            "usd": 0.07,
+            "diem": 0.07
+          },
+          "resolutions": {
+            "1K": {
+              "usd": 0.07,
+              "diem": 0.07
+            },
+            "2K": {
+              "usd": 0.1,
+              "diem": 0.1
+            }
+          },
+          "inputImages": {
+            "included": 0,
+            "additional": {
+              "usd": 0.011500000000000002,
+              "diem": 0.011500000000000002
+            }
+          },
+          "quality": {
+            "1K": {
+              "low": {
+                "usd": 0.05,
+                "diem": 0.05
+              },
+              "medium": {
+                "usd": 0.07,
+                "diem": 0.07
+              }
+            },
+            "2K": {
+              "low": {
+                "usd": 0.07,
+                "diem": 0.07
+              },
+              "medium": {
+                "usd": 0.1,
+                "diem": 0.1
+              }
+            }
+          }
+        },
+        "constraints": {
+          "aspectRatios": [
+            "auto",
+            "1:1",
+            "16:9",
+            "9:16",
+            "3:4",
+            "3:2",
+            "2:3"
+          ],
+          "promptCharacterLimit": 7500,
+          "combineImages": true,
+          "singleImageAspectRatio": true,
+          "defaultResolution": "1K",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "defaultQuality": "medium",
+          "qualities": [
+            "low",
+            "medium"
+          ]
+        },
+        "supportsOptimizePromptThinking": false,
+        "name": "Grok Imagine 2.0",
+        "offline": false,
+        "privacy": "private",
+        "traits": []
+      }
+    }
+  ]
+}
