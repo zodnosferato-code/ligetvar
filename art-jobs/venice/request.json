@@ -1,5 +1,5 @@
 {
-  "id": "2026-10-25-wai-all-candidates-01",
+  "id": "2026-10-25-wai-all-candidates-02",
   "phase": "explicit",
   "assets": [
     "rebeka_neutral",
@@ -26,6 +26,6 @@
   ],
   "maxNewImages": 21,
   "generationModel": "wai-Illustrious",
-  "editModel": "qwen-image-3-edit",
+  "editModel": "qwen-edit-uncensored",
   "resolution": "1K"
 }
