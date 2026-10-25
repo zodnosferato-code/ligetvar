@@ -80,3 +80,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - Stage 6 private continuations densified (2026-10-25): rebeka/boglarka/greta short private beats expanded to match stage-3 heat density (strip, oral, sex, voice-specific aftercare). Choice IDs and structure preserved.
 
 - Venice transparent retry queued (2026-10-25): request.json id=2026-10-25-explicit-transparent-retry-01. 10 explicit assets set to transparent:true (background-remove postprocess) and method=edit/multi-edit with identity references. Workflow will trigger on push.
+
+- Venice uncensored retry queued (2026-10-25): request id=2026-10-25-explicit-uncensored-qwen-01. editModel=qwen-edit-uncensored, generationModel=lustify-v8 (non-Grok). Transparent:true still set. Triggered on push.

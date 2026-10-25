@@ -1,5 +1,5 @@
 {
-  "id": "2026-10-25-explicit-transparent-retry-01",
+  "id": "2026-10-25-explicit-uncensored-qwen-01",
   "phase": "explicit",
   "assets": [
     "explicit_virag_oral",
@@ -14,7 +14,7 @@
     "explicit_triad_riding"
   ],
   "maxNewImages": 10,
-  "generationModel": "wai-Illustrious",
-  "editModel": "firered-image-edit",
+  "generationModel": "lustify-v8",
+  "editModel": "qwen-edit-uncensored",
   "resolution": "1K"
 }
