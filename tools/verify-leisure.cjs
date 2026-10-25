@@ -21,7 +21,7 @@ let browser,currentPage;
   // Versioning: old saves are visible, failed loads never replace them, and restarting is explicit.
   await page.goto(url);
   await page.evaluate(()=>{localStorage.clear();localStorage.setItem('ligetvar-save-v3','{"version":3,"name":"Old"}');});
-  await page.reload();await page.getByText(/Ligetvár 0\.2\.0/).waitFor();
+  await page.reload();await page.getByText(/Ligetvár 0\.3\.0/).waitFor();
   await page.getByRole('alert').filter({hasText:'már nem használható'}).waitFor();
   assert.equal(await page.getByRole('button',{name:'Félév folytatása',exact:true}).isDisabled(),true);
   await overflow();await page.screenshot({path:path.join(output,`save-incompatible-${width}.png`),fullPage:true});
@@ -32,7 +32,7 @@ let browser,currentPage;
   await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
   await page.getByRole('button',{name:'Igen, új félévet kezdek',exact:true}).click();
   const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save')));
-  assert.equal(saved.gameVersion,'0.2.0');assert.equal(saved.saveSchemaVersion,4);assert.equal(saved.contentCompatibilityVersion,1);
+  assert.equal(saved.gameVersion,'0.3.0');assert.equal(saved.saveSchemaVersion,4);assert.equal(saved.contentCompatibilityVersion,1);
   assert.equal(await page.evaluate(()=>localStorage.getItem('ligetvar-save-v3')),'{"version":3,"name":"Old"}');
   for(const [raw,message] of [['{','sérült vagy hiányos'],[JSON.stringify({...saved,contentCompatibilityVersion:99}),'újabb, nem támogatott']]){
    await page.evaluate(raw=>localStorage.setItem('ligetvar-save',raw),raw);await page.reload();

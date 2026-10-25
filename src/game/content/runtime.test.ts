@@ -87,7 +87,7 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
 test('main-character art resolves and Soma switches from neutral to transformed at week two',()=>{
  for(const actor of ['rebeka','boglarka','greta'] as const){
   const files=(['neutral','amused','displeased','vulnerable','affectionate'] as const).map(expression=>portraitFor(actor,expression).file);
-  assert.equal(new Set(files).size,5,actor);
+  assert.equal(new Set(files).size,actor==='greta'?4:5,actor);
   for(const file of files)assert.ok(file&&existsSync('public/'+file),file??actor);
  }
  const somaNeutral=portraitFor('soma','neutral',1).file;

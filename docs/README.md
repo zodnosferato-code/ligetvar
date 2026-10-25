@@ -12,6 +12,7 @@
 | [Puzzles and economy](LEISURE-ECONOMY.md) | Move-limited jobs, points, optional outings and personal gifts |
 | [Implementation roadmap](IMPLEMENTATION-ROADMAP.md) | Versioned releases/saves, playable CLI, visual descriptions, localisation and English; ordered tasks and progress gates |
 | [Game and save versions](VERSIONING.md) | Release metadata, incompatible saves, storage precedence and release checklist |
+| [Playable CLI and proofreading](CLI.md) | Terminal/JSON gameplay, file saves, visual descriptions, transcripts, author inspection and agent examples |
 | [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
 | [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
 | [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |

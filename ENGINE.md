@@ -96,7 +96,7 @@ Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egye
 
 ## Ellenőrzés
 
-`npm test` / `npm run test:engine` / `npm run test:headless`: ugyanaz a Node headless készlet. `npm run typecheck`: TypeScript. `npm run build`: Vite production build. A régi `src/core/`, JSON-összefésülők és Jest belépési pont megszűntek a hasznos ellenőrzések átültetése után. A történeti JSON és lokalizáció a `docs/archive/legacy-narrative/` alatt maradt meg forrás/proveniencia céljára, aktív import nélkül. A tényleges eredményeket a [haladási napló](docs/REDESIGN-PROGRESS.md) rögzíti.
+`npm test`: motor/tartalom és CLI tesztek. `npm run test:engine` / `npm run test:headless`: motor/tartalom készlet. `npm run test:cli`: CLI parancs-, folyamat- és teljes útvonaltesztek. `npm run typecheck`: TypeScript. `npm run build`: Vite production build. A régi `src/core/`, JSON-összefésülők és Jest belépési pont megszűntek a hasznos ellenőrzések átültetése után. A történeti JSON és lokalizáció a `docs/archive/legacy-narrative/` alatt maradt meg forrás/proveniencia céljára, aktív import nélkül. A tényleges eredményeket a [haladási napló](docs/REDESIGN-PROGRESS.md) rögzíti.
 
 ## Reviewed lighting variants — 22 October 2026
 
@@ -109,3 +109,7 @@ Every non-shared scene in the saved night slot now resolves to `night`, includin
 ## Move-limited jobs and personal spending — 25 October 2026
 
 The approved puzzle/points redesign is implemented. [Puzzles and economy](docs/LEISURE-ECONOMY.md) documents the authoritative amounts, six paid optional scenes, six gifts, visible delivery replies, saved puzzle moves and required current save fields. Starting a paid scene atomically deducts money and activity points; completion still consumes one slot. Core story and relationship commitments retain their existing witnessed requirements. The phone now also displays gift replies and paid outings; this supersedes the earlier meetings-only phone description.
+
+## Playable CLI
+
+Release 0.3.0 adds `src/game/cli/` for Node terminal and protocol-1 JSON sessions. The browser store and CLI both dispatch through `content/actions.ts`; `content/view.ts` exposes only player-visible state. Shared save envelopes are atomically persisted to an explicitly chosen file with exclusive ownership. `asset-descriptions.ts` supplies visually reviewed text using the existing background/portrait resolvers. Proofreading findings and transcripts are separate from campaign state. [CLI.md](docs/CLI.md) contains the complete command/protocol contract and reproduction examples.

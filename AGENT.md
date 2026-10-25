@@ -76,3 +76,7 @@ The user selected relaxed move-limited puzzles, money plus spendable activity po
 Follow [IMPLEMENTATION-ROADMAP.md](docs/IMPLEMENTATION-ROADMAP.md): first game/save versioning and clear breaking-save messages, then a fully playable agent/proofreader CLI with concise visual asset descriptions, then localisation and complete English text. Detection of incompatible saves is required; migration and backward-compatible gameplay are not. Update its task checkboxes, evidence and handoff log as work progresses. Planned APIs are proposals until implemented; do not describe them as existing commands.
 
 Release/save policy: [VERSIONING.md](docs/VERSIONING.md). Runtime release comes from package.json; independent schema/content epochs decide save compatibility. Detect incompatible historical saves without loading/migrating them. Keep the stable save key so breaking updates remain explainable.
+
+## CLI gameplay testing — 0.3.0
+
+Use [CLI.md](docs/CLI.md) and `npm run play:cli -- --save PATH`; agents should use `npm run --silent play:cli -- --json --save PATH`. Browser and CLI share `content/actions.ts`. Normal observations hide unearned evidence and face-down cards; full catalog inspection requires explicit `--author`. Do not turn proofreader findings into story changes automatically. `npm test` now runs engine/content plus CLI process tests; `npm run test:headless` remains the engine-only alias. Keep each agent's save path separate. Localisation/English is the next roadmap phase.

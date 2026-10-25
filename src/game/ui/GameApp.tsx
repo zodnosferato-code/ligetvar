@@ -3,7 +3,7 @@ import {GAME_VERSION,BUILD_ID} from '../release.ts';
 import {SCENES} from '../content/catalog.ts';
 import {ACTOR_NAME,SHORT,backgroundFor,LOCATIONS,assetUrl,portraitFor} from '../content/assets.ts';
 import {currentLine,currentPeriod,sceneLighting,evaluateEnding,formatFt} from '../content/runtime.ts';
-import {institutions,relationships} from '../content/epilogues.ts';
+import {institutions,relationships,threatText} from '../content/epilogues.ts';
 import {useGame} from '../store.ts';
 import {moodFor,setMood,toggleMute,unlockAudio} from '../audio.ts';
 import {GiftReplies} from './Gifts.tsx';
@@ -50,5 +50,5 @@ function Summary(){
  const g=useGame(),s=g.state;return <main className="panel"><p className="eyebrow">Csak a megtörtént események</p><h1>{s.week}. heti összegzés</h1>{s.journal.filter(j=>j.week===s.week).map(j=><p key={j.scene}>{j.text}</p>)}{s.week===14&&<p className="notice">A konfrontáció előtti személyes alkalmak határideje lejárt. A nyomozás folytatódik.</p>}<button className="primary" onClick={g.advance}>{s.week===16?'Félév lezárása és epilógusok':s.week+1+'. hét kezdése'}</button></main>;
 }
 function Ending(){
- const e=evaluateEnding(useGame(x=>x.state));return <main className="panel ending"><p className="eyebrow">A félév után</p><h1>Ami megmarad</h1><h2>1. A veszély</h2><p>A vámpír meghalt a megszakított átalakulásban. {e.cost==='supported'?'A gyakorlás és a segítők jelenléte csökkentette a kimerülést, a bizonyítékok megmaradtak.':'A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg.'} Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre.</p><h2>2. A főiskola</h2><p>{e.institution?institutions[e.institution]:''}</p><h2>3. A kapcsolatok</h2><p>{relationships[e.relationship??'unresolved']}</p><button onClick={()=>useGame.getState().toTitle()}>Vissza a címoldalra</button></main>;
+ const e=evaluateEnding(useGame(x=>x.state));return <main className="panel ending"><p className="eyebrow">A félév után</p><h1>Ami megmarad</h1><h2>1. A veszély</h2><p>{threatText(e.cost)}</p><h2>2. A főiskola</h2><p>{e.institution?institutions[e.institution]:''}</p><h2>3. A kapcsolatok</h2><p>{relationships[e.relationship??'unresolved']}</p><button onClick={()=>useGame.getState().toTitle()}>Vissza a címoldalra</button></main>;
 }

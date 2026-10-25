@@ -1,7 +1,8 @@
 import type {GiftNote,Delivery} from './content/gifting.ts';
 import {create} from 'zustand';
 import {SCENES} from './content/catalog.ts';
-import {activity,applyChoice,buyGift,createInitial,giveGift,nextWeek,openScene,finishPuzzle,movePuzzle,nextPair,setDirection} from './content/runtime.ts';
+import {createInitial} from './content/runtime.ts';
+import {applyAction,type GameAction} from './content/actions.ts';
 import {persist,readSave,saveMessage} from './content/saves.ts';
 import {type GameState,type GirlId,type RouteId} from './content/types.ts';
 interface GameStore{
@@ -12,6 +13,7 @@ interface GameStore{
 }
 export const useGame=create<GameStore>((set,get)=>{
  const update=(state:GameState)=>{if(state===get().state)return;let saved=false;try{saved=persist(localStorage,state);}catch{}set({state,hasSave:saved||get().hasSave,saveMessage:saved?'':'A mentés nem sikerült. A játék ezen a lapon folytatható, de bezárás előtt ellenőrizd a böngésző tárhelyét.'});};
+ const act=(action:GameAction)=>update(applyAction(get().state,action));
  return {
  mode:'title',state:createInitial(''),hasSave:false,savePresent:false,confirmNewGame:false,saveMessage:'',
  boot:()=>{let result:ReturnType<typeof readSave>={status:'unavailable'};try{result=readSave(localStorage,SCENES);}catch{}set({hasSave:result.status==='ok',savePresent:result.status!=='missing',saveMessage:result.status==='missing'?'':saveMessage(result)});},
@@ -23,7 +25,7 @@ export const useGame=create<GameStore>((set,get)=>{
  cancelNewGame:()=>set({confirmNewGame:false}),
  resume:()=>{let result:ReturnType<typeof readSave>={status:'unavailable'};try{result=readSave(localStorage,SCENES);}catch{}if(result.status==='ok')set({state:result.state,mode:'play',saveMessage:''});else set({hasSave:false,savePresent:result.status!=='missing',saveMessage:saveMessage(result)});},
  toTitle:()=>{set({mode:'title',confirmNewGame:false});get().boot();},
- scene:id=>update(openScene(get().state,id,SCENES)),pick:id=>update(applyChoice(get().state,id,SCENES)),advance:()=>update(nextWeek(get().state,SCENES)),direction:id=>update(setDirection(get().state,id)),
- activity:kind=>update(activity(get().state,kind)),finishJob:()=>update(finishPuzzle(get().state)),movePuzzle:index=>update(movePuzzle(get().state,index)),nextPair:()=>update(nextPair(get().state)),
- cancelJob:()=>{const s=get().state;if(s.phase==='minigame'&&s.puzzle?.moves===0&&s.puzzle.selected.length===0)update({...s,phase:'planner',minigame:null,puzzle:null});},buy:id=>update(buyGift(get().state,id)),gift:(girl,id,note,delivery)=>update(giveGift(get().state,girl,id,note,delivery)),readGifts:()=>update({...get().state,giftHistory:get().state.giftHistory.map(h=>({...h,read:true}))})
+ scene:id=>act({type:'scene',id}),pick:id=>act({type:'choice',id}),advance:()=>act({type:'advance'}),direction:id=>act({type:'direction',id}),
+ activity:kind=>act({type:'activity',kind}),finishJob:()=>act({type:'claim'}),movePuzzle:index=>act({type:'tile',index}),nextPair:()=>act({type:'next-pair'}),
+ cancelJob:()=>act({type:'cancel-job'}),buy:id=>act({type:'buy',id}),gift:(girl,id,note='noticed',delivery='inPerson')=>act({type:'gift',girl,id,note,delivery}),readGifts:()=>act({type:'read-replies'})
  };});

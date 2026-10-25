@@ -12,3 +12,5 @@ export const relationships:Record<string,string>={
  unresolved:'Maradt közelség és kimondatlan kérdés. A hiányzó beszélgetést nem helyettesíti a közös veszély emléke. A félév kapcsolat ígérete nélkül zárul.',
  estranged:'A visszalépést tiszteletben tartották. A közös nyomozás megmarad, a magánéleti találkozások elmaradnak. Senki nem tartozik érzelmekkel azért, mert segítséget kapott.'
 };
+
+export function threatText(cost:string|null){return 'A vámpír meghalt a megszakított átalakulásban. '+(cost==='supported'?'A gyakorlás és a segítők jelenléte csökkentette a kimerülést, a bizonyítékok megmaradtak.':'A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg.')+' Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre.';}
