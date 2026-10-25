@@ -125,3 +125,23 @@ Venice returns `x-venice-is-blurred: true` even on models marked uncensored. Gen
 - Full WAI candidate run (2026-10-25): available-models.json refreshed from live endpoint. Explicit assets switched to method=generate (no refs). Request id=2026-10-25-wai-all-candidates-01 regenerates the four participant neutrals plus all explicit scenes with wai-Illustrious.
 
 - WAI expression edit (2026-10-25): after successful WAI neutrals + explicit batch (request 2026-10-25-wai-all-candidates-03), expression assets for rebeka/boglarka/greta (amused, displeased, vulnerable, affectionate) are queued as edit from the new WAI neutrals for higher identity consistency. Request id=2026-10-25-wai-expressions-edit-01.
+
+## Working Venice generation process (validated 2026-10-25)
+
+### Successful path for explicit + participant neutrals
+1. **Model**: `wai-Illustrious` (Anime/WAI, uncensored, generation-only). Set as `generationModel` in `art-jobs/venice/request.json`.
+2. **Edit model for validation**: `qwen-edit-uncensored` (available under the CI key). Newer Qwen/Seedream edit models are not visible to the Actions key.
+3. **Method**: pure `generate` (empty `refs`) for neutrals and explicit scenes. Reference-based edit still blurs on explicit content even with uncensored models.
+4. **Aspect ratio**: catalog default 4:5. `scripts/venice/profile.mjs` falls back to `auto`/`3:4`/`2:3`/etc. if the model rejects 4:5.
+5. **Blur handling**: generator accepts `x-venice-is-blurred: true` and checkpoints soft images as `candidate-blurred-awaiting-review` instead of rejecting.
+6. **Signature conflicts**: if catalog prompts/refs change, clear the corresponding entries from `assets/generated/venice/manifest.json` and delete the on-disk files before re-queuing, or the generator aborts on signature mismatch.
+7. **Request trigger**: bump `id` in `art-jobs/venice/request.json` and push to `main` to start the workflow. The workflow validates models live from the API (not the committed snapshot).
+8. **Expression consistency**: after neutrals exist, queue expression assets (`amused`, `displeased`, `vulnerable`, `affectionate`) as `edit` from the new neutral so facial geometry stays locked.
+
+### What does not work
+- `qwen-edit-uncensored` / `qwen-image-3-edit` / `seedream-v5-pro-edit` as direct edit on explicit prompts → Venice returns blurred images.
+- Relying on the committed `available-models.json` for model availability — the CI key sees a smaller set than the public models endpoint.
+- Re-running a request with the same `id` after clearing candidates — the workflow only triggers on `request.json` changes.
+
+### Validated batch
+Request `2026-10-25-wai-all-candidates-03` generated 4 participant neutrals + 17 explicit scenes with `wai-Illustrious` and completed with status `completed-with-pending-alpha`.
