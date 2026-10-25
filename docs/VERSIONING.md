@@ -1,14 +1,14 @@
 # Game releases and save compatibility
 
-> **Status:** Active; current release 0.3.0. | **Purpose:** Release identity, save contract, compatibility decisions and release checks.
+> **Status:** Active; current release 0.4.0. | **Purpose:** Release identity, save contract, compatibility decisions and release checks.
 
 ## Current contract
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.3.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.4.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `1`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `2`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -48,3 +48,7 @@ The CLI may report a missing build ID when run directly from source: build ident
 ### 0.3.0 decision
 
 Playable CLI, shared action dispatch and visual asset descriptions do not change persisted state or story progression. Save schema remains 4 and content epoch remains 1; current-envelope 0.2.0 saves load without migration. The CLI reports the source commit/dirty marker when available, and transcripts carry it separately from the save metadata.
+
+## 0.4.0 — staged dates
+
+Schema remains 4: stage and physical distance are derived from the current authored dialogue node, with no extra mutable save fields. Content epoch increases to 2 because the three date graphs, terminal nodes and optional outing conclusions changed. Saves from 0.3.0/content epoch 1 receive the existing explicit incompatible-save message; no migration or silent restart. CLI protocol remains 1, with additive visible `scene.staging` metadata.

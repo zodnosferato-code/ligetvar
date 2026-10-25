@@ -179,3 +179,15 @@ Starting commit: `4a3435d`. Implemented terminal/JSON CLI, shared browser/CLI ac
 Validation: 57 engine/content tests plus 22 CLI tests (79 total), strict typecheck, production build; browser flows passed at 320/390/1440px. CLI tests include actual subprocess campaigns for friendship, Rebeka, Boglárka, Gréta, triad and late withdrawal; EOF/SIGINT; file ownership; stale/invalid commands; both puzzles with hidden-card masking; gifts/outings; file interchange and transcript replay. `npm test` and CI include the CLI suite. Branch coverage lists observed IDs, not a claim that every authored branch was proofread. See [CLI.md](CLI.md).
 
 Reproduce: `node tools/cli-playthrough.mjs --route triad --save /tmp/triad-new.json` with a fresh path. Next task: **L1**, string inventory, shared locale API and persisted-text/version decisions. English localisation is not implemented. Findings/transcripts must be explicitly exported before a CLI process exits; they are session-scoped.
+
+### 25 October 2026 — user-prioritized staged scene implementation, 0.4.0
+
+Starting commit: `c631e9d`. The user requested starting the five scene improvements, with natural movement to quieter/private places. This work takes priority over the previously queued localisation phase. Added explicit per-node scene stages, shared browser/CLI location and proximity resolution, same-scene choice memory, three expanded dates with optional quieter stops and romantic kisses, and six paid-outing farewells. [SCENE-STAGING.md](SCENE-STAGING.md) tracks implemented scope and remaining work, including campaign length. Localisation remains unstarted.
+
+Release 0.4.0; save schema 4 unchanged; content epoch 2 because date graph IDs and conclusions changed. Prior content saves receive the incompatible-save message. No migration. CLI protocol 1 retains its commands with additive scene staging metadata.
+
+Validation: `npm ci`; `npm test` (61 engine/content and 22 CLI tests, all passing); `npm run typecheck`; `npm run build`. `tools/verify-date-staging.cjs` passed all three individual dates at 320/390/1440px, including destination backgrounds, distance framing, saved reload and one-slot completion. Inspected the resulting 320px Boglárka and 1440px Rebeka screenshots. The check caught and resolved reduced-motion selector specificity; the rerun passed. Existing asset descriptions and portraits are reused; no new pose artwork was generated. GitHub Actions result is to be checked after publication.
+
+Next work: broaden staged writing to later relationship/triad scenes, then design configurable milestone scheduling and route budgets before changing the 16-week campaign. Run `npm test` and `node --experimental-strip-types tools/verify-date-staging.cjs` (with configured Playwright/Chromium) to reproduce this checkpoint.
+
+The existing `tools/verify-leisure.cjs` regression flows also passed at 320/390/1440px: both puzzles, gifts/replies, outing charge-once, save/resume, incompatible/corrupt/newer save messages and explicit restart. Updated its stale release assertions to read canonical release metadata. No browser overflow or page errors were reported.

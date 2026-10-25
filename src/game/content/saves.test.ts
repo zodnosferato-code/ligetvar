@@ -45,6 +45,14 @@ test('historical keys are detection-only even if they contain an envelope; stora
 });
 
 test('content-only break is distinguished from a schema break',()=>{
- const result=decodeWithRules(encodeSave(state),SCENES,{...RULES,saveVersions:{...RELEASE,contentCompatibilityVersion:2}});
+ const result=decodeWithRules(encodeSave(state),SCENES,{...RULES,saveVersions:{...RELEASE,contentCompatibilityVersion:RELEASE.contentCompatibilityVersion+1}});
  assert.equal(result.status,'unsupported');if(result.status==='unsupported')assert.equal(result.reason,'content');
+});
+
+test('pre-staging content saves are rejected without interpreting or overwriting them',()=>{
+ const raw=JSON.stringify({...envelope(),gameVersion:'0.3.0',contentCompatibilityVersion:1});
+ const saved=storage({[SAVE_KEY]:raw});
+ const result=readSave(saved,SCENES);assert.equal(result.status,'unsupported');
+ if(result.status==='unsupported'){assert.equal(result.reason,'content');assert.match(saveMessage(result),/már nem használható/);}
+ assert.equal(saved.data.get(SAVE_KEY),raw);
 });

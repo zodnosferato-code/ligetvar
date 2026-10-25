@@ -14,7 +14,7 @@ export function gameView(s:GameState){
  const actions:{label:string;action:GameAction}[]=[],assets:VisibleAsset[]=[];
  const line=R.currentLine(s,SCENES),scene=s.scene?SCENES[s.scene.id]:null;
  if(scene&&line){
-  const lighting=R.sceneLighting(s,scene);assets.push({...asset('background',backgroundFor(scene.background,lighting)),lighting});
+  const staging=R.sceneStage(s,scene),lighting=R.sceneLighting(s,scene);assets.push({...asset('background',backgroundFor(staging.background,lighting)),lighting});
   if(!['marton','narrator'].includes(line.speaker)){
    const p=portraitFor(line.speaker,line.expression,scene.week);
    assets.push({...asset('portrait',p),requestedExpression:line.expression,fallback:!!p.file&&line.expression!=='neutral'&&!p.file.includes('/'+line.expression+'-')});
@@ -39,7 +39,7 @@ export function gameView(s:GameState){
  const ending=s.phase==='ending'?R.evaluateEnding(s):null;
  return {
   phase:s.phase,week:s.week,slot:s.slot,period:R.currentPeriod(s),money:s.money,activityPoints:s.activityPoints,energy:s.energy,direction:s.direction,lastNote:s.lastNote,
-  scene:scene&&line?{id:scene.id,title:scene.title,location:LOCATIONS[scene.location],lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:ACTOR_NAME[line.speaker],expression:line.expression,text:line.text}:null,
+  scene:scene&&line?{id:scene.id,title:scene.title,location:LOCATIONS[R.sceneStage(s,scene).location],staging:R.sceneStage(s,scene),lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:ACTOR_NAME[line.speaker],expression:line.expression,text:line.text}:null,
   assets,actions,
   puzzle:p?{kind:p.kind,instructions:p.kind==='archive'?'Fordíts fel két lapot, majd válaszd a Következő pár gombot. 18 párpróba, nincs időkorlát.':'Válassz két szomszédos mezőt: legalább három azonos jel kell egy sorban vagy oszlopban. 12 sikeres csere; a hibás csere ingyenes.',width:p.kind==='archive'?4:5,movesLeft:MOVE_LIMIT[p.kind]-p.moves,score:p.score,reward:puzzleReward(p),done:puzzleDone(p),selected:p.selected,matched:p.matched,tiles:p.board.map((v,i)=>p.kind==='archive'&&!p.selected.includes(i)&&!p.matched.includes(i)?null:v),legend:p.kind==='archive'?['Kulcs','Levél','Hold','Torony','Könyv','Térkép','Pecsét','Toll']:['Zöld üveg ●','Kék palack ▲','Réz doboz ■','Lila üveg ◆']}:null,
   journal:s.journal,evidence:Object.entries(s.evidence).map(([id,witness])=>({id,text:EVIDENCE[id].text,...witness})),bonds:s.bonds,exposure:s.exposure,
