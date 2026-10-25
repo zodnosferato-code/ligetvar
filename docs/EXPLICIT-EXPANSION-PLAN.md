@@ -20,9 +20,9 @@ Update the status column as work advances. Agents: claim a row, mark In Progress
 | Scene ID | Route | Target acts | Status | Notes / Owner |
 | --- | --- | --- | --- | --- |
 | shared_1 | Shared | Light flashes, almost-touch | Planned | Classroom stretch |
-| rebeka_1 to rebeka_6 | Rebeka | Full escalation to intense private sex | In Progress / Implemented (rebeka_3 hand) | Grok – rebeka_3 hand path fully expanded (kiss, strip, oral, bent-over, riding, aftercare) in romance.ts. Sexier explicit assets (oral_explicit, bent_over, riding) requested via Venice edit+rebeka_neutral. |
-| boglarka_1 to boglarka_6 | Boglárka | Slow praise, full body acceptance, sex | In Progress (boglarka_3) | Grok – claiming boglarka_3 next; praise-focused slow explore + oral/sex |
-| greta_1 to greta_6 | Gréta | Rule-break, desk, light restraint, sex | In Progress (greta_3) | Grok – greta_3 hand path expanded with desk oral + bent-over + spanking + aftercare |
+| rebeka_1 to rebeka_6 | Rebeka | Full escalation to intense private sex | In Progress (rebeka_3 + stage6 cont) | Grok – rebeka_3 hand path fully expanded (kiss, strip, oral, bent-over, riding, aftercare) in romance.ts. Sexier explicit assets (oral_explicit, bent_over, riding) requested via Venice edit+rebeka_neutral. |
+| boglarka_1 to boglarka_6 | Boglárka | Slow praise, full body acceptance, sex | In Progress (boglarka_3 + stage6 cont) | Grok – claiming boglarka_3 next; praise-focused slow explore + oral/sex |
+| greta_1 to greta_6 | Gréta | Rule-break, desk, light restraint, sex | In Progress (greta_3 + stage6 cont) | Grok – greta_3 hand path expanded with desk oral + bent-over + spanking + aftercare |
 | triad_3 to triad_8 | Triad | Girl-girl + three-way oral/sex | In Progress (triad_7) | Grok – triad_7 expanded with girl-girl kiss + sequential oral + riding/multiple finishes |
 | virag_1 to virag_8 | Virág | Immediate + repeated explicit | In Progress (virag_1 + virag_4) | Grok – virag_1 private path expanded with explicit oral + wall sex; assets requested |
 | coffee_* / outing_* | All | Repeat shorter acts | Planned | Optional heat |
@@ -65,3 +65,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - triad_7 expanded in triad.ts: after tea, Rebeka/Boglárka deep kiss, sequential oral, full sex (riding + side-by-side), multiple finishes, sleep tangled. Assets: explicit_triad_kiss/oral/riding (multi-edit + both neutrals). request.json = 2026-10-25-explicit-triad-01.
 
 - virag_4 kiss path expanded: oral in lake shadows + sex against the bench + witty after. Assets: explicit_virag_lake_oral/sex (edit + full-body). request.json = 2026-10-25-explicit-virag-02.
+
+- Individual stage 6: short private continuation beats added for rebeka/boglarka/greta (oral/sex/aftercare matching each voice).
