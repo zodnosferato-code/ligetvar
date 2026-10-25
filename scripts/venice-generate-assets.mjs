@@ -90,8 +90,13 @@ try{
   // Preserve raw billed output before alpha extraction so a failed extraction can resume without regenerating it.
   const rawPath=join(ROOT,'raw',a.id+'.png'),rawMeta=join(ROOT,'raw',a.id+'.json');
   let bytes,rawRecord;
-  try{rawRecord=JSON.parse(await readFile(rawMeta,'utf8'));bytes=await readFile(rawPath);if(rawRecord.signature!==signature||rawRecord.sha256!==digest(bytes))throw new Error('Raw candidate signature mismatch: '+a.id);}
-  catch(e){if(e.code!=='ENOENT')throw e;bytes=null;}
+  try{
+   rawRecord=JSON.parse(await readFile(rawMeta,'utf8'));bytes=await readFile(rawPath);
+   if(rawRecord.signature!==signature||rawRecord.sha256!==digest(bytes)){
+    console.log('Raw signature stale for',a.id,'(prompt/model/refs changed); regenerating');
+    bytes=null;
+   }
+  }catch(e){if(e.code!=='ENOENT')throw e;bytes=null;}
   let blurred=false;
   if(!bytes){
    const res=await call(endpoint,body);

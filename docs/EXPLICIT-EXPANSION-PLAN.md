@@ -145,3 +145,5 @@ Venice returns `x-venice-is-blurred: true` even on models marked uncensored. Gen
 
 ### Validated batch
 Request `2026-10-25-wai-all-candidates-03` generated 4 participant neutrals + 17 explicit scenes with `wai-Illustrious` and completed with status `completed-with-pending-alpha`.
+
+- Raw-signature handling improved (2026-10-25): generator no longer aborts on signature mismatch. A stale raw file (prompt/model/refs changed) is logged and regenerated instead of throwing. See scripts/venice-generate-assets.mjs.
