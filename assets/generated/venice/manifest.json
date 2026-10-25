@@ -519,6 +519,16 @@
         "classroom"
       ],
       "finishedAt": "2026-10-21T15:37:47.360Z"
+    },
+    {
+      "request": "2026-10-25-explicit-rebeka-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T14:37:12.302Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [],
+      "finishedAt": "2026-10-25T14:37:12.739Z",
+      "failure": "No supported pixel size: explicit_rebeka_oral_kneeling"
     }
   ],
   "capabilities": {
