@@ -598,6 +598,19 @@
       ],
       "finishedAt": "2026-10-25T14:53:48.593Z",
       "failure": "Venice returned a blurred image; candidate rejected"
+    },
+    {
+      "request": "2026-10-25-explicit-boglarka-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T14:54:33.610Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [
+        "rebeka_neutral",
+        "boglarka_neutral"
+      ],
+      "finishedAt": "2026-10-25T14:54:34.531Z",
+      "failure": "Venice /image/edit failed: HTTP 402"
     }
   ],
   "capabilities": {
