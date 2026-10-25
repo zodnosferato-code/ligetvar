@@ -631,6 +631,19 @@
       "reused": [],
       "finishedAt": "2026-10-25T14:56:52.730Z",
       "failure": "Venice /image/edit failed: HTTP 402"
+    },
+    {
+      "request": "2026-10-25-explicit-greta-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T14:58:41.400Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [
+        "rebeka_neutral",
+        "greta_neutral"
+      ],
+      "finishedAt": "2026-10-25T14:58:42.405Z",
+      "failure": "Venice /image/edit failed: HTTP 402"
     }
   ],
   "capabilities": {
