@@ -6,7 +6,7 @@ const root=path.resolve('dist'),mime={'.html':'text/html','.js':'text/javascript
 const server=http.createServer((req,res)=>{const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/ligetvar\//,'');const file=path.resolve(root,relative||'index.html');if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(err,data)=>{if(err)res.writeHead(404).end();else res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'}).end(data);});});
 let browser,currentPage;
 (async()=>{
- const R=await import('../src/game/content/runtime.ts'),{SCENES}=await import('../src/game/content/catalog.ts'),{cluster,puzzleDone}=await import('../src/game/content/puzzles.ts');
+ const R=await import('../src/game/content/runtime.ts'),{SCENES}=await import('../src/game/content/catalog.ts'),{legalSwap,puzzleDone}=await import('../src/game/content/puzzles.ts');
  const finish=(s,id)=>{s=R.openScene(s,id,SCENES);while(s.phase==='scene'){const l=R.currentLine(s,SCENES);s=R.applyChoice(s,l.choices?.[0].id??'continue',SCENES);}return s;};
  const initial=finish(R.createInitial('Mobil próba'),'shared_1');
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port+'/ligetvar/';
@@ -19,12 +19,12 @@ let browser,currentPage;
   const seed=async s=>{await page.goto(url);await page.evaluate(s=>localStorage.setItem('ligetvar-save-v2',JSON.stringify(s)),s);await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();};
   const overflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'overflow at '+width);
   for(const kind of ['mohu','brick']){
-   await seed(initial);await page.locator('.spot-bag').click();await page.getByRole('button',{name:new RegExp(kind==='mohu'?'Palackmozaik':'Archívumpárok')}).click();
+   await seed(initial);await page.locator('.spot-bag').click();await page.getByRole('button',{name:new RegExp(kind==='mohu'?'Újrahasznosítás':'Archívumpárok')}).click();
    const tiles=page.locator('.puzzle-tile');await tiles.first().waitFor();
    for(const b of await tiles.all()){const box=await b.boundingBox();assert.ok(box.width>=44&&box.height>=44,JSON.stringify({width,box}));}
    await overflow();await page.screenshot({path:path.join(output,`${kind}-${width}.png`),fullPage:true});
    if(kind==='mohu'){
-    let s=await state();while(!puzzleDone(s.puzzle)){const i=s.puzzle.board.findIndex((_,i)=>cluster(s.puzzle.board,i).length>=2);await tiles.nth(i).click();s=await state();}
+    let s=await state();while(!puzzleDone(s.puzzle)){const [a,b]=legalSwap(s.puzzle.board);await tiles.nth(a).click();await tiles.nth(b).click();s=await state();}
    }else{
     let s=await state();await tiles.nth(0).click();const before=await state();await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.deepEqual((await state()).puzzle,before.puzzle);
     const mismatch=s.puzzle.board.findIndex(v=>v!==s.puzzle.board[0]);await tiles.nth(mismatch).click();await page.getByRole('button',{name:'Következő pár'}).click();

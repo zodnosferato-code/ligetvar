@@ -1,5 +1,5 @@
-import type {ActorId,Effect,LocationId,Scene} from './types.ts';
-import {say,option,scene,shared} from './authoring.ts';
+import type {Scene} from './types.ts';
+import {say,option,scene} from './authoring.ts';
 export const triad:Scene[]=[
  scene('triad_1','T1 — Kinek a mondata?','relationship',4,14,'library',['marton','rebeka','boglarka'],[
   say('narrator','Rebeka képaláírása: „Boglárka a kastély régi hangját keresi.” Boglárka maga elé húzza a lapot.'),

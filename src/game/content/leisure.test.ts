@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {SCENES} from './catalog.ts';
 import {activity,applyChoice,availableScenes,buyGift,createInitial,currentLine,finishPuzzle,giveGift,movePuzzle,nextPair,nextWeek,openScene} from './runtime.ts';
-import {cluster,newPuzzle,puzzleDone,puzzleMove,puzzleReward,validPuzzle} from './puzzles.ts';
+import {legalSwap,matches,cluster,newPuzzle,puzzleDone,puzzleMove,puzzleReward,validPuzzle} from './puzzles.ts';
 import {decodeSave} from './saves.ts';
 import {GIRLS,type GameState} from './types.ts';
 function complete(s:GameState,id:string){s=openScene(s,id,SCENES);assert.equal(s.scene?.id,id);let limit=100;while(s.phase==='scene'&&limit--){const l=currentLine(s,SCENES)!;s=applyChoice(s,l.choices?.[0].id??'continue',SCENES);}assert.ok(limit>0);return s;}
@@ -12,14 +12,14 @@ test('both puzzles have finite move budgets, deterministic boards and bounded me
  for(let week=1;week<=16;week++)for(const kind of ['mohu','brick'] as const){
   let p=newPuzzle(kind,week);assert.deepEqual(p,newPuzzle(kind,week));assert.ok(validPuzzle(p));let turns=0;
   while(!puzzleDone(p)&&kind==='mohu'){
-   const i=p.board.findIndex((_,i)=>cluster(p.board,i).length>1);p=puzzleMove(p,i);assert.ok(validPuzzle(p));assert.ok(++turns<=12);
+   const [a,b]=legalSwap(p.board);p=puzzleMove(puzzleMove(p,a),b);assert.equal(matches(p.board).length,0);assert.ok(validPuzzle(p));assert.ok(++turns<=12);
   }
   const reward=puzzleReward(p);assert.ok(reward.money>=8000&&reward.money<=20000);assert.ok(reward.points>=3&&reward.points<=6);
  }
 });
 test('bottle groups cannot wrap rows, invalid taps are free and larger groups are worth more',()=>{
  const board=Array.from({length:25},(_,i)=>i%4);board[4]=3;board[5]=3;board[3]=0;board[9]=0;board[0]=0;board[6]=0;board[10]=0;
- assert.deepEqual(cluster(board,4),[4]);const p={...newPuzzle('mohu',1),board};assert.equal(puzzleMove(p,4),p);assert.equal(puzzleMove(p,-1),p);
+ assert.deepEqual(cluster(board,4),[4]);const p={...newPuzzle('mohu',1),mode:undefined,board};assert.equal(puzzleMove(p,4),p);assert.equal(puzzleMove(p,-1),p);
  const all={...p,board:Array(25).fill(0)},n=puzzleMove(all,12);assert.equal(n.score,600);assert.equal(n.moves,1);assert.equal(n.board.length,25);assert.deepEqual(puzzleReward(n),{money:20000,points:6});
 });
 test('memory pairs stay visible until acknowledged; double taps and third-card peeks do not consume turns',()=>{
@@ -80,4 +80,13 @@ test('old v2 saves keep balances; malformed added fields are rejected',()=>{
  const decoded=decodeSave(JSON.stringify(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok'){assert.equal(decoded.state.money,105000);assert.deepEqual(decoded.state.completed,s.completed);}
  for(const activityPoints of [-1,1.5,'9'])assert.equal(decodeSave(JSON.stringify({...s,activityPoints}),SCENES).status,'invalid');
  assert.equal(decodeSave(JSON.stringify({...s,puzzle:{kind:'brick'}}),SCENES).status,'invalid');assert.equal(decodeSave(JSON.stringify({...s,giftHistory:[{girl:'soma'}]}),SCENES).status,'invalid');
+});
+
+test('recycling swaps save selection, reject row wrapping and resolve cascades deterministically',()=>{
+ const p=newPuzzle('mohu',1),[a,b]=legalSwap(p.board),selected=puzzleMove(p,a);
+ assert.ok(validPuzzle(selected));assert.equal(selected.moves,0);
+ const n=puzzleMove(selected,b);assert.equal(n.moves,1);assert.ok(n.score>=30);assert.deepEqual(n,puzzleMove(selected,b));assert.equal(matches(n.board).length,0);assert.ok(legalSwap(n.board).length);
+ const wrap=puzzleMove(puzzleMove(p,4),5);assert.equal(wrap.moves,0);assert.deepEqual(wrap.board,p.board);assert.deepEqual(wrap.selected,[5]);
+ const same=puzzleMove(selected,a);assert.equal(same.moves,0);assert.deepEqual(same.selected,[]);
+ let s=activity(complete(createInitial(''),'shared_1'),'mohu');s=movePuzzle(s,a);const decoded=decodeSave(JSON.stringify(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok')assert.deepEqual(decoded.state.puzzle,s.puzzle);
 });

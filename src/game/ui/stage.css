@@ -256,3 +256,5 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
 @media(max-width:400px){.puzzle{padding:.75rem}.puzzle-board{gap:4px}.gift-reply{gap:.5rem}.gift-reply img{width:48px;height:72px}.gift-replies{padding:.65rem}.puzzle-tile small{font-size:.6rem}}
 @media(prefers-reduced-motion:reduce){.puzzle-board .puzzle-tile{transition:none}}
 .puzzle-help{margin:1rem 0}.puzzle-help summary{min-height:44px;cursor:pointer;padding:.5rem 0}.puzzle h1:focus{outline:none}.puzzle>p,.puzzle-help{font-size:.95em}.puzzle-stats{font-size:.9em}
+
+.puzzle-tile.is-selected{outline:3px solid #fff1a8;outline-offset:1px;box-shadow:0 0 14px #ecc47a80;transform:scale(.94)}

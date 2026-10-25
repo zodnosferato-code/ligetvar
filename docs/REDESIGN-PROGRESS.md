@@ -281,3 +281,13 @@ Added six optional paid scenes (two per woman), real prerequisite/currency check
 Local verification: `npm test` **53 passed, 0 failed**; `npm run typecheck` passed; `npm run build` passed. New tests cover bounded puzzles, move/claim guards, save/resume, all six outings, one-time charges, personal gift history, repeat limits and old saves. Existing full single/triad/friendship and poor-preparation simulations still pass. No art generation or Venice request was made.
 
 Browser verification uses `tools/verify-leisure.cjs`. The normal Chromium CDN download failed; a temporary serverless Chromium package supplied the local browser. The first 320px review found excessive introductory text above the board, which was shortened and moved into expandable rules. Explicit accessible gift-select names were added. At 320px, both puzzles complete, a half-revealed pair survives reload, rewards advance one slot, remote replies render with portraits, history persists, paid outings charge once across reload, all board hit targets are at least 44px and there is no horizontal overflow or page error. Screenshots were visually inspected. The same complete flow also passed at 390px and 1440px with no overflow or page errors. Actions status follows in the delivery report.
+
+## Recycling match-three update — 25 October 2026
+
+Renamed the player-facing bottle puzzle to Újrahasznosítás (Recycling). New shifts use neighbouring swaps, straight matches, gravity, cascade bonuses and automatic dead-board recovery. Existing group-clearing shifts retain their rules. Archive Pairs remains an untimed eight-pair memory game with 18 attempts. Validation: `npm test` (54 passing), `npm run typecheck`, `npm run build`.
+
+Browser flow verification passed at 320px and 390px: both puzzles complete, touch targets at least 44px, save/resume, gift replies and paid outings, no horizontal overflow or page errors. Initial `/tmp/chromium` launch failed; the available browser at `/tmp/ligetvar-browser-libs/chromium` worked.
+
+### Dead-code cleanup
+
+Removed unused content/UI imports, the obsolete background helper, the test-only campaign payout wrapper, and discarded initial Recycling board generation. Tests now complete real puzzles through the production reward path. Enabled TypeScript noUnusedLocals/noUnusedParameters. Retained group-clearing logic because unfinished saves still use it. `npm test`: 54 passing; `npm run typecheck` and `npm run build`: passed.
