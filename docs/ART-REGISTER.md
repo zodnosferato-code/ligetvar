@@ -90,3 +90,7 @@ The 33 usable files resolved by the active background/portrait manifest were vis
 ## Virág and moments — pending, 25 October 2026
 
 Missing: Virág adult identity sheet, neutral/amused/displeased/vulnerable/affectionate portraits, hallway day background, arm-link/kiss/shoulder-cuddle animated WebP loops plus three static posters. None has been generated or reviewed. Runtime uses explicitly marked placeholders and planned moment IDs. [Character brief](VIRAG-STORY.md), [production plan](ANIMATION-PLAN.md).
+
+## Virág update — 0.6.0
+
+Latest user direction supersedes the earlier final-date treatment: blue pixie haircut, deliberately flirtatious blouse/cardigan/skirt look, immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Five transparent portraits, a full-body identity reference, daylight hallway and a 2.4-second wink loop are generated and assistant-reviewed. Dedicated physical-pose clips remain planned. See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration.

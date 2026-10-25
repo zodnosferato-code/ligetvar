@@ -1,6 +1,6 @@
 # Key-moment animation plan
 
-> **Status:** GIF/WebP player implemented in 0.5.0; production clips pending. | **Purpose:** Affordable, consistent movement for selected story moments.
+> **Status:** GIF/WebP player implemented in 0.5.0; first real wink pilot added in 0.6.0. | **Purpose:** Affordable, consistent movement for selected story moments.
 
 ## Decision: short loops from a few authored images
 
@@ -18,7 +18,7 @@ Use a held contact pose plus subtle hair/eye motion for a kiss instead of repeat
 - `Line.moment` refers to `MOMENT_CLIPS`. `reviewed` entries require local animation and poster paths, dimensions, duration, byte size and an accurate description. `planned` entries have no files and use the normal scene/portrait presentation. Planned descriptions identify intent, never claim visible artwork.
 - The `Moment` component fits the scenery, provides a keyboard/touch pause control, reacts to OS reduced-motion changes, and falls back to the poster on failed animation loading. If that also fails, show the description. Choices remain usable immediately; no animation timers trigger game effects.
 - Save/resume derives the requested clip from scene/line IDs. No playback position is saved. CLI JSON includes the intended moment, status and `rendered` flag; narration communicates the action in terminal mode. CLI does not load images or need graphics/network credentials.
-- Current hooks: `virag_1/arm`, `virag_4/kissed`, `virag_7/cuddled`. All three assets remain planned. Virág's neutral portrait and hallway background are also missing, explicitly labelled placeholders.
+- Current hooks: `virag_1/arm`, `virag_4/kissed`, `virag_7/cuddled`. Those three pose assets remain planned. The new `virag_1/invite` wink is reviewed and active; all five portraits and the daytime hallway are now present.
 
 ## Provider comparison — primary-source review, 25 October 2026
 
@@ -49,3 +49,9 @@ Primary sources:
 7. Test playback, pause/restart, reduced-motion on initial load and after change, failures, save/reload and fast dialogue navigation at 320/390/1440px. Compare minimum mobile device performance before adding more clips. Check no advance/choice waits for playback and no unused animations download.
 
 No new character/animation art was generated in 0.5.0. The roadmap distinguishes renderer implementation from actual art production and visual approval.
+
+## First production pilot — 0.6.0
+
+The user selected a blue pixie haircut and flirtatious blouse/cardigan/skirt styling. ChatGPT generated a full-body identity reference, five transparent expression portraits, a matching wink frame and an empty daytime hallway. The wink was assembled locally from neutral → amused → wink → amused with 1500/350/250/300 ms holds: **4 frames, 2400 ms, 355362 bytes**, 640×800 with alpha. A separate static poster is present. This is a facial loop, not an arm-link or kissing animation. Provenance and prompts: `assets/generated/chatgpt/virag-v1/`. No image-to-video or paid provider API was used. Runtime exports are WebP; original PNG sources remain in the repository.
+
+The full-body image contains a soft backdrop haze and serves only as an identity reference. Runtime portraits were separately generated with clean transparent silhouettes. Final user art acceptance remains open. Dedicated physical-pose clips are still pending.

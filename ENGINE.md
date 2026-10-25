@@ -123,3 +123,7 @@ Scenes may declare named stages selected explicitly by `Line.stage`, with locati
 Eight optional `virag_*` scenes use existing one-slot scheduling and witnessed decisions, with no new persisted fields. A separate successful public-report coda appears in browser and CLI endings, including skipped-route cases. Virág is not a main-route direction or a bond-score gate. See [story contract](docs/VIRAG-STORY.md).
 
 `Line.moment` optionally identifies a GIF/animated-WebP clip in the content manifest. The React renderer substitutes a separate static poster for pause/reduced motion, and descriptions remain available in CLI JSON. Planned entries never load pretend media. No animation drives the reducer; saved scene/node IDs restore context, and playback restarts. The three hooked Virág clips have no production files yet. See [animation contract](docs/ANIMATION-PLAN.md).
+
+## Virág update — 0.6.0
+
+Latest user direction supersedes the earlier final-date treatment: blue pixie haircut, deliberately flirtatious blouse/cardigan/skirt look, immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Five transparent portraits, a full-body identity reference, daylight hallway and a 2.4-second wink loop are generated and assistant-reviewed. Dedicated physical-pose clips remain planned. See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration.
