@@ -7,12 +7,21 @@ export function imageRequest(asset,images,request,models){
  const nativeAlpha=asset.transparent&&limits.supportsTransparentBackground===true;
  const shared={prompt:asset.prompt,safe_mode:true};
  if(nativeAlpha)shared.transparent_background=true;
- if(limits.aspectRatios){if(!limits.aspectRatios.includes(asset.aspect))throw new Error('Unsupported aspect ratio: '+asset.id);shared.aspect_ratio=asset.aspect;}
+ if(limits.aspectRatios){
+  let ratio=asset.aspect;
+  if(!limits.aspectRatios.includes(ratio)){
+   const preferred=['auto','3:4','2:3','4:3','1:1','9:16'];
+   ratio=preferred.find(r=>limits.aspectRatios.includes(r))||limits.aspectRatios[0];
+   console.log('Aspect',asset.aspect,'unsupported on',model+'; using',ratio,'for',asset.id);
+  }
+  shared.aspect_ratio=ratio;
+ }
  if(limits.resolutions?.includes(request.resolution))shared.resolution=request.resolution;
  if(limits.qualities?.includes(request.quality))shared.quality=request.quality;
  if(asset.method==='generate'){
   if(!limits.aspectRatios){
-   const [width,height]=({'4:5':[1024,1280],'16:9':[1280,720],'3:2':[1152,768]})[asset.aspect]??[];
+   const sizes={'4:5':[1024,1280],'16:9':[1280,720],'3:2':[1152,768],'3:4':[1024,1365],'2:3':[1024,1536],'4:3':[1365,1024],'1:1':[1024,1024],'9:16':[720,1280]};
+   const [width,height]=sizes[asset.aspect]??sizes['4:5'];
    if(!width||!height)throw new Error('No supported pixel size: '+asset.id);
    const divisor=limits.widthHeightDivisor??1;if(width%divisor||height%divisor)throw new Error('Pixel size violates model divisor');
    Object.assign(shared,{width,height});
