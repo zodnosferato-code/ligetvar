@@ -78,7 +78,16 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
   {id:'music',text:'Mit mutatnál meg magadból, amihez nem könyvet hoznál?',beats:[['boglarka','A zenéimet. De az egyiknél meg kell ígérned, hogy nem elemzed a szöveget.'],['marton','Ennyire rossz?'],['boglarka','Ennyire szeretem. Nem akarok rögtön érvelni mellette.'],['narrator','Elmondja a szám címét. A refrént csak félhangosan kezdi el, aztán kineveti magát.'],['marton','Most már meg szeretném hallgatni.']]},
   {id:'self',text:'Én képes vagyok előre elpróbálni egy egyszerű meghívást is.',beats:[['boglarka','És működik?'],['marton','Addig, amíg a másik nem mond valamit, amire nem készültem.'],['boglarka','Akkor most azt mondom, hogy örülök, hogy izgulsz. Nem rosszindulatból. Ettől kevésbé érzem úgy, hogy vizsgázom.','vulnerable'],['marton','Ma én sem szeretnék vizsgáztatni.']]}
  ],touch:[
-  {id:'kiss',text:'Szeretném, hogy megcsókolj.',memory:'boglarka_date_kiss',beats:[['narrator','Boglárka közelebb hajol, és röviden megcsókolja az arcodat. Hátrébb húzódva rád néz, nem a könyvére.'],['boglarka','Ezt kevésbé volt nehéz megtenni, mint megkérdezni.','affectionate'],['marton','Jólesett.'],['boglarka','Akkor ezt a részt nem fogom újrafogalmazni.','amused']]},
+  {id:'kiss',text:'Szeretném, hogy megcsókolj.',memory:'boglarka_date_kiss',beats:[
+   ['narrator','Boglárka közelebb hajol, és röviden megcsókolja az arcodat. Hátrébb húzódva rád néz, nem a könyvére.'],
+   ['boglarka','Ezt kevésbé volt nehéz megtenni, mint megkérdezni.','affectionate'],
+   ['marton','Jólesett. A kardigánod meleg. Leveted?'],
+   ['boglarka','Igen. És… szeretném, ha látnád.','vulnerable'],
+   ['narrator','Leveszi a mohazöld kardigánt, aztán lassan a krém ruhát is. Puha, telt mellek, csípő, combok. Figyeli az arcodat, ahogy elpirul.'],
+   ['marton','Gyönyörű vagy. A melleid tökéletesek, ahogy ülnek, a hasad puhasága, a combjaid… minden rólad szép.'],
+   ['narrator','Mélyebben pirul, lábai szétnyílnak. Először te nyalsz, lassú, ujjakkal, ő nyög halkan. Aztán visszaadja, óvatos és alapos. Misszionárius, majd ő van felül; végig dicséred. Többször elélvez. Beleélvez, miközben mondod, milyen jól néz ki, ahogy befogad.'],
+   ['boglarka','Maradj így. A kardigánt félig magamon hagyom. Legközelebb nem hozom a könyvet.','affectionate']
+  ]},
   {id:'slow_touch',text:'A randit szeretném. A csókkal még várnék.',memory:'boglarka_date_slow',beats:[['boglarka','Jó. Akkor maradok ezen az oldalon, és megmutatom a koncertet.'],['marton','Örülök, hogy megkérdezted.'],['boglarka','Én is. Legalább nem kell az egész utat azon töltenem, hogy találgassak.']]}
  ],end:[['boglarka','A következő találkozóra is elhozhatom a könyvet. De már nem kell majd úgy tennem, hogy miatta hívtalak.'],['narrator','Búcsúzáskor Boglárka mondja ki előbb, mikor ér rá újra. Megvárja a válaszodat; nem kínál rögtön kibúvót.']]},
  greta:{intro:[
