@@ -28,9 +28,8 @@ Accepting a quieter stop does not accept touch. Choosing a slow physical pace ea
 - [x] First physical framing pass and optional romantic kisses on the three individual dates.
 - [x] Explicit endings on all three individual dates and all six paid outings.
 - [x] Same-scene choice memory without early global progression.
-- [ ] Expand staging into shared/triad scenes and later relationship meetings; author character-specific hugs and further closeness where appropriate.
-- [ ] Produce and review dedicated physical pose art and additional locations such as a parking lot, covered garden passage or private sitting room before using those locations visually.
-- [ ] Adjustable campaign length: replace coordinated 16-week assumptions with milestone scheduling, budget checks, deadlines and complete route tests. The current campaign remains 16 weeks; changing a single constant is not sufficient.
+
+The remaining work is tracked centrally as **S1–S5** (broader scene coverage, new locations/art, physical staging, ending review and richer callbacks) and **G1–G3** (pacing design, coordinated scheduling and full route/save verification) in the [implementation roadmap](IMPLEMENTATION-ROADMAP.md#remaining-scene-improvements-and-adjustable-campaign-length). These tasks are planned only; the user requested a roadmap update without further implementation. The current campaign remains 16 weeks.
 
 Do not treat being alone as proof of romantic consent or turn privacy into a relationship reward. A private apartment visit should fit the established relationship and include an invitation and an equally valid departure branch. Existing bedroom art should not stand in for an invented living room.
 

@@ -1,6 +1,6 @@
-# Implementation roadmap — versions, CLI and localisation
+# Implementation roadmap — versions, CLI, scenes and localisation
 
-> **Status:** Phases 1–2 implemented; localisation planned. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
+> **Status:** Phases 1–2 implemented; first staged-date pass implemented; remaining scene work, campaign pacing and localisation planned. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
 
 ## Scope and authority
 
@@ -15,6 +15,8 @@ The user explicitly does **not** require backward compatibility. Do not reintrod
 This document is authoritative for these new objectives and supersedes conflicting save-policy guidance. The [redesign plan](../Ligetvar-Redesign-Plan.md) remains authoritative for story canon; [engine reference](../ENGINE.md), [economy](LEISURE-ECONOMY.md) and [character voices](CHARACTER-VOICES.md) define current gameplay. Preserve the separation between generic engine, campaign content and presentation. Do not redesign story or economic balance as part of tooling work.
 
 The outcomes above are user requirements. The phase 1 contract is implemented in [VERSIONING.md](VERSIONING.md), and phase 2 commands are documented in [CLI.md](CLI.md). Phase 3 interfaces below remain proposed defaults. Adjust details when inspection justifies it, record the decision, and preserve the acceptance gates.
+
+The 0.4.0 staged-date work was subsequently prioritized by the user. The remaining scene and campaign-pacing tasks below are backlog only: on 25 October 2026 the user requested documenting the rest, without starting further implementation. Localisation remains in the roadmap; this documentation update does not start or complete any backlog task.
 
 ## Verified starting point
 
@@ -124,6 +126,28 @@ Allow locale selection in browser and CLI. Production must not display raw keys 
 
 **Exit gate:** Both locales cover every active player-facing string, with no unintended language mixing or raw keys. English is playable through all supported routes in browser and CLI; character voices and decision semantics have been reviewed. No historical archived content needs translation.
 
+## Remaining scene improvements and adjustable campaign length
+
+**Baseline:** [0.4.0 / `6d8af8f`](https://github.com/zodnosferato-code/ligetvar/commit/6d8af8f59a78c2b20a369edc4c3256804b18ceda). The stage resolver, same-scene decision checks, three staged individual dates with optional kisses, and goodbyes for those dates plus six paid outings are already implemented. Do not rebuild these foundations. [SCENE-STAGING.md](SCENE-STAGING.md) describes the actual contract. The unchecked tasks below are future work, not claims about current behavior.
+
+### Scene and conversation expansion
+
+- [ ] **S1 — Broader multi-location scenes.** Extend staging to later individual relationship meetings, the shared/triad route and appropriate shared-story scenes. Author arrivals, movement, character entrances/exits and returns explicitly. A walk or change of room remains part of the same activity; preserve the correct cast, background and day/night context on every branch and reload.
+- [ ] **S2 — Additional natural locations and reviewed art.** Plan a small location inventory based on authored needs: park/lakeside path → parking lot for a goodbye; covered garden passage for shelter; a private sitting room or an invited apartment visit once the relationship supports it. These are candidate settings, not existing backgrounds or approved final designs. Add location IDs, matching day/night assets where needed and accurate CLI descriptions only after production and review. Do not reuse bedroom art as a living room or label unrelated scenery as a parking lot.
+- [ ] **S3 — Physical staging beyond portrait scaling.** Add character-specific sitting beside one another, leaning closer, hugs and further affectionate moments where the scene calls for them. Produce suitable reviewed pose/composition artwork for hand-holding, embracing and kissing; existing portraits currently only change framing. Preserve mutual willingness, separate privacy from touch, and keep staying at the current distance or stepping back valid. Carry relevant physical details through movement, or narrate their end explicitly. Check mobile containment and reduced-motion behavior.
+- [ ] **S4 — Ending coverage beyond the first dates.** Review later romantic meetings, shared/triad evenings and newly expanded scenes for a closing moment, a natural departure and a clear return to the planner. Cover accepted invitations, refusals, early departures and any authored interruption. The three first dates and six paid-outing farewells are already done; verify their continuity when extending them rather than treating them as missing.
+- [ ] **S5 — Richer conversational callbacks.** Use existing `localRequires` and pending decisions in additional scenes so later replies reflect the player's earlier topic, pace and destination choices. Add character-specific callbacks and sensible branch reconnections. Keep unconditional alternatives, prevent stale choices, and retain the distinction between local memory and witnessed global decisions/evidence.
+
+**Dependencies and completion gate:** Plan the location/pose inventory (S2/S3) alongside the scene selection (S1); do not block writing in existing settings on unrelated new art. Apply S4/S5 to each expanded scene. Complete a batch only after browser/CLI parity, branch traversal, save/resume, one-slot charging, slow/refusal paths and actual mobile/desktop presentation checks. Record which scenes and art are reviewed; do not mark the whole catalog complete after checking one route.
+
+### Adjustable campaign length
+
+- [ ] **G1 — Define pacing profiles and constraints.** Specify how a shorter/default/longer campaign would change available activity time and story spacing. Exact lengths and player-facing controls remain design decisions; no new duration is chosen by this roadmap. Preserve investigation access without romance, room for required relationship steps, and the confrontation → institutional aftermath → personal aftermath → ending order. Keep the current 16-week campaign as the baseline while designing alternatives.
+- [ ] **G2 — Implement coordinated milestone scheduling.** Replace scattered assumptions in campaign rules, scene windows/deadlines, registry validation, ending evaluation and browser/CLI labels with a single campaign schedule. Calculate optional-slot budgets, relationship opportunities and preparation windows together. A `weeks` setting alone is insufficient. Preserve the engine/content boundary and use the shared schedule in both interfaces.
+- [ ] **G3 — Save policy and complete route verification.** Persist or otherwise unambiguously identify the chosen pacing configuration; assess schema/content epoch changes and show explicit incompatibility notices when necessary. Verify every supported duration through friendship, all three individual romances, the triad, preparation/no-preparation, slow/refusal paths and missed opportunities. Check that required scenes cannot deadlock and optional activities cannot displace the guaranteed story slot. Validate endings and save/resume in both browser and CLI before advertising adjustable length.
+
+**Dependencies:** G1 → G2 → G3. These tasks are unimplemented; the game still lasts 16 weeks. Their ordering relative to the existing English/localisation backlog should be recorded when implementation resumes, not inferred as authorization to start now.
+
 ## Progress tracker and handoff rules
 
 | Milestone | Depends on | Status | Completion commit / evidence |
@@ -132,6 +156,8 @@ Allow locale selection in browser and CLI. Production must not display raw keys 
 | C1–C2: shared CLI gameplay and saves | V1–V4 | Implemented | 0.3.0; shared dispatcher, protocol 1, atomic current-envelope saves |
 | C3: asset descriptions | C1 view contract | Implemented | 33 visually inspected usable manifest images; broken Gréta image replaced by neutral fallback |
 | C4–C6: proofreading, route coverage and CI | C1–C3 | Implemented | 22 CLI tests including six full external-process routes; guide and replay example |
+| S1–S5: expanded staged scenes, physical art, endings and callbacks | 0.4.0 scene foundation; relevant reviewed assets | Planned; not started | Initial three-date implementation remains complete |
+| G1–G3: adjustable campaign length | Pacing design → schedule implementation → route/save verification | Planned; not started | Current campaign remains 16 weeks |
 | L1–L2: locale infrastructure and extraction | C1–C6 | Not started | — |
 | L3–L4: English translation and review | L1–L2 | Not started | — |
 | L5–L6: localisation verification and release | L3–L4 | Not started | — |
@@ -186,8 +212,12 @@ Starting commit: `c631e9d`. The user requested starting the five scene improveme
 
 Release 0.4.0; save schema 4 unchanged; content epoch 2 because date graph IDs and conclusions changed. Prior content saves receive the incompatible-save message. No migration. CLI protocol 1 retains its commands with additive scene staging metadata.
 
-Validation: `npm ci`; `npm test` (61 engine/content and 22 CLI tests, all passing); `npm run typecheck`; `npm run build`. `tools/verify-date-staging.cjs` passed all three individual dates at 320/390/1440px, including destination backgrounds, distance framing, saved reload and one-slot completion. Inspected the resulting 320px Boglárka and 1440px Rebeka screenshots. The check caught and resolved reduced-motion selector specificity; the rerun passed. Existing asset descriptions and portraits are reused; no new pose artwork was generated. GitHub Actions result is to be checked after publication.
+Validation: `npm ci`; `npm test` (61 engine/content and 22 CLI tests, all passing); `npm run typecheck`; `npm run build`. `tools/verify-date-staging.cjs` passed all three individual dates at 320/390/1440px, including destination backgrounds, distance framing, saved reload and one-slot completion. Inspected the resulting 320px Boglárka and 1440px Rebeka screenshots. The check caught and resolved reduced-motion selector specificity; the rerun passed. Existing asset descriptions and portraits are reused; no new pose artwork was generated. Published as `6d8af8f`; [Tests](https://github.com/zodnosferato-code/ligetvar/actions/runs/40193703111) and [GitHub Pages deployment](https://github.com/zodnosferato-code/ligetvar/actions/runs/40193702917) both succeeded.
 
 Next work: broaden staged writing to later relationship/triad scenes, then design configurable milestone scheduling and route budgets before changing the 16-week campaign. Run `npm test` and `node --experimental-strip-types tools/verify-date-staging.cjs` (with configured Playwright/Chromium) to reproduce this checkpoint.
 
 The existing `tools/verify-leisure.cjs` regression flows also passed at 320/390/1440px: both puzzles, gifts/replies, outing charge-once, save/resume, incompatible/corrupt/newer save messages and explicit restart. Updated its stale release assertions to read canonical release metadata. No browser overflow or page errors were reported.
+
+### 25 October 2026 — remaining improvements recorded only
+
+At the user's request, added S1–S5 and G1–G3 to the roadmap with dependencies and completion gates. Linked the staging document to this canonical backlog. No gameplay, artwork, release number or save epoch changed; localisation tasks remain pending. Reviewed the documentation diff and relative link targets. No local gameplay tests were rerun for this documentation-only change; publication Actions are checked separately.
