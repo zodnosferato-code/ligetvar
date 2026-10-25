@@ -20,6 +20,7 @@
 | [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |
 | [Full-body character references](CHARACTER-REFERENCES.md) | Reviewed sheets, heights and proposed clothing details |
 | [Art register](ART-REGISTER.md) | Active assets, art brief, placeholders, and production gates |
+| [Asset agent workflow](ASSET-AGENT-WORKFLOW.md) | Token-efficient binary uploads, one-image commits, checkpoints and recovery |
 | [Character voices](CHARACTER-VOICES.md) | Approved temperaments, speech patterns and writing coverage |
 | [Scene inventory](SCENE-INVENTORY.md) | Generated active scene list, locations, prerequisites, and evidence |
 | [Asset index](../assets/README.md) | Runtime manifest and art locations |
