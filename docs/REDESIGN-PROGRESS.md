@@ -301,3 +301,7 @@ Browser verification: both puzzles, saved progress, gift replies and paid outing
 ## Versioning, CLI and localisation roadmap — 25 October 2026
 
 Added [IMPLEMENTATION-ROADMAP.md](IMPLEMENTATION-ROADMAP.md) with the user-requested dependency order, current-code baseline, task IDs, acceptance gates and handoff template. All new implementation milestones remain not started. This is documentation work only; it does not add a playable CLI, release/save envelope or English localisation. Next task: V1 (release and independent save/content version contract).
+
+## Phase V1–V4 — release and save versioning, 0.2.0
+
+Implemented independent game/schema/content versions, envelope encoding, stable-key discovery and clear incompatible/corrupt/newer-save messages. Historical saves are detected without loading or migration. New-game replacement is explicit. See [VERSIONING.md](VERSIONING.md) and [roadmap execution log](IMPLEMENTATION-ROADMAP.md). Local evidence: 57 tests, typecheck/build, and 320/390/1440px browser flows passed. Next objective is C1, the playable CLI.

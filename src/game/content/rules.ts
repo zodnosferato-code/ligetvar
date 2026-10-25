@@ -1,4 +1,5 @@
 /** Ligetvár's campaign rules. The engine never imports this module. */
+import {RELEASE} from '../release.ts';
 import type {RuntimeRules} from '../engine/types.ts';
 import {clamp} from '../engine/logic.ts';
 import {formatFt} from './format.ts';
@@ -18,8 +19,8 @@ export function evaluateEnding(s:GameState):Ending{
 }
 export const RULES:RuntimeRules<GameState>={
  schedule:{slots:{1:'day',2:'night'},activities:{rest:['day','night'],recycling:['day'],archive:['day']}},
- weeks:16,saveKey:SAVE_KEY,
- initial:name=>({version:3,name:name.trim().slice(0,32)||'Márton Kelényi',week:1,slot:0,phase:'planner',scene:null,minigame:null,money:12000,activityPoints:0,puzzle:null,giftHistory:[],energy:78,exposure:0,
+ weeks:16,saveKey:SAVE_KEY,saveVersions:RELEASE,
+ initial:name=>({name:name.trim().slice(0,32)||'Márton Kelényi',week:1,slot:0,phase:'planner',scene:null,minigame:null,money:12000,activityPoints:0,puzzle:null,giftHistory:[],energy:78,exposure:0,
   bonds:{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0},direction:'friendship',decisions:{},evidence:{},completed:{},preparation:[],disclosure:'limited',inventory:{},giftsWeek:[],journal:[],confrontation:null,institution:null,lastNote:'Minden héten egy közös alkalom, egy nappali és egy éjszakai tevékenység.'}),
  economy:{sharedEnergy:4,sceneEnergy:-8,weeklyEnergy:24,weeklyMoney:3000,restEnergy:32,gifts:GIFTS,jobs:{recycling:{energy:12,maxPay:20000},archive:{energy:12,maxPay:20000}}},
  notes:{initial:'Minden héten egy közös alkalom, egy nappali és egy éjszakai tevékenység.',newWeek:'Új hét. A még határidőn belüli alkalmak pótolhatók.',rest:'Nyugodt pihenés. A pihenő nem helyettesít személyes döntést.',purchase:'A tárgy nem helyettesít személyes döntést.',job:pay=>'Opcionális munka: '+formatFt(pay)+'. Sem találkozó, sem vásárlás nem függ műszaktól.'},

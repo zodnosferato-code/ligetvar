@@ -22,7 +22,7 @@ A heti tervezőben a nappali iroda és az éjszakai hálószoba tárgyait haszn�
 
 A [nyugodt, lépésszámos munkajátékok](docs/LEISURE-ECONOMY.md) 8 000–20 000 Ft-ot és 3–6 programpontot adnak egy nappali sávért. A pontokat hat új, személyes történetre költheted a telefonon. A polcon hatféle ajándékból választhatsz, saját üzenettel és távoli kézbesítéssel vagy rövid személyes átadással; a nők eltérő válaszai megmaradnak a telefonon. Új játékban 12 000 Ft-ról indulsz, a heti szabadon elkölthető keret 3 000 Ft.
 
-A játék a jelenlegi v3 mentésformátumot használja. Korábbi mentések importja és visszafelé kompatibilitás nincs; új játékot kell kezdeni.
+A játék verziója a címoldalon látható. A [verziózott mentések](docs/VERSIONING.md) külön formátum- és történetverziót tartalmaznak; nem kompatibilis frissítés után egyértelmű üzenet jelzi, hogy új félév szükséges. Nincs régi mentésimport vagy migráció.
 
 A dokumentumok áttekintése: [dokumentációs index](docs/README.md). Fejlesztéshez először [AGENT.md](AGENT.md), [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), [ENGINE.md](ENGINE.md). Az aktuális ellenőrzések és hátralévő munka a [haladási naplóban](docs/REDESIGN-PROGRESS.md), a vizuális hiányok az [art registerben](docs/ART-REGISTER.md) találhatók. A régi számozott tervek a [dokumentációs archívumban](docs/archive/legacy-design/) vannak. A korábbi, nem aktív képi referenciák és a régi képlog az [assets/archive/](assets/archive/) mappában maradtak meg; a játék kizárólag a `src/game/content/assets.ts` manifestből használ képeket. A régi dialógus- és lokalizációs állományok a [történeti dialógusarchívumban](docs/archive/legacy-narrative/README.md) találhatók, nem aktív tartalom. A jóváhagyott [karakterhangok](docs/CHARACTER-VOICES.md) vezetik a további írói munkát.
 
@@ -45,4 +45,4 @@ Venice production is paused following the user's report of exhausted credits. Ne
 
 ## Next implementation objectives
 
-The [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) tracks versioned releases and save incompatibility notices, then a playable CLI for agent testers and proofreaders with visual descriptions, followed by localisation and complete English text. These are planned features; `test:headless` currently runs tests, not playable CLI sessions.
+The [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) tracks versioned releases and save incompatibility notices, then a playable CLI for agent testers and proofreaders with visual descriptions, followed by localisation and complete English text. Versioning and incompatible-save messages are implemented in 0.2.0; CLI and localisation remain planned. `test:headless` currently runs tests, not playable CLI sessions.

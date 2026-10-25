@@ -5,7 +5,7 @@ import {SCENES,EVIDENCE} from './catalog.ts';
 import {BACKGROUNDS,BACKGROUND_VARIANTS,backgroundFor,portraitFor} from './assets.ts';
 import {validateRegistry} from './validate.ts';
 import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,finishPuzzle,movePuzzle,nextPair,setDirection} from './runtime.ts';
-import {decodeSave,persist} from './saves.ts';
+import {encodeSave,decodeSave,persist} from './saves.ts';
 import {SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
 function finishArchive(s:GameState){
  for(let v=0;v<8;v++){const pair=s.puzzle!.board.flatMap((value,i)=>value===v?[i]:[]);s=movePuzzle(s,pair[0]);s=movePuzzle(s,pair[1]);if(v<7)s=nextPair(s);}
@@ -36,7 +36,7 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
   const known=structuredClone(s.evidence);s=openScene(s,'shared_'+week,SCENES);
   for(let line=0;s.phase==='scene'&&line<50;line++){
    assert.deepEqual(s.evidence,known,'No knowledge before witnessed completion');
-   const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok','save before '+s.scene?.id+'/'+s.scene?.line);
+   const restored=decodeSave(encodeSave(s),SCENES);assert.equal(restored.status,'ok','save before '+s.scene?.id+'/'+s.scene?.line);
    if(restored.status==='ok')s=restored.state;
    s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
   }
@@ -55,12 +55,12 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
    assert.equal(s.slot,prior+1);slots++;minEnergy=Math.min(minEnergy,s.energy);assertKnowledge(s);
   }
   while(s.phase==='planner')s=activity(s,'rest');
-  assert.equal(s.phase,'summary');assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');s=nextWeek(s,SCENES);
+  assert.equal(s.phase,'summary');assert.equal(decodeSave(encodeSave(s),SCENES).status,'ok');s=nextWeek(s,SCENES);
  }
  assert.equal(s.phase,'ending');assert.equal(s.week,16);assertKnowledge(s);
  assert.equal(Object.keys(s.evidence).length,Object.keys(EVIDENCE).length);
  assert.equal(Object.keys(s.completed).filter(id=>SCENES[id].kind==='shared').length,16);
- assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');return {state:s,slots,minEnergy};
+ assert.equal(decodeSave(encodeSave(s),SCENES).status,'ok');return {state:s,slots,minEnergy};
 }
 test('authoritative registry resolves every Hungarian line, asset and prerequisite',()=>{
  validateRegistry(SCENES,EVIDENCE,new Set(Object.keys(BACKGROUNDS)));
@@ -146,7 +146,7 @@ test('synthetic scheduler exercises 16 required slots and atomic continuations b
  for(let w=1;w<=16;w++){
   assert.equal(s.week,w);assert.equal(activity(s,'rest'),s);assert.equal(nextWeek(s,r),s);
   s=openScene(s,'shared_'+w,r);s=applyChoice(s,'yes',r);assert.equal(s.slot,0);assert.equal(s.decisions['witness_'+w],undefined);
-  assert.equal(decodeSave(JSON.stringify(s),r).status,'ok');s=applyChoice(s,'continue',r);assert.equal(s.slot,1);assert.ok(s.decisions['witness_'+w]);
+  assert.equal(decodeSave(encodeSave(s),r).status,'ok');s=applyChoice(s,'continue',r);assert.equal(s.slot,1);assert.ok(s.decisions['witness_'+w]);
   s=nextWeek(activity(activity(s,'rest'),'rest'),r);
  }
  assert.equal(s.phase,'ending');assert.equal(s.confrontation,'exhausting');assert.equal(evaluateEnding(s).relationship,'friendship');
@@ -159,8 +159,8 @@ test('targeted immutable effects do not change the previous speaker bond',()=>{
 test('current saves round-trip and unsupported versions are rejected',()=>{
  const data=new Map<string,string>(),storage={getItem:(k:string)=>data.get(k)??null,setItem:(k:string,v:string)=>{data.set(k,v);}};
  const s=createInitial('Új név');assert.equal(persist(storage,s),true);
- for(const version of [1,2])assert.equal(decodeSave(JSON.stringify({...s,version}),SCENES).status,'unsupported');
- assert.deepEqual(decodeSave(data.get(SAVE_KEY)!,SCENES),{status:'ok',state:s});
+ for(const version of [1,2])assert.equal(decodeSave(JSON.stringify({version}),SCENES).status,'unsupported');
+ const loaded=decodeSave(data.get(SAVE_KEY)!,SCENES);assert.equal(loaded.status,'ok');if(loaded.status==='ok')assert.deepEqual(loaded.state,s);
  for(const raw of ['{','null','{}','{"version":999}',JSON.stringify({...s,bonds:null}),JSON.stringify({...s,phase:'ending'})])assert.notEqual(decodeSave(raw,SCENES).status,'ok');
 });
 test('registry rejects unresolved references, over-four choices and both cycle types',()=>{
@@ -206,8 +206,8 @@ test('institutional suppression is independent of romance and never preserves th
  assert.equal(evaluateEnding(s).institution,'suppressed');assert.equal(evaluateEnding(s).threat,'resolved');
 });
 test('damaged saves cannot omit required evidence or contain forged pending effects',()=>{
- let s=complete(createInitial(''),'shared_1');const n=structuredClone(s);delete n.evidence.grounding;assert.equal(decodeSave(JSON.stringify(n),SCENES).status,'invalid');
- s=openScene(s,'rebeka_1',SCENES);s.scene!.pending=[{decisions:['invented_commit']}];assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'invalid');
+ let s=complete(createInitial(''),'shared_1');const n=structuredClone(s);delete n.evidence.grounding;assert.equal(decodeSave(encodeSave(n),SCENES).status,'invalid');
+ s=openScene(s,'rebeka_1',SCENES);s.scene!.pending=[{decisions:['invented_commit']}];assert.equal(decodeSave(encodeSave(s),SCENES).status,'invalid');
 });
 test('mandatory scenes remain reachable at zero energy and money',()=>{
  let s=createInitial('');s.energy=0;s.money=0;
@@ -234,7 +234,7 @@ function traverseBranches(s:GameState,id:string){
  const visit=(state:GameState,depth=0)=>{
   assert.ok(depth<100,'Finite dialogue: '+id);
   if(state.phase!=='scene'){endings++;assert.equal(state.slot,start.slot+1);return;}
-  visited.add(state.scene!.line);assert.equal(decodeSave(JSON.stringify(state),SCENES).status,'ok',id+'/'+state.scene!.line);
+  visited.add(state.scene!.line);assert.equal(decodeSave(encodeSave(state),SCENES).status,'ok',id+'/'+state.scene!.line);
   const line=currentLine(state,SCENES)!;
   for(const choice of line.choices?.map(c=>c.id)??['continue']){
    const next=applyChoice(state,choice,SCENES);
@@ -262,7 +262,7 @@ test('context conversations branch without granting romance and cannot be replay
   assert.ok(result.endings>=2,x.id);const next=complete(s,x.id);
   assert.equal(openScene(next,x.id,SCENES),next);assert.deepEqual(next.bonds,s.bonds);
   assert.equal(Object.keys(next.decisions).some(k=>/_commit|_repair|_yes|_invitation/.test(k)),false);
-  assert.equal(decodeSave(JSON.stringify(next),SCENES).status,'ok');
+  assert.equal(decodeSave(encodeSave(next),SCENES).status,'ok');
  }
 });
 test('middle conversations only recall topics that the player actually witnessed',()=>{
@@ -274,7 +274,7 @@ test('middle conversations only recall topics that the player actually witnessed
   const withMemory=witnessedWeek(8,'coffee_'+girl+'_early');
   const paths=traverseBranches(withMemory,id);assert.equal(paths.visited.size,SCENES[id].lines.length);
   s=openScene(withMemory,id,SCENES);while(currentLine(s,SCENES)?.id!=='topics')s=applyChoice(s,'continue',SCENES);
-  const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok');
+  const restored=decodeSave(encodeSave(s),SCENES);assert.equal(restored.status,'ok');
   if(restored.status==='ok'){assert.ok(currentLine(restored.state,SCENES)!.choices!.some(c=>c.id==='callback'));assert.notEqual(applyChoice(restored.state,'callback',SCENES),restored.state);}
  }
 });
@@ -298,7 +298,7 @@ test('fixed day/night periods gate reducer actions and advance only on completio
  assert.equal(currentPeriod(s),'night');assert.equal(s.slot,2);
  for(const kind of ['recycling','archive'] as const){assert.equal(activityAvailable(s,kind),false);assert.equal(activity(s,kind),s);}
  assert.equal(sceneLighting(s,SCENES.coffee_rebeka_early),'night');
- const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok');
+ const restored=decodeSave(encodeSave(s),SCENES);assert.equal(restored.status,'ok');
  if(restored.status==='ok')assert.equal(currentPeriod(restored.state),'night');
  s=activity(s,'rest');assert.equal(s.phase,'summary');assert.equal(currentPeriod(s),null);
  assert.equal(activity(s,'rest'),s);s=nextWeek(s,SCENES);assert.equal(s.slot,0);assert.equal(s.week,2);
@@ -320,7 +320,7 @@ test('jobs cannot run or claim rewards outside daytime',()=>{
  const day=complete(createInitial(''),'shared_1'),job=activity(day,'archive');
  assert.equal(job.phase,'minigame');assert.equal(currentPeriod(job),'day');
  assert.equal(finishPuzzle(job),job);
- const night={...job,slot:2 as const};assert.equal(decodeSave(JSON.stringify(night),SCENES).status,'invalid');
+ const night={...job,slot:2 as const};assert.equal(decodeSave(encodeSave(night),SCENES).status,'invalid');
  const done=finishArchive(night);assert.equal(done.phase,'minigame');assert.equal(done.money,night.money);
  assert.equal(activity({...night,phase:'planner',minigame:null},'archive').phase,'planner');
 });

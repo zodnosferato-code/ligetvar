@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {SCENES} from './catalog.ts';
 import {activity,applyChoice,availableScenes,buyGift,createInitial,currentLine,finishPuzzle,giveGift,movePuzzle,nextPair,nextWeek,openScene} from './runtime.ts';
 import {legalSwap,matches,newPuzzle,puzzleDone,puzzleMove,puzzleReward,validPuzzle} from './puzzles.ts';
-import {decodeSave} from './saves.ts';
+import {encodeSave,decodeSave} from './saves.ts';
 import {GIRLS,type GameState} from './types.ts';
 function complete(s:GameState,id:string){s=openScene(s,id,SCENES);assert.equal(s.scene?.id,id);let limit=100;while(s.phase==='scene'&&limit--){const l=currentLine(s,SCENES)!;s=applyChoice(s,l.choices?.[0].id??'continue',SCENES);}assert.ok(limit>0);return s;}
 function restWeek(s:GameState){while(s.phase==='planner')s=activity(s,'rest');return nextWeek(s,SCENES);}
@@ -27,13 +27,13 @@ test('memory pairs stay visible until acknowledged; double taps and third-card p
 test('reward claims require completion and pay once, using exactly one daytime slot',()=>{
  const start=complete(createInitial(''),'shared_1'),active=activity(start,'archive');assert.equal(finishPuzzle(active),active);
  const solved=solvedJob(start),paid=finishPuzzle(solved);assert.equal(paid.money,start.money+20000);assert.equal(paid.activityPoints,6);assert.equal(paid.energy,start.energy-12);assert.equal(paid.slot,2);assert.equal(paid.puzzle,null);assert.equal(finishPuzzle(paid),paid);assert.equal(activity(paid,'archive'),paid);
- assert.equal(decodeSave(JSON.stringify(paid),SCENES).status,'ok');
+ assert.equal(decodeSave(encodeSave(paid),SCENES).status,'ok');
 });
 test('puzzle state survives every move and a half-revealed pair survives reload',()=>{
  let s=activity(complete(createInitial(''),'shared_1'),'archive');
  for(let v=0;v<8;v++){
   const pair=s.puzzle!.board.flatMap((x,i)=>x===v?[i]:[]);
-  for(const i of pair){s=movePuzzle(s,i);const decoded=decodeSave(JSON.stringify(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok')assert.deepEqual(decoded.state,s);}
+  for(const i of pair){s=movePuzzle(s,i);const decoded=decodeSave(encodeSave(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok')assert.deepEqual(decoded.state,s);}
   if(v<7)s=nextPair(s);
  }
  assert.ok(puzzleDone(s.puzzle!));
@@ -47,11 +47,11 @@ test('all six optional outings are affordable with jobs, charge once and record 
   assert.equal(openScene({...s,activityPoints:3},id,SCENES).phase,'planner');assert.equal(openScene({...s,money:0},id,SCENES).phase,'planner');
   s=openScene(s,id,SCENES);assert.equal(s.money,original.money-4000);assert.equal(s.activityPoints,2);assert.equal(openScene(s,id,SCENES),s);
   while(s.phase==='scene'){
-   const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok');const line=currentLine(s,SCENES)!;s=applyChoice(s,line.choices?.[0].id??'continue',SCENES);
+   const restored=decodeSave(encodeSave(s),SCENES);assert.equal(restored.status,'ok');const line=currentLine(s,SCENES)!;s=applyChoice(s,line.choices?.[0].id??'continue',SCENES);
   }
   assert.equal(s.activityPoints,2);assert.equal(s.slot,original.slot+1);assert.equal(openScene(s,id,SCENES),s);
   s=restWeek(s);s=complete(s,'shared_3');s=finishPuzzle(solvedJob(s));s=complete(s,'outing_'+girl+'_2');
-  assert.ok(s.decisions['keepsake_'+girl]);assert.equal(s.activityPoints,2);assert.equal(s.decisions[girl+'_commit'],undefined);assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');
+  assert.ok(s.decisions['keepsake_'+girl]);assert.equal(s.activityPoints,2);assert.equal(s.decisions[girl+'_commit'],undefined);assert.equal(decodeSave(encodeSave(s),SCENES).status,'ok');
  }
 });
 test('optional outings are visible only with their witnessed prerequisites and sufficient funds',()=>{
@@ -63,7 +63,7 @@ test('personal delivery keeps distinct visible replies, consumes one gift and en
  for(const [girl,gift] of [['rebeka','photo'],['boglarka','tea'],['greta','notes']] as const){
   s=buyGift(s,gift);const before=s;s=giveGift(s,girl,gift,'thanks','remote');assert.equal(s.slot,before.slot);assert.equal(s.inventory[gift],0);assert.equal(s.bonds[`marton_${girl}`],2);assert.equal(s.giftHistory!.at(-1)!.read,false);assert.equal(giveGift(s,girl,gift),s);
  }
- assert.equal(new Set(s.giftHistory!.map(h=>h.reaction)).size,3);assert.deepEqual(s.decisions,{});assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');
+ assert.equal(new Set(s.giftHistory!.map(h=>h.reaction)).size,3);assert.deepEqual(s.decisions,{});assert.equal(decodeSave(encodeSave(s),SCENES).status,'ok');
  s=restWeek(s);s=complete(s,'shared_2');s=buyGift(s,'photo');s=giveGift(s,'rebeka','photo');assert.equal(s.bonds.marton_rebeka,2);assert.equal(s.giftHistory!.at(-1)!.bonus,0);
  s=buyGift(s,'thermos');s=giveGift(s,'boglarka','thermos');assert.equal(s.bonds.marton_boglarka,2);assert.match(s.giftHistory!.at(-1)!.reaction,/ritkábban/);
 });
@@ -73,10 +73,10 @@ test('invalid recipients, delivery modes and gifts cannot spend inventory; share
 });
 test('current saves require points, puzzle and gift history fields',()=>{
  const s=complete(createInitial(''),'shared_1');
- for(const key of ['activityPoints','puzzle','giftHistory']){const broken:Record<string,unknown>={...s};delete broken[key];assert.equal(decodeSave(JSON.stringify(broken),SCENES).status,'invalid',key);}
- for(const activityPoints of [-1,1.5,'9'])assert.equal(decodeSave(JSON.stringify({...s,activityPoints}),SCENES).status,'invalid');
- assert.equal(decodeSave(JSON.stringify({...s,phase:'minigame',minigame:'recycling',puzzle:null}),SCENES).status,'invalid');
- assert.equal(decodeSave(JSON.stringify({...s,giftHistory:[{girl:'soma'}]}),SCENES).status,'invalid');
+ for(const key of ['activityPoints','puzzle','giftHistory']){const broken:Record<string,unknown>={...s};delete broken[key];assert.equal(decodeSave(JSON.stringify({...JSON.parse(encodeSave(s)),state:broken}),SCENES).status,'invalid',key);}
+ for(const activityPoints of [-1,1.5,'9'])assert.equal(decodeSave(JSON.stringify({...JSON.parse(encodeSave(s)),state:{...s,activityPoints}}),SCENES).status,'invalid');
+ assert.equal(decodeSave(encodeSave({...s,phase:'minigame',minigame:'recycling',puzzle:null}),SCENES).status,'invalid');
+ assert.equal(decodeSave(JSON.stringify({...JSON.parse(encodeSave(s)),state:{...s,giftHistory:[{girl:'soma'}]}}),SCENES).status,'invalid');
 });
 
 test('recycling swaps save selection, reject row wrapping and resolve cascades deterministically',()=>{
@@ -85,5 +85,5 @@ test('recycling swaps save selection, reject row wrapping and resolve cascades d
  const n=puzzleMove(selected,b);assert.equal(n.moves,1);assert.ok(n.score>=30);assert.deepEqual(n,puzzleMove(selected,b));assert.equal(matches(n.board).length,0);assert.ok(legalSwap(n.board).length);
  const wrap=puzzleMove(puzzleMove(p,4),5);assert.equal(wrap.moves,0);assert.deepEqual(wrap.board,p.board);assert.deepEqual(wrap.selected,[5]);
  const same=puzzleMove(selected,a);assert.equal(same.moves,0);assert.deepEqual(same.selected,[]);
- let s=activity(complete(createInitial(''),'shared_1'),'recycling');s=movePuzzle(s,a);const decoded=decodeSave(JSON.stringify(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok')assert.deepEqual(decoded.state.puzzle,s.puzzle);
+ let s=activity(complete(createInitial(''),'shared_1'),'recycling');s=movePuzzle(s,a);const decoded=decodeSave(encodeSave(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok')assert.deepEqual(decoded.state.puzzle,s.puzzle);
 });

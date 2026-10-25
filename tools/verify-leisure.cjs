@@ -6,7 +6,7 @@ const root=path.resolve('dist'),mime={'.html':'text/html','.js':'text/javascript
 const server=http.createServer((req,res)=>{const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/ligetvar\//,'');const file=path.resolve(root,relative||'index.html');if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(err,data)=>{if(err)res.writeHead(404).end();else res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'}).end(data);});});
 let browser,currentPage;
 (async()=>{
- const R=await import('../src/game/content/runtime.ts'),{SCENES}=await import('../src/game/content/catalog.ts'),{legalSwap,puzzleDone}=await import('../src/game/content/puzzles.ts');
+ const R=await import('../src/game/content/runtime.ts'),{SCENES}=await import('../src/game/content/catalog.ts'),{encodeSave}=await import('../src/game/content/saves.ts'),{legalSwap,puzzleDone}=await import('../src/game/content/puzzles.ts');
  const finish=(s,id)=>{s=R.openScene(s,id,SCENES);while(s.phase==='scene'){const l=R.currentLine(s,SCENES);s=R.applyChoice(s,l.choices?.[0].id??'continue',SCENES);}return s;};
  const initial=finish(R.createInitial('Mobil próba'),'shared_1');
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port+'/ligetvar/';
@@ -15,9 +15,31 @@ let browser,currentPage;
   browser=await launch();
   const page=await browser.newPage({viewport:{width,height:width<500?844:1000},hasTouch:width<500}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   currentPage=page;
-  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v3')));
-  const seed=async s=>{await page.goto(url);await page.evaluate(s=>localStorage.setItem('ligetvar-save-v3',JSON.stringify(s)),s);await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();};
+  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save')).state);
+  const seed=async s=>{await page.goto(url);await page.evaluate(raw=>localStorage.setItem('ligetvar-save',raw),encodeSave(s));await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();};
   const overflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'overflow at '+width);
+  // Versioning: old saves are visible, failed loads never replace them, and restarting is explicit.
+  await page.goto(url);
+  await page.evaluate(()=>{localStorage.clear();localStorage.setItem('ligetvar-save-v3','{"version":3,"name":"Old"}');});
+  await page.reload();await page.getByText(/Ligetvár 0\.2\.0/).waitFor();
+  await page.getByRole('alert').filter({hasText:'már nem használható'}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'Félév folytatása',exact:true}).isDisabled(),true);
+  await overflow();await page.screenshot({path:path.join(output,`save-incompatible-${width}.png`),fullPage:true});
+  await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
+  assert.equal(await page.evaluate(()=>localStorage.getItem('ligetvar-save')),null);
+  await page.getByRole('button',{name:'Mégsem',exact:true}).click();
+  assert.equal(await page.evaluate(()=>localStorage.getItem('ligetvar-save')),null);
+  await page.getByRole('button',{name:'Új félév indítása',exact:true}).click();
+  await page.getByRole('button',{name:'Igen, új félévet kezdek',exact:true}).click();
+  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save')));
+  assert.equal(saved.gameVersion,'0.2.0');assert.equal(saved.saveSchemaVersion,4);assert.equal(saved.contentCompatibilityVersion,1);
+  assert.equal(await page.evaluate(()=>localStorage.getItem('ligetvar-save-v3')),'{"version":3,"name":"Old"}');
+  for(const [raw,message] of [['{','sérült vagy hiányos'],[JSON.stringify({...saved,contentCompatibilityVersion:99}),'újabb, nem támogatott']]){
+   await page.evaluate(raw=>localStorage.setItem('ligetvar-save',raw),raw);await page.reload();
+   await page.getByRole('alert').filter({hasText:message}).waitFor();
+   assert.equal(await page.getByRole('button',{name:'Félév folytatása',exact:true}).isDisabled(),true);
+   assert.equal(await page.evaluate(()=>localStorage.getItem('ligetvar-save')),raw);
+  }
   for(const kind of ['recycling','archive']){
    await seed(initial);await page.locator('.spot-bag').click();await page.getByRole('button',{name:new RegExp(kind==='recycling'?'Újrahasznosítás':'Archívumpárok')}).click();
    const tiles=page.locator('.puzzle-tile');await tiles.first().waitFor();
@@ -43,6 +65,6 @@ let browser,currentPage;
   await page.getByRole('button',{name:/Rebeka · A vállalhatatlan képek estéje/}).click();assert.equal((await state()).activityPoints,2);assert.equal((await state()).money,s.money-4000);
   await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).activityPoints,2);
   while((await state()).phase==='scene')await page.locator('.choices button').first().click();assert.equal((await state()).slot,2);await overflow();assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({width,puzzles:'both complete',saveResume:'pass',gifts:'reply and history',outing:'charged once',overflow:false,errors:0}));await page.close();await browser.close();
+  console.log(JSON.stringify({width,puzzles:'both complete',saveResume:'pass',versioning:'incompatible/corrupt/newer notices and explicit restart',gifts:'reply and history',outing:'charged once',overflow:false,errors:0}));await page.close();await browser.close();
  }
 })().catch(async e=>{console.error(e);if(currentPage&&!currentPage.isClosed())await currentPage.screenshot({path:path.join(output,'failure.png'),fullPage:true}).catch(()=>{});process.exitCode=1;}).finally(async()=>{await browser?.close();server.close();});

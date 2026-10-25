@@ -8,7 +8,7 @@ export type BondId='marton_rebeka'|'marton_boglarka'|'marton_greta'|'rebeka_bogl
 export type RouteId='friendship'|GirlId|'triad';
 export type LocationId='classroom'|'library'|'department'|'holdkor'|'courtyard'|'apartment'|'bekas'|'chamber';
 export type Expression='neutral'|'amused'|'displeased'|'vulnerable'|'affectionate';
-export const SAVE_KEY='ligetvar-save-v3';
+export const SAVE_KEY='ligetvar-save';
 export interface Requirements { scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:RouteId[]; anyOf?:Requirements[] }
 export interface Effect { bonds?:Partial<Record<BondId,number>>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:RouteId; disclosure?:'public'|'limited'|'private' }
 export interface Choice { requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
@@ -32,7 +32,7 @@ export interface Ending {
 }
 export interface GameState extends CoreState {
  puzzle:PuzzleState|null; giftHistory:GiftReceipt[];
- version:3; name:string; week:number; slot:0|1|2|3; phase:'planner'|'scene'|'summary'|'ending'|'minigame';
+ name:string; week:number; slot:0|1|2|3; phase:'planner'|'scene'|'summary'|'ending'|'minigame';
  scene:SceneCursor|null; minigame:'recycling'|'archive'|null; money:number; energy:number; exposure:number;
  bonds:Record<BondId,number>; direction:RouteId; decisions:Record<string,WitnessedDecision>;
  evidence:Record<string,WitnessedDecision>; completed:Record<string,number>; preparation:string[];

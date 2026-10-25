@@ -4,13 +4,13 @@
 
 | Réteg | Aktív forrás | Szerep |
 | --- | --- | --- |
-| Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, kötelező jelenlegi v3 mezőkkel |
+| Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, kötelező jelenlegi állapotmezőkkel |
 | Motor | `src/game/engine/logic.ts` | általános reducerek, sávok, előfeltételek, célzott hatások; történeti azonosítók nélkül |
 | Kampányszabályok | `src/game/content/rules.ts`, `runtime.ts` | kezdeti állapot, 16 hét, gazdaság, kapcsolati irányok, konfrontáció, intézmény és végértékelés |
 | Történet | `src/game/content/catalog.ts` | 60 magyar jelenet; külön TypeScript modulokból összeállított egyetlen regiszter |
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
 | Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
-| Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v3 kulcs; Zustand/localStorage integráció |
+| Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és stabil mentési kulcs; Zustand/localStorage integráció |
 | UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; tárgyakkal vezérelt iroda/saját szoba tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
 
@@ -88,7 +88,7 @@ Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egye
 
 ## Mentési határ
 
-- Kulcs: `ligetvar-save-v3`, `version: 3`. Csak a teljes, jelenlegi séma támogatott.
+- Stabil kulcs: `ligetvar-save`; verziózott boríték és kötelező teljes állapot. A játék kiadási száma és a mentés formátum-/történetverziója külön mező. Részletes szerződés és kiadási szabályok: [VERSIONING.md](docs/VERSIONING.md).
 - Korábbi verzióknál új játék szükséges. Nincs névimport, migráció vagy kompatibilitási útvonal.
 - Ismeretlen verzió, hibás JSON, hiányos állapot, ismeretlen jelenet/kurzor, hamis bizonyítékforrás vagy érvénytelen folyamathatás nem tölthető be. Sikertelen folytatás nem írja felül a mentést új játékkal.
 - Jelenet közben is menthető és folytatható. A mentés a kurzort és a még nem tanúsított hatásokat is őrzi.
