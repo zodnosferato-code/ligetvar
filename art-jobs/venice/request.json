@@ -1,14 +1,10 @@
 {
-  "id": "2026-10-21-locations-02",
-  "phase": "backgrounds",
+  "id": "2026-10-25-explicit-rebeka-01",
+  "phase": "explicit",
   "assets": [
-    "department",
-    "holdkor",
-    "courtyard",
-    "apartment",
-    "bekas"
+    "explicit_rebeka_oral_kneeling"
   ],
-  "maxNewImages": 5,
+  "maxNewImages": 1,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
