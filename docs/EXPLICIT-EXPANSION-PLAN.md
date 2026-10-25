@@ -57,3 +57,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 
 - virag_1 private encounter expanded in virag.ts (oral + wall sex + witty line). Scenes already imported in catalog.ts; portraits + wink already reviewed and used by engine.
 - Two generate assets added: explicit_virag_oral, explicit_virag_wall. request.json = 2026-10-25-explicit-virag-01.
+
+- Virág explicit assets switched to edit + full-body reference (assets/references/virag/full-body-v1.webp). Generate script allowlist expanded to permit assets/references and assets/characters as repo: refs.

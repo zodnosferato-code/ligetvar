@@ -26,7 +26,7 @@ if(manifest.runs.some(r=>r.failure?.includes('/image/background-remove failed: H
 async function checkpoint(){const path=join(ROOT,'manifest.json');await writeFile(path+'.tmp',JSON.stringify(manifest,null,2)+'\n');await rename(path+'.tmp',path);}
 async function reference(ref){
  const path=ref.startsWith('repo:')?resolve(ref.slice(5)):resolve(ROOT,ASSETS.find(a=>a.id===ref)?.file??'missing');
- if(ref.startsWith('repo:')&&!path.startsWith(resolve('assets/backgrounds')+'/'))throw new Error('Repository reference must be a background image');
+ if(ref.startsWith('repo:')&&!path.startsWith(resolve('assets/backgrounds')+'/')&&!path.startsWith(resolve('assets/references')+'/')&&!path.startsWith(resolve('assets/characters')+'/'))throw new Error('Repository reference must be a background, reference or character image');
  if(!ref.startsWith('repo:')&&!path.startsWith(ROOT+'/'))throw new Error('Invalid generated reference path');
  const bytes=await readFile(path);if(bytes.length>=25*1024*1024)throw new Error('Reference exceeds Venice input size');
  return {id:ref,sha256:digest(bytes),base64:bytes.toString('base64')};
