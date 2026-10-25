@@ -76,3 +76,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - Consent language revised (2026-10-25): stage-3 closeness prompts and Virág private_offer rewritten from formal asks to heat/subtle desire. Choice IDs and decision keys preserved.
 
 - Consent language continued (2026-10-25): remaining formal permission asks in intimate beats rewritten in triad_4 (Rebeka/Boglárka hand/kiss), romance.ts rebeka_date_hand choice, virag.ts kiss line, and relationships.ts invitation texts. Choice IDs, scene structure, and slower paths preserved. Heat shown via short decisive speech and action.
+
+- Stage 6 private continuations densified (2026-10-25): rebeka/boglarka/greta short private beats expanded to match stage-3 heat density (strip, oral, sex, voice-specific aftercare). Choice IDs and structure preserved.

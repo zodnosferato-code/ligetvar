@@ -185,10 +185,10 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
   after(s,'line_0','romance_after',p.after);
   // short private continuation — append after the last beat of the previous after() chain
   const cont:Beat[] = girl==='rebeka'
-    ? [['narrator','A beszélgetés után Rebeka lehúzza a pulóvert. Térdre ereszkedik, szájával rajtad, majd feláll és lovagol. Utána a sebét megmutatja, te megcsókolod.'],['rebeka','Ez maradjon köztünk.','affectionate']]
+    ? [['narrator','A beszélgetés után Rebeka lehúzza a pulóvert. Közelebb húz, csókja mély és éhes. Térdre ereszkedik anélkül, hogy kérnéd: szájával rajtad, lassú majd mély, szemével felnéz. Amikor feláll, a ruhája már a bokájánál van; a heg a hasán nyitva. Lovagol rajtad, te diktálod a tempót. Beleélvez; ott marad, zihálva.'],['rebeka','Ez maradjon köztünk. Maradj, amíg a fény visszajön.','affectionate']]
     : girl==='boglarka'
-    ? [['narrator','Boglárka leveszi a kardigánt. Lassan vetkőzik; te nyalod, ő visszaadja. Lovagol, folyamatos dicsérettel. Utána a kardigán félig rajta marad.'],['boglarka','Jó volt. Maradj még.','affectionate']]
-    : [['narrator','Gréta a mellényt a székre dobja. Asztalra hajol, szoknya fel. Orál, aztán hajolva, könnyű ütésekkel. „Ne írd bele.”'],['greta','A telefon marad a táskában.','amused']];
+    ? [['narrator','Boglárka leveszi a kardigánt, aztán lassan a ruhát is. Figyeli az arcodat, ahogy elpirul. Először te nyalsz, lassú és alapos; ő nyög halkan, aztán visszaadja, óvatos és pontos. Lovagol, te végig dicséred a melleit, a hasát, a combjait. Többször elélvez. Beleélvez, miközben mondod, milyen jól néz ki. A kardigán félig rajta marad.'],['boglarka','Jó volt. Maradj még. Legközelebb nem hozom a könyvet.','affectionate']]
+    : [['narrator','Gréta a mellényt a székre dobja, az inget kigombolja. Szoknya fel, már nedves. Az asztalnál térdre ereszkedik, szájával rajtad, szemével felnéz. Aztán az asztalra hajol, kezei a háta mögött. Könnyű ütések a fenekén; csak nyög és „igen”. Beléd hatolsz, bent maradsz. Utána egy percig az asztalon marad, aztán egyszer röviden felnevet.'],['greta','Ne tedd bele a jegyzőkönyvbe. A telefon marad a táskában.','amused']];
   const lastAfter = 'romance_after_' + (p.after.length - 1);
   after(s, lastAfter, 'romance_private_cont', cont);
  }
