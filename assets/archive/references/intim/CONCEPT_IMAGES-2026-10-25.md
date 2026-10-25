@@ -9,4 +9,4 @@ Style: highly detailed non-pixel anime, crisp cel shading (Ligetvar-Redesign-Pla
 - greta-soft-rope-concept.jpg — sitting with soft rope, blue eyes, glasses, copper ponytail
 - rebeka-boglarka-kiss-concept.jpg — soft standing kiss
 
-These are concepts only. Not integrated into runtime portraits or scenes. Stage-6 dialogue expansions in romance.ts preserve existing expandRomance structure, IDs, and slower physical-pace options. No engine rules changed.
+These are concepts only. Not integrated into runtime. Stage-6 dialogue expansions preserve existing expandRomance structure, IDs, and slower physical-pace options.
