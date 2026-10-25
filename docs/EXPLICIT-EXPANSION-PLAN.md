@@ -90,3 +90,32 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - Aspect ratio relaxed (2026-10-25): profile.mjs no longer rejects unsupported ratios; falls back to auto/3:4/2:3/etc. Pilot request id=2026-10-25-pilot-seedream-relaxed-aspect-01 uses seedream-v5-pro-edit (uncensored, no native 4:5).
 
 - Anime uncensored pilot (2026-10-25): wai-Illustrious (generation-only, uncensored). Temporary catalog method=generate on explicit_virag_oral for request id=2026-10-25-pilot-wai-illustrious-01. Follow-up edit pass with reference will be needed for identity lock.
+
+## Venice model findings (2026-10-25)
+
+Live models endpoint (not the stale local snapshot) shows:
+
+### Uncensored edit models (type=inpaint)
+- `qwen-image-3-edit`, `qwen-image-3-pro-edit`, `qwen-image-2-1-pro-edit`, `qwen-image-2-1-turbo-edit` — support 4:5
+- `seedream-v5-pro-edit`, `seedream-v5-lite-edit`, `seedream-v4-edit` — uncensored; v5 variants lack native 4:5
+- `qwen-edit-uncensored` — previously tested; still returned blurred images
+
+### Uncensored generation models (type=image)
+- `lustify-v7` / `lustify-v8` — trait `most_uncensored` (general NSFW)
+- `wai-Illustrious` — **Anime (WAI)**, uncensored=true, generation-only, width/height divisor 16, prompt limit 1500
+- `krea-2-turbo`, `seedream-v4`, `seedream-v5-lite`, `seedream-v5-pro`, `chroma`, `qwen-image-3*`
+
+### Anime-specific
+Only `wai-Illustrious` is labeled anime. No anime-specific edit/inpaint model exists. Identity lock still requires a follow-up edit pass with a Qwen or Seedream edit model + reference image.
+
+### Aspect ratio
+Catalog default is 4:5. `profile.mjs` now falls back to the first supported of `auto` / `3:4` / `2:3` / `4:3` / `1:1` / `9:16` when the model rejects 4:5 (see commit a2add09).
+
+### Blur behavior
+Venice returns `x-venice-is-blurred: true` even on models marked uncensored. Generator was updated to accept blurred candidates (status `candidate-blurred-awaiting-review`) so soft images are checkpointed instead of discarded.
+
+### Pilots run
+- `qwen-edit-uncensored` → blurred
+- `qwen-image-3-edit` (single asset) — queued
+- `seedream-v5-pro-edit` with relaxed aspect — queued
+- `wai-Illustrious` generate (temporary method=generate on explicit_virag_oral) — queued
