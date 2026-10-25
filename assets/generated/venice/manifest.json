@@ -644,6 +644,19 @@
       ],
       "finishedAt": "2026-10-25T14:58:42.405Z",
       "failure": "Venice /image/edit failed: HTTP 402"
+    },
+    {
+      "request": "2026-10-25-explicit-triad-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T15:00:57.862Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [
+        "rebeka_neutral",
+        "boglarka_neutral"
+      ],
+      "finishedAt": "2026-10-25T15:00:58.950Z",
+      "failure": "Venice /image/multi-edit failed: HTTP 402"
     }
   ],
   "capabilities": {
