@@ -305,3 +305,7 @@ Added [IMPLEMENTATION-ROADMAP.md](IMPLEMENTATION-ROADMAP.md) with the user-reque
 ## Phase V1–V4 — release and save versioning, 0.2.0
 
 Implemented independent game/schema/content versions, envelope encoding, stable-key discovery and clear incompatible/corrupt/newer-save messages. Historical saves are detected without loading or migration. New-game replacement is explicit. See [VERSIONING.md](VERSIONING.md) and [roadmap execution log](IMPLEMENTATION-ROADMAP.md). Local evidence: 57 tests, typecheck/build, and 320/390/1440px browser flows passed. Next objective is C1, the playable CLI.
+
+## C1–C6 — playable CLI and proofreader tooling, 0.3.0
+
+Completed the CLI phase in [IMPLEMENTATION-ROADMAP.md](IMPLEMENTATION-ROADMAP.md); usage and protocol in [CLI.md](CLI.md). Browser and CLI share the action dispatcher. Implemented text/JSON play, file saves, asset descriptions, transcripts, findings, author inspection and route examples. Actual verification: 57 engine/content + 22 CLI tests, typecheck/build, browser flows at 320/390/1440px. Six full campaigns pass through an external JSON client. Existing save epochs remain 4/1. Art discovery: Gréta's empty affectionate image was removed and now uses neutral fallback; replacement art is still needed. Next objective: L1 localisation inventory.

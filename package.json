@@ -1,17 +1,19 @@
 {
   "name": "ligetvar",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "npm run test:engine",
+    "test": "npm run test:engine && npm run test:cli",
     "test:headless": "npm run test:engine",
     "test:engine": "node --experimental-strip-types --test src/game/engine/*.test.ts src/game/content/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "venice:smoke": "node scripts/venice-smoke.mjs"
+    "venice:smoke": "node scripts/venice-smoke.mjs",
+    "play:cli": "node --experimental-strip-types src/game/cli/main.ts",
+    "test:cli": "node --experimental-strip-types --test src/game/cli/*.test.ts"
   },
   "dependencies": {
     "react": "^18.3.1",

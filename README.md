@@ -45,4 +45,14 @@ Venice production is paused following the user's report of exhausted credits. Ne
 
 ## Next implementation objectives
 
-The [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) tracks versioned releases and save incompatibility notices, then a playable CLI for agent testers and proofreaders with visual descriptions, followed by localisation and complete English text. Versioning and incompatible-save messages are implemented in 0.2.0; CLI and localisation remain planned. `test:headless` currently runs tests, not playable CLI sessions.
+The [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) tracks versioned releases and save incompatibility notices, then a playable CLI for agent testers and proofreaders with visual descriptions, followed by localisation and complete English text. Versioning is implemented in 0.2.0 and the playable CLI in 0.3.0; localisation remains planned. `test:headless` currently runs tests, not playable CLI sessions.
+
+## Play from the command line
+
+```bash
+npm run play:cli -- --save /tmp/ligetvar-player.json
+# Agent mode: one JSON request per line, no npm banner
+npm run --silent play:cli -- --json --save /tmp/ligetvar-agent.json
+```
+
+Start with `new YourName`, select numbered actions, and use `help` for commands. Progress saves on every action. The [CLI guide](docs/CLI.md) covers the versioned protocol, visual descriptions, transcripts, author proofreading, save interchange and replayable full-route examples. Game text is currently Hungarian.

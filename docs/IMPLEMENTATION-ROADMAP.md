@@ -1,6 +1,6 @@
 # Implementation roadmap — versions, CLI and localisation
 
-> **Status:** Phase 1 implemented; CLI and localisation planned. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
+> **Status:** Phases 1–2 implemented; localisation planned. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
 
 ## Scope and authority
 
@@ -14,7 +14,7 @@ The user explicitly does **not** require backward compatibility. Do not reintrod
 
 This document is authoritative for these new objectives and supersedes conflicting save-policy guidance. The [redesign plan](../Ligetvar-Redesign-Plan.md) remains authoritative for story canon; [engine reference](../ENGINE.md), [economy](LEISURE-ECONOMY.md) and [character voices](CHARACTER-VOICES.md) define current gameplay. Preserve the separation between generic engine, campaign content and presentation. Do not redesign story or economic balance as part of tooling work.
 
-The outcomes above are user requirements. The phase 1 contract is implemented as documented in [VERSIONING.md](VERSIONING.md). Later-phase interfaces and module boundaries below are proposed defaults, not already implemented APIs. Adjust details when inspection justifies it, record the decision, and preserve the acceptance gates.
+The outcomes above are user requirements. The phase 1 contract is implemented in [VERSIONING.md](VERSIONING.md), and phase 2 commands are documented in [CLI.md](CLI.md). Phase 3 interfaces below remain proposed defaults. Adjust details when inspection justifies it, record the decision, and preserve the acceptance gates.
 
 ## Verified starting point
 
@@ -92,12 +92,12 @@ Use the same background/portrait resolution functions as the UI, including night
 
 ### Tasks and gate
 
-- [ ] **C1** Shared action/query surface and CLI entry point with human and JSON modes, help, errors and protocol documentation.
-- [ ] **C2** Full gameplay commands, file saves, current-envelope browser/CLI interchange, atomic writes and interruption handling.
-- [ ] **C3** Concise, visually checked descriptions for active assets and contextual screen rendering using the existing resolvers.
-- [ ] **C4** Deterministic transcripts, proofreading findings, separate omniscient inspection and coverage reporting.
-- [ ] **C5** Script complete friendship, three single-romance and triad playthroughs; include a rejected choice, repair/withdrawal outcome, both puzzles, gifting and paid outings. Compare outcomes and state transitions through the shared browser/CLI adapters. Test midway saves, half-revealed cards, one-time charges/rewards, EOF and incompatible files.
-- [ ] **C6** Publish a quickstart and replayable examples that a fresh agent can run without guessing commands. Add headless CLI smoke checks to CI; retain browser layout checks separately.
+- [x] **C1** Shared action/query surface and CLI entry point with human and JSON modes, help, errors and protocol documentation.
+- [x] **C2** Full gameplay commands, file saves, current-envelope browser/CLI interchange, atomic writes and interruption handling.
+- [x] **C3** Concise, visually checked descriptions for active assets and contextual screen rendering using the existing resolvers.
+- [x] **C4** Deterministic transcripts, proofreading findings, separate omniscient inspection and coverage reporting.
+- [x] **C5** Script complete friendship, three single-romance and triad playthroughs; include a rejected choice, repair/withdrawal outcome, both puzzles, gifting and paid outings. Compare outcomes and state transitions through the shared browser/CLI adapters. Test midway saves, half-revealed cards, one-time charges/rewards, EOF and incompatible files.
+- [x] **C6** Publish a quickstart and replayable examples that a fresh agent can run without guessing commands. Add headless CLI smoke checks to CI; retain browser layout checks separately.
 
 **Exit gate:** An agent can play from a fresh start to an ending, resume interruptions, see the text equivalent of the screen, and produce actionable proofreading reports without a graphical UI. Passing engine unit tests alone is insufficient.
 
@@ -129,9 +129,9 @@ Allow locale selection in browser and CLI. Production must not display raw keys 
 | Milestone | Depends on | Status | Completion commit / evidence |
 | --- | --- | --- | --- |
 | V1–V4: versions and save incompatibility | Current runtime | Implemented | 0.2.0; 57 tests, typecheck/build, versioning and gameplay browser checks at 320/390/1440px |
-| C1–C2: shared CLI gameplay and saves | V1–V4 | Not started | — |
-| C3: asset descriptions | C1 view contract | Not started | — |
-| C4–C6: proofreading, route coverage and CI | C1–C3 | Not started | — |
+| C1–C2: shared CLI gameplay and saves | V1–V4 | Implemented | 0.3.0; shared dispatcher, protocol 1, atomic current-envelope saves |
+| C3: asset descriptions | C1 view contract | Implemented | 33 visually inspected usable manifest images; broken Gréta image replaced by neutral fallback |
+| C4–C6: proofreading, route coverage and CI | C1–C3 | Implemented | 22 CLI tests including six full external-process routes; guide and replay example |
 | L1–L2: locale infrastructure and extraction | C1–C6 | Not started | — |
 | L3–L4: English translation and review | L1–L2 | Not started | — |
 | L5–L6: localisation verification and release | L3–L4 | Not started | — |
@@ -171,3 +171,11 @@ Starting commit: `7dd79ae`. Added package-sourced release identity, schema 4/con
 Validation: `npm test` (57 passing), `npm run typecheck`, `npm run build`; `tools/verify-leisure.cjs` passed at 320/390/1440px, covering old/corrupt/newer-save notices, disabled Continue, cancel/confirm restart without unintended writes, both puzzles, save/resume, gifts and outings. Playwright used `CHROMIUM_EXECUTABLE_PATH=/tmp/ligetvar-browser-libs/chromium`, `CHROMIUM_SERVERLESS=1`, and runtime Playwright dependencies. No migration added.
 
 Next task: **C1** — shared action/query adapter and playable CLI protocol. Read `src/game/content/runtime.ts`, `src/game/store.ts`, and `src/game/content/saves.ts`; run `npm test` for the current baseline. CLI and English remain not implemented.
+
+### 25 October 2026 — C1–C6 implemented in 0.3.0
+
+Starting commit: `4a3435d`. Implemented terminal/JSON CLI, shared browser/CLI actions, player-visible observations, atomic file saves and locking, revision guards, deterministic transcripts, author-only inspection, findings and separate played/inspected coverage. Added concise descriptions after viewing 33 usable active image exports. Removed the pre-existing empty Gréta affectionate portrait and used the normal neutral fallback. No story/economy changes or save migrations; schema 4/content epoch 1 remain unchanged.
+
+Validation: 57 engine/content tests plus 22 CLI tests (79 total), strict typecheck, production build; browser flows passed at 320/390/1440px. CLI tests include actual subprocess campaigns for friendship, Rebeka, Boglárka, Gréta, triad and late withdrawal; EOF/SIGINT; file ownership; stale/invalid commands; both puzzles with hidden-card masking; gifts/outings; file interchange and transcript replay. `npm test` and CI include the CLI suite. Branch coverage lists observed IDs, not a claim that every authored branch was proofread. See [CLI.md](CLI.md).
+
+Reproduce: `node tools/cli-playthrough.mjs --route triad --save /tmp/triad-new.json` with a fresh path. Next task: **L1**, string inventory, shared locale API and persisted-text/version decisions. English localisation is not implemented. Findings/transcripts must be explicitly exported before a CLI process exits; they are session-scoped.

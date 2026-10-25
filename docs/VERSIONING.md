@@ -1,12 +1,12 @@
 # Game releases and save compatibility
 
-> **Status:** Implemented in 0.2.0. | **Purpose:** Release identity, save contract, compatibility decisions and release checks.
+> **Status:** Active; current release 0.3.0. | **Purpose:** Release identity, save contract, compatibility decisions and release checks.
 
 ## Current contract
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.2.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.3.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `1`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -43,4 +43,8 @@ The structured codec result is `ok` (state and metadata), `missing`, `unsupporte
 
 First explicit envelope: schema 4 replaces the former raw version-3 payload. Content epoch 1 establishes the independent story compatibility contract. All pre-envelope saves are unusable; this intentional break follows the user-approved no-migration policy. The game release label moves from the former package-only 0.1.0 to 0.2.0. Gameplay rules and story are unchanged.
 
-The future CLI may report a missing build ID when run directly from source: build identity is optional, whereas release and compatibility versions are mandatory. Its own command protocol will receive a separate version when implemented.
+The CLI may report a missing build ID when run directly from source: build identity is optional, whereas release and compatibility versions are mandatory. Its command protocol is separately versioned as protocol 1.
+
+### 0.3.0 decision
+
+Playable CLI, shared action dispatch and visual asset descriptions do not change persisted state or story progression. Save schema remains 4 and content epoch remains 1; current-envelope 0.2.0 saves load without migration. The CLI reports the source commit/dirty marker when available, and transcripts carry it separately from the save metadata.
