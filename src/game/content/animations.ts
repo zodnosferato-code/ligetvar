@@ -5,9 +5,9 @@ export interface MomentClip {
 }
 export const MOMENT_CLIPS:Record<string,MomentClip>={
  virag_wink:{status:'reviewed',file:'animations/virag/wink-v1.webp',poster:'animations/virag/wink-poster.webp',description:'Virág félmosollyal rád néz, majd játékosan kacsint. Kék pixie frizura, fehér blúz, bordó kardigán.',width:640,height:800,durationMs:2400,bytes:355362},
- virag_arm:{status:'planned',file:null,poster:null,description:'Virág felajánlott karba kapaszkodik, majd mosolyogva felnéz.',width:640,height:800,durationMs:1800,bytes:0},
- virag_kiss:{status:'planned',file:null,poster:null,description:'Kölcsönösen választott rövid csók, majd mosolygó eltávolodás; játékosnézet.',width:960,height:640,durationMs:2400,bytes:0},
- virag_cuddle:{status:'planned',file:null,poster:null,description:'Virág a játékos vállának dől a tóparti padon, finom hajmozdulattal.',width:960,height:640,durationMs:2400,bytes:0}
+ virag_arm:{status:'reviewed',file:'animations/virag/arm-v1.webp',poster:'animations/virag/arm-poster.webp',description:'Virág felajánlott karba kapaszkodik, majd mosolyogva felnéz.',width:640,height:800,durationMs:1800,bytes:91510},
+ virag_kiss:{status:'reviewed',file:'animations/virag/kiss-v1.webp',poster:'animations/virag/kiss-poster.webp',description:'Kölcsönösen választott rövid csók, majd mosolygó eltávolodás; játékosnézet.',width:960,height:640,durationMs:2400,bytes:44534},
+ virag_cuddle:{status:'reviewed',file:'animations/virag/cuddle-v1.webp',poster:'animations/virag/cuddle-poster.webp',description:'Virág a játékos vállának dől a tóparti padon, finom hajmozdulattal.',width:960,height:640,durationMs:2400,bytes:61088}
 };
 export function validateClip(clip:MomentClip):void{
  if(!clip.description.trim()||!Number.isInteger(clip.width)||!Number.isInteger(clip.height)||clip.width<1||clip.height<1||clip.width>1280||clip.height>1280||clip.durationMs<500||clip.durationMs>4000)throw new Error('Invalid moment metadata');
