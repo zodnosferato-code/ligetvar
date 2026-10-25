@@ -20,7 +20,7 @@
 
 ## Publish one image at a time
 
-Use the connected GitHub tools when sufficient. If using an already authenticated Git workflow, stage explicit paths and push each image checkpoint normally; never print binary diffs. Missing shell credentials do not imply that the GitHub connector is unavailable.
+Use the connected GitHub tools for all remote reads and writes. Local Python/Git commands may inspect files and calculate hashes; no shell GitHub credentials, `git push`, `gh auth`, personal access token or browser upload is required. The connector does not accept a local file path: the orchestration code below bridges local bytes to its base64 argument without emitting them into model context.
 
 For connector-based publication:
 
@@ -33,6 +33,106 @@ For connector-based publication:
 7. Publish dependent manifest, story and documentation changes coherently after their assets are available. Reuse uploaded blob SHAs; do not upload the same image again to include it in an integration commit.
 
 `create_blob` is for binary transport. UTF-8 `create_file`/`update_file` tools must not be used to write a base64 string into an image path. Do not commit `.b64` copies or embed images in source code. Preserve ordinary image files in Git.
+
+## Executable GitHub connector recipe
+
+These examples run **inside `functions.exec`**, not in a terminal or standalone Node process. `tools`, `store`, `load` and `text` belong to that orchestration environment; it has no direct filesystem access. `tools.exec_command` supplies the local Python bridge. Discover these exact tools and inspect their schemas before use:
+
+| Tool | Required operation |
+| --- | --- |
+| `mcp__codex_apps__github_fetch` | Read branch ref, Git commit/tree metadata and Actions |
+| `mcp__codex_apps__github_create_blob` | Upload binary bytes with `content` and `encoding: "base64"` |
+| `mcp__codex_apps__github_create_tree` | Add the path/SHA to the existing tree |
+| `mcp__codex_apps__github_create_commit` | Create a commit with the current head as parent |
+| `mcp__codex_apps__github_update_ref` | Publish with `branch_name: "main"`, `expected_sha`, `force: false` |
+
+### 1. Transfer a single local image without emitting its content
+
+Set `local` to an existing absolute path and `path` to its intended repository path. Review the image first. On resume, skip this transfer when a verified blob SHA is already available. The chunk size is divisible by three, allowing base64 chunks to concatenate without intermediate padding. Each tool result stays inside JavaScript; **never add `text(r)` or log `encoded`**.
+
+```javascript
+const repo = "zodnosferato-code/ligetvar";
+const local = "/absolute/checkout/assets/animations/virag/wink-poster.webp";
+const path = "assets/animations/virag/wink-poster.webp";
+const q = s => "'" + s.replace(/'/g, "'\\''") + "'";
+const metaPy = "import sys,pathlib,hashlib,json;p=pathlib.Path(sys.argv[1]);b=p.read_bytes();print(json.dumps({'bytes':len(b),'sha':hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()}))";
+const m = await tools.exec_command({
+  cmd: "python -c " + q(metaPy) + " " + q(local), max_output_tokens: 300
+});
+if (m.exit_code !== 0) throw Error("Cannot inspect local asset");
+const meta = JSON.parse(m.output);
+let encoded = "";
+for (let offset = 0; offset < meta.bytes; offset += 12288) {
+  const py = "import sys,base64;f=open(sys.argv[1],'rb');f.seek(int(sys.argv[2]));print(base64.b64encode(f.read(12288)).decode())";
+  const r = await tools.exec_command({
+    cmd: "python -c " + q(py) + " " + q(local) + " " + offset,
+    max_output_tokens: 20000
+  });
+  const chunk = r.output.trim();
+  const length = 4 * Math.ceil(Math.min(12288, meta.bytes - offset) / 3);
+  if (r.exit_code !== 0 || chunk.length !== length ||
+      !/^[A-Za-z0-9+/]*={0,2}$/.test(chunk)) {
+    throw Error("Invalid or truncated asset chunk; do not upload");
+  }
+  encoded += chunk;
+}
+const result = await tools.mcp__codex_apps__github_create_blob({
+  repository_full_name: repo, content: encoded, encoding: "base64"
+});
+if (result.isError || result.structuredContent?.sha !== meta.sha) {
+  throw Error("Upload failed or returned a different blob SHA");
+}
+store("assetUpload", {repo, path, bytes: meta.bytes, blobSha: meta.sha});
+text({path, bytes: meta.bytes, blobSha: meta.sha, state: "uploaded"});
+```
+
+This transfer was exercised on 25 October 2026 with the existing 93,262-byte wink poster: the connector returned the expected SHA `316ed290dba01f7cc4fb8771f611c13a0749d798`. No binary payload was emitted and no branch was changed by that check. This verifies the byte bridge, not a guarantee about future connector size limits. For long transfers, use the orchestration tool's yield/wait mechanism without printing payloads.
+
+### 2. Publish and verify that image
+
+Persist the upload metadata to the checkpoint described below before continuing. `store` survives orchestration calls in this session, but is not a durable cross-session checkpoint. This example fetches the actual base **tree SHA**, preserves existing files, and rejects concurrent head changes.
+
+```javascript
+const a = load("assetUpload"); // Or restore verified metadata from checkpoint.
+if (!a) throw Error("Missing upload checkpoint");
+const api = "https://api.github.com/repos/" + a.repo;
+function unwrap(r) {
+  if (r.isError) throw Error("GitHub operation failed; inspect safe metadata");
+  const s = r.structuredContent;
+  return typeof s?.content === "string" ? JSON.parse(s.content) : s;
+}
+const get = async suffix => unwrap(await tools.mcp__codex_apps__github_fetch({
+  url: api + suffix
+}));
+const head = (await get("/git/ref/heads/main")).object.sha;
+const base = await get("/git/commits/" + head);
+const tree = unwrap(await tools.mcp__codex_apps__github_create_tree({
+  repository_full_name: a.repo, base_tree_sha: base.tree.sha,
+  tree_elements: [{path: a.path, mode: "100644", type: "blob", sha: a.blobSha}]
+}));
+if (tree.sha === base.tree.sha) {
+  text({path: a.path, state: "already published", commit: head});
+} else {
+  const commit = unwrap(await tools.mcp__codex_apps__github_create_commit({
+    repository_full_name: a.repo, parent_sha: head, tree_sha: tree.sha,
+    message: "Save asset: " + a.path
+  }));
+  const update = unwrap(await tools.mcp__codex_apps__github_update_ref({
+    repository_full_name: a.repo, branch_name: "main",
+    expected_sha: head, sha: commit.sha, force: false
+  }));
+  if (update.success !== true) throw Error("Ref update not confirmed");
+  const published = await get("/git/commits/" + commit.sha);
+  if (published.tree.sha !== tree.sha) throw Error("Published tree mismatch");
+  const checkpoint = {...a, state: "published", commit: commit.sha};
+  store("assetUpload", checkpoint);
+  text(checkpoint);
+}
+```
+
+Save that result to the checkpoint immediately, then continue with the next image. On a rejected ref update, retain the uploaded blob, reread `main`, inspect any competing change to this path and rebuild against the new tree; never force the update. `fetch` wraps GitHub JSON inside `structuredContent.content`, whereas mutation tools return fields such as `structuredContent.sha` directly; the examples account for both formats. Rediscover schemas if the connector changes.
+
+To reconcile after interruption, fetch `/git/commits/{head}` and walk `/git/trees/{sha}` through each path component; compare the final entry's SHA. A recursive tree request is also usable if its `truncated` field is false. Filter results inside orchestration and emit only matching path/SHA entries. Never use `/contents/{image}` or `/git/blobs/{sha}` to retrieve bytes merely for verification. Check final workflows with `/actions/runs?head_sha={commit}&per_page=10`; emit only name, status, conclusion and URL.
 
 ## Checkpoints and recovery
 
