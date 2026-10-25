@@ -66,3 +66,7 @@ The user reports Venice credits are exhausted and requests ChatGPT generation. U
 ### User workflow update — 22 October 2026
 
 The user now asks to generate as quickly as possible and inspect afterward. Independent edits may be generated concurrently from the existing cleaned neutral masters, followed by batch visual/alpha/runtime review before promotion. Do not chain unreviewed outputs as identity references. This supersedes the earlier one-image-at-a-time production instruction for independent jobs. Continue using built-in imagegen, no Venice calls.
+
+## Approved leisure direction — 25 October 2026
+
+The user selected relaxed move-limited puzzles, money plus spendable activity points, and full-slot jobs with substantial rewards. [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) is authoritative for the implemented economy. Jobs remain daytime-only. The phone now includes persistent gift replies and six optional paid outings, extending the earlier meetings-only rule. Save every puzzle move; never accept arbitrary UI reward amounts or permit reward duplication. Preserve old v2 balances and story state. Personalized gifts never substitute for commitment or required-story evidence.

@@ -60,7 +60,7 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
 }
 test('authoritative registry resolves every Hungarian line, asset and prerequisite',()=>{
  validateRegistry(SCENES,EVIDENCE,new Set(Object.keys(BACKGROUNDS)));
- assert.equal(Object.keys(SCENES).length,54);assert.equal(Object.values(SCENES).some(x=>x.contentStatus!=='authored'),false);
+ assert.equal(Object.keys(SCENES).length,60);assert.equal(Object.values(SCENES).some(x=>x.contentStatus!=='authored'),false);
  for(const art of Object.values(BACKGROUNDS))if(art.file)assert.ok(existsSync('public/'+art.file),art.file);
  for(const x of Object.values(SCENES))for(const l of x.lines){const p=portraitFor(l.speaker,l.expression);if(p.file)assert.ok(existsSync('public/'+p.file));}
 });
@@ -73,12 +73,12 @@ test('opening has all introductions, one complete optional scene and causal know
  s=nextWeek(activity(activity(s,'rest'),'rest'),SCENES);s=complete(s,'shared_3');assert.ok(s.evidence.phrase);assert.ok(s.evidence.time_gap);assertKnowledge(s);
 });
 test('salary, optional jobs and gifts retain useful money behavior without work gates',()=>{
- let s=complete(createInitial(''),'shared_1');assert.equal(s.money,105000);
+ let s=complete(createInitial(''),'shared_1');assert.equal(s.money,12000);
  s=buyGift(s,'photo');assert.equal(s.inventory.photo,1);s=giveGift(s,'rebeka','photo');assert.equal(s.bonds.marton_rebeka,2);
  assert.deepEqual(s.decisions,{});assert.equal(giveGift(s,'rebeka','photo'),s);
  s=activity(s,'mohu');const paid=resolveJob(s,'mohu',1000);assert.equal(paid.money,s.money+1000);assert.equal(paid.slot,2);
  const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(resolveJob(n,'mohu',1000),n);
- assert.equal(nextWeek(n,SCENES).money,n.money+60000);
+ assert.equal(nextWeek(n,SCENES).money,n.money+3000);
 });
 test('main-character art resolves and Soma switches from neutral to transformed at week two',()=>{
  for(const actor of ['rebeka','boglarka','greta'] as const){
@@ -253,7 +253,7 @@ test('every opening branch completes once and saves/resumes at each node',()=>{
  }
 });
 test('context conversations branch without granting romance and cannot be replayed',()=>{
- for(const x of Object.values(SCENES).filter(x=>x.kind==='conversation')){
+ for(const x of Object.values(SCENES).filter(x=>x.kind==='conversation'&&!x.cost)){
   const s=witnessedWeek(x.week),result=traverseBranches(s,x.id);
   assert.ok(result.endings>=2,x.id);const next=complete(s,x.id);
   assert.equal(openScene(next,x.id,SCENES),next);assert.deepEqual(next.bonds,s.bonds);

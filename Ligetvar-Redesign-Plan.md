@@ -2,7 +2,7 @@
 
 > **Status:** Active design canon. | **Purpose:** Established story and art direction, plus proposed design details.
 
-Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign. The v2 runtime and 54 Hungarian scenes are now implemented (including nine contextual conversations); the opening has an expanded writing pass while later scenes remain compact; final non-pixel anime asset production and the complete art/release gates remain open. See docs/REDESIGN-PROGRESS.md for actual verification. Planning revision: 19 October 2026, following user art-direction update and engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
+Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign. The v2 runtime and 60 Hungarian scenes are now implemented (including nine contextual conversations); the opening has an expanded writing pass while later scenes remain compact; final non-pixel anime asset production and the complete art/release gates remain open. See docs/REDESIGN-PROGRESS.md for actual verification. Planning revision: 19 October 2026, following user art-direction update and engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
 
 ## 1. Decisions established with Miki
 
@@ -305,3 +305,7 @@ The plan can proceed to detailed scene outlining without another broad direction
 3. A single combined manga portrait/background sample to lock linework and shading.
 
 First production milestone: a coherent opening and one convincing relationship scene, supported by a tested visual style. That is the foundation for rewriting the rest of the game consistently.
+
+## 12. Approved puzzle and economy update — 25 October 2026
+
+User direction: relaxed move-limited puzzles; money plus activity points for optional scenes; retain full-slot jobs with substantial rewards. See [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) for implementation and balance. Six extra optional outings complement the established 54-scene story. They are not compulsory additions to the route budget. The phone also retains remote/personal gift replies; this supersedes its earlier meetings-only limitation.

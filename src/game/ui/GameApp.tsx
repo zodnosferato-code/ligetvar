@@ -5,7 +5,8 @@ import {currentLine,currentPeriod,sceneLighting,evaluateEnding,formatFt} from '.
 import {institutions,relationships} from '../content/epilogues.ts';
 import {useGame} from '../store.ts';
 import {moodFor,setMood,toggleMute,unlockAudio} from '../audio.ts';
-import {MohuGame,TriviaGame} from './minigames.tsx';
+import {GiftReplies} from './Gifts.tsx';
+import {PuzzleGame} from './minigames.tsx';
 import {Icon} from './controls.tsx';
 import {Journal} from './Journal.tsx';
 import {RoomPlanner} from './RoomPlanner.tsx';
@@ -20,8 +21,9 @@ function Game(){
  return <div className="game" style={{'--text-scale':scale} as CSSProperties}>
  <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}><span className="brand-seal"><Icon name="book"/></span><span className="brand-copy">Ligetvár<small>Őszi félév</small></span></a><div className="tools"><label>Betűméret <select aria-label="Betűméret" value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}><Icon name="sound"/>{muted?'Hang be':'Hang ki'}</button></div></header>
  {g.saveMessage&&<p className="notice" role="alert">{g.saveMessage}</p>}
- {g.mode==='title'?<Title/>:<><div className="status"><strong><Icon name="book"/>{s.week}. hét / 16</strong><span>{s.phase==='ending'?'Félév lezárva':s.slot===0?'Közös történet':s.slot<3?(currentPeriod(s)==='night'?'Éjszakai tevékenység':'Nappali tevékenység'):'Heti összegzés'}</span><span><Icon name="energy"/>Energia {s.energy}/100</span><span><Icon name="money"/>{formatFt(s.money)}</span></div>
- {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<RoomPlanner key={s.week+'-'+s.slot}/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<section className="panel"><h1>Opcionális munka</h1>{s.minigame==='mohu'?<MohuGame onDone={g.finishJob} onCancel={g.cancelJob}/>:<TriviaGame onDone={g.finishJob} onCancel={g.cancelJob}/>}</section>}
+ {g.mode==='title'?<Title/>:<><div className="status"><strong><Icon name="book"/>{s.week}. hét / 16</strong><span>{s.phase==='ending'?'Félév lezárva':s.slot===0?'Közös történet':s.slot<3?(currentPeriod(s)==='night'?'Éjszakai tevékenység':'Nappali tevékenység'):'Heti összegzés'}</span><span><Icon name="energy"/>Energia {s.energy}/100</span><span><Icon name="money"/>{formatFt(s.money)}</span><span>Programpont: {s.activityPoints??0}</span></div>
+ {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<RoomPlanner key={s.week+'-'+s.slot}/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<PuzzleGame/>}
+ {s.phase==='planner'&&<GiftReplies unreadOnly/>}
  {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{s.lastNote}</p>}{s.phase!=='planner'&&<Journal/>}</>}
  <footer>Átmeneti ruhás képek és jelölt képhelyőrzők. Az új manga készlet még nem végleges.</footer></div>;
 }

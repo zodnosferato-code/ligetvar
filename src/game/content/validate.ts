@@ -6,6 +6,7 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
  for(const s of scenes)for(const e of [s.onComplete,...s.lines.flatMap(l=>(l.choices??[]).map(c=>c.effect))])
   for(const d of e?.decisions??[])producers.set(d,[...(producers.get(d)??[]),s.id]);
  for(const s of scenes){
+  if(s.cost&&(s.kind==='shared'||![s.cost.money,s.cost.points].every(n=>Number.isSafeInteger(n)&&n>=0)))fail('Invalid optional scene cost: '+s.id);
   if(registry[s.id]!==s)fail('Scene ID/key mismatch: '+s.id);
   if(s.periods&&(!s.periods.length||new Set(s.periods).size!==s.periods.length||s.periods.some(p=>!['day','night'].includes(p))||s.kind==='shared'))fail('Invalid activity periods: '+s.id);
   if(!s.title.trim()||!s.journal.trim()||!s.participants.length)fail('Missing scene text: '+s.id);

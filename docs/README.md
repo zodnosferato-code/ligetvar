@@ -9,6 +9,7 @@
 | [README](../README.md) | Project overview and local commands |
 | [Developer guide](../AGENT.md) | Contribution rules, workflow, and project authority |
 | [Redesign plan](../Ligetvar-Redesign-Plan.md) | Story canon and approved art direction; proposed details are marked as such |
+| [Puzzles and economy](LEISURE-ECONOMY.md) | Move-limited jobs, points, optional outings and personal gifts |
 | [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
 | [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
 | [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |
