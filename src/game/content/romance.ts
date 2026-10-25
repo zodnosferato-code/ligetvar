@@ -184,7 +184,7 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
  if(stage===6){
   after(s,'line_0','romance_after',p.after);
   // short private continuation — append after the last beat of the previous after() chain
-  const cont = girl==='rebeka'
+  const cont:Beat[] = girl==='rebeka'
     ? [['narrator','A beszélgetés után Rebeka lehúzza a pulóvert. Térdre ereszkedik, szájával rajtad, majd feláll és lovagol. Utána a sebét megmutatja, te megcsókolod.'],['rebeka','Ez maradjon köztünk.','affectionate']]
     : girl==='boglarka'
     ? [['narrator','Boglárka leveszi a kardigánt. Lassan vetkőzik; te nyalod, ő visszaadja. Lovagol, folyamatos dicsérettel. Utána a kardigán félig rajta marad.'],['boglarka','Jó volt. Maradj még.','affectionate']]
