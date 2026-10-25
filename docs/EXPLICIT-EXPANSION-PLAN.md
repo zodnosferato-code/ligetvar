@@ -67,3 +67,8 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - virag_4 kiss path expanded: oral in lake shadows + sex against the bench + witty after. Assets: explicit_virag_lake_oral/sex (edit + full-body). request.json = 2026-10-25-explicit-virag-02.
 
 - Individual stage 6: short private continuation beats added for rebeka/boglarka/greta (oral/sex/aftercare matching each voice).
+
+- Asset completeness check (2026-10-25):
+  - All registered backgrounds and portraits in assets.ts exist on disk (no missing files).
+  - Planned Virág moments (arm, kiss, cuddle) created as reviewed animated WebP clips + posters under assets/animations/virag/ and promoted in animations.ts.
+  - Explicit sex-scene assets remain blocked: Venice recent runs return HTTP 402 (credits); Grok generate_image also moderates explicit prompts. Catalog entries and request.json are ready for when credits are available.
