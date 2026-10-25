@@ -621,6 +621,16 @@
       "reused": [],
       "finishedAt": "2026-10-25T14:55:51.071Z",
       "failure": "Venice /image/generate failed: HTTP 402"
+    },
+    {
+      "request": "2026-10-25-explicit-virag-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T14:56:52.143Z",
+      "status": "failed",
+      "generated": [],
+      "reused": [],
+      "finishedAt": "2026-10-25T14:56:52.730Z",
+      "failure": "Venice /image/edit failed: HTTP 402"
     }
   ],
   "capabilities": {
