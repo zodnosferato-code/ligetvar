@@ -291,3 +291,9 @@ Browser flow verification passed at 320px and 390px: both puzzles complete, touc
 ### Dead-code cleanup
 
 Removed unused content/UI imports, the obsolete background helper, the test-only campaign payout wrapper, and discarded initial Recycling board generation. Tests now complete real puzzles through the production reward path. Enabled TypeScript noUnusedLocals/noUnusedParameters. Retained group-clearing logic because unfinished saves still use it. `npm test`: 54 passing; `npm run typecheck` and `npm run build`: passed.
+
+## Current-only runtime cleanup — 25 October 2026
+
+User explicitly removed backward compatibility as a requirement. Replaced MOHU/brick IDs with recycling/archive, removed group-clearing mode and UI, v1 name import and legacy fixture, missing-field defaults, old-job completion, and compatibility-only tests. Current saves use v3 with required activity points, puzzle and gift history. Removed unused generic gifting and weekly job counters/payment-rate machinery. Retained authored scenes and genuine asset fallbacks. Updated contributor guidance and authoritative docs. Validation so far: 51 tests, strict typecheck and production build passed.
+
+Browser verification: both puzzles, saved progress, gift replies and paid outings passed at 320/390/1440px with no horizontal overflow or page errors. The final save-period validation change also passed all 51 tests, typecheck and build.

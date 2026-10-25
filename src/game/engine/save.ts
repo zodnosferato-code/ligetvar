@@ -1,3 +1,4 @@
+import {periodAllowed} from './logic.ts';
 import type {GameState,Registry,RuntimeRules} from './types.ts';
 export interface StorageLike{getItem(key:string):string|null;setItem(key:string,value:string):void}
 export type SaveResult<S extends GameState=GameState>={status:'ok';state:S}|{status:'missing'|'unsupported'|'invalid'};
@@ -11,9 +12,9 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
    &&Number.isInteger(s.slot)&&s.slot>=0&&s.slot<=3&&['planner','scene','summary','ending','minigame'].includes(s.phase)
    &&typeof s.direction==='string'
    &&typeof s.lastNote==='string'&&['money','energy','exposure'].every(k=>Number.isFinite(s[k])&&s[k]>=0)&&s.energy<=100&&s.exposure<=100
+   &&Number.isSafeInteger(s.activityPoints)&&s.activityPoints>=0
    &&object(s.bonds)&&Object.keys(rules.initial('').bonds).every(k=>Number.isFinite(s.bonds[k])&&s.bonds[k]>=0&&s.bonds[k]<=100)
-   &&['completed','evidence','decisions','inventory','jobsWeek'].every(k=>object(s[k]))&&strings(s.preparation)&&strings(s.giftsWeek)
-   &&Object.keys(rules.economy.jobs).every(k=>Number.isInteger(s.jobsWeek[k])&&s.jobsWeek[k]>=0)
+   &&['completed','evidence','decisions','inventory'].every(k=>object(s[k]))&&strings(s.preparation)&&strings(s.giftsWeek)
    &&Object.values(s.inventory).every(n=>Number.isInteger(n)&&Number(n)>=0)
    &&Array.isArray(s.journal)&&s.journal.every((j:any)=>object(j)&&typeof j.text==='string'&&r[j.scene]&&j.week===s.completed[j.scene]);
   if(!valid)return {status:'invalid'};
@@ -39,12 +40,11 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
    if(!object(s.scene)||!r[s.scene.id]||s.scene.id in s.completed||!r[s.scene.id].lines.some(l=>l.id===s.scene.line)||!Array.isArray(s.scene.pending))return {status:'invalid'};
    const x=r[s.scene.id],allowed=x.lines.flatMap(l=>(l.choices??[]).map(c=>JSON.stringify(c.effect)));
    if(!s.scene.pending.every((e:any)=>object(e)&&allowed.includes(JSON.stringify(e))))return {status:'invalid'};
-   if(s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
+   if(!periodAllowed(s as S,x.periods,rules.schedule)||s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
   }else if(s.scene!==null)return {status:'invalid'};
-  if(s.phase==='minigame'?!(s.minigame in rules.economy.jobs)||s.slot<1||s.slot>2:s.minigame!==null)return {status:'invalid'};
+  if(s.phase==='minigame'?!(s.minigame in rules.economy.jobs)||s.slot<1||s.slot>2||!periodAllowed(s as S,rules.schedule?.activities[s.minigame],rules.schedule):s.minigame!==null)return {status:'invalid'};
   return {status:'ok',state:s as S};
  }catch{return {status:'invalid'};}
 }
 export function readSave<S extends GameState>(storage:StorageLike,r:Registry,rules:RuntimeRules<S>):SaveResult<S>{try{return decodeSave(storage.getItem(rules.saveKey),r,rules);}catch{return {status:'invalid'};}}
 export function persist<S extends GameState>(storage:StorageLike,s:S,rules:RuntimeRules<S>){try{storage.setItem(rules.saveKey,JSON.stringify(s));return true;}catch{return false;}}
-export function legacyName(storage:StorageLike,key:string,version:number):string|null{try{const s=JSON.parse(storage.getItem(key)??'null');return s?.version===version&&typeof s.name==='string'?s.name.trim().slice(0,32):null;}catch{return null;}}

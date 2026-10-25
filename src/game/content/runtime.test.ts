@@ -5,8 +5,8 @@ import {SCENES,EVIDENCE} from './catalog.ts';
 import {BACKGROUNDS,BACKGROUND_VARIANTS,backgroundFor,portraitFor} from './assets.ts';
 import {validateRegistry} from './validate.ts';
 import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,finishPuzzle,movePuzzle,nextPair,setDirection} from './runtime.ts';
-import {decodeSave,legacyName,persist} from './saves.ts';
-import {LEGACY_SAVE_KEY,SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
+import {decodeSave,persist} from './saves.ts';
+import {SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
 function finishArchive(s:GameState){
  for(let v=0;v<8;v++){const pair=s.puzzle!.board.flatMap((value,i)=>value===v?[i]:[]);s=movePuzzle(s,pair[0]);s=movePuzzle(s,pair[1]);if(v<7)s=nextPair(s);}
  return finishPuzzle(s);
@@ -80,7 +80,7 @@ test('salary, optional jobs and gifts retain useful money behavior without work 
  let s=complete(createInitial(''),'shared_1');assert.equal(s.money,12000);
  s=buyGift(s,'photo');assert.equal(s.inventory.photo,1);s=giveGift(s,'rebeka','photo');assert.equal(s.bonds.marton_rebeka,2);
  assert.deepEqual(s.decisions,{});assert.equal(giveGift(s,'rebeka','photo'),s);
- s=activity(s,'brick');const paid=finishArchive(s);assert.equal(paid.money,s.money+20000);assert.equal(paid.slot,2);
+ s=activity(s,'archive');const paid=finishArchive(s);assert.equal(paid.money,s.money+20000);assert.equal(paid.slot,2);
  const n=complete(paid,'coffee_rebeka_early');assert.equal(n.decisions.rebeka_commit,undefined);assert.equal(n.phase,'summary');assert.equal(finishPuzzle(n),n);
  assert.equal(nextWeek(n,SCENES).money,n.money+3000);
 });
@@ -136,7 +136,7 @@ test('every destination reachable from the night hub uses night lighting and a n
  }});
  for(const location of ['classroom','library','department','holdkor','courtyard','apartment','bekas'])assert.ok(visited.has(location),location);
  const s:GameState={...createInitial(''),slot:2};
- assert.equal(sceneLighting(s,{...SCENES.greta_1,periods:undefined}),'night','legacy free scenes still follow the saved night slot');
+ assert.equal(sceneLighting(s,{...SCENES.greta_1,periods:undefined}),'night','free scenes follow the current night slot');
  assert.equal(sceneLighting(s,SCENES.shared_1),SCENES.shared_1.lighting,'shared-story authored time is preserved');
  assert.equal(backgroundFor('bekas','day'),BACKGROUNDS.bekas);
  assert.equal(backgroundFor('department','day'),BACKGROUNDS.department);
@@ -156,10 +156,10 @@ test('targeted immutable effects do not change the previous speaker bond',()=>{
  assert.equal(applyChoice(s,'unknown',r),s);const n=applyChoice(applyChoice(s,'yes',r),'continue',r);assert.deepEqual(s,before);
  applyEffect(n,{bonds:{rebeka_boglarka:7}},'shared_1');assert.equal(n.bonds.rebeka_boglarka,7);assert.equal(n.bonds.marton_boglarka,0);
 });
-test('save restart boundary preserves v1 bytes and permits name-only opt-in',()=>{
- const data=new Map([[LEGACY_SAVE_KEY,JSON.stringify({version:1,name:'Régi név',route:'rebeka_greta',flags:['commit']})]]),storage={getItem:(k:string)=>data.get(k)??null,setItem:(k:string,v:string)=>{data.set(k,v);}},original=data.get(LEGACY_SAVE_KEY)!;
- assert.equal(decodeSave(original,SCENES).status,'unsupported');assert.equal(legacyName(storage),'Régi név');
- const s=createInitial('Új név');assert.equal(persist(storage,s),true);assert.equal(data.get(LEGACY_SAVE_KEY),original);
+test('current saves round-trip and unsupported versions are rejected',()=>{
+ const data=new Map<string,string>(),storage={getItem:(k:string)=>data.get(k)??null,setItem:(k:string,v:string)=>{data.set(k,v);}};
+ const s=createInitial('Új név');assert.equal(persist(storage,s),true);
+ for(const version of [1,2])assert.equal(decodeSave(JSON.stringify({...s,version}),SCENES).status,'unsupported');
  assert.deepEqual(decodeSave(data.get(SAVE_KEY)!,SCENES),{status:'ok',state:s});
  for(const raw of ['{','null','{}','{"version":999}',JSON.stringify({...s,bonds:null}),JSON.stringify({...s,phase:'ending'})])assert.notEqual(decodeSave(raw,SCENES).status,'ok');
 });
@@ -283,28 +283,20 @@ test('unknown contextual choice prerequisites are rejected by the registry valid
  assert.throws(()=>validateRegistry(r,EVIDENCE,new Set(Object.keys(BACKGROUNDS))),/Unknown decision/);
 });
 
-test('a real pre-refactor v2 cursor and pending decision retain their save representation',()=>{
- const raw=readFileSync('src/game/content/fixtures/v2-before-content-split.json','utf8');
- const restored=decodeSave(raw,SCENES);assert.equal(restored.status,'ok');
- if(restored.status==='ok'){
-  assert.deepEqual(restored.state,JSON.parse(raw));assert.equal(restored.state.scene!.line,'line_3');
-  let s=restored.state;while(s.phase==='scene')s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
-  assert.ok(s.decisions.rebeka_interest);assert.equal(s.slot,2);assert.equal(decodeSave(JSON.stringify(s),SCENES).status,'ok');
- }
-});
+
 
 
 test('fixed day/night periods gate reducer actions and advance only on completion',()=>{
  let s=createInitial('');assert.equal(currentPeriod(s),null);
- for(const kind of ['mohu','brick','rest'] as const)assert.equal(activity(s,kind),s);
+ for(const kind of ['recycling','archive','rest'] as const)assert.equal(activity(s,kind),s);
  s=complete(s,'shared_1');assert.equal(currentPeriod(s),'day');
- for(const kind of ['mohu','brick','rest'])assert.equal(activityAvailable(s,kind),true);
+ for(const kind of ['recycling','archive','rest'])assert.equal(activityAvailable(s,kind),true);
  const browsing=structuredClone(s);availableScenes(s,SCENES);assert.deepEqual(s,browsing);
  s=openScene(s,'rebeka_1',SCENES);assert.equal(currentPeriod(s),'day');
  s=applyChoice(s,'continue',SCENES);assert.equal(s.slot,1,'continuation does not advance time');
  while(s.phase==='scene')s=applyChoice(s,currentLine(s,SCENES)!.choices?.[0].id??'continue',SCENES);
  assert.equal(currentPeriod(s),'night');assert.equal(s.slot,2);
- for(const kind of ['mohu','brick'] as const){assert.equal(activityAvailable(s,kind),false);assert.equal(activity(s,kind),s);}
+ for(const kind of ['recycling','archive'] as const){assert.equal(activityAvailable(s,kind),false);assert.equal(activity(s,kind),s);}
  assert.equal(sceneLighting(s,SCENES.coffee_rebeka_early),'night');
  const restored=decodeSave(JSON.stringify(s),SCENES);assert.equal(restored.status,'ok');
  if(restored.status==='ok')assert.equal(currentPeriod(restored.state),'night');
@@ -324,13 +316,13 @@ test('night-only shared evenings and daytime preparation respect both slots and 
  assert.equal(availableScenes({...s,week:15,slot:2},SCENES).some(x=>x.id==='triad_7'),false);
 });
 
-test('job admission and legacy night-job completion preserve slot accounting',()=>{
- const day=complete(createInitial(''),'shared_1'),job=activity(day,'brick');
+test('jobs cannot run or claim rewards outside daytime',()=>{
+ const day=complete(createInitial(''),'shared_1'),job=activity(day,'archive');
  assert.equal(job.phase,'minigame');assert.equal(currentPeriod(job),'day');
  assert.equal(finishPuzzle(job),job);
- const legacy={...job,slot:2 as const};assert.equal(decodeSave(JSON.stringify(legacy),SCENES).status,'ok');
- const done=finishArchive(legacy);assert.equal(done.phase,'summary');assert.equal(done.minigame,null);
- assert.equal(activity({...legacy,phase:'planner',minigame:null},'brick').phase,'planner');
+ const night={...job,slot:2 as const};assert.equal(decodeSave(JSON.stringify(night),SCENES).status,'invalid');
+ const done=finishArchive(night);assert.equal(done.phase,'minigame');assert.equal(done.money,night.money);
+ assert.equal(activity({...night,phase:'planner',minigame:null},'archive').phase,'planner');
 });
 
 test('registry rejects empty, duplicate, unknown or shared-scene period restrictions',()=>{

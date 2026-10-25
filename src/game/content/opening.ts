@@ -1,4 +1,4 @@
-/** Authored opening pass. Stable legacy node IDs remain valid for v2 saves. */
+/** Authored opening scene expansion. */
 import type {ActorId,Expression,Line,Scene} from './types.ts';
 type Beat=[ActorId,string,Expression?];
 function chain(prefix:string,beats:Beat[],next?:string):Line[]{return beats.map(([speaker,text,expression='neutral'],i)=>({id:prefix+'_'+i,speaker,text,expression,next:i<beats.length-1?prefix+'_'+(i+1):next}));}

@@ -19,7 +19,7 @@ const reactions:Record<GirlId,{favorite:Record<string,string>;neutral:string;rep
 };
 export function deliverGift(s:GameState,girl:GirlId,id:string,note:GiftNote='noticed',delivery:Delivery='inPerson'):GameState{
  if(!Object.hasOwn(GIFTS,id)||!Object.hasOwn(reactions,girl)||!Object.hasOwn(GIFT_NOTES,note)||!['remote','inPerson'].includes(delivery)||s.phase!=='planner'||s.slot<1||s.slot>2||!(s.inventory[id]>0)||s.giftsWeek.includes(girl))return s;
- const gift=id as GiftId,item=GIFTS[gift],history=s.giftHistory??[],repeat=history.some(h=>h.girl===girl&&h.gift===gift),favorite=item.person===girl,voice=reactions[girl];
+ const gift=id as GiftId,item=GIFTS[gift],history=s.giftHistory,repeat=history.some(h=>h.girl===girl&&h.gift===gift),favorite=item.person===girl,voice=reactions[girl];
  const bonus=repeat?0:favorite?2:0;
  const reaction=(repeat?voice.repeat:favorite?voice.favorite[gift]:voice.neutral)+(favorite&&!repeat?(note==='company'?' '+voice.invite:note==='thanks'?' '+voice.thanks:''):'');
  const receipt:GiftReceipt={week:s.week,girl,gift,note,delivery,reaction,expression:repeat||!favorite?'neutral':note==='thanks'?'affectionate':'amused',bonus,read:false};

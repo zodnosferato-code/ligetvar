@@ -1,4 +1,4 @@
-/** Romantic writing pass. Keep existing scene/line/choice IDs for in-progress v2 saves. */
+/** Authored romance scene expansion. */
 import type {ActorId,Choice,Expression,GirlId,Scene} from './types.ts';
 type Beat=[ActorId,string,Expression?];
 type Reply={id:string;text:string;beats:Beat[];memory?:string;requires?:Choice['requires']};
