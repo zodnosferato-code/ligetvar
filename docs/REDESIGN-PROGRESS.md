@@ -315,3 +315,9 @@ Completed the CLI phase in [IMPLEMENTATION-ROADMAP.md](IMPLEMENTATION-ROADMAP.md
 Implemented optional movement to quieter locations on all three individual dates, shared per-node browser/CLI staging, portrait distance framing, local conversational memory, mutually chosen romantic kisses and explicit departures. Six paid outings now also close naturally. All movement stays inside one activity. See [SCENE-STAGING.md](SCENE-STAGING.md) for exact scope and remaining art/campaign-length work. Schema 4/content epoch 2; earlier content saves are explicitly rejected without migration.
 
 Verification: 83 passing engine/content/CLI tests, TypeScript and production build; dedicated browser date flows passed at 320/390/1440px. Existing portraits are framed differently; dedicated kissing/embracing art is not implemented. Campaign duration remains 16 weeks.
+
+## 25 October 2026 — Virág and GIF-like moment support, 0.5.0
+
+Eight optional Hungarian reporter chapters and a successful report coda are implemented. Virág's ongoing flirtation survives refusal; the cases succeed independently of romance. GIF/animated-WebP playback supports separate posters, pause/restart, reduced motion and load-failure fallback. No production portraits or loops were generated. [Story](VIRAG-STORY.md), [animation research/production](ANIMATION-PLAN.md), and [roadmap verification log](IMPLEMENTATION-ROADMAP.md) separate implemented runtime from remaining art.
+
+Validation: 86 tests passed (64 engine/content, 22 CLI), typecheck and build passed; eight-scene browser flows and synthetic GIF controls passed at 320/390/1440px; the existing three-date browser regression also passed. Save schema 4/content epoch 2 remain unchanged for additive content. Publication Actions are checked separately.

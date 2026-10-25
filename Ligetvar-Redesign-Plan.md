@@ -309,3 +309,7 @@ First production milestone: a coherent opening and one convincing relationship s
 ## 12. Approved puzzle and economy update — 25 October 2026
 
 User direction: relaxed move-limited puzzles; money plus activity points for optional scenes; retain full-slot jobs with substantial rewards. See [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) for implementation and balance. Six extra optional outings complement the established 54-scene story. They are not compulsory additions to the route budget. The phone also retains remote/personal gift replies; this supersedes its earlier meetings-only limitation.
+
+## User-approved side-story addition — 25 October 2026
+
+[Virág](docs/VIRAG-STORY.md) is an optional 19-year-old adult reporter with eight corruption-investigation/flirtation chapters. Her cases always succeed, she keeps teasing after refusal, and she does not interact with the three main women or determine the vampire resolution. This approved addition extends the three-main-romance cast without replacing its routes. [GIF-like animation plan](docs/ANIMATION-PLAN.md) records limited-frame production and implemented playback; art remains pending.

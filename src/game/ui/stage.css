@@ -265,3 +265,9 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
 .dialogue[data-stage]:not([data-stage=""])[data-proximity="beside"] .portrait-frame{width:88%;height:93%}
 .dialogue[data-stage]:not([data-stage=""])[data-proximity="close"] .portrait-frame{width:100%;height:100%}
 @media(prefers-reduced-motion:reduce){.dialogue[data-stage]:not([data-stage=""]) .portrait-frame{transition:none}}
+
+/* Full-composition GIF/WebP moments stay inside the scenery, never over the choices. */
+.moment-clip{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.moment-clip img{width:100%;height:100%;object-fit:contain}
+.moment-clip button{pointer-events:auto;position:absolute;bottom:8px;right:8px;min-height:44px;max-width:calc(100% - 16px);background:#241b2a;color:#fff;z-index:2}
+.moment-clip p{padding:1rem;background:#241b2a;color:#fff}

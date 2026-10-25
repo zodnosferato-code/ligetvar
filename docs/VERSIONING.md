@@ -52,3 +52,7 @@ Playable CLI, shared action dispatch and visual asset descriptions do not change
 ## 0.4.0 — staged dates
 
 Schema remains 4: stage and physical distance are derived from the current authored dialogue node, with no extra mutable save fields. Content epoch increases to 2 because the three date graphs, terminal nodes and optional outing conclusions changed. Saves from 0.3.0/content epoch 1 receive the existing explicit incompatible-save message; no migration or silent restart. CLI protocol remains 1, with additive visible `scene.staging` metadata.
+
+## 0.5.0 — additive reporter scenes and moment presentation
+
+Schema 4 and content epoch 2 remain unchanged. Eight new optional scenes, one actor/location, an independent public-report epilogue and optional line animation metadata do not remove or reinterpret existing saved scene/decision IDs. Compatible older saves remain loadable; passed optional windows do not reopen, and the public report still concludes. Playback position is not serialized. CLI protocol remains 1 with additive moment/coda fields.

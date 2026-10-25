@@ -117,3 +117,9 @@ Release 0.3.0 adds `src/game/cli/` for Node terminal and protocol-1 JSON session
 ## Staged dates — 0.4.0
 
 Scenes may declare named stages selected explicitly by `Line.stage`, with location, background, cast, proximity and optional lighting. The shared `sceneStage` resolver drives browser and CLI. Staging is derived from the saved node; changing place does not finish or charge another activity. `Choice.localRequires` reads only pending decision IDs from this scene; ordinary prerequisites still read completed events. All effects remain atomic at scene completion. The three individual dates now have optional quieter destinations, separate mutually chosen kissing, and explicit departures; all six paid outings have closing beats. See [SCENE-STAGING.md](docs/SCENE-STAGING.md) for the contract, route details and remaining work. Campaign duration remains 16 weeks. Content epoch is 2; schema remains 4.
+
+## Optional reporter and image loops — 0.5.0
+
+Eight optional `virag_*` scenes use existing one-slot scheduling and witnessed decisions, with no new persisted fields. A separate successful public-report coda appears in browser and CLI endings, including skipped-route cases. Virág is not a main-route direction or a bond-score gate. See [story contract](docs/VIRAG-STORY.md).
+
+`Line.moment` optionally identifies a GIF/animated-WebP clip in the content manifest. The React renderer substitutes a separate static poster for pause/reduced motion, and descriptions remain available in CLI JSON. Planned entries never load pretend media. No animation drives the reducer; saved scene/node IDs restore context, and playback restarts. The three hooked Virág clips have no production files yet. See [animation contract](docs/ANIMATION-PLAN.md).

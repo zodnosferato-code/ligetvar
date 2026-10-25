@@ -18,7 +18,7 @@ function printHuman(response:ReturnType<Session['execute']>,showVisuals=true){
  if(v.lastNote)console.log(v.lastNote);
  if(v.puzzle){console.log(v.puzzle.instructions);console.log(v.puzzle.legend.join(' | '));for(let row=0;row<v.puzzle.tiles.length;row+=v.puzzle.width)console.log(v.puzzle.tiles.slice(row,row+v.puzzle.width).map((x:number|null,i:number)=>`${row+i}:${x===null?'?':x}`).join('  '));console.log(`${v.puzzle.movesLeft} moves left; score ${v.puzzle.score}; reward ${v.puzzle.reward.money} Ft + ${v.puzzle.reward.points} points`);}
  if(v.recap)for(const j of v.recap)console.log(j.text);
- if(v.ending)console.log([v.ending.threatText,v.ending.institutionText,v.ending.relationshipText].join('\n'));
+ if(v.ending)console.log([v.ending.threatText,v.ending.institutionText,v.ending.relationshipText,v.ending.viragText].join('\n'));
  if(r.id==='journal')console.log(JSON.stringify({evidence:v.evidence,journal:v.journal,bonds:v.bonds},null,2));
  if(r.id==='shop')console.log(JSON.stringify({shop:v.gifts.shop,inventory:v.gifts.inventory,notes:v.gifts.notes},null,2));
  if(r.id==='replies'||v.gifts.replies.some((h:any)=>!h.read))for(const h of v.gifts.replies)console.log(`${h.girl} — ${h.item}: ${h.reaction}\n[portrait] ${h.portrait.description}`);
