@@ -21,6 +21,8 @@ A teljes [dokumentációs index](docs/README.md) felsorolja az aktív és archiv
 
 ## Mentés és képek
 
+**Asset work and uploads:** Follow [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md). Never expose base64, binary patches or image payloads in model context. Transfer bytes programmatically, reuse uploaded blob SHAs, publish images sequentially to `main`, and checkpoint each successful publication. Verify using remote tree hashes, not downloaded image contents.
+
 A felhasználó 2026-10-25-i döntése szerint visszafelé kompatibilitás nem követelmény. Csak a jelenlegi, verziózott mentésborítékot támogatjuk (`ligetvar-save`); ne tarts fenn régi azonosítókat, migrációkat, névimportot vagy alternatív játékszabályokat korábbi mentések miatt.
 
 A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. A korábbi karakterképek és képzési instrukciók az archívumba kerültek; Rebeka, Boglárka és Gréta átnézett semleges runtime portréja az `assets/characters/` alatt van; a többi szereplő helyőrző. A hiányzó kifejezések az adott szereplő semleges képére esnek vissza. A teljes képi készlet végső felhasználói jóváhagyása még nyitott. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. A történeti, nem aktív képek az `assets/archive/` alatt vannak. A játék csak a manifestben felsorolt eszközöket használja; az archívum nem kerül publikált assetútvonalakra.
