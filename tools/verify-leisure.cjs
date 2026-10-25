@@ -15,15 +15,15 @@ let browser,currentPage;
   browser=await launch();
   const page=await browser.newPage({viewport:{width,height:width<500?844:1000},hasTouch:width<500}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   currentPage=page;
-  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v2')));
-  const seed=async s=>{await page.goto(url);await page.evaluate(s=>localStorage.setItem('ligetvar-save-v2',JSON.stringify(s)),s);await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();};
+  const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ligetvar-save-v3')));
+  const seed=async s=>{await page.goto(url);await page.evaluate(s=>localStorage.setItem('ligetvar-save-v3',JSON.stringify(s)),s);await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();};
   const overflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'overflow at '+width);
-  for(const kind of ['mohu','brick']){
-   await seed(initial);await page.locator('.spot-bag').click();await page.getByRole('button',{name:new RegExp(kind==='mohu'?'Újrahasznosítás':'Archívumpárok')}).click();
+  for(const kind of ['recycling','archive']){
+   await seed(initial);await page.locator('.spot-bag').click();await page.getByRole('button',{name:new RegExp(kind==='recycling'?'Újrahasznosítás':'Archívumpárok')}).click();
    const tiles=page.locator('.puzzle-tile');await tiles.first().waitFor();
    for(const b of await tiles.all()){const box=await b.boundingBox();assert.ok(box.width>=44&&box.height>=44,JSON.stringify({width,box}));}
    await overflow();await page.screenshot({path:path.join(output,`${kind}-${width}.png`),fullPage:true});
-   if(kind==='mohu'){
+   if(kind==='recycling'){
     let s=await state();while(!puzzleDone(s.puzzle)){const [a,b]=legalSwap(s.puzzle.board);await tiles.nth(a).click();await tiles.nth(b).click();s=await state();}
    }else{
     let s=await state();await tiles.nth(0).click();const before=await state();await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.deepEqual((await state()).puzzle,before.puzzle);
@@ -38,7 +38,7 @@ let browser,currentPage;
   assert.equal((await state()).giftHistory.length,1);await page.locator('.gift-reply img').evaluate(img=>img.decode());await overflow();await page.screenshot({path:path.join(output,`gift-${width}.png`),fullPage:true});
   await page.getByRole('button',{name:'Elolvastam a válaszokat'}).click();await page.locator('.spot-phone').click();assert.equal(await page.locator('.gift-reply').count(),1);
   // Build a legitimate earned-points save and exercise a paid scene admission.
-  let s=initial;s=R.activity(s,'brick');for(let v=0;v<8;v++){const pair=s.puzzle.board.flatMap((x,i)=>x===v?[i]:[]);s=R.movePuzzle(s,pair[0]);s=R.movePuzzle(s,pair[1]);if(v<7)s=R.nextPair(s);}s=R.finishPuzzle(s);s=finish(s,'rebeka_1');s=R.nextWeek(s,SCENES);s=finish(s,'shared_2');
+  let s=initial;s=R.activity(s,'archive');for(let v=0;v<8;v++){const pair=s.puzzle.board.flatMap((x,i)=>x===v?[i]:[]);s=R.movePuzzle(s,pair[0]);s=R.movePuzzle(s,pair[1]);if(v<7)s=R.nextPair(s);}s=R.finishPuzzle(s);s=finish(s,'rebeka_1');s=R.nextWeek(s,SCENES);s=finish(s,'shared_2');
   await seed(s);await page.locator('.spot-phone').click();await overflow();await page.screenshot({path:path.join(output,`outings-${width}.png`),fullPage:true});
   await page.getByRole('button',{name:/Rebeka · A vállalhatatlan képek estéje/}).click();assert.equal((await state()).activityPoints,2);assert.equal((await state()).money,s.money-4000);
   await page.reload();await page.getByRole('button',{name:'Félév folytatása',exact:true}).click();assert.equal((await state()).activityPoints,2);

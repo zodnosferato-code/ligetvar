@@ -1,16 +1,16 @@
-# Játékmotor — átdolgozott félév, v2
+# Játékmotor — átdolgozott félév
 
 > **Status:** Active. | **Purpose:** Runtime architecture, scheduling, saves, and ending rules.
 
 | Réteg | Aktív forrás | Szerep |
 | --- | --- | --- |
-| Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, a v2 mentési alak megőrzésével |
+| Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, kötelező jelenlegi v3 mezőkkel |
 | Motor | `src/game/engine/logic.ts` | általános reducerek, sávok, előfeltételek, célzott hatások; történeti azonosítók nélkül |
 | Kampányszabályok | `src/game/content/rules.ts`, `runtime.ts` | kezdeti állapot, 16 hét, gazdaság, kapcsolati irányok, konfrontáció, intézmény és végértékelés |
 | Történet | `src/game/content/catalog.ts` | 60 magyar jelenet; külön TypeScript modulokból összeállított egyetlen regiszter |
 | Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
 | Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
-| Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v2 kulcs; Zustand/localStorage integráció |
+| Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és v3 kulcs; Zustand/localStorage integráció |
 | UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; tárgyakkal vezérelt iroda/saját szoba tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
 | Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
 
@@ -42,7 +42,7 @@ A felhasználó 2026-10-21-i választása rögzített nappali/éjszakai sávokra
 
 A kampány `RULES.schedule` adatai mondják meg a sávok napszakát és az aktivitások megengedett időszakait; a generikus motor nem importál történeti adatot. A jelenet opcionális `periods` mezője adja a napszak-korlátot. Az `availableScenes`, `openScene` és `activity` ugyanazt a szabályt ellenőrzi, tehát közvetlen reducerhívás sem indít éjszakai munkát. Más kampány számára a schedule elhagyható. A két napszakban elérhető jelenetek világítása nappal `day`, éjszaka `evening`; a szövegek érintett délután-hivatkozásai idősemlegesek. A T7/T8 esti világítást kap. A tervező mindig a sávból áll helyre, újratöltéskor is. Nappal külön előnézet jelzi a már teljesített előfeltételű, csak éjszaka indítható estéket.
 
-A párbeszéd sorközi folytatása, munka megnyitása vagy megszakítása nem léptet időt; a befejezés pontosan egy sávot használ. A kötelező jelenet nem hagyható ki. Nincs új meghívás-, óra-, vagy mentésmező. A v2 mentések megmaradnak, az 1./2. sáv nappalnak/éjszakának számít. A korábban már megkezdett, az új szabály szerinti napszakon kívüli jelenet vagy munkajáték befejezhető: a mentésbetöltő és a befejezés szándékosan nem alkalmaz utólagos napszak-kaput. Megszakított régi éjszakai munka újra már csak nappal indítható.
+A párbeszéd folytatása és a munka megnyitása nem léptet időt; a befejezés pontosan egy sávot használ. A kötelező jelenet nem hagyható ki. A mentésbetöltő ellenőrzi a jelenet és munkajáték napszakát is; régi, napszakon kívüli mentésekhez nincs kivétel. A munkajáték csak az első lépés előtt szakítható meg.
 
 ## Portrék és jelenetkompozíció
 
@@ -68,11 +68,11 @@ Az előfeltétel explicit jelenet-, bizonyíték- és döntéshivatkozás; össz
 
 ## Elágazó és kontextuális beszélgetések
 
-A `Choice.next` eltérő szövegcsomópontra vezet. A `Choice.requires` korábban tanúsított döntéshez, jelenethez vagy bizonyítékhoz kötheti egy válasz megjelenését. Az el nem érhető választást a reducer közvetlen azonosítóval sem fogadja el. A válasz hatása az ág végéig függőben marad; közben menthető és folytatható. Az új nyitóágak megőrzik a korábbi `line_*` azonosítókat és választási hatásokat a v2 kurzorokhoz.
+A `Choice.next` eltérő szövegcsomópontra vezet. A `Choice.requires` korábban tanúsított döntéshez, jelenethez vagy bizonyítékhoz kötheti egy válasz megjelenését. Az el nem érhető választást a reducer közvetlen azonosítóval sem fogadja el. A válasz hatása az ág végéig függőben marad; közben menthető és folytatható. Az új nyitóágak megőrzik a korábbi `line_*` azonosítókat és választási hatásokat a jelenetgráf hivatkozásaihoz.
 
 A kilenc opcionális kávés beszélgetés három időszakot fed le: 1–7., 8–14. és 15–16. hét. Karakterenként és időszakonként egyszer játszhatók, egy szabad sávba és 8 energiába kerülnek. A középső visszautaló választás csak a korábbi megfelelő témát befejező játékosnak jelenik meg. Romantikus vállalást vagy kapcsolatpontot nem adnak, és a nyomozás nem igényli őket. A régi, csak állapotüzenetet adó `talk` tevékenység megszűnt.
 
-A `romance.ts` kibővíti a három egyéni útvonal 2–6. jelenetét és a T3/T4/T7/T8 jeleneteket. A randira és az érintésre külön válaszolunk: a `slow_touch` ugyanazt a romantikus folytatást és kapcsolódást engedi, mint a közelség elfogadása. A visszautasítás továbbra is külön választás. A személyes beszélgetés emlékei csak jelenetbefejezéskor kerülnek a meglévő tanúsított döntések közé; később feltételes válaszok idézik fel őket, mindig feltétel nélküli alternatívával. Nem keletkezik új mentésmező, kötelező alkalom vagy sávköltség. A korábbi v2 jelenet-, sor- és választásazonosítók megmaradnak; a már befejezett jelenetek nem játszódnak újra automatikusan.
+A `romance.ts` kibővíti a három egyéni útvonal 2–6. jelenetét és a T3/T4/T7/T8 jeleneteket. A randira és az érintésre külön válaszolunk: a `slow_touch` ugyanazt a romantikus folytatást és kapcsolódást engedi, mint a közelség elfogadása. A visszautasítás továbbra is külön választás. A személyes beszélgetés emlékei csak jelenetbefejezéskor kerülnek a meglévő tanúsított döntések közé; később feltételes válaszok idézik fel őket, mindig feltétel nélküli alternatívával. Nem keletkezik új mentésmező, kötelező alkalom vagy sávköltség. A jelenetgráf az aktív történethez tartozik; korábbi mentések azonosítóihoz nem igazodunk.
 
 ## Tanúsított tudás és döntés
 
@@ -88,8 +88,8 @@ Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egye
 
 ## Mentési határ
 
-- Kulcs: `ligetvar-save-v2`, `version: 2`. A v1 kulcsot a motor soha nem írja vagy törli.
-- A régi félévet újra kell kezdeni. A címoldalon külön kérhető a v1 játékosnevének átvétele; hét, útvonal, stat és mérföldkő nem importálható.
+- Kulcs: `ligetvar-save-v3`, `version: 3`. Csak a teljes, jelenlegi séma támogatott.
+- Korábbi verzióknál új játék szükséges. Nincs névimport, migráció vagy kompatibilitási útvonal.
 - Ismeretlen verzió, hibás JSON, hiányos állapot, ismeretlen jelenet/kurzor, hamis bizonyítékforrás vagy érvénytelen folyamathatás nem tölthető be. Sikertelen folytatás nem írja felül a mentést új játékkal.
 - Jelenet közben is menthető és folytatható. A mentés a kurzort és a még nem tanúsított hatásokat is őrzi.
 - Írási hiba a felületen látható, a játék memóriában folytatható.
@@ -108,4 +108,4 @@ Every non-shared scene in the saved night slot now resolves to `night`, includin
 
 ## Move-limited jobs and personal spending — 25 October 2026
 
-The approved puzzle/points redesign is implemented. [Puzzles and economy](docs/LEISURE-ECONOMY.md) documents the authoritative amounts, six paid optional scenes, six gifts, visible delivery replies, saved puzzle moves and backwards-compatible optional v2 fields. Starting a paid scene atomically deducts money and activity points; completion still consumes one slot. Core story and relationship commitments retain their existing witnessed requirements. The phone now also displays gift replies and paid outings; this supersedes the earlier meetings-only phone description.
+The approved puzzle/points redesign is implemented. [Puzzles and economy](docs/LEISURE-ECONOMY.md) documents the authoritative amounts, six paid optional scenes, six gifts, visible delivery replies, saved puzzle moves and required current save fields. Starting a paid scene atomically deducts money and activity points; completion still consumes one slot. Core story and relationship commitments retain their existing witnessed requirements. The phone now also displays gift replies and paid outings; this supersedes the earlier meetings-only phone description.

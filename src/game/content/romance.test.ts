@@ -1,8 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {SCENES} from './catalog.ts';
-import {foundations} from './relationships.ts';
-import {triad} from './triad.ts';
 import {decodeSave} from './saves.ts';
 import {activity,applyChoice,createInitial,currentLine,evaluateEnding,nextWeek,openScene,setDirection} from './runtime.ts';
 import type {GameState,GirlId,RouteId} from './types.ts';
@@ -73,18 +71,7 @@ test('romantic memories appear only after their witnessed scene, with unconditio
  });
  assert.ok(sawCallback);
 });
-test('old v2 romantic cursors and existing choices remain valid',()=>{
- const originals=[...foundations,...triad];
- for(const route of ['rebeka','boglarka','greta','triad'] as const)campaign(route,undefined,(s,id)=>{
-  if(!SCENES[id].lines.some(l=>l.id.startsWith('romance_')))return;
-  const original=originals.find(x=>x.id===id)!;
-  for(const line of original.lines){
-   const opened=openScene(s,id,SCENES);opened.scene!.line=line.id;
-   assert.equal(decodeSave(JSON.stringify(opened),SCENES).status,'ok',id+'/'+line.id);
-   for(const choice of line.choices??[])assert.ok(SCENES[id].lines.find(l=>l.id===line.id)!.choices!.some(c=>c.id===choice.id));
-  }
- });
-});
+
 test('naming insecurity on the shared evening keeps the triad and all three affirmations',()=>{
  const s=campaign('triad',(_scene,line,ids)=>line==='romance_evening'?'honest':ids[0]);
  assert.equal(evaluateEnding(s).relationship,'triad');assert.ok(s.decisions.triad_named_insecurity);

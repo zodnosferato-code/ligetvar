@@ -10,14 +10,14 @@ The user chose relaxed puzzles with limited moves, money plus spendable activity
 
 | Activity | Rules | Maximum target |
 | --- | --- | --- |
-| Újrahasznosítás / Recycling (`mohu`) | Tap two neighbouring pieces to swap; match 3+ in a row or column; gravity/refill and cascades; 12 successful swaps. Invalid swaps are free. | 1,200 score; 10 per cleared tile, cascade multipliers ×2 then ×3 |
-| Archívumpárok (`brick`) | Eight pairs on a 4 × 4 board; 18 pair attempts. Two revealed cards remain visible until Next Pair. | Eight matched pairs |
+| Újrahasznosítás / Recycling (`recycling`) | Tap two neighbouring pieces to swap; match 3+ in a row or column; gravity/refill and cascades; 12 successful swaps. Invalid swaps are free. | 1,200 score; 10 per cleared tile, cascade multipliers ×2 then ×3 |
+| Archívumpárok (`archive`) | Eight pairs on a 4 × 4 board; 18 pair attempts. Two revealed cards remain visible until Next Pair. | Eight matched pairs |
 
-No timers, reflex requirements, drag gestures or timed card hiding. Distinct shapes supplement colors. Touch targets are at least 44px at the tested phone widths; keyboard buttons have visible focus. Both games use the existing job IDs for save compatibility, replacing the runner and fixed quiz.
+No timers, reflex requirements, drag gestures or timed card hiding. Distinct shapes supplement colors. Touch targets are at least 44px at the tested phone widths; keyboard buttons have visible focus. The only job IDs are `recycling` and `archive`. The retired runner, quiz and group-clearing rules are not supported.
 
 Completion pays **8,000–20,000 Ft and 3–6 programpont**, proportional to score, with a floor even for a poor shift. The player explicitly claims the displayed result. Claiming consumes exactly one daytime slot and 12 energy. The state reducer derives rewards from the saved board; the UI cannot submit an arbitrary payout. Claims outside a completed active puzzle do nothing.
 
-The first move starts the shift. Returning to the planner is available only before play; after starting, the player can return to the title or close the page and resume. Board, seed, moves, score, matched cards and a half-revealed pair persist on each interaction. Reopening does not reset the puzzle. Boards vary deterministically by week and game; starting/cancelling cannot reroll for better rewards. New Recycling boards start without matches and automatically regenerate when no legal swap remains. Cascades resolve atomically, with a 20-wave safety bound followed by a fresh playable board. Existing unfinished group-clearing saves retain their old rules and 180-point target; new shifts use the optional `match3` mode. The internal `mohu` ID remains solely for save compatibility.
+The first move starts the shift. Returning to the planner is available only before play; after starting, the player can return to the title or close the page and resume. Board, seed, moves, score, matched cards and a half-revealed pair persist on each interaction. Reopening does not reset the puzzle. Boards vary deterministically by week and game; starting/cancelling cannot reroll for better rewards. New Recycling boards start without matches and automatically regenerate when no legal swap remains. Cascades resolve atomically, with a 20-wave safety bound followed by a fresh playable board. Recycling has only match-three rules and a 1,200-point reward target.
 
 ## Spending balance
 
@@ -51,7 +51,7 @@ First-time suited gifts give +2 bond; a mismatched or repeated item gives no bon
 
 ## Saves and source boundaries
 
-The v2 key/version remains. Added optional fields: `activityPoints`, `puzzle`, `giftHistory`. Absence means zero points, no started puzzle, and no known gift history. Old balances, inventory, story cursors and witnessed decisions are preserved, not forcibly rebased. New weekly income applies going forward. Already-open old jobs can finish in their old slot, using a new puzzle when first interacted with; they do not retroactively claim rewards.
+Only `ligetvar-save-v3` / version 3 is read and written. `activityPoints`, `puzzle` and `giftHistory` are required fields. Active jobs must have a valid saved board and occupy the daytime slot; outside a job, `puzzle` must be null. Missing fields are rejected rather than backfilled. There is no migration or name import: earlier versions require a new game.
 
 `content/puzzles.ts`, `gifting.ts` and `outings.ts` contain game-specific rules and writing. `runtime.ts` binds them to the store. The generic engine understands only optional scene costs and a generic points balance, not characters or minigame identities. Gift history is separate from the scene journal so deliveries cannot fabricate witnessed story evidence. New save fields are validated when present.
 

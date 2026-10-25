@@ -6,9 +6,9 @@ export function sharedFor(r:Registry,w:number){return Object.values(r).find(x=>x
 export function currentPeriod(s:GameState,schedule?:Schedule){return s.slot<3?schedule?.slots[s.slot as 0|1|2]??null:null;}
 export function periodAllowed(s:GameState,periods:Scene['periods'],schedule?:Schedule){const period=currentPeriod(s,schedule);return !periods||!schedule||!!period&&periods.includes(period);}
 export function activityAvailable<S extends GameState>(s:S,kind:string,rules:RuntimeRules<S>){return s.phase==='planner'&&s.slot>=1&&s.slot<=2&&(kind==='rest'||Object.hasOwn(rules.economy.jobs,kind))&&periodAllowed(s,rules.schedule?.activities[kind],rules.schedule);}
-export function sceneAvailable(s:GameState,x:Scene,schedule?:Schedule){return s.phase==='planner'&&!(x.id in s.completed)&&s.week>=x.week&&s.week<=x.deadline&&(s.slot===0?x.kind==='shared'&&x.week===s.week:s.slot<3&&x.kind!=='shared')&&(!x.cost||(s.money>=x.cost.money&&(s.activityPoints??0)>=x.cost.points))&&meets(s,x.requires)&&periodAllowed(s,x.periods,schedule);}
+export function sceneAvailable(s:GameState,x:Scene,schedule?:Schedule){return s.phase==='planner'&&!(x.id in s.completed)&&s.week>=x.week&&s.week<=x.deadline&&(s.slot===0?x.kind==='shared'&&x.week===s.week:s.slot<3&&x.kind!=='shared')&&(!x.cost||(s.money>=x.cost.money&&s.activityPoints>=x.cost.points))&&meets(s,x.requires)&&periodAllowed(s,x.periods,schedule);}
 export function availableScenes(s:GameState,r:Registry,schedule?:Schedule){return Object.values(r).filter(x=>sceneAvailable(s,x,schedule)).sort((a,b)=>a.deadline-b.deadline||a.week-b.week||a.id.localeCompare(b.id));}
-export function openScene<S extends GameState>(s:S,id:string,r:Registry,schedule?:Schedule):S{const x=r[id];return x&&sceneAvailable(s,x,schedule)?{...s,money:s.money-(x.cost?.money??0),activityPoints:(s.activityPoints??0)-(x.cost?.points??0),phase:'scene',scene:{id,line:x.entry,pending:[]},lastNote:''}:s;}
+export function openScene<S extends GameState>(s:S,id:string,r:Registry,schedule?:Schedule):S{const x=r[id];return x&&sceneAvailable(s,x,schedule)?{...s,money:s.money-(x.cost?.money??0),activityPoints:s.activityPoints-(x.cost?.points??0),phase:'scene',scene:{id,line:x.entry,pending:[]},lastNote:''}:s;}
 export function currentLine(s:GameState,r:Registry){const l=s.scene?r[s.scene.id]?.lines.find(l=>l.id===s.scene!.line):undefined;return l?.choices?{...l,choices:l.choices.filter(c=>!c.requires||meets(s,c.requires))}:l;}
 export function applyEffect<S extends GameState>(s:S,e:Effect,scene:string,rules:RuntimeRules<S>){
  for(const [k,v] of Object.entries(e.bonds??{}))if(k in s.bonds&&v!==undefined)s.bonds[k]=clamp(s.bonds[k]+v,0,100);
@@ -32,7 +32,7 @@ export function nextWeek<S extends GameState>(s:S,r:Registry,rules:RuntimeRules<
  const required=sharedFor(r,s.week);if(s.phase!=='summary'||s.slot!==3||!required||!(required.id in s.completed))return s;
  if(s.week===rules.weeks)return rules.canFinish(s)?{...s,phase:'ending'}:s;
  if(!sharedFor(r,s.week+1))return s;
- return {...s,week:s.week+1,slot:0,phase:'planner',energy:clamp(s.energy+rules.economy.weeklyEnergy,0,100),money:s.money+rules.economy.weeklyMoney,giftsWeek:[],jobsWeek:Object.fromEntries(Object.keys(rules.economy.jobs).map(id=>[id,0])),lastNote:rules.notes.newWeek};
+ return {...s,week:s.week+1,slot:0,phase:'planner',energy:clamp(s.energy+rules.economy.weeklyEnergy,0,100),money:s.money+rules.economy.weeklyMoney,giftsWeek:[],lastNote:rules.notes.newWeek};
 }
 export function setDirection<S extends GameState>(s:S,direction:string,rules:RuntimeRules<S>):S{
  const result=rules.directionChange(s,direction);
@@ -45,12 +45,8 @@ export function activity<S extends GameState>(s:S,kind:string,rules:RuntimeRules
  const n=structuredClone(s);n.energy=clamp(n.energy+rules.economy.restEnergy,0,100);n.lastNote=rules.notes.rest;spendSlot(n);return n;
 }
 export function resolveJob<S extends GameState>(s:S,kind:string,rawPay:number,rules:RuntimeRules<S>):S{
- const job=rules.economy.jobs[kind];if(!job||s.phase!=='minigame'||s.minigame!==kind||!Number.isFinite(rawPay))return s;
- const n=structuredClone(s),count=++n.jobsWeek[kind],rate=job.rates[Math.min(count-1,job.rates.length-1)],pay=Math.round(clamp(rawPay,0,job.maxPay)*rate);
+ const job=rules.economy.jobs[kind];if(!job||s.phase!=='minigame'||s.minigame!==kind||!periodAllowed(s,rules.schedule?.activities[kind],rules.schedule)||!Number.isFinite(rawPay))return s;
+ const n=structuredClone(s),pay=Math.round(clamp(rawPay,0,job.maxPay));
  n.money+=pay;n.energy=clamp(n.energy-job.energy,0,100);n.minigame=null;n.lastNote=rules.notes.job(pay);spendSlot(n);return n;
 }
 export function buyGift<S extends GameState>(s:S,id:string,rules:RuntimeRules<S>):S{const g=Object.hasOwn(rules.economy.gifts,id)?rules.economy.gifts[id]:undefined;return !g||s.phase!=='planner'||s.money<g.price?s:{...s,money:s.money-g.price,inventory:{...s.inventory,[id]:(s.inventory[id]??0)+1},lastNote:rules.notes.purchase};}
-export function giveGift<S extends GameState>(s:S,person:string,id:string,bond:string,rules:RuntimeRules<S>):S{
- const g=rules.economy.gifts[id];if(s.phase!=='planner'||!g||!(bond in s.bonds)||!(s.inventory[id]>0)||s.giftsWeek.includes(person))return s;
- const n=structuredClone(s);n.inventory[id]--;n.giftsWeek.push(person);n.bonds[bond]=clamp(n.bonds[bond]+(g.person===person?g.bonus:0),0,100);n.lastNote=rules.notes.gift;return n;
-}

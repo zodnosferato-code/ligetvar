@@ -21,7 +21,7 @@ A teljes [dokumentációs index](docs/README.md) felsorolja az aktív és archiv
 
 ## Mentés és képek
 
-A v2 külön kulcsot használ; a régi v1 változatlanul megmarad, történetét újra kell kezdeni. Csak a játékosnév vehető át külön kérésre. Régi páros útvonalat vagy flaget ne fordíts új vállalássá.
+A felhasználó 2026-10-25-i döntése szerint visszafelé kompatibilitás nem követelmény. Csak a jelenlegi v3 mentést támogatjuk (`ligetvar-save-v3`); ne tarts fenn régi azonosítókat, migrációkat, névimportot vagy alternatív játékszabályokat korábbi mentések miatt.
 
 A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. A korábbi karakterképek és képzési instrukciók az archívumba kerültek; Rebeka, Boglárka és Gréta átnézett semleges runtime portréja az `assets/characters/` alatt van; a többi szereplő helyőrző. A hiányzó kifejezések az adott szereplő semleges képére esnek vissza. A teljes képi készlet végső felhasználói jóváhagyása még nyitott. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. A történeti, nem aktív képek az `assets/archive/` alatt vannak. A játék csak a manifestben felsorolt eszközöket használja; az archívum nem kerül publikált assetútvonalakra.
 
@@ -69,4 +69,4 @@ The user now asks to generate as quickly as possible and inspect afterward. Inde
 
 ## Approved leisure direction — 25 October 2026
 
-The user selected relaxed move-limited puzzles, money plus spendable activity points, and full-slot jobs with substantial rewards. [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) is authoritative for the implemented economy. Jobs remain daytime-only. The phone now includes persistent gift replies and six optional paid outings, extending the earlier meetings-only rule. Save every puzzle move; never accept arbitrary UI reward amounts or permit reward duplication. Preserve old v2 balances and story state. Personalized gifts never substitute for commitment or required-story evidence.
+The user selected relaxed move-limited puzzles, money plus spendable activity points, and full-slot jobs with substantial rewards. [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) is authoritative for the implemented economy. Jobs remain daytime-only. The phone now includes persistent gift replies and six optional paid outings, extending the earlier meetings-only rule. Save every puzzle move; never accept arbitrary UI reward amounts or permit reward duplication. Do not maintain backward compatibility. Require the complete current save schema; old saves require a fresh game. Personalized gifts never substitute for commitment or required-story evidence.

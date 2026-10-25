@@ -1,6 +1,6 @@
 # Ligetvár
 
-> **Status:** Playable v2; final art is in progress. | **Purpose:** Project overview and local setup.
+> **Status:** Playable; final art is in progress. | **Purpose:** Project overview and local setup.
 
 Magyar, tizenhat hetes gótikus romantikus történetjáték egy kastélyban működő főiskolán. A fakultatív műhely résztvevői eltűnések és hiányzó emlékek nyomát követik. Három egyéni románc, Rebeka–Boglárka–Márton közös kapcsolat, barátság, visszalépés és gyenge felkészülésű történeti kimenetel játszható.
 
@@ -20,9 +20,9 @@ Hetente egy garantált közös történeti alkalom után egy nappali és egy éj
 
 A heti tervezőben a nappali iroda és az éjszakai hálószoba tárgyait használod: íróasztal a közös alkalomhoz, telefon a személyes találkozókhoz, fotel a pihenéshez, zsák a munkához, polc az ajándékokhoz, füzet a naplóhoz. A műhely és munka az irodában van; a hálószobából találkozót egyeztethetsz, pihenhetsz, naplót olvashatsz és ajándékot adhatsz. Az ajtó az elérhető úti célokat és az ott játszható jeleneteket nyitja meg. Minden kattintható tárgy körvonala és címkéje mindig látható; a képből hiányzó műveleti tárgyat külön ikongomb jelöli. A központ automatikusan az iroda nappal, a hálószoba éjszaka; szobaváltással nem lehet időt ugrani vagy munkát megnyitni éjjel. Munka és felkészülés nappal, a T7/T8 közös esték éjszaka érhetők el. Más személyes találkozó és kávé mindkét sávban játszható, napszakhoz igazított megvilágítással. A pihenés nappal, az alvás éjszaka egy-egy sávot használ, legfeljebb 32 energiát ad. Napló, ajándék és az úti célok böngészése ingyenes. A négyállomásos heti sáv jelzi az előrehaladást, a kártyák a következő napszakot és a valódi határidőt.
 
-A [nyugodt, lépésszámos munkajátékok](docs/LEISURE-ECONOMY.md) 8 000–20 000 Ft-ot és 3–6 programpontot adnak egy nappali sávért. A pontokat hat új, személyes történetre költheted a telefonon. A polcon hatféle ajándékból választhatsz, saját üzenettel és távoli kézbesítéssel vagy rövid személyes átadással; a nők eltérő válaszai megmaradnak a telefonon. Új játékban 12 000 Ft-ról indulsz, a heti szabadon elkölthető keret 3 000 Ft. Korábbi v2 egyenleget nem veszünk el.
+A [nyugodt, lépésszámos munkajátékok](docs/LEISURE-ECONOMY.md) 8 000–20 000 Ft-ot és 3–6 programpontot adnak egy nappali sávért. A pontokat hat új, személyes történetre költheted a telefonon. A polcon hatféle ajándékból választhatsz, saját üzenettel és távoli kézbesítéssel vagy rövid személyes átadással; a nők eltérő válaszai megmaradnak a telefonon. Új játékban 12 000 Ft-ról indulsz, a heti szabadon elkölthető keret 3 000 Ft.
 
-A v2 külön mentést használ. A v1 megmarad, de az új történetet újra kell kezdeni. A címoldalon csak a régi játékosnév vehető át külön kérésre; régi páros útvonalat vagy mérföldkövet nem alakítunk át automatikusan.
+A játék a jelenlegi v3 mentésformátumot használja. Korábbi mentések importja és visszafelé kompatibilitás nincs; új játékot kell kezdeni.
 
 A dokumentumok áttekintése: [dokumentációs index](docs/README.md). Fejlesztéshez először [AGENT.md](AGENT.md), [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), [ENGINE.md](ENGINE.md). Az aktuális ellenőrzések és hátralévő munka a [haladási naplóban](docs/REDESIGN-PROGRESS.md), a vizuális hiányok az [art registerben](docs/ART-REGISTER.md) találhatók. A régi számozott tervek a [dokumentációs archívumban](docs/archive/legacy-design/) vannak. A korábbi, nem aktív képi referenciák és a régi képlog az [assets/archive/](assets/archive/) mappában maradtak meg; a játék kizárólag a `src/game/content/assets.ts` manifestből használ képeket. A régi dialógus- és lokalizációs állományok a [történeti dialógusarchívumban](docs/archive/legacy-narrative/README.md) találhatók, nem aktív tartalom. A jóváhagyott [karakterhangok](docs/CHARACTER-VOICES.md) vezetik a további írói munkát.
 

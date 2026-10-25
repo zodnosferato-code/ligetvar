@@ -23,19 +23,19 @@ export interface SceneCursor { id:string; line:string; pending:Effect[] }
 export interface WitnessedDecision { scene:string; week:number }
 export interface GameState {
  version:number; name:string; week:number; slot:0|1|2|3; phase:'planner'|'scene'|'summary'|'ending'|'minigame';
- activityPoints?:number;
+ activityPoints:number;
  scene:SceneCursor|null; minigame:string|null; money:number; energy:number; exposure:number;
  bonds:Record<string,number>; direction:string; decisions:Record<string,WitnessedDecision>; evidence:Record<string,WitnessedDecision>;
- completed:Record<string,number>; preparation:string[]; inventory:Record<string,number>; giftsWeek:string[]; jobsWeek:Record<string,number>;
+ completed:Record<string,number>; preparation:string[]; inventory:Record<string,number>; giftsWeek:string[];
  journal:{scene:string;week:number;text:string}[]; lastNote:string;
 }
-export interface Gift { name:string; price:number; person:string; bonus:number }
-export interface Job { energy:number; maxPay:number; rates:number[] }
+export interface Gift { name:string; price:number }
+export interface Job { energy:number; maxPay:number }
 export interface RuntimeRules<S extends GameState> {
  schedule?:Schedule;
- weeks:number; saveKey:string; legacySaveKey:string; initial:(name:string)=>S;
+ weeks:number; saveKey:string; initial:(name:string)=>S;
  economy:{sharedEnergy:number;sceneEnergy:number;weeklyEnergy:number;weeklyMoney:number;restEnergy:number;gifts:Record<string,Gift>;jobs:Record<string,Job>};
- notes:{initial:string;newWeek:string;rest:string;purchase:string;gift:string;job:(pay:number)=>string};
+ notes:{initial:string;newWeek:string;rest:string;purchase:string;job:(pay:number)=>string};
  applyEffect?:(state:S,effect:Effect)=>void;
  completeScene?:(state:S,scene:Scene)=>void;
  canFinish:(state:S)=>boolean;

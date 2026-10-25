@@ -5,7 +5,7 @@ import {GIRLS,type GirlId} from '../content/types.ts';
 import {ROUTES,formatFt} from '../content/runtime.ts';
 import {portraitFor,assetUrl} from '../content/assets.ts';
 export function GiftReplies({unreadOnly=false}:{unreadOnly?:boolean}){
- const g=useGame(),all=g.state.giftHistory??[],history=unreadOnly?all.filter(h=>!h.read):all;
+ const g=useGame(),all=g.state.giftHistory,history=unreadOnly?all.filter(h=>!h.read):all;
  const heading=useRef<HTMLHeadingElement>(null);
  useEffect(()=>{if(unreadOnly&&history.length){heading.current?.focus({preventScroll:true});heading.current?.scrollIntoView({block:'center'});}},[unreadOnly,history.length]);
  if(!history.length)return unreadOnly?null:<p className="muted">Itt maradnak az ajándékaidra kapott személyes válaszok.</p>;
