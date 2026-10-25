@@ -183,13 +183,14 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
  }
  if(stage===6){
   after(s,'line_0','romance_after',p.after);
-  // short private continuation
+  // short private continuation — append after the last beat of the previous after() chain
   const cont = girl==='rebeka'
     ? [['narrator','A beszélgetés után Rebeka lehúzza a pulóvert. Térdre ereszkedik, szájával rajtad, majd feláll és lovagol. Utána a sebét megmutatja, te megcsókolod.'],['rebeka','Ez maradjon köztünk.','affectionate']]
     : girl==='boglarka'
     ? [['narrator','Boglárka leveszi a kardigánt. Lassan vetkőzik; te nyalod, ő visszaadja. Lovagol, folyamatos dicsérettel. Utána a kardigán félig rajta marad.'],['boglarka','Jó volt. Maradj még.','affectionate']]
     : [['narrator','Gréta a mellényt a székre dobja. Asztalra hajol, szoknya fel. Orál, aztán hajolva, könnyű ütésekkel. „Ne írd bele.”'],['greta','A telefon marad a táskában.','amused']];
-  after(s,'romance_after', 'romance_private_cont', cont);
+  const lastAfter = 'romance_after_' + (p.after.length - 1);
+  after(s, lastAfter, 'romance_private_cont', cont);
  }
 }
 function expandTriad(s:Scene){
