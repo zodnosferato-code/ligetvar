@@ -1,10 +1,12 @@
 {
-  "id": "2026-10-25-explicit-rebeka-01",
+  "id": "2026-10-25-explicit-rebeka-02",
   "phase": "explicit",
   "assets": [
-    "explicit_rebeka_oral_kneeling"
+    "explicit_rebeka_oral_explicit",
+    "explicit_rebeka_bent_over",
+    "explicit_rebeka_riding"
   ],
-  "maxNewImages": 1,
+  "maxNewImages": 3,
   "generationModel": "wai-Illustrious",
   "editModel": "firered-image-edit",
   "resolution": "1K"
