@@ -7,29 +7,40 @@ function chapter(n:number,title:string,week:number,location:LocationId,lines:Lin
 }
 export const viragScenes:Scene[]=[
  chapter(1,'Virág · Az elveszett elsőéves',2,'hallway',[
-  line('arrival','narrator','Rövid, élénkkék hajú, apró termetű fiatal nő fordítja meg a térképet a folyosón. Rakott szoknyája, galléros blúza és vállra vetett kardigánja gondosan összeállított egyetemista öltözék. A tanácstalan tekintethez feltűnően biztos hang társul.','help'),
+  line('arrival','narrator','Rövid, élénkkék pixie frizurás, apró termetű fiatal nő fordítja meg a térképet a folyosón. Rakott szoknyája, galléros blúza és vállra vetett kardigánja tudatosan feltűnő összeállítás; a testhezálló blúz nyitott gallérja és a bordó kardigán éppúgy választás, mint a tanácstalan térképnézegetés. A tanácstalan tekintethez feltűnően biztos hang társul.','help'),
   line('help','virag','Bocsánat! A gazdasági iroda merre van? A nyilak szerint vagy eltévedtem, vagy a könyvelés a falban lakik. Virág vagyok. Tizenkilenc. És hivatalosan nagyon elveszett.','invite'),
-  line('invite','virag','Mutasd meg, és meghívlak valamire. Vagy mondd azt, hogy randi: rövidebb szó, jobban hangzik.',undefined,[
-   choice('flirt','Randi? Kezdjük egy sétával.','near','Virág mosolya kiszélesedik.','virag_first_flirt'),
-   choice('directions','Elmondom az utat, de randit nem ígérek.','directions_reply','Virág megjegyzi az útvonalat.'),
+  line('invite','virag','Mutasd meg. Aztán, ha kölcsönös a kíváncsiság, kereshetünk egy kis időt kettesben. Nem kell előtte három vacsorát megszerveznünk.',undefined,[
+   choice('flirt','Kíváncsi vagyok rád. Sétáljunk.','near','Virág mosolya kiszélesedik.','virag_first_flirt'),
+   choice('directions','Elmondom az utat, de mást most nem szeretnék.','directions_reply','Virág megjegyzi az útvonalat.'),
    choice('leave','Most nem érek rá.','leave_reply','Virág félrelép az útból.')]),
   line('near','virag','Szabad? — a karodra mutat. — A térképem megbízhatatlan, de legalább jó társaságot választottam.',undefined,[choice('arm','Nyújtom a karom.','arm','Könnyedén beléd karol.','virag_arm'),choice('space','Sétáljunk inkább egymás mellett.','space','Virág visszahúzza a kezét.')]),
-  line('arm','narrator','Virág beléd karol, és néhány lépésig közel marad. Az iroda előtt elenged, mielőtt belépne.','bye'),
-  line('space','virag','Rendben. A szellemes társalgás szerencsére érintés nélkül is veszélyes.','bye'),
-  line('directions_reply','virag','Az útbaigazítást elfogadom. A randiajánlatomat később újrafogalmazom, hátha csak a címe nem tetszett.','bye'),
+  line('arm','narrator','Virág beléd karol, és néhány lépésig közel marad. Az iroda előtt elenged, és most már térkép nélkül fordul feléd.','private_offer'),
+  line('space','virag','Rendben. A szellemes társalgás szerencsére érintés nélkül is veszélyes.','private_offer'),
+  line('private_offer','virag','Egy dolgot tisztázzunk: felnőtt vagyok, és nem vagyok a hallgatód. Az elsőéves szerep csak megkönnyíti, hogy beszéljenek velem. Tetszel. Szívesen lennék veled most, különösebb szertartás nélkül.',undefined,[
+   choice('private_yes','Én is szeretném. Menjünk fel hozzám.','private_confirm','Virág elteszi a térképet.'),
+   choice('private_later','Szívesen flörtölök, de most nem megyek tovább.','private_later_reply','Virág a folyosón marad.'),
+   choice('private_no','Nem szeretném.','private_no_reply','Virág elfogadja a választ.')]),
+  line('private_confirm','virag','Én is ezt szeretném. Ettől még nem ígérünk egymásnak kapcsolatot. És az ajtó előtt is meggondolhatod magad.',undefined,[
+   choice('confirm','Rendben. Ezt most mindketten akarjuk.','private_after','Közösen indultok el.','virag_first_intimacy'),
+   choice('reconsider','Mégis inkább elköszönök.','private_no_reply','Virág nem próbál visszatartani.')]),
+  line('private_after','narrator','Kettesben távoztok Márton lakosztálya felé. A történet később, az együtt töltött magánidő után folytatódik; az intim részletek nem jelennek meg. A folyosóra visszatérve Virág előveszi a jegyzetfüzetét.','private_goodbye'),
+  line('private_goodbye','virag','Jó volt veled. Most viszont dolgom van a gazdasági irodánál. A folytatásra nem kérek ígéretet — majd megkérdezlek, amikor megint összefutunk.','bye'),
+  line('private_later_reply','virag','Jó. Az időzítésedhez nem jár felülbírálati jogom. Egy szemtelen mosoly azért még belefér.','bye'),
+  line('private_no_reply','virag','Rendben. Akkor most marad az iroda és az a borzalmas térkép. A humoromat sajnos nem tudom kikapcsolni.','bye'),
+  line('directions_reply','virag','Az útbaigazítást elfogadom. A bókjaim attól még nem fogynak el, hogy most csak útbaigazítást kapok.','bye'),
   line('leave_reply','virag','Akkor menj. Legközelebb jobb időzítéssel és rosszabb kifogással jövök.','bye'),
   line('bye','narrator','Virág az iroda felé indul. A nyitott ajtónál már egy beszerzési hirdetmény azonosítóját jegyzi fel, nem a térképet nézi. Te folytatod a napodat.')
  ],'Megismertem a tizenkilenc éves Virágot. Útbaigazítást és rögtön találkozót kért; a gazdasági iroda hirdetményét figyelte.'),
  chapter(2,'Virág · A névjegy hátoldala',3,'courtyard',[
   line('start','virag','Megtaláltam az irodát. Téged is. Mindkettő siker, de csak az egyiknek örülök ennyire. Üljünk le?','reveal'),
-  line('reveal','virag','Mielőtt megint eljátszom az elsőévest: nem vagyok a hallgatód. A Mérceháló országos hírügynökség junior riportere vagyok. Egyetemi korrupcióval foglalkozunk; szerkesztő és jogász is ellenőrzi, amit leadok.','reason'),
+  line('reveal','virag','A névjegyemen az igazi munkám szerepel. Nem vagyok a hallgatód. A Mérceháló országos hírügynökség junior riportere vagyok. Egyetemi korrupcióval foglalkozunk; szerkesztő és jogász is ellenőrzi, amit leadok.','reason'),
   line('reason','marton','A térkép színjáték volt. Engem pedig bejáratnak néztél.','answer'),
   line('answer','virag','Igen. Könnyebben beszélnek egy csinos, elveszett lánnyal, mint egy riporterrel. Az eltűnések körül hallott hallgatás hozott ide, de engem most a visszatartott ösztöndíjak és a papíron kész felújítás érdekel. A mosolyom is munkaeszköz volt. Nem csak az.','choice'),
   line('choice','virag','Kérj számon, ha akarsz. De a meghívásom valódi: veled akarok találkozni.',undefined,[
    choice('play','Látom a játékodat. Egyelőre benne vagyok.','play_reply','Virág nem próbálja ártatlannak mutatni magát.','virag_knows_game'),
    choice('challenge','Ne kezeld az érdeklődésemet belépőkártyának.','challenge_reply','Virág elkomolyodik.','virag_called_out'),
-   choice('no_date','Ma nincs randi. A névjegyet megnézem.','no_reply','Virág leteszi a névjegyet.')]),
-  line('play_reply','virag','Ez sokkal érdekesebb, mint amikor valaki nem veszi észre. Bizalmas adatot nem kérek randibelépőnek. Nyilvános iratot viszont olvasnál velem?','bye'),
+   choice('no_date','Ma nem megyek veled sehová. A névjegyet megnézem.','no_reply','Virág leteszi a névjegyet.')]),
+  line('play_reply','virag','Ez sokkal érdekesebb, mint amikor valaki nem veszi észre. Bizalmas adatot nem kérek a közelségünk feltételéül. Nyilvános iratot viszont olvasnál velem?','bye'),
   line('challenge_reply','virag','Jogos. A munkámhoz kérek segítséget, a közelségedet pedig szeretném. Nem ugyanaz. És nem lesz attól ugyanaz, hogy gyorsan beszélek.','bye'),
   line('no_reply','virag','Ma nem. Felírtam — a mai dátum mellé, nem örök törvénynek. A könyvtárban megtalálsz, ha kíváncsi leszel az iratokra.','bye'),
   line('bye','narrator','A névjegyen szerkesztőségi elérhetőség szerepel. Virág összecsukja a jegyzetfüzetet, rád mosolyog, és elindul a könyvtár felé; nem tart vissza.')
@@ -48,10 +59,10 @@ export const viragScenes:Scene[]=[
   line('distance','virag','Kár. A táblázatnak ettől még neki kell esnünk. Majd személyesebb betűméretet választok.','bye'),
   line('bye','narrator','Közösen megfogalmazzátok a nyilvános adatigénylést. Virág elküldi a szerkesztőségnek, visszatolja a széket, és az ajtónál külön köszöntök el.')
  ],'Nyilvános ösztöndíjkimutatások eltérését ellenőriztük. Virág beszélt saját Szabad Hullám irányzatáról; adatigénylés készül, még nincs bizonyított visszaélés.'),
- chapter(4,'Virág · A randi apró betűje',6,'bekas',[
+ chapter(4,'Virág · Kávé, kötöttségek nélkül',6,'bekas',[
   line('start','virag','Ma a tó a helyszín, és nem azért, mert közbeszerzési eljárásban nyert. Hoztam kávét. Igen, még mindig próbálkozom.','case'),
   line('case','virag','Megjött a válasz: az ösztöndíjpénzt egy közvetítőnél tartották, miközben teljesítettként jelentették. A felújításnál ugyanaz a kapcsolattartó szerepel. A szerkesztőm ellenőrizteti a céges kapcsolatot.','date'),
-  line('date','marton','Egy randin is mindig lesz ügyirat?','honest'),
+  line('date','marton','Minden találkozásunkra jut egy ügyirat?','honest'),
   line('honest','virag','Eleinte biztosan. Hozzád is azért mentem oda, mert hasznos lehettél. Most már az is érdekel, miért mosolyogsz akkor is, amikor átlátsz rajtam.','kiss'),
   line('kiss','virag','Megcsókolnál? Egyenes kérdés. Meglepő, tudom.',undefined,[
    choice('kiss_yes','Igen. Közelebb hajolok.','kissed','Virág kimondja: „Én is szeretném.”','virag_kissed'),
@@ -107,18 +118,19 @@ export const viragScenes:Scene[]=[
   line('start','narrator','Virág a megjelent cikksorozatot mutatja. A visszatartott ösztöndíjakat elutalták, a valótlan felújítási teljesítést visszavonták, a panaszok eltussolását dokumentálták. A felelős vezetőt leváltották; a hatósági utóeljárás külön folytatódik.','solved'),
   line('solved','virag','Mindhárom kérdésre megvan az ellenőrzött válasz. Nem minden korrupció szűnt meg az országban, de ez az ügy nem maradt egy fiókban. A szerkesztőm most először nem azt mondta: „korodhoz képest”. Csak azt: „jó munka”.','credit'),
   line('credit','marton','Mit írtál rólam?','answer'),
-  line('answer','virag','Semmit, amit nem engedélyeztél. A neved nincs benne. A független ellenőrzés elég volt. Magamnak viszont megjegyeztem néhány dolgot. Például azt, hogy még mindig szeretnélek elhívni.','last'),
-  line('last','virag','Vacsora? Nincs fedősztori. Aztán eldöntjük, meddig maradunk.',undefined,[
-   choice('again','Legyen egy újabb randi.','yes','Virág öröme ezúttal nem szerep.','virag_future_date'),
-   choice('maybe','Hívj fel. Aznap eldöntöm.','maybe','Virág felnevet.','virag_future_open'),
-   choice('no','Ma nem megyek veled.','no','Virág bólint.','virag_future_declined')]),
-  line('yes','virag','Végre egy időpont, amelynek nincs köze a közérdekű adatokhoz. Azért pontos leszek. Valószínűleg.','bye'),
-  line('maybe','virag','Kíméletlenül jelen időben élsz. Tetszik. Majd felhívlak, és rossz viccel kezdek.','bye'),
-  line('no','virag','Akkor ma ünneplek a szerkesztőséggel. A bókot itt hagyom: jó volt téged megismerni. A következő meghívásomon még dolgozom.','bye'),
+  line('answer','virag','Semmit, amit nem engedélyeztél. A neved nincs benne. A független ellenőrzés elég volt. Magamnak viszont megjegyeztem néhány dolgot. Például azt, hogy veled még egy könyvelési melléklet mellett is lehet flörtölni.','last'),
+  line('last','virag','Most új megbízás vár. Nem szervezek búcsúrandit, és nem kell meghatároznunk, mik vagyunk. Jó volt összefutni veled.',undefined,[
+   choice('congratulate','Szép munka volt. Sok sikert a következő ügyhöz.','congratulations','Virág büszkén mosolyog.'),
+   choice('tease','A következő helyen is el fogsz tévedni?','teasing','Virág felnevet.'),
+   choice('goodbye','Vigyázz magadra, Virág.','farewell','Virág búcsút int.')]),
+  line('congratulations','virag','Köszönöm. Azt azért remélem, nem csak a mellékleteimre fogsz emlékezni.','bye'),
+  line('teasing','virag','Csak ha találok valakit, akitől érdemes útbaigazítást kérni. Neked különösen jó volt az időzítésed.','bye'),
+  line('farewell','virag','Te is. És ne hidd, hogy egy sikeres cikk után kevésbé leszek szemtelen.','bye'),
   line('bye','narrator','Virág eltűnik a kapun túl, kék haja még egyszer kivillan a sál fölött. A munkája sikerült. Ami köztetek alakul, azt nem az újság címlapja dönti el.')
  ],'Virág cikksorozata lezárta az ösztöndíj-, felújítási és panaszeltussolási nyomozást. A szakmai siker nem függött a köztünk választott közelségtől.')
 ];
 viragScenes[0].periods=['day'];
+viragScenes[0].lines.find(l=>l.id==='invite')!.moment='virag_wink';
 viragScenes[0].lines.find(l=>l.id==='arm')!.moment='virag_arm';
 viragScenes[3].lines.find(l=>l.id==='kissed')!.moment='virag_kiss';
 viragScenes[6].lines.find(l=>l.id==='cuddled')!.moment='virag_cuddle';
@@ -133,5 +145,5 @@ for(const x of viragScenes){
 export function viragEpilogue(s:GameState):string{
  const report='A Mérceháló félév végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.';
  if(!s.completed.virag_1)return report;
- return report+' '+(s.decisions.virag_future_date?'Virág egy következő randira hív, most már fedősztori nélkül.':s.decisions.virag_future_open?'Virág telefonál: az új találkozóról akkor döntötök, nem előre.':'Virág újabb játékos meghívást küld. Márton válasza továbbra is az övé; Virág szakmai sikere ettől független.');
+ return report+' Virág új megbízáson dolgozik. Időnként egy szemtelen üzenettel jelentkezik; nincs búcsúrandi, kizárólagossági ígéret vagy lezáró párkapcsolati döntés.';
 }

@@ -156,7 +156,7 @@ This work supersedes the earlier backlog-only instruction for these specific new
 - [x] **VR2** Successful report independently of romance or skipped scenes; browser/CLI epilogue; no interactions with the other women, main-route replacement or vampire dependency.
 - [x] **AN1** Research and choose 3–6-frame animated WebP/GIF loops over routinely generated video. Record provider options, estimated image-attempt budget, pipeline and acceptance gates in [ANIMATION-PLAN.md](ANIMATION-PLAN.md).
 - [x] **AN2** Typed moment registry, explicit line hooks, bounded local-file metadata, reduced-motion poster, pause/restart and failed-load fallback; CLI status distinguishes planned from reviewed clips.
-- [ ] **VR3** Generate and review Virág's adult identity sheet, five expressions and hallway day background. Keep current placeholders honest until then.
+- [x] **VR3** Generate and review Virág's adult identity reference, five expressions and hallway day background. Implemented in 0.6.0; source/provenance retained, final user art acceptance open.
 - [ ] **AN3** Produce/review first arm-link loop with a separate poster; validate actual frame count/timing/bytes, mobile crop and loop seam. No production animation exists yet.
 - [ ] **AN4** After the pilot, produce chosen-kiss and shoulder-cuddle loops; review 320/390/1440px playback with real artwork, pause, reduced motion, failure and reload. Extend other characters only after pilot approval.
 
@@ -249,3 +249,11 @@ Browser checks: `tools/verify-virag.cjs` passed all eight scenes, reload and lay
 Reproduce browser checks after installing dependencies with `PLAYWRIGHT_MODULE_PATH` and `CHROMIUM_EXECUTABLE_PATH` set for your environment: `node --experimental-strip-types tools/verify-virag.cjs`. `CHROMIUM_SERVERLESS=1` enables the bundled serverless Chromium flags when needed. The test creates and removes its temporary HTML/TSX harness and embeds synthetic fixture bytes; it does not generate character art.
 
 Next: **VR3**, adult identity sheet/portraits and hallway background, then **AN3**, one reviewed arm-link loop. Remaining clips and real-art visual/performance approval stay unchecked. Localisation and adjustable campaign duration remain pending. Publication Actions results are recorded after pushing.
+
+### 25 October 2026 — 0.6.0 art and revised casual-intimacy direction
+
+Starting commit `f844038`. User chose pixie hair, deliberately seductive styling and immediate closeness; removed the traditional final-date milestone. Added first-meeting optional off-screen intimacy with separate confirmation/reconsideration and no investigation reward. Replaced final-date choices with reporting closure and casual farewell. All cases still succeed and all refusal paths remain playable.
+
+Generated with built-in ChatGPT imagegen: full-body identity reference, five expression portraits, wink keyframe and daylight hallway. Added a real four-frame 2.4-second wink WebP (355362 bytes) and static poster. Source PNGs, prompts, hashes and reviewed exports are in `assets/generated/chatgpt/virag-v1/`. Arm-link/kiss/cuddle pose clips remain pending. No video generation was used. Release 0.6.0, schema 4, content epoch 3 because scene graphs and final-decision IDs changed; incompatible saves require a fresh game.
+
+Validation and publication results are recorded below after checks.

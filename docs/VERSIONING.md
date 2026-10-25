@@ -56,3 +56,7 @@ Schema remains 4: stage and physical distance are derived from the current autho
 ## 0.5.0 — additive reporter scenes and moment presentation
 
 Schema 4 and content epoch 2 remain unchanged. Eight new optional scenes, one actor/location, an independent public-report epilogue and optional line animation metadata do not remove or reinterpret existing saved scene/decision IDs. Compatible older saves remain loadable; passed optional windows do not reopen, and the public report still concludes. Playback position is not serialized. CLI protocol remains 1 with additive moment/coda fields.
+
+## Virág update — 0.6.0
+
+Latest user direction supersedes the earlier final-date treatment: blue pixie haircut, deliberately flirtatious blouse/cardigan/skirt look, immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Five transparent portraits, a full-body identity reference, daylight hallway and a 2.4-second wink loop are generated and assistant-reviewed. Dedicated physical-pose clips remain planned. See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration.

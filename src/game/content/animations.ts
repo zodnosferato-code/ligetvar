@@ -4,6 +4,7 @@ export interface MomentClip {
  description:string; width:number;height:number;durationMs:number;bytes:number;
 }
 export const MOMENT_CLIPS:Record<string,MomentClip>={
+ virag_wink:{status:'reviewed',file:'animations/virag/wink-v1.webp',poster:'animations/virag/wink-poster.webp',description:'Virág félmosollyal rád néz, majd játékosan kacsint. Kék pixie frizura, fehér blúz, bordó kardigán.',width:640,height:800,durationMs:2400,bytes:355362},
  virag_arm:{status:'planned',file:null,poster:null,description:'Virág felajánlott karba kapaszkodik, majd mosolyogva felnéz.',width:640,height:800,durationMs:1800,bytes:0},
  virag_kiss:{status:'planned',file:null,poster:null,description:'Kölcsönösen választott rövid csók, majd mosolygó eltávolodás; játékosnézet.',width:960,height:640,durationMs:2400,bytes:0},
  virag_cuddle:{status:'planned',file:null,poster:null,description:'Virág a játékos vállának dől a tóparti padon, finom hajmozdulattal.',width:960,height:640,durationMs:2400,bytes:0}

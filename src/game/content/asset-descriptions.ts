@@ -2,6 +2,7 @@
  * Production notes remain in assets.ts; these strings are player-facing Hungarian. */
 import type {ArtAsset} from './assets.ts';
 export const ASSET_DESCRIPTIONS:Record<string,string>={
+ 'backgrounds/hallway-day-v1.webp':'Napsütéses, üres kőfolyosó csúcsíves ablakokkal, fa irodaajtókkal, hirdetőtáblával és üres paddal. A világos kőpadlóra ablakárnyékok vetülnek.',
  'backgrounds/apartment-anime-v1.webp':'Kőfalú hálószoba: ágy, vörös fotel, könyvespolc és kis asztal. A gótikus ablakon át éjszakai ég látszik; bent meleg lámpafény világít.',
  'backgrounds/bekas-anime-v1.webp':'Napos tópart, faasztal és üres pad az előtérben. A túlparton őszi fák között tornyos kastély emelkedik.',
  'backgrounds/bekas-night-anime-v1.webp':'Holdfényes tópart, sötét faasztal és üres pad. A vízen fénycsík húzódik, a távoli kastély néhány ablaka világít.',
@@ -22,7 +23,7 @@ export const ASSET_DESCRIPTIONS:Record<string,string>={
  'characters/soma/neutral-v1.webp':'Fekete hajú, bajuszos, testesebb férfi barna kötött mellényben és világos ingben. Komoly arccal áll szemben.',
  'characters/soma/transformed-v1.webp':'Fekete hajú, bajuszos férfi barna mellényben és világos ingben. Szeme vörösen fénylik, nyitott szája mellett hegyes szemfog látszik.',
 };
-const people={rebeka:'Hosszú fekete hajú nő lila hajtinccsel, fekete felsőben és fémes nyakpánttal.',boglarka:'Barna hajú nő oldalt lelógó fonattal, zöld kardigánban és világos felsőben.',greta:'Vörös hajú, szemüveges nő lófarokkal, zöld mellényben és fehér galléros ingben.'};
+const people={virag:'Rövid, kék pixie frizurás felnőtt nő, szürkéskék szemmel, nyitott gallérú fehér blúzban és bordó kardigánban; egyik keze a csípőjén.',rebeka:'Hosszú fekete hajú nő lila hajtinccsel, fekete felsőben és fémes nyakpánttal.',boglarka:'Barna hajú nő oldalt lelógó fonattal, zöld kardigánban és világos felsőben.',greta:'Vörös hajú, szemüveges nő lófarokkal, zöld mellényben és fehér galléros ingben.'};
 const expressions={neutral:'Nyugodt, visszafogott arckifejezés.',amused:'Félmosoly, enyhén megemelt szemöldök.',displeased:'Összehúzott szemöldök, szigorú tekintet.',vulnerable:'Bizonytalan, kissé aggodalmas arc, résnyire nyitott száj.',affectionate:'Lágy mosoly és kipirult arc.'};
 for(const [person,description] of Object.entries(people))for(const [expression,face] of Object.entries(expressions)){
  if(person==='greta'&&expression==='affectionate')continue;

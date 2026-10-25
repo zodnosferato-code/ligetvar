@@ -1,0 +1,16 @@
+{
+  "file": "assets/animations/virag/wink-v1.webp",
+  "poster": "assets/animations/virag/wink-poster.webp",
+  "frames": 4,
+  "durationMs": 2400,
+  "frameDurations": [
+    1500,
+    350,
+    250,
+    300
+  ],
+  "bytes": 355362,
+  "sha256": "7a69964487ee83a8c85707aa1efadd1972394bfd50d296d988ab3c001c259ae7",
+  "source": "neutral, amused and wink stills; local WebP assembly, no generated video",
+  "review": "frame identity and transparent edge inspected; runtime review pending"
+}

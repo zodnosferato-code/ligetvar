@@ -1,0 +1,118 @@
+[
+  {
+    "id": "master",
+    "source": "assets/generated/chatgpt/virag-v1/master-source.png",
+    "file": "assets/references/virag/full-body-v1.webp",
+    "sourceSha256": "9806ff88fac1a1ba5b6b6637a56b3cd1a1672e8f2b279b78484fe97832f59d6d",
+    "exportSha256": "6e7f03bcb2aa3b42d483b1dec0ac3c040207208bb9bfd858c2377ba78139761c",
+    "size": [
+      1024,
+      1536
+    ],
+    "alpha": [
+      0,
+      254
+    ],
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Full-body identity reference includes soft background haze; not a runtime cutout."
+  },
+  {
+    "id": "neutral",
+    "source": "assets/generated/chatgpt/virag-v1/neutral-source.png",
+    "file": "assets/characters/virag/neutral-v1.webp",
+    "sourceSha256": "84f61b729d2f200d233cf90597b590f96e631f32c34c366fb6daea8451331e8c",
+    "exportSha256": "78c43069f9dc1b2228ffea5d148e9ff093c47be8d90d26bb73cf8a8584332029",
+    "size": [
+      640,
+      800
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Runtime alpha silhouette reviewed."
+  },
+  {
+    "id": "amused",
+    "source": "assets/generated/chatgpt/virag-v1/amused-source.png",
+    "file": "assets/characters/virag/amused-v1.webp",
+    "sourceSha256": "2b9f9c03738093f2001f81bc93a92b0cfead3c5f78898e9154bf6b5698431eff",
+    "exportSha256": "25fe3469f299a18059208e47709ed18c1e2c19e42fd59fcae26834cafe3ecdb8",
+    "size": [
+      640,
+      800
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Runtime alpha silhouette reviewed."
+  },
+  {
+    "id": "displeased",
+    "source": "assets/generated/chatgpt/virag-v1/displeased-source.png",
+    "file": "assets/characters/virag/displeased-v1.webp",
+    "sourceSha256": "f5d4cddd7b1c3421ebbf5101bddf5959e6cd5c6f000a0d0c85a28128bca78267",
+    "exportSha256": "936e728d1bc76927d9f7b18cabf59df9fa53666e927e9bf748b1ea699a02e509",
+    "size": [
+      640,
+      800
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Runtime alpha silhouette reviewed."
+  },
+  {
+    "id": "vulnerable",
+    "source": "assets/generated/chatgpt/virag-v1/vulnerable-source.png",
+    "file": "assets/characters/virag/vulnerable-v1.webp",
+    "sourceSha256": "4a6ae6bcab33bb10a41a9b8f86e0e9abbb755f1c47c762aab38bd2689df423c0",
+    "exportSha256": "87c3a7abd810d3b9914dceda1d05d92a95778feb2ad0b7853f9a465a22256f30",
+    "size": [
+      640,
+      800
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Runtime alpha silhouette reviewed."
+  },
+  {
+    "id": "affectionate",
+    "source": "assets/generated/chatgpt/virag-v1/affectionate-source.png",
+    "file": "assets/characters/virag/affectionate-v1.webp",
+    "sourceSha256": "ffc4cd38a96eece99241804c2b82aad2e5c1b634f0889685684d803d9b7464ad",
+    "exportSha256": "fbe30c852b3f0c6b54dca07f1e0b4df4789f05bb1743bc24f0087ab26cf8834a",
+    "size": [
+      640,
+      800
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Runtime alpha silhouette reviewed."
+  },
+  {
+    "id": "hallway",
+    "source": "assets/generated/chatgpt/virag-v1/hallway-source.png",
+    "file": "assets/backgrounds/hallway-day-v1.webp",
+    "sourceSha256": "93ce986f136b331ded964aa03c88f7d9fb8210fdbf338bedfef684d295a5857a",
+    "exportSha256": "33916f7dc5ed80a55710b082026e3643b986dfdea13e5b108a47ed41647478df",
+    "size": [
+      1280,
+      720
+    ],
+    "alpha": null,
+    "review": "assistant visually reviewed; user final acceptance open",
+    "notes": "Empty daylight hallway, no people."
+  }
+]

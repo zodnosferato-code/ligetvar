@@ -2,7 +2,7 @@
 
 > **Status:** Generated snapshot. | **Purpose:** Active metadata from the typed runtime registry.
 
-Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Source: `src/game/content/catalog.ts`, assembled from the story modules. 68 authored scenes, 1002 text nodes across all branches, 159 choices with explicit next-node targets. Node counts include mutually exclusive branches and are not playthrough lengths. “Authored” means text is present; it is not a narrative quality/completion gate.
+Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Source: `src/game/content/catalog.ts`, assembled from the story modules. 68 authored scenes, 1008 text nodes across all branches, 164 choices with explicit next-node targets. Node counts include mutually exclusive branches and are not playthrough lengths. “Authored” means text is present; it is not a narrative quality/completion gate.
 
 | Scene ID | Kind | Week window | Location | Scene/decision/evidence prerequisites | Nodes |
 | --- | --- | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Sou
 | `outing_boglarka_2` | conversation | 3–14 | library | outing_boglarka_1 | 8 |
 | `outing_greta_1` | conversation | 2–14 | bekas | greta_1 | 9 |
 | `outing_greta_2` | conversation | 3–14 | bekas | outing_greta_1 | 8 |
-| `virag_1` | conversation | 2–14 | hallway |  | 9 |
+| `virag_1` | conversation | 2–14 | hallway |  | 15 |
 | `virag_2` | conversation | 3–14 | courtyard | virag_1 | 9 |
 | `virag_3` | conversation | 4–14 | library | virag_2 | 9 |
 | `virag_4` | conversation | 6–14 | bekas | virag_3 | 10 |
