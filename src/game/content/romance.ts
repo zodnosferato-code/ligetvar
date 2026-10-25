@@ -224,6 +224,18 @@ function expandTriad(s:Scene){
    ]}
   ],end);
   s.lines.find(l=>l.id==='line_5')!.next=topics;
+  // explicit continuation after the evening menu choices resolve
+  const explicitEnd = add(s,'romance_triad_explicit',[
+   ['narrator','A tea után Rebeka és Boglárka először egymást csókolják meg. Mélyen, nyelvekkel; kezek a ruhák alatt. Aztán mindketten feléd fordulnak.'],
+   ['rebeka','Most te jössz.','amused'],
+   ['boglarka','Lassan.','affectionate'],
+   ['narrator','Boglárka térdre ereszkedik eléd, szájával rajtad; Rebeka a nyakát csókolja és ujjaival benned tartja. Aztán cserélnek. Teljes szex: Boglárka lovagol, amíg Rebeka alattad van és te nyalod; vagy mindketten hátukon, egymás mellett. Több befejezés. Végül összekeveredve alszotok.'],
+   ['rebeka','Holnap is maradhatunk.','vulnerable'],
+   ['boglarka','Igen.','affectionate']
+  ]);
+  // append explicit after the evening end beat
+  const eveningEndLast = s.lines.find(l=>l.id==='romance_evening_end_1');
+  if(eveningEndLast) eveningEndLast.next = explicitEnd;
  }
  if(s.id==='triad_8'){
   after(s,'line_3','romance_triad_after',[

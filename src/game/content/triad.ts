@@ -59,13 +59,7 @@ export const triad:Scene[]=[
   say('rebeka','Legközelebb te főzöl. Én nem írok képaláírást a vacsorához.','amused'),
   say('marton','Több kenyeret veszek. A keddet pedig valóban üresen hagytam, nem csak átcímkéztem a munkát.'),
   say('rebeka','Jó, hogy ma nem a veszély bizonyítja, hogy együtt vagyunk.'),
-  say('boglarka','Az iratokat holnap visszavesszük. Most maradjunk még egy teára.','affectionate'),
-  say('narrator','A tea után Rebeka és Boglárka először egymást csókolják meg. Mélyen, nyelvekkel; kezek a ruhák alatt. Aztán mindketten feléd fordulnak.'),
-  say('rebeka','Most te jössz.','amused'),
-  say('boglarka','Lassan.','affectionate'),
-  say('narrator','Boglárka térdre ereszkedik eléd, szájával rajtad; Rebeka a nyakát csókolja és ujjaival benned tartja. Aztán cserélnek. Teljes szex: Boglárka lovagol, amíg Rebeka alattad van és te nyalod; vagy mindketten hátukon, egymás mellett. Több befejezés. Végül összekeveredve alszotok.'),
-  say('rebeka','Holnap is maradhatunk.','vulnerable'),
-  say('boglarka','Igen.','affectionate')
+  say('boglarka','Az iratokat holnap visszavesszük. Most maradjunk még egy teára.','affectionate')
  ],{scenes:['triad_6','rebeka_5','boglarka_5','shared_14'],decisions:['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes','rebeka_commit','boglarka_commit'],notDecisions:['rebeka_withdraw','boglarka_withdraw'],directions:['triad']},[],'Egy közönséges közös estén a vacsora után a három együtt folytatta, nem a veszély tartotta össze őket.',{bonds:{marton_rebeka:5,marton_boglarka:5,rebeka_boglarka:8},decisions:['triad_evening']},['night']),
  scene('triad_8','T8 — A következő rendes este','relationship',16,16,'apartment',['marton','rebeka','boglarka'],[
   say('narrator','A kamra után ugyanahhoz az asztalhoz ülnek. Van rendes kenyér. Senki nem tesz úgy, mintha az elmúlt hétnek nem volna súlya.'),
