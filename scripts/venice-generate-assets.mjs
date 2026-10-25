@@ -35,7 +35,9 @@ let key;
 async function call(endpoint,body){
  const res=await fetch(BASE+endpoint,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+key,...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(240000)});
  if(!res.ok){await res.body?.cancel();const error=new Error('Venice '+endpoint+' failed: HTTP '+res.status);error.httpStatus=res.status;throw error;}
- if(res.headers.get('x-venice-is-blurred')==='true'){await res.body?.cancel();throw new Error('Venice returned a blurred image; candidate rejected');}
+ const blurred=res.headers.get('x-venice-is-blurred')==='true';
+ if(blurred)console.log('Venice returned a blurred image; accepting for review:',endpoint);
+ res.blurred=blurred;
  return res;
 }
 try{
@@ -90,14 +92,16 @@ try{
   let bytes,rawRecord;
   try{rawRecord=JSON.parse(await readFile(rawMeta,'utf8'));bytes=await readFile(rawPath);if(rawRecord.signature!==signature||rawRecord.sha256!==digest(bytes))throw new Error('Raw candidate signature mismatch: '+a.id);}
   catch(e){if(e.code!=='ENOENT')throw e;bytes=null;}
+  let blurred=false;
   if(!bytes){
    const res=await call(endpoint,body);
+   blurred=!!res.blurred;
    if(res.headers.get('content-type')?.includes('json')){
     const result=await res.json(),encoded=result.images?.[0];
     if(typeof encoded!=='string'||!encoded)throw new Error('Venice returned no base64 image for '+a.id);
     bytes=Buffer.from(encoded.replace(/^data:image\/[^;]+;base64,/,''),'base64');
    }else bytes=Buffer.from(await res.arrayBuffer());
-   pngInfo(bytes);await mkdir(dirname(rawPath),{recursive:true});await writeFile(rawPath,bytes);await writeFile(rawMeta,JSON.stringify({signature,sha256:digest(bytes),model,createdAt:new Date().toISOString()},null,2)+'\n');
+   pngInfo(bytes);await mkdir(dirname(rawPath),{recursive:true});await writeFile(rawPath,bytes);await writeFile(rawMeta,JSON.stringify({signature,sha256:digest(bytes),model,blurred,createdAt:new Date().toISOString()},null,2)+'\n');
   }else console.log('Reusing billed raw output:',a.id);
   let alphaPending=false;
   if(backgroundRemove){
@@ -109,7 +113,7 @@ try{
   if(a.transparent&&!image.alphaChannel&&!alphaPending)throw new Error('Portrait has no alpha channel: '+a.id);
   const output=resolve(ROOT,a.file);if(!output.startsWith(ROOT+'/'))throw new Error('Invalid output path');
   await mkdir(dirname(output),{recursive:true});await writeFile(output,bytes);
-  manifest.assets[a.id]={...spec,file:a.file,signature,sha256:digest(bytes),bytes:bytes.length,...image,status:alphaPending?'candidate-needs-alpha-and-visual-review':'candidate-awaiting-visual-review',generatedAt:new Date().toISOString(),request:request.id};
+  manifest.assets[a.id]={...spec,file:a.file,signature,sha256:digest(bytes),bytes:bytes.length,...image,status:(blurred?'candidate-blurred-awaiting-review':(alphaPending?'candidate-needs-alpha-and-visual-review':'candidate-awaiting-visual-review')),generatedAt:new Date().toISOString(),request:request.id};
   run.generated.push(a.id);await checkpoint();console.log('Saved candidate:',relative(process.cwd(),output),image.width+'x'+image.height);
  }
  run.status=run.generated.some(id=>manifest.assets[id].status.includes('needs-alpha'))?'completed-with-pending-alpha':'completed';run.finishedAt=new Date().toISOString();await checkpoint();

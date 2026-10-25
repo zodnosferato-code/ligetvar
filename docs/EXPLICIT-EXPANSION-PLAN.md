@@ -82,3 +82,5 @@ See [SCENE-DRAFTS.md](explicit/SCENE-DRAFTS.md) and [ASSET-PROMPTS.md](explicit/
 - Venice transparent retry queued (2026-10-25): request.json id=2026-10-25-explicit-transparent-retry-01. 10 explicit assets set to transparent:true (background-remove postprocess) and method=edit/multi-edit with identity references. Workflow will trigger on push.
 
 - Venice uncensored retry queued (2026-10-25): request id=2026-10-25-explicit-uncensored-qwen-01. editModel=qwen-edit-uncensored, generationModel=lustify-v8 (non-Grok). Transparent:true still set. Triggered on push.
+
+- Venice blur acceptance enabled (2026-10-25): generator no longer rejects x-venice-is-blurred. Candidates will be checkpointed (status candidate-blurred-awaiting-review) and alpha extraction still attempted. Request id=2026-10-25-explicit-accept-blur-01.
