@@ -383,6 +383,38 @@
       "status": "candidate-awaiting-visual-review",
       "generatedAt": "2026-10-21T15:37:47.359Z",
       "request": "2026-10-21-locations-02"
+    },
+    "explicit_rebeka_oral_kneeling": {
+      "id": "explicit_rebeka_oral_kneeling",
+      "model": "firered-image-edit",
+      "method": "edit",
+      "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. crisp cel-shaded anime, adult 20-year-old woman matching the supplied Rebeka portrait identity exactly (long straight black hair with plum streak on viewer right, pale skin, small beauty mark under left eye / viewer right, sharp eyeliner). Black keyhole dress pulled down to waist, kneeling, performing fellatio, eyes looking up at viewer, hands behind her back, dim gothic apartment or dark lakeside bushes, single streetlamp light, detailed face, clean lines, two shading bands, no text, no watermark, adult proportions. Preserve facial geometry and marks from the reference; change only pose, clothing state and setting.",
+      "refs": [
+        {
+          "id": "rebeka_neutral",
+          "sha256": "17b064dbdc406c40a5335357a8537e6032c0622d4e730e6a48ca8d0e0abd0a05"
+        }
+      ],
+      "parameters": {
+        "prompt": "Highly detailed non-pixel 2D anime, fine controlled linework, adult proportions, crisp cel shading, restrained texture, slate-blue shadows and amber accents. Gothic Hungarian castle college. No photorealism, chibi, text or watermark. crisp cel-shaded anime, adult 20-year-old woman matching the supplied Rebeka portrait identity exactly (long straight black hair with plum streak on viewer right, pale skin, small beauty mark under left eye / viewer right, sharp eyeliner). Black keyhole dress pulled down to waist, kneeling, performing fellatio, eyes looking up at viewer, hands behind her back, dim gothic apartment or dark lakeside bushes, single streetlamp light, detailed face, clean lines, two shading bands, no text, no watermark, adult proportions. Preserve facial geometry and marks from the reference; change only pose, clothing state and setting.",
+        "safe_mode": true,
+        "aspect_ratio": "4:5",
+        "output_format": "png",
+        "model": "firered-image-edit"
+      },
+      "transparent": false,
+      "postprocess": null,
+      "file": "explicit/rebeka_oral_kneeling.png",
+      "signature": "250f84af21c382aba54034e986246033080d78914032831a78db1557ba8a344c",
+      "sha256": "871d4fa8ae80d1c61e9e201c30d08fa7c314a93997fa3f1d6f3ea6b43e1b2bdc",
+      "bytes": 1392580,
+      "width": 896,
+      "height": 1120,
+      "colorType": 6,
+      "alphaChannel": true,
+      "status": "candidate-awaiting-visual-review",
+      "generatedAt": "2026-10-25T14:40:02.848Z",
+      "request": "2026-10-25-explicit-rebeka-01"
     }
   },
   "runs": [
@@ -529,6 +561,19 @@
       "reused": [],
       "finishedAt": "2026-10-25T14:37:12.739Z",
       "failure": "No supported pixel size: explicit_rebeka_oral_kneeling"
+    },
+    {
+      "request": "2026-10-25-explicit-rebeka-01",
+      "phase": "explicit",
+      "startedAt": "2026-10-25T14:39:54.722Z",
+      "status": "completed",
+      "generated": [
+        "explicit_rebeka_oral_kneeling"
+      ],
+      "reused": [
+        "rebeka_neutral"
+      ],
+      "finishedAt": "2026-10-25T14:40:02.848Z"
     }
   ],
   "capabilities": {
