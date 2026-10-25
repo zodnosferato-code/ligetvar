@@ -65,8 +65,8 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
    ['marton','Akkor ne mondj. Csak maradj.'],
    ['narrator','Közelebb húz. A csók mély, nyelve lassú, aztán éhes. Kezed a derekán. A fekete ruha kulcslyuka már nyitva a szegycsontig; engedi, hogy lecsúszd a karján. Kilép belőle. Fekete alsónemű. A jobb hasán a heg látszik; nem takarja el.'],
    ['rebeka','Vedd le a többit is. Én… engedek.','vulnerable'],
-   ['narrator','Térdre ereszkedik. Szája rajtad, először lassú, aztán éhes, szemével felnéz. Amikor elhúzódik, hangja rekedt: „Most te vezess.”'],
-   ['narrator','Később a bokrok árnyékában, vagy a part menti padon: mély csókok, kezek ruhák alatt, majd te vezeted. Beleélvez. Csendben marad utána, fejed a vállán.'],
+   ['narrator','Térdre ereszkedik anélkül, hogy kérnéd. Szája rajtad, először lassú, aztán éhes és mély, szemével felnéz. Amikor elhúzódik, hangja rekedt, nyál fénylik az ajkán: „Most te vezess.”'],
+   ['narrator','A sötét part menti padon vagy a bokrok árnyékában előrehajol, kezeit hátul tartja. A ruha felcsúszik, te mögé lépsz. Mély, kemény lökések; nyög a párnába vagy a kőbe. Később lovagol rajtad, a hege a szád alatt, te diktálod a tempót. Beleélvez; ott marad rajtad, zihálva, nem viccel.'],
    ['rebeka','Maradj, amíg a fény visszajön. Nem kell vicc.','affectionate']
   ]},
   {id:'slow_touch',text:'Szeretnék veled randizni, de ma még csak sétálnék.',memory:'rebeka_date_slow',beats:[['rebeka','Rendben. Akkor ma a séta. Nem kell előjegyzést kérnem a kezedre.','amused'],['marton','A következő találkozót azért szeretném.'],['rebeka','Azt én is. Az első rossz film kiválasztásáról még úgyis vitánk lesz.']]}
