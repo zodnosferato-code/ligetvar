@@ -20,7 +20,7 @@ Update the status column as work advances. Agents: claim a row, mark In Progress
 | Scene ID | Route | Target acts | Status | Notes / Owner |
 | --- | --- | --- | --- | --- |
 | shared_1 | Shared | Light flashes, almost-touch | Planned | Classroom stretch |
-| rebeka_1 to rebeka_6 | Rebeka | Full escalation to intense private sex | Planned | Yield, dark, scar focus |
+| rebeka_1 to rebeka_6 | Rebeka | Full escalation to intense private sex | In Progress | Grok – Yield, dark, scar focus |
 | boglarka_1 to boglarka_6 | Boglárka | Slow praise, full body acceptance, sex | Planned | Cardigan, soft curves |
 | greta_1 to greta_6 | Gréta | Rule-break, desk, light restraint, sex | Planned | Half-uniform |
 | triad_3 to triad_8 | Triad | Girl-girl + three-way oral/sex | Planned | Independent attraction |
