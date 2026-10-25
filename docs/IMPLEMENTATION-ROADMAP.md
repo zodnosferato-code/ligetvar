@@ -148,6 +148,20 @@ Allow locale selection in browser and CLI. Production must not display raw keys 
 
 **Dependencies:** G1 → G2 → G3. These tasks are unimplemented; the game still lasts 16 weeks. Their ordering relative to the existing English/localisation backlog should be recorded when implementation resumes, not inferred as authorization to start now.
 
+## User-prioritized Virág and GIF-like moments — 25 October 2026
+
+This work supersedes the earlier backlog-only instruction for these specific new requests. Other S/G/localisation tasks remain pending. The user's follow-up explicitly rejects a professional-only Virág route: she remains flirtatious after refusal, all her reporting cases succeed, and animations should resemble GIFs.
+
+- [x] **VR1** Eight playable Hungarian chapters, hallway introduction, early chosen physical closeness, corruption investigation, manipulation/accountability, ongoing teasing and natural goodbyes. [Story contract](VIRAG-STORY.md).
+- [x] **VR2** Successful report independently of romance or skipped scenes; browser/CLI epilogue; no interactions with the other women, main-route replacement or vampire dependency.
+- [x] **AN1** Research and choose 3–6-frame animated WebP/GIF loops over routinely generated video. Record provider options, estimated image-attempt budget, pipeline and acceptance gates in [ANIMATION-PLAN.md](ANIMATION-PLAN.md).
+- [x] **AN2** Typed moment registry, explicit line hooks, bounded local-file metadata, reduced-motion poster, pause/restart and failed-load fallback; CLI status distinguishes planned from reviewed clips.
+- [ ] **VR3** Generate and review Virág's adult identity sheet, five expressions and hallway day background. Keep current placeholders honest until then.
+- [ ] **AN3** Produce/review first arm-link loop with a separate poster; validate actual frame count/timing/bytes, mobile crop and loop seam. No production animation exists yet.
+- [ ] **AN4** After the pilot, produce chosen-kiss and shoulder-cuddle loops; review 320/390/1440px playback with real artwork, pause, reduced motion, failure and reload. Extend other characters only after pilot approval.
+
+Dependency order: VR3 → AN3 → AN4. Runtime support and story can ship with static/missing-art fallback. Never check off production because a manifest entry exists. Current save schema 4/content epoch 2 stay unchanged: scenes, actor, location and epilogue are additive; no existing cursor or decision is removed or reinterpreted. Older compatible saves keep their progression and may have missed early optional windows; the public report still concludes.
+
 ## Progress tracker and handoff rules
 
 | Milestone | Depends on | Status | Completion commit / evidence |
@@ -221,3 +235,17 @@ The existing `tools/verify-leisure.cjs` regression flows also passed at 320/390/
 ### 25 October 2026 — remaining improvements recorded only
 
 At the user's request, added S1–S5 and G1–G3 to the roadmap with dependencies and completion gates. Linked the staging document to this canonical backlog. No gameplay, artwork, release number or save epoch changed; localisation tasks remain pending. Reviewed the documentation diff and relative link targets. No local gameplay tests were rerun for this documentation-only change; publication Actions are checked separately.
+
+### 25 October 2026 — VR1–VR2, AN1–AN2 implemented in 0.5.0
+
+Starting commit: `939aaf5`. Added eight optional Virág scenes, independent successful public-report epilogue in browser and CLI, hallway/actor metadata with honest missing art, and optional GIF/WebP moment playback. Researched primary provider/format documentation and recorded the limited-keyframe production plan. Follow-up user direction is authoritative: persistent teasing after refusal, no professional-only branch and no bad ending for Virág. Selected touch remains optional; all cases conclude regardless of romance. No external generation calls or production clips.
+
+Release 0.5.0; schema 4/content epoch 2 unchanged (additive content; existing saved IDs retain meaning). CLI protocol 1 gains moment status and report coda fields. Refreshed the generated scene inventory, including previously stale staged-date node counts.
+
+Executed: `npm ci`; `npm run typecheck`; `npm test` (64 engine/content + 22 CLI tests, 86 passing); `npm run build`; `node tools/scene-inventory.mjs`; `git diff --check`. Dedicated tests traverse every Virág node/branch with save/resume, atomic one-slot completion, repeated refusal and unchanged main bonds. Full yes/refusal campaigns both resolve her cases and the mandatory main story.
+
+Browser checks: `tools/verify-virag.cjs` passed all eight scenes, reload and layout at 320/390/1440px. Its synthetic GIF/poster fixture passed animation loading, pause/restart, initial and changed reduced motion (no initial GIF request), failed animation fallback and failed-poster text fallback. This is renderer verification, not production-art review. Fixed the test harness base URL/middleware and isolated each serverless Chromium width before the successful full run. `tools/verify-date-staging.cjs` also passed the existing three dates at 320/390/1440px. Inspected Virág's 320px scene screenshot; actual portrait remains a labelled placeholder.
+
+Reproduce browser checks after installing dependencies with `PLAYWRIGHT_MODULE_PATH` and `CHROMIUM_EXECUTABLE_PATH` set for your environment: `node --experimental-strip-types tools/verify-virag.cjs`. `CHROMIUM_SERVERLESS=1` enables the bundled serverless Chromium flags when needed. The test creates and removes its temporary HTML/TSX harness and embeds synthetic fixture bytes; it does not generate character art.
+
+Next: **VR3**, adult identity sheet/portraits and hallway background, then **AN3**, one reviewed arm-link loop. Remaining clips and real-art visual/performance approval stay unchecked. Localisation and adjustable campaign duration remain pending. Publication Actions results are recorded after pushing.

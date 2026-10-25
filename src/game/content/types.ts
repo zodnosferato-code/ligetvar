@@ -3,17 +3,17 @@ import type {GiftReceipt} from './gifting.ts';
 import type {GameState as CoreState,ActivityPeriod} from '../engine/types.ts';
 export const GIRLS=['rebeka','boglarka','greta'] as const;
 export type GirlId=typeof GIRLS[number];
-export type ActorId=GirlId|'marton'|'soma'|'denes'|'julia'|'aron'|'lilla'|'narrator';
+export type ActorId=GirlId|'virag'|'marton'|'soma'|'denes'|'julia'|'aron'|'lilla'|'narrator';
 export type BondId='marton_rebeka'|'marton_boglarka'|'marton_greta'|'rebeka_boglarka';
 export type RouteId='friendship'|GirlId|'triad';
-export type LocationId='classroom'|'library'|'department'|'holdkor'|'courtyard'|'apartment'|'bekas'|'chamber';
+export type LocationId='hallway'|'classroom'|'library'|'department'|'holdkor'|'courtyard'|'apartment'|'bekas'|'chamber';
 export type Expression='neutral'|'amused'|'displeased'|'vulnerable'|'affectionate';
 export const SAVE_KEY='ligetvar-save';
 export interface Requirements { scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:RouteId[]; anyOf?:Requirements[] }
 export interface Effect { bonds?:Partial<Record<BondId,number>>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:RouteId; disclosure?:'public'|'limited'|'private' }
 export interface SceneStage { label:string; location:LocationId; background:LocationId; participants:ActorId[]; lighting?:'day'|'evening'|'night'; proximity:'apart'|'beside'|'close' }
 export interface Choice { localRequires?:string[]; requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
-export interface Line { stage?:string; id:string; speaker:ActorId; expression:Expression; text:string; next?:string; choices?:Choice[] }
+export interface Line { moment?:string; stage?:string; id:string; speaker:ActorId; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
  stages?:Record<string,SceneStage>;
  cost?:{money:number;points:number};

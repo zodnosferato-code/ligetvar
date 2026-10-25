@@ -1,5 +1,7 @@
 import type { Evidence, Registry, Requirements, Scene } from './types.ts';
+import {MOMENT_CLIPS,validateClip} from './animations.ts';
 export function validateRegistry(registry:Registry,evidence:Record<string,Evidence>,backgrounds:ReadonlySet<string>):void{
+ Object.values(MOMENT_CLIPS).forEach(validateClip);
  const scenes=Object.values(registry),producers=new Map<string,string[]>();
  const fail=(message:string):never=>{throw new Error(message);};
  const requirements=(r:Requirements):Requirements[]=>[r,...(r.anyOf??[]).flatMap(requirements)];
@@ -18,6 +20,7 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
   }
   const ids=new Set(s.lines.map(l=>l.id));if(ids.size!==s.lines.length||!ids.has(s.entry))fail('Duplicate/missing line: '+s.id);
   for(const l of s.lines){
+   if(l.moment&&!MOMENT_CLIPS[l.moment])fail('Unknown moment: '+s.id+'/'+l.id);
    if(!l.text?.trim()||/text_key|act_flash|desire_yield_control/.test(l.text))fail('Unresolved text: '+s.id);
    if(l.stage&&!s.stages?.[l.stage])fail('Unknown stage: '+s.id+'/'+l.id);
    if(l.speaker!=='narrator'&&!(l.stage?s.stages![l.stage].participants:s.participants).includes(l.speaker))fail('Absent speaker: '+s.id);

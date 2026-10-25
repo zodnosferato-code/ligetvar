@@ -86,3 +86,7 @@ Three clothed face/full-body sheets for Rebeka, Boglárka and Gréta were genera
 ## CLI description audit — 25 October 2026
 
 The 33 usable files resolved by the active background/portrait manifest were visually inspected as contact sheets for `src/game/content/asset-descriptions.ts`. Descriptions cover appearance, lighting, expressions and visible transformations without hidden plot facts. The existing `characters/greta/affectionate-v1.webp` was zero bytes in main: it has been removed from the manifest and repository. Gréta's affectionate requests now honestly use the neutral portrait fallback. A real affectionate replacement remains outstanding; no new art was generated in this task.
+
+## Virág and moments — pending, 25 October 2026
+
+Missing: Virág adult identity sheet, neutral/amused/displeased/vulnerable/affectionate portraits, hallway day background, arm-link/kiss/shoulder-cuddle animated WebP loops plus three static posters. None has been generated or reviewed. Runtime uses explicitly marked placeholders and planned moment IDs. [Character brief](VIRAG-STORY.md), [production plan](ANIMATION-PLAN.md).

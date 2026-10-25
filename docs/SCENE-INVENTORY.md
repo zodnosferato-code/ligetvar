@@ -2,7 +2,7 @@
 
 > **Status:** Generated snapshot. | **Purpose:** Active metadata from the typed runtime registry.
 
-Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Source: `src/game/content/catalog.ts`, assembled from the story modules. 60 authored scenes, 880 text nodes across all branches, 109 choices with explicit next-node targets. Node counts include mutually exclusive branches and are not playthrough lengths. “Authored” means text is present; it is not a narrative quality/completion gate.
+Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Source: `src/game/content/catalog.ts`, assembled from the story modules. 68 authored scenes, 1002 text nodes across all branches, 159 choices with explicit next-node targets. Node counts include mutually exclusive branches and are not playthrough lengths. “Authored” means text is present; it is not a narrative quality/completion gate.
 
 | Scene ID | Kind | Week window | Location | Scene/decision/evidence prerequisites | Nodes |
 | --- | --- | --- | --- | --- | --- |
@@ -26,17 +26,17 @@ Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Sou
 | `boglarka_1` | relationship | 2–14 | library | shared_2 | 27 |
 | `greta_1` | relationship | 2–14 | department | shared_2 | 26 |
 | `rebeka_2` | relationship | 3–14 | holdkor | rebeka_1, rebeka_interest | 20 |
-| `rebeka_3` | relationship | 6–14 | bekas | rebeka_2, rebeka_attraction | 31 |
+| `rebeka_3` | relationship | 6–14 | bekas | rebeka_2, rebeka_attraction | 46 |
 | `rebeka_4` | relationship | 9–14 | holdkor | rebeka_3, rebeka_invitation | 17 |
 | `rebeka_5` | relationship | 13–14 | courtyard | rebeka_4, rebeka_repair, rebeka_invitation, alternative requirements | 21 |
 | `rebeka_6` | relationship | 16–16 | courtyard | shared_16, rebeka_5, rebeka_commit, rebeka | 15 |
 | `boglarka_2` | relationship | 4–14 | library | boglarka_1, boglarka_interest | 21 |
-| `boglarka_3` | relationship | 7–14 | courtyard | boglarka_2, boglarka_attraction | 31 |
+| `boglarka_3` | relationship | 7–14 | courtyard | boglarka_2, boglarka_attraction | 46 |
 | `boglarka_4` | relationship | 10–14 | library | boglarka_3, boglarka_invitation | 18 |
 | `boglarka_5` | relationship | 13–14 | courtyard | boglarka_4, boglarka_repair, boglarka_invitation, alternative requirements | 21 |
 | `boglarka_6` | relationship | 16–16 | courtyard | shared_16, boglarka_5, boglarka_commit, boglarka | 15 |
 | `greta_2` | relationship | 5–14 | courtyard | greta_1, greta_interest | 20 |
-| `greta_3` | relationship | 7–14 | bekas | greta_2, greta_attraction | 31 |
+| `greta_3` | relationship | 7–14 | bekas | greta_2, greta_attraction | 46 |
 | `greta_4` | relationship | 10–14 | courtyard | greta_3, greta_invitation | 17 |
 | `greta_5` | relationship | 13–14 | courtyard | greta_4, greta_repair, greta_invitation, alternative requirements | 21 |
 | `greta_6` | relationship | 16–16 | bekas | shared_16, greta_5, greta_commit, greta | 15 |
@@ -60,12 +60,20 @@ Regenerate with `node --experimental-strip-types tools/scene-inventory.mjs`. Sou
 | `coffee_rebeka_late` | conversation | 15–16 | courtyard | shared_15 | 12 |
 | `coffee_boglarka_late` | conversation | 15–16 | courtyard | shared_15 | 12 |
 | `coffee_greta_late` | conversation | 15–16 | courtyard | shared_15 | 14 |
-| `outing_rebeka_1` | conversation | 2–14 | holdkor | rebeka_1 | 8 |
-| `outing_rebeka_2` | conversation | 3–14 | courtyard | outing_rebeka_1 | 7 |
-| `outing_boglarka_1` | conversation | 2–14 | library | boglarka_1 | 8 |
-| `outing_boglarka_2` | conversation | 3–14 | library | outing_boglarka_1 | 7 |
-| `outing_greta_1` | conversation | 2–14 | bekas | greta_1 | 8 |
-| `outing_greta_2` | conversation | 3–14 | bekas | outing_greta_1 | 7 |
+| `outing_rebeka_1` | conversation | 2–14 | holdkor | rebeka_1 | 9 |
+| `outing_rebeka_2` | conversation | 3–14 | courtyard | outing_rebeka_1 | 8 |
+| `outing_boglarka_1` | conversation | 2–14 | library | boglarka_1 | 9 |
+| `outing_boglarka_2` | conversation | 3–14 | library | outing_boglarka_1 | 8 |
+| `outing_greta_1` | conversation | 2–14 | bekas | greta_1 | 9 |
+| `outing_greta_2` | conversation | 3–14 | bekas | outing_greta_1 | 8 |
+| `virag_1` | conversation | 2–14 | hallway |  | 9 |
+| `virag_2` | conversation | 3–14 | courtyard | virag_1 | 9 |
+| `virag_3` | conversation | 4–14 | library | virag_2 | 9 |
+| `virag_4` | conversation | 6–14 | bekas | virag_3 | 10 |
+| `virag_5` | conversation | 8–14 | courtyard | virag_4 | 8 |
+| `virag_6` | conversation | 10–14 | library | virag_5 | 9 |
+| `virag_7` | conversation | 12–14 | bekas | virag_6 | 8 |
+| `virag_8` | conversation | 13–14 | courtyard | virag_7 | 9 |
 
 ## Evidence
 

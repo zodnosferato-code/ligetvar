@@ -10,7 +10,7 @@ export interface Requirements { scenes?:string[]; evidence?:string[]; decisions?
 export interface Effect { bonds?:Record<string,number|undefined>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:string }
 export interface SceneStage { label:string; location:LocationId; background:LocationId; participants:ActorId[]; lighting?:'day'|'evening'|'night'; proximity:'apart'|'beside'|'close' }
 export interface Choice { localRequires?:string[]; requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
-export interface Line { stage?:string; id:string; speaker:string; expression:Expression; text:string; next?:string; choices?:Choice[] }
+export interface Line { moment?:string; stage?:string; id:string; speaker:string; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
  stages?:Record<string,SceneStage>;
  cost?:{money:number;points:number};
