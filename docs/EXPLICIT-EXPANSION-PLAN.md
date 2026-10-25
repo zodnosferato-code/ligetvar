@@ -123,3 +123,5 @@ Venice returns `x-venice-is-blurred: true` even on models marked uncensored. Gen
 - WAI base regeneration (2026-10-25): because wai-Illustrious is generation-only, explicit participants (rebeka, boglarka, virag, greta) neutrals will be regenerated from scratch with request id=2026-10-25-wai-neutrals-regenerate-01. Explicit scenes will then be generated from these new WAI-style bases.
 
 - Full WAI candidate run (2026-10-25): available-models.json refreshed from live endpoint. Explicit assets switched to method=generate (no refs). Request id=2026-10-25-wai-all-candidates-01 regenerates the four participant neutrals plus all explicit scenes with wai-Illustrious.
+
+- WAI expression edit (2026-10-25): after successful WAI neutrals + explicit batch (request 2026-10-25-wai-all-candidates-03), expression assets for rebeka/boglarka/greta (amused, displeased, vulnerable, affectionate) are queued as edit from the new WAI neutrals for higher identity consistency. Request id=2026-10-25-wai-expressions-edit-01.
