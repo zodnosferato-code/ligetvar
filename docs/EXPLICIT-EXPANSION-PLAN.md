@@ -119,3 +119,5 @@ Venice returns `x-venice-is-blurred: true` even on models marked uncensored. Gen
 - `qwen-image-3-edit` (single asset) — queued
 - `seedream-v5-pro-edit` with relaxed aspect — queued
 - `wai-Illustrious` generate (temporary method=generate on explicit_virag_oral) — queued
+
+- WAI base regeneration (2026-10-25): because wai-Illustrious is generation-only, explicit participants (rebeka, boglarka, virag, greta) neutrals will be regenerated from scratch with request id=2026-10-25-wai-neutrals-regenerate-01. Explicit scenes will then be generated from these new WAI-style bases.

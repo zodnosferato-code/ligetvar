@@ -1,10 +1,13 @@
 {
-  "id": "2026-10-25-pilot-wai-illustrious-01",
+  "id": "2026-10-25-wai-neutrals-regenerate-01",
   "phase": "explicit",
   "assets": [
-    "explicit_virag_oral"
+    "rebeka_neutral",
+    "boglarka_neutral",
+    "virag_neutral",
+    "greta_neutral"
   ],
-  "maxNewImages": 1,
+  "maxNewImages": 4,
   "generationModel": "wai-Illustrious",
   "editModel": "qwen-image-3-edit",
   "resolution": "1K"
