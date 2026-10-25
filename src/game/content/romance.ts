@@ -132,7 +132,7 @@ const later:Record<GirlId,{conflict:Beat[];repair:Reply[];settle:Beat[];commit:B
   {id:'open',text:'Szeretném, ha te is elhívnál oda, ahová egyébként egyedül mennél.',memory:'boglarka_future_invite',beats:[['boglarka','Akkor a koncert. Előre szólok, elöl szeretnék állni. Nem fogok végig csendben ülni.'],['marton','Ezt jó tudni rólad.'],['boglarka','Van még néhány dolog. Nem mindet ma mondom el.','affectionate']]}
  ],after:[['boglarka','Elküldtem a tanulmányt. Utána tíz percig néztem az elküldött üzenetet. A nevem ott volt. Aztán még mindig ott volt.'],['marton','Örülök.'],['boglarka','Én is. Most már nem kell újraolvasnom, hogy biztos legyek benne.','affectionate']]},
  greta:{conflict:[
-  ['greta','A térképen az áll, hogy előre megbeszéltük. Én nem emlékszem rá.','displeased'],['marton','Azt hittem, jó lesz, ha előre írok.','greta','A jó az lett volna, ha megkérdezed. Most meg már mindenki azt hiszi, hogy ez a terv.','vulnerable']
+  ['greta','A térképen az áll, hogy előre megbeszéltük. Én nem emlékszem rá.','displeased'],['marton','Azt hittem, jó lesz, ha előre írok.'],['greta','A jó az lett volna, ha megkérdezed. Most meg már mindenki azt hiszi, hogy ez a terv.','vulnerable']
  ],repair:[
   {id:'ask',text:'Mit szeretnél, hogy csináljak most?',beats:[['greta','Mondd meg nekik, hogy még nem döntöttünk. És legközelebb kérdezz.'],['marton','Megmondom.'],['greta','Jó. Attól még sétálhatunk. Csak ne a térképpel.','amused']]},
   {id:'own',text:'Túl gyorsan írtam. Nem kérdeztem.',beats:[['greta','Igen. Ez legalább nem úgy hangzik, mintha a térkép maga döntött volna.'],['marton','A csoportnak írok, hogy még nyitott.'],['greta','Köszönöm. Most már mehetünk.','affectionate']]}
@@ -194,8 +194,53 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
  }
 }
 function expandTriad(s:Scene){
- // original triad expansion preserved; full implementation remains in source
+ if(s.id==='triad_3'){
+  after(s,'line_4','romance_rb_private',[
+   ['boglarka','A múltkor megjegyeztem, melyik képnél nevettél. Aztán visszamentem megnézni.'],['rebeka','És? Rettenetes az ízlésem?','amused'],['boglarka','A kép tényleg rossz volt. Azt szerettem, ahogy nevettél.'],['narrator','Rebeka a cipője orrával végigtol egy kavicsot a kövön. Ezúttal nem vág rögtön vissza.'],['rebeka','Nehéz erre valami elviselhetetlenül szellemeset mondani.','vulnerable'],['boglarka','Nem muszáj.'],['rebeka','Akkor inkább azt mondom, hogy örülök, hogy visszamentél.'],['boglarka','Jövő héten megmutatod, neked melyik tetszett?'],['rebeka','Meg. De utána valami olyat is csináljunk, amihez egyikünknek sincs kész véleménye.']
+  ]);
+ }
+ if(s.id==='triad_4'){
+  after(s,'line_4','romance_rb_kiss',[
+   ['narrator','Boglárka közelebb húzódik. Rebeka megszorítja a kezét, és kivárja, amíg ráemeli a tekintetét. A csók rövid; utána egyikük sem fordul rögtön el.'],['rebeka','Most elfelejtettem, mit akartam mondani.'],['boglarka','Azt hiszem, ez először történt meg, mióta ismerlek.','amused'],['rebeka','Ne szokj hozzá.'],['boglarka','Nem sietek.'],['narrator','Rebeka felnevet, majd a homlokát egy pillanatra Boglárkáéhoz érinti. A következő találkozót most is ketten beszélik meg.'],['boglarka','Mártonról is szeretnék majd beszélni. De most hadd maradjon ez egy kicsit kettőnké.'],['rebeka','Jó. Most még én is itt szeretnék maradni veled.','affectionate']
+  ]);
+  s.lines.find(l=>l.id==='line_5')!.text='Mielőtt elindulnak, megbeszélik, hogy a közös lehetőségről csak akkor beszélnek Mártonnal, ha mindketten akarják. Az egymásnak mondott igenük független az ő válaszától.';
+ }
+ if(s.id==='triad_7'){
+  after(s,'line_3','romance_evening_pause',[
+   ['narrator','Boglárka eltolja az üres tányért, és Rebeka felé fordítja a székét. Rebeka a haját igazítja, aztán észreveszi, hogy nézi.'],['rebeka','Van még szósz az arcomon?'],['boglarka','Nincs. Csak jó most rád nézni.','affectionate'],['rebeka','Ezt megtehetnéd úgy is, hogy nem hozol zavarba.'],['boglarka','Úgy kevésbé lenne szórakoztató.','amused']
+  ]);
+  const end=add(s,'romance_evening_end',[
+   ['narrator','A mosatlan egyelőre a konyhában marad. A következő külön és közös találkozót is megbeszélitek, aztán már senki nem nézi az órát.'],['boglarka','A teát viszont most én csinálom. Paprika nélkül.','amused']
+  ]);
+  const topics=menu(s,'romance_evening','Még maradnék veletek.',[
+   {id:'honest',text:'Amikor ketten összenevettek, néha nem tudom, hogyan csatlakozzak.',memory:'triad_named_insecurity',beats:[
+    ['rebeka','Ezt miért csak most mondod?'],['marton','Mert nem akarom, hogy minden kettőtök közötti pillanat rólam kezdjen szólni.'],['boglarka','Nem is kell. De attól még elmondhatod, hogy hiányzunk.'],['rebeka','És lehet, hogy valamelyik viccről lemaradsz. Ahogy én is, amikor ti valami könyvről beszéltek.'],['marton','Akkor most nem kell rögtön kijavítanunk ezt az érzést.'],['boglarka','Nem. De ma ideülhetsz közelebb, ha szeretnél.','affectionate']
+   ]},
+   {id:'ask_evening',text:'Mire vágytok a vacsora után? Én szívesen maradnék a kanapén.',memory:'triad_ordinary_closeness',beats:[
+    ['rebeka','Rossz filmet akartam választani. De Boglárka szerint a címét még nem sikerült meggyőzően megvédenem.'],['boglarka','Azt mondtad, borzalmas.'],['rebeka','Elismerő hangsúllyal.','amused'],['marton','Felőlem kezdjük el. Ha nem tetszik, beszélgetünk közben.'],['boglarka','Én mellétek ülnék. A takarót viszont osszuk el, mielőtt elkezdődik.','affectionate'],['narrator','Mindhárman helyet kerestek. Rebeka rákérdez, jó-e így; Boglárka közelebb húzódik. Senkinek sem kell ugyanannyira fáradtnak vagy ugyanannyira beszédesnek lennie.']
+   ]},
+   {id:'quiet',text:'Szeretlek benneteket látni így. Ma inkább csak hallgatnálak titeket.',memory:'triad_quiet_evening',beats:[
+    ['rebeka','Ezt később megbánod. Még a desszertről is eltér a véleményünk.'],['boglarka','Mert a desszert nem lehet még egy adag csípős tészta.','amused'],['marton','Ebben talán most én is állást foglalnék.'],['narrator','A vita hamar egy régebbi közös bevásárlásra kanyarodik. Nem kérnek tőled döntőbírói választ, de amikor kérdezel, helyet hagynak a történetednek is.']
+   ]}
+  ],end);
+  s.lines.find(l=>l.id==='line_5')!.next=topics;
+ }
+ if(s.id==='triad_8'){
+  after(s,'line_3','romance_triad_after',[
+   ['boglarka','Most néha arra is elfáradok, hogy válaszoljak egy üzenetre. Ettől még várom, hogy írjatok.'],['rebeka','Én meg néha kétszer írok, aztán dühös vagyok magamra. Azt hiszem, könnyebb rám fogni, hogy türelmetlen vagyok.','vulnerable'],['marton','Én is keresem, mikor kérdezek túl sokat. Nem mindig fogom eltalálni.'],['boglarka','Akkor mondjuk meg. A rövid válaszom ne legyen rögtön rossz hír.'],['rebeka','Jó. De néha egy annyit, hogy megkaptam, szeretnék. Ennyit kérek most.']
+  ]);
+  const end=add(s,'romance_triad_after_end',[
+   ['rebeka','Legközelebb nem én főzök. Ezt még a nagy meghatottság előtt rögzítsük.','amused'],['boglarka','Felírtam. Egyébként jó, hogy újra ezen tudunk vitatkozni.','affectionate'],['narrator','A következő estét megbeszélitek. Nem kell úgy tennetek, mintha minden könnyű lenne; ma elég, hogy mindhárman szeretnétek eljönni.']
+  ]);
+  const topics=menu(s,'romance_triad_next','Hogyan találkozzunk legközelebb?',[
+   {id:'callback',text:'Most könnyebb kimondanom, ha hiányoztok, mint a vacsoránál.',requires:{decisions:['triad_named_insecurity']},beats:[['rebeka','Ez már jobb kezdés, mint amikor úgy tettél, mintha csak a szószt figyelnéd.','amused'],['boglarka','Szeretném, ha akkor is szólnál, amikor nincs ilyen nagy ügy mögöttünk.'],['marton','Akkor kezdem a jövő héttel. Szeretnélek látni mindkettőtöket.']]},
+   {id:'rest',text:'Lehetne megint közös vacsora, most egészen egyszerűen?',beats:[['boglarka','Lehet. De nem kell mindhármunknak mosolyogni hozzá egész este.'],['rebeka','És nem főzök vigasztalásból három fogást. Főleg az előző teljesítményem után.'],['marton','Hozok kenyeret. A többit együtt eldöntjük.']]},
+   {id:'separate',text:'A külön találkozóinkat is beszéljük meg. Mindkettőtökkel szeretnék időt.',beats:[['rebeka','Boglárkával már megbeszéltünk egy délutánt. Veled is szeretnék egyet.','affectionate'],['boglarka','Én is. És maradjon a közös este. Most nem akarom az egyiket a másik helyett választani.'],['marton','Nézzük meg, mikor jó mindhármunknak, aztán a külön alkalmakat is.']]}
+  ],end);
+  follow(s,'line_5','continue_together',topics);
+ }
 }
+
 export function expandRomance(original:Scene):Scene{
  const match=/^(rebeka|boglarka|greta)_([2-6])$/.exec(original.id);
  if(!match&&!['triad_3','triad_4','triad_7','triad_8'].includes(original.id))return original;
