@@ -147,3 +147,17 @@ Venice returns `x-venice-is-blurred: true` even on models marked uncensored. Gen
 Request `2026-10-25-wai-all-candidates-03` generated 4 participant neutrals + 17 explicit scenes with `wai-Illustrious` and completed with status `completed-with-pending-alpha`.
 
 - Raw-signature handling improved (2026-10-25): generator no longer aborts on signature mismatch. A stale raw file (prompt/model/refs changed) is logged and regenerated instead of throwing. See scripts/venice-generate-assets.mjs.
+
+## Image backups
+
+Completed Venice candidates are backed up under `backups/venice/YYYY-MM-DD/` so they are preserved in git even if the generator working tree is cleared.
+
+### Structure (example: `backups/venice/2026-10-25/`)
+- `portraits/` — participant neutrals (`rebeka_neutral.png`, `boglarka_neutral.png`, `virag_neutral.png`, `greta_neutral.png`)
+- `explicit/` — explicit scene candidates
+- `expressions/` — expression edits from neutrals (when present)
+- `raw/` — original billed PNG outputs before post-processing
+- `README.md` — describes the set and notes that images are candidates pending review
+
+### Current backup
+Commit `c694b63` stores the 2026-10-25 set (4 neutrals + 17 explicit + raw). These are not yet wired into the game engine.
