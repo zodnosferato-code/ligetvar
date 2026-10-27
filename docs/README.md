@@ -24,6 +24,10 @@ The [design documentation](design/README.md) is the current design authority. It
 | [Asset workflow](ASSET-AGENT-WORKFLOW.md) | Generation, binary transfer, review, publication and recovery |
 | [Asset index](../assets/README.md) | Runtime and production folder layout |
 
+## Older-document review
+
+[FOUNDATION-REVIEW.md](design/FOUNDATION-REVIEW.md) records each numbered legacy document and active reference, its useful foundations, conflicts and disposition. The user's current intimacy direction is meaningful fade-to-black relationship scenes; older graphic expansion drafts are historical, not active instructions.
+
 ## Detailed plans and execution history
 
 | Document | Responsibility |

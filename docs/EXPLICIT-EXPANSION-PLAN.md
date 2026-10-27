@@ -1,6 +1,16 @@
 # Explicit Intimacy Expansion Plan
 
-> **Status:** Active planning draft (English). | **Purpose:** Expand all romance routes with equal explicit sexual content. Update existing scenes and extend them. Other agents continue from the progress table.
+> **Status:** Superseded historical draft. | **Purpose:** Preserve previous expansion intent; not current authoring or production instructions.
+
+## Superseding user decision — 27 October 2026
+
+Intimacy must have a meaningful place in relationship development; present it fade to black for now. Preserve character-specific invitations, mutual choice, reconsideration and aftermath. Requirements below for graphic prose, explicit artwork, fixed escalation density or automatic implementation are superseded.
+
+Follow [current game design](design/GAME-DESIGN.md#relationship-intimacy--27-october-2026) and INT1 in [the design tracker](design/TRACKER.md). No runtime branches or images were changed by this documentation review. The old draft below is retained only as historical material; its embedded authority/progress claims do not override the current design.
+
+## Historical draft
+
+
 
 This document is the source of truth for the explicit pass. All characters are adults (19+). Content is fully explicit: stripping, deep kissing, oral (fellatio/cunnilingus), penetrative sex, multiple positions, fluids, light bondage/spanking where it fits character desires, etc. No topics are off-limits. Tone stays true to each character's voice (see CHARACTER-VOICES.md). Power/forbidden is erotic, never coercive; consent is always clear and can be withdrawn.
 

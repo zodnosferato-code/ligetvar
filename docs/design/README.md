@@ -9,6 +9,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |
 | [Character voices](CHARACTER-VOICES.md) | Temperaments, dialogue patterns and writing coverage |
+| [Foundation review](FOUNDATION-REVIEW.md) | Document-by-document assessment of old foundations, conflicts, retained ideas and superseded instructions |
 | [Redesign tracker](TRACKER.md) | Current implementation status, evidence, remaining gates and future features |
 
 ## Authority

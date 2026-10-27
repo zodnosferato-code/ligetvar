@@ -14,6 +14,22 @@ Support three individual romance routes, friendship/withdrawal, and the Rebeka�
 
 Virág is a separate adult reporter with eight optional chapters, persistent teasing, no professional-only route and no bad ending. Her cases succeed independently of romantic choices and skipped meetings. Refusals change the selected physical action; refused touch never occurs. She does not replace the vampire investigation or interact with the main women. Her full branch contract remains in [VIRAG-STORY.md](../VIRAG-STORY.md).
 
+## Relationship intimacy — 27 October 2026
+
+User decision during the legacy-document review: intimacy belongs in the game because the story follows relationships. Present it with fade-to-black scenes for now. This supersedes requirements for graphic prose, explicit illustrations or a universal escalation ladder in older expansion drafts.
+
+Give intimacy a meaningful narrative place: character-specific attraction and pace, an invitation, mutual choice, a transition off-screen, and a return showing conversation, care or changed closeness. Retain reconsideration, refusal and slower alternatives. Do not remove the relationship beat merely because its physical detail is off-screen, and do not require intimacy to earn commitment, resolve the investigation or receive a valid ending.
+
+This is the current authoring contract, not a claim that every existing branch has been rewritten. INT1 in the [tracker](TRACKER.md) records the remaining branch audit and implementation acceptance.
+
+## Foundations retained from older writing
+
+The shared work gives each woman her own reason to participate: photography/documentation, folklore/source analysis, or organization/records. Each should contribute judgment and pursue goals beyond romance. Everyday college details and quiet decompression after frightening events keep the setting lived-in.
+
+Build conversations through observation, disagreement, a personal preference and a later consequence or callback. Vulnerabilities may recur, but body reassurance, control, shyness or usefulness must not become a character's only subject. Staff can have different motives and levels of knowledge instead of acting as a single hostile group. Required discoveries remain authored and available independently of romance or optional random atmosphere.
+
+These principles preserve compatible foundations from the original plan and legacy documents 03, 07, 24 and 37. Their retired monster rules, route combinations, delayed-romance mandate and numeric intimacy gates are not adopted. See the [document-by-document review](FOUNDATION-REVIEW.md).
+
 ## Semester and activities
 
 Each week offers one guaranteed shared-story slot, one discretionary daytime slot and one discretionary nighttime slot, followed by a recap. Scene continuation and movement inside one activity do not spend additional slots; completing the activity does. Required story cannot be displaced by optional play. Keep the confrontation → institutional aftermath → personal follow-ups → ending sequence.

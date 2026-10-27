@@ -6,6 +6,8 @@
 
 Start with [design/README.md](design/README.md) and [design/TRACKER.md](design/TRACKER.md). This document preserves detailed task contracts, acceptance criteria and dated execution history. The design tracker is the sole current feature-status tracker; historical checkboxes and production counts below are snapshots and must not override it. In particular, all four Virág loops/posters are now present, while the earlier reviewed identity sheet is absent; full animation acceptance is not re-certified merely by file presence.
 
+The 27 October legacy review and user clarification are recorded in [FOUNDATION-REVIEW.md](design/FOUNDATION-REVIEW.md). INT1 in the current tracker covers meaningful fade-to-black intimacy; no graphic-art production requirement from older drafts is current.
+
 ## Scope and authority
 
 Implement these objectives in order:

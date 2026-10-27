@@ -33,6 +33,9 @@ This is the single current design-status tracker. Existing roadmap IDs are retai
 | VR3 — Virág art | Partial | Five portraits and hallway present; [visual brief](CHARACTER-VISUALS.md) | Historical reviewed identity sheet/source set absent from current main; candidate presence is not recovered approval. |
 | AN1–AN2 — moment infrastructure | Implemented | [Animation registry](../../src/game/content/animations.ts), line hooks, poster/pause/reduced-motion contract; [animation plan](../ANIMATION-PLAN.md) | Keep planned and reviewed states honest. |
 | AN3–AN4 — moment production | Partial | Four Virág loops and four posters exist and are labelled reviewed in the registry | Older roadmap statements claiming no production clips are superseded. Full frame/seam, 320/390/1440px playback, failure/reload and user pilot-acceptance gates are not re-certified by a metadata audit. |
+| DOC2 — legacy foundation review | Implemented | [Document-by-document review](FOUNDATION-REVIEW.md), explicit conflict dispositions and source-checked technical corrections | Preserve archives as history; do not import a recovered idea as a shipped feature. |
+| INT1 — relationship intimacy presentation | Partial | User confirmed meaningful intimacy with fade-to-black presentation on 27 October; [authoring contract](GAME-DESIGN.md#relationship-intimacy--27-october-2026) | Audit existing single/triad/Virág branches, adapt any graphic passages, retain invitation/reconsideration/aftermath and verify browser/CLI save/choice parity. No runtime rewrite was performed in this documentation review. |
+| AUDIO — optional soundtrack baseline | Implemented | Eight distinct MP3 blobs and UI mood/mute wiring in [audio.ts](../../src/game/audio.ts) | Source/file presence only; listening, seamless-loop quality and device behavior were not reviewed in this task. |
 | DOC1 — design documentation | Implemented | English design folder, centralized character briefs, this tracker and updated project/contributor entry points | Keep this folder current in the same commit as design changes. |
 | F3–F4 — overall completion | Partial | Typed runtime, current art manifest and prior cleanup are in place; [original completion gates](../../Ligetvar-Redesign-Plan.md#10-implementation-sequence-and-completion-gates) | Finish applicable art/UI cleanup, full asset/text resolution, retired-ID checks, supported-save documentation and narrative/runtime acceptance. A build alone is insufficient. |
 
@@ -68,6 +71,10 @@ Detailed acceptance criteria remain in the [implementation roadmap](../IMPLEMENT
 | Remaining supernatural mechanics explicitly labelled proposed in the original plan | Proposed | Fix specific rules before new scripts depend on them. |
 | Extending animated moment production to the other women | Proposed | Choose scene moments and approve the relevant pilot scope before bulk asset production. |
 
+## Recovered ideas awaiting a separate decision
+
+The foundation review did not approve new features. Transcript/backlog replay, skip-read/auto-advance, galleries, coherent author scenario fixtures, optional weather/reciprocal-gift scenes and desktop packaging remain **Proposed**. Audio infrastructure already exists; additional soundtrack production or remastering is not approved merely by rediscovering the old music brief. See [review dispositions](FOUNDATION-REVIEW.md#recovered-ideas-and-open-design-work) before adding any of these to the planned backlog.
+
 ## Updating this tracker
 
 For each changed row, record status, implemented scope, remaining gate, evidence link and date. Link actual code, review records or commit/Actions results; avoid duplicating whole logs. A file being generated does not prove review; a passing test does not prove editorial or final user acceptance.
@@ -79,3 +86,5 @@ If blocked, state the dependency and the work that can still proceed. When a pro
 | Date | Change | Validation / limits |
 | --- | --- | --- |
 | 27 October 2026 | Created the design authority, migrated current character briefs and reconciled the redesign/future-feature tracker. | Baseline main 805b3e0, package 0.6.0, existing contracts and animation manifest checked. Documentation links checked in this change; no new gameplay or image review claimed. |
+
+| 27 October 2026 | Reviewed legacy foundations/conflicts and recorded the user's fade-to-black intimacy decision; corrected stale release/save/art documentation. | Documentation/source review only; no story rewrite, new asset or fresh visual/listening acceptance claimed. |

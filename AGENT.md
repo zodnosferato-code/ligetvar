@@ -12,6 +12,7 @@ Start with [docs/design/README.md](docs/design/README.md), the current design au
 - Technical contracts such as [ENGINE.md](ENGINE.md), [CLI.md](docs/CLI.md), [versioning](docs/VERSIONING.md), [economy](docs/LEISURE-ECONOMY.md) and [scene staging](docs/SCENE-STAGING.md) remain detailed implementation references. Inspect actual code when a document conflicts with behavior.
 - The [original redesign plan](Ligetvar-Redesign-Plan.md) and [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) preserve detailed acceptance criteria and history. Their historical status/checklists do not override current design or tracker status. Do not maintain another live feature-status list here or in README.
 - The [art register](docs/ART-REGISTER.md) owns exact file coverage; [progress log](docs/REDESIGN-PROGRESS.md) owns execution history. Generated, integrated, assistant-reviewed and user-approved are separate states.
+- Consult the [legacy foundation review](docs/design/FOUNDATION-REVIEW.md) before reusing an old idea. Superseded expansion drafts are not active production instructions; recovered ideas remain proposed unless approved.
 - Keep new design documentation in English and linked through the [design index](docs/design/README.md). Legacy design/narrative files and production logs do not override current guidance.
 
 ## Active system
@@ -37,7 +38,7 @@ Follow [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md), including its ex
 
 Canonical image files live under `assets/`. Runtime images are selected by `src/game/content/assets.ts`; moments by `content/animations.ts`. Generated candidates do not become runtime assets automatically. Keep source/provenance under `assets/generated/` and reviewed exports under the runtime category folders. Use the current neutral runtime portraits where removed PNG masters are unavailable. Check the actual tree before citing a reference file. Do not restore older character art.
 
-Preserve detailed non-pixel anime/cel-shaded character art and gothic castle-college backgrounds. Conversation backgrounds use the player's viewpoint and a natural companion seat. No explicit sexual or nude images are required; their absence must never gate story or engine progression.
+Preserve detailed non-pixel anime/cel-shaded character art and gothic castle-college backgrounds. Conversation backgrounds use the player's viewpoint and a natural companion seat. Intimacy is a meaningful relationship beat, presented fade to black for now under the user's 27 October decision. Preserve invitations, mutual choice, reconsideration and aftermath; do not erase the beat or require graphic prose/art. See the [authoring contract](docs/design/GAME-DESIGN.md#relationship-intimacy--27-october-2026).
 
 ## Verification and repository workflow
 

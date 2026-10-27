@@ -1,6 +1,8 @@
 # Venice asset requests
 
-> **Status:** Active production tooling. | **Purpose:** Run bounded, reproducible image batches with the repository secret.
+> **Status:** Tooling retained; routine production paused by user direction. | **Purpose:** Run bounded, reproducible image batches with the repository secret.
+
+Current instructions: read [AGENT.md](../../AGENT.md), the [design index](../../docs/design/README.md) and [asset workflow](../../docs/ASSET-AGENT-WORKFLOW.md). Do not change requests or dispatch paid generation as part of documentation/asset audits. The following describes retained tooling, not authorization to run it. Counts, provider capabilities and alpha behavior below are dated assumptions; verify them only within an explicitly authorized provider task.
 
 `request.json` is the explicit production request. A change to that file on `main` starts `.github/workflows/venice-assets.yml`. Manual dispatch is also available. The runner reads only the Actions secret `IMAGE_GENERATOR_KEY`; it is never exposed to Vite, saved in Git, or printed.
 

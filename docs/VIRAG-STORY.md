@@ -2,6 +2,8 @@
 
 > **Status:** Eight Hungarian scenes revised in 0.6.0; five runtime portraits, hallway and four moment loops present; historical full-body sheet absent from current main. | **Purpose:** Character canon, branch design and complete side-story handoff.
 
+Current presentation rule: [meaningful fade-to-black intimacy](design/GAME-DESIGN.md#relationship-intimacy--27-october-2026), confirmed by the user on 27 October. Preserve the existing independent case outcomes, invitations and refusal/reconsideration paths. INT1 in the tracker records the remaining all-route prose audit; this note does not claim runtime text was rewritten.
+
 ## User-approved direction
 
 Virág is a 19-year-old adult woman with a loud personality and clear reasoning. Her appearance and signature outfit are maintained only in the [character visual reference](CHARACTER-REFERENCES.md). She uses her college-inspired look to pass as a clueless first-year student. She is actually a junior reporter at **Mérceháló**, a fictional prominent national news agency investigating university corruption. Her newsroom supplies editorial, legal and independent source checks; her age does not magically confer decades of reporting experience. She is not Márton's student or under his academic assessment.

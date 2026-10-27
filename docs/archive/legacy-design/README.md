@@ -2,7 +2,9 @@
 
 > **Status:** Archived. | **Purpose:** List historical pre-redesign planning files.
 
-These files are kept for provenance. They are not active instructions; see the [current documentation index](../../../README.md) and [redesign plan](../../../Ligetvar-Redesign-Plan.md).
+See the [current design](../../design/README.md), [feature tracker](../../design/TRACKER.md) and [foundation review](../../design/FOUNDATION-REVIEW.md). Historical originals remain unchanged; their old internal paths/authority statements must not be followed as active instructions.
+
+These files are kept for provenance. They are not active instructions; see the [current documentation index](../../README.md) and [redesign plan](../../../Ligetvar-Redesign-Plan.md).
 
 ## Numbered plans
 - [`01-mufaj.md`](01-mufaj.md)

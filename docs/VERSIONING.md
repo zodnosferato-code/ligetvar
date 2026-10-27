@@ -1,14 +1,14 @@
 # Game releases and save compatibility
 
-> **Status:** Active; current release 0.4.0. | **Purpose:** Release identity, save contract, compatibility decisions and release checks.
+> **Status:** Active; values reconciled against source on 27 October 2026. | **Purpose:** Release identity, save contract, compatibility decisions and release checks.
 
 ## Current contract
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.4.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.6.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `2`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `3`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -28,7 +28,7 @@ Unusable Continue is disabled. Load failure never changes stored bytes or automa
 
 Discovery always checks the stable key first, including when its bytes are empty, corrupt or incompatible. It never falls back from a bad current record to a stale record. Only if that key is absent does it inspect `ligetvar-save-v3`, then v2, then v1, for **detection only**. None can be loaded, even if their contents resemble a current envelope. An existing valid stable-key record takes precedence over all historical records. Future releases continue using the stable key.
 
-The structured codec result is `ok` (state and metadata), `missing`, `unsupported` (reason, saved metadata and current metadata), `invalid`, or `unavailable`. Unsupported reasons are `pre_envelope`, `schema`, `content`, and `newer`. This is the interface the future CLI should reuse.
+The structured codec result is `ok` (state and metadata), `missing`, `unsupported` (reason, saved metadata and current metadata), `invalid`, or `unavailable`. Unsupported reasons are `pre_envelope`, `schema`, `content`, and `newer`. This interface is shared by the implemented CLI and browser.
 
 ## Release checklist
 
@@ -57,6 +57,8 @@ Schema remains 4: stage and physical distance are derived from the current autho
 
 Schema 4 and content epoch 2 remain unchanged. Eight new optional scenes, one actor/location, an independent public-report epilogue and optional line animation metadata do not remove or reinterpret existing saved scene/decision IDs. Compatible older saves remain loadable; passed optional windows do not reopen, and the public report still concludes. Playback position is not serialized. CLI protocol remains 1 with additive moment/coda fields.
 
-## Virág update — 0.6.0
+## 0.6.0 — revised reporter scenes
 
-Latest user direction supersedes the earlier final-date treatment: blue pixie haircut, deliberately flirtatious blouse/cardigan/skirt look, immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Five transparent portraits, a full-body identity reference, daylight hallway and a 2.4-second wink loop are generated and assistant-reviewed. Dedicated physical-pose clips remain planned. See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration.
+Schema stays 4; content epoch becomes 3 because reporter scene graphs and final-decision IDs changed. Saves from content epochs 1/2, including 0.2.0–0.5.0, are incompatible with the current game and require a new semester. No migration or silent restart. Read current values from `package.json` and `src/game/release.ts`; older release sections above explain their own historical decisions.
+
+Art availability is tracked in [ART-REGISTER.md](ART-REGISTER.md), not in this save contract.

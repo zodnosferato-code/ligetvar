@@ -2,6 +2,8 @@
 
 > **Status:** Historical, inactive. | **Purpose:** Preserve pre-redesign dialogue trees and Hungarian localization unchanged.
 
+See the [current design](../../design/README.md), [feature tracker](../../design/TRACKER.md) and [foundation review](../../design/FOUNDATION-REVIEW.md). Historical originals remain unchanged; their old internal paths/authority statements must not be followed as active instructions.
+
 Archived on 2026-10-19 from main `b356f794f6f7be343b7dd2e8c0e9651d0dc37d41`. These nine dialogue trees and four localization files have no active runtime consumers. The files were moved byte-for-byte; original paths and SHA-256 hashes are recorded below. They do not define current canon, routes, mechanics, or character behavior.
 
 The active narrative is [catalog.ts](../../../src/game/content/catalog.ts); the authoritative direction is the [redesign plan](../../../Ligetvar-Redesign-Plan.md). This archive is not under `public/` and must not be loaded by runtime code. Do not restore whole legacy trees when expanding the new story.

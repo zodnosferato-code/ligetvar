@@ -29,10 +29,14 @@ Accepting a quieter stop does not accept touch. Choosing a slow physical pace ea
 - [x] Explicit endings on all three individual dates and all six paid outings.
 - [x] Same-scene choice memory without early global progression.
 
-The remaining work is tracked centrally as **S1–S5** (broader scene coverage, new locations/art, physical staging, ending review and richer callbacks) and **G1–G3** (pacing design, coordinated scheduling and full route/save verification) in the [implementation roadmap](IMPLEMENTATION-ROADMAP.md#remaining-scene-improvements-and-adjustable-campaign-length). These tasks are planned only; the user requested a roadmap update without further implementation. The current campaign remains 16 weeks.
+The remaining work is tracked centrally as **S1–S5** (broader scene coverage, new locations/art, physical staging, ending review and richer callbacks) and **G1–G3** (pacing design, coordinated scheduling and full route/save verification) in the [current design tracker](design/TRACKER.md); detailed acceptance criteria remain in the [implementation roadmap](IMPLEMENTATION-ROADMAP.md#remaining-scene-improvements-and-adjustable-campaign-length). These tasks are planned only; the user requested a roadmap update without further implementation. The current campaign remains 16 weeks.
 
 Do not treat being alone as proof of romantic consent or turn privacy into a relationship reward. A private apartment visit should fit the established relationship and include an invitation and an equally valid departure branch. Existing bedroom art should not stand in for an invented living room.
 
 ## Verification
 
 `npm test` includes exhaustive save/resume traversal of all expanded romantic branches and complete CLI campaign routes. Targeted date cases verify destination changes, local choice rejection, slow paths, neutral departures, equal bond rewards, one-slot completion and restored staging. `tools/verify-date-staging.cjs` runs real UI transitions at 320/390/1440px, image loading, portrait containment, distance framing and reload. It uses the same Playwright/Chromium environment variables as `verify-leisure.cjs`; screenshots go to `/tmp/ligetvar-date-review` by default. Run after `npm run build`.
+
+## Current intimacy presentation
+
+The user's 27 October clarification keeps intimacy as part of relationship development, presented fade to black for now. Follow the [authoring contract](design/GAME-DESIGN.md#relationship-intimacy--27-october-2026) and INT1 acceptance gate. Privacy is not touch consent; off-screen presentation does not remove the invitation, reconsideration or aftermath. This documentation update does not certify or rewrite every existing branch.

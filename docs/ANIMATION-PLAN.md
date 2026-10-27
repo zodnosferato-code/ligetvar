@@ -23,7 +23,7 @@ Use a held contact pose plus subtle hair/eye motion for a kiss instead of repeat
 - `Line.moment` refers to `MOMENT_CLIPS`. `reviewed` entries require local animation and poster paths, dimensions, duration, byte size and an accurate description. `planned` entries have no files and use the normal scene/portrait presentation. Planned descriptions identify intent, never claim visible artwork.
 - The `Moment` component fits the scenery, provides a keyboard/touch pause control, reacts to OS reduced-motion changes, and falls back to the poster on failed animation loading. If that also fails, show the description. Choices remain usable immediately; no animation timers trigger game effects.
 - Save/resume derives the requested clip from scene/line IDs. No playback position is saved. CLI JSON includes the intended moment, status and `rendered` flag; narration communicates the action in terminal mode. CLI does not load images or need graphics/network credentials.
-- Current hooks: `virag_1/arm`, `virag_4/kissed`, `virag_7/cuddled`. Those three pose assets remain planned. The new `virag_1/invite` wink is reviewed and active; all five portraits and the daytime hallway are now present.
+- Current hooks: `virag_1/arm`, `virag_4/kissed`, `virag_7/cuddled`. Those three pose clips and their separate posters are present and labelled reviewed in the runtime manifest. The new `virag_1/invite` wink is reviewed and active; all five portraits and the daytime hallway are now present.
 
 ## Provider comparison — primary-source review, 25 October 2026
 
@@ -45,7 +45,7 @@ Primary sources:
 
 ## Production pipeline and remaining gates
 
-1. Approve Virág's adult identity sheet: 19, petite adult proportions, short blue hair, expressive confidence; college-inspired pleated skirt, blouse and cardigan. Her undercover first-year styling is adult campus clothing. No childlike anatomy or school setting.
+1. Follow the [current character visual brief](design/CHARACTER-VISUALS.md) and use available reviewed identity references. The earlier Virág full-body sheet is absent; do not claim it is available or substitute an unreviewed candidate. Recover/recreate a reviewed sheet if the planned composition needs one.
 2. Storyboard the exact selected beat and camera. For hand contact and kissing, use a deliberately composed image; ordinary portrait framing is insufficient. Preserve player-view staging and do not introduce a permanent Márton dialogue portrait.
 3. Generate the identity/composition master, then edit against that same approved master for each pose. Do not chain identity drift through unreviewed frames. Fix camera, canvas, background, outfit and light. Keep generated text out of frames.
 4. Inspect each frame for identity, hands, proportions, background alignment and alpha edges. Align canvases deterministically, choose held-frame timing and assemble locally with webpmux or equivalent. Never send a full video job merely to obtain four frames.
@@ -57,6 +57,6 @@ No new character/animation art was generated in 0.5.0. The roadmap distinguishes
 
 ## First production pilot — 0.6.0
 
-The user selected a blue pixie haircut and flirtatious blouse/cardigan/skirt styling. ChatGPT generated a full-body identity reference, five transparent expression portraits, a matching wink frame and an empty daytime hallway. The wink was assembled locally from neutral → amused → wink → amused with 1500/350/250/300 ms holds: **4 frames, 2400 ms, 355362 bytes**, 640×800 with alpha. A separate static poster is present. This is a facial loop, not an arm-link or kissing animation. Provenance and prompts: `assets/generated/chatgpt/virag-v1/`. No image-to-video or paid provider API was used. Runtime exports are WebP; original PNG sources remain in the repository.
+The user selected a blue pixie haircut and flirtatious blouse/cardigan/skirt styling. ChatGPT generated a full-body identity reference, five transparent expression portraits, a matching wink frame and an empty daytime hallway. The wink was assembled locally from neutral → amused → wink → amused with 1500/350/250/300 ms holds: **4 frames, 2400 ms, 355362 bytes**, 640×800 with alpha. A separate static poster is present. This is a facial loop, not an arm-link or kissing animation. Provenance and prompts: `assets/generated/chatgpt/virag-v1/`. No image-to-video or paid provider API was used. Runtime exports are WebP; the original PNG source/reference set described at this historical checkpoint is absent from current main.
 
-The full-body image contains a soft backdrop haze and serves only as an identity reference. Runtime portraits were separately generated with clean transparent silhouettes. Final user art acceptance remains open. Dedicated physical-pose clips are still pending.
+The full-body image contains a soft backdrop haze and serves only as an identity reference. Runtime portraits were separately generated with clean transparent silhouettes. Final user art acceptance remains open. The later arm-link, kiss and cuddle exports now exist; see the art register for availability and the design tracker for remaining playback/acceptance gates.

@@ -1,6 +1,16 @@
 # Explicit Scene Drafts (English working text)
 
-> **Status:** Draft samples. | **Purpose:** Expand existing scenes. Agents finish remaining nodes and translate.
+> **Status:** Superseded historical draft. | **Purpose:** Preserve previous expansion intent; not current authoring or production instructions.
+
+## Superseding user decision — 27 October 2026
+
+Intimacy must have a meaningful place in relationship development; present it fade to black for now. Preserve character-specific invitations, mutual choice, reconsideration and aftermath. Requirements below for graphic prose, explicit artwork, fixed escalation density or automatic implementation are superseded.
+
+Follow [current game design](../design/GAME-DESIGN.md#relationship-intimacy--27-october-2026) and INT1 in [the design tracker](../design/TRACKER.md). No runtime branches or images were changed by this documentation review. The old draft below is retained only as historical material; its embedded authority/progress claims do not override the current design.
+
+## Historical draft
+
+
 
 All drafts assume mutual adult consent. Player choices remain; these are the "yes / continue" branches.
 

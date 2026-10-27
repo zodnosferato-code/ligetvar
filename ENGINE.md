@@ -1,129 +1,105 @@
-# Játékmotor — átdolgozott félév
+# Game engine reference
 
-> **Status:** Active. | **Purpose:** Runtime architecture, scheduling, saves, and ending rules.
+> **Status:** Active; documentation reconciled 27 October 2026. | **Purpose:** Runtime contracts, scheduling, saves and endings.
 
-| Réteg | Aktív forrás | Szerep |
+Current design authority: [docs/design/README.md](docs/design/README.md). Feature status: [design tracker](docs/design/TRACKER.md). This reference describes implementation contracts; it does not certify narrative quality, image review or final user approval. Historical release statements are not current version values.
+
+## Architecture
+
+| Layer | Active source | Responsibility |
 | --- | --- | --- |
-| Állapot | `src/game/engine/types.ts`, `src/game/content/types.ts` | általános motorállapot és külön kampányséma, kötelező jelenlegi állapotmezőkkel |
-| Motor | `src/game/engine/logic.ts` | általános reducerek, sávok, előfeltételek, célzott hatások; történeti azonosítók nélkül |
-| Kampányszabályok | `src/game/content/rules.ts`, `runtime.ts` | kezdeti állapot, 16 hét, gazdaság, kapcsolati irányok, konfrontáció, intézmény és végértékelés |
-| Történet | `src/game/content/catalog.ts` | 60 magyar jelenet; külön TypeScript modulokból összeállított egyetlen regiszter |
-| Ellenőrzés | `src/game/content/validate.ts` | hivatkozások, szövegek, választások, előfeltétel- és folytatási ciklusok, közös történet elérhetősége |
-| Képmanifest | `src/game/content/assets.ts` | megőrzött átmeneti háttérképek, portréhelyőrzők; új karakterképek jóváhagyásra várnak |
-| Mentés | `src/game/engine/save.ts`, `content/saves.ts`, `store.ts` | általános kodek, kampányséma-ellenőrzés és stabil mentési kulcs; Zustand/localStorage integráció |
-| UI | `src/game/ui/` | pergamenes, szilva–réz kastélyromantikus felület; tárgyakkal vezérelt iroda/saját szoba tervező; nagy portrés dialógus; portré nélküli elbeszélés; mobil fejléc, napló, összegzés, epilógus |
-| Hang | `src/game/audio.ts` | megőrzött zenei rendszer, új állapothoz igazítva; hanghiba nem gátolja a történetet |
+| State | `src/game/engine/types.ts`, `content/types.ts` | Generic state and separate required campaign fields |
+| Engine | `src/game/engine/logic.ts` | Generic immutable reducers, slots, prerequisites and targeted effects |
+| Campaign | `content/rules.ts`, `runtime.ts` | Initial state, 16-week schedule, economy, directions, confrontation and ending rules |
+| Story | `content/catalog.ts` | Sole typed registry assembled from shared, relationship, triad, optional, opening, romance, conversation, outing and Virág modules |
+| Validation | `content/validate.ts` | References, text, choices, prerequisite/continuation cycles and story reachability |
+| Images / moments | `content/assets.ts`, `content/animations.ts` | Runtime selections; detailed availability in the [art register](docs/ART-REGISTER.md) |
+| Saves | `engine/save.ts`, `content/saves.ts`, `store.ts` | Generic envelope codec, campaign validation and browser persistence |
+| UI | `src/game/ui/` | Castle-romance planning hubs, dialogue, journal, recaps and epilogues |
+| Audio | `src/game/audio.ts` | Optional location/mood music; audio failure cannot block story |
+| CLI | `src/game/cli/`, `content/actions.ts`, `content/view.ts` | Shared action dispatch and player-visible observations |
 
-## Tárgyakkal vezérelt tervező
+Paths beginning `content/` or `engine/` above are relative to `src/game/`. The generic engine does not import campaign content. `RuntimeRules` injects initial state, week count, economy, save discovery and campaign-specific effect/completion/direction/validation behavior. A separate synthetic campaign tests reuse. Epilogue text lives in `content/epilogues.ts`; presentation calls the content runtime rather than encoding plot logic.
 
-A `RoomPlanner.tsx` két, teljes képként megjelenített hátteret használ a meglévő manifestből: iroda és saját szoba. A százalékos tárgykoordináták a vágatlan képre vonatkoznak. A mentett heti sáv választja a központot: közös alkalom előtt és nappal az iroda, éjszaka a hálószoba. Nincs időt megkerülő szobaválasztó. Az ajtó „Hová indulsz?” úti célmenüt nyit: az aktuális központ és minden olyan helyszín elérhető, ahol az aktuális sávban játszható jelenet van. Másik központba eső személyes jelenet elindítható, de ettől a tervező ideje nem változik. A cél kiválasztása ingyenes; egy jelenet sávköltségét továbbra is annak befejezése számolja el. A tárgyak körvonala és műveleti címkéje mindig látható, elrejtő kapcsoló nélkül. Megfelelő háttértárgy hiányában a szoba `fallbacks` listája kijelöli a külön, címkézett ikongombbal megjelenő műveletet. A hálószobában az asztali könyv a napló; ott nincs műhely- vagy munkavezérlő. A nappali műhely/felkészülés és munka az irodában van, az éjszakai központ a telefon, pihenés, napló és ajándékok tárgyait kínálja. Billentyűzetes fókusznál a címke és fókuszkeret mindig látható; a mobil célterületek legalább 44×44 pixelesek és nem fedik egymást.
+## Weekly schedule and object hubs
 
-| Tárgy | Megnyitott műveletek |
+| Slot | Period | Rule |
+| --- | --- | --- |
+| 0 | Shared story | Guaranteed weekly scene; uses its authored lighting |
+| 1 | Daytime | One discretionary activity; office hub |
+| 2 | Nighttime | One discretionary activity; bedroom hub |
+| 3 | Recap | Advance only after required story and activity slots are complete |
+
+There are 16 shared and 32 discretionary opportunities, not three free slots plus an invisible workshop. The saved slot selects the planning hub. Opening menus, browsing destinations or changing dialogue lines costs no time. Completing a scene/activity consumes its one slot. Movement inside a staged scene does not add a charge.
+
+`RoomPlanner.tsx` uses an uncropped room image with percentage hotspot coordinates. Outlines and action labels are always visible; no hidden-only hover clues. Missing background objects get labelled fallback icons. Keyboard focus remains visible, mobile targets are at least 44×44px, and hotspot regions must not overlap.
+
+| Object | Actions |
 | --- | --- |
-| Irodai íróasztal | Garantált közös alkalom és elérhető felkészülés |
-| Ajtó | Úti célok és az aktuális napszakban elérhető jelenetek |
-| Telefon | Elérhető személyes találkozók és kávés beszélgetések; a kiválasztott jelenet a saját helyszínén indul |
-| Jegyzetfüzet / könyvek | Napló, ismert bizonyítékok, kapcsolatok és választható személyes irány |
-| Fotel | Pihenés |
-| Polc | Ajándékok vásárlása és átadása |
-| Zsák | Palackmozaik és Archívumpárok |
+| Office desk | Shared story and eligible preparation |
+| Door | Destinations and scenes available in the current period |
+| Phone | Personal meetings, coffee, paid outings and persistent gift replies |
+| Journal/books | Known evidence, journal, relationships and eligible direction |
+| Armchair | Rest during day; sleep at night |
+| Shelf | Buy/give gifts |
+| Bag | Recycling and Archive Pairs daytime jobs |
 
-A felhasználó 2026-10-21-i választása rögzített nappali/éjszakai sávokra cseréli a korábbi, csak szobaszerepet jelölő megoldást. A sorrend: `slot=0` garantált közös alkalom → `slot=1` nappali tevékenység → `slot=2` éjszakai tevékenység → `slot=3` heti összegzés. Nem hét napon át futó óraszimuláció: a félév továbbra is 16 közös + 32 szabad alkalom. A közös jelenetek saját megvilágítása és belső időugrásai megmaradnak.
+The door does not bypass time or enable nighttime jobs. The bedroom journal is not a workshop control. Jobs/preparation are daytime only; T7/T8 are nighttime only. Other personal scenes/coffee may support both periods. Preparation appointments require different weeks because there is only one discretionary daytime slot per week.
 
-| Tevékenység | Mikor? | Időköltség |
-| --- | --- | --- |
-| Garantált közös alkalom | Heti első sáv; saját történeti napszak | Közös sáv, befejezéskor |
-| Palackmozaik, Archívumpárok | Nappal | Nappali sáv, az eredmény elfogadásakor |
-| Felkészülés | Nappal | Nappali sáv; a két alkalom külön hétre tervezendő |
-| Személyes találkozó, kávé | Nappal vagy éjszaka | Az aktuális szabad sáv |
-| T7/T8 közös este | Éjszaka; változatlan 14./16. heti határidő | Éjszakai sáv |
-| Pihenés / alvás | Nappal / éjszaka | Az aktuális szabad sáv, legfeljebb +32 energia |
-| Napló, irány, vásárlás, ajándék, menük és úti célok böngészése | Meglévő előfeltételeik szerint | Ingyenes |
+`RULES.schedule` defines periods and activity gates; optional `Scene.periods` limits scene admission. The shared reducer checks the same gates used by availability menus. Saves validate scene/job period as well. Work may be cancelled only before its first move.
 
-A kampány `RULES.schedule` adatai mondják meg a sávok napszakát és az aktivitások megengedett időszakait; a generikus motor nem importál történeti adatot. A jelenet opcionális `periods` mezője adja a napszak-korlátot. Az `availableScenes`, `openScene` és `activity` ugyanazt a szabályt ellenőrzi, tehát közvetlen reducerhívás sem indít éjszakai munkát. Más kampány számára a schedule elhagyható. A két napszakban elérhető jelenetek világítása nappal `day`, éjszaka `evening`; a szövegek érintett délután-hivatkozásai idősemlegesek. A T7/T8 esti világítást kap. A tervező mindig a sávból áll helyre, újratöltéskor is. Nappal külön előnézet jelzi a már teljesített előfeltételű, csak éjszaka indítható estéket.
+## Costs and availability
 
-A párbeszéd folytatása és a munka megnyitása nem léptet időt; a befejezés pontosan egy sávot használ. A kötelező jelenet nem hagyható ki. A mentésbetöltő ellenőrzi a jelenet és munkajáték napszakát is; régi, napszakon kívüli mentésekhez nincs kivétel. A munkajáték csak az első lépés előtt szakítható meg.
+Personal scenes cost 8 energy; shared scenes restore 4, a new week restores 24, and rest/sleep restores up to 32. Low energy does not block required story. Supported confrontation costs another 8; weak preparation costs 28. Jobs claim one daytime slot and 12 energy. Exact money, points, gifts and puzzles are owned by [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md).
 
-## Portrék és jelenetkompozíció
+Earlier personal milestones remain available from their recommended week through week 14, subject to explicit prerequisites. T7 is week 14 only; personal aftermath is week 16 only. Show actual deadlines. Missing an optional meeting never completes it automatically or blocks required investigation.
 
-A beszélgetőpartner képe külön réteg a helyszínháttéren, nem a pergamenes szövegdoboz része. A portré aránytartó, vágás nélküli, átlátszó hátterű kép; a motor aktuális NPC-beszélője és kifejezése választja ki. A jelenleg hiányzó végleges NPC-képet kis, jelölt helyőrző képviseli. Márton/játékos saját megszólalásánál nincs kép, üres portrékeret vagy monogramos helyőrző. Az elbeszélés szintén kép nélküli próza.
+## Dialogue, presentation and staging
 
-Asztali nézetben a portré a háttér bal oldali területén, a szöveg mellette jelenik meg. Mobilon a helyszín külön, jól látható felső területén van a portré; a teljes szélességű szöveg és a választások alatta maradnak. Az arckép nem takarhat szöveget vagy választást. A hosszú mobil szöveg külön görgethető, a játékos neve csak szöveges beszélőnévként szerepel. E szabályok a felhasználó 2026-10-20-i irányát rögzítik; nem igényelnek mentésformátum-változást.
+Transparent NPC portraits overlay the location scenery outside the parchment dialogue panel. Preserve proportions and avoid cropping. Márton/player and narrator have no portrait, monogram or empty portrait slot. Unavailable NPC art gets a small labelled placeholder; missing expressions fall back to neutral, not another misleading emotion.
 
-A párbeszéd vezérlői azonos méretű fejléc- és szövegterület után, állandó első gombsorban jelennek meg. A narrátor-, NPC- és játékosforduló ugyanazt a panelgeometriát használja; a görgetési jelzés helye akkor is foglalt, ha nincs jelzés. A hosszabb szöveg a saját területén görgethető. Több válasz az első gombsor alatt bővülhet, így minden választás elérhető marad; a rövid vagy hosszú szöveg nem mozdítja el a Tovább gombot.
+Desktop places the portrait in the scenery beside the text; mobile reserves upper scenery with full-width dialogue/choices below. Portraits must not cover text or controls. Long prose scrolls inside its allocated area. Header/text/control geometry remains stable so short and long lines do not shift the first Continue/choice row; further choices extend below it.
 
-## Motor és tartalom határa
+`Choice.next` branches to another authored node. `requires` reads completed witnessed scenes/evidence/decisions; direct reducer calls cannot bypass unavailable options. Effects remain pending until scene completion. Use at most four contextual choices, without a mandatory good/bad answer ladder.
 
-A motor nem importál a `content/` könyvtárból. A `RuntimeRules` szerződésen át kapja a kezdeti állapotot, a hetek számát, a gazdasági adatokat, a mentési kulcsokat és a kampányhoz tartozó hatás-, jelenetbefejezési, irányváltási és validálási szabályokat. A motor önálló, háromhetes, más szereplőkkel és más végfeltétellel futó tesztkampánnyal is ellenőrzött. A `content/runtime.ts` a Ligetvár alkalmazási belépési pontja; nem régi tartalmi adapter.
+Named `Scene.stages` declare location/background, participants, proximity and optional lighting. Every staged node, including narration and merges, explicitly selects `Line.stage`; unstaged nodes use scene defaults rather than inheriting prior display state. `sceneStage`/`sceneLighting` serve browser and CLI. Save/resume restores staging from the current node. Speakers must be present and stage cast must be within scene participants.
 
-A `content/epilogues.ts` tartalmazza a végszövegeket. A felület a tartalmi belépési pontot hívja. A történet szerkesztéséhez a motor átírása nem szükséges.
+`Choice.localRequires` reads decision IDs pending within this scene only. It supports callbacks without certifying global evidence early; include an unconditional alternative. Privacy is separate from touch. Slower physical pace retains romantic progress; refusal remains a distinct action. The current design includes meaningful fade-to-black intimacy: [game design](docs/design/GAME-DESIGN.md#relationship-intimacy--27-october-2026). Documentation review does not certify every existing branch against that newly clarified presentation rule.
 
-## Heti hurok
+The first three expanded dates have optional quieter locations, mutually chosen kisses and clear departures. Six paid outings also have endings. Current broader scope is in the [tracker](docs/design/TRACKER.md), with authoring details in [SCENE-STAGING.md](docs/SCENE-STAGING.md).
 
-A `slot=0` a garantált közös alkalom. Pénz, energia, véletlen és románc nem akadályozza. Az `1` nappali, a `2` éjszakai szabad sáv, a `3` heti összegzés. Csak a közös alkalom befejezése és mindhárom sáv felhasználása után váltható hét. Jelenet közbeni sorváltás nem kerül újabb sávba. Külön automatikus gyógytorna nincs; a közös jelenetek tartalmazzák a műhelyt.
+## Knowledge, bonds and witnessed decisions
 
-A személyes jelenet költsége 8 energia, a közös alkalom +4, az új hét +24, a pihenő +32. Alacsony energia nem zárja el a történetet. A 15. heti konfrontáció támogatott felkészüléssel további 8, hiányos felkészüléssel 28 energiát vesz el. Az opcionális munkák külön szabad sávot használnak, a vásárlás és találkozó nem igényel műszakot. Ajándék személyenként hetente egyszer adható, legfeljebb csekély kapcsolódási bónusszal.
+A scene cursor stores pending effects. Only the final completion commits `completed`, `evidence`, `decisions` and journal changes. Journals/recaps derive from witnessed state, never calendar-only future revelations. Effects name their target bond rather than inheriting the previous speaker.
 
-Az előfeltétel explicit jelenet-, bizonyíték- és döntéshivatkozás; összetett alternatívákhoz `anyOf` használható. A személyes alkalmak az ajánlott héttől a 14. hét végéig pótolhatók. T7 kizárólag a 14. héten; személyes utóbeszélgetések kizárólag a 16. héten. A UI kiírja a tényleges határidőt. A kihagyott alkalom nem teljesül automatikusan.
+Week-8 direction is intent, not commitment. After an affirmative personal commitment, the planner does not silently rewrite direction; withdrawal is handled in authored follow-up. The triad tracks the two Márton bonds and the women's independent bond, separate conversations, all three affirmative decisions, and individual repair/commitment. Declined T5/T6 can lead to a mutually wanted single route or friendship. Gifts, repeated coffee and numeric scores cannot substitute.
 
-## Elágazó és kontextuális beszélgetések
+Nine contextual coffee scenes cover early (weeks 1–7), middle (8–14) and late (15–16) periods for each main woman. Each is once per character/period and costs one discretionary slot/8 energy. Completed earlier topics unlock callbacks. Coffee grants no romance commitment or indispensable evidence. The old repeatable `talk` activity is retired.
 
-A `Choice.next` eltérő szövegcsomópontra vezet. A `Choice.requires` korábban tanúsított döntéshez, jelenethez vagy bizonyítékhoz kötheti egy válasz megjelenését. Az el nem érhető választást a reducer közvetlen azonosítóval sem fogadja el. A válasz hatása az ág végéig függőben marad; közben menthető és folytatható. Az új nyitóágak megőrzik a korábbi `line_*` azonosítókat és választási hatásokat a jelenetgráf hivatkozásaihoz.
+## Confrontation and aftermath
 
-A kilenc opcionális kávés beszélgetés három időszakot fed le: 1–7., 8–14. és 15–16. hét. Karakterenként és időszakonként egyszer játszhatók, egy szabad sávba és 8 energiába kerülnek. A középső visszautaló választás csak a korábbi megfelelő témát befejező játékosnak jelenik meg. Romantikus vállalást vagy kapcsolatpontot nem adnak, és a nyomozás nem igényli őket. A régi, csak állapotüzenetet adó `talk` tevékenység megszűnt.
+Week 15 always interrupts the ritual and kills the vampire on a completed campaign. Backup and signal preparation together support the intervention; without them helpers still act, with more exhaustion/evidence loss. Week 16 handles public/limited/internal disclosure and institutional acknowledgment, partial explanation or suppression. Romance is not required.
 
-A `romance.ts` kibővíti a három egyéni útvonal 2–6. jelenetét és a T3/T4/T7/T8 jeleneteket. A randira és az érintésre külön válaszolunk: a `slow_touch` ugyanazt a romantikus folytatást és kapcsolódást engedi, mint a közelség elfogadása. A visszautasítás továbbra is külön választás. A személyes beszélgetés emlékei csak jelenetbefejezéskor kerülnek a meglévő tanúsított döntések közé; később feltételes válaszok idézik fel őket, mindig feltétel nélküli alternatívával. Nem keletkezik új mentésmező, kötelező alkalom vagy sávköltség. A jelenetgráf az aktív történethez tartozik; korábbi mentések azonosítóihoz nem igazodunk.
+Two discretionary slots remain after the institutional scene. T8 combines both individual aftermath resolutions with the shared aftermath in one slot. Final relationship evaluation waits until the player actually closes the semester from week-16 recap. Single, triad, friendship, unresolved and estranged outcomes remain distinct. Relationship exposure is separate from supernatural preparation/danger.
 
-## Tanúsított tudás és döntés
+## Saves and CLI
 
-A jelenetben a választási hatás a kurzor `pending` listájában vár. Csak a végső sor befejezése írja a `completed`, `evidence`, `decisions` és `journal` mezőket. A napló és heti összegzés ezekből épül, nem a naptári hétszámból. A hatás név szerint céloz kapcsolódást, soha nem örökli az előző beszélő romantikus statját.
+Current baseline: package release 0.6.0, schema 4, content epoch 3; read `package.json`/`src/game/release.ts` rather than relying on this snapshot after future changes. Stable browser key: `ligetvar-save`. Exact metadata, discovery precedence and restart policy are in [VERSIONING.md](docs/VERSIONING.md).
 
-A 8. héttől választott irány szándék, nem elköteleződés. Az első személyes vállalás után a tervező már nem írja át az irányt; a folytatásról az utóbeszélgetésben lehet visszalépni. A hármas út önálló női vonzalmat, külön beszélgetéseket, hármas egyeztetést és mindhárom fél igenjét igényli, továbbá mindkét egyéni jóvátételt/vállalást. Elutasított T5/T6 után közösen akart egyéni irány vagy barátság választható. A számok, kávé és ajándékok ezeket nem pótolják.
+No migration, name import or alternate legacy gameplay. Reject incompatible versions, malformed JSON/state, unknown scene cursors, forged evidence origins and invalid pending effects. Failed loading never overwrites the stored save with a fresh game. Mid-scene saves retain cursor and pending effects. Browser write failures are visible while in-memory play may continue.
 
-## Lezárás
+The CLI uses the same action/query surface and save envelope, with atomic writes to an explicitly selected file and exclusive ownership. Observations hide unrevealed cards and unearned evidence; omniscient proofreading requires author mode. Asset descriptions describe actual visible assets and neutral fallback. Transcripts/findings do not modify story text. See [CLI.md](docs/CLI.md).
 
-A `resolution` mező jelöli a konfrontációt és az intézményi döntést. A 15. héten minden végigjátszott út megszakítja a rítust és megöli a vámpírt. A külön segítői beosztás és jelzéspróba együtt támogatott kimenetelt ad; nélkülük a segítők közbelépnek, de nő a kimerülés és sérül a bizonyíték. A 16. heti jelentés nyilvános/korlátozott/belső közlésről dönt. Megőrzött bizonyítékkal nyilvános elismerés, másként részleges válasz vagy elhallgatás következik. Ez független a románctól.
+## Lighting, moments and audio
 
-Az intézményi jelenet után még két szabad sáv áll rendelkezésre. T8 egyetlen alkalomban tartalmazza a két személyes aftermath-állomást is. Az `evaluateEnding` addig nem ad végső kapcsolati epilógust, amíg a 16. heti összegzésből a játékos ténylegesen le nem zárja a félévet. Külön egyéni, hármas, baráti, rendezetlen és eltávolodó kapcsolat lehetséges. A magánéleti kitettség külön kijelzett mező, nem természetfeletti veszélypontszám.
+`backgroundFor` uses exact lighting, then another evening/night variant, then base art. It never substitutes a late-day image for day. Non-shared scenes in saved nighttime slots resolve to night, including scenes without explicit period metadata. Shared scenes retain authored light. Baked-lighting variants bypass duplicate CSS tint; office night art is for dialogue, not a rearrangement of planner hotspots.
 
-## Mentési határ
+`Line.moment` refers to optional GIF/WebP metadata. Reviewed clips need separate posters; planned clips have null files. Pause/reduced motion substitutes the poster. Load failure falls back to poster/description without blocking choices. Animation drives no reducer effects, and playback position is not saved. Four Virág loops and four posters currently exist; their availability is not proof every playback/visual acceptance gate passed anew.
 
-- Stabil kulcs: `ligetvar-save`; verziózott boríték és kötelező teljes állapot. A játék kiadási száma és a mentés formátum-/történetverziója külön mező. Részletes szerződés és kiadási szabályok: [VERSIONING.md](docs/VERSIONING.md).
-- Korábbi verzióknál új játék szükséges. Nincs névimport, migráció vagy kompatibilitási útvonal.
-- Ismeretlen verzió, hibás JSON, hiányos állapot, ismeretlen jelenet/kurzor, hamis bizonyítékforrás vagy érvénytelen folyamathatás nem tölthető be. Sikertelen folytatás nem írja felül a mentést új játékkal.
-- Jelenet közben is menthető és folytatható. A mentés a kurzort és a még nem tanúsított hatásokat is őrzi.
-- Írási hiba a felületen látható, a játék memóriában folytatható.
+Audio is optional UI presentation with eight registered mood tracks, source files under `music/`, and mute persistence. Source/file checks establish presence, not listening quality or seam review. Current design and optional recovery ideas are documented in the [foundation review](docs/design/FOUNDATION-REVIEW.md).
 
-## Ellenőrzés
+## Verification
 
-`npm test`: motor/tartalom és CLI tesztek. `npm run test:engine` / `npm run test:headless`: motor/tartalom készlet. `npm run test:cli`: CLI parancs-, folyamat- és teljes útvonaltesztek. `npm run typecheck`: TypeScript. `npm run build`: Vite production build. A régi `src/core/`, JSON-összefésülők és Jest belépési pont megszűntek a hasznos ellenőrzések átültetése után. A történeti JSON és lokalizáció a `docs/archive/legacy-narrative/` alatt maradt meg forrás/proveniencia céljára, aktív import nélkül. A tényleges eredményeket a [haladási napló](docs/REDESIGN-PROGRESS.md) rögzíti.
+`npm test` runs engine/content and CLI suites; `test:engine`/`test:headless` are engine/content aliases; `test:cli` runs CLI processes/routes. `npm run typecheck` checks TypeScript; `npm run build` builds Vite. Browser layout scripts remain separate. Report only executed results.
 
-## Reviewed lighting variants — 22 October 2026
-
-The UI passes effective `sceneLighting` to `backgroundFor` in the content asset manifest. Classroom evening selects dusk, library evening selects evening, and courtyard evening/night selects night (flexible night-slot scenes are labelled evening). Day selection and unavailable variants fall back to the base background. Reviewed variants set `lightingBaked`; their background bypasses the extra evening/night CSS tint on desktop and mobile. Other locations retain the CSS fallback. Engine and saves are unchanged.
-
-### Night destination correction — 22 October 2026
-
-Every non-shared scene in the saved night slot now resolves to `night`, including older scene definitions without `periods`. Shared-story scenes keep their authored lighting. `backgroundFor` first uses the exact variant, then the other late-day variant (evening/night), then the base. All seven currently reachable night destinations have real evening/night art: new lake/office night images, existing courtyard night and classroom/library late-day variants, and already-night apartment/Holdkör bases. Their `lightingBaked` flag avoids duplicate background tint. The daytime planner and its hotspots are unchanged; the office night image is used for dialogue only.
-
-## Move-limited jobs and personal spending — 25 October 2026
-
-The approved puzzle/points redesign is implemented. [Puzzles and economy](docs/LEISURE-ECONOMY.md) documents the authoritative amounts, six paid optional scenes, six gifts, visible delivery replies, saved puzzle moves and required current save fields. Starting a paid scene atomically deducts money and activity points; completion still consumes one slot. Core story and relationship commitments retain their existing witnessed requirements. The phone now also displays gift replies and paid outings; this supersedes the earlier meetings-only phone description.
-
-## Playable CLI
-
-Release 0.3.0 adds `src/game/cli/` for Node terminal and protocol-1 JSON sessions. The browser store and CLI both dispatch through `content/actions.ts`; `content/view.ts` exposes only player-visible state. Shared save envelopes are atomically persisted to an explicitly chosen file with exclusive ownership. `asset-descriptions.ts` supplies visually reviewed text using the existing background/portrait resolvers. Proofreading findings and transcripts are separate from campaign state. [CLI.md](docs/CLI.md) contains the complete command/protocol contract and reproduction examples.
-
-## Staged dates — 0.4.0
-
-Scenes may declare named stages selected explicitly by `Line.stage`, with location, background, cast, proximity and optional lighting. The shared `sceneStage` resolver drives browser and CLI. Staging is derived from the saved node; changing place does not finish or charge another activity. `Choice.localRequires` reads only pending decision IDs from this scene; ordinary prerequisites still read completed events. All effects remain atomic at scene completion. The three individual dates now have optional quieter destinations, separate mutually chosen kissing, and explicit departures; all six paid outings have closing beats. See [SCENE-STAGING.md](docs/SCENE-STAGING.md) for the contract, route details and remaining work. Campaign duration remains 16 weeks. Content epoch is 2; schema remains 4.
-
-## Optional reporter and image loops — 0.5.0
-
-Eight optional `virag_*` scenes use existing one-slot scheduling and witnessed decisions, with no new persisted fields. A separate successful public-report coda appears in browser and CLI endings, including skipped-route cases. Virág is not a main-route direction or a bond-score gate. See [story contract](docs/VIRAG-STORY.md).
-
-`Line.moment` optionally identifies a GIF/animated-WebP clip in the content manifest. The React renderer substitutes a separate static poster for pause/reduced motion, and descriptions remain available in CLI JSON. Planned entries never load pretend media. No animation drives the reducer; saved scene/node IDs restore context, and playback restarts. The three hooked Virág clips have no production files yet. See [animation contract](docs/ANIMATION-PLAN.md).
-
-## Virág update — 0.6.0
-
-Latest user direction supersedes the earlier final-date treatment: blue pixie haircut, deliberately flirtatious blouse/cardigan/skirt look, immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Five transparent portraits, a full-body identity reference, daylight hallway and a 2.4-second wink loop are generated and assistant-reviewed. Dedicated physical-pose clips remain planned. See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration.
+Retired `src/core/`, JSON merge adapters and old test entry points are not runtime architecture. Historical narrative/localization under `docs/archive/legacy-narrative/` is inactive provenance. See the [progress log](docs/REDESIGN-PROGRESS.md) for dated checks and the [tracker](docs/design/TRACKER.md) for current unfinished gates.
