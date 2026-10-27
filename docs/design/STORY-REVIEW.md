@@ -92,11 +92,30 @@ Resolve institutional responsibility before the personal follow-ups. Clearly sep
 
 Personal scenes answer whether and how each chosen relationship continues. Use concrete future plans and character-specific gestures, not repeated declarations that nobody owes affection. Friendship, withdrawal and uncertainty remain valid outcomes. Preserve the two discretionary slots and the triad's consolidated aftermath.
 
+## Favourite places and distinct dating experiences
+
+**User-confirmed requirement, 27 October 2026:** each woman has a favourite place whose setting enables distinct experiences. Personality and dialogue alone must not carry route differentiation. Exact assignments below are proposed for user review, grounded in existing interests; they are not yet implemented or approved location canon.
+
+| Woman | Proposed favourite place | Why she returns | Experiences enabled by this setting |
+| --- | --- | --- | --- |
+| Rebeka | Holdkör screening room | She can choose what is seen and turn a screening into a shared occasion, beyond her photography work. | Choose an enjoyably terrible film together; improvise a miniature shadow scene against the screen; trade photographs of overlooked castle details; linger while the projector cools after everyone leaves. |
+| Boglárka | Library window alcove | A familiar refuge where quiet company is welcome and she can share pleasure rather than perform scholarship. | Read competing passages aloud in whispers; exchange handwritten bookmarks; invent lives for marginal notes; listen to rain together after deliberately putting the books away. |
+| Gréta | Lakeside willow and walking trail | She already longs for a place where nobody needs her to organize anything. | Take an unplanned detour; skim stones with an absurd private scoring rule; share an imperfect picnic; shelter from rain and decide whether to wait or walk back laughing. |
+| Virág | Late-opening town café | A lively place outside college roles where she can set the pace and enjoy company without turning it into traditional courtship. | Make playful predictions about the street and see which come true; argue over a provocative headline without doing casework; split an improvised late supper; spontaneously extend the meeting into a walk, with private time only by mutual invitation. |
+
+The café is a proposed setting, not an existing background or runtime location claim. Existing broad locations also need staging/art checks before these experiences are implemented.
+
+A favourite place is an emotional home, not a restriction on all dates. Begin with her introducing its rituals; return later to a changed detail or shared memory; let a final visit show what has become “ours.” Use different activities, movement, sound, public/private opportunities and departures. Do not copy the same date and change its background.
+
+Each place needs at least one playful activity, one quiet experience and one opportunity for character-specific closeness. All should remain worthwhile without physical escalation. Public affection, moving somewhere private and intimacy are separate invitations; a favourite place does not imply consent. Keep some scenes free of work, research, photography deliverables or reporting so each woman can enjoy her interests without becoming her occupation.
+
+Rebeka and Boglárka retain their own places on the triad route; a shared evening must not erase either woman's preferences. Virág's favourite place does not introduce a commitment milestone or interactions with the main women.
+
 ## Follow-up questions for the next writing pass
 
 1. What should make the magical gymnastics visibly magical and fun outside emergencies?
-2. What ordinary experience should distinguish dating each woman?
+2. Confirm or revise the proposed favourite-place assignments above; the requirement for distinct place-driven experiences is confirmed.
 3. Should clearly labelled Rebeka–Boglárka interludes remain, or should Márton learn their story only through what they share?
 4. What concrete professional/secrecy stakes are enjoyable within a romance-first fantasy?
 
-These choices remain open. This review does not authorize a localization architecture, runtime schedule changes or edits to conversations.
+The remaining specifics remain open. This review does not authorize a localization architecture, runtime schedule changes or edits to conversations.
