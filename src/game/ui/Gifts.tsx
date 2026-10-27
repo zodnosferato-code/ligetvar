@@ -1,4 +1,4 @@
-import {useTranslation} from './Locale.tsx';
+import {useTranslation,useLocale} from './Locale.tsx';
 import {useState,useRef,useEffect} from 'react';
 import {useGame} from '../store.ts';
 import {GIFTS,GIFT_NOTES,type GiftId,type GiftNote,type Delivery} from '../content/gifting.ts';
@@ -20,14 +20,14 @@ export function GiftReplies({unreadOnly=false}:{unreadOnly?:boolean}){
  })}{all.some(h=>!h.read)&&<button onClick={g.readGifts}>{t('gifts.read')}</button>}</section>;
 }
 export function GiftShop(){
- const t=useTranslation();
+ const t=useTranslation();const {locale}=useLocale();
  const g=useGame(),s=g.state,[girl,setGirl]=useState<GirlId>('rebeka'),[gift,setGift]=useState<GiftId>('photo'),[note,setNote]=useState<GiftNote>('noticed'),[delivery,setDelivery]=useState<Delivery>('remote');
  const item=GIFTS[gift],allowed=s.phase==='planner'&&s.slot>=1&&s.slot<=2;
  return <div className="gift-shop"><p>{t('gifts.help')}</p>
   <div className="gift-fields"><label>{t('gifts.recipient')}<select aria-label={t('gifts.recipient')} value={girl} onChange={e=>setGirl(e.target.value as GirlId)}>{GIRLS.map(id=><option key={id} value={id}>{ROUTES[id]}</option>)}</select></label>
-  <label>{t('gifts.item')}<select aria-label={t('gifts.item')} value={gift} onChange={e=>setGift(e.target.value as GiftId)}>{Object.entries(GIFTS).map(([id,x])=><option key={id} value={id}>{x.name} · {formatFt(x.price)}</option>)}</select></label></div>
-  <p>{item.description}</p><p>{t('gifts.inventory',{count:s.inventory[gift]??0,money:formatFt(s.money)})}</p>
-  <button disabled={!allowed||s.money<item.price} onClick={()=>g.buy(gift)}>{t('gifts.buy',{money:formatFt(item.price)})}</button>
+  <label>{t('gifts.item')}<select aria-label={t('gifts.item')} value={gift} onChange={e=>setGift(e.target.value as GiftId)}>{Object.entries(GIFTS).map(([id,x])=><option key={id} value={id}>{x.name} · {formatFt(x.price,locale)}</option>)}</select></label></div>
+  <p>{item.description}</p><p>{t('gifts.inventory',{count:s.inventory[gift]??0,money:formatFt(s.money,locale)})}</p>
+  <button disabled={!allowed||s.money<item.price} onClick={()=>g.buy(gift)}>{t('gifts.buy',{money:formatFt(item.price,locale)})}</button>
   <div className="gift-fields"><label>{t('gifts.note')}<select aria-label={t('gifts.note')} value={note} onChange={e=>setNote(e.target.value as GiftNote)}>{Object.entries(GIFT_NOTES).map(([id,text])=><option key={id} value={id}>{text}</option>)}</select></label>
   <label>{t('gifts.delivery')}<select aria-label={t('gifts.delivery')} value={delivery} onChange={e=>setDelivery(e.target.value as Delivery)}><option value="remote">{t('gifts.send.option')}</option><option value="inPerson">{t('gifts.personal.option')}</option></select></label></div>
   <p>{t('gifts.message.preview',{message:GIFT_NOTES[note]})}</p><p className="muted">{delivery==='remote'?t('gifts.remote.help'):t('gifts.personal.help')}</p>
@@ -36,4 +36,5 @@ export function GiftShop(){
   <p className="muted">{t('gifts.boundaries')}</p>
  </div>;
 }
+
 

@@ -44,10 +44,11 @@ npm run --silent play:cli -- --json --save /tmp/ligetvar-agent.json
 
 Start with `new YourName`, select numbered actions and use `help`. Progress saves after each action. The [CLI guide](docs/CLI.md) documents commands, visual descriptions, transcripts, author inspection and route examples.
 
-Active game text is Hungarian. English design documentation does not imply a translated game; localization and complete English gameplay remain planned in the [tracker](docs/design/TRACKER.md).
+Hungarian and partial English are selectable at any time in the browser and CLI (`--locale en`, then `locale hu` / `locale en`). UI labels, save feedback, location names and relationship directions have English translations; story, journals and remaining content still appear in Hungarian. See the [localization contract](docs/LOCALIZATION.md) and [tracker](docs/design/TRACKER.md) for extraction boundaries and remaining work.
 
 ## Art and developer tooling
 
 Runtime art is selected by the [image manifest](src/game/content/assets.ts) and [animation manifest](src/game/content/animations.ts). Production candidates remain separate from reviewed exports. Follow the [asset workflow](docs/ASSET-AGENT-WORKFLOW.md), preserving identity and keeping image payloads out of agent context.
 
 Venice production is paused under the existing user direction; current art work uses built-in ChatGPT image generation. Historical tooling and credential-handling rules are documented in [AGENT.md](AGENT.md). No provider request is needed to run the game.
+

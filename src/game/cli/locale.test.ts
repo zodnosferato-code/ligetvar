@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {Session} from './session.ts';
 import type {GameAction} from '../content/actions.ts';
 import {decodeSave} from '../content/saves.ts';
+import {translate} from '../content/localization.ts';
 import {SCENES} from '../content/catalog.ts';
 
 function memory(){let raw:string|null=null,writes=0;return {read:()=>raw,write:(next:string)=>{raw=next;writes++;},writes:()=>writes};}
@@ -29,7 +30,11 @@ test('live locale changes preserve bytes, revisions, actions and hidden puzzle c
   assert.deepEqual(after.actions.map(a=>a.action),before.actions.map(a=>a.action));
   assert.deepEqual(after.puzzle?.tiles,before.puzzle?.tiles);
   assert.deepEqual(after.puzzle?.selected,before.puzzle?.selected);
-  assert.deepEqual(after.scene,before.scene);
+  if(after.scene&&before.scene){
+   assert.equal(after.scene.location,translate(`location.${after.scene.staging.location}`,{},'en'));
+   assert.equal(after.scene.speaker,after.scene.speakerId==='narrator'?'Narration':before.scene.speaker);
+   assert.deepEqual({...after.scene,location:before.scene.location,speaker:before.scene.speaker},before.scene);
+  }else assert.equal(after.scene,before.scene);
   assert.deepEqual(after.evidence,before.evidence);assert.deepEqual(after.journal,before.journal);
   const hungarian=session.execute({cmd:'locale',locale:'hu'});
   assert.deepEqual(hungarian.view,before);assert.equal(file.read(),raw);
@@ -75,3 +80,4 @@ test('save feedback follows the selected locale without modifying invalid save b
  const hu=session.execute({cmd:'load',expectedRevision:0}) as any;
  assert.match(hu.error.message,/már nem használható/);assert.equal(file.read(),'{"version":3}');
 });
+

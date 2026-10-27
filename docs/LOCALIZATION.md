@@ -35,7 +35,7 @@ or automatic translation of historical text is planned.
 | Save/load feedback | content/saves.ts | Complete; Hungarian and English catalogs |
 | UI labels and accessibility text | ui/*.tsx | Extracted in all seven components: title/status, dialogue controls, journal headings, room planner, gifts, puzzles and animation controls. Hungarian defaults preserved; English catalog supplied. Dynamic content imported from other modules remains pending. |
 | CLI observations, commands and errors | cli/*.ts, content/view.ts, actions.ts | Pending |
-| Currency and numeric formatting | content/format.ts | Pending; currently hu-HU |
+| Currency and numeric formatting | content/format.ts | `formatFt(value, locale)` formats browser money and CLI scene prices as Hungarian Ft or English HUF; numeric protocol fields remain numbers. |
 | Puzzle/economy/gift text | content/puzzles.ts, gifting.ts, outings.ts | Pending |
 | Journals, recaps and knowledge | content/knowledge.ts, rules.ts, runtime.ts; engine state | Pending persisted-text audit |
 | Scene titles, lines, choices and reactions | content scene modules and authoring.ts | Pending |
@@ -54,7 +54,7 @@ missing parameters and save-message locale independence. Existing save tests
 protect Hungarian feedback and decoding. The test script already includes these
 content tests.
 
-Next: extract content-owned labels (locations/routes), item/asset descriptions and runtime feedback; audit persisted text, then extract scene
+Next: extract item/asset descriptions and runtime feedback; audit persisted text, then extract scene
 text with stable IDs. Preserve the partial-translation indicators in browser and CLI. English save messages alone do not constitute English
 gameplay. Plural messages must use locale-aware rules when needed; no plural API
 or full translation coverage is claimed in this step.
@@ -63,7 +63,7 @@ or full translation coverage is claimed in this step.
 
 All seven `ui/*.tsx` components resolve their own labels through the shared API, including accessibility names, numeric feedback and deadlines. Brand/character proper names remain unchanged. Complete templates let translators reorder values without translating stored data. Puzzle card names and collectible names are extracted; their numeric IDs, symbols and gameplay remain unchanged.
 
-English catalog entries are now available through the live language selector. Hungarian remains the default when no preference is set. Route names, locations, scene titles/prose, gift descriptions/notes/reactions, epilogues, animation descriptions and runtime notices still need extraction. Save notices now retain their result data and are formatted in the active locale. Journal prose is still persisted as before. No compatibility epoch change is needed for this label-only extraction.
+English catalog entries are now available through the live language selector. Hungarian remains the default when no preference is set. Scene titles/prose, gift descriptions/notes/reactions, epilogues, animation descriptions and runtime notices still need extraction. Save notices now retain their result data and are formatted in the active locale. Journal prose is still persisted as before. No compatibility epoch change is needed for this label-only extraction.
 
 ## Live switching — user direction, 27 October 2026
 
@@ -100,3 +100,27 @@ Process tests cover text/JSON commands, startup selection and invalid locales.
 Catalog/save tests, TypeScript and build checks remain required. Component SSR
 was checked in both locales including room label tables; this is not a full
 interactive browser/mobile layout review.
+
+
+## Location and route translation checkpoint — 27 October 2026
+
+Nine location names, five relationship directions and the CLI narration label now
+use semantic catalog keys (`location.*`, `route.*`, `actor.narrator`). Browser
+destinations, scene metadata and route controls resolve them at render time; CLI
+observations resolve them with the session locale. Proper names keep their accents;
+Békás-tó is Békás Lake in English, and Holdkör remains a proper name. Existing
+`LOCATIONS` and `ROUTES` constants remain Hungarian source/ID tables for content
+and validation; do not render their values directly in newly localized surfaces.
+
+Browser money and CLI scene prices use explicit-locale formatting. Currency stays
+Hungarian forints: `12,345 HUF` in English, Hungarian grouping and `Ft` in Hungarian.
+Engine-authored persisted feedback still uses the existing source text and awaits
+the event-reference audit. No schema/content epoch changes in this batch.
+
+Validation: catalog parity, complete location/route ID coverage and Hungarian
+label preservation; scene observations switch both ways without mutating state or
+action IDs; English money formatting. TypeScript passes; 25 of 26 CLI checks pass, including the complete language-switching campaign and six external route playthroughs. The remaining CLI failure is the omitted-artwork check.
+The source-only local checkout omits artwork: four asset-existence tests fail for
+that reason; 68 engine/content tests pass. Vite builds, with a missing local atlas
+warning. Full repository validation is delegated to this commit's Actions. No
+interactive browser/mobile or English narrative proofreading is claimed.

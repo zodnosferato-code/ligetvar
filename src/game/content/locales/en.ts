@@ -259,5 +259,21 @@ export const en:Record<keyof typeof hu,string> = {
   "cli.archive": "Archive pairs · 12 energy · day slot",
   "cli.tile": "Tile {index}",
   "cli.memory.instructions": "Turn over two cards, then select Next pair. 18 pair attempts, no time limit.",
-  "cli.recycling.instructions": "Choose two adjacent tiles: match at least three symbols in a row or column. 12 successful swaps; failed swaps are free."
+  "cli.recycling.instructions": "Choose two adjacent tiles: match at least three symbols in a row or column. 12 successful swaps; failed swaps are free.",
+  "location.hallway": "College hallway",
+  "location.classroom": "Classroom",
+  "location.library": "Library",
+  "location.department": "Department office",
+  "location.holdkor": "Holdkör cellar",
+  "location.courtyard": "Castle courtyard",
+  "location.apartment": "Márton’s suite",
+  "location.bekas": "Békás Lake",
+  "location.chamber": "Mechanical chamber",
+  "route.friendship": "Friendship",
+  "route.rebeka": "Rebeka",
+  "route.boglarka": "Boglárka",
+  "route.greta": "Gréta",
+  "route.triad": "Rebeka, Boglárka and Márton",
+  "actor.narrator": "Narration",
 };
+

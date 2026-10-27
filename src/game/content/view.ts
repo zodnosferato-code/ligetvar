@@ -1,10 +1,11 @@
+import {formatFt} from './format.ts';
 import {DEFAULT_LOCALE,translator,type Locale} from './localization.ts';
 /** Player-visible observation. Never serialize the private game state here. */
 import {MOMENT_CLIPS} from './animations.ts';
 import {viragEpilogue} from './virag.ts';
 import {SCENES,EVIDENCE} from './catalog.ts';
 import * as R from './runtime.ts';
-import {ACTOR_NAME,LOCATIONS,backgroundFor,portraitFor,type ArtAsset} from './assets.ts';
+import {ACTOR_NAME,backgroundFor,portraitFor,type ArtAsset} from './assets.ts';
 import {describeAsset} from './asset-descriptions.ts';
 import {GIFTS,GIFT_NOTES} from './gifting.ts';
 import {MOVE_LIMIT,puzzleDone,puzzleReward} from './puzzles.ts';
@@ -30,9 +31,9 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
  }
  if(s.phase==='planner'){
   const night=R.currentPeriod(s)==='night';assets.push({...asset('background',backgroundFor(night?'apartment':'department',night?'night':'day')),lighting:night?'night':'day'});
-  for(const x of R.availableScenes(s,SCENES))actions.push({label:x.title+(x.cost?t('hub.scene.price',{money:x.cost.money+' Ft',points:x.cost.points}):''),action:{type:'scene',id:x.id}});
+  for(const x of R.availableScenes(s,SCENES))actions.push({label:x.title+(x.cost?t('hub.scene.price',{money:formatFt(x.cost.money,locale),points:x.cost.points}):''),action:{type:'scene',id:x.id}});
   for(const kind of ['rest','recycling','archive'] as const)if(R.activityAvailable(s,kind))actions.push({label:{rest:t('ui.activity.rest'),recycling:t('cli.recycling'),archive:t('cli.archive')}[kind],action:{type:'activity',kind}});
-  if(R.canChooseDirection(s)&&!R.isCommitted(s))for(const id of Object.keys(R.ROUTES) as (keyof typeof R.ROUTES)[])if(id!==s.direction)actions.push({label:R.ROUTES[id],action:{type:'direction',id}});
+  if(R.canChooseDirection(s)&&!R.isCommitted(s))for(const id of Object.keys(R.ROUTES) as (keyof typeof R.ROUTES)[])if(id!==s.direction)actions.push({label:t(`route.${id}`),action:{type:'direction',id}});
  }
  if(s.phase==='summary')actions.push({label:s.week===16?t('cli.end'):t('cli.nextWeek'),action:{type:'advance'}});
  const p=s.puzzle;
@@ -45,7 +46,7 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
  const ending=s.phase==='ending'?R.evaluateEnding(s):null;
  return {
   phase:s.phase,week:s.week,slot:s.slot,period:R.currentPeriod(s),money:s.money,activityPoints:s.activityPoints,energy:s.energy,direction:s.direction,lastNote:s.lastNote,
-  scene:scene&&line?{id:scene.id,title:scene.title,location:LOCATIONS[R.sceneStage(s,scene).location],staging:R.sceneStage(s,scene),lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:ACTOR_NAME[line.speaker],expression:line.expression,text:line.text,moment:line.moment?{id:line.moment,...MOMENT_CLIPS[line.moment],rendered:MOMENT_CLIPS[line.moment].status==='reviewed'}:null}:null,
+  scene:scene&&line?{id:scene.id,title:scene.title,location:t(`location.${R.sceneStage(s,scene).location}`),staging:R.sceneStage(s,scene),lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:line.speaker==='narrator'?t('actor.narrator'):ACTOR_NAME[line.speaker],expression:line.expression,text:line.text,moment:line.moment?{id:line.moment,...MOMENT_CLIPS[line.moment],rendered:MOMENT_CLIPS[line.moment].status==='reviewed'}:null}:null,
   assets,actions,
   puzzle:p?{kind:p.kind,instructions:p.kind==='archive'?t('cli.memory.instructions'):t('cli.recycling.instructions'),width:p.kind==='archive'?4:5,movesLeft:MOVE_LIMIT[p.kind]-p.moves,score:p.score,reward:puzzleReward(p),done:puzzleDone(p),selected:p.selected,matched:p.matched,tiles:p.board.map((v,i)=>p.kind==='archive'&&!p.selected.includes(i)&&!p.matched.includes(i)?null:v),legend:p.kind==='archive'?[t('puzzle.card.key'),t('puzzle.card.letter'),t('puzzle.card.moon'),t('puzzle.card.tower'),t('puzzle.card.book'),t('puzzle.card.map'),t('puzzle.card.seal'),t('puzzle.card.pen')]:[t('cli.object.green'),t('cli.object.blue'),t('cli.object.copper'),t('cli.object.purple')]}:null,
   journal:s.journal,evidence:Object.entries(s.evidence).map(([id,witness])=>({id,text:EVIDENCE[id].text,...witness})),bonds:s.bonds,exposure:s.exposure,
@@ -55,3 +56,4 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
  };
 }
 export type GameView=ReturnType<typeof gameView>;
+

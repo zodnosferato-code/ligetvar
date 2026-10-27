@@ -257,5 +257,21 @@ export const hu = {
   "cli.archive": "Archívumpárok · 12 energia · nappali sáv",
   "cli.tile": "{index}. mező",
   "cli.memory.instructions": "Fordíts fel két lapot, majd válaszd a Következő pár gombot. 18 párpróba, nincs időkorlát.",
-  "cli.recycling.instructions": "Válassz két szomszédos mezőt: legalább három azonos jel kell egy sorban vagy oszlopban. 12 sikeres csere; a hibás csere ingyenes."
+  "cli.recycling.instructions": "Válassz két szomszédos mezőt: legalább három azonos jel kell egy sorban vagy oszlopban. 12 sikeres csere; a hibás csere ingyenes.",
+  "location.hallway": "Egyetemi folyosó",
+  "location.classroom": "Tanterem",
+  "location.library": "Könyvtár",
+  "location.department": "Tanszéki iroda",
+  "location.holdkor": "Holdkör pincéje",
+  "location.courtyard": "Kastélyudvar",
+  "location.apartment": "Márton lakosztálya",
+  "location.bekas": "Békás-tó",
+  "location.chamber": "Gépészeti kamra",
+  "route.friendship": "Barátság",
+  "route.rebeka": "Rebeka",
+  "route.boglarka": "Boglárka",
+  "route.greta": "Gréta",
+  "route.triad": "Rebeka, Boglárka és Márton",
+  "actor.narrator": "Elbeszélés",
 } as const;
+

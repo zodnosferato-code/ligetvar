@@ -24,3 +24,28 @@ test('save feedback defaults to Hungarian and can be rendered in English without
  }
  assert.equal(saveMessage({status:'missing'},'en'),'No save is available to continue.');
 });
+
+import {formatFt} from './format.ts';
+import {LOCATIONS} from './assets.ts';
+import {ROUTES} from './rules.ts';
+import {createInitial,openScene} from './runtime.ts';
+import {SCENES} from './catalog.ts';
+import {gameView} from './view.ts';
+test('location and route catalogs cover stable IDs and preserve Hungarian labels',()=>{
+ for(const [id,label] of Object.entries(LOCATIONS))assert.equal(translate(`location.${id as keyof typeof LOCATIONS}`),label);
+ for(const [id,label] of Object.entries(ROUTES))assert.equal(translate(`route.${id as keyof typeof ROUTES}`),label);
+ assert.equal(translate('location.library',{},'en'),'Library');
+ assert.equal(translate('route.friendship',{},'en'),'Friendship');
+ assert.equal(formatFt(12345),formatFt(12345,'hu'));
+ assert.equal(formatFt(12345,'en'),'12,345 HUF');
+});
+test('switching scene observations translates metadata without changing choices or state',()=>{
+ const state=openScene(createInitial('Reader'),'shared_1',SCENES),before=JSON.stringify(state);
+ const hu=gameView(state,'hu'),en=gameView(state,'en');
+ assert.ok(en.scene);assert.notEqual(en.scene.location,hu.scene!.location);
+ assert.equal(en.scene.speaker,'Narration');
+ assert.deepEqual(en.actions.map(x=>x.action),hu.actions.map(x=>x.action));
+ assert.equal(en.scene.text,hu.scene!.text); // Story extraction is a later batch.
+ assert.equal(JSON.stringify(state),before);
+ assert.deepEqual(gameView(state,'hu'),hu);
+});
