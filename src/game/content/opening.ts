@@ -38,60 +38,60 @@ export function expandOpening(original:Scene):Scene{
  }
  if(s.id==='shared_2'){
   after(s,'line_0','missing_inventory',[
-   ['marton','Mikor beszéltél vele utoljára?'],
-   ['greta','Tegnap négykor. Azt mondta, zárásra visszaér. Fél hatkor már én hívtam; nem vette fel. A raktárnál vártam húsz percet.'],
-   ['rebeka','És ma minden kész. Akkor biztos nincs itt semmi látnivaló. Ezt mondta?','displeased'],
-   ['greta','Azt mondta, ne csináljak a leltárból személyes ügyet. Pedig csak azt akartam tudni, bezárhatom-e az ajtót.'],
-   ['boglarka','A kihagyott találkozó biztos. A húsz percet honnan tudjuk?'],
-   ['greta','Ott álltam mellette. Nem elbeszélés, Boglárka. Bárcsak az lenne, akkor legalább nem nekem kellene újraszámolni.']
+   ['marton',message('scene.missing.lastContact')],
+   ['greta',message('scene.missing.waiting')],
+   ['rebeka',message('scene.missing.nothingToSee'),'displeased'],
+   ['greta',message('scene.missing.lockDoor')],
+   ['boglarka',message('scene.missing.twentyMinutes')],
+   ['greta',message('scene.missing.witness')]
   ]);
   branch(s,'line_5','ask','lilla_contact',[
-   ['marton','Nem megyünk oda csoportosan. Dénes, megadod neki az elérhetőségemet, és ő választ időt?'],
-   ['denes','Igen. Ha nem jelentkezik, nem tekintjük beleegyezésnek a hallgatását.'],
-   ['rebeka','A gépet itthon hagyom. Az is elég rossz lehet, hogy az emberről már azelőtt kész a történet, mielőtt el tudná mondani.'],
-   ['greta','Egy üres termet tudok foglalni. Ne neki kelljen helyet keresnie.'],
-   ['boglarka','Előbb derüljön ki, akar-e termet. Lehet, hogy egy padot könnyebb otthagyni.'],
-   ['narrator','Gréta kihúzza a foglalást, de a szabad időpontot a lap szélén hagyja. Dénes csak Márton elérhetőségét viszi tovább.']
+   ['marton',message('scene.missing.contactDetails')],
+   ['denes',message('scene.missing.silence')],
+   ['rebeka',message('scene.missing.leaveCamera')],
+   ['greta',message('scene.missing.bookRoom')],
+   ['boglarka',message('scene.missing.bench')],
+   ['narrator',message('scene.missing.cancelBooking')]
   ]);
   branch(s,'line_5','space','lilla_space',[
-   ['rebeka','Holnapig kibírja a kíváncsiságunk. A folyosón viszont már kérdezgetik, hol volt.'],
-   ['greta','Szólok a műhelynek, hogy ne keressék külön. Nem fogok helyette magyarázatot gyártani.'],
-   ['boglarka','A „nem tudjuk” rövid mondat. Kár, hogy mindenki szeret utána még hármat mondani.'],
-   ['marton','Dénes, azt azért mondd el neki, hogy nem neki kell utánunk járnia, ha segítséget kérne.'],
-   ['denes','Megmondom. Aztán hagyjuk aludni.'],
-   ['narrator','Másnap délelőtt Lilla üzen. Nem magyarázatot küld, hanem helyet és időt: könyvtár, tíz perc.']
+   ['rebeka',message('scene.missing.curiosity')],
+   ['greta',message('scene.missing.tellWorkshop')],
+   ['boglarka',message('scene.missing.dontKnow')],
+   ['marton',message('scene.missing.offerHelp')],
+   ['denes',message('scene.missing.letSleep')],
+   ['narrator',message('scene.missing.message')]
   ]);
  }
  if(s.id==='shared_3'){
   after(s,'line_1','interview_seating',[
-   ['greta','Az ablaknál csendesebb. Odaüljünk?'],
-   ['lilla','Inkább ide, az ajtóhoz.'],
-   ['narrator','Gréta már húzná ki a távolabbi széket. Megáll, és a kijárat melletti helyet hagyja Lillának.'],
-   ['boglarka','Csak kulcsszavakat írok. A végén megmutatom. Amit kihúzol, az nem kerül a közös lapra.'],
-   ['lilla','Azt ne írjátok, hogy eltűnt lány. Mintha most is valami plakáton lennék.'],
-   ['rebeka','Akkor nem írjuk. Én is utálom, ha valaki címet ad nekem, aztán már csak azt hallja, ami belefér.']
+   ['greta',message('scene.interview.window')],
+   ['lilla',message('scene.interview.door')],
+   ['narrator',message('scene.interview.chair')],
+   ['boglarka',message('scene.interview.keywords')],
+   ['lilla',message('scene.interview.poster')],
+   ['rebeka',message('scene.interview.labels')]
   ]);
   branch(s,'line_2','listen','interview_listen',[
-   ['lilla','A könyvtárban voltam. Nem valami titkos helyen. Vissza akartam vinni egy könyvet, hogy ne számítsanak fel még egy napot.'],
-   ['marton','Melyik részre emlékszel még tisztán?'],
-   ['lilla','A pultnál nem működött a vonalkódolvasó. A könyvtárosnak ragasztószalag volt a kezén. Teljesen hülye részlet.'],
-   ['boglarka','Nem hülye. Csak attól még nem kell megmagyaráznunk, miért ez maradt meg.'],
-   ['lilla','Utána a lépcső. Ott mondta valaki, hogy van még hely. Azt hittem, lemaradtam valamiről.']
+   ['lilla',message('scene.interview.returnBook')],
+   ['marton',message('scene.interview.clearMemory')],
+   ['lilla',message('scene.interview.scanner')],
+   ['boglarka',message('scene.interview.detail')],
+   ['lilla',message('scene.interview.stairs')]
   ]);
   branch(s,'line_2','timeline','interview_timeline',[
-   ['greta','Ezen a lapon két időpont van. Ha valamelyik nem stimmel, javítsd ki.'],
-   ['lilla','Nem kedden mentem vissza. Szerdán. Kedden azt hittem, még nálam lehet a könyv.'],
-   ['greta','Igazad van. Elcsúsztattam a dátumot, amikor átírtam. Javítom.'],
-   ['rebeka','Na, ezért nem csinálunk a táblázatból szentírást.'],
-   ['greta','Ezért kérdeztem meg. Lilla, a következő bejegyzés előtt van bármi, amit biztosan felismersz?'],
-   ['lilla','A lépcső hangja. Valaki hívott. Nem gondoltam, hogy idegen lenne.']
+   ['greta',message('scene.interview.checkTimes')],
+   ['lilla',message('scene.interview.wednesday')],
+   ['greta',message('scene.interview.correctDate')],
+   ['rebeka',message('scene.interview.scripture')],
+   ['greta',message('scene.interview.recognise')],
+   ['lilla',message('scene.interview.familiarVoice')]
   ]);
   after(s,'line_6','interview_finish',[
-   ['greta','Lejárt a tíz perc. A buszmegállóig elkísérjelek?'],
-   ['lilla','Dénest várom. Ti maradjatok.'],
-   ['rebeka','A képeket akkor sem teszem ki, ha valaki azt mondja, így fontos ügyet szolgálnának. Ha később kérsz egyet a helyről, megmutatom.'],
-   ['lilla','Majd eldöntöm. Most nem szeretném látni azt a lépcsőt.'],
-   ['narrator','Boglárka átadja a lapot. Lilla két jelzőt kihúz, a mondatot meghagyja. A széket nem tolja vissza egészen. Senki nem szól utána.']
+   ['greta',message('scene.interview.tenMinutes')],
+   ['lilla',message('scene.interview.waitDenes')],
+   ['rebeka',message('scene.interview.noPublication')],
+   ['lilla',message('scene.interview.decideLater')],
+   ['narrator',message('scene.interview.crossedWords')]
   ]);
  }
  if(s.id==='rebeka_1'){

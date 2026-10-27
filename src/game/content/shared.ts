@@ -15,28 +15,28 @@ export const spine:Scene[]=[
   say('marton',message('scene.opening.martonReply')),
   say('narrator',message('scene.opening.departure'))
  ],['grounding'],'Megismertem a három hallgatót és Somát. Az önkéntes földelőgyakorlat segít észrevenni a figyelem elkalandozását.'),
- shared(2,'Egy hiányzó este','department',['marton','soma','greta','rebeka','boglarka','denes'],[
-  say('greta','Soma tegnap nem jött el a leltárra. Ma reggel négy órányi munkát készített el húsz perc alatt. A kimaradt időpont ettől még kimaradt.'),
-  say('soma','Néha elég rájönni, hogyan figyeljenek végre rád. Ma felhívtak az ösztöndíjbizottságtól. A rossz kávét is jobb kedvvel iszom.','amused'),
-  say('rebeka','Lilla tegnap estétől ma délig nem válaszolt. Most visszajött, de nem bír felmenni a lépcsőn. Nem kérek tőle képet.'),
-  say('denes','Megvizsgáltam. Kimerült, sérülést nem találtam. Elindult a könyvtárból, a következő emléke pedig a reggeli busz. Most pihenésre van szüksége.'),
-  say('boglarka','Külön írom, amit ő mond, és amit mi feltételezünk. Az üres helyet a jegyzetben nem tölthetjük ki helyette.'),
-  say('marton','Előbb megkérdezzük, akar-e beszélni velünk.','neutral',[
-   option('ask','Dénesen keresztül kérek egy rövid, visszautasítható beszélgetést.','Dénes vállalja, hogy megkérdezi. Az egészségi adatok nála maradnak.'),
-   option('space','Adok neki egy napot; jelezzük, hogy meghallgatjuk, ha szeretné.','Lilla másnap üzen: tíz percet vállal, fénykép nélkül.')]),
-  say('narrator','Soma lendülete és Lilla hiányzó estéje egyelőre két külön tény. Földelést felajánlhatnak, elveszett emlékek visszaadását nem ígérik.')
+ shared(2,message('scene.missing.title'),'department',['marton','soma','greta','rebeka','boglarka','denes'],[
+  say('greta',message('scene.missing.inventory')),
+  say('soma',message('scene.missing.somaSuccess'),'amused'),
+  say('rebeka',message('scene.missing.lillaReturn')),
+  say('denes',message('scene.missing.examination')),
+  say('boglarka',message('scene.missing.assumptions')),
+  say('marton',message('scene.missing.askPermission'),'neutral',[
+   option('ask',message('scene.missing.choice.ask'),'Dénes vállalja, hogy megkérdezi. Az egészségi adatok nála maradnak.'),
+   option('space',message('scene.missing.choice.space'),'Lilla másnap üzen: tíz percet vállal, fénykép nélkül.')]),
+  say('narrator',message('scene.missing.separateFacts'))
  ],['returned_lilla'],'Lilla kimerülten tért vissza, és hiányzik egy estéje. Soma elmulasztott egy találkozót, majd feltűnően energikusan tért vissza. Az okot még nem ismerjük.'),
- shared(3,'Tíz perc, felvétel nélkül','library',['marton','lilla','rebeka','boglarka','greta'],[
-  say('lilla','Tíz perc. Az arcomat ne fényképezzétek le, a hangomat se tegyétek sehova. Nem szeretném, hogy az egész épület engem nézzen.'),
-  say('rebeka','A gép a táskában marad. Ha később kell kép a helyszínről, előbb megmutatom neked.'),
-  say('marton','Bármikor abbahagyhatjuk.','neutral',[
-   option('listen','A saját szavaiddal mondd, ameddig jólesik.','Lilla maga választja ki, honnan kezdi.'),
-   option('timeline','Csak az utolsó biztos időpontot keressük meg.','Gréta megmutatja a naplót; Lilla javítja a dátumot.')]),
-  say('lilla','Fél kilenc volt. Valaki azt mondta: „Maradt még egy hely neked.” Azt hittem, a szakkörre hívnak. Ugyanezt hallottam a lépcsőn is. A következő dolog a reggeli busz volt.'),
-  say('boglarka','A „valaki hívott” nem jelenti, hogy tudjuk, ki volt. Az ismétlődő mondatot idézetként jelölöm; a beszélőt ismeretlenül hagyom.'),
-  say('greta','A kártyanaplóban 20:34 áll, utána 6:12. Ez két biztos pont. A közötte lévő rész még nincs meg.'),
-  say('lilla','Ennyi elég. A nevem helyett legyen L. a közös jegyzetben.'),
-  say('narrator','Becsukják a füzetet. Van egy pontos idézetük és két időpontjuk, de nincs bizonyítékuk a tettesre.')
+ shared(3,message('scene.interview.title'),'library',['marton','lilla','rebeka','boglarka','greta'],[
+  say('lilla',message('scene.interview.limits')),
+  say('rebeka',message('scene.interview.camera')),
+  say('marton',message('scene.interview.stop'),'neutral',[
+   option('listen',message('scene.interview.choice.listen'),'Lilla maga választja ki, honnan kezdi.'),
+   option('timeline',message('scene.interview.choice.timeline'),'Gréta megmutatja a naplót; Lilla javítja a dátumot.')]),
+  say('lilla',message('scene.interview.invitation')),
+  say('boglarka',message('scene.interview.unknownSpeaker')),
+  say('greta',message('scene.interview.accessLog')),
+  say('lilla',message('scene.interview.initial')),
+  say('narrator',message('scene.interview.close'))
  ],['phrase','time_gap'],'Lilla engedélyével rögzítettük az ismételt mondatot és a hiányzó időt. A hang gazdája ismeretlen.',{evidence:['grounding','returned_lilla']}),
  shared(4,'A képek és a névsor','library',['marton','rebeka','boglarka','greta','julia'],[
   say('narrator','Rebeka a helyszínképeket, Gréta a kártyanaplót hozza. Boglárka külön lapra teszi az idézeteket. Júlia csak a tanúk által megosztható változatot kapja meg.'),

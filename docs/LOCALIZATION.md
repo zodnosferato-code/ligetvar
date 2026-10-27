@@ -163,6 +163,27 @@ pass except four artwork-existence checks caused by omitted local assets. The
 CLI suite passes 25/26 checks; its only failure is the same omitted-artwork check.
 English browser/mobile layout and a separate editorial proofread remain open.
 
-Next conversation batch: `shared_2`, then `shared_3`, followed by the first
+Next conversation batch: the first
 individual meetings. Continue in small scene-sized commits and update L4 in the
 current design tracker; never describe this first scene as a fully English game.
+
+## Weeks 2–3 translation — 27 October 2026
+
+`shared_2` (A Missing Evening) and `shared_3` (Ten Minutes, No Recording)
+now resolve their titles, all 55 dialogue/narration lines and four choices through
+61 semantic keys in `locales/investigation.hu.ts` and
+`locales/investigation.en.ts`. Both alternative branches are included.
+Hungarian source wording, scene/line/choice IDs, effects and information order
+are preserved. This is translation of the current story, not the planned Soma
+rewrite. Reaction notices, journal entries and recaps remain Hungarian.
+
+Validation: key/placeholder parity and exact scene coverage; all four branches
+switch locale and save/resume at every line with identical actions and outcomes.
+TypeScript and Vite build pass. Source-only local engine/content tests: 77 pass,
+four fail because artwork was intentionally omitted. CLI: 25 pass, one omitted-artwork
+failure. The local build reports the same omitted recycling atlas. No interactive
+browser/mobile review or independent editorial acceptance is claimed.
+Save epochs are unchanged because only presentation references were added.
+
+Next: first individual meetings in scene-sized batches. Full English gameplay,
+persisted-text extraction and route proofreading remain outstanding.

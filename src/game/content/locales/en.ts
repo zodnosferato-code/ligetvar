@@ -1,8 +1,10 @@
+import {investigationEn} from './investigation.en.ts';
 import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
   ...openingEn,
+  ...investigationEn,
   "save.unknownVersion": "unknown game version",
   "save.format": " (format: {format})",
   "save.versions": "Save: {saved}{format}. Current game: {current}.",
