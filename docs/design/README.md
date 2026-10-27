@@ -6,14 +6,13 @@ Start here before changing gameplay, story, presentation or character design. Al
 
 | Document | Responsibility |
 | --- | --- |
-| [Story review and English outline](STORY-REVIEW.md) | Source-based editorial findings, confirmed romance-first direction and revised semester outline; conversations unchanged |
+| [Story review and English outline](STORY-REVIEW.md) | Source-based editorial findings, confirmed romance-first direction and revised semester outline (incorporating late Soma reveal, less bureaucratic scenes, earlier relationship room, light magic, and Virág's sexual activity from the start); conversations unchanged |
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |
 | [Character image prompts](CHARACTER-IMAGE-PROMPTS.md) | Derived positive/negative production prompts, framing and unresolved visual decisions |
 | [Character voices](CHARACTER-VOICES.md) | Temperaments, dialogue patterns and writing coverage |
 | [Foundation review](FOUNDATION-REVIEW.md) | Document-by-document assessment of old foundations, conflicts, retained ideas and superseded instructions |
 | [Redesign tracker](TRACKER.md) | Current implementation status, evidence, remaining gates and future features |
-| [Playtest recommendations](../recommendations/README.md) | 27 October structural playtest notes on story coherence and making intimate scenes teachable (fade-to-black + consent/communication) |
 
 ## Authority
 
