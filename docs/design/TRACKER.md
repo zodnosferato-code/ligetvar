@@ -47,8 +47,8 @@ These items remain backlog. This documentation task does not authorize starting 
 
 | ID | Status | Future scope | Dependency / completion evidence |
 | --- | --- | --- | --- |
-| L1 | Planned | String inventory, key/glossary convention and localization API | Decide persisted-text/version policy; document shared browser/CLI API. |
-| L2 | Planned | Extract active Hungarian text | Preserve behavior and verify interpolation/plural handling. |
+| L1 | Partial | 27 October: [localization contract](../LOCALIZATION.md), explicit shared locale API, semantic keys, named interpolation and initial inventory/glossary; save feedback extracted with Hungarian/English parity tests | Broaden inventory during extraction; persisted prose still requires event-reference conversion and a compatibility epoch change before cross-locale saves. |
+| L2 | Partial | 27 October: save/load feedback extracted into typed Hungarian source catalog; default messages preserved | Extract remaining UI, CLI, economy, journals, scenes and endings module by module; plural handling remains pending. |
 | L3 | Planned | English interface, errors, puzzles, economy, journals and asset descriptions | Localization API and extracted strings; complete key coverage. |
 | L4 | Planned | English story, choices, replies and endings | Per-scene translation and proofreading coverage, not a blanket completion claim. |
 | L5 | Planned | Locale switching and browser/CLI parity | Equivalent locale-neutral outcomes and cross-locale save/reload checks. |

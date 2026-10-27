@@ -1,4 +1,6 @@
 /** Campaign save envelope, discovery and user-facing load feedback. No migrations. */
+import {translate,DEFAULT_LOCALE} from './localization.ts';
+import type {Locale} from './localization.ts';
 import * as codec from '../engine/save.ts';
 import {RULES} from './rules.ts';
 import type {GameState,Registry} from './types.ts';
@@ -24,15 +26,15 @@ export function readSave(storage:codec.StorageLike,r:Registry):SaveResult{
  }catch{return {status:'unavailable'};}
 }
 export const persist=(storage:codec.StorageLike,s:GameState)=>codec.persist(storage,s,RULES);
-export function saveMessage(result:SaveResult):string{
+export function saveMessage(result:SaveResult,locale:Locale=DEFAULT_LOCALE):string{
  if(result.status==='unsupported'){
-  const saved=result.saved.gameVersion??'ismeretlen játékverzió';
+  const saved=result.saved.gameVersion??translate('save.unknownVersion',{},locale);
   const format=result.saved.saveSchemaVersion??result.saved.legacyVersion;
-  const versions=`Mentés: ${saved}${format?` (formátum: ${format})`:''}. Jelenlegi játék: ${result.current.gameVersion}.`;
-  return result.reason==='newer'?`${versions} A mentés újabb, nem támogatott formátumot vagy történetverziót használ. A folytatáshoz megfelelő játékverzió szükséges. A mentést nem módosítottuk.`:`${versions} Egy nem kompatibilis frissítés miatt ez a mentés már nem használható. Kezdj új félévet. A mentést nem módosítottuk.`;
+  const versions=translate('save.versions',{saved,format:format?translate('save.format',{format},locale):'',current:result.current.gameVersion},locale);
+  return translate(result.reason==='newer'?'save.newer':'save.incompatible',{versions},locale);
  }
- if(result.status==='invalid')return 'A mentés sérült vagy hiányos; nem töltöttük be és nem módosítottuk. Új félévet indíthatsz.';
- if(result.status==='unavailable')return 'A böngésző mentéstárhelye nem érhető el. Ellenőrizd a tárhelyengedélyeket; a mentést nem módosítottuk.';
- if(result.status==='missing')return 'Nincs folytatható mentés.';
+ if(result.status==='invalid')return translate('save.invalid',{},locale);
+ if(result.status==='unavailable')return translate('save.unavailable',{},locale);
+ if(result.status==='missing')return translate('save.missing',{},locale);
  return '';
 }
