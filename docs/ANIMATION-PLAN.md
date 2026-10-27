@@ -2,6 +2,11 @@
 
 > **Status:** GIF/WebP player implemented in 0.5.0; first real wink pilot added in 0.6.0. | **Purpose:** Affordable, consistent movement for selected story moments.
 
+## Current availability — 27 October 2026
+
+All four Virág loops (wink, arm-link, kiss and cuddle) and their separate static posters are present and labelled reviewed in `src/game/content/animations.ts`. Earlier pending-work statements below are historical production planning. Use [Art register](ART-REGISTER.md) for current coverage and [Character visual reference](CHARACTER-REFERENCES.md) for the sole written appearance authority. Earlier ChatGPT source/reference paths are absent from current main.
+
+
 ## Decision: short loops from a few authored images
 
 The user clarified on 25 October 2026 that movement should look like GIFs. Use **animated WebP**, with GIF accepted when necessary, built from **3–6 consistent keyframes**. Target 1.5–3 seconds with held poses and an intentional return to the starting pose. This is limited animation: a character leans closer, links arms, smiles after a kiss or settles against a shoulder. Do not pretend that scaling a still portrait depicts these actions. Avoid video generation for the normal production path.

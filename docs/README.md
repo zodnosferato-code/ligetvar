@@ -18,8 +18,8 @@
 | [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
 | [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
 | [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |
-| [Full-body character references](CHARACTER-REFERENCES.md) | Reviewed sheets, heights and proposed clothing details |
-| [Art register](ART-REGISTER.md) | Active assets, art brief, placeholders, and production gates |
+| [Character visual reference](CHARACTER-REFERENCES.md) | Single appearance authority for all characters, approval states and available identity files |
+| [Art register](ART-REGISTER.md) | Current runtime coverage, organization audit and missing assets |
 | [Asset agent workflow](ASSET-AGENT-WORKFLOW.md) | Token-efficient binary uploads, one-image commits, checkpoints and recovery |
 | [Character voices](CHARACTER-VOICES.md) | Approved temperaments, speech patterns and writing coverage |
 | [Scene inventory](SCENE-INVENTORY.md) | Generated active scene list, locations, prerequisites, and evidence |
@@ -31,7 +31,7 @@ The [archive index](archive/README.md) explains why material was retired and lin
 
 - [Legacy dialogue and localization inventory](archive/legacy-narrative/README.md)
 - [Legacy design document inventory](archive/legacy-design/README.md)
-- [Archived asset inventory](../assets/archive/INVENTORY.md)
+- Historical asset archive directories are absent from current main; see [current asset organization](ART-REGISTER.md).
 
 ## Format and authority
 

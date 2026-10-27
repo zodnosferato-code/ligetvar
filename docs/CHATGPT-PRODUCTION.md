@@ -2,6 +2,11 @@
 
 > **Status:** Four batches integrated; final user approval open. | **Purpose:** Current provider, visual review and next-image checkpoint.
 
+## Current-state notice — 27 October 2026
+
+The production notes below are historical checkpoints, not the current inventory or character-design authority. Use [Character visual reference](CHARACTER-REFERENCES.md) for current identities and [Art register](ART-REGISTER.md) for availability. Earlier ChatGPT sources, cleaned PNG masters and reference sheets mentioned below are absent from current main. Soma, Áron and Lilla now have final user-approved designs; Gréta affectionate remains missing; all four Virág moment loops and posters are present. Historical file paths and counts below describe their original dates only.
+
+
 The user reports Venice credits have run out and requests ChatGPT generation. No Venice request, balance check, billing change or paid retry was made. Use built-in imagegen. The user now requests fast independent generation followed by batch review; retain approved masters as sources. All 32 original runtime requirements are now integrated; Soma's reference sheet remains. Supporting-cast designs are still proposals, so ask the user before settling uncertain new identities.
 
 ## Review of existing candidates

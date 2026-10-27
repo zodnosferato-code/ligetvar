@@ -2,6 +2,11 @@
 
 > **Status:** Historical Venice production; paused 22 October 2026. | **Purpose:** Trace every requested image to runtime or production-reference needs.
 
+## Current-state notice — 27 October 2026
+
+The production notes below are historical checkpoints, not the current inventory or character-design authority. Use [Character visual reference](CHARACTER-REFERENCES.md) for current identities and [Art register](ART-REGISTER.md) for availability. Earlier ChatGPT sources, cleaned PNG masters and reference sheets mentioned below are absent from current main. Soma, Áron and Lilla now have final user-approved designs; Gréta affectionate remains missing; all four Virág moment loops and posters are present. Historical file paths and counts below describe their original dates only.
+
+
 Generated with `node --experimental-strip-types tools/art-inventory.mjs`. Source: `scripts/venice/catalog.mjs` plus the active scene registry. 32 runtime images and 5 reference sheets. Lilla's portrait is added to the plan's 31-image minimum because her direct interview dialogue is now present in the runtime. Márton remains the viewpoint character and needs no invented face.
 
 The user requested Venice generation on 19 October 2026 and selected WAI Illustrious + FireRed. The initial WAI portrait uses 1024×1280; reference edits use FireRed. Portrait alpha is extracted through Venice, with raw billed outputs checkpointed before extraction. The first request generates Rebeka's neutral portrait and the classroom; these are inspected together before production is expanded. Each expression is edited from that woman's neutral master. Soma's transformed form is edited from his human master. Lighting edits retain the generated base architecture. Existing backgrounds provide location/mood references, not a pixel style target. Additional cast appearances are explicitly proposed designs awaiting final acceptance.

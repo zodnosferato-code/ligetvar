@@ -1,11 +1,17 @@
 # Game assets
 
-> **Status:** Active. | **Purpose:** Asset locations, manifest, and current art brief.
+> **Status:** Active. | **Purpose:** Asset organization and authoritative references.
 
-AI agents must follow the [asset workflow](../docs/ASSET-AGENT-WORKFLOW.md) for generation, review and publication. Keep binary/base64 payloads out of model context and commit each image with a resumable checkpoint.
+| Location | Contents / authority |
+| --- | --- |
+| `characters/<actor>/` | Reviewed runtime WebP portraits; selected by `src/game/content/assets.ts` |
+| `backgrounds/` | Runtime locations and lighting variants; `courtyard.jpg` is also retained for the title screen |
+| `animations/<actor>/` | Moment loops and separate static posters; selected by `src/game/content/animations.ts` |
+| `icons/` | Planning-object and UI icons |
+| `generated/venice/` | Production candidates, raw outputs and provenance; not evidence of runtime approval |
 
-The active image manifest is `src/game/content/assets.ts`. The current location backgrounds are kept under `backgrounds/`; their atmosphere is the accepted baseline. The player-facing scene framing should feel like the player is present, with a natural place for the character to sit opposite them.
+The [character visual reference](../docs/CHARACTER-REFERENCES.md) contains all maintained written character designs. The [art register](../docs/ART-REGISTER.md) records current coverage and organization findings. Use the [asset workflow](../docs/ASSET-AGENT-WORKFLOW.md) for generation and publication; never print image payloads or base64.
 
-Character and background art are transitional. The approved direction is detailed, non-pixel anime illustration with crisp cel shading. Redraw characters while retaining key identifiers. Preserve the gothic background mood, add subtle modern college cues, and frame scenes from the seated player's point of view with a natural seat opposite in [the art register](../docs/ART-REGISTER.md).
+Backgrounds use detailed non-pixel anime art with a gothic castle-college atmosphere and subtle modern fixtures. Frame conversations from the player's position with a natural empty companion seat. Preserve planner object positions and verify hotspot alignment when replacing office or bedroom art.
 
-Historical non-runtime assets have been removed to save space. Only active runtime assets listed in the manifest are retained.
+Earlier ChatGPT masters, reference sheets and archived art folders are absent from current main. Historical documentation may describe their earlier creation; that is not a claim that the files remain available. New production sources belong under `generated/`; reusable reviewed reference sheets may use `references/` when actually created. Do not create empty reference directories or invent missing files.

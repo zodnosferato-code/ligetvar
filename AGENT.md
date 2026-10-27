@@ -1,33 +1,45 @@
-# Ligetvár — útmutató fejlesztőknek
+# Ligetvár — contributor guide
 
 > **Status:** Active. | **Purpose:** Contributor rules and authoritative project guidance.
 
-A teljes [dokumentációs index](docs/README.md) felsorolja az aktív és archivált forrásokat. A [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), különösen a 10. fejezet az irányadó. A számozott korábbi dokumentumok a [docs/archive/legacy-design/](docs/archive/legacy-design/) mappába kerültek; történeti források, ellentmondás esetén nem írják felül az új tervet. A jelenlegi motor működését az [ENGINE.md](ENGINE.md), a tényleges ellenőrzéseket és hátralévő munkát a [haladási napló](docs/REDESIGN-PROGRESS.md) írja le.
+Start with the [documentation index](docs/README.md), [redesign plan](Ligetvar-Redesign-Plan.md), especially section 10, and [engine reference](ENGINE.md). The [progress record](docs/REDESIGN-PROGRESS.md) tracks verified implementation and remaining work. Legacy designs and narrative files under `docs/archive/` are historical, never active runtime sources.
 
-## Aktív rendszer
+## Authority and current visual documentation
 
-- React, Zustand, Vite; változatlan technológiai keret, UI nélkül tesztelhető reducer logika a `src/game/engine/` alatt, befecskendezett kampányszabályokkal.
-- Egyetlen aktív történetregiszter: `src/game/content/catalog.ts`, a `shared.ts`, `relationships.ts`, `triad.ts`, `optional.ts`, `opening.ts` és `conversations.ts` tartalommodulokból összeállítva. Ne tölts vissza dialógust az archív JSON/lokalizációs állományokból.
-- A motor (`src/game/engine/`) nem ismerhet konkrét szereplőt, jelenetazonosítót, történeti mérföldkövet vagy befejezést. A kampány szabályai a `content/rules.ts`, típusai a `content/types.ts`, epilógusai a `content/epilogues.ts` alatt vannak. A `content/runtime.ts` köti össze őket az általános motorral.
-- A felhasználó dönt a további implementációs irányokról. A 2026-10-19-én jóváhagyott TypeScript tartalommodulok és habitusok szerint dolgozz; új architektúrát vagy új karakterirányt ne nyilváníts jóváhagyottnak. A [karakterhangok](docs/CHARACTER-VOICES.md) rögzítik az irányt és a még ki nem bontott részeket.
-- 16 hét; hetente egy garantált közös történeti sáv, majd egy nappali és egy éjszakai szabad sáv (a felhasználó 2026-10-21-i választása). A jelenet folytatása ingyenes, a befejezése egy sávot használ. Nincs extra automatikus műhely.
-- Tervező (2026-10-20): két tervező: nappali iroda és éjszakai hálószoba. A hálószobában a telefon, napló, pihenés és ajándékok érhetők el; műhely és munka az irodában. Az ajtó úti célokat és az ott elérhető jeleneteket kínál, nem egyszerű szobaváltó. A 2026-10-21-i tevékenységfelülvizsgálat óta a sávok rögzített sorrendje közös → nappal → éjszaka → összegzés; a központot a mentett sáv határozza meg, nem szabad szobaválasztás. Munka és felkészülés csak nappal; T7/T8 csak éjszaka; más személyes és kávés alkalom mindkét sávban. A rugalmas jelenetek megvilágítása a sávhoz igazodik. A két felkészülés külön hétre fér el. A részletes szabályok az ENGINE.md-ben vannak. A háttér tárgyai kattinthatók; minden interaktív terület körvonala és címkéje mindig látható. Ha nincs megfelelő tárgy a képen, jól látható, címkézett ikongomb szükséges (2026-10-21-i felhasználói módosítás). A telefon csak meglévő személyes találkozót/kávét egyeztet, nem indít külön telefonbeszélgetést. Úti cél és tárgymenü megnyitása nem használ sávot; a heti közös alkalom továbbra sem hagyható ki.
-- Képernyő-kompozíció (2026-10-20): a beszélgetőpartner portréja a helyszínháttérre rétegzett, átlátszó kép; nem a szövegdobozban van. Mobilon is a háttérterületre kerül, a szöveg és választások alatta maradnak. Márton/játékos és az elbeszélés nem kap képet vagy portréhelyőrzőt. A hiányzó NPC-kép kis, jelölt helyőrző, nem teljes hátteret fedő panel.
-- Minden jelenetnek explicit résztvevői, beszélője, helyszíne, háttere, kifejezése, előfeltételei és határideje van. Legfeljebb négy kontextuális választás; kötelező jó/rossz ranglétra nincs.
-- A tudás és az igenek tanúsított jelenetbefejezésből származnak. Ismételt beszélgetés, pénz vagy ajándék nem ad elköteleződést.
-- A Márton–Rebeka, Márton–Boglárka, Rebeka–Boglárka és Márton–Gréta kapcsolódások külön mezők. A hármas kapcsolat mindhárom résztvevő igenjét igényli.
-- Kötelező sorrend: 15. heti konfrontáció és a vámpír halála → 16. heti intézményi utóélet → két szabad sávban személyes utóbeszélgetések → lezárás és epilógus.
-- A nyomozás románc nélkül és gyenge felkészüléssel is végigjátszható.
+[CHARACTER-REFERENCES.md](docs/CHARACTER-REFERENCES.md) is the single maintained written authority for every character's appearance, identity reference and appearance-approval state. [ART-REGISTER.md](docs/ART-REGISTER.md) records current file availability. These supersede older appearance proposals and art-completion claims in the redesign plan, historical production logs and prompts. Do not duplicate character briefs in other documents.
 
-## Mentés és képek
+The 27 October 2026 audit found 25 runtime portrait files, 14 scene backgrounds, the separate title courtyard JPEG, four Virág loops with four posters, and 13 icons. Gréta affectionate is missing and falls back to neutral. Earlier ChatGPT masters, reference sheets and asset archive directories are absent from current main; do not present historical paths as usable references. Soma, Áron and Lilla have final user-approved appearances. Other assistant-reviewed art does not imply final user approval.
 
-**Asset work and uploads:** Follow [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md), including its executable GitHub connector recipe. Use the GitHub connection for remote reads/writes; shell GitHub credentials and `git push` are unnecessary. Never expose base64, binary patches or image payloads in model context. Transfer bytes programmatically, reuse uploaded blob SHAs, publish images sequentially to `main`, and checkpoint each successful publication. Verify using remote tree hashes, not downloaded image contents.
+## Active system
 
-A felhasználó 2026-10-25-i döntése szerint visszafelé kompatibilitás nem követelmény. Csak a jelenlegi, verziózott mentésborítékot támogatjuk (`ligetvar-save`); ne tarts fenn régi azonosítókat, migrációkat, névimportot vagy alternatív játékszabályokat korábbi mentések miatt.
+- React, Zustand and Vite remain the technology stack. UI-independent reducer logic lives in `src/game/engine/` with injected campaign rules.
+- One authoritative typed scene registry: `src/game/content/catalog.ts`. Content modules include shared, relationship, triad, optional, opening, conversation, romance and Virág scenes. Never reload archived dialogue/localization JSON into the runtime.
+- The engine must not know concrete actors, scene IDs, story milestones or endings. Campaign rules live in `content/rules.ts`, types in `content/types.ts`, epilogues in `content/epilogues.ts`; `content/runtime.ts` connects them to the generic engine.
+- The user decides new implementation directions. Preserve the approved TypeScript content approach and [character voices](docs/CHARACTER-VOICES.md); do not declare a new architecture or character direction approved.
+- A semester lasts 16 weeks. Each week has one guaranteed shared-story slot, one discretionary daytime slot and one discretionary nighttime slot, in that order, followed by recap. Continuing a scene is free; completing it consumes one slot. No extra automatic workshop.
+- The saved period determines the planning hub: daytime office or nighttime bedroom. Bedroom objects expose phone, journal, rest and gifts; work and preparation are daytime only. The door offers destinations and available scenes, not a free room switch. Opening object/destination menus costs no slot. The weekly shared scene cannot be skipped.
+- Background objects are clickable with outlines and labels always visible. If the art lacks a suitable object, use a visible labelled icon. Preserve hotspot alignment when changing backgrounds.
+- The phone arranges existing in-person meetings/coffee; the later leisure system also supplies persistent gift replies and six paid optional outings. Do not invent a separate phone-conversation system.
+- T7/T8 are nighttime only; other personal/coffee meetings may use either discretionary period. Flexible scenes follow saved period lighting. The two preparation sessions must occur in different weeks. See ENGINE.md for exact rules.
+- NPC portraits overlay the location background, including on mobile; dialogue and choices remain below. Márton/player and narration have no portrait or portrait placeholder. Missing NPC art gets a small labelled placeholder.
+- Scenes explicitly identify participants, speaker, location, background, expression, prerequisites and deadlines. Use at most four contextual choices; no compulsory good/bad answer ladder.
+- Knowledge and affirmative decisions require witnessed scene completion. Repetition, money and gifts cannot grant commitment.
+- Márton–Rebeka, Márton–Boglárka, Rebeka–Boglárka and Márton–Gréta bonds are distinct. The triad needs affirmative agreement from all three participants.
+- Required ending order: week-15 confrontation and vampire death → week-16 institutional aftermath → personal follow-ups in two discretionary slots → ending and epilogue. Investigation remains playable without romance and with weak preparation.
 
-A képek kanonikus forrása az `assets/` a repóban. Az aktív manifest a `src/game/content/assets.ts`. A korábbi karakterképek és képzési instrukciók az archívumba kerültek; Rebeka, Boglárka és Gréta átnézett semleges runtime portréja az `assets/characters/` alatt van; a többi szereplő helyőrző. A hiányzó kifejezések az adott szereplő semleges képére esnek vissza. A teljes képi készlet végső felhasználói jóváhagyása még nyitott. Az [art register](docs/ART-REGISTER.md) külön sorolja a hiányzó készletet. Ne generálj explicit szexuális vagy meztelen képet; a hiánya nem lehet motor- vagy történeti kapu. A történeti, nem aktív képek az `assets/archive/` alatt vannak. A játék csak a manifestben felsorolt eszközöket használja; az archívum nem kerül publikált assetútvonalakra.
+## Assets and publication
 
-## Ellenőrzés és munkafolyamat
+Follow [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md), including its executable connector recipe. Use the GitHub connection for remote reads/writes; shell GitHub credentials and git push are unnecessary. Never expose base64, binary patches or image payloads in model context. Transfer bytes programmatically, reuse uploaded blob SHAs, publish images sequentially to main, and checkpoint each successful publication. Verify uploads with remote tree hashes rather than downloading image contents.
+
+Canonical image files live under `assets/`. Runtime images are selected by `src/game/content/assets.ts`; moments by `content/animations.ts`. Generated candidates do not become runtime assets automatically. Keep source/provenance under `assets/generated/` and reviewed exports under the runtime category folders. Use the current neutral runtime portraits where removed PNG masters are unavailable. Check the actual tree before citing a reference file. Do not restore older character art.
+
+Preserve detailed non-pixel anime/cel-shaded character art and gothic castle-college backgrounds. Conversation backgrounds use the player's viewpoint and a natural companion seat. No explicit sexual or nude images are required; their absence must never gate story or engine progression.
+
+## Verification and repository workflow
+
+Commit directly to main, without a branch or PR, as requested by the user. Preserve other work; never force-push. Record actual validation and remaining art/release gates. Check the new commit's GitHub Actions results, not an older run.
+
+For implementation changes, use appropriate checks:
 
 ```bash
 npm ci
@@ -36,63 +48,36 @@ npm run typecheck
 npm run build
 ```
 
-A tesztek jelenetgráfot, előfeltételeket, tudássorrendet, mentéseket, döntéseket, időbeosztást, teljes útvonalakat és végsorrendet ellenőriznek. Új szabályhoz érdemi esetet adj. Ne állíts sikeres tesztet vagy vizuális ellenőrzést tényleges futtatás nélkül. A régi 27 teszt korábbi viselkedést vizsgált; az új készlet lecseréli az ellentmondó elvárásokat.
+Tests cover scene graphs, prerequisites, knowledge order, saves, decisions, scheduling, complete routes and ending order. Add meaningful cases for new rules. Never claim a successful test or visual review without running it. Upload-only work does not need the full suite repeated for every image; follow the user's request to check Actions for those steps.
 
-A felhasználó kérése szerint közvetlenül `main`-re commitolj, külön ág és PR nélkül, és ellenőrizd az Actions eredményét. Más munkáját őrizd meg, ne force-pusholj. A naplóban rögzítsd a futtatott parancsokat és az art/kiadási kapuk valós állapotát.
+## Saves, releases and ordered objectives
 
-## Venice API (server-side tooling)
+Backward compatibility is not required. Support only the current versioned save envelope at the stable `ligetvar-save` key. Detect incompatible historical saves and explain that a fresh game is required; do not migrate or retain old IDs, name imports or alternative rules for them.
 
-- Use the OpenAI-compatible Venice endpoint `https://api.venice.ai/api/v1` with chat model `zai-org-glm-5-2`.
-- Read credentials exclusively from `process.env.VENICE_API_KEY`; never commit credentials, log tokens, or expose them through `VITE_*` or client-side code. This is a public Vite application.
-- Store the credential as the GitHub Actions repository secret `VENICE_API_KEY` when automation needs it. Never print or interpolate secrets into logs.
-- Validate chat connectivity with `npm run venice:smoke` in a trusted Node 22+ environment where the secret is available. The script sends a minimal non-sensitive `/chat/completions` request and reports HTTP failure without printing response bodies.
-- Chat completion configuration is not an image-generation integration; select and validate an image-capable endpoint/model separately for any permitted image workflows.
+Follow [IMPLEMENTATION-ROADMAP.md](docs/IMPLEMENTATION-ROADMAP.md): game/save versioning, playable agent/proofreader CLI, then localization and complete English text. Runtime release comes from package.json; independent schema/content epochs determine compatibility. [VERSIONING.md](docs/VERSIONING.md) defines release policy. Update roadmap checkboxes, evidence and handoffs as work proceeds; proposed APIs are not existing commands.
 
-## Venice art production
+## CLI and scene staging
 
-A felhasználó 2026-10-19-én kérte a szükséges képek módszeres generálását a Venice-integrációval. A [gyártási leltár](docs/VENICE-PRODUCTION.md) 32 runtime képet és öt referencialapot sorol fel. A képi promptok és referenciafüggőségek a `scripts/venice/catalog.mjs` alatt vannak; az `art-jobs/venice/request.json` változása indítja az Actions-munkafolyamatot. A pilot Rebeka semleges portréja és a tanterem; ezeket együtt ellenőrizd a készlet bővítése előtt.
+Follow [CLI.md](docs/CLI.md). Use `npm run play:cli -- --save PATH`; agents use `npm run --silent play:cli -- --json --save PATH`. Browser and CLI share `content/actions.ts`. Normal observations hide unearned evidence and face-down cards; full catalog inspection requires explicit `--author`. Use separate saves per agent. Proofreader findings do not authorize automatic story changes. `npm test` includes engine/content and CLI process tests; `npm run test:headless` is the engine-only alias.
 
-Az `IMAGE_GENERATOR_KEY` kizárólag Actions secretként kerül a Node futtatókörnyezetbe. Kész képet és eredményt csak ténylegesen létrejött fájl alapján jelents. A `assets/generated/venice/` jelölt képeit prompt-, referencia- és fájlhash, méret, alpha és státusz kíséri. A generálás nem automatikus végső jóváhagyás; a runtime manifestbe vizuális ellenőrzés után kerülhet kép. A régi karakterképeket ne állítsd vissza.
+[SCENE-STAGING.md](docs/SCENE-STAGING.md) governs multi-location scenes, same-scene memory, physical closeness/kissing and natural departures. Use explicit `Line.stage` references and the shared `sceneStage` resolver, not previously rendered lines. `localRequires` reads pending decisions within the active scene and must not certify global evidence early. Moving somewhere quieter and choosing physical closeness are separate choices. Campaign duration remains 16 weeks; configurable milestone scheduling is outstanding.
 
-Jóváhagyott képmodellpáros (2026-10-19): `wai-Illustrious` + `firered-image-edit`. Portré-alpha: Venice `/image/background-remove`. A korábbi GPT-modellazonosítók a tényleges kulccsal nem érhetők el; ne állítsd őket vissza ellenőrzés nélkül. A modellképességekhez igazított paramétereket a `scripts/venice/profile.mjs` állítja össze.
+## Virág and animation
 
+[VIRAG-STORY.md](docs/VIRAG-STORY.md) governs eight optional reporter scenes in `content/virag.ts`. Virág is a 19-year-old adult reporter, never a student assessed by Márton. She keeps teasing/inviting after refusals, with no professional-only route or bad ending. Refused touch must not occur. Her newsroom resolves all corruption cases independently of romance; she does not interact with the main women or gate the vampire route. Keep main bonds/directions unchanged. Her fictional Szabad Hullám perspective is her own.
 
-## Reviewed runtime art — 21 October 2026
+The latest story direction allows an immediate mutually chosen private encounter off-screen, with reconsideration/refusal, and no final date or commitment milestone. See the visual reference for appearance instead of repeating it here. Historical 0.6.0 changed content epoch to 3 while keeping schema 4; always read current version metadata before releasing.
 
-The first playable art batch contains three neutral women portraits and the classroom. Use the cleaned masters in `assets/generated/portrait-cutouts/` as identity references for subsequent expressions, not the older opaque Venice candidates. Their manifest records both source and export hashes. WAI/FireRed sources were cleaned into transparent cutouts with the built-in imagegen tool; do not claim Venice produced alpha. Only the 640×800 WebP exports enter `assets/characters/`; generation masters, prompts and rejected candidates stay outside public paths. The reviewed classroom is `backgrounds/classroom-anime-v1.webp`; existing office/bedroom hotspot backgrounds stay unchanged. `reviewed` means assistant visual/runtime review, not final user approval of the entire art set. Produce and inspect one dependent image at a time.
+[ANIMATION-PLAN.md](docs/ANIMATION-PLAN.md) governs GIF-like WebP/GIF loops derived from a few still frames. `Line.moment` and `MOMENT_CLIPS` make rendering optional; pause/reduced motion use a distinct static poster. Planned assets must remain null and labelled unproduced. All four current Virág loops and their posters are present; the art register supersedes old pending-work statements.
 
-## ChatGPT art production — 22 October 2026
+## Provider tooling and historical production
 
-The user reports Venice credits are exhausted and requests ChatGPT generation. Use the built-in imagegen tool, one image at a time; do not launch Venice requests or paid retries. Current production and review checkpoint: [CHATGPT-PRODUCTION.md](docs/CHATGPT-PRODUCTION.md). Keep the cleaned neutral portraits as identity masters. Record full prompts, source/output hashes and honest assistant review status under `assets/generated/chatgpt/`; only reviewed WebP exports enter runtime. Preserve office/bedroom hotspot backgrounds until a replacement and its hotspot alignment have both been checked. Final user acceptance remains open.
+The user switched from Venice to built-in ChatGPT image generation on 22 October after credits ran out. Do not launch Venice requests, balance checks or paid retries as part of routine art work. The latest workflow permits independent generation followed by batch review; never chain an unreviewed output as an identity master. Record actual prompts, source/output hashes, dimensions, alpha and honest review status. Retain planner backgrounds until replacements and hotspot alignment have been checked.
 
-### User workflow update — 22 October 2026
+Historical [Venice production](docs/VENICE-PRODUCTION.md) and [ChatGPT production](docs/CHATGPT-PRODUCTION.md) describe dated batches, not current file availability. The initial Venice pair was WAI Illustrious + FireRed; profile parameters live in `scripts/venice/profile.mjs` and requests in `art-jobs/venice/request.json`. Older alpha/billing failures are historical and must not be reported as newly tested capabilities.
 
-The user now asks to generate as quickly as possible and inspect afterward. Independent edits may be generated concurrently from the existing cleaned neutral masters, followed by batch visual/alpha/runtime review before promotion. Do not chain unreviewed outputs as identity references. This supersedes the earlier one-image-at-a-time production instruction for independent jobs. Continue using built-in imagegen, no Venice calls.
-
-## Approved leisure direction — 25 October 2026
-
-The user selected relaxed move-limited puzzles, money plus spendable activity points, and full-slot jobs with substantial rewards. [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md) is authoritative for the implemented economy. Jobs remain daytime-only. The phone now includes persistent gift replies and six optional paid outings, extending the earlier meetings-only rule. Save every puzzle move; never accept arbitrary UI reward amounts or permit reward duplication. Do not maintain backward compatibility. Require the complete current save schema; old saves require a fresh game. Personalized gifts never substitute for commitment or required-story evidence.
-
-## Ordered implementation objectives — 25 October 2026
-
-Follow [IMPLEMENTATION-ROADMAP.md](docs/IMPLEMENTATION-ROADMAP.md): first game/save versioning and clear breaking-save messages, then a fully playable agent/proofreader CLI with concise visual asset descriptions, then localisation and complete English text. Detection of incompatible saves is required; migration and backward-compatible gameplay are not. Update its task checkboxes, evidence and handoff log as work progresses. Planned APIs are proposals until implemented; do not describe them as existing commands.
-
-Release/save policy: [VERSIONING.md](docs/VERSIONING.md). Runtime release comes from package.json; independent schema/content epochs decide save compatibility. Detect incompatible historical saves without loading/migrating them. Keep the stable save key so breaking updates remain explainable.
-
-## CLI gameplay testing — 0.3.0
-
-Use [CLI.md](docs/CLI.md) and `npm run play:cli -- --save PATH`; agents should use `npm run --silent play:cli -- --json --save PATH`. Browser and CLI share `content/actions.ts`. Normal observations hide unearned evidence and face-down cards; full catalog inspection requires explicit `--author`. Do not turn proofreader findings into story changes automatically. `npm test` now runs engine/content plus CLI process tests; `npm run test:headless` remains the engine-only alias. Keep each agent's save path separate. Localisation/English is the next roadmap phase.
-
-## Staged scene direction — 25 October 2026
-
-The user prioritized multi-location scenes, physical closeness/kissing, natural date endings, same-scene conversational memory and eventual adjustable campaign length. The first four have an initial implementation in 0.4.0; [SCENE-STAGING.md](docs/SCENE-STAGING.md) is the authoring contract and scope tracker. Use explicit `Line.stage` references and the shared `sceneStage` resolver; do not infer stage state from previously rendered lines. `localRequires` reads only pending decisions within the active scene and must not certify global evidence early. Moving to a quieter place is a separate choice from physical closeness. Current campaign duration remains 16 weeks; configurable milestone scheduling is still outstanding. This user-prioritized work supersedes localisation as the immediate task; retain the localisation backlog.
-
-## Virág and limited animation — 0.5.0
-
-User-approved addition: [VIRAG-STORY.md](docs/VIRAG-STORY.md), with `content/virag.ts` in the sole registry. Virág is a 19-year-old adult reporter, an optional side character, never a student assessed by Márton. She continues teasing/inviting after refusal; no professional-only route and no bad ending for her. Refused touch must not occur. All her corruption cases succeed independently of romance; no interactions with the other women or vampire-route gates. Keep main bond/direction systems unchanged. The fictional Szabad Hullám movement is her own perspective.
-
-[ANIMATION-PLAN.md](docs/ANIMATION-PLAN.md) governs short GIF-like WebP/GIF loops from a few still frames. `Line.moment` and `MOMENT_CLIPS` provide optional rendering; reduced-motion and pause use a distinct static poster. Planned assets must remain null and labelled unproduced. Virág portraits, hallway art and three clips are still missing. No provider credentials or paid generation were added. Schema 4/content epoch 2 remain unchanged for these additive scenes.
-
-## Virág update — 0.6.0
-
-Latest user direction supersedes the earlier final-date treatment: blue pixie haircut, deliberately flirtatious blouse/cardigan/skirt look, immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Five transparent portraits, a full-body identity reference, daylight hallway and a 2.4-second wink loop are generated and assistant-reviewed. Dedicated physical-pose clips remain planned. See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration.
+For an explicitly authorized future server-side Venice task:
+- OpenAI-compatible base URL: https://api.venice.ai/api/v1; historical chat model `zai-org-glm-5-2`.
+- Read chat credentials only from `process.env.VENICE_API_KEY`; use GitHub Actions secrets. Image tooling historically uses `IMAGE_GENERATOR_KEY`. Never commit/log credentials or expose them via VITE_* or client code.
+- `npm run venice:smoke` requires a trusted Node 22+ environment and an available secret. It sends a minimal non-sensitive chat request and reports HTTP failure without response bodies. Chat connectivity does not validate image endpoints.
+- Do not restore old model IDs without checking capability. Generation is not final acceptance; inspect before promotion. Never claim a file was generated or uploaded unless it actually exists.

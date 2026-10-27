@@ -1,11 +1,9 @@
-# Karakter képi assetek
+# Character assets
 
-> **Állapot:** Aktív. | **Cél:** Karakterképek helyőrzői és egyeztetett art brief.
+> **Status:** Active. | **Purpose:** Locate runtime portraits and their single visual brief.
 
-**Kanonikus forrás**: a játék képi assetei az `assets/` mappában vannak; a runtime azokat a fájlokat tölti be, amelyeket a `src/game/content/assets.ts` manifest felsorol.
+The [character visual reference](../../docs/CHARACTER-REFERENCES.md) is the sole maintained written appearance authority for the complete cast. Do not copy character descriptions here.
 
-A jelenetek a játékos első személyű nézőpontjából készülnek. A meglévő háttérképek hangulatát a felhasználó megfelelőnek tartja; új vagy frissített háttérnél őrizzük meg ezt a hangulatot, és hagyjunk jól olvasható helyet a karakternek leülni a játékossal szemben.
+Runtime WebP portraits are grouped by stable actor ID: `<actor>/<expression>-v1.webp`. Only files selected by `src/game/content/assets.ts` are active. Unavailable expressions fall back to the actor's neutral portrait; Márton and narration have no portrait. Soma's transformed portrait is selected from week 2.
 
-A jelenlegi art brief: nem pixel art, részletgazdag anime illusztráció, tiszta cel-shadinggel. Az új karakterképek készüljenek újra, de őrizzék meg a felismerhető kulcsjegyeket (például hajszínt, sziluettet vagy jellegzetes részletet). A háttér tartsa meg a meglévő gótikus hangulatot visszafogott modern főiskolai tárgyakkal; a nézőpont a játékos ülőhelye legyen, a lánynak természetes ülőhellyel szemben. A pontos karakterenkénti jegyeket és képkivágást a stílusminta előtt véglegesítsük.
-
-A korábbi karakterképek, vizuális lockok és generálási promptok az `assets/archive/characters/` alatt maradtak meg. Ezek nem aktív források. A jelenlegi jóváhagyott portrék az `assets/characters/` alatt, az aktív kiválasztás pedig a `src/game/content/assets.ts` manifestben található. Soma semleges képe az 1. héten, vámpírportréja a 2. héttől jelenik meg; mindkettőt Miki véglegesítette. Áron késő hatvanas évekbeli, Lilla harmincas évei elején járó végleges portréja szintén aktív.
+Production candidates under `assets/generated/` are not runtime exports. Follow the [asset workflow](../../docs/ASSET-AGENT-WORKFLOW.md) for identity checks, alpha, crop, review and publication. See the [art register](../../docs/ART-REGISTER.md) for exact coverage and outstanding work.

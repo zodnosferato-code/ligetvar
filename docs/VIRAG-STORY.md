@@ -1,10 +1,10 @@
 # Virág — optional reporter storyline
 
-> **Status:** Eight Hungarian scenes revised in 0.6.0; five portraits, full-body reference, hallway and wink loop generated and assistant-reviewed. | **Purpose:** Character canon, branch design and complete side-story handoff.
+> **Status:** Eight Hungarian scenes revised in 0.6.0; five runtime portraits, hallway and four moment loops present; historical full-body sheet absent from current main. | **Purpose:** Character canon, branch design and complete side-story handoff.
 
 ## User-approved direction
 
-Virág is a 19-year-old adult woman, petite, with short blue pixie hair, a loud personality and clear reasoning. She dresses in deliberately flirtatious college-inspired clothes: an open-collar fitted white blouse, burgundy cardigan, charcoal pleated skirt, dark tights and black ankle boots. She uses this look to pass as a clueless first-year student. She is actually a junior reporter at **Mérceháló**, a fictional prominent national news agency investigating university corruption. Her newsroom supplies editorial, legal and independent source checks; her age does not magically confer decades of reporting experience. She is not Márton's student or under his academic assessment.
+Virág is a 19-year-old adult woman with a loud personality and clear reasoning. Her appearance and signature outfit are maintained only in the [character visual reference](CHARACTER-REFERENCES.md). She uses her college-inspired look to pass as a clueless first-year student. She is actually a junior reporter at **Mérceháló**, a fictional prominent national news agency investigating university corruption. Her newsroom supplies editorial, legal and independent source checks; her age does not magically confer decades of reporting experience. She is not Márton's student or under his academic assessment.
 
 Her fictional **Szabad Hullám** feminist circle values women initiating, owning their sexual agency and choosing openly negotiated nonexclusive relationships. This is her particular movement, not a statement about feminism generally. She is bold, quick to seek closeness, impatient with coyness, and able to admit a logical or ethical mistake. Her early interest is instrumental: Márton looks like a useful insider. Real attraction grows alongside it; she does not retrospectively claim she was innocent.
 
@@ -33,11 +33,11 @@ The full report is also delivered in the final public epilogue, even if no Virá
 
 She uses quick observations and deliberately transparent flirting: “A nyilak szerint vagy eltévedtem, vagy a könyvelés a falban lakik.” She can become serious without losing her confidence. The accountability scene does not vanish behind a joke. No graphic sexual prose or explicit artwork is required for this route.
 
-Stage IDs are explicit per node, including branch merges and departures. `arm`, `beside`, `kissed` and `cuddled` use close framing; refusal paths retain distance. Three planned GIF-like moment IDs are attached only to accepted actions. Five 640×800 transparent portraits and the daylight hallway are now active. A 2.4-second, four-frame wink WebP plays on the first invitation with a separate static poster. The full-body image remains an identity reference (soft backdrop haze), not a runtime cutout.
+Stage IDs are explicit per node, including branch merges and departures. `arm`, `beside`, `kissed` and `cuddled` use close framing; refusal paths retain distance. Three physical GIF-like moment IDs are attached only to accepted actions. Five 640×800 transparent portraits and the daylight hallway are now active. A 2.4-second, four-frame wink WebP plays on the first invitation with a separate static poster. The earlier full-body reference is no longer in the current repository; see the visual reference for available identity files.
 
 ## Remaining work
 
-The identity reference, five expressions, hallway and wink pilot are generated; prompts, hashes and sources are in `assets/generated/chatgpt/virag-v1/`. Dedicated arm-link, kissing and shoulder-cuddle pose clips remain in [ANIMATION-PLAN.md](ANIMATION-PLAN.md). English text is part of the existing localisation backlog. Current Hungarian prose is an authored first pass; user literary review remains welcome. Tests cover reachability, refusal, per-node save/resume, one-slot completion, unchanged main bonds and guaranteed reporting success; they are not a claim of final editorial approval.
+Five expressions, the hallway, and wink/arm-link/kiss/cuddle loops with separate posters are present in the runtime manifests. Historical ChatGPT production sources and the full-body sheet are absent from current main. Future work must follow the [art register](ART-REGISTER.md). English text is part of the existing localisation backlog. Current Hungarian prose is an authored first pass; user literary review remains welcome. Tests cover reachability, refusal, per-node save/resume, one-slot completion, unchanged main bonds and guaranteed reporting success; they are not a claim of final editorial approval.
 
 ## Latest user direction — 0.6.0
 

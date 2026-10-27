@@ -13,7 +13,7 @@
 ## Prepare and review
 
 1. Read `AGENT.md` and the relevant art register/production checkpoint. Inspect the latest remote `main` and local changes before writing. Preserve unrelated work.
-2. Follow the approved character identity, style and scene framing. Use existing reviewed references; do not regenerate an asset just because an upload was interrupted. Use the available image-generation skill for creation or edits.
+2. Follow [CHARACTER-REFERENCES.md](CHARACTER-REFERENCES.md), the single written visual authority. Check actual reference availability in [ART-REGISTER.md](ART-REGISTER.md); historical prompts and removed masters are not current references. Use existing reviewed references; do not regenerate an asset just because an upload was interrupted. Use the available image-generation skill for creation or edits.
 3. Keep source images and provenance under `assets/generated/`, references under `assets/references/`, and optimized runtime exports under `assets/characters/`, `assets/backgrounds/` or `assets/animations/`. Never activate archived candidates automatically.
 4. Inspect appearance, dimensions, transparency, crop and file size. For animated assets check loop timing and a separate static poster; verify pause, reduced-motion and missing-media behavior. Follow [ANIMATION-PLAN.md](ANIMATION-PLAN.md) for animation budgets.
 5. Update the appropriate runtime manifest, CLI descriptions and production record. Record prompts, source/export hashes and honest review status. Generated, reviewed, uploaded and published are different states. Do not mark planned artwork complete.
