@@ -6,6 +6,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 
 | Document | Responsibility |
 | --- | --- |
+| [Story review and English outline](STORY-REVIEW.md) | Source-based editorial findings, confirmed romance-first direction and revised semester outline; conversations unchanged |
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |
 | [Character voices](CHARACTER-VOICES.md) | Temperaments, dialogue patterns and writing coverage |
