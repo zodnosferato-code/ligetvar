@@ -1,12 +1,14 @@
 # Story review and revised English outline
 
-> **Status:** Source-reviewed 27 October 2026; direction confirmed by the user; runtime rewrite deferred. | **Purpose:** Diagnose narrative weaknesses and define the next writing pass without editing conversations.
+> **Status:** Source-reviewed 27 October 2026; direction confirmed by the user; runtime rewrite deferred. Recommendations from playtest notes incorporated. | **Purpose:** Diagnose narrative weaknesses and define the next writing pass without editing conversations.
 
 ## Scope and decisions
 
 The user confirmed: retain 16 weeks and improve rhythm. Latest clarification: Soma is a background character who turns out to be the villain. This supersedes the earlier preference for a long dangerous-intervention phase after a mid-semester identification; dangerous intervention remains the climax, not the second half's dominant activity. Romance is the core experience: the story is the setting in which the player dates and builds relationships with four women. In the current cast these are Rebeka, Boglárka, Gréta and Virág. This does not approve changing Virág into a fourth exclusive ending selector or removing the established triad.
 
 This clarification supersedes any interpretation that the investigation should dominate the experience. Keep existing canon: Soma's deliberate transformation, fascination without compelled affection, returning exhausted victims, genuine mystical gymnastics, his death in the confrontation, and institutional/personal aftermath.
+
+Playtest recommendations (late Soma reveal weeks 13–14, less bureaucratic shared scenes that change personal/practical situations, earlier relationship breathing room, distinct route scaffolding, light magical workshop moments for chemistry, framed interludes, distinct institutional outcomes) are incorporated into the outline below. Virág is sexually active and seductive from the first meeting, pushing for acts for help and amusement (implied via fade-to-black after mutual choice; explicit scenes insertable later).
 
 Review evidence: current main's catalog, shared spine, opening expansion, relationship foundations and windows, triad, preparation scenes, rules, epilogues, current game design, voice coverage and Virág contract. Opening overrides were read; relationship expansion coverage was consulted through its current voice document, not certified by a complete branch-by-branch literary audit. No gameplay run, timing measurement or conversation modification was performed. This is a structural/editorial review, not complete proofreading.
 
@@ -42,19 +44,19 @@ A single main romance requires six individual scenes. A triad continuation uses 
 
 ## Revised English story outline
 
-This is the maintained story-level rewrite. Existing Hungarian dialogue, choices, journal text and runtime endings stay unchanged for the separate localization/conversation refactor. The detailed beats below are editorial proposals within the confirmed direction; they are not claims of shipped scenes or approval of new supernatural mechanics.
+This is the maintained story-level rewrite incorporating playtest recommendations. Existing Hungarian dialogue, choices, journal text and runtime endings stay unchanged for the separate localization/conversation refactor. The detailed beats below are editorial proposals within the confirmed direction; they are not claims of shipped scenes or approval of new supernatural mechanics.
 
 ### Weeks 1–3: reasons to return
 
-Márton opens a magical movement workshop at the castle college. The women attend for different reasons and quickly make the room their own. Shared practice provides playful friction, small surprises and excuses to spend time together. Personal invitations emerge from curiosity rather than rewards for investigation.
+Márton opens a magical movement workshop at the castle college. The women attend for different reasons and quickly make the room their own. Shared practice provides playful friction, small surprises and excuses to spend time together. Lightly magical moments (shared sensory impressions, noticed tension) enable chemistry. Personal invitations emerge from curiosity rather than rewards for investigation.
 
 Lilla's missing evening introduces unease into a place the player is beginning to enjoy. She returns as a person with her own preferences, not a clue delivery device. Soma appears briefly in an ordinary assistant role. Avoid ominous exits, conspicuous resentment or repeated attention to his sudden success. Any small irregularity should make sense as ordinary college life on first encounter and acquire meaning only later.
 
-Virág enters through her established separate storyline. Her direct pace contrasts with the other women without replacing their relationships.
+Virág enters through her established separate storyline. She is sexually active and seductive from the first meeting, pushing for acts (implied fade-to-black after mutual choice) for help and amusement. Her direct pace contrasts with the other women without replacing their relationships.
 
 ### Weeks 4–6: attraction under a shadow
 
-Regular workshop life and early dates establish what each relationship feels like when nobody is solving a crisis. Rebeka challenges the image Márton presents; Boglárka invites attention toward something she chose; Gréta creates room for pleasure outside being useful. Virág's openness comes with her own instrumental motives and accountability.
+Regular workshop life and early dates establish what each relationship feels like when nobody is solving a crisis. Rebeka challenges the image Márton presents; Boglárka invites attention toward something she chose; Gréta creates room for pleasure outside being useful. Virág's openness comes with her own instrumental motives and accountability; she continues initiating sexual closeness.
 
 The repeated voice turns an ordinary shared place uncanny. A second exhausted return establishes danger, but the shared episode should end in a changed feeling or practical situation, not another completed report. Quiet recovery gives the player a reason to seek company.
 
@@ -68,7 +70,7 @@ Rebeka and Boglárka's relationship develops independently. If interludes are re
 
 ### Weeks 10–12: closeness before certainty
 
-Dates, personal complications and college events remain the foreground. The group learns enough about the supernatural danger to protect people and practise together without yet knowing who caused it. Virág follows her separate corruption leads during after-hours school searches; she does not become the mechanism that exposes Soma.
+Dates, personal complications and college events remain the foreground. The group learns enough about the supernatural danger to protect people and practise together without yet knowing who caused it. Virág follows her separate corruption leads during after-hours school searches; she does not become the mechanism that exposes Soma. She continues sexual initiation during or after these.
 
 Plant a few ordinary, retrospectively meaningful details involving access, timing or familiar objects. Each must have a fair initial interpretation. Avoid both an obvious culprit spotlight and an unprepared surprise. The specific clues and magical rules require the later script pass.
 
@@ -80,7 +82,7 @@ Bring key relationship decisions forward enough to breathe. A commitment should 
 
 A small set of previously established details now connects Soma to the harm. The revelation reinterprets a familiar background presence; it does not introduce a new villain or depend on romance access. His motive becomes clear near the confrontation rather than through a long sequence of personal appearances.
 
-Preparation is concise and practical. It affects the cost of intervention, never eligibility for affection. These weeks need warmth, humor and voluntary closeness alongside dread. Preserve Virág's independent casual-contact direction and successful reporting outcome.
+Preparation is concise and practical. It affects the cost of intervention, never eligibility for affection. These weeks need warmth, humor and voluntary closeness alongside dread. Preserve Virág's independent casual-contact direction and successful reporting outcome. Sexual acts remain implied.
 
 ### Week 15: intervention and its immediate aftermath
 
@@ -103,7 +105,7 @@ Personal scenes answer whether and how each chosen relationship continues. Use c
 | Rebeka | Holdkör screening room | She can choose what is seen and turn a screening into a shared occasion, beyond her photography work. | Choose an enjoyably terrible film together; improvise a miniature shadow scene against the screen; trade photographs of overlooked castle details; linger while the projector cools after everyone leaves. |
 | Boglárka | Library window alcove | A familiar refuge where quiet company is welcome and she can share pleasure rather than perform scholarship. | Read competing passages aloud in whispers; exchange handwritten bookmarks; invent lives for marginal notes; listen to rain together after deliberately putting the books away. |
 | Gréta | Lakeside willow and walking trail | She already longs for a place where nobody needs her to organize anything. | Take an unplanned detour; skim stones with an absurd private scoring rule; share an imperfect picnic; shelter from rain and decide whether to wait or walk back laughing. |
-| Virág | School after hours; proposed favourite room: the old administrative records room | She pursues documents for her corruption investigation and enjoys having Márton share the search. | Search for a missing annex; compare scholarship or renovation records by lamplight; exchange whispered jokes when footsteps pass; take a quiet break together after a discovery. |
+| Virág | School after hours; proposed favourite room: the old administrative records room | She pursues documents for her corruption investigation and enjoys having Márton share the search. | Search for a missing annex; compare scholarship or renovation records by lamplight; exchange whispered jokes when footsteps pass; take a quiet break together after a discovery. Sexual initiation possible after mutual choice. |
 
 Virág's after-hours school setting supersedes the café proposal. The old records room, exact access and scene beats remain proposals; staging, art and night-slot availability need checks. See [Virág's authoring contract](../VIRAG-STORY.md#after-hours-school-investigation--27-october-2026).
 
