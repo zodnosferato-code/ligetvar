@@ -42,7 +42,7 @@ The implemented leisure direction uses relaxed move-limited puzzles, substantial
 
 ## Favourite places
 
-User direction, 27 October 2026: each of the four women must have a favourite place that enables distinct dating experiences. Use the setting's activities, atmosphere, movement and opportunities for closeness to differentiate routes. Revisit places with shared memories; allow other destinations and dates unrelated to work. The [proposed place assignments and experience brief](STORY-REVIEW.md#favourite-places-and-distinct-dating-experiences) await user selection. No conversations, runtime locations or art were changed by this decision.
+User direction, 27 October 2026: each of the four women must have a favourite place that enables distinct dating experiences. Use the setting's activities, atmosphere, movement and opportunities for closeness to differentiate routes. Revisit places with shared memories; allow other destinations and dates unrelated to work. Virág's confirmed setting is investigation inside the school at night, searching for documents; this supersedes the café proposal. Her exact favourite room and affected chapter assignments remain open. The [proposed place assignments and experience brief](STORY-REVIEW.md#favourite-places-and-distinct-dating-experiences) await user selection. No conversations, runtime locations or art were changed by this decision.
 
 ## Scenes and relationships
 
