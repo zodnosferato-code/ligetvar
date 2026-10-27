@@ -4,7 +4,7 @@
 
 ## Scope and decisions
 
-The user confirmed: retain 16 weeks, improve rhythm, and use dangerous intervention rather than extending the identity mystery. Romance is the core experience: the story is the setting in which the player dates and builds relationships with four women. In the current cast these are Rebeka, Boglárka, Gréta and Virág. This does not approve changing Virág into a fourth exclusive ending selector or removing the established triad.
+The user confirmed: retain 16 weeks and improve rhythm. Latest clarification: Soma is a background character who turns out to be the villain. This supersedes the earlier preference for a long dangerous-intervention phase after a mid-semester identification; dangerous intervention remains the climax, not the second half's dominant activity. Romance is the core experience: the story is the setting in which the player dates and builds relationships with four women. In the current cast these are Rebeka, Boglárka, Gréta and Virág. This does not approve changing Virág into a fourth exclusive ending selector or removing the established triad.
 
 This clarification supersedes any interpretation that the investigation should dominate the experience. Keep existing canon: Soma's deliberate transformation, fascination without compelled affection, returning exhausted victims, genuine mystical gymnastics, his death in the confrontation, and institutional/personal aftermath.
 
@@ -14,7 +14,7 @@ Review evidence: current main's catalog, shared spine, opening expansion, relati
 
 | Priority | Finding and source | Why it hurts | Revision target |
 | --- | --- | --- | --- |
-| High | Identity is independently established in shared week 9; Soma confesses in week 10; intervention waits until week 15 (shared.ts). | Five weeks of access and planning after an admission make the group seem passive. Week 13 even allows a daytime site inspection. | Establish why acting early would fail or endanger victims, what protects people during the wait, and why access alone is insufficient. These causal details are proposed outline work, not existing magical canon. |
+| High | Identity is independently established in shared week 9; Soma confesses in week 10; intervention waits until week 15 (shared.ts). | Five weeks of access and planning after an admission make the group seem passive. Week 13 even allows a daytime site inspection. | Latest user direction resolves the target differently: remove early identification/confession in the future script pass, keep Soma peripheral, and reveal his role close enough to the climax that the group need not wait five weeks after an admission. Exact reveal timing remains proposed. |
 | High | Weeks 4–14 repeatedly foreground corrected records, copies, permission and verification. | Sensible safeguards become the dramatic subject; the gothic romance risks feeling like committee minutes. | Keep safeguards, express most through brief action or narration, and make each shared scene change a personal or practical situation. |
 | High | Two individual commitments open only in weeks 13–14; T7 is week-14 night only; both preparation activities are daytime and must occur in different weeks (relationships.ts, triad.ts, optional.ts, contributor contract). | The triad plus full preparation forces both commitments into week 13. Preparation must then use week 12 and week 14 days. There is little late flexibility despite generous total capacity. | In a later implementation, open commitments earlier or widen the pre-confrontation windows. Preserve separate affirmative decisions. Do not merely add weeks. |
 | High | Grounding and listening dominate the visible mystical-gymnastics payoff (shared weeks 1, 5, 11, 15). | The distinctive magical workshop reads much like ordinary attention training; the setting's signature attraction is underused. | Propose small clearly magical workshop experiences that also enable character chemistry. Define their limits before scripting; never make magic create affection. |
@@ -48,7 +48,7 @@ This is the maintained story-level rewrite. Existing Hungarian dialogue, choices
 
 Márton opens a magical movement workshop at the castle college. The women attend for different reasons and quickly make the room their own. Shared practice provides playful friction, small surprises and excuses to spend time together. Personal invitations emerge from curiosity rather than rewards for investigation.
 
-Lilla's missing evening introduces unease into a place the player is beginning to enjoy. She returns as a person with her own preferences, not a clue delivery device. Soma's new confidence is noticeable, but the opening should leave room for college life and attraction rather than pointing every detail toward guilt.
+Lilla's missing evening introduces unease into a place the player is beginning to enjoy. She returns as a person with her own preferences, not a clue delivery device. Soma appears briefly in an ordinary assistant role. Avoid ominous exits, conspicuous resentment or repeated attention to his sudden success. Any small irregularity should make sense as ordinary college life on first encounter and acquire meaning only later.
 
 Virág enters through her established separate storyline. Her direct pace contrasts with the other women without replacing their relationships.
 
@@ -58,31 +58,33 @@ Regular workshop life and early dates establish what each relationship feels lik
 
 The repeated voice turns an ordinary shared place uncanny. A second exhausted return establishes danger, but the shared episode should end in a changed feeling or practical situation, not another completed report. Quiet recovery gives the player a reason to seek company.
 
-### Weeks 7–9: recognition changes the problem
+### Weeks 7–9: ordinary life with unexplained gaps
 
-Archive work connects Soma's ambition with a deliberate transformation. By week 9, independent evidence identifies him. The story stops asking only who is responsible and starts asking how to protect people and stop him.
+Relationships and favourite places lead the semester. Unease appears through missing time, familiar spaces feeling subtly wrong, and returned people whose experiences do not yet identify a culprit. Workshop learning and mutual care provide useful responses without turning every shared meeting into an investigation briefing.
 
-The group takes concrete protective action. The later script must explain its limits and why the final intervention cannot happen immediately. Do not leave everyone dating casually while an admitted danger is ignored. Protection should make ordinary life possible, while unease remains in the background.
+Soma remains an occasional background assistant with mundane reasons to be present. Do not stage a confession, villain speech, repeated suspicious offer or supervised test of his powers. Establish the phenomenon's limits through observations and sources without requiring a known vampire to demonstrate them.
 
 Rebeka and Boglárka's relationship develops independently. If interludes are retained, introduce them clearly rather than pretending Márton witnessed them.
 
-### Weeks 10–12: a safe life worth defending
+### Weeks 10–12: closeness before certainty
 
-Soma tries to purchase Márton's silence with the future of his workshop. His admission reveals a distorted version of familiar desires: attention, recognition and being wanted. It should complicate the situation, not launch five weeks of repetitive exposition.
+Dates, personal complications and college events remain the foreground. The group learns enough about the supernatural danger to protect people and practise together without yet knowing who caused it. Virág follows her separate corruption leads during after-hours school searches; she does not become the mechanism that exposes Soma.
 
-His pressure has observable consequences, but he does not manufacture love or turn refusal into consent. Relationship complications arise from each woman's wants and Márton's actual choices, rather than identical mandatory betrayals.
+Plant a few ordinary, retrospectively meaningful details involving access, timing or familiar objects. Each must have a fair initial interpretation. Avoid both an obvious culprit spotlight and an unprepared surprise. The specific clues and magical rules require the later script pass.
 
-The group discovers the conditions of intervention and its lethal cost. Frame that knowledge around people and decisions. Keep the exact anchor mechanics provisional wherever the current authority still labels them unresolved. Make the need to wait causally clear before continuing.
+The proposed outline places firm identification in weeks 13–14, shortly before the week-15 confrontation. Exact timing is not user-confirmed. Earlier preparation concerns the danger and group safety rather than a five-week campaign against an already confessed villain.
 
 ### Weeks 13–14: chosen commitments, ordinary pleasure
 
 Bring key relationship decisions forward enough to breathe. A commitment should create space for a relationship to be lived, not simply unlock an ending just before the boss scene. Give the triad its ordinary evening without making the player solve a hidden scheduling puzzle.
 
+A small set of previously established details now connects Soma to the harm. The revelation reinterprets a familiar background presence; it does not introduce a new villain or depend on romance access. His motive becomes clear near the confrontation rather than through a long sequence of personal appearances.
+
 Preparation is concise and practical. It affects the cost of intervention, never eligibility for affection. These weeks need warmth, humor and voluntary closeness alongside dread. Preserve Virág's independent casual-contact direction and successful reporting outcome.
 
 ### Week 15: intervention and its immediate aftermath
 
-The known opportunity arrives. Earlier workshop experiences and preparation have visible payoffs. Soma dies when the transformation is interrupted, as established canon requires. The scene's tension comes from carrying out a dangerous action and getting people out, not a late new weakness.
+The late discovery leads promptly to intervention. Soma's motive and deliberate transformation are established without a prolonged confession scene or a last-minute new magical weakness. Earlier workshop experiences and preparation have visible payoffs. Soma dies when the transformation is interrupted, as established canon requires. The scene's tension comes from carrying out a dangerous action and getting people out, not a late new weakness.
 
 Make the aftermath immediate enough that a later meeting does not behave as if nothing happened. Dating remains possible, but exhaustion, relief or a wish for quiet should inform its framing. The current shared script's identical branches and flag-driven outcome need a later conversation pass.
 
