@@ -48,8 +48,8 @@ These items remain backlog. This documentation task does not authorize starting 
 | ID | Status | Future scope | Dependency / completion evidence |
 | --- | --- | --- | --- |
 | L1 | Partial | 27 October: [localization contract](../LOCALIZATION.md), explicit shared locale API, semantic keys, named interpolation and initial inventory/glossary; save feedback extracted with Hungarian/English parity tests | Broaden inventory during extraction; persisted prose still requires event-reference conversion and a compatibility epoch change before cross-locale saves. |
-| L2 | Partial | 27 October: save/load feedback extracted into typed Hungarian source catalog; default messages preserved | Extract remaining UI, CLI, economy, journals, scenes and endings module by module; plural handling remains pending. |
-| L3 | Planned | English interface, errors, puzzles, economy, journals and asset descriptions | Localization API and extracted strings; complete key coverage. |
+| L2 | Partial | 27 October: save/load feedback and labels owned by all seven UI components extracted into typed Hungarian source catalog; default messages preserved | Extract remaining UI, CLI, economy, journals, scenes and endings module by module; plural handling remains pending. |
+| L3 | Partial | 27 October: English catalog for extracted UI-owned labels, room hotspots, gift controls, puzzle feedback, accessibility text and save errors; [extraction boundaries](../LOCALIZATION.md) | Content-owned labels/descriptions, runtime errors, journals and complete English gameplay remain pending; no locale selector or English visual acceptance claimed. |
 | L4 | Planned | English story, choices, replies and endings | Per-scene translation and proofreading coverage, not a blanket completion claim. |
 | L5 | Planned | Locale switching and browser/CLI parity | Equivalent locale-neutral outcomes and cross-locale save/reload checks. |
 | L6 | Planned | Translation acceptance | Missing-key/placeholder checks, both-language route proofreading and English mobile/desktop review. |

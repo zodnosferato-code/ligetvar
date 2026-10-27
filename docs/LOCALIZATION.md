@@ -33,7 +33,7 @@ or automatic translation of historical text is planned.
 | Surface | Source | Current extraction |
 | --- | --- | --- |
 | Save/load feedback | content/saves.ts | Complete; Hungarian and English catalogs |
-| UI labels and accessibility text | ui/*.tsx, audio.ts | Pending |
+| UI labels and accessibility text | ui/*.tsx | Extracted in all seven components: title/status, dialogue controls, journal headings, room planner, gifts, puzzles and animation controls. Hungarian defaults preserved; English catalog supplied. Dynamic content imported from other modules remains pending. |
 | CLI observations, commands and errors | cli/*.ts, content/view.ts, actions.ts | Pending |
 | Currency and numeric formatting | content/format.ts | Pending; currently hu-HU |
 | Puzzle/economy/gift text | content/puzzles.ts, gifting.ts, outings.ts | Pending |
@@ -54,8 +54,14 @@ missing parameters and save-message locale independence. Existing save tests
 protect Hungarian feedback and decoding. The test script already includes these
 content tests.
 
-Next: extract shared interface labels, audit persisted text, then extract scene
+Next: extract content-owned labels (locations/routes), item/asset descriptions and runtime feedback; audit persisted text, then extract scene
 text with stable IDs. Add locale selection to browser and CLI only with truthful
 coverage indicators. English save messages alone do not constitute English
 gameplay. Plural messages must use locale-aware rules when needed; no plural API
 or full translation coverage is claimed in this step.
+
+## Interface extraction checkpoint — 27 October 2026
+
+All seven `ui/*.tsx` components resolve their own labels through the shared API, including accessibility names, numeric feedback and deadlines. Brand/character proper names remain unchanged. Complete templates let translators reorder values without translating stored data. Puzzle card names and collectible names are extracted; their numeric IDs, symbols and gameplay remain unchanged.
+
+English catalog entries do not expose an English language selector yet. Components still use the Hungarian default. Route names, locations, scene titles/prose, gift descriptions/notes/reactions, epilogues, animation descriptions, runtime notices and save feedback stored in the store still need locale-aware presentation integration. Journal prose is still persisted as before. No compatibility epoch change is needed for this label-only extraction.

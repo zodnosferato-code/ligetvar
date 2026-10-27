@@ -1,3 +1,4 @@
+import {translate as t} from '../content/localization.ts';
 import {useEffect,useState} from 'react';
 import {assetUrl} from '../content/assets.ts';
 import {momentSource,type MomentClip} from '../content/animations.ts';
@@ -9,7 +10,7 @@ export function Moment({clip}:{clip:MomentClip}){
  const stopped=paused||reduced||failed,source=momentSource(clip,stopped,reduced);
  if(!source)return null;
  return <div className="moment-clip">
-  {posterFailed?<p role="status">A jelenet képe nem tölthető be. {clip.description}</p>:<img src={assetUrl(source)} width={clip.width} height={clip.height} alt={clip.description} onError={()=>{if(stopped)setPosterFailed(true);else setFailed(true);}}/>}
-  {!reduced&&!failed&&!posterFailed&&<button type="button" onClick={()=>setPaused(!paused)} aria-pressed={paused}>{paused?'Animáció indítása':'Animáció megállítása'}</button>}
+  {posterFailed?<p role="status">{t('ui.animation.failed',{description:clip.description})}</p>:<img src={assetUrl(source)} width={clip.width} height={clip.height} alt={clip.description} onError={()=>{if(stopped)setPosterFailed(true);else setFailed(true);}}/>}
+  {!reduced&&!failed&&!posterFailed&&<button type="button" onClick={()=>setPaused(!paused)} aria-pressed={paused}>{paused?t('ui.animation.start'):t('ui.animation.stop')}</button>}
  </div>;
 }
