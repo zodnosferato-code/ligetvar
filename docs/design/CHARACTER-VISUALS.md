@@ -17,7 +17,7 @@ Use each current neutral runtime portrait as the available identity reference. E
 | Rebeka Dorn | 20 / 175 cm | Tall, slender; angular adult face, pale skin, long straight black hair. One plum streak on her anatomical left (viewer right frontally), one beauty mark below her left eye. Proud direct gaze, berry lips. | High-neck black dress, simple silver choker. Long-sleeved midi construction and low-heeled black ankle boots approved 27 October 2026. | [Neutral portrait](../../assets/characters/rebeka/neutral-v1.webp) |
 | Boglárka Fazekas | 19 / 150 cm | Short adult woman with a softly fuller figure, round adult face, freckles, warm brown eyes. Brown loose side braid over her anatomical right shoulder (viewer left frontally). Quietly attentive, never childlike. | Moss-green cardigan over cream dress. Below-knee hem, hip-length cardigan and flat brown shoes approved 27 October 2026. | [Neutral portrait](../../assets/characters/boglarka/neutral-v1.webp) |
 | Gréta Váradi | 21 / 168 cm | Slim athletic silhouette, rectangular adult face, copper hair in a practical ponytail, thin rectangular glasses. Alert, direct presence; no copied beauty marks. | Fully buttoned white shirt, forest-green vest, graphite skirt. Knee-length hem and low-heeled black loafers approved 27 October 2026. | [Neutral portrait](../../assets/characters/greta/neutral-v1.webp) |
-| Virág | 19 / height unspecified | Petite adult woman, vivid cobalt-blue pixie haircut, grey-blue eyes, confident teasing expression. Preserve adult facial proportions. | Open-collar fitted white blouse, burgundy cardigan, charcoal pleated skirt, dark tights, black ankle boots. Deliberately flirtatious college-inspired look. | [Neutral portrait](../../assets/characters/virag/neutral-v1.webp) |
+| Virág | 19 / 160 cm | Petite adult woman, vivid green pixie haircut, grey-blue eyes, confident teasing expression. Preserve adult facial proportions. | Open-collar fitted white blouse, burgundy cardigan, charcoal pleated skirt, dark tights, black ankle boots. Deliberately flirtatious college-inspired look. | [Neutral portrait](../../assets/characters/virag/neutral-v1.webp) |
 
 Rebeka, Boglárka and Virág have five runtime expressions: neutral, amused, displeased, vulnerable and affectionate. Gréta has four; affectionate falls back to neutral. General art-set acceptance remains open; assistant review is not user approval.
 
@@ -48,7 +48,7 @@ Current Venice full-body candidates exist for Rebeka, Boglárka, Gréta and Vir�
 
 ## Image-generation preparation — 27 October 2026
 
-[Positive and negative prompt pack](CHARACTER-IMAGE-PROMPTS.md) derives production instructions from this authority. The user approved the three main women's full-body outfit extensions above, superseding their proposed status. No new full-body art was produced. The user asked to review portraits and describe them, and selected appearance revisions for Virág/supporting cast without specifying changes; no redesign is inferred from that selection.
+[Positive and negative prompt pack](CHARACTER-IMAGE-PROMPTS.md) derives production instructions from this authority. The user approved the three main women's full-body outfit extensions above, superseding their proposed status. No new full-body art was produced. The user asked to review portraits and describe them. Their subsequent 27 October decision fixes Virág at 160 cm with green pixie-cut hair and retains the existing supporting cast with small distinguishing details; see the production update below.
 
 ### Current portrait observations
 
@@ -66,4 +66,20 @@ Visually reviewed the nine neutral runtime portraits and Soma's transformed port
 | Áron | Side-swept silver-grey hair, thin rectangular metal glasses, lined long angular face, clean-shaven, charcoal suit and pale shirt beneath burgundy tie. |
 | Lilla | Softly wavy chestnut shoulder-length hair with loose forehead fringe; muted grey-green eyes; teal knit cardigan and pale cream buttoned collared blouse. |
 
-Portraits currently have different crop lengths; new dialogue sets should follow the shared head-and-shoulders framing rather than copy each source crop. Exact ages not previously fixed, Virág's height, supporting-cast lower-body clothing and historical swimwear remain unresolved. New appearance revisions must name the affected character and superseded traits before prompt or asset changes.
+Portraits currently have different crop lengths; new dialogue sets should follow the shared head-and-shoulders framing rather than copy each source crop. Exact ages not previously fixed, supporting-cast lower-body clothing and historical swimwear remain unresolved. New appearance revisions must name the affected character and superseded traits before prompt or asset changes.
+
+## Production update — Virág and supporting details, 27 October 2026
+
+User decision: Virág is **160 cm** and has a **green pixie cut**, superseding cobalt-blue hair and unspecified height. Retain her face, grey-blue eyes, adult proportions, long side-swept pixie fringe and existing outfit. Use vivid medium green, visibly green rather than teal or cyan, as the production colour interpretation. Her existing blue-haired portrait is a face/cut/costume reference only; its hair colour must not override this update. Current portraits, posters and animation frames have not been recoloured in this documentation pass.
+
+The other supporting characters retain their established age presentation, faces, hair, builds and base outfits. The user authorized small distinguishing additions; the following clothing details are production choices under that direction, not features observed in the existing portraits. Preserve each detail across expressions; never copy it to another character.
+
+| Character | New distinguishing detail |
+| --- | --- |
+| Soma | A small, slightly crooked rectangular brass pin on his anatomical-left vest chest (viewer right frontally); plain unlettered metal, not an occult emblem. |
+| Dénes | One dark burgundy pen clipped into the anatomical-left breast pocket of his white medical coat (viewer right frontally); no lettering or badge. |
+| Júlia | A small matte silver ginkgo-leaf brooch on her anatomical-left blazer lapel (viewer right frontally), retaining her existing small round earrings. |
+| Áron | A narrow brushed-silver horizontal tie bar across the lower visible part of his burgundy tie; no crest, chain or lettering. |
+| Lilla | Three small cream floral embroidery motifs grouped at the anatomical-left cardigan neckline (viewer right frontally); subtle stitched texture, not a print or logo. |
+
+Soma retains the same pin in human and transformed forms. It is ordinary clothing decoration and must not imply new supernatural lore or evidence. These additions are documented for future art, not yet present in runtime exports. Márton remains unseen; no visible player design is introduced. Supporting-cast full-body clothes and shoes remain undefined.
