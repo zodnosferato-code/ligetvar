@@ -1,3 +1,5 @@
+import {presentLine} from './scene-localization.ts';
+import {DEFAULT_LOCALE,type Locale} from './localization.ts';
 /** Composition boundary: binds campaign data to the reusable engine. */
 import * as engine from '../engine/logic.ts';
 import {outingGirl} from './outings.ts';
@@ -19,12 +21,14 @@ export function sceneStage(s:GameState,x:Scene):SceneStage {
 export const sceneLighting=(s:GameState,x:Scene)=>sceneStage(s,x).lighting??(x.kind!=='shared'&&currentPeriod(s)==='night'?'night':x.periods?.length===2?'day':x.lighting);
 export const createInitial=(name:string)=>engine.createInitial(name,RULES);
 export const availableScenes=(s:GameState,r:Registry)=>engine.availableScenes(s,r,RULES.schedule) as Scene[];
-export const currentLine=(s:GameState,r:Registry)=>{
+export const currentLine=(s:GameState,r:Registry,locale:Locale=DEFAULT_LOCALE)=>{
  const line=engine.currentLine(s,r) as Line|undefined,x=s.scene?r[s.scene.id]:undefined,girl=x?outingGirl(x):undefined;
  const gift=girl?s.giftHistory.filter(h=>h.girl===girl&&h.bonus>0).at(-1):undefined;
- if(!line||!x||line.id!==x.entry||!gift)return line;
+ if(!line)return line;
+ const visible=presentLine(line,locale);
+ if(!x||line.id!==x.entry||!gift)return visible;
  const callback=girl==='rebeka'?'Rebeka előveszi a tőled kapott ajándékot. „Látod? Nem a szekrény alján végzett.”':girl==='boglarka'?'Boglárka megemlíti a tőled kapott ajándékot. „Használom. Csak szerettem volna, hogy tudd.”':'Gréta a táskájára mutat. „Amit hoztál, azt eltettem a mai napra. Jó választás volt.”';
- return {...line,text:callback+' '+line.text};
+ return {...visible,text:callback+' '+visible.text};
 };
 export const openScene=(s:GameState,id:string,r:Registry)=>engine.openScene(s,id,r,RULES.schedule);
 export const applyEffect=(s:GameState,e:Effect,id:string)=>engine.applyEffect(s,e,id,RULES);
@@ -48,3 +52,4 @@ export const buyGift=(s:GameState,id:string)=>s.slot<1||s.slot>2?s:engine.buyGif
 export const giveGift=(s:GameState,girl:GirlId,id:string,note?:GiftNote,delivery?:Delivery)=>deliverGift(s,girl,id,note,delivery);
 
 export {formatFt} from './format.ts';
+

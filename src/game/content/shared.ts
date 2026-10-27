@@ -1,18 +1,19 @@
+import {message} from './scene-localization.ts';
 import type {Scene} from './types.ts';
 import {say,option,shared} from './authoring.ts';
 export const spine:Scene[]=[
- shared(1,'Az első műhely','classroom',['marton','rebeka','boglarka','greta','soma'],[
-  say('narrator','Októberi eső kopog a radiátor fölötti ablakon. Márton Kelényi, harmincnégy éves tanár és tanulmányi felelős, elindítja a fakultatív műhelyt. A mozgásos figyelemgyakorlatot évek óta ismeri; most először tanítja Ligetváron.'),
-  say('greta','Gréta Váradi vagyok, huszonegy. Az adminisztrációban segítek, de a gyakorlatot is szeretném megtanulni. A terembeosztásban csütörtök szerepel; ma kedd van. Ezt még az első késés előtt javítsuk ki.'),
-  say('rebeka','Rebeka Dorn, húsz. Fotóesszét készítek a műhelyről. Azt állítod, észrevesszük, ha elterelik a figyelmünket? Mutass valamit, ami nem csak jól hangzik. Arcot egyelőre nem fényképezek.','amused'),
-  say('boglarka','Fazekas Boglárka, tizenkilenc. A helyi mozdulatsorok eredetét kutatom. Pontosan mit figyelünk: az eltelt időt vagy azt, ahogy emlékezünk rá? A kettő nem feltétlenül egyezik.'),
-  say('marton','A talpatok nyomását, három önként választott lélegzetet és a falióra járását. Ez nem vizsga.','neutral',[
-   option('demonstrate','Megmutatom, aztán mindenki a saját tempójában próbálhatja.','Gréta elteszi a jelenléti ívet. Rebeka leengedi a gépet; Boglárka elindítja a stoppert.'),
-   option('observe','Előbb figyelhettek is; csak az vegyen részt, aki szeretne.','Boglárka előbb figyel, aztán maga áll be a körbe. Senkit nem kell rábeszélni.')]),
-  say('narrator','A gyakorlat végén ugyanazt a fél percet mérik. Rebeka észreveszi, hogy a folyosói zajra elfordult; a következő körben tudatosan visszahozza a figyelmét. A módszer segít észlelni a kiesést, nem tesz sérthetetlenné.'),
-  say('soma','Végh Soma, egyetemi asszisztens. A raktári kulcsokat én hoztam. A saját kutatási előterjesztésemet harmadszor adták vissza. Ti legalább kaptatok termet.','displeased'),
-  say('marton','Az eszközökért köszönöm. A műhely eredményét nem fogom senki pályázatához előre eladni.'),
-  say('narrator','Soma a szűkített hozzáférésű archívum felé indul. Gréta kijavítja a dátumot. Rebeka képet kér az üres kör helyéről, Boglárka felírja a mozdulatsor forrását. Mindhárman más kérdéssel maradnak ott.')
+ shared(1,message('scene.opening.title'),'classroom',['marton','rebeka','boglarka','greta','soma'],[
+  say('narrator',message('scene.opening.arrival')),
+  say('greta',message('scene.opening.gretaIntroduction')),
+  say('rebeka',message('scene.opening.rebekaIntroduction'),'amused'),
+  say('boglarka',message('scene.opening.boglarkaIntroduction')),
+  say('marton',message('scene.opening.exerciseInstructions'),'neutral',[
+   option('demonstrate',message('scene.opening.choice.demonstrate'),'Gréta elteszi a jelenléti ívet. Rebeka leengedi a gépet; Boglárka elindítja a stoppert.'),
+   option('observe',message('scene.opening.choice.observe'),'Boglárka előbb figyel, aztán maga áll be a körbe. Senkit nem kell rábeszélni.')]),
+  say('narrator',message('scene.opening.exerciseResult')),
+  say('soma',message('scene.opening.somaIntroduction'),'displeased'),
+  say('marton',message('scene.opening.martonReply')),
+  say('narrator',message('scene.opening.departure'))
  ],['grounding'],'Megismertem a három hallgatót és Somát. Az önkéntes földelőgyakorlat segít észrevenni a figyelem elkalandozását.'),
  shared(2,'Egy hiányzó este','department',['marton','soma','greta','rebeka','boglarka','denes'],[
   say('greta','Soma tegnap nem jött el a leltárra. Ma reggel négy órányi munkát készített el húsz perc alatt. A kimaradt időpont ettől még kimaradt.'),
@@ -184,3 +185,4 @@ export const spine:Scene[]=[
  ],['aftermath'],'Rendeztük a bizonyítékokat és a jelentést. A személyes utóbeszélgetésekre még két szabad sáv van.',{evidence:['vampire_dead']})
 ];
 spine[14].resolution='confrontation';spine[15].resolution='institution';
+

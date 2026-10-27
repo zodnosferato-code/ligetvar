@@ -1,40 +1,39 @@
+import {message,type TextReference} from './scene-localization.ts';
 /** Authored opening scene expansion. */
 import type {ActorId,Expression,Line,Scene} from './types.ts';
-type Beat=[ActorId,string,Expression?];
-function chain(prefix:string,beats:Beat[],next?:string):Line[]{return beats.map(([speaker,text,expression='neutral'],i)=>({id:prefix+'_'+i,speaker,text,expression,next:i<beats.length-1?prefix+'_'+(i+1):next}));}
+type Beat=[ActorId,string|TextReference,Expression?];
+function chain(prefix:string,beats:Beat[],next?:string):Line[]{return beats.map(([speaker,text,expression='neutral'],i)=>({id:prefix+'_'+i,speaker,...(typeof text==='string'?{text}:text),expression,next:i<beats.length-1?prefix+'_'+(i+1):next}));}
 function after(s:Scene,id:string,prefix:string,beats:Beat[]){const l=s.lines.find(l=>l.id===id)!;const added=chain(prefix,beats,l.next);l.next=added[0].id;s.lines.push(...added);}
 function branch(s:Scene,id:string,choice:string,prefix:string,beats:Beat[],terminal=false){const l=s.lines.find(l=>l.id===id)!,c=l.choices!.find(c=>c.id===choice)!;const added=chain(prefix,beats,terminal?undefined:l.next);c.next=added[0].id;s.lines.push(...added);}
 export function expandOpening(original:Scene):Scene{
  const s=structuredClone(original);
  if(s.id==='shared_1'){
-  s.lines[2].text='Rebeka Dorn. Húsz. Fotóesszét készítek, ha lesz itt valami azon kívül, hogy mindenki szépen figyel. A szórólapon az áll, visszavesszük az irányítást a figyelmünk fölött. Ezt az ember a telefonjáról is elhiszi két percig. Neked meddig működik?';
-  s.lines[3].text='Fazekas Boglárka. Tizenkilenc. A mozdulatsorok helyi változatait kutatom. A szórólapot nem én írtam. Ezt a tudományos pontosság kedvéért már most szeretném leszögezni.';
   after(s,'line_3','opening_questions',[
-   ['greta','Mielőtt szétszedjük a szórólapot: az ajtót hagyjuk szabadon, a székeket beljebb. Rebeka, a kábeled keresztben van.'],
-   ['rebeka','Még elő sem vettem a gépet. Ez előzetes bizalmatlanság?','amused'],
-   ['greta','Előzetes botlásmegelőzés. A tegnapi szakkör után ketten küldtek hibabejelentést ugyanarra a hosszabbítóra.'],
-   ['boglarka','Lehet, hogy ez a helyi mozdulatsor. Átlépés, káromkodás, hibabejelentés.','amused'],
-   ['narrator','Rebeka felnevet, Gréta pedig egy pillanatra abbahagyja a székek igazítását. A kör még ferde. Márton nem igazítja ki helyette.']
+   ['greta',message('scene.opening.clearDoorway')],
+   ['rebeka',message('scene.opening.cameraJoke'),'amused'],
+   ['greta',message('scene.opening.tripPrevention')],
+   ['boglarka',message('scene.opening.localSequenceJoke'),'amused'],
+   ['narrator',message('scene.opening.crookedCircle')]
   ]);
   branch(s,'line_4','demonstrate','opening_demonstrate',[
-   ['marton','Kezdem én. Nézzétek meg, mikor fordulok a zaj felé. Aztán valaki próbáljon kizökkenteni.'],
-   ['rebeka','Veszélyes ajánlat. Tényleg ebből akarsz első benyomást?','amused'],
-   ['marton','Abból, hogy észreveszem, ha nem sikerül.'],
-   ['boglarka','Akkor nem az a feladat, hogy végig mozdulatlan maradjunk. Jó. Abban a falióra már most mindenkinél jobb.'],
-   ['greta','Harminc másodpercet mérek. Nem kell mindenkinek egyszerre kezdenie.']
+   ['marton',message('scene.opening.demonstrateStart')],
+   ['rebeka',message('scene.opening.dangerousOffer'),'amused'],
+   ['marton',message('scene.opening.noticeFailure')],
+   ['boglarka',message('scene.opening.clockJoke')],
+   ['greta',message('scene.opening.timing')]
   ]);
   branch(s,'line_4','observe','opening_observe',[
-   ['marton','Először én próbálom. Ti figyelitek, mi történik; aztán mondjátok el, amit tényleg láttatok.'],
-   ['rebeka','És ha azt látom, hogy ez nem működik?'],
-   ['marton','Akkor azt. A bemutató nem kér jó kritikát.'],
-   ['boglarka','Én innen nézem az órát. Ha elálljátok, szólok. Ezt könnyebb megígérni, mint hogy az ember figyelme nem kalandozik el.'],
-   ['greta','Rendben. Az első körhöz senkit nem írok fel résztvevőnek csak azért, mert bejött a terembe.']
+   ['marton',message('scene.opening.observeStart')],
+   ['rebeka',message('scene.opening.failedDemonstration')],
+   ['marton',message('scene.opening.honestReview')],
+   ['boglarka',message('scene.opening.watchClock')],
+   ['greta',message('scene.opening.voluntaryParticipation')]
   ]);
   after(s,'line_7','soma_departure',[
-   ['soma','Persze. A műhely a tiéd, a jelentésben meg az lesz, hogy az eszközellátás megfelelő volt. Azt a sort legalább nem küldik vissza javításra.','displeased'],
-   ['greta','A leltárt holnap együtt csináljuk. A hibás lámpát külön jelöltem, ne vidd le a pincébe.'],
-   ['soma','A pincébe mindig jut hely annak, ami odafent senkinek sem kell.'],
-   ['narrator','A kulcsok röviden összecsendülnek. Rebeka utánanéz, de mire megszólalna, Soma már kint van. Boglárka a mozdulatsor nevét húzza alá a jegyzetében.']
+   ['soma',message('scene.opening.somaReport'),'displeased'],
+   ['greta',message('scene.opening.faultyLamp')],
+   ['soma',message('scene.opening.cellarRemark')],
+   ['narrator',message('scene.opening.keys')]
   ]);
  }
  if(s.id==='shared_2'){
@@ -192,3 +191,4 @@ export function expandOpening(original:Scene):Scene{
  }
  return s;
 }
+

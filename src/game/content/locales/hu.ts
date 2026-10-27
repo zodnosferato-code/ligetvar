@@ -1,4 +1,6 @@
+import {openingHu} from './opening.hu.ts';
 export const hu = {
+  ...openingHu,
   "save.unknownVersion": "ismeretlen játékverzió",
   "save.format": " (formátum: {format})",
   "save.versions": "Mentés: {saved}{format}. Jelenlegi játék: {current}.",

@@ -33,7 +33,7 @@ test('live locale changes preserve bytes, revisions, actions and hidden puzzle c
   if(after.scene&&before.scene){
    assert.equal(after.scene.location,translate(`location.${after.scene.staging.location}`,{},'en'));
    assert.equal(after.scene.speaker,after.scene.speakerId==='narrator'?'Narration':before.scene.speaker);
-   assert.deepEqual({...after.scene,location:before.scene.location,speaker:before.scene.speaker},before.scene);
+   assert.deepEqual({...after.scene,location:before.scene.location,speaker:before.scene.speaker,text:before.scene.text,title:before.scene.title},before.scene);
   }else assert.equal(after.scene,before.scene);
   assert.deepEqual(after.evidence,before.evidence);assert.deepEqual(after.journal,before.journal);
   const hungarian=session.execute({cmd:'locale',locale:'hu'});

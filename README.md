@@ -44,7 +44,7 @@ npm run --silent play:cli -- --json --save /tmp/ligetvar-agent.json
 
 Start with `new YourName`, select numbered actions and use `help`. Progress saves after each action. The [CLI guide](docs/CLI.md) documents commands, visual descriptions, transcripts, author inspection and route examples.
 
-Hungarian and partial English are selectable at any time in the browser and CLI (`--locale en`, then `locale hu` / `locale en`). UI labels, save feedback, location names and relationship directions have English translations; story, journals and remaining content still appear in Hungarian. See the [localization contract](docs/LOCALIZATION.md) and [tracker](docs/design/TRACKER.md) for extraction boundaries and remaining work.
+Hungarian and partial English are selectable at any time in the browser and CLI (`--locale en`, then `locale hu` / `locale en`). UI labels, save feedback, location names and relationship directions have English translations; the first workshop conversation also has English dialogue and choices. Later conversations, reaction notices, journals and remaining content still appear in Hungarian. See the [localization contract](docs/LOCALIZATION.md) and [tracker](docs/design/TRACKER.md) for extraction boundaries and remaining work.
 
 ## Art and developer tooling
 

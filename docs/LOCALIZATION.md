@@ -38,7 +38,7 @@ or automatic translation of historical text is planned.
 | Currency and numeric formatting | content/format.ts | `formatFt(value, locale)` formats browser money and CLI scene prices as Hungarian Ft or English HUF; numeric protocol fields remain numbers. |
 | Puzzle/economy/gift text | content/puzzles.ts, gifting.ts, outings.ts | Pending |
 | Journals, recaps and knowledge | content/knowledge.ts, rules.ts, runtime.ts; engine state | Pending persisted-text audit |
-| Scene titles, lines, choices and reactions | content scene modules and authoring.ts | Pending |
+| Scene titles, lines, choices and reactions | content scene modules and authoring.ts | First conversation (`shared_1`): title, all 28 dialogue/narration lines and both choice labels extracted and translated. Reactions and remaining scenes pending. |
 | Endings and visual descriptions | content/epilogues.ts, asset-descriptions.ts, assets.ts, animations.ts | Pending |
 
 Do not bulk rewrite dialogue during extraction. Keep authored IDs and gameplay
@@ -119,8 +119,50 @@ the event-reference audit. No schema/content epoch changes in this batch.
 
 Validation: catalog parity, complete location/route ID coverage and Hungarian
 label preservation; scene observations switch both ways without mutating state or
-action IDs; English money formatting. TypeScript passes; 25 of 26 CLI checks pass, including the complete language-switching campaign and six external route playthroughs. The remaining CLI failure is the omitted-artwork check.
+action IDs; English money formatting. TypeScript and CLI checks run locally.
 The source-only local checkout omits artwork: four asset-existence tests fail for
 that reason; 68 engine/content tests pass. Vite builds, with a missing local atlas
 warning. Full repository validation is delegated to this commit's Actions. No
 interactive browser/mobile or English narrative proofreading is claimed.
+
+## First conversation translation — 27 October 2026
+
+`shared_1` (The First Workshop) is the first dialogue batch: 31 semantic keys
+cover its title, all 28 lines (including both alternative branches) and two
+choices. Source and English text live in `locales/opening.hu.ts` and
+`locales/opening.en.ts`, merged into the shared catalogs. Hungarian wording and
+the full scene graph match the source before extraction exactly. Translation
+preserves information, character humour, names and voluntary participation; it
+does not implement the later Soma story rewrite.
+
+Authoring accepts `message('scene.opening.arrival')` wherever a line, choice
+label or scene title is authored. It supplies the Hungarian `text` plus a typed
+`textKey` (`titleKey` for a scene). Use semantic names, never array positions.
+Expansion helpers must propagate references rather than copying only `.text`.
+`currentLine(state, registry, locale)` resolves line/choice references after
+availability filtering, and `sceneTitle(scene, locale)` resolves titles in
+browser dialogue/planning and CLI observations. References remain content
+metadata; the engine uses unchanged IDs, effects and source strings. Do not
+translate the authoritative registry in place or put the locale in game state.
+Unextracted content falls back to its authored Hungarian string.
+
+This batch deliberately leaves choice reaction notices, journals, evidence and
+recaps in Hungarian. They persist source prose, so extracting them still needs
+the event-reference conversion and compatibility policy above. No save schema or
+content epoch change is needed for dialogue/title/choice display: no new field
+is stored in a save and no branch or outcome changes. Existing in-scene saves
+can resume and display these translations immediately. Gift callbacks in later
+scenes are also still Hungarian.
+
+Validation: catalog key/placeholder parity; exact 31-key opening coverage; both
+branches switch languages and save/resume at every line with identical action
+IDs and outcomes; untouched scenes retain source text; registry immutability;
+full-semester CLI switching. TypeScript and Vite build pass locally (the
+source-only checkout still lacks the recycling atlas). Engine/content tests
+pass except four artwork-existence checks caused by omitted local assets. The
+CLI suite passes 25/26 checks; its only failure is the same omitted-artwork check.
+English browser/mobile layout and a separate editorial proofread remain open.
+
+Next conversation batch: `shared_2`, then `shared_3`, followed by the first
+individual meetings. Continue in small scene-sized commits and update L4 in the
+current design tracker; never describe this first scene as a fully English game.

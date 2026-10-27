@@ -45,7 +45,8 @@ test('switching scene observations translates metadata without changing choices 
  assert.ok(en.scene);assert.notEqual(en.scene.location,hu.scene!.location);
  assert.equal(en.scene.speaker,'Narration');
  assert.deepEqual(en.actions.map(x=>x.action),hu.actions.map(x=>x.action));
- assert.equal(en.scene.text,hu.scene!.text); // Story extraction is a later batch.
+ assert.notEqual(en.scene.text,hu.scene!.text);
+ assert.equal(en.scene.title,'The First Workshop');
  assert.equal(JSON.stringify(state),before);
  assert.deepEqual(gameView(state,'hu'),hu);
 });
