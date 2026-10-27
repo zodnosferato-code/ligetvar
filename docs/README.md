@@ -1,41 +1,43 @@
 # Documentation index
 
-> **Status:** Active index. | **Purpose:** Find the current source of truth and understand the archive.
+> **Status:** Active index. | **Purpose:** Find current design, technical contracts and historical records.
 
-## Current documentation
+## Start here
 
-| Document | Use it for |
+The [design documentation](design/README.md) is the current design authority. Its [tracker](design/TRACKER.md) distinguishes implemented redesigns, partial work, approved plans and proposals. Use [game design](design/GAME-DESIGN.md), [character visuals](design/CHARACTER-VISUALS.md) and [character voices](design/CHARACTER-VOICES.md) for current decisions.
+
+[README](../README.md) provides setup and play instructions; [AGENT.md](../AGENT.md) defines contributor workflow. Changes to design or feature status must update the owning design document and tracker in the same commit.
+
+## Technical and authoring contracts
+
+| Document | Responsibility |
 | --- | --- |
-| [README](../README.md) | Project overview and local commands |
-| [Developer guide](../AGENT.md) | Contribution rules, workflow, and project authority |
-| [Redesign plan](../Ligetvar-Redesign-Plan.md) | Story canon and approved art direction; proposed details are marked as such |
-| [Puzzles and economy](LEISURE-ECONOMY.md) | Move-limited jobs, points, optional outings and personal gifts |
-| [Implementation roadmap](IMPLEMENTATION-ROADMAP.md) | Versioned releases/saves, playable CLI, visual descriptions, localisation and English; ordered tasks and progress gates |
-| [Game and save versions](VERSIONING.md) | Release metadata, incompatible saves, storage precedence and release checklist |
-| [Playable CLI and proofreading](CLI.md) | Terminal/JSON gameplay, file saves, visual descriptions, transcripts, author inspection and agent examples |
-| [Virág storyline](VIRAG-STORY.md) | Eight optional reporter chapters, persistent flirtation, successful cases and remaining art |
-| [GIF-like moments](ANIMATION-PLAN.md) | Animated WebP/GIF research, runtime support, provider comparison and production gates |
-| [Engine reference](../ENGINE.md) | Runtime systems, scheduling, saves, and endings |
-| [Progress record](REDESIGN-PROGRESS.md) | Verified implementation status, remaining work, and Actions results |
-| [Venice production](VENICE-PRODUCTION.md) | Required images, reference dependencies and candidate workflow |
-| [Character visual reference](CHARACTER-REFERENCES.md) | Single appearance authority for all characters, approval states and available identity files |
-| [Art register](ART-REGISTER.md) | Current runtime coverage, organization audit and missing assets |
-| [Asset agent workflow](ASSET-AGENT-WORKFLOW.md) | Token-efficient binary uploads, one-image commits, checkpoints and recovery |
-| [Character voices](CHARACTER-VOICES.md) | Approved temperaments, speech patterns and writing coverage |
-| [Scene inventory](SCENE-INVENTORY.md) | Generated active scene list, locations, prerequisites, and evidence |
-| [Asset index](../assets/README.md) | Runtime manifest and art locations |
+| [Engine](../ENGINE.md) | Runtime systems, scheduling, knowledge, saves and endings |
+| [Puzzles and economy](LEISURE-ECONOMY.md) | Move-limited jobs, points, outings and gifts |
+| [Versioning](VERSIONING.md) | Release metadata, incompatible saves and release checks |
+| [Playable CLI](CLI.md) | Terminal/JSON commands, observations, transcripts and author inspection |
+| [Scene staging](SCENE-STAGING.md) | Locations, physical framing, local choice memory and departures |
+| [Virág story](VIRAG-STORY.md) | Optional reporter chapters and branch rules |
+| [Animation](ANIMATION-PLAN.md) | Moment pipeline, metadata and acceptance gates; current status is in the design tracker |
+| [Scene inventory](SCENE-INVENTORY.md) | Generated active-scene inventory |
+| [Art register](ART-REGISTER.md) | Current asset coverage, missing files and review states |
+| [Asset workflow](ASSET-AGENT-WORKFLOW.md) | Generation, binary transfer, review, publication and recovery |
+| [Asset index](../assets/README.md) | Runtime and production folder layout |
 
-## Archive
+## Detailed plans and execution history
 
-The [archive index](archive/README.md) explains why material was retired and links to complete inventories. Historical files are preserved for provenance only and do not override active guidance.
+| Document | Responsibility |
+| --- | --- |
+| [Original redesign plan](../Ligetvar-Redesign-Plan.md) | Detailed treatment, original completion gates and dated decisions |
+| [Implementation roadmap](IMPLEMENTATION-ROADMAP.md) | Detailed V/C/L/S/G/VR/AN tasks and acceptance criteria; historical status checkpoints |
+| [Progress record](REDESIGN-PROGRESS.md) | Execution evidence, checks and prior handoffs |
+| [Venice production](VENICE-PRODUCTION.md) | Historical production inventory and dependencies |
+| [ChatGPT production](CHATGPT-PRODUCTION.md) | Dated production/review batches |
 
-- [Legacy dialogue and localization inventory](archive/legacy-narrative/README.md)
-- [Legacy design document inventory](archive/legacy-design/README.md)
-- Historical asset archive directories are absent from current main; see [current asset organization](ART-REGISTER.md).
+These records do not override current design or tracker status. A historical link does not prove an asset remains available.
 
-## Format and authority
+## Archive and format
 
-Active documentation begins with a title and a one-line status/purpose note. Keep the body organized with descriptive headings, link to the current source of truth instead of copying it, and mark proposed or unverified material clearly. Generated inventories identify the source that produces them. Archived files remain unchanged; their index explains their historical scope and points to current replacements.
-- [Current ChatGPT art production and review checkpoint](CHATGPT-PRODUCTION.md)
+The [archive index](archive/README.md) links the [legacy dialogue/localization inventory](archive/legacy-narrative/README.md) and [legacy designs](archive/legacy-design/README.md). Historical asset archive directories are absent from current main; use the current art register.
 
-- [Scene staging and relationship pacing](SCENE-STAGING.md): multi-location dates, local choice memory, physical framing, endings and remaining campaign-length work.
+New active documentation starts with a title and status/purpose note. Write new design documentation in English, identify proposals explicitly, and link the owning source instead of duplicating it. Archive records retain their historical scope.

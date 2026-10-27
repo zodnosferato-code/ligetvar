@@ -2,20 +2,24 @@
 
 > **Status:** Active. | **Purpose:** Contributor rules and authoritative project guidance.
 
-Start with the [documentation index](docs/README.md), [redesign plan](Ligetvar-Redesign-Plan.md), especially section 10, and [engine reference](ENGINE.md). The [progress record](docs/REDESIGN-PROGRESS.md) tracks verified implementation and remaining work. Legacy designs and narrative files under `docs/archive/` are historical, never active runtime sources.
+Start with [docs/design/README.md](docs/design/README.md), the current design authority, and [docs/design/TRACKER.md](docs/design/TRACKER.md), the single current implementation/future-feature tracker. Read the relevant design section and tracker row before editing.
 
-## Authority and current visual documentation
+## Design authority and maintenance
 
-[CHARACTER-REFERENCES.md](docs/CHARACTER-REFERENCES.md) is the single maintained written authority for every character's appearance, identity reference and appearance-approval state. [ART-REGISTER.md](docs/ART-REGISTER.md) records current file availability. These supersede older appearance proposals and art-completion claims in the redesign plan, historical production logs and prompts. Do not duplicate character briefs in other documents.
-
-The 27 October 2026 audit found 25 runtime portrait files, 14 scene backgrounds, the separate title courtyard JPEG, four Virág loops with four posters, and 13 icons. Gréta affectionate is missing and falls back to neutral. Earlier ChatGPT masters, reference sheets and asset archive directories are absent from current main; do not present historical paths as usable references. Soma, Áron and Lilla have final user-approved appearances. Other assistant-reviewed art does not imply final user approval.
+- Explicit user decisions take precedence; record them in the owning design document and state what they supersede.
+- [Game design](docs/design/GAME-DESIGN.md) defines the current experience. [Character visuals](docs/design/CHARACTER-VISUALS.md) is the sole written appearance authority; [character voices](docs/design/CHARACTER-VOICES.md) owns temperament and dialogue guidance.
+- The tracker distinguishes Implemented, Partial, Planned, Proposed and Blocked. Do not implement an unapproved proposal or describe backlog as shipped. Update status, scope, evidence, remaining gate and date in the same commit as the relevant change.
+- Technical contracts such as [ENGINE.md](ENGINE.md), [CLI.md](docs/CLI.md), [versioning](docs/VERSIONING.md), [economy](docs/LEISURE-ECONOMY.md) and [scene staging](docs/SCENE-STAGING.md) remain detailed implementation references. Inspect actual code when a document conflicts with behavior.
+- The [original redesign plan](Ligetvar-Redesign-Plan.md) and [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) preserve detailed acceptance criteria and history. Their historical status/checklists do not override current design or tracker status. Do not maintain another live feature-status list here or in README.
+- The [art register](docs/ART-REGISTER.md) owns exact file coverage; [progress log](docs/REDESIGN-PROGRESS.md) owns execution history. Generated, integrated, assistant-reviewed and user-approved are separate states.
+- Keep new design documentation in English and linked through the [design index](docs/design/README.md). Legacy design/narrative files and production logs do not override current guidance.
 
 ## Active system
 
 - React, Zustand and Vite remain the technology stack. UI-independent reducer logic lives in `src/game/engine/` with injected campaign rules.
 - One authoritative typed scene registry: `src/game/content/catalog.ts`. Content modules include shared, relationship, triad, optional, opening, conversation, romance and Virág scenes. Never reload archived dialogue/localization JSON into the runtime.
 - The engine must not know concrete actors, scene IDs, story milestones or endings. Campaign rules live in `content/rules.ts`, types in `content/types.ts`, epilogues in `content/epilogues.ts`; `content/runtime.ts` connects them to the generic engine.
-- The user decides new implementation directions. Preserve the approved TypeScript content approach and [character voices](docs/CHARACTER-VOICES.md); do not declare a new architecture or character direction approved.
+- The user decides new implementation directions. Preserve the approved TypeScript content approach and [character voices](docs/design/CHARACTER-VOICES.md); do not declare a new architecture or character direction approved.
 - A semester lasts 16 weeks. Each week has one guaranteed shared-story slot, one discretionary daytime slot and one discretionary nighttime slot, in that order, followed by recap. Continuing a scene is free; completing it consumes one slot. No extra automatic workshop.
 - The saved period determines the planning hub: daytime office or nighttime bedroom. Bedroom objects expose phone, journal, rest and gifts; work and preparation are daytime only. The door offers destinations and available scenes, not a free room switch. Opening object/destination menus costs no slot. The weekly shared scene cannot be skipped.
 - Background objects are clickable with outlines and labels always visible. If the art lacks a suitable object, use a visible labelled icon. Preserve hotspot alignment when changing backgrounds.
@@ -54,7 +58,7 @@ Tests cover scene graphs, prerequisites, knowledge order, saves, decisions, sche
 
 Backward compatibility is not required. Support only the current versioned save envelope at the stable `ligetvar-save` key. Detect incompatible historical saves and explain that a fresh game is required; do not migrate or retain old IDs, name imports or alternative rules for them.
 
-Follow [IMPLEMENTATION-ROADMAP.md](docs/IMPLEMENTATION-ROADMAP.md): game/save versioning, playable agent/proofreader CLI, then localization and complete English text. Runtime release comes from package.json; independent schema/content epochs determine compatibility. [VERSIONING.md](docs/VERSIONING.md) defines release policy. Update roadmap checkboxes, evidence and handoffs as work proceeds; proposed APIs are not existing commands.
+Use [the current tracker](docs/design/TRACKER.md) for status and [IMPLEMENTATION-ROADMAP.md](docs/IMPLEMENTATION-ROADMAP.md) for detailed acceptance criteria: game/save versioning, playable agent/proofreader CLI, then localization and complete English text. Runtime release comes from package.json; independent schema/content epochs determine compatibility. [VERSIONING.md](docs/VERSIONING.md) defines release policy. Update the design tracker, evidence and handoffs as work proceeds; historical roadmap checkboxes are not a second current tracker, and proposed APIs are not existing commands.
 
 ## CLI and scene staging
 

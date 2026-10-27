@@ -1,6 +1,10 @@
 # Implementation roadmap — versions, CLI, scenes and localisation
 
-> **Status:** Phases 1–2 implemented; first staged-date pass implemented; remaining scene work, campaign pacing and localisation planned. Approved objectives recorded 25 October 2026. | **Purpose:** Ordered implementation tasks, acceptance gates and durable progress tracking for future contributors.
+> **Status:** Detailed task reference and historical execution record. | **Purpose:** Preserve task acceptance criteria; current feature status is maintained only in design/TRACKER.md.
+
+## Current design authority — 27 October 2026
+
+Start with [design/README.md](design/README.md) and [design/TRACKER.md](design/TRACKER.md). This document preserves detailed task contracts, acceptance criteria and dated execution history. The design tracker is the sole current feature-status tracker; historical checkboxes and production counts below are snapshots and must not override it. In particular, all four Virág loops/posters are now present, while the earlier reviewed identity sheet is absent; full animation acceptance is not re-certified merely by file presence.
 
 ## Scope and authority
 

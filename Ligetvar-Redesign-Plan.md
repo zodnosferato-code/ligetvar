@@ -1,6 +1,10 @@
 # Ligetvár — story and basic art redesign
 
-> **Status:** Active design canon. | **Purpose:** Established story and art direction, plus proposed design details.
+> **Status:** Original design baseline and detailed reference. | **Purpose:** Preserve the treatment, proposals and original acceptance criteria; current authority is docs/design/.
+
+## Current design authority — 27 October 2026
+
+Start with [docs/design/README.md](docs/design/README.md) and [the current redesign tracker](docs/design/TRACKER.md). This plan preserves the original detailed treatment, proposals and completion gates. Newer decisions and status in the design folder supersede conflicting appearance, workflow and completion statements here. Use [character visuals](docs/design/CHARACTER-VISUALS.md) for appearance; old checklists below are historical checkpoints, not a second live tracker.
 
 Planning baseline: main at `f9f72c353b02049e11eabc97786883b9a87f0903`, reviewed 18 October 2026. This document specifies the redesign. The v2 runtime and 60 Hungarian scenes are now implemented (including nine contextual conversations); the opening has an expanded writing pass while later scenes remain compact; final non-pixel anime asset production and the complete art/release gates remain open. See docs/REDESIGN-PROGRESS.md for actual verification. Planning revision: 19 October 2026, following user art-direction update and engine review at `9d25ab7f44a4267911cfba8fc0ed24c1b9225949`. The existing engine suite was executed during that review: 27 passed, 0 failed. That result does not validate the new design. Sixteen weeks refers to the in-game semester, not a development deadline.
 

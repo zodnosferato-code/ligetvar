@@ -1,10 +1,20 @@
 # Ligetvár
 
-> **Status:** Playable; final art is in progress. | **Purpose:** Project overview and local setup.
+> **Status:** Playable Hungarian game; redesign and final acceptance remain in progress. | **Purpose:** Project overview, current design entry point and local setup.
 
-Magyar, tizenhat hetes gótikus romantikus történetjáték egy kastélyban működő főiskolán. A fakultatív műhely résztvevői eltűnések és hiányzó emlékek nyomát követik. Három egyéni románc, Rebeka–Boglárka–Márton közös kapcsolat, barátság, visszalépés és gyenge felkészülésű történeti kimenetel játszható.
+Ligetvár is a gothic romance visual novel set over a sixteen-week semester at a castle college. Relationships drive the experience while disappearances, lost memories and a vampire investigation shape the shared story. Play individual romances, the Rebeka–Boglárka–Márton relationship, friendship and withdrawal paths.
 
-Az általános motor és a történet külön TypeScript modulokban működik. Az aktív regiszter 60 jelenetet tartalmaz; az első három hét és a három első személyes találkozó kibontott választási ágakat kapott, és kilenc helyzetfüggő kávés beszélgetés is játszható. A félév későbbi jelenetei még rövidek, további írói kidolgozásra várnak. A végleges képkészlet még nincs kész: Rebeka, Boglárka és Gréta átlátszó semleges portréja és az anime tanterem már a játékban van. A többi szereplő helyőrzőt kap; a hiányzó kifejezések semleges portréra esnek vissza. A többi meglévő háttér átmeneti. Ez még nem a redesign valamennyi kiadási kapujának teljesítése.
+## Design and development
+
+Start with the [current design documentation](docs/design/README.md). The [redesign and feature tracker](docs/design/TRACKER.md) distinguishes implemented changes, partial work, approved future plans and unapproved proposals. The folder also owns [game design](docs/design/GAME-DESIGN.md), [character visuals](docs/design/CHARACTER-VISUALS.md) and [character voices](docs/design/CHARACTER-VOICES.md).
+
+Contributors must read [AGENT.md](AGENT.md) and the relevant tracker row before working. Update the design and tracker in the same commit as a design change. Older plans retain detailed acceptance criteria and history; current status and authority live in `docs/design/`.
+
+Use the [documentation index](docs/README.md) for technical contracts and production records, [ENGINE.md](ENGINE.md) for runtime behavior, and the [art register](docs/ART-REGISTER.md) for current file coverage. Do not treat a historical plan or production log as proof that a feature or reference asset is available.
+
+## Run locally
+
+Node 22.6 or newer is required.
 
 ```bash
 npm ci
@@ -14,45 +24,30 @@ npm run typecheck
 npm run build
 ```
 
-A Vite alapútvonala `/ligetvar/`, a helyi cím `http://localhost:5173/ligetvar/`. A build a `dist/` könyvtárba kerül. GitHub Pages telepítés és tesztelés a `main` push után Actionsben fut.
+Open http://localhost:5173/ligetvar/. Vite uses `/ligetvar/` as its base path and builds into `dist/`. Tests and GitHub Pages deployment run through Actions after a push to main.
 
-Hetente egy garantált közös történeti alkalom után egy nappali és egy éjszakai szabad sáv következik, majd a heti összegzés. Egy tevékenység befejezése lépteti az időt; a párbeszéd folytatása nem. A nyomozásnak nem feltétele románc, pénzkereső műszak vagy magas energia. A személyes kapcsolatokhoz tanúsított beszélgetés és igen szükséges; a pontszám és ajándék nem pótolja. A 15. heti konfrontáció után a 16. heti intézményi és személyes utóélet még a félév lezárása előtt megtörténik.
+## Play
 
-A heti tervezőben a nappali iroda és az éjszakai hálószoba tárgyait használod: íróasztal a közös alkalomhoz, telefon a személyes találkozókhoz, fotel a pihenéshez, zsák a munkához, polc az ajándékokhoz, füzet a naplóhoz. A műhely és munka az irodában van; a hálószobából találkozót egyeztethetsz, pihenhetsz, naplót olvashatsz és ajándékot adhatsz. Az ajtó az elérhető úti célokat és az ott játszható jeleneteket nyitja meg. Minden kattintható tárgy körvonala és címkéje mindig látható; a képből hiányzó műveleti tárgyat külön ikongomb jelöli. A központ automatikusan az iroda nappal, a hálószoba éjszaka; szobaváltással nem lehet időt ugrani vagy munkát megnyitni éjjel. Munka és felkészülés nappal, a T7/T8 közös esték éjszaka érhetők el. Más személyes találkozó és kávé mindkét sávban játszható, napszakhoz igazított megvilágítással. A pihenés nappal, az alvás éjszaka egy-egy sávot használ, legfeljebb 32 energiát ad. Napló, ajándék és az úti célok böngészése ingyenes. A négyállomásos heti sáv jelzi az előrehaladást, a kártyák a következő napszakot és a valódi határidőt.
+Each week has a guaranteed shared-story activity, one discretionary daytime activity and one nighttime activity, followed by a recap. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings.
 
-A [nyugodt, lépésszámos munkajátékok](docs/LEISURE-ECONOMY.md) 8 000–20 000 Ft-ot és 3–6 programpontot adnak egy nappali sávért. A pontokat hat új, személyes történetre költheted a telefonon. A polcon hatféle ajándékból választhatsz, saját üzenettel és távoli kézbesítéssel vagy rövid személyes átadással; a nők eltérő válaszai megmaradnak a telefonon. Új játékban 12 000 Ft-ról indulsz, a heti szabadon elkölthető keret 3 000 Ft.
+Relaxed move-limited job puzzles earn money and spendable program points. Gifts and optional outings add personal interactions, but do not replace witnessed relationship decisions. See the [economy contract](docs/LEISURE-ECONOMY.md) for exact costs and rewards.
 
-A játék verziója a címoldalon látható. A [verziózott mentések](docs/VERSIONING.md) külön formátum- és történetverziót tartalmaznak; nem kompatibilis frissítés után egyértelmű üzenet jelzi, hogy új félév szükséges. Nincs régi mentésimport vagy migráció.
-
-A dokumentumok áttekintése: [dokumentációs index](docs/README.md). Fejlesztéshez először [AGENT.md](AGENT.md), [Ligetvar-Redesign-Plan.md](Ligetvar-Redesign-Plan.md), [ENGINE.md](ENGINE.md). Az aktuális ellenőrzések és hátralévő munka a [haladási naplóban](docs/REDESIGN-PROGRESS.md), a vizuális hiányok az [art registerben](docs/ART-REGISTER.md) találhatók. A régi számozott tervek a [dokumentációs archívumban](docs/archive/legacy-design/) vannak. A korábbi, nem aktív képi referenciák és a régi képlog az [assets/archive/](assets/archive/) mappában maradtak meg; a játék kizárólag a `src/game/content/assets.ts` manifestből használ képeket. A régi dialógus- és lokalizációs állományok a [történeti dialógusarchívumban](docs/archive/legacy-narrative/README.md) találhatók, nem aktív tartalom. A jóváhagyott [karakterhangok](docs/CHARACTER-VOICES.md) vezetik a további írói munkát.
-
-## Venice AI API (developer tooling)
-
-The repository includes a Node 22+ server-side smoke test for Venice's OpenAI-compatible chat API. Base URL: `https://api.venice.ai/api/v1`; model: `zai-org-glm-5-2`. The example does **not** run in the Vite browser application.
-
-1. Rotate any credential previously shared in chat, and create a new Venice API key.
-2. In GitHub, open **Settings → Secrets and variables → Actions → New repository secret**, name it `VENICE_API_KEY`, and paste the replacement key there. GitHub Actions secrets are not automatically available to local terminals or arbitrary agents.
-3. For a trusted local terminal, set `VENICE_API_KEY` in its environment without saving it in tracked files, then run `npm run venice:smoke`. Alternatively, explicitly map `secrets.VENICE_API_KEY` into the environment of a trusted GitHub Actions job that runs this command.
-
-The script calls `POST /chat/completions` with a short test message. It does not expose the key to the browser, and non-2xx responses fail without dumping potentially sensitive response bodies. Local `.env` files are ignored by Git, but this script reads the process environment directly; Node does not automatically load `.env` files here. This is a chat connectivity test, not an image-generation test.
-
-Venice documentation: https://docs.venice.ai
-
-
-### Current image production
-
-Venice production is paused following the user's report of exhausted credits. New assets use ChatGPT built-in image generation, one reviewed image at a time. See [the current art checkpoint](docs/CHATGPT-PRODUCTION.md) for integrated assets and remaining work.
-
-## Next implementation objectives
-
-The [implementation roadmap](docs/IMPLEMENTATION-ROADMAP.md) tracks versioned releases and save incompatibility notices, then a playable CLI for agent testers and proofreaders with visual descriptions, followed by localisation and complete English text. Versioning is implemented in 0.2.0 and the playable CLI in 0.3.0; localisation remains planned. `test:headless` currently runs tests, not playable CLI sessions.
+The game and saves are versioned. Incompatible schema/content updates explain that a new semester is required; no historical save migration is supported. See [versioning](docs/VERSIONING.md).
 
 ## Play from the command line
 
 ```bash
 npm run play:cli -- --save /tmp/ligetvar-player.json
-# Agent mode: one JSON request per line, no npm banner
+# Agent mode: one JSON request per line, without the npm banner
 npm run --silent play:cli -- --json --save /tmp/ligetvar-agent.json
 ```
 
-Start with `new YourName`, select numbered actions, and use `help` for commands. Progress saves on every action. The [CLI guide](docs/CLI.md) covers the versioned protocol, visual descriptions, transcripts, author proofreading, save interchange and replayable full-route examples. Game text is currently Hungarian.
+Start with `new YourName`, select numbered actions and use `help`. Progress saves after each action. The [CLI guide](docs/CLI.md) documents commands, visual descriptions, transcripts, author inspection and route examples.
+
+Active game text is Hungarian. English design documentation does not imply a translated game; localization and complete English gameplay remain planned in the [tracker](docs/design/TRACKER.md).
+
+## Art and developer tooling
+
+Runtime art is selected by the [image manifest](src/game/content/assets.ts) and [animation manifest](src/game/content/animations.ts). Production candidates remain separate from reviewed exports. Follow the [asset workflow](docs/ASSET-AGENT-WORKFLOW.md), preserving identity and keeping image payloads out of agent context.
+
+Venice production is paused under the existing user direction; current art work uses built-in ChatGPT image generation. Historical tooling and credential-handling rules are documented in [AGENT.md](AGENT.md). No provider request is needed to run the game.
