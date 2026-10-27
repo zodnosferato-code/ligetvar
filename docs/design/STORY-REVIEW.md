@@ -94,16 +94,16 @@ Personal scenes answer whether and how each chosen relationship continues. Use c
 
 ## Favourite places and distinct dating experiences
 
-**User-confirmed requirement, 27 October 2026:** each woman has a favourite place whose setting enables distinct experiences. Personality and dialogue alone must not carry route differentiation. Exact assignments below are proposed for user review, grounded in existing interests; they are not yet implemented or approved location canon.
+**User-confirmed requirement, 27 October 2026:** each woman has a favourite place whose setting enables distinct experiences. Personality and dialogue alone must not carry route differentiation. The user confirmed Virág's after-hours school investigation setting. Exact favourite-room selection and the other women's assignments remain proposals; none of these new experience briefs is implemented.
 
 | Woman | Proposed favourite place | Why she returns | Experiences enabled by this setting |
 | --- | --- | --- | --- |
 | Rebeka | Holdkör screening room | She can choose what is seen and turn a screening into a shared occasion, beyond her photography work. | Choose an enjoyably terrible film together; improvise a miniature shadow scene against the screen; trade photographs of overlooked castle details; linger while the projector cools after everyone leaves. |
 | Boglárka | Library window alcove | A familiar refuge where quiet company is welcome and she can share pleasure rather than perform scholarship. | Read competing passages aloud in whispers; exchange handwritten bookmarks; invent lives for marginal notes; listen to rain together after deliberately putting the books away. |
 | Gréta | Lakeside willow and walking trail | She already longs for a place where nobody needs her to organize anything. | Take an unplanned detour; skim stones with an absurd private scoring rule; share an imperfect picnic; shelter from rain and decide whether to wait or walk back laughing. |
-| Virág | Late-opening town café | A lively place outside college roles where she can set the pace and enjoy company without turning it into traditional courtship. | Make playful predictions about the street and see which come true; argue over a provocative headline without doing casework; split an improvised late supper; spontaneously extend the meeting into a walk, with private time only by mutual invitation. |
+| Virág | School after hours; proposed favourite room: the old administrative records room | She pursues documents for her corruption investigation and enjoys having Márton share the search. | Search for a missing annex; compare scholarship or renovation records by lamplight; exchange whispered jokes when footsteps pass; take a quiet break together after a discovery. |
 
-The café is a proposed setting, not an existing background or runtime location claim. Existing broad locations also need staging/art checks before these experiences are implemented.
+Virág's after-hours school setting supersedes the café proposal. The old records room, exact access and scene beats remain proposals; staging, art and night-slot availability need checks. See [Virág's authoring contract](../VIRAG-STORY.md#after-hours-school-investigation--27-october-2026).
 
 A favourite place is an emotional home, not a restriction on all dates. Begin with her introducing its rituals; return later to a changed detail or shared memory; let a final visit show what has become “ours.” Use different activities, movement, sound, public/private opportunities and departures. Do not copy the same date and change its background.
 
