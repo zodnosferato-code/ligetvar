@@ -14,6 +14,20 @@ User clarification: there is **no professional-only route**. She keeps flirting 
 
 Her investigation starts with the institution's silence around disappearances, then follows money and complaint handling. She establishes who withheld scholarships, certified uncompleted renovations and buried complaints. She does not expose Soma, supply vampire weaknesses, participate in the confrontation or alter the main institutional ending. Her report's success concerns these separate corruption cases, not a replacement for the supernatural plot.
 
+## After-hours school investigation — 27 October 2026
+
+User direction: Virág's distinctive experiences should involve investigating inside the school at night, looking for documents. This supersedes the proposed late-opening town café as her signature setting. The confirmed setting is the school after hours; the exact favourite room remains open.
+
+Proposed anchor: an old records room in the administrative wing, reached through quiet corridors. This room, its access arrangements and new art are proposals, not implemented assets or approved details. Let the setting support searching for a missing annex, comparing a payment record with renovation dates, and discovering that an apparently mundane document changes the interpretation of a lead. A lead still needs independent verification before publication.
+
+The romantic appeal comes from sharing her initiative and curiosity: working over the same pool of lamplight, whispered jokes, pausing when footsteps pass, and decompressing together after leaving the records. Quiet moments can happen during a break in the investigation. Do not turn every night into another generic coffee date or a repeated search animation. Document discoveries must advance her distinct corruption cases, not solve Soma's supernatural plot.
+
+Future scene options: compare scholarship lists in the records room; trace a missing attachment between an office and storage; finish a late search with a quieter conversation in the corridor. These are writing proposals for the separate conversation/localization pass. Do not imply that the player must accept physical closeness to help, or that a dangerous situation authorizes touch.
+
+Night investigation activities will use the existing discretionary nighttime slot; movement within one scene costs no additional slot. Do not change virag_1's existing daytime opening or make all eight chapters nighttime-only by implication. Before implementation, choose which chapters to restage and verify their windows alongside T7/T8 and the triad commitments. Preserve her independent reporting success when meetings are skipped.
+
+Documentation direction only: current conversations, schedules, location IDs and assets are unchanged.
+
 ## Implemented scenes
 
 | Scene | Earliest week / place | Story and choices |
