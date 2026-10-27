@@ -1,3 +1,4 @@
+import {DEFAULT_LOCALE,isLocale,translator,type Locale} from '../content/localization.ts';
 import {createInterface} from 'node:readline';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -6,17 +7,19 @@ import {Session,HELP,PROTOCOL_VERSION} from './session.ts';
 import {LockedSave} from './files.ts';
 import {GAME_VERSION} from '../release.ts';
 function printHuman(response:ReturnType<Session['execute']>,showVisuals=true){
+ const t=translator(response.locale);
  const r=response as ReturnType<Session['execute']>&Record<string,any>;
  if(!r.ok){console.log(`ERROR ${r.error.code}: ${r.error.message}`);return;}
  if(r.help){console.log(Object.values(HELP).join('\n'));return;}
  for(const key of ['catalog','scene','visuals','coverage','finding'])if(r[key])console.log(JSON.stringify(r[key],null,2));
- if(r.written)console.log('Written: '+r.written);
- const v=r.view;if(!v){console.log(`Ligetvár ${GAME_VERSION} — no active game. Use new <name> or help.`);return;}
- console.log(`\nWeek ${v.week} | ${v.phase} | ${v.period??'shared/recap'} | ${v.money} Ft | ${v.activityPoints} points | energy ${v.energy} | revision ${r.revision}`);
+ if(r.written)console.log(t('cli.written',{path:r.written}));
+ if(response.locale==='en')console.log(t('locale.partial'));
+ const v=r.view;if(!v){console.log(t('cli.noGame',{version:GAME_VERSION}));return;}
+ console.log(t('cli.status',{week:v.week,phase:v.phase,period:v.period??'shared/recap',money:v.money,points:v.activityPoints,energy:v.energy,revision:r.revision}));
  if(showVisuals)for(const a of v.assets)console.log(`[${a.role}${a.fallback?' / neutral fallback':''}] ${a.description}`);
  if(v.scene)console.log(`${v.scene.title} [${v.scene.id}/${v.scene.lineId}]\n${v.scene.location}${v.scene.staging.label?' · '+v.scene.staging.label:''} [${v.scene.staging.proximity}]\n${v.scene.speaker}: ${v.scene.text}`);
  if(v.lastNote)console.log(v.lastNote);
- if(v.puzzle){console.log(v.puzzle.instructions);console.log(v.puzzle.legend.join(' | '));for(let row=0;row<v.puzzle.tiles.length;row+=v.puzzle.width)console.log(v.puzzle.tiles.slice(row,row+v.puzzle.width).map((x:number|null,i:number)=>`${row+i}:${x===null?'?':x}`).join('  '));console.log(`${v.puzzle.movesLeft} moves left; score ${v.puzzle.score}; reward ${v.puzzle.reward.money} Ft + ${v.puzzle.reward.points} points`);}
+ if(v.puzzle){console.log(v.puzzle.instructions);console.log(v.puzzle.legend.join(' | '));for(let row=0;row<v.puzzle.tiles.length;row+=v.puzzle.width)console.log(v.puzzle.tiles.slice(row,row+v.puzzle.width).map((x:number|null,i:number)=>`${row+i}:${x===null?'?':x}`).join('  '));console.log(t('cli.puzzle.status',{moves:v.puzzle.movesLeft,score:v.puzzle.score,money:v.puzzle.reward.money,points:v.puzzle.reward.points}));}
  if(v.recap)for(const j of v.recap)console.log(j.text);
  if(v.ending)console.log([v.ending.threatText,v.ending.institutionText,v.ending.relationshipText,v.ending.viragText].join('\n'));
  if(r.id==='journal')console.log(JSON.stringify({evidence:v.evidence,journal:v.journal,bonds:v.bonds},null,2));
@@ -32,6 +35,7 @@ function humanRequest(line:string,session:Session){
   const n=Number(cmd==='choose'?args[0]:cmd),view=session.execute({cmd:'look'}).view;
   return {...base,cmd:'act',action:view?.actions[n-1]?.action};
  }
+ if(cmd==='locale')return {...base,cmd,locale:args[0]};
  if(cmd==='new')return {...base,cmd,name:args.filter(x=>x!=='--replace').join(' '),replace:args.includes('--replace')};
  if(['scene','choice','direction','buy'].includes(cmd))return {...base,cmd:'act',action:{type:cmd,id:args[0]}};
  if(cmd==='continue')return {...base,cmd:'act',action:{type:'choice',id:'continue'}};
@@ -47,14 +51,14 @@ function humanRequest(line:string,session:Session){
 export async function main(argv=process.argv.slice(2)){
  let file:LockedSave|undefined;
  try{
-  const options=new Set(['--json','--author','--help','--version']);let path:string|undefined,limit=10000;
-  for(let i=0;i<argv.length;i++)if(argv[i]==='--save')path=argv[++i];else if(argv[i]==='--max-commands')limit=Number(argv[++i]);else if(!options.has(argv[i]))throw new Error('Unknown option: '+argv[i]);
-  if(argv.includes('--help')){console.log('Ligetvár CLI: --save PATH [--json] [--author] [--max-commands N]\n'+Object.values(HELP).join('\n'));return;}
+  const options=new Set(['--json','--author','--help','--version']);let path:string|undefined,limit=10000,locale:Locale=DEFAULT_LOCALE;
+  for(let i=0;i<argv.length;i++)if(argv[i]==='--save')path=argv[++i];else if(argv[i]==='--locale'){const value=argv[++i];if(!isLocale(value))throw new Error('--locale must be hu or en.');locale=value;}else if(argv[i]==='--max-commands')limit=Number(argv[++i]);else if(!options.has(argv[i]))throw new Error('Unknown option: '+argv[i]);
+  if(argv.includes('--help')){console.log('Ligetvár CLI: --save PATH [--json] [--author] [--locale hu|en] [--max-commands N]\n'+Object.values(HELP).join('\n'));return;}
   if(argv.includes('--version')){console.log(`Ligetvár ${GAME_VERSION}; CLI protocol ${PROTOCOL_VERSION}`);return;}
   if(!path||!Number.isSafeInteger(limit)||limit<1)throw new Error('--save PATH and a positive command limit are required.');
   file=new LockedSave(path);const json=argv.includes('--json');
   let buildId:string|null=null;try{buildId=execFileSync('git',['rev-parse','HEAD'],{cwd:fileURLToPath(new URL('../../..',import.meta.url)),encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();if(execFileSync('git',['status','--porcelain','--untracked-files=no'],{cwd:fileURLToPath(new URL('../../..',import.meta.url)),encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim())buildId+='-dirty';}catch{/* A source archive need not have Git. */}
-  const session=new Session(file,argv.includes('--author'),buildId);
+  const session=new Session(file,argv.includes('--author'),buildId,locale);
   let lastVisuals='';
   const output=(response:ReturnType<Session['execute']>&{error?:unknown})=>{if(json)console.log(JSON.stringify(response));else{const signature=JSON.stringify(response.view?.assets??[]);printHuman(response,signature!==lastVisuals||response.id==='look');lastVisuals=signature;}};
   const initial=file.read()===null?session.execute({cmd:'look',id:'ready'}):session.execute({cmd:'load',id:'ready',expectedRevision:0});output(initial);

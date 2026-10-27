@@ -15,3 +15,9 @@ export function translate(key:MessageKey,params:Record<string,string|number>={},
   return String(params[name]);
  });
 }
+
+export function isLocale(value:unknown):value is Locale{return value==='hu'||value==='en';}
+export function translator(locale:Locale){
+ return (key:MessageKey,params:Record<string,string|number>={})=>translate(key,params,locale);
+}
+export type Translator=ReturnType<typeof translator>;

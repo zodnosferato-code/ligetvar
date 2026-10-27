@@ -1,5 +1,5 @@
 import type {hu} from './hu.ts';
-/** Extracted interface text only; story translation remains pending. */
+/** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
   "save.unknownVersion": "unknown game version",
   "save.format": " (format: {format})",
@@ -239,5 +239,25 @@ export const en:Record<keyof typeof hu,string> = {
   "puzzle.result.pairs": "You sorted {score} document pairs. Your reward:",
   "puzzle.result.points": "You collected {score} points. Your reward:",
   "puzzle.result.reward": "{money} and {points} activity points.",
-  "puzzle.claim": "Collect reward · night"
+  "puzzle.claim": "Collect reward · night",
+  "locale.label": "Language",
+  "locale.partial": "English translation is still partial. Story and content not yet extracted remain in Hungarian.",
+  "save.writeFailed": "Saving failed. You can keep playing on this page, but check browser storage before closing it.",
+  "cli.noGame": "Ligetvár {version} — no active game. Use new <name> or help.",
+  "cli.status": "\\nWeek {week} | {phase} | {period} | {money} HUF | {points} points | energy {energy} | revision {revision}",
+  "cli.written": "Written: {path}",
+  "cli.puzzle.status": "{moves} moves left; score {score}; reward {money} HUF + {points} points",
+  "cli.object.green": "Green glass bottle",
+  "cli.object.blue": "Blue plastic bottle",
+  "cli.object.copper": "Copper-colored drink can",
+  "cli.object.purple": "Purple glass bottle",
+  "cli.claim": "Collect reward",
+  "cli.end": "Complete semester",
+  "cli.nextWeek": "Next week",
+  "cli.cancelJob": "Cancel job",
+  "cli.recycling": "Recycling · 12 energy · day slot",
+  "cli.archive": "Archive pairs · 12 energy · day slot",
+  "cli.tile": "Tile {index}",
+  "cli.memory.instructions": "Turn over two cards, then select Next pair. 18 pair attempts, no time limit.",
+  "cli.recycling.instructions": "Choose two adjacent tiles: match at least three symbols in a row or column. 12 successful swaps; failed swaps are free."
 };

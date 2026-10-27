@@ -1,9 +1,10 @@
-import {translate as t} from '../content/localization.ts';
+import {useTranslation} from './Locale.tsx';
 import {useEffect,useState} from 'react';
 import {assetUrl} from '../content/assets.ts';
 import {momentSource,type MomentClip} from '../content/animations.ts';
 /** Swap out the animated resource entirely when stopped: hiding a GIF does not pause decoding. */
 export function Moment({clip}:{clip:MomentClip}){
+ const t=useTranslation();
  const [reduced,setReduced]=useState(()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches);
  const [paused,setPaused]=useState(false),[failed,setFailed]=useState(false),[posterFailed,setPosterFailed]=useState(false);
  useEffect(()=>{const media=window.matchMedia('(prefers-reduced-motion: reduce)'),change=()=>setReduced(media.matches);media.addEventListener('change',change);return()=>media.removeEventListener('change',change);},[]);

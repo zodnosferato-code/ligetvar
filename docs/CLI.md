@@ -126,3 +126,19 @@ npm run build
 ```
 
 `npm run test:cli` runs CLI-specific tests. `npm run test:headless` remains the engine/content test alias; it is not the play command. Browser layout checks remain separate. The browser store and CLI share `content/actions.ts`, and both use the same campaign runtime; no alternate engine or legacy loader was introduced.
+
+## Live language switching
+
+Use `--locale hu` (default) or `--locale en` at startup. During play, enter
+`locale en` or `locale hu` in text mode, including during scenes and puzzles.
+JSON mode accepts `{"cmd":"locale","locale":"en"}`.
+The response contains the selected `locale` and `translationCoverage:"partial"`.
+No expectedRevision is required; switching does not increment the revision,
+consume a slot or write the save. Available action IDs and hidden cards remain
+unchanged. Session locale is independent of saved game state and is selected
+again when starting a CLI process.
+
+Extracted interface/action/puzzle labels and save feedback follow the locale.
+Unextracted story/content remains Hungarian; protocol names, help and some
+diagnostics remain English. This is not complete English gameplay. See
+[the localization contract](LOCALIZATION.md).

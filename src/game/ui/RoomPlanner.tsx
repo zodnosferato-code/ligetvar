@@ -1,4 +1,4 @@
-import {translate as t} from '../content/localization.ts';
+import {useTranslation} from './Locale.tsx';
 import {useEffect,useRef,type CSSProperties} from 'react';
 import {useState} from 'react';
 import {SCENES} from '../content/catalog.ts';
@@ -13,6 +13,9 @@ import {Journal} from './Journal.tsx';
 export type RoomId='office'|'home';
 type ObjectId='desk'|'phone'|'journal'|'chair'|'shelf'|'bag';
 type PanelId=ObjectId|'travel';
+
+export function RoomPlanner(){
+ const t=useTranslation();
 const OBJECTS:Record<ObjectId,{label:string;title:string;icon:'book'|'heart'|'rest'|'gift'|'bottles'|'insight'|'phone'}>={
  desk:{label:t('hub.workshop'),title:t('hub.workshop'),icon:'insight'},
  phone:{label:t('hub.phone'),title:t('hub.meeting'),icon:'phone'},
@@ -28,7 +31,6 @@ const ROOMS={
 } as const;
 const SHORT_LABEL:Record<ObjectId,string>={desk:t('hub.short.workshop'),phone:t('hub.short.phone'),journal:t('hub.short.journal'),chair:t('hub.short.rest'),shelf:t('gifts.item'),bag:t('hub.short.work')};
 
-export function RoomPlanner(){
  const g=useGame(),s=g.state,available=availableScenes(s,SCENES),[selected,setSelected]=useState<PanelId|null>(null),heading=useRef<HTMLHeadingElement>(null),hotspots=useRef<Partial<Record<PanelId,HTMLButtonElement>>>({}),destinationHeading=useRef<HTMLHeadingElement>(null);
  const night=currentPeriod(s)==='night',room:RoomId=night?'home':'office',current=ROOMS[room],[destination,setDestination]=useState<keyof typeof LOCATIONS|null>(null);
  const visibleObjects:ObjectId[]=room==='home'?['phone','journal','chair','shelf']:['desk','phone','journal','chair','shelf','bag'];

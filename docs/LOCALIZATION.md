@@ -1,6 +1,6 @@
 # Localization contract
 
-> Status: First incremental implementation, 27 October 2026. Hungarian remains the gameplay language.
+> Status: Partial translation with live browser/CLI switching, 27 October 2026. Unextracted content remains Hungarian.
 
 ## Shared API
 
@@ -21,7 +21,7 @@ Missing required parameters throw an error. Render messages as plain text.
 
 This first extraction changes presentation only, so schema/content epochs remain
 unchanged. The locale must not change scene IDs, choices, evidence, outcomes or
-save decoding. Locale selection will be a presentation preference outside game
+save decoding. Locale selection is a presentation preference outside game
 state. Current saves still contain authored/persisted text; they are **not yet
 locale neutral**. Before extracting journals, recaps or gift replies, replace
 persisted display prose with stable message/event references and parameters,
@@ -55,8 +55,7 @@ protect Hungarian feedback and decoding. The test script already includes these
 content tests.
 
 Next: extract content-owned labels (locations/routes), item/asset descriptions and runtime feedback; audit persisted text, then extract scene
-text with stable IDs. Add locale selection to browser and CLI only with truthful
-coverage indicators. English save messages alone do not constitute English
+text with stable IDs. Preserve the partial-translation indicators in browser and CLI. English save messages alone do not constitute English
 gameplay. Plural messages must use locale-aware rules when needed; no plural API
 or full translation coverage is claimed in this step.
 
@@ -64,4 +63,40 @@ or full translation coverage is claimed in this step.
 
 All seven `ui/*.tsx` components resolve their own labels through the shared API, including accessibility names, numeric feedback and deadlines. Brand/character proper names remain unchanged. Complete templates let translators reorder values without translating stored data. Puzzle card names and collectible names are extracted; their numeric IDs, symbols and gameplay remain unchanged.
 
-English catalog entries do not expose an English language selector yet. Components still use the Hungarian default. Route names, locations, scene titles/prose, gift descriptions/notes/reactions, epilogues, animation descriptions, runtime notices and save feedback stored in the store still need locale-aware presentation integration. Journal prose is still persisted as before. No compatibility epoch change is needed for this label-only extraction.
+English catalog entries are now available through the live language selector. Hungarian remains the default when no preference is set. Route names, locations, scene titles/prose, gift descriptions/notes/reactions, epilogues, animation descriptions and runtime notices still need extraction. Save notices now retain their result data and are formatted in the active locale. Journal prose is still persisted as before. No compatibility epoch change is needed for this label-only extraction.
+
+## Live switching — user direction, 27 October 2026
+
+Language must be switchable at any point in play, including the CLI, without
+restart, scene advancement, resource use or save changes. This supersedes waiting
+for full extraction before exposing language selection.
+
+- Browser: the header offers Magyar / English on the title screen and throughout
+  play. React context rerenders existing components, without remounting the game
+  or resetting open menus, puzzle selections, animation pause, scroll or text size.
+  The preference uses the separate `ligetvar-locale` key; unavailable storage
+  leaves an in-memory preference. The document language follows the selection.
+- UI components use `useTranslation()`, not the default translator directly.
+  Resolve label tables during rendering, not at module import. Keep transient
+  feedback as message references/data, not already translated strings.
+- CLI: `--locale hu|en` selects the initial locale. Text mode accepts
+  `locale en` / `locale hu`; JSON accepts
+  `{"cmd":"locale","locale":"en"}`. No expectedRevision is needed for this
+  presentation command; revision and save bytes remain unchanged.
+- Locale belongs to each Session. `gameView(state, locale)` and
+  `translator(locale)` use explicit locale arguments; no global locale can leak
+  between sessions. CLI locale lasts for the process; choose it again on restart.
+  Responses report `locale` and `translationCoverage:"partial"`.
+- The browser English notice and CLI coverage metadata explicitly identify the
+  incomplete translation. Story/content not extracted remains Hungarian. CLI
+  command names, protocol enums, help and some diagnostic messages retain their
+  existing English form. Switching does not promise a full English game yet.
+- Browser save notices are structured results resolved at render time. Save
+  schema/content epochs remain unchanged: locale is never written into GameState.
+
+Validation: dedicated CLI tests switch across every phase through a sixteen-week
+campaign, preserve half-revealed memory cards and replay the switching transcript.
+Process tests cover text/JSON commands, startup selection and invalid locales.
+Catalog/save tests, TypeScript and build checks remain required. Component SSR
+was checked in both locales including room label tables; this is not a full
+interactive browser/mobile layout review.

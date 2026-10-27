@@ -1,18 +1,20 @@
-import {translate as t} from '../content/localization.ts';
+import {useTranslation} from './Locale.tsx';
 import {useEffect,useRef,useState} from 'react';
 import {useGame} from '../store.ts';
 import {puzzleDone,puzzleReward,MOVE_LIMIT,recyclingPlayback,legalSwap,type RecyclingFrame} from '../content/puzzles.ts';
 import {formatFt} from '../content/format.ts';
 import {RECYCLING_ATLAS_URL} from '../content/assets.ts';
 import './recycling.css';
+
+export function PuzzleGame(){
+ const t=useTranslation();
 const NAMES=[t('puzzle.object.green'),t('puzzle.object.blue'),t('puzzle.object.copper'),t('puzzle.object.purple')];
 const CARDS=[t('puzzle.card.key'),t('puzzle.card.letter'),t('puzzle.card.moon'),t('puzzle.card.tower'),t('puzzle.card.book'),t('puzzle.card.map'),t('puzzle.card.seal'),t('puzzle.card.pen')];
 const SYMBOLS=['⚿','✉','☾','♜','▤','⌘','✿','✎'];
-export function PuzzleGame(){
  const g=useGame(),s=g.state,kind=s.minigame!,p=s.puzzle!,done=puzzleDone(p),reward=puzzleReward(p),memory=kind==='archive';
  const [frames,setFrames]=useState<RecyclingFrame[]>([]),[hint,setHint]=useState<number[]>([]);
  const lock=useRef(false),frame=frames[0],busy=!!frame;
- const [feedback,setFeedback]=useState('');
+ const [feedback,setFeedback]=useState<'idle'|'invalid'|'hint'|number>('idle');
  const displayScore=p.score-frames.reduce((sum,f)=>sum+f.points,0)+(frame?.points??0);
  useEffect(()=>{
   if(!frame){lock.current=false;return;}
@@ -24,7 +26,7 @@ export function PuzzleGame(){
   if(lock.current)return;
   setHint([]);
   const playback=memory?[]:recyclingPlayback(p,index);
-  if(playback.length){lock.current=true;setFrames(playback);setFeedback(playback.some(f=>f.phase==='clear')?t('puzzle.points',{points:playback.reduce((n,f)=>n+f.points,0)}):t('puzzle.swap.failed'));}
+  if(playback.length){lock.current=true;setFrames(playback);setFeedback(playback.some(f=>f.phase==='clear')?playback.reduce((n,f)=>n+f.points,0):'invalid');}
   g.movePuzzle(index);
  };
  const title=useRef<HTMLHeadingElement>(null);
@@ -36,7 +38,7 @@ export function PuzzleGame(){
   <p>{memory?t('puzzle.archive.help'):t('puzzle.recycling.help')}</p>
   <div className="puzzle-stats" aria-live="polite"><strong>{t('puzzle.moves',{count:MOVE_LIMIT[kind]-p.moves})}</strong><span>{memory?t('puzzle.pairs',{score:p.score}):t('puzzle.target',{score:displayScore})}</span><span>{t('puzzle.reward',{money:formatFt(reward.money),points:reward.points})}</span></div>
 
-  {!memory&&<div className="recycling-feedback" role="status" aria-live="polite">{frame?.phase==='clear'?frame.chain>1?t('puzzle.chain',{points:frame.points,chain:Math.min(frame.chain,3)}):t('puzzle.points',{points:frame.points}):frame?.phase==='shuffle'?t('puzzle.shuffle'):feedback||t('puzzle.collect')}</div>}
+  {!memory&&<div className="recycling-feedback" role="status" aria-live="polite">{frame?.phase==='clear'?frame.chain>1?t('puzzle.chain',{points:frame.points,chain:Math.min(frame.chain,3)}):t('puzzle.points',{points:frame.points}):frame?.phase==='shuffle'?t('puzzle.shuffle'):typeof feedback==='number'?t('puzzle.points',{points:feedback}):feedback==='invalid'?t('puzzle.swap.failed'):feedback==='hint'?t('puzzle.hint.feedback'):t('puzzle.collect')}</div>}
   <div aria-busy={busy} className={'puzzle-board '+(memory?'archive-board':'bottle-board')} role="group" aria-label={memory?t('puzzle.archive.board'):t('puzzle.recycling.board')}>
    {(frame?.board??p.board).map((value,i)=>{
     const face=!memory||p.selected.includes(i)||p.matched.includes(i),matched=memory&&p.matched.includes(i);
@@ -46,7 +48,7 @@ export function PuzzleGame(){
    })}
   </div>
   {memory&&p.selected.length===2&&!done&&<div className="pair-feedback" role="status"><p>{p.board[p.selected[0]]===p.board[p.selected[1]]?t('puzzle.match'):t('puzzle.mismatch')}</p><button className="primary" onClick={g.nextPair}>{t('puzzle.next')}</button></div>}
-  {!memory&&!done&&<button className="recycling-hint" disabled={busy} onClick={()=>{setHint(legalSwap(p.board));setFeedback(t('puzzle.hint.feedback'));}}>{t('puzzle.hint')}</button>}
+  {!memory&&!done&&<button className="recycling-hint" disabled={busy} onClick={()=>{setHint(legalSwap(p.board));setFeedback('hint');}}>{t('puzzle.hint')}</button>}
   {!memory&&!done&&<p className="muted" role="status">{p.selected.length?t('puzzle.select.next'):t('puzzle.select')}</p>}
   <details className="puzzle-help"><summary>{t('puzzle.rules')}</summary>
   <p className="muted">{t('puzzle.reward.help')}</p>

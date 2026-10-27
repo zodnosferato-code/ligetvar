@@ -42,3 +42,21 @@ test('SIGINT leaves the last committed save readable and releases ownership',asy
   assert.equal(code,130);assert.equal(existsSync(save+'.lock'),false);assert.equal(decodeSave(readFileSync(save,'utf8'),SCENES).status,'ok');
  }finally{reader.close();child.kill();rmSync(dir,{recursive:true,force:true});}
 });
+
+test('actual CLI supports startup and live locales in JSON and text modes',()=>{
+ const dir=mkdtempSync(join(tmpdir(),'ligetvar-locale-'));
+ try{
+  const save=join(dir,'save.json');
+  const result=run(save,[{cmd:'new',expectedRevision:0},{cmd:'act',expectedRevision:1,action:{type:'scene',id:'shared_1'}},{cmd:'locale',locale:'hu'},{cmd:'locale',locale:'en'},{cmd:'locale',locale:'bad'},{cmd:'quit'}],['--locale','en']);
+  assert.equal(result.status,0,result.stderr);
+  const rows=result.stdout.trim().split('\n').map(s=>JSON.parse(s));
+  assert.equal(rows[0].locale,'en');assert.equal(rows[3].locale,'hu');assert.equal(rows[4].locale,'en');
+  assert.equal(rows[3].revision,rows[4].revision);
+  assert.equal(rows[5].ok,false);assert.equal(rows[5].locale,'en');
+  assert.deepEqual(rows[3].view.actions.map((a:any)=>a.action),rows[4].view.actions.map((a:any)=>a.action));
+  const bytes=readFileSync(save,'utf8');
+  const text=spawnSync(process.execPath,['--experimental-strip-types',cli,'--save',save],{input:'locale en\nlocale hu\nquit\n',encoding:'utf8',timeout:20000});
+  assert.equal(text.status,0,text.stderr);assert.match(text.stdout,/Continue/);assert.match(text.stdout,/Tovább/);assert.equal(readFileSync(save,'utf8'),bytes);
+  const invalid=run(join(dir,'invalid.json'),[],['--locale','de']);assert.equal(invalid.status,2);assert.equal(existsSync(join(dir,'invalid.json')),false);
+ }finally{rmSync(dir,{recursive:true,force:true});}
+});

@@ -1,3 +1,4 @@
+import {DEFAULT_LOCALE,isLocale,type Locale} from '../content/localization.ts';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {RELEASE} from '../release.ts';
@@ -14,19 +15,19 @@ export const HELP={
  inspection:'journal, replies, shop, ending, coverage',
  files:'save, load, import <path>, export <new-path>, transcript <new-path>, findings <new-path>',
  proofreading:'note <category> <suggested correction>; author-only: catalog, inspect <scene-id>',
- other:'help, quit; new and import require replace:true in JSON (or --replace in text) to replace an existing game.',
- machine:'One JSON object per line: {id,cmd,expectedRevision?,action?,...}. Use cmd:act with a GameAction. Mutations new/act/load/import require expectedRevision from the last response. All output includes protocolVersion, release, revision, ok and view. Game text is Hungarian; command names are English.',
+ other:'locale <hu|en>, help, quit; new and import require replace:true in JSON (or --replace in text) to replace an existing game.',
+ machine:'One JSON object per line: {id,cmd,expectedRevision?,action?,...}. Use cmd:act with a GameAction. Mutations new/act/load/import require expectedRevision from the last response. All output includes protocolVersion, release, revision, ok and view. Use cmd:locale with locale:hu|en at any time; locale changes do not advance revision or write saves. English content is partial; command names are English.',
 };
 interface Request {id?:string|number;cmd:string;expectedRevision?:number;[key:string]:unknown}
 interface Finding {sceneId:string;lineId:string|null;choiceId?:string;category:string;observedText:string;suggestion:string;source:'played'|'author';gameVersion:string}
 export class Session {
  private state:GameState|null=null;
- revision=0;author:boolean;file:SaveFile;buildId:string|null;transcript:unknown[]=[];findings:Finding[]=[];
+ revision=0;locale:Locale;author:boolean;file:SaveFile;buildId:string|null;transcript:unknown[]=[];findings:Finding[]=[];
  private lines=new Set<string>();private observedText=new Map<string,string>();private choices=new Set<string>();private inspected=new Set<string>();private authorScene:string|null=null;
- constructor(file:SaveFile,author=false,buildId:string|null=null){this.file=file;this.author=author;this.buildId=buildId;}
- private observe(){const view=this.state?gameView(this.state):null;if(view?.scene){const id=view.scene.id+'/'+view.scene.lineId;this.lines.add(id);this.observedText.set(id,view.scene.text);}return view;}
+ constructor(file:SaveFile,author=false,buildId:string|null=null,locale:Locale=DEFAULT_LOCALE){this.locale=locale;this.file=file;this.author=author;this.buildId=buildId;}
+ private observe(){const view=this.state?gameView(this.state,this.locale):null;if(view?.scene){const id=view.scene.id+'/'+view.scene.lineId;this.lines.add(id);this.observedText.set(id,view.scene.text);}return view;}
  private response(id:Request['id'],ok:boolean,extra:Record<string,unknown>={}){
-  return {id:id??null,protocolVersion:PROTOCOL_VERSION,release:RELEASE,buildId:this.buildId,revision:this.revision,mode:this.author?'author':'play',locale:'hu',ok,...extra,view:this.observe()};
+  return {id:id??null,protocolVersion:PROTOCOL_VERSION,release:RELEASE,buildId:this.buildId,revision:this.revision,mode:this.author?'author':'play',locale:this.locale,translationCoverage:'partial',ok,...extra,view:this.observe()};
  }
  private commit(state:GameState){
   const raw=encodeSave(state),valid=decodeSave(raw,SCENES);if(valid.status!=='ok')throw new Error('The action produced an invalid save.');
@@ -40,6 +41,9 @@ export class Session {
   const before=this.observe();let response:ReturnType<Session['response']>;
   try{
    switch(q.cmd){
+    case 'locale':
+     if(!isLocale(q.locale))return fail('BAD_LOCALE','Use locale hu or locale en.');
+     this.locale=q.locale;break;
     case 'help':return this.response(q.id,true,{help:HELP});
     case 'look':case 'actions':case 'journal':case 'replies':case 'shop':case 'ending':return this.response(q.id,true);
     case 'new':
@@ -57,7 +61,7 @@ export class Session {
      if(q.cmd==='import'&&typeof q.path!=='string')return fail('BAD_REQUEST','path is required.');
      if(q.cmd==='import'&&(this.state||this.file.read()!==null)&&q.replace!==true)return fail('REPLACE_REQUIRED','Use replace:true to import over this session.');
      const raw=q.cmd==='load'?this.file.read():readFileSync(String(q.path),'utf8');const loaded=decodeSave(raw,SCENES);
-     if(loaded.status!=='ok')return fail('SAVE_'+loaded.status.toUpperCase(),saveMessage(loaded),loaded);
+     if(loaded.status!=='ok')return fail('SAVE_'+loaded.status.toUpperCase(),saveMessage(loaded,this.locale),loaded);
      if(q.cmd==='import')this.commit(loaded.state);else{this.state=loaded.state;this.revision++;this.authorScene=null;}
      break;
     }
@@ -65,7 +69,7 @@ export class Session {
     case 'export':case 'transcript':case 'findings':{
      if(typeof q.path!=='string'||!q.path)return fail('BAD_REQUEST','A new destination path is required.');
      if(q.cmd==='export'&&!this.state)return fail('NO_GAME','No active game.');
-     const content=q.cmd==='export'?encodeSave(this.state!):JSON.stringify({protocolVersion:PROTOCOL_VERSION,release:RELEASE,buildId:this.buildId,mode:this.author?'author':'play',entries:q.cmd==='transcript'?this.transcript:this.findings},null,2);
+     const content=q.cmd==='export'?encodeSave(this.state!):JSON.stringify({protocolVersion:PROTOCOL_VERSION,release:RELEASE,buildId:this.buildId,mode:this.author?'author':'play',locale:this.locale,entries:q.cmd==='transcript'?this.transcript:this.findings},null,2);
      writeNewFile(q.path,content+'\n');return this.response(q.id,true,{written:q.path});
     }
     case 'coverage':return this.response(q.id,true,{coverage:{playedLines:[...this.lines].sort(),playedChoices:[...this.choices].sort(),inspectedScenes:[...this.inspected].sort(),scope:'this session; inspecting does not count as playing'}});

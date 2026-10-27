@@ -1,4 +1,4 @@
-import {translate as t} from '../content/localization.ts';
+import {useTranslation} from './Locale.tsx';
 import {useState,useRef,useEffect} from 'react';
 import {useGame} from '../store.ts';
 import {GIFTS,GIFT_NOTES,type GiftId,type GiftNote,type Delivery} from '../content/gifting.ts';
@@ -6,6 +6,7 @@ import {GIRLS,type GirlId} from '../content/types.ts';
 import {ROUTES,formatFt} from '../content/runtime.ts';
 import {portraitFor,assetUrl} from '../content/assets.ts';
 export function GiftReplies({unreadOnly=false}:{unreadOnly?:boolean}){
+ const t=useTranslation();
  const g=useGame(),all=g.state.giftHistory,history=unreadOnly?all.filter(h=>!h.read):all;
  const heading=useRef<HTMLHeadingElement>(null);
  useEffect(()=>{if(unreadOnly&&history.length){heading.current?.focus({preventScroll:true});heading.current?.scrollIntoView({block:'center'});}},[unreadOnly,history.length]);
@@ -19,6 +20,7 @@ export function GiftReplies({unreadOnly=false}:{unreadOnly?:boolean}){
  })}{all.some(h=>!h.read)&&<button onClick={g.readGifts}>{t('gifts.read')}</button>}</section>;
 }
 export function GiftShop(){
+ const t=useTranslation();
  const g=useGame(),s=g.state,[girl,setGirl]=useState<GirlId>('rebeka'),[gift,setGift]=useState<GiftId>('photo'),[note,setNote]=useState<GiftNote>('noticed'),[delivery,setDelivery]=useState<Delivery>('remote');
  const item=GIFTS[gift],allowed=s.phase==='planner'&&s.slot>=1&&s.slot<=2;
  return <div className="gift-shop"><p>{t('gifts.help')}</p>
