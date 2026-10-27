@@ -40,6 +40,10 @@ Work and preparation are daytime activities; nighttime uses the bedroom hub. The
 
 The implemented leisure direction uses relaxed move-limited puzzles, substantial money/program-point rewards for full daytime job slots, optional paid outings and personalized gifts. Recycling uses illustrated bottles/cans and visible swap, match-pop, falling-refill and chain-score feedback, with free optional hints and reduced-motion presentation (27 October 2026 user request). Animation is transient; the complete deterministic move is saved immediately and the CLI shares its outcome. Rewards are resolved by shared game logic; no arbitrary UI reward amounts or duplicate claims. See [LEISURE-ECONOMY.md](../LEISURE-ECONOMY.md) for current balance.
 
+## Favourite places
+
+User direction, 27 October 2026: each of the four women must have a favourite place that enables distinct dating experiences. Use the setting's activities, atmosphere, movement and opportunities for closeness to differentiate routes. Revisit places with shared memories; allow other destinations and dates unrelated to work. The [proposed place assignments and experience brief](STORY-REVIEW.md#favourite-places-and-distinct-dating-experiences) await user selection. No conversations, runtime locations or art were changed by this decision.
+
 ## Scenes and relationships
 
 Use one authoritative typed scene registry, explicit prerequisites, evidence and witnessed decisions. Journals and recaps must respect what the player actually learned. The generic engine must not encode character names, scene IDs or plot outcomes.
