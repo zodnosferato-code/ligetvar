@@ -41,3 +41,7 @@ Earlier ChatGPT PNG masters, cleaned-cutout folders, approved-reference sheets a
 ## Audit evidence
 
 Checked the recursive Git tree and nonzero blob sizes, all literal portrait/background paths in the runtime manifest, and all moment file/poster paths in the animation manifest. Character descriptions were reconciled with the existing reviewed CLI descriptions and final appearance decisions. No binary payloads were fetched, no new visual inspection was claimed, and runtime code/paths were not changed.
+
+## Recycling collectible art — 27 October 2026
+
+One generated transparent 2×2 atlas contains four runtime collectible illustrations: green glass bottle, blue plastic bottle, copper-colored drink can and purple glass bottle. Runtime export: `assets/minigames/recycling/collectibles.webp` (512×512, 45,614 bytes); full-resolution WebP source, prompt and provenance: `assets/generated/recycling/`. Selected in `src/game/content/assets.ts` and bundled by Vite. Assistant visually inspected source/export and confirmed alpha; user style acceptance and browser/mobile playback review remain open. See [production and validation](RECYCLING-PRESENTATION.md).

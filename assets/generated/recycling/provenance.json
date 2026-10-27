@@ -1,0 +1,9 @@
+{
+  "generator": "built-in ChatGPT image generation",
+  "date": "2026-10-27",
+  "prompt": "prompt.txt",
+  "originalPngSha256": "a71e1344dcd8c87a9eeaaf236827b16289525800ede197212e0cdbe37f61ffd0",
+  "source": "collectibles-source.webp",
+  "runtime": "../../minigames/recycling/collectibles.webp",
+  "review": "Assistant reviewed source and optimized export; user approval and browser review pending"
+}

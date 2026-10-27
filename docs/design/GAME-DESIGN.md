@@ -38,7 +38,7 @@ The campaign is currently fixed at 16 weeks. Adjustable length is future work, r
 
 Work and preparation are daytime activities; nighttime uses the bedroom hub. The office and bedroom expose labelled clickable objects; the door offers destinations and available scenes. Phone menus arrange personal meetings and paid outings and retain gift replies. Journals, menus and gift browsing do not independently advance the calendar. See [ENGINE.md](../../ENGINE.md) for exact costs, periods and ending rules.
 
-The implemented leisure direction uses relaxed move-limited puzzles, substantial money/program-point rewards for full daytime job slots, optional paid outings and personalized gifts. Rewards are resolved by shared game logic; no arbitrary UI reward amounts or duplicate claims. See [LEISURE-ECONOMY.md](../LEISURE-ECONOMY.md) for current balance.
+The implemented leisure direction uses relaxed move-limited puzzles, substantial money/program-point rewards for full daytime job slots, optional paid outings and personalized gifts. Recycling uses illustrated bottles/cans and visible swap, match-pop, falling-refill and chain-score feedback, with free optional hints and reduced-motion presentation (27 October 2026 user request). Animation is transient; the complete deterministic move is saved immediately and the CLI shares its outcome. Rewards are resolved by shared game logic; no arbitrary UI reward amounts or duplicate claims. See [LEISURE-ECONOMY.md](../LEISURE-ECONOMY.md) for current balance.
 
 ## Scenes and relationships
 

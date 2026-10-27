@@ -87,3 +87,41 @@ test('recycling swaps save selection, reject row wrapping and resolve cascades d
  const same=puzzleMove(selected,a);assert.equal(same.moves,0);assert.deepEqual(same.selected,[]);
  let s=activity(complete(createInitial(''),'shared_1'),'recycling');s=movePuzzle(s,a);const decoded=decodeSave(encodeSave(s),SCENES);assert.equal(decoded.status,'ok');if(decoded.status==='ok')assert.deepEqual(decoded.state.puzzle,s.puzzle);
 });
+
+test('recycling playback reproduces committed cascades without changing saved state',async()=>{
+ const {recyclingPlayback}=await import('./puzzles.ts');
+ for(let week=1;week<=16;week++){
+  let p=newPuzzle('recycling',week);
+  while(!puzzleDone(p)){
+   const [a,b]=legalSwap(p.board);const selected=puzzleMove(p,a),before=JSON.stringify(selected);
+   const frames=recyclingPlayback(selected,b),next=puzzleMove(selected,b);
+   assert.equal(JSON.stringify(selected),before);
+   assert.equal(frames[0].phase,'swap');
+   assert.deepEqual(frames.at(-1)!.board,next.board);
+   assert.equal(frames.reduce((sum,f)=>sum+f.points,0),next.score-p.score);
+   assert.ok(frames.some(f=>f.phase==='clear'));
+   for(const f of frames.filter(f=>f.phase==='fall'))assert.equal(f.offsets.length,25);
+   p=next;
+  }
+ }
+});
+
+
+test('unsuccessful recycling swaps visibly return and spend no move',async()=>{
+ const {recyclingPlayback}=await import('./puzzles.ts');
+ const p=newPuzzle('recycling',1);
+ let checked=false;
+ for(let a=0;a<25&&!checked;a++)for(const b of [a+1,a+5]){
+  if(b>=25||b===a+1&&a%5===4)continue;
+  const selected=puzzleMove(p,a),next=puzzleMove(selected,b);
+  if(next.moves!==p.moves)continue;
+  const frames=recyclingPlayback(selected,b);
+  assert.deepEqual(frames.map(f=>f.phase),['swap','reject']);
+  assert.deepEqual(frames.at(-1)!.board,p.board);
+  assert.deepEqual(next.board,p.board);assert.equal(next.score,p.score);
+  checked=true;break;
+ }
+ assert.ok(checked);
+ assert.deepEqual(recyclingPlayback(p,-1),[]);
+ assert.deepEqual(recyclingPlayback({...p,moves:12},0),[]);
+});

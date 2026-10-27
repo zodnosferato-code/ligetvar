@@ -41,26 +41,41 @@ function playableBoard(seed:number){
  // Guaranteed legal pattern, with no existing runs.
  return {board:[0,1,0,2,3,1,0,2,3,0,2,3,1,0,1,3,0,2,1,2,0,1,3,2,3],seed};
 }
-function matchMove(p:PuzzleState,index:number):PuzzleState{
+export interface RecyclingFrame {board:number[];phase:'swap'|'reject'|'clear'|'fall'|'shuffle';indices:number[];offsets:number[];points:number;chain:number}
+/** Transient browser playback uses the exact same resolver as saved/CLI moves. */
+export function recyclingPlayback(p:PuzzleState,index:number){
+ const frames:RecyclingFrame[]=[];
+ if(p.kind==='recycling'&&!puzzleDone(p)&&Number.isInteger(index)&&index>=0&&index<25)matchMove(p,index,frames);
+ return frames;
+}
+function matchMove(p:PuzzleState,index:number,frames?:RecyclingFrame[]):PuzzleState{
  if(p.selected.length===0)return {...p,selected:[index]};
  const first=p.selected[0];
  if(first===index)return {...p,selected:[]};
  if(!adjacent(first,index))return {...p,selected:[index]};
  let board=[...p.board],seed=p.seed,score=p.score;
  [board[first],board[index]]=[board[index],board[first]];
+ const swapOffsets=Array(25).fill(0);swapOffsets[first]=index-first;swapOffsets[index]=first-index;
+ frames?.push({board:[...board],phase:'swap',indices:[first,index],offsets:swapOffsets,points:0,chain:0});
  let removed=matches(board);
- if(!removed.length)return {...p,selected:[]};
+ if(!removed.length){frames?.push({board:[...p.board],phase:'reject',indices:[first,index],offsets:swapOffsets,points:0,chain:0});return {...p,selected:[]};}
  // A bounded cascade prevents pathological refill sequences from hanging the UI.
  for(let chain=1;removed.length&&chain<=20;chain++){
-  score+=removed.length*10*Math.min(chain,3);
+  const points=removed.length*10*Math.min(chain,3);score+=points;
+  frames?.push({board:[...board],phase:'clear',indices:[...removed],offsets:[],points,chain});
+  const offsets=Array(25).fill(0);
   for(let x=0;x<5;x++){
-   const column=Array.from({length:5},(_,y)=>y*5+x).filter(i=>!removed.includes(i)).map(i=>board[i]);
+   const survivors=Array.from({length:5},(_,y)=>y*5+x).filter(i=>!removed.includes(i));
+   const column=survivors.map(i=>board[i]);
+   const missing=5-column.length;
+   for(let y=0;y<5;y++)offsets[y*5+x]=y<missing?-missing*5:survivors[y-missing]-(y*5+x);
    while(column.length<5){seed=random(seed);column.unshift((seed>>>16)%4);}
    column.forEach((value,y)=>board[y*5+x]=value);
   }
+  frames?.push({board:[...board],phase:'fall',indices:[],offsets,points:0,chain});
   removed=matches(board);
  }
- if(removed.length||!legalSwap(board).length){const ready=playableBoard(seed);board=ready.board;seed=ready.seed;}
+ if(removed.length||!legalSwap(board).length){const ready=playableBoard(seed);board=ready.board;seed=ready.seed;frames?.push({board:[...board],phase:'shuffle',indices:[],offsets:[],points:0,chain:0});}
  return {...p,board,seed,score,moves:p.moves+1,selected:[]};
 }
 export const puzzleDone=(p:PuzzleState)=>p.moves>=MOVE_LIMIT[p.kind]||(p.kind==='archive'&&p.matched.length===16);

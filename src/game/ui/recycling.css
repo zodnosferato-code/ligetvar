@@ -1,0 +1,19 @@
+.bottle-board{overflow:hidden;padding:8px;isolation:isolate}
+.bottle-board .puzzle-tile{position:relative;overflow:visible;opacity:1;transition:box-shadow .15s;border-color:#c6a17e80}
+.bottle-board .puzzle-tile:disabled{opacity:1}
+.recycling-piece{display:flex;width:100%;height:100%;align-items:center;justify-content:center;pointer-events:none}
+.recycling-object{display:block;width:90%;height:90%;background-size:200% 200%;background-repeat:no-repeat;filter:drop-shadow(0 3px 2px #0006)}
+.object-0{background-position:0 0}.object-1{background-position:100% 0}.object-2{background-position:0 100%}.object-3{background-position:100% 100%}
+.motion-swap,.motion-reject,.motion-fall{animation:recycling-travel .3s cubic-bezier(.2,.7,.3,1) both}
+.phase-clear .recycling-piece{animation:recycling-pop .42s ease-in both}
+.phase-clear::after{content:'✦';position:absolute;inset:0;display:grid;place-items:center;color:#ffefad;font-size:2.6rem;pointer-events:none;animation:recycling-spark .42s ease-out both}
+.phase-reject{border-color:#e4a38d!important}
+.motion-shuffle{animation:recycling-arrive .3s ease-out both}
+.bottle-board .is-hint{outline:3px dashed #fff2a7;outline-offset:1px;box-shadow:0 0 16px #ffdb8770}
+.recycling-feedback{min-height:2.5em;margin:.75rem 0 .2rem;text-align:center;color:#ffe5a4;font-weight:700;font-variant-numeric:tabular-nums}
+.recycling-hint{display:block;margin:.75rem auto}
+@keyframes recycling-travel{from{transform:translate(var(--from-x),var(--from-y))}to{transform:translate(0,0)}}
+@keyframes recycling-pop{0%{transform:scale(1);opacity:1}30%{transform:scale(1.2);filter:brightness(1.6)}100%{transform:scale(.15);opacity:0}}
+@keyframes recycling-spark{from{transform:scale(.3);opacity:1}to{transform:scale(1.6) rotate(35deg);opacity:0}}
+@keyframes recycling-arrive{from{opacity:.3;transform:scale(.75)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.bottle-board *,.bottle-board *::after{animation:none!important;transition:none!important}.phase-clear{outline:3px solid #ffe5a4}.phase-clear::after{display:none}}

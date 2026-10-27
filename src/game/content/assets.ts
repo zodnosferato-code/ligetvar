@@ -47,3 +47,7 @@ export function portraitFor(actor:ActorId,expression:Expression,week=1):ArtAsset
 }
 export function assetUrl(file:string){const env=(import.meta as ImportMeta&{env?:{BASE_URL?:string}}).env;return (env?.BASE_URL??'/')+file;}
 
+
+/** One transparent 2×2 atlas: green glass, blue plastic, copper can, purple glass. */
+export const RECYCLING_ART:ArtAsset={file:'minigames/recycling/collectibles.webp',status:'reviewed',note:'Four cel-shaded recyclable objects with distinct silhouettes; assistant reviewed, user style acceptance pending.'};
+export const RECYCLING_ATLAS_URL=new URL('../../../assets/minigames/recycling/collectibles.webp',import.meta.url).href;
