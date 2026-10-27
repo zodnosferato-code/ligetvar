@@ -13,6 +13,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Character voices](CHARACTER-VOICES.md) | Temperaments, dialogue patterns and writing coverage |
 | [Foundation review](FOUNDATION-REVIEW.md) | Document-by-document assessment of old foundations, conflicts, retained ideas and superseded instructions |
 | [Redesign tracker](TRACKER.md) | Current implementation status, evidence, remaining gates and future features |
+| [Playtest recommendations](../recommendations/README.md) | 27 October structural playtest notes on story coherence and making intimate scenes teachable (fade-to-black + consent/communication) |
 
 ## Authority
 
