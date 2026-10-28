@@ -82,3 +82,11 @@ The year-long castle setting supersedes the semester-only setting. The 52 playab
 ## Optional holidays — 0.8.0
 
 Halloween and Christmas provide ordinary shared experiences in weeks 5 and 13, independent of the vampire plot or romance choices. The player can join a story/activity or leave early. [Holiday briefs and engine contract](HOLIDAY-EVENTS.md) define calendar conditions, costumes, decorated backgrounds, callbacks and validation. These two bilingual meetings are implemented; new seasonal/holiday bitmap production remains open.
+
+## Focused interface — 28 October 2026
+
+User direction: reduce redundant mobile information and separate tasks instead of extending one page. The date and current activity appear once in a compact bar. Its status control opens energy, money, activity points, week progress and the annual calendar. The journal is available from room objects while planning and from the bar during other activities. Settings contains language, text size, sound, transitions and presentation notices.
+
+The room title and labelled illustration lead the planner. Weekly steps, instructions and upcoming nighttime activities are under an expandable help section. Room objects open modal menus; the phone separates meetings, paid outings and reply history. Browsing remains free. New gift replies appear in a popup and remain in phone history after reading.
+
+Both job puzzles open a result dialog automatically when complete, after recycling playback ends. It shows the final score and earned reward. Collecting the reward closes the job and returns to the nighttime room through the existing shared action; no result button is appended below the board. An unclaimed completed job remains saved and reopens its result on resume. Escape cannot discard an unclaimed result. Other dialogs support Escape/backdrop dismissal, trapped focus, scrollable content, and focus restoration to their opener.

@@ -34,7 +34,7 @@ Open http://localhost:5173/ligetvar/. Vite uses `/ligetvar/` as its base path an
 
 ## Play
 
-Each of the 52 weeks has one discretionary daytime activity and one nighttime activity, followed by a recap. Sixteen mandatory story chapters open on scheduled weeks; ordinary weeks begin in the daytime planner. See the [year campaign](docs/design/YEAR-CAMPAIGN.md) for dates and remaining writing scope. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings.
+Each of the 52 weeks has one discretionary daytime activity and one nighttime activity, followed by a recap. Sixteen mandatory story chapters open on scheduled weeks; ordinary weeks begin in the daytime planner. See the [year campaign](docs/design/YEAR-CAMPAIGN.md) for dates and remaining writing scope. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings. Object menus open as focused overlays. Tap the date/activity bar for status and the calendar; Settings holds display, language and audio controls.
 
 Optional Halloween and Christmas gatherings, spring planting in the courtyard and a summer lakeside picnic use the year calendar and normal activity slots. Engine conditions, seasonal clothing/decorated-background registration and honest art fallbacks are documented in [holiday events](docs/design/HOLIDAY-EVENTS.md); new bitmap production remains unfinished.
 

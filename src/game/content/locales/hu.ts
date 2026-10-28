@@ -5,6 +5,12 @@ import {holidaysHu} from './holidays.hu.ts';
 import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
+  "ui.settings": "Beállítások",
+  "ui.status": "Állapot és naptár",
+  "hub.help": "Súgó és heti terv",
+  "hub.phone.meetings": "Találkozók",
+  "hub.phone.outings": "Programok",
+  "hub.phone.replies": "Válaszok",
   ...rebekaDateHu,
   "ui.transition.label": "Átmenetek",
   "ui.transition.background": "Háttérképek",

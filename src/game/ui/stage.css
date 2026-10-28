@@ -284,3 +284,68 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
 @keyframes chapter-reveal{from{opacity:0}to{opacity:1}}
 @keyframes chapter-drift{from{transform:scale(1.04);filter:brightness(.65)}to{transform:scale(1);filter:brightness(1)}}
 @media(prefers-reduced-motion:reduce){.chapter-transition,.transition-background{animation:none}}
+
+/* Focused tasks: the room and current activity own the page. */
+.masthead{padding:12px 0}
+.brand small{display:none}
+.brand-seal{width:34px;height:38px}
+.brand-seal .ui-icon{width:20px;height:20px}
+.brand{font-size:1.5rem;gap:10px}
+.masthead::after{display:none}
+.settings-toggle{font-size:.8em;padding:.5em .85em}
+.play-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #95744655}
+.play-bar button{background:transparent;box-shadow:none;border-color:transparent;font-size:.8em;padding:.5em .65em}
+.play-bar>button{flex-shrink:0;white-space:nowrap}
+.play-bar .status-toggle{display:flex;align-items:center;gap:12px;min-width:0;flex:1;white-space:normal}
+.status-toggle time{color:#efd3a0;white-space:nowrap}
+.status-toggle>span:first-of-type{color:var(--muted)}
+.room-toolbar{margin:16px 0 12px}
+.room-toolbar h1{font-size:1.6em}
+.hub-help{margin:12px 0;color:var(--muted);font-size:.85em}
+.hub-help>summary{font-size:.85em;color:var(--muted)}
+.game-modal{color:var(--parchment);background:linear-gradient(125deg,#352329,#241a1e);border:1px solid #ad8654;border-radius:12px;width:min(760px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:0;box-shadow:0 24px 100px #0009;overflow:auto;overscroll-behavior:contain;font-size:calc(1rem * var(--text-scale,1))}
+.game-modal::backdrop{background:#100c13b8;backdrop-filter:blur(4px)}
+.modal-heading{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#2c1e25;padding:16px 22px;border-bottom:1px solid #95744666}
+.modal-heading h2{margin:0;line-height:1.4;overflow-wrap:anywhere}
+.modal-heading button{flex-shrink:0;padding:.5em .7em;font-size:.8em}
+.modal-body{padding:4px 22px 22px;min-width:0;overflow-wrap:anywhere}
+.modal-body>.journal{margin:0;border:0;padding-top:8px}
+.status-details{display:flex;flex-wrap:wrap;gap:0 24px;border-block:1px solid #95744655}
+.status-details p{display:flex;align-items:center;font-size:.9em}
+.game-modal .tools{display:grid;gap:16px;padding:20px 0}
+.game-modal .tools label{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.95em}
+.game-modal .tools select{max-width:60%;min-height:44px}
+.game-modal .activity-card{min-height:0;padding:16px;gap:8px}
+.game-modal .activity-emblem{width:32px;height:32px}
+.game-modal .activity-emblem .ui-icon{width:22px;height:22px}
+.game-modal .activity-card strong{font-size:1.15em}
+.game-modal .activity-card small{padding-top:8px}
+.phone-tabs{display:flex;gap:6px;padding:14px 0 4px;flex-wrap:wrap}
+.phone-tabs button{flex:1 0 auto;white-space:nowrap;padding:.5em .65em;font-size:.85em;text-align:center}
+.game-modal.puzzle-result{width:min(480px,calc(100% - 32px));margin:auto}
+.game-modal.puzzle-result button{width:100%}
+.game-modal .gift-replies{border:0;padding:0}
+.puzzle.panel{margin-top:16px}
+.puzzle-stats{justify-content:center}
+@media(max-width:700px){
+ .game{padding:0 12px}
+ .masthead{align-items:center;padding:8px 0}
+ .brand{font-size:1.25rem}
+ .brand-seal{width:28px;height:32px}
+ .brand-seal .ui-icon{width:18px;height:18px}
+ .play-bar{padding:4px 0}
+ .play-bar button{font-size:.72em}
+ .status-toggle{gap:8px}
+ .room-toolbar{margin:12px 0 10px}
+ .room-toolbar h1{font-size:1.4em}
+ .game-modal{width:calc(100% - 16px);max-height:calc(100dvh - 16px);border-radius:10px}
+ .modal-heading{padding:12px 16px}
+ .modal-heading h2{font-size:1.15em}
+ .modal-body{padding:4px 16px 16px}
+ .puzzle.panel{padding:14px;margin:12px 0}
+ .puzzle h1{font-size:1.5em;margin:.15em 0 .4em}
+ .puzzle>p{font-size:.8em;line-height:1.5;margin:.6em 0}
+ .puzzle-stats{gap:8px;padding:.6rem;font-size:.8em}
+ .puzzle-help{font-size:.8em;margin:.5em 0}
+ .puzzle .recycling-feedback{min-height:2em;padding:.4em;font-size:.8em}
+}

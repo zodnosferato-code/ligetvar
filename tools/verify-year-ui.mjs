@@ -27,7 +27,7 @@ try {
   assert.equal(decodeSave(encodeSave(state),SCENES).status,'ok');
   if(week===4||week===6){
    for(locale of ['en','hu']){
-    const markup=render();assert.match(markup,/52/);assert.ok(!markup.includes('undefined'));
+    const markup=render();assert.match(markup,/class="play-bar"/);assert.ok(!markup.includes('undefined'));
     const rhythm=markup.match(/<ol class="week-rhythm"[\\s\\S]*?<\\/ol>/)![0];
     assert.equal((rhythm.match(/<li /g)||[]).length,id?4:3);
     assert.equal((rhythm.match(/aria-current="step"/g)||[]).length,1);checks++;
@@ -38,7 +38,7 @@ try {
    for(locale of ['en','hu']){
     state=week===5?activity(before,'rest'):before;state=openScene(state,'holiday_'+event,SCENES);
     const markup=render();assert.ok(markup.includes('data-event="'+event+'"'));assert.ok(markup.includes('data-outdoors="false"'));
-    assert.ok(markup.includes('title="'+(event==='halloween'?'Halloween':locale==='en'?'Christmas':'Karácsony')+'"'));
+    assert.ok(!markup.includes('class="castle-calendar"'));
     checks++;
    }
    state=before;

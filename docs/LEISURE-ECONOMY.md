@@ -15,7 +15,7 @@ The user chose relaxed puzzles with limited moves, money plus spendable activity
 
 No timers, reflex requirements, drag gestures or timed card hiding. Distinct shapes supplement colors. Touch targets are at least 44px at the tested phone widths; keyboard buttons have visible focus. The only job IDs are `recycling` and `archive`. The retired runner, quiz and group-clearing rules are not supported.
 
-Completion pays **8,000–20,000 Ft and 3–6 programpont**, proportional to score, with a floor even for a poor shift. The player explicitly claims the displayed result. Claiming consumes exactly one daytime slot and 12 energy. The state reducer derives rewards from the saved board; the UI cannot submit an arbitrary payout. Claims outside a completed active puzzle do nothing.
+Completion pays **8,000–20,000 Ft and 3–6 programpont**, proportional to score, with a floor even for a poor shift. The completed browser job opens a result popup automatically after its final animation; the player explicitly collects the displayed reward there. The result reappears after save/resume until claimed. Claiming consumes exactly one daytime slot and 12 energy. The state reducer derives rewards from the saved board; the UI cannot submit an arbitrary payout. Claims outside a completed active puzzle do nothing.
 
 The first move starts the shift. Returning to the planner is available only before play; after starting, the player can return to the title or close the page and resume. Board, seed, moves, score, matched cards and a half-revealed pair persist on each interaction. Reopening does not reset the puzzle. Boards vary deterministically by week and game; starting/cancelling cannot reroll for better rewards. New Recycling boards start without matches and automatically regenerate when no legal swap remains. Cascades resolve atomically, with a 20-wave safety bound followed by a fresh playable board. Recycling has only match-three rules and a 1,200-point reward target.
 
@@ -45,7 +45,7 @@ An accepted thoughtful gift is recalled on arrival at an optional outing. Only a
 
 ## Giving and receiving
 
-The shelf has a recipient, item, personal note and delivery choice. Sending an owned item is separate from buying it. Remote delivery produces a visible portrait reply; a short in-person handoff produces a personal reaction. These small exchanges cost no slot, while longer outings do. The reply receives focus and is scrolled into view. The phone retains the full history, including the note, item, week and delivery mode. Marking replies read removes the new-reply notice without deleting history.
+The shelf has a recipient, item, personal note and delivery choice. Sending an owned item is separate from buying it. Remote delivery produces a visible portrait reply; a short in-person handoff produces a personal reaction. These small exchanges cost no slot, while longer outings do. The new reply opens in a focused popup; dismissing it marks it read. The phone’s Replies view retains the full history, including the note, item, week and delivery mode. Marking replies read removes the new-reply notice without deleting history.
 
 First-time suited gifts give +2 bond; a mismatched or repeated item gives no bond but has an explicit character-specific response. Repeating a gift later in the year is recognized. Expensive gifts do not buy a larger affection bonus. One gift per woman per week remains the limit. The six item reactions and three note styles preserve the established voices; an invitation note is not an automatic commitment or booked date.
 

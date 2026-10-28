@@ -1,5 +1,6 @@
 import {CALENDAR} from '../content/calendar.ts';
 import {Calendar} from './Calendar.tsx';
+import {Modal} from './Modal.tsx';
 import {AssetImage} from './AssetImage.tsx';
 import {calendarFor} from '../content/calendar.ts';
 import {Transition,readTransitionMode,type TransitionMode} from './Transition.tsx';
@@ -33,17 +34,24 @@ function LocalizedGame(){const t=useTranslation();return <Boundary t={t}><Game/>
 function Game(){
  const t=useTranslation();
  const {locale,setLocale}=useLocale();
- const g=useGame(),s=g.state,[muted,setMuted]=useState(false),[scale,setScale]=useState(1),[transitionMode,setTransitionMode]=useState<TransitionMode>(readTransitionMode);
+ const g=useGame(),s=g.state,[muted,setMuted]=useState(false),[scale,setScale]=useState(1),[transitionMode,setTransitionMode]=useState<TransitionMode>(readTransitionMode),[settings,setSettings]=useState(false);
  useEffect(()=>{g.boot();},[]);useEffect(()=>{if(g.mode==='play')setMood(moodFor(s));},[g.mode,s]);
  return <div className="game" style={{'--text-scale':scale} as CSSProperties}>
- <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}><span className="brand-seal"><Icon name="book"/></span><span className="brand-copy">Ligetvár<small>{t('ui.semester')}</small></span></a><div className="tools"><label>{t('ui.transition.label')} <select value={transitionMode} onChange={e=>{const value=e.target.value as TransitionMode;setTransitionMode(value);try{localStorage.setItem('ligetvar-transitions',value);}catch{}}}><option value="background">{t('ui.transition.background')}</option><option value="card">{t('ui.transition.card')}</option><option value="off">{t('ui.transition.off')}</option></select></label><label>{t('locale.label')} <select aria-label={t('locale.label')} value={locale} onChange={e=>setLocale(e.target.value as 'hu'|'en')}><option value="hu">Magyar</option><option value="en">English</option></select></label><label>{t('ui.fontSize')} <select aria-label={t('ui.fontSize')} value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}><Icon name="sound"/>{muted?t('ui.sound.on'):t('ui.sound.off')}</button></div></header>
+ <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}><span className="brand-seal"><Icon name="book"/></span><span className="brand-copy">Ligetvár<small>{t('ui.semester')}</small></span></a><button className="settings-toggle" aria-haspopup="dialog" onClick={()=>setSettings(true)}>{t('ui.settings')}</button></header>
+ {settings&&<Modal title={t('ui.settings')} onClose={()=>setSettings(false)}><div className="tools"><label>{t('ui.transition.label')} <select value={transitionMode} onChange={e=>{const value=e.target.value as TransitionMode;setTransitionMode(value);try{localStorage.setItem('ligetvar-transitions',value);}catch{}}}><option value="background">{t('ui.transition.background')}</option><option value="card">{t('ui.transition.card')}</option><option value="off">{t('ui.transition.off')}</option></select></label><label>{t('locale.label')} <select aria-label={t('locale.label')} value={locale} onChange={e=>setLocale(e.target.value as 'hu'|'en')}><option value="hu">Magyar</option><option value="en">English</option></select></label><label>{t('ui.fontSize')} <select aria-label={t('ui.fontSize')} value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}><Icon name="sound"/>{muted?t('ui.sound.on'):t('ui.sound.off')}</button></div>{locale==='en'&&<p className="muted">{t('locale.partial')}</p>}<p className="muted">{t('ui.artNotice')}</p></Modal>}
  {g.saveNotice&&<p className="notice" role="alert">{g.saveNotice==='write-failed'?t('save.writeFailed'):saveMessage(g.saveNotice,locale)}</p>}
- {locale==='en'&&<p className="notice" role="status">{t('locale.partial')}</p>}
- {g.mode==='title'?<Title/>:<Transition state={s} mode={transitionMode}><Calendar week={s.week}/><div className="status"><strong><Icon name="book"/>{t('ui.week.progress',{week:s.week,total:CALENDAR.weeks})}</strong><span>{s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary')}</span><span><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</span><span><Icon name="money"/>{formatFt(s.money,locale)}</span><span>{t('ui.points',{points:s.activityPoints})}</span></div>
+ {g.mode==='title'?<Title/>:<Transition state={s} mode={transitionMode}><PlayBar/>
  {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<RoomPlanner key={s.week+'-'+s.slot}/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<PuzzleGame/>}
- {s.phase==='planner'&&<GiftReplies unreadOnly/>}
- {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{presentText(s.lastNote,s.name,locale)}</p>}{s.phase!=='planner'&&<Journal/>}</Transition>}
- <footer>{t('ui.artNotice')}</footer></div>;
+ {s.phase==='planner'&&s.giftHistory.some(h=>!h.read)&&<Modal title={t('gifts.newReply')} onClose={g.readGifts}><GiftReplies unreadOnly/></Modal>}
+ {s.phase==='planner'&&s.lastNote&&<p className="notice" role="status">{presentText(s.lastNote,s.name,locale)}</p>}</Transition>}
+ </div>;
+}
+function PlayBar(){
+ const t=useTranslation(),{locale}=useLocale(),s=useGame(x=>x.state),[panel,setPanel]=useState<'status'|'journal'|null>(null),c=calendarFor(s.week);
+ const date=new Intl.DateTimeFormat(locale,{month:'short',day:'numeric',timeZone:'UTC'}).format(new Date(c.iso+'T12:00:00Z'));
+ const period=s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary');
+ return <><nav className="play-bar" aria-label={t('ui.status')}><button className="status-toggle" aria-label={t('ui.status')+' · '+date+' · '+period} onClick={()=>setPanel('status')} aria-haspopup="dialog"><time dateTime={c.iso}>{date}</time><span>{period}</span><span aria-hidden="true">⌄</span></button>{s.phase!=='planner'&&<button onClick={()=>setPanel('journal')} aria-haspopup="dialog">{t('hub.short.journal')}</button>}</nav>
+ {panel&&<Modal title={t(panel==='status'?'ui.status':'hub.journal.title')} onClose={()=>setPanel(null)}>{panel==='journal'?<Journal open/>:<><p>{t('ui.week.progress',{week:s.week,total:CALENDAR.weeks})} · {period}</p><div className="status-details"><p><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</p><p><Icon name="money"/>{formatFt(s.money,locale)}</p><p>{t('ui.points',{points:s.activityPoints})}</p></div><Calendar week={s.week}/></>}</Modal>}</>;
 }
 function Title(){
  const t=useTranslation();
@@ -51,7 +59,7 @@ function Title(){
  const audio=()=>{try{unlockAudio();}catch{/* Audio is optional. */}};
  return <main className="title panel" style={{backgroundImage:'linear-gradient(90deg,rgba(24,14,21,.96),rgba(24,14,21,.82) 55%,rgba(24,14,21,.22)),url("'+assetUrl('backgrounds/courtyard.jpg')+'")'}}><div className="title-copy"><div className="title-crest" aria-hidden="true"><Icon name="heart"/></div><p className="eyebrow">{t('ui.title.tagline')}</p><p className="muted" title={BUILD_ID??undefined}>Ligetvár {GAME_VERSION}</p><h1>{t('ui.title.heading')}</h1><p>{t('ui.title.intro')}</p>
  <label className="name">{t('ui.name')}<input maxLength={32} value={name} onChange={e=>setName(e.target.value)}/></label><div className="actions">{g.savePresent&&<button disabled={!g.hasSave} className="primary" onClick={()=>{audio();g.resume();}}><Icon name="book"/>{t('ui.resume')}</button>}<button onClick={()=>{audio();g.start(name);}}><Icon name="door"/>{t('ui.new')}</button></div>
- {g.confirmNewGame&&<section className="notice" role="alert"><p>{t('ui.new.confirm')}</p><button onClick={()=>{audio();g.start(name,true);}}>{t('ui.new.yes')}</button><button onClick={g.cancelNewGame}>{t('ui.cancel')}</button></section>}
+ {g.confirmNewGame&&<Modal title={t('ui.new')} onClose={g.cancelNewGame}><p>{t('ui.new.confirm')}</p><button onClick={()=>{audio();g.start(name,true);}}>{t('ui.new.yes')}</button><button onClick={g.cancelNewGame}>{t('ui.cancel')}</button></Modal>}
  <p className="muted">{t('ui.title.schedule')}</p></div></main>;
 }
 function Dialogue(){

@@ -1,3 +1,4 @@
+import {Modal} from './Modal.tsx';
 import {useTranslation,useLocale} from './Locale.tsx';
 import {useEffect,useRef,useState} from 'react';
 import {useGame} from '../store.ts';
@@ -33,10 +34,9 @@ const SYMBOLS=['⚿','✉','☾','♜','▤','⌘','✿','✎'];
  useEffect(()=>{title.current?.focus({preventScroll:true});title.current?.scrollIntoView({block:'start'});},[]);
  const started=p.moves>0||p.selected.length>0;
  return <main className="puzzle panel" aria-labelledby="puzzle-title">
-  <p className="eyebrow">{t('puzzle.shift')}</p>
   <h1 id="puzzle-title" ref={title} tabIndex={-1}>{memory?t('puzzle.archive'):t('puzzle.recycling')}</h1>
   <p>{memory?t('puzzle.archive.help'):t('puzzle.recycling.help')}</p>
-  <div className="puzzle-stats" aria-live="polite"><strong>{t('puzzle.moves',{count:MOVE_LIMIT[kind]-p.moves})}</strong><span>{memory?t('puzzle.pairs',{score:p.score}):t('puzzle.target',{score:displayScore})}</span><span>{t('puzzle.reward',{money:formatFt(reward.money,locale),points:reward.points})}</span></div>
+  <div className="puzzle-stats" aria-live="polite"><strong>{t('puzzle.moves',{count:MOVE_LIMIT[kind]-p.moves})}</strong><span>{memory?t('puzzle.pairs',{score:p.score}):t('puzzle.target',{score:displayScore})}</span></div>
 
   {!memory&&<div className="recycling-feedback" role="status" aria-live="polite">{frame?.phase==='clear'?frame.chain>1?t('puzzle.chain',{points:frame.points,chain:Math.min(frame.chain,3)}):t('puzzle.points',{points:frame.points}):frame?.phase==='shuffle'?t('puzzle.shuffle'):typeof feedback==='number'?t('puzzle.points',{points:feedback}):feedback==='invalid'?t('puzzle.swap.failed'):feedback==='hint'?t('puzzle.hint.feedback'):t('puzzle.collect')}</div>}
   <div aria-busy={busy} className={'puzzle-board '+(memory?'archive-board':'bottle-board')} role="group" aria-label={memory?t('puzzle.archive.board'):t('puzzle.recycling.board')}>
@@ -53,7 +53,7 @@ const SYMBOLS=['⚿','✉','☾','♜','▤','⌘','✿','✎'];
   <details className="puzzle-help"><summary>{t('puzzle.rules')}</summary>
   <p className="muted">{t('puzzle.reward.help')}</p>
   <p>{memory?t('puzzle.memory.rules'):t('puzzle.recycling.rules')}</p></details>
-  {done&&!busy?<section className="puzzle-result" aria-live="polite"><h2>{t('puzzle.done')}</h2><p>{t(memory?'puzzle.result.pairs':'puzzle.result.points',{score:p.score})} <strong>{t('puzzle.result.reward',{money:formatFt(reward.money,locale),points:reward.points})}</strong></p><p>{t('puzzle.spend')}</p><button className="primary" onClick={g.finishJob}>{t('puzzle.claim')}</button></section>:!started&&!busy?<button onClick={g.cancelJob}>{t('puzzle.cancel')}</button>:<p className="muted">{t('puzzle.inProgress')}</p>}
+  {done&&!busy?<Modal className="puzzle-result" title={t('puzzle.done')} onClose={g.finishJob} dismissible={false}><p>{t(memory?'puzzle.result.pairs':'puzzle.result.points',{score:p.score})} <strong>{t('puzzle.result.reward',{money:formatFt(reward.money,locale),points:reward.points})}</strong></p><button className="primary" onClick={g.finishJob}>{t('puzzle.claim')}</button></Modal>:!started&&!busy?<button onClick={g.cancelJob}>{t('puzzle.cancel')}</button>:null}
  </main>;
 }
 

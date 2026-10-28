@@ -7,6 +7,12 @@ import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
+  "ui.settings": "Settings",
+  "ui.status": "Status & calendar",
+  "hub.help": "Help & week plan",
+  "hub.phone.meetings": "Meetings",
+  "hub.phone.outings": "Outings",
+  "hub.phone.replies": "Replies",
   ...rebekaDateEn,
   "ui.transition.label": "Transitions",
   "ui.transition.background": "Backgrounds",

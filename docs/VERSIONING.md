@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.1`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.2`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `7`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -93,3 +93,8 @@ Schema 4/content 6 retained. Two optional spring/summer scenes add no saved fiel
 ## Rebeka first-date rewrite — 0.9.1
 
 Schema remains 4; content epoch becomes **7**. The assembled `rebeka_3` hand-holding branch removes cursor IDs `romance_closeness_hand_4–7`, and its journal/reactions now use locale-neutral message references. These are incompatible authored graph/persistence assumptions, not a wording-only release. Epoch-6 and earlier saves require a fresh game; no migration, storage-key change or default-language change. Stable scene, remaining choice/effect IDs, date window and slot cost are preserved. [Baseline and validation](design/PLAYTHROUGH-FINDINGS.md#rebeka-first-date-validation--28-october-2026).
+
+
+## Focused mobile interface — 0.9.2
+
+Schema 4/content 7 retained. Compact chrome, modal task menus, phone categories and automatic job-result presentation change no saved fields, scene IDs, scheduling, puzzle rules or reward semantics. Unclaimed finished boards reopen their result dialog and use the existing shared claim action exactly once. Current 0.9.1 saves remain compatible; no migration or restart is introduced.

@@ -1,5 +1,5 @@
 import {useTranslation,useLocale} from './Locale.tsx';
-import {useState,useRef,useEffect} from 'react';
+import {useState} from 'react';
 import {useGame} from '../store.ts';
 import {GIFTS,GIFT_NOTES,type GiftId,type GiftNote,type Delivery} from '../content/gifting.ts';
 import {GIRLS,type GirlId} from '../content/types.ts';
@@ -8,10 +8,8 @@ import {portraitFor,assetUrl} from '../content/assets.ts';
 export function GiftReplies({unreadOnly=false}:{unreadOnly?:boolean}){
  const t=useTranslation();
  const g=useGame(),all=g.state.giftHistory,history=unreadOnly?all.filter(h=>!h.read):all;
- const heading=useRef<HTMLHeadingElement>(null);
- useEffect(()=>{if(unreadOnly&&history.length){heading.current?.focus({preventScroll:true});heading.current?.scrollIntoView({block:'center'});}},[unreadOnly,history.length]);
  if(!history.length)return unreadOnly?null:<p className="muted">{t('gifts.empty')}</p>;
- return <section className="gift-replies" aria-label={t('gifts.replies')}><h3 ref={heading} tabIndex={-1}>{unreadOnly?t('gifts.newReply'):t('gifts.history')}</h3>{[...history].reverse().map(h=>{
+ return <section className="gift-replies" aria-label={t('gifts.replies')}>{!unreadOnly&&<h3>{t('gifts.history')}</h3>}{[...history].reverse().map(h=>{
   const portrait=portraitFor(h.girl,h.expression,h.week);
   return <article className="gift-reply" key={h.week+'-'+h.girl}>
    {portrait.file&&<img src={assetUrl(portrait.file)} alt={ROUTES[h.girl]}/>}

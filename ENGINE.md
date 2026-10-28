@@ -32,6 +32,8 @@ Paths beginning `content/` or `engine/` above are relative to `src/game/`. The g
 
 There are 16 scheduled shared events and 104 discretionary opportunities across 52 weeks. Ordinary weeks start at slot 1, skipping only the absent shared event, not either discretionary activity. `Schedule.storyWeeks` controls mandatory dates; omitting it preserves the generic every-week contract. See [the year campaign](docs/design/YEAR-CAMPAIGN.md). The saved slot selects the planning hub. Opening menus, browsing destinations or changing dialogue lines costs no time. Completing a scene/activity consumes its one slot. Movement inside a staged scene does not add a charge.
 
+`RoomPlanner.tsx` opens object actions in focused modal dialogs, with phone categories for meetings, outings and replies. Menus never append task panels below the room. `Modal.tsx` uses native dialog focus containment, background scroll locking and opener restoration; ordinary menus support Escape. The play bar exposes status/calendar details on demand; settings and the non-planner journal also use dialogs.
+
 `RoomPlanner.tsx` uses an uncropped room image with percentage hotspot coordinates. Outlines and action labels are always visible; no hidden-only hover clues. Missing background objects get labelled fallback icons. Keyboard focus remains visible, mobile targets are at least 44×44px, and hotspot regions must not overlap.
 
 | Object | Actions |
