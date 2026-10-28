@@ -1,6 +1,6 @@
 # Scene-by-scene rewrite outline
 
-> **Status:** First editorial draft, 28 October 2026; not implemented or a claim of blanket user approval. | **Purpose:** Translate the master plot into individual scene briefs for deliberate rewriting.
+> **Status:** First editorial draft, 28 October 2026; shared_1 pilot implemented; remaining briefs are not implemented or blanket approval. | **Purpose:** Translate the master plot into individual scene briefs for deliberate rewriting.
 
 ## Authority and boundaries
 Read [master plot](STORY-REVIEW.md), [character voices](CHARACTER-VOICES.md), [visual authority](CHARACTER-VISUALS.md), [workflow](NARRATIVE-WORKFLOW.md), [baseline findings](PLAYTHROUGH-FINDINGS.md) and [runtime inventory](../SCENE-INVENTORY.md). Existing IDs below identify rewrite targets, not unchanged runtime prerequisites. This draft covers all 68 inventory scene IDs.
@@ -8,6 +8,20 @@ Read [master plot](STORY-REVIEW.md), [character voices](CHARACTER-VOICES.md), [v
 Confirmed anchors: romance first; sixteen weeks; genuine mystical gymnastics; Soma peripheral until late identification; deliberate vampirism, fascination cannot compel affection; victims return exhausted with missing time; week-15 vampire death; week-16 institution then personal aftermath. Keep independent bonds, triad agreement and Virág's independent reporting/casual route. Player name always comes from saved chosen-name variable; use “player” here rather than baking a name into prose.
 
 Editorial proposals: identification in week 13, corroboration/plan in 14; earlier commitment windows; named favourite places for the three main women; clearly marked independent interludes. These elaborate existing recommendations, not new approved runtime rules. Do not add new magic rules, punitive authority consequences, different endings or cast relationships without discussing a material direction change.
+
+## Refined pilot specification: shared_1 — 28 October 2026
+
+User-authorized English-first pilot; supersedes only the draft shared_1 row's level of detail. English source: `locales/opening.en.ts`; Hungarian translation: `locales/opening.hu.ts`. Implementation keeps the assembled 28-node graph, semantic keys and both choice IDs.
+
+- **Purpose/window:** week 1's compulsory shared slot, no prior scene/evidence. Make the workshop a place the player wants to return to and establish three distinct sources of curiosity before the mystery begins.
+- **Cast/location:** player (`marton`, teacher/study director, 34), Rebeka (20), Boglárka (19), Gréta (21) in the classroom. Soma briefly arrives with storeroom keys after the exercise and leaves after agreeing to tomorrow's lamp check. No archive destination or suspicious witness reaction.
+- **Entry knowledge:** player already practises mystical gymnastics but is teaching it here for the first time. Gréta knows the booking error and faulty lamp; Rebeka knows the leaflet and wants photographic material; Boglárka studies local movement variants and did not write the leaflet. Soma knows the equipment task. Nobody knows about disappearances, a culprit or any vampire rule.
+- **Emotional beats/information order:** rainy arrival and player introduction → practical Gréta, challenging Rebeka, precise Boglárka introductions → cable/trip-report/crooked-circle banter → complete response to Rebeka and concrete grounding instruction → chosen demonstration style → shared attempt, distraction noticed and return → ordinary assistant interruption and lamp exchange → three different reasons to linger. Competence becomes playful openness, then warmth; no forced romance or new magical spectacle.
+- **Choices:** `demonstrate` invites distraction and then group practice; Rebeka teases the named player, Boglárka jokes about stillness, Gréta times. `observe` permits watching first, honest criticism and a later voluntary attempt; Gréta can remain by the chairs. Reactions describe the immediate setup, never events not yet reached. Both converge on the next round; no bond/effect/decision difference is added.
+- **Exit facts:** completion alone witnesses `grounding`, completes shared_1 in week 1 and spends exactly the shared slot. Grounding notices diverted attention, does not restore memories and grants no invulnerability. Everyone retains individual interests; no commitment, new clue or villain knowledge. Later grounding consumers and shared_2 prerequisites are unchanged. The existing week-2 suspicious Soma material remains a recorded later-scene issue.
+- **Name/localization:** first-person narration and `{playerName}` in arrival, teasing address and journal; stable `marton` actor/bond IDs. Both choices, reactions, journal/recap and grounding description are bilingual. Literal name interpolation never interprets replacement syntax, HTML or nested variables. Existing proper-name accents stay intact.
+- **Departure/callbacks:** no added cross-scene promise or decision. Photograph of the empty circle and request for the movement source leave room for existing first individual meetings; room booking and tomorrow's lamp check retain mundane college continuity.
+- **Review gate:** no major story/character departure needed. User literary acceptance remains open; visible magical workshop effects require a separate agreed mechanic and are intentionally unresolved.
 
 ## Shared-scene briefs
 All shared scenes occupy their fixed week's guaranteed slot. Cast lists describe intended focus; final authoring must explicitly resolve entrances/exits and every speaker. Knowledge listed is witnessed campaign information, never guessed from a skipped optional scene.

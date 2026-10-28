@@ -1,6 +1,6 @@
 # Narrative rewrite workflow
 
-> **Status:** User-approved workflow, 28 October 2026; scene planning and rewriting deferred. | **Purpose:** Connect the master plot, character guidance, scene specifications and repeated playthrough review.
+> **Status:** User-approved workflow, 28 October 2026; shared_1 pilot authorized and implemented; remaining rewrites deferred. | **Purpose:** Connect the master plot, character guidance, scene specifications and repeated playthrough review.
 
 ## User decision and immediate scope
 Record problems first. Do not patch dialogue as problems arise during the baseline playthrough. This supersedes the suggestion to rewrite each encountered scene immediately. The user subsequently authorized drafting: [SCENE-OUTLINE.md](SCENE-OUTLINE.md) now provides first briefs and reconciliation notes for all 68 scene IDs. Resolve marked open decisions and refine branch details before implementing narrative changes.

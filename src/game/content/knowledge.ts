@@ -1,5 +1,6 @@
+import {storedMessage} from './scene-localization.ts';
 export const knowledge:Record<string,string>={
- grounding:'Az önkéntes földelés segít észrevenni a figyelem eltérítését, de nem állítja helyre az emlékeket.',
+ grounding:storedMessage('scene.opening.knowledge'),
  returned_lilla:'Lilla kimerülten tért vissza egy hiányzó este után.',
  phrase:'„Maradt még egy hely neked.” Lilla kétszer hallotta; a beszélő még ismeretlen.',
  time_gap:'Lilla emlékei és a kártyaadatok között többórás, megmagyarázatlan rés van.',

@@ -30,7 +30,7 @@ export function expandOpening(original:Scene):Scene{
    ['greta',message('scene.opening.voluntaryParticipation')]
   ]);
   after(s,'line_7','soma_departure',[
-   ['soma',message('scene.opening.somaReport'),'displeased'],
+   ['soma',message('scene.opening.somaReport'),'neutral'],
    ['greta',message('scene.opening.faultyLamp')],
    ['soma',message('scene.opening.cellarRemark')],
    ['narrator',message('scene.opening.keys')]

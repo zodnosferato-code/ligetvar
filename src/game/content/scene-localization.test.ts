@@ -17,15 +17,15 @@ test('opening title, every line and both choices have complete catalog reference
  assert.equal(scene.lines.length,28);
  for(const line of scene.lines){
   assert.ok(line.textKey,line.id);used.add(line.textKey);
-  assert.equal(line.text,translate(line.textKey));
+  assert.equal(line.text,catalogs.hu[line.textKey]);
   const en=presentLine(line,'en');assert.notEqual(en.text,line.text,line.id);
   for(const choice of line.choices??[]){
    assert.ok(choice.textKey,choice.id);used.add(choice.textKey);
    assert.equal(choice.text,translate(choice.textKey));
-   assert.equal(en.choices!.find(c=>c.id===choice.id)!.text,translate(choice.textKey,{},'en'));
+   assert.equal(en.choices!.find(c=>c.id===choice.id)!.text,translate(choice.textKey,{playerName:'Reader'},'en'));
   }
  }
- assert.deepEqual([...used].sort(),Object.keys(openingHu).sort());
+ assert.deepEqual([...used].sort(),Object.keys(openingHu).filter(k=>!k.includes('.reaction.')&&!k.endsWith('.journal')&&!k.endsWith('.knowledge')).sort());
  for(const key of used)assert.ok(catalogs.en[key].trim());
 });
 
@@ -68,12 +68,12 @@ test('weeks 2–3 have complete dialogue, title and choice references',()=>{
   assert.notEqual(sceneTitle(scene,'en'),scene.title);
   for(const line of scene.lines){
    assert.ok(line.textKey,id+':'+line.id);used.add(line.textKey);
-   assert.equal(line.text,translate(line.textKey));
+   assert.equal(line.text,catalogs.hu[line.textKey]);
    assert.notEqual(presentLine(line,'en').text,line.text);
    for(const choice of line.choices??[]){
     assert.ok(choice.textKey);used.add(choice.textKey);
     assert.equal(choice.text,translate(choice.textKey));
-    assert.notEqual(translate(choice.textKey,{},'en'),choice.text);
+    assert.notEqual(translate(choice.textKey,{playerName:'Reader'},'en'),choice.text);
    }
   }
  }
@@ -110,3 +110,40 @@ for(const [id,branches] of [['shared_2',['ask','space']],['shared_3',['listen','
   }
   assert.ok(guard>0);assert.ok(sawChoice);assert.equal(state.completed[id],target);
  });
+
+for(const branch of ['demonstrate','observe'])for(const locale of ['en','hu'] as const)
+ test(`pilot ${branch} ${locale}: literal chosen name, references, journal and resume`,()=>{
+  const name='Álex $& {playerName} <b>';
+  let state=openScene(createInitial(name),'shared_1',SCENES),guard=60;
+  const rendered:string[]=[];
+  while(state.phase==='scene'&&guard--){
+   const before=encodeSave(state),view=gameView(state,locale);
+   rendered.push(view.scene!.text,view.lastNote,...view.actions.map(a=>a.label));
+   assert.ok(!view.scene!.text.includes('Márton'));
+   if(view.scene!.speakerId==='marton')assert.equal(view.scene!.speaker,name);
+   assert.equal(encodeSave(state),before);
+   const restored=decodeSave(before,SCENES);assert.equal(restored.status,'ok');
+   if(restored.status!=='ok')throw Error('resume');
+   assert.deepEqual(gameView(restored.state,locale),view);
+   assert.deepEqual(gameView(restored.state,locale==='en'?'hu':'en').actions.map(a=>a.action),view.actions.map(a=>a.action));
+   state=applyChoice(restored.state,view.actions.some(a=>a.action.type==='choice'&&a.action.id===branch)?branch:'continue',SCENES);
+  }
+  assert.ok(guard>0);assert.ok(rendered[0].includes(name));
+  if(branch==='demonstrate')assert.ok(rendered.some(text=>text.includes('offer, '+name)||text.includes('ajánlat, '+name)));
+  assert.equal(state.journal[0].text,'@message:scene.opening.journal');
+  const view=gameView(state,locale);
+  assert.ok(view.journal[0].text.includes(name));assert.ok(!view.journal[0].text.includes('@message:'));
+  assert.ok(!view.evidence[0].text.includes('@message:'));
+  assert.deepEqual(state.bonds,createInitial(name).bonds);assert.deepEqual(state.decisions,{});
+  assert.deepEqual(Object.keys(state.evidence),['grounding']);
+  const old=JSON.parse(encodeSave(state));old.contentCompatibilityVersion=3;
+  assert.equal(decodeSave(JSON.stringify(old),SCENES).status,'unsupported');
+  const summary={...state,slot:3 as const,phase:'summary' as const};
+  assert.equal(gameView(summary,locale).recap![0].text,view.journal[0].text);
+ });
+
+test('unknown persisted message references are rejected before rendering',()=>{
+ const state=createInitial('Reader');
+ state.lastNote='@message:scene.opening.unknown';
+ assert.equal(decodeSave(encodeSave(state),SCENES).status,'invalid');
+});

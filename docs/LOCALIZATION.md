@@ -204,3 +204,15 @@ Save epochs are unchanged because only presentation references were added.
 
 Next: first individual meetings in scene-sized batches. Full English gameplay,
 persisted-text extraction and route proofreading remain outstanding.
+
+## English-first shared_1 pilot — 28 October 2026
+
+This supersedes the first-conversation checkpoint **for shared_1 only**. The English opening catalog is the canonical source and key authority for this pilot; the Hungarian opening catalog is typed against it and translated afterward. The global catalog/default migration remains partial: runtime still defaults to Hungarian and explicit preferences are preserved. No later scene was rewritten.
+
+The assembled opening has 28 lines, two choices and 35 semantic keys (the original 31 retained, plus two reactions, journal and grounding knowledge). Both source and expansion references resolve the revised text; expansion nodes contain no stale overriding prose. Soma's ordinary assistant visit replaces the grievance, grant refusal, cellar aphorism and archive exit. No new clues or magical rules were added.
+
+`playerText(template, name)` uses a replacement callback for literal, single-pass `{playerName}` interpolation. `currentLine` supplies saved `state.name`; author inspection may retain the template variable. Browser and CLI headings retain stable `marton` IDs and display the chosen name. Shared journal bond labels now use that name too. This does not repair later authored hardcoded names.
+
+`storedMessage(key)` serializes a stable `@message:<semantic-key>` reference in the existing string field. The pilot's choice reactions (`lastNote`) and journal (`journal[].text`) store references rather than translated prose. `presentText` resolves them using the active locale and saved player name; browser reactions, journal, recap and CLI views use it. Grounding's description uses the same reference resolver without adding persisted knowledge prose. Locale stays outside GameState, and switching never writes or advances a save. Other scenes still store their existing prose; this is an incremental persisted-text conversion, not a locale-neutral whole game.
+
+Release 0.6.1 keeps schema 4 (same envelope/state shape) and increases content epoch to 4 because stored-text semantics changed. Epoch-3 saves are rejected with the existing fresh-semester explanation; no migration. See [versioning](VERSIONING.md) and [pilot evidence](design/PLAYTHROUGH-FINDINGS.md#shared_1-pilot-validation--28-october-2026).

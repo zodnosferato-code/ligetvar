@@ -25,7 +25,7 @@ export const currentLine=(s:GameState,r:Registry,locale:Locale=DEFAULT_LOCALE)=>
  const line=engine.currentLine(s,r) as Line|undefined,x=s.scene?r[s.scene.id]:undefined,girl=x?outingGirl(x):undefined;
  const gift=girl?s.giftHistory.filter(h=>h.girl===girl&&h.bonus>0).at(-1):undefined;
  if(!line)return line;
- const visible=presentLine(line,locale);
+ const visible=presentLine(line,locale,s.name);
  if(!x||line.id!==x.entry||!gift)return visible;
  const callback=girl==='rebeka'?'Rebeka előveszi a tőled kapott ajándékot. „Látod? Nem a szekrény alján végzett.”':girl==='boglarka'?'Boglárka megemlíti a tőled kapott ajándékot. „Használom. Csak szerettem volna, hogy tudd.”':'Gréta a táskájára mutat. „Amit hoztál, azt eltettem a mai napra. Jó választás volt.”';
  return {...visible,text:callback+' '+visible.text};

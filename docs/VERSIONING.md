@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.6.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.6.1`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `3`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `4`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -62,3 +62,7 @@ Schema 4 and content epoch 2 remain unchanged. Eight new optional scenes, one ac
 Schema stays 4; content epoch becomes 3 because reporter scene graphs and final-decision IDs changed. Saves from content epochs 1/2, including 0.2.0–0.5.0, are incompatible with the current game and require a new semester. No migration or silent restart. Read current values from `package.json` and `src/game/release.ts`; older release sections above explain their own historical decisions.
 
 Art availability is tracked in [ART-REGISTER.md](ART-REGISTER.md), not in this save contract.
+
+## 0.6.1 — English-first opening pilot
+
+Schema remains 4: saved fields still have the same shapes. Content epoch becomes 4: shared_1 reactions and journal now store stable message-reference strings, resolved in the current locale with the chosen player name. This intentionally rejects epoch-3 saves rather than mixing historical persisted prose with the rewritten opening. No migration, key change or default-language change. Scene/line/choice IDs, evidence/effects, information order and semester scheduling are retained. Later prose remains outside this pilot.

@@ -1,4 +1,4 @@
-import {sceneTitle} from '../content/scene-localization.ts';
+import {presentText,sceneTitle} from '../content/scene-localization.ts';
 import {LocaleProvider,useLocale} from './Locale.tsx';
 import type {Translator} from '../content/localization.ts';
 import {saveMessage} from '../content/saves.ts';
@@ -37,7 +37,7 @@ function Game(){
  {g.mode==='title'?<Title/>:<><div className="status"><strong><Icon name="book"/>{t('ui.week.progress',{week:s.week})}</strong><span>{s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary')}</span><span><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</span><span><Icon name="money"/>{formatFt(s.money,locale)}</span><span>{t('ui.points',{points:s.activityPoints})}</span></div>
  {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<RoomPlanner key={s.week+'-'+s.slot}/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<PuzzleGame/>}
  {s.phase==='planner'&&<GiftReplies unreadOnly/>}
- {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{s.lastNote}</p>}{s.phase!=='planner'&&<Journal/>}</>}
+ {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{presentText(s.lastNote,s.name,locale)}</p>}{s.phase!=='planner'&&<Journal/>}</>}
  <footer>{t('ui.artNotice')}</footer></div>;
 }
 function Title(){
@@ -59,11 +59,11 @@ function Dialogue(){
  <div className="scene-meta"><span>{t(`location.${staging.location}`)} · {lighting==='day'?t('ui.light.day'):lighting==='evening'?t('ui.light.evening'):t('ui.light.night')}</span><span>{staging.label||sceneTitle(x,locale)}</span></div><div className="scene-view">{clip?.status==='reviewed'?<Moment key={x.id+'/'+l.id} clip={clip}/>:showPortrait&&<figure className={'portrait actor-'+l.speaker}>{portrait.file?<div className="portrait-frame"><img src={assetUrl(portrait.file)} alt={ACTOR_NAME[l.speaker]}/></div>:<div className="portrait-placeholder" aria-label={portrait.note}><span aria-hidden="true">{SHORT[l.speaker][0]}</span><p>{t('ui.portrait.pending')}</p></div>}</figure>}</div>{!bg.file&&<p className="art-label">{bg.note}</p>}
  <div className="dialogue-layout">
  <section className="dialogue-panel"><div className="dialogue-heading">{!narration&&<p className="eyebrow">{staging.participants.filter(p=>p!=='marton'&&p!=='narrator').map(p=>SHORT[p]).join(' · ')}</p>}<h1 ref={heading} tabIndex={-1}>{narration?sceneTitle(x,locale):l.speaker==='marton'?s.name:ACTOR_NAME[l.speaker]}</h1></div>
- <div className="dialogue-copy" ref={copy} role="region" aria-label={t('ui.scene.text')} tabIndex={0}>{s.lastNote&&<p className="reaction" role="status">{s.lastNote}</p>}<p className="spoken">{l.text}</p></div><small className="reading-hint" aria-hidden={!hasMoreText}>{hasMoreText?t('ui.scene.scroll'):' '}</small><div className="choices">{l.choices?.length?l.choices.map(c=><button key={c.id} onClick={()=>g.pick(c.id)}>{c.text}</button>):<button className="primary" onClick={()=>g.pick('continue')}><Icon name={l.next?'book':'door'}/>{l.next?t('ui.continue'):t('ui.scene.finish')}</button>}</div></section></div></main>;
+ <div className="dialogue-copy" ref={copy} role="region" aria-label={t('ui.scene.text')} tabIndex={0}>{s.lastNote&&<p className="reaction" role="status">{presentText(s.lastNote,s.name,locale)}</p>}<p className="spoken">{l.text}</p></div><small className="reading-hint" aria-hidden={!hasMoreText}>{hasMoreText?t('ui.scene.scroll'):' '}</small><div className="choices">{l.choices?.length?l.choices.map(c=><button key={c.id} onClick={()=>g.pick(c.id)}>{c.text}</button>):<button className="primary" onClick={()=>g.pick('continue')}><Icon name={l.next?'book':'door'}/>{l.next?t('ui.continue'):t('ui.scene.finish')}</button>}</div></section></div></main>;
 }
 function Summary(){
- const t=useTranslation();
- const g=useGame(),s=g.state;return <main className="panel"><p className="eyebrow">{t('ui.summary.witnessed')}</p><h1>{t('ui.summary.heading',{week:s.week})}</h1>{s.journal.filter(j=>j.week===s.week).map(j=><p key={j.scene}>{j.text}</p>)}{s.week===14&&<p className="notice">{t('ui.summary.deadline')}</p>}<button className="primary" onClick={g.advance}>{s.week===16?t('ui.end'):t('ui.week.start',{week:s.week+1})}</button></main>;
+ const t=useTranslation();const {locale}=useLocale();
+ const g=useGame(),s=g.state;return <main className="panel"><p className="eyebrow">{t('ui.summary.witnessed')}</p><h1>{t('ui.summary.heading',{week:s.week})}</h1>{s.journal.filter(j=>j.week===s.week).map(j=><p key={j.scene}>{presentText(j.text,s.name,locale)}</p>)}{s.week===14&&<p className="notice">{t('ui.summary.deadline')}</p>}<button className="primary" onClick={g.advance}>{s.week===16?t('ui.end'):t('ui.week.start',{week:s.week+1})}</button></main>;
 }
 function Ending(){
  const t=useTranslation();

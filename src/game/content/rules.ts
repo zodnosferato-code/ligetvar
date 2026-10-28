@@ -1,3 +1,4 @@
+import {validStoredText} from './scene-localization.ts';
 /** Ligetvár's campaign rules. The engine never imports this module. */
 import {RELEASE} from '../release.ts';
 import type {RuntimeRules} from '../engine/types.ts';
@@ -36,6 +37,7 @@ export const RULES:RuntimeRules<GameState>={
  canFinish:s=>!!s.confrontation&&!!s.institution,
  directionChange:(s,direction)=>!Object.hasOwn(ROUTES,direction)||!canChooseDirection(s)?{allowed:false}:isCommitted(s)?{allowed:false,note:'A vállalt kapcsolati irányt a tervező nem írhatja át újabb személyes beszélgetés nélkül.'}:{allowed:true,note:'Szándékot jelöltél, nem döntöttél más helyett. A vállalás külön beszélgetést igényel.'},
  validateState:(s,r)=>{
+  if(!validStoredText(s.lastNote)||s.journal.some(j=>!validStoredText(j.text)))return false;
   if(s.phase==='minigame'?s.slot!==1||!validPuzzle(s.puzzle)||s.puzzle.kind!==s.minigame:s.puzzle!==null)return false;
   if(!validGiftHistory(s.giftHistory,s.week))return false;
   if(!Object.hasOwn(ROUTES,s.direction)||!['public','limited','private'].includes(s.disclosure)||!['supported','exhausting',null].includes(s.confrontation)||!['acknowledged','incomplete','suppressed',null].includes(s.institution)||!s.giftsWeek.every(g=>GIRLS.includes(g as GirlId)))return false;

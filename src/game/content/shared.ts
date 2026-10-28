@@ -1,4 +1,4 @@
-import {message} from './scene-localization.ts';
+import {storedMessage,message} from './scene-localization.ts';
 import type {Scene} from './types.ts';
 import {say,option,shared} from './authoring.ts';
 export const spine:Scene[]=[
@@ -8,13 +8,13 @@ export const spine:Scene[]=[
   say('rebeka',message('scene.opening.rebekaIntroduction'),'amused'),
   say('boglarka',message('scene.opening.boglarkaIntroduction')),
   say('marton',message('scene.opening.exerciseInstructions'),'neutral',[
-   option('demonstrate',message('scene.opening.choice.demonstrate'),'Gréta elteszi a jelenléti ívet. Rebeka leengedi a gépet; Boglárka elindítja a stoppert.'),
-   option('observe',message('scene.opening.choice.observe'),'Boglárka előbb figyel, aztán maga áll be a körbe. Senkit nem kell rábeszélni.')]),
+   option('demonstrate',message('scene.opening.choice.demonstrate'),storedMessage('scene.opening.reaction.demonstrate')),
+   option('observe',message('scene.opening.choice.observe'),storedMessage('scene.opening.reaction.observe'))]),
   say('narrator',message('scene.opening.exerciseResult')),
-  say('soma',message('scene.opening.somaIntroduction'),'displeased'),
+  say('soma',message('scene.opening.somaIntroduction'),'neutral'),
   say('marton',message('scene.opening.martonReply')),
   say('narrator',message('scene.opening.departure'))
- ],['grounding'],'Megismertem a három hallgatót és Somát. Az önkéntes földelőgyakorlat segít észrevenni a figyelem elkalandozását.'),
+ ],['grounding'],storedMessage('scene.opening.journal')),
  shared(2,message('scene.missing.title'),'department',['marton','soma','greta','rebeka','boglarka','denes'],[
   say('greta',message('scene.missing.inventory')),
   say('soma',message('scene.missing.somaSuccess'),'amused'),
