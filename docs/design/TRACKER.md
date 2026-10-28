@@ -130,3 +130,9 @@ STORY/L4–L6 **Partial** overall; broader S1–S5 **Planned**. Added `_1`'s pri
 ### Boglárka date and aftermath — 0.9.6, 28 October 2026
 
 STORY/L4–L6 remain **Partial**, broader S1–S5 **Planned**. `boglarka_3`/`boglarka_6` now have English-first/Hungarian writing, music/disagreement branches, quiet initiative, submission rather than assumed publication, earned future/coffee callbacks, natural departures and separately chosen touch/fade-to-black intimacy. MR-01/MR-02 addressed for these scenes only. Actual weeks28–50/52 and both periods reviewed; no invented off-screen shared dates or first-post-danger claim. [Brief](SCENE-OUTLINE.md#refined-boglárka-date-and-aftermath--28-october-2026), [baseline and fifteen-year/32-restart validation](PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026), [source](../../src/game/content/boglarka-personal.ts). Exhaustive 73/15 terminal branches, 191 tests, typecheck/build pass. Schema4/content11 intentionally requires a fresh year. **Next:** Boglárka `_4`/`_5` conflict and commitment continuity, then `_1`/`_2`; Gréta/Virág/triad, clue migration and whole-game English remain unfinished. No new artwork, browser or human literary acceptance. Check this commit's own Tests/Pages runs after publication.
+
+## Spatial continuity — 28 October 2026
+
+| Item | Status | Evidence | Remaining gate |
+| --- | --- | --- | --- |
+| GEO | Partial | User-selected 15–20 minute suite/lake walk, multi-building campus and deep forest/distant village; [spatial authority](CASTLE-GEOGRAPHY.md), nine existing location assignments, estate ecology and tested authoring route calculator in `content/geography.ts`. Validation: 194 tests (163 engine/content + 31 CLI), typecheck, production build and diff whitespace check passed. | Full assembled-scene bilingual travel pass, geographic map presentation, user refinements and later asset regeneration; existing art is not certified spatially consistent. |

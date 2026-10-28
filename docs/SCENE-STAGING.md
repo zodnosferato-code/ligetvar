@@ -48,3 +48,7 @@ The user-approved year supersedes earlier fixed sixteen-week dates. Existing sce
 ## Boglárka continuation — 0.9.6
 
 Her first date retains courtyard→library→courtyard movement. The book is her own and stays in her bag; an earlier kiss stays brief and a slow branch never gains a later kiss implicitly. Her final meeting starts apart in the courtyard after institutional resolution. Continuing precedes an optional invitation to the player's existing suite; going inside, kissing and fade-to-black intimacy each have their own alternatives. The suite is still the player's suite at departure, including his solo return indoors. No new location artwork or activity period is introduced. [Validation](design/PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026).
+
+## Spatial authority — 28 October 2026
+
+Use [castle geography](design/CASTLE-GEOGRAPHY.md) for floors, routes, sightlines and walking times. Stage changes do not narrate elapsed travel. Check `walkingRoute()` in `content/geography.ts` when writing transitions; the suite/lake walk is 17 minutes in normal conditions. Weekly slot costs remain unchanged. Existing scene prose still needs the travel-continuity pass recorded in the tracker.
