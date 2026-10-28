@@ -45,3 +45,7 @@ Checked the recursive Git tree and nonzero blob sizes, all literal portrait/back
 ## Recycling collectible art — 27 October 2026
 
 One generated transparent 2×2 atlas contains four runtime collectible illustrations: green glass bottle, blue plastic bottle, copper-colored drink can and purple glass bottle. Runtime export: `assets/minigames/recycling/collectibles.webp` (512×512, 45,614 bytes); full-resolution WebP source, prompt and provenance: `assets/generated/recycling/`. Selected in `src/game/content/assets.ts` and bundled by Vite. Assistant visually inspected source/export and confirmed alpha; user style acceptance and browser/mobile playback review remain open. See [production and validation](RECYCLING-PRESENTATION.md).
+
+## Spatial concept batch — 28 October 2026
+
+[Sixteen drawn first-person location concepts and two measured map sheets](../assets/generated/geography-concepts-2026-10-28/README.md), generated with built-in ChatGPT image generation and independently prompted from the spatial brief. The user rejected realistic treatment; those drafts are superseded and not included in the selected repository batch. Maps are code-native geometry illustrations, not imagegen outputs. [Manifest](../assets/generated/geography-concepts-2026-10-28/manifest.json) records source/export hashes, dimensions, exact prompts and honest review/approval states. Selected WebP candidates and SVG/PNG map exports are separate from current runtime backgrounds. Future architectural consistency, season variants, hotspot/mobile review and user approval remain open.

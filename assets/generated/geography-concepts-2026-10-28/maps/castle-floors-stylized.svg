@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1750" viewBox="0 0 1900 1750">
+<rect width="1900" height="1750" fill="#f2e7cc"/>
+<rect x="18" y="18" width="1864" height="1714" rx="10" fill="none" stroke="#76644b" stroke-width="3"/>
+<style>text{font-family:serif;fill:#3e4438}.title{font-size:40px;font-weight:bold}.sub{font-size:20px}.label{font-size:20px;paint-order:stroke;stroke:#f2e7cc;stroke-width:5;stroke-linejoin:round}.small{font-size:17px}</style>
+<text x="50" y="70" class="title">Ligetvár · Castle and cellar locations</text>
+<text x="50" y="105" class="sub">Separate north-up floor layers · Identical scale in every panel · Unassigned space remains unassigned</text>
+<rect x="50" y="160" width="850" height="680" rx="8" fill="#e9ddc0" stroke="#b5a487"/>
+<text x="70" y="195" class="sub">Ground floor · 220 m</text>
+<polygon points="131.00,550.00 235.00,550.00 235.00,342.00 131.00,342.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="313.00,550.00 417.00,550.00 417.00,342.00 313.00,342.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="131.00,342.00 417.00,342.00 417.00,251.00 131.00,251.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="235.00,550.00 313.00,550.00 313.00,485.00 235.00,485.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="391.00,550.00 427.40,550.00 427.40,513.60 391.00,513.60" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="417.00,602.00 508.00,602.00 508.00,524.00 417.00,524.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="586.00,784.00 690.00,784.00 690.00,680.00 586.00,680.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="235.00,485.00 313.00,485.00 313.00,342.00 235.00,342.00" fill="#b8be91" stroke="#6e6651" stroke-width="2"/>
+<polygon points="202.50,654.00 345.50,654.00 345.50,550.00 202.50,550.00" fill="#dac6a4" stroke="#6e6651" stroke-width="2"/>
+<polygon points="242.80,544.80 305.20,544.80 305.20,492.80 242.80,492.80" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="274.0" cy="511.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="274.0" y="517.0" text-anchor="middle" class="small">1</text>
+<circle cx="274.0" cy="550.0" r="4" fill="#376960"/>
+<polygon points="341.60,511.00 414.40,511.00 414.40,381.00 341.60,381.00" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="378.0" cy="459.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="378.0" y="465.0" text-anchor="middle" class="small">3</text>
+<circle cx="341.6" cy="459.0" r="4" fill="#376960"/>
+<polygon points="326.00,339.40 404.00,339.40 404.00,277.00 326.00,277.00" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="365.0" cy="316.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="365.0" y="322.0" text-anchor="middle" class="small">2</text>
+<circle cx="326.0" cy="316.0" r="4" fill="#376960"/>
+<polygon points="214.20,537.00 232.40,537.00 232.40,500.60 214.20,500.60" fill="#e1d7bd" stroke="#897459" stroke-width="1"/>
+<polyline points="214.20,531.80 232.40,531.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,526.60 232.40,526.60" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,521.40 232.40,521.40" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,516.20 232.40,516.20" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,511.00 232.40,511.00" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,505.80 232.40,505.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polygon points="214.20,381.00 232.40,381.00 232.40,344.60 214.20,344.60" fill="#e1d7bd" stroke="#897459" stroke-width="1"/>
+<polyline points="214.20,375.80 232.40,375.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,370.60 232.40,370.60" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,365.40 232.40,365.40" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,360.20 232.40,360.20" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,355.00 232.40,355.00" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,349.80 232.40,349.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<text x="70" y="790" class="small">N ↑</text>
+<path d="M160 785h52m-52-4v8m52-8v8" stroke="#4a5441" stroke-width="2"/>
+<text x="225" y="790" class="small">20 m</text>
+<text x="70" y="820" class="small">Dots: specified doors · Shading: assigned scene envelopes</text>
+<rect x="1000" y="160" width="850" height="680" rx="8" fill="#e9ddc0" stroke="#b5a487"/>
+<text x="1020" y="195" class="sub">First floor · 225 m</text>
+<polygon points="1081.00,550.00 1185.00,550.00 1185.00,342.00 1081.00,342.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1263.00,550.00 1367.00,550.00 1367.00,342.00 1263.00,342.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1081.00,342.00 1367.00,342.00 1367.00,251.00 1081.00,251.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1341.00,550.00 1377.40,550.00 1377.40,513.60 1341.00,513.60" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1536.00,784.00 1640.00,784.00 1640.00,680.00 1536.00,680.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1185.00,485.00 1263.00,485.00 1263.00,342.00 1185.00,342.00" fill="#b8be91" stroke="#6e6651" stroke-width="2"/>
+<polygon points="1291.60,511.00 1364.40,511.00 1364.40,381.00 1291.60,381.00" fill="#ebe8da" stroke="#948a73" stroke-width="1"/>
+<text x="1302.0" y="433.0" class="small">VOID</text>
+<polygon points="1127.80,500.60 1164.20,500.60 1164.20,469.40 1127.80,469.40" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="1146.0" cy="485.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="1146.0" y="491.0" text-anchor="middle" class="small">4</text>
+<circle cx="1164.2" cy="485.0" r="4" fill="#376960"/>
+<polygon points="1164.20,537.00 1182.40,537.00 1182.40,500.60 1164.20,500.60" fill="#e1d7bd" stroke="#897459" stroke-width="1"/>
+<polyline points="1164.20,531.80 1182.40,531.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,526.60 1182.40,526.60" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,521.40 1182.40,521.40" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,516.20 1182.40,516.20" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,511.00 1182.40,511.00" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,505.80 1182.40,505.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polygon points="1164.20,381.00 1182.40,381.00 1182.40,344.60 1164.20,344.60" fill="#e1d7bd" stroke="#897459" stroke-width="1"/>
+<polyline points="1164.20,375.80 1182.40,375.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,370.60 1182.40,370.60" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,365.40 1182.40,365.40" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,360.20 1182.40,360.20" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,355.00 1182.40,355.00" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="1164.20,349.80 1182.40,349.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<text x="1020" y="790" class="small">N ↑</text>
+<path d="M1110 785h52m-52-4v8m52-8v8" stroke="#4a5441" stroke-width="2"/>
+<text x="1175" y="790" class="small">20 m</text>
+<text x="1020" y="820" class="small">Dots: specified doors · Shading: assigned scene envelopes</text>
+<rect x="50" y="900" width="850" height="680" rx="8" fill="#e9ddc0" stroke="#b5a487"/>
+<text x="70" y="935" class="sub">Second floor · 230 m</text>
+<polygon points="131.00,1290.00 235.00,1290.00 235.00,1082.00 131.00,1082.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="313.00,1290.00 417.00,1290.00 417.00,1082.00 313.00,1082.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="131.00,1082.00 417.00,1082.00 417.00,991.00 131.00,991.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="391.00,1290.00 427.40,1290.00 427.40,1253.60 391.00,1253.60" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="235.00,1225.00 313.00,1225.00 313.00,1082.00 235.00,1082.00" fill="#b8be91" stroke="#6e6651" stroke-width="2"/>
+<polygon points="141.40,1186.00 224.60,1186.00 224.60,1128.80 141.40,1128.80" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="183.0" cy="1160.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="183.0" y="1166.0" text-anchor="middle" class="small">5</text>
+<circle cx="224.60000000000002" cy="1160.0" r="4" fill="#376960"/>
+<polygon points="214.20,1277.00 232.40,1277.00 232.40,1240.60 214.20,1240.60" fill="#e1d7bd" stroke="#897459" stroke-width="1"/>
+<polyline points="214.20,1271.80 232.40,1271.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1266.60 232.40,1266.60" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1261.40 232.40,1261.40" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1256.20 232.40,1256.20" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1251.00 232.40,1251.00" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1245.80 232.40,1245.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polygon points="214.20,1121.00 232.40,1121.00 232.40,1084.60 214.20,1084.60" fill="#e1d7bd" stroke="#897459" stroke-width="1"/>
+<polyline points="214.20,1115.80 232.40,1115.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1110.60 232.40,1110.60" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1105.40 232.40,1105.40" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1100.20 232.40,1100.20" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1095.00 232.40,1095.00" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<polyline points="214.20,1089.80 232.40,1089.80" fill="none" stroke="#897459" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray=""/>
+<text x="70" y="1530" class="small">N ↑</text>
+<path d="M160 1525h52m-52-4v8m52-8v8" stroke="#4a5441" stroke-width="2"/>
+<text x="225" y="1530" class="small">20 m</text>
+<text x="70" y="1560" class="small">Dots: specified doors · Shading: assigned scene envelopes</text>
+<rect x="1000" y="900" width="850" height="680" rx="8" fill="#e9ddc0" stroke="#b5a487"/>
+<text x="1020" y="935" class="sub">Cellars · local floor heights</text>
+<polygon points="1367.00,1342.00 1458.00,1342.00 1458.00,1264.00 1367.00,1264.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1536.00,1524.00 1640.00,1524.00 1640.00,1420.00 1536.00,1420.00" fill="#c9bea2" stroke="#73634e" stroke-width="2"/>
+<polygon points="1549.00,1511.00 1627.00,1511.00 1627.00,1433.00 1549.00,1433.00" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="1588.0" cy="1472.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="1588.0" y="1478.0" text-anchor="middle" class="small">7</text>
+<circle cx="1549.0" cy="1472.0" r="4" fill="#376960"/>
+<polygon points="1393.00,1329.00 1445.00,1329.00 1445.00,1277.00 1393.00,1277.00" fill="#cba77b" stroke="#614b39" stroke-width="2"/>
+<circle cx="1419.0" cy="1303.0" r="15" fill="#f5e9cf" stroke="#735a42"/>
+<text x="1419.0" y="1309.0" text-anchor="middle" class="small">6</text>
+<circle cx="1445.0" cy="1303.0" r="4" fill="#376960"/>
+<text x="1020" y="1530" class="small">N ↑</text>
+<path d="M1110 1525h52m-52-4v8m52-8v8" stroke="#4a5441" stroke-width="2"/>
+<text x="1175" y="1530" class="small">20 m</text>
+<text x="1020" y="1560" class="small">Dots: specified doors · Shading: assigned scene envelopes</text>
+<text x="55" y="1635" class="small">1 Entrance gallery</text>
+<text x="510" y="1635" class="small">2 Classroom</text>
+<text x="965" y="1635" class="small">3 Library</text>
+<text x="1420" y="1635" class="small">4 Department office</text>
+<text x="55" y="1671" class="small">5 Márton’s suite</text>
+<text x="510" y="1671" class="small">6 Service chamber · floor 216 m</text>
+<text x="965" y="1671" class="small">7 Holdkör · floor 211 m</text>
+<text x="55" y="1720" class="small">Location map, not a construction drawing. Circulation and unassigned rooms remain subject to detailed design.</text>
+</svg>
