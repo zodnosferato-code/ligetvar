@@ -15,6 +15,27 @@ Start with [docs/design/README.md](docs/design/README.md), the current design au
 - Consult the [legacy foundation review](docs/design/FOUNDATION-REVIEW.md) before reusing an old idea. Superseded expansion drafts are not active production instructions; recovered ideas remain proposed unless approved.
 - Keep new design documentation in English and linked through the [design index](docs/design/README.md). Legacy design/narrative files and production logs do not override current guidance.
 
+## Archives and refactor workflow
+
+Read this section before moving files or refactoring code/content.
+
+| Material | Location | Authority |
+| --- | --- | --- |
+| Deprecated dialogue trees and localization JSON | [docs/archive/legacy-narrative/](docs/archive/legacy-narrative/README.md) | Historical only; never load into the active runtime |
+| Superseded design, UI, art and minigame plans | [docs/archive/legacy-design/](docs/archive/legacy-design/README.md) | Historical only; do not implement as current requirements |
+| Archive map and recovered-idea dispositions | [archive index](docs/archive/README.md), [foundation review](docs/design/FOUNDATION-REVIEW.md) | Consult before reusing old ideas; reuse does not imply approval |
+| Original redesign, implementation roadmap and production logs | Root redesign plan and linked records in [docs/README.md](docs/README.md) | Detailed historical criteria/evidence; not competing live status or proof of current assets |
+
+No historical asset archive directory is present in the reviewed baseline. Inspect the current tree and art register; do not invent paths or restore old art from historical descriptions.
+
+Before a refactor:
+1. Read the design index, relevant tracker row and owning technical contract. Explicit user decisions take precedence; approved direction and proposals must remain distinct.
+2. Inspect the active implementation and imports. Preserve the typed catalog, generic engine/campaign separation, shared browser/CLI action path and documented knowledge, schedule and save contracts. A structural refactor does not authorize unrelated story, mechanic or architecture changes.
+3. For narrative work follow [NARRATIVE-WORKFLOW.md](docs/design/NARRATIVE-WORKFLOW.md): master plot in [STORY-REVIEW.md](docs/design/STORY-REVIEW.md), character guidance, then scene specifications before scene rewrites. Scene specifications are pending the next planning discussion; do not claim they already exist.
+4. During baseline playthroughs, record issues in [PLAYTHROUGH-FINDINGS.md](docs/design/PLAYTHROUGH-FINDINGS.md) with tested commit and scene/line/choice evidence. Do not patch encountered dialogue opportunistically. Later revisions follow the plot/scene plan and repeated playthrough validation.
+5. Before relocating deprecated material, check runtime/build/test/tool/document references. Preserve provenance and update archive indexes and links; do not delete or revive legacy content merely to simplify a refactor.
+6. Validate affected behavior with the checks below and relevant route/save tests. Narrative changes need branch/knowledge/continuity review; browser changes need browser checks. Update owning documentation and the single tracker with actual evidence in the same commit. Never equate passing builds with literary, visual or user acceptance.
+
 ## Active system
 
 - React, Zustand and Vite remain the technology stack. UI-independent reducer logic lives in `src/game/engine/` with injected campaign rules.
