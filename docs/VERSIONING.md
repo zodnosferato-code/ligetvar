@@ -70,3 +70,8 @@ Schema remains 4: saved fields still have the same shapes. Content epoch becomes
 ## 0.6.2 — opening continuation and natural dialogue
 
 Schema stays 4. Content epoch increases to 5 because shared_2/shared_3 journals and reactions now store message references instead of prose, and their assembled scene/cast presentation has been revised. Reject content epoch 4 and earlier with the existing fresh-semester explanation; do not migrate. Stable scene/line/choice IDs, evidence/effects, schedule and the Hungarian runtime default remain unchanged. Stage labels resolve at presentation time, so switching does not alter state or save bytes.
+
+
+## 28 October 2026 — automatic arrivals and transition presentation
+
+No release/epoch bump: scene IDs, choices, prerequisites, slot budgets and save structure remain unchanged. Browser orchestration enters the already available mandatory scene on arrival/resume; it does not reinterpret completed story. Transition preferences and playback are presentation-only and outside the save envelope. Current compatible saves retain their exact active line and pending choices.

@@ -103,3 +103,10 @@ Audio is optional UI presentation with eight registered mood tracks, source file
 `npm test` runs engine/content and CLI suites; `test:engine`/`test:headless` are engine/content aliases; `test:cli` runs CLI processes/routes. `npm run typecheck` checks TypeScript; `npm run build` builds Vite. Browser layout scripts remain separate. Report only executed results.
 
 Retired `src/core/`, JSON merge adapters and old test entry points are not runtime architecture. Historical narrative/localization under `docs/archive/legacy-narrative/` is inactive provenance. See the [progress log](docs/REDESIGN-PROGRESS.md) for dated checks and the [tracker](docs/design/TRACKER.md) for current unfinished gates.
+
+
+## Browser automatic arrivals and transition presentation
+
+The browser store normalizes new/action/resumed states through `content/flow.ts:enterMandatoryScene`. Only an available shared scene at planner slot 0 opens automatically; no completion, evidence, pending choice or extra slot is granted. Availability and opening still use the common runtime reducers. CLI scene selection remains explicit.
+
+`ui/Transition.tsx` observes destination identity (week, slot, phase, scene, stage location/background and lighting), rather than every dialogue line. It uses existing period-aware art. Background mode auto-dismisses after 1.8 seconds (250 ms under reduced motion); story-card mode waits for Skip/Escape. Underlying gameplay is inert while displayed. Preferences use the separate optional `ligetvar-transitions` key. Animation state is never saved, so reloading cannot strand or advance a scene. Off disables presentation without disabling mandatory arrival.

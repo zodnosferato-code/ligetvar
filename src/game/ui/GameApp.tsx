@@ -1,3 +1,4 @@
+import {Transition,readTransitionMode,type TransitionMode} from './Transition.tsx';
 import {presentText,sceneTitle} from '../content/scene-localization.ts';
 import {LocaleProvider,useLocale} from './Locale.tsx';
 import type {Translator} from '../content/localization.ts';
@@ -28,16 +29,16 @@ function LocalizedGame(){const t=useTranslation();return <Boundary t={t}><Game/>
 function Game(){
  const t=useTranslation();
  const {locale,setLocale}=useLocale();
- const g=useGame(),s=g.state,[muted,setMuted]=useState(false),[scale,setScale]=useState(1);
+ const g=useGame(),s=g.state,[muted,setMuted]=useState(false),[scale,setScale]=useState(1),[transitionMode,setTransitionMode]=useState<TransitionMode>(readTransitionMode);
  useEffect(()=>{g.boot();},[]);useEffect(()=>{if(g.mode==='play')setMood(moodFor(s));},[g.mode,s]);
  return <div className="game" style={{'--text-scale':scale} as CSSProperties}>
- <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}><span className="brand-seal"><Icon name="book"/></span><span className="brand-copy">Ligetvár<small>{t('ui.semester')}</small></span></a><div className="tools"><label>{t('locale.label')} <select aria-label={t('locale.label')} value={locale} onChange={e=>setLocale(e.target.value as 'hu'|'en')}><option value="hu">Magyar</option><option value="en">English</option></select></label><label>{t('ui.fontSize')} <select aria-label={t('ui.fontSize')} value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}><Icon name="sound"/>{muted?t('ui.sound.on'):t('ui.sound.off')}</button></div></header>
+ <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}><span className="brand-seal"><Icon name="book"/></span><span className="brand-copy">Ligetvár<small>{t('ui.semester')}</small></span></a><div className="tools"><label>{t('ui.transition.label')} <select value={transitionMode} onChange={e=>{const value=e.target.value as TransitionMode;setTransitionMode(value);try{localStorage.setItem('ligetvar-transitions',value);}catch{}}}><option value="background">{t('ui.transition.background')}</option><option value="card">{t('ui.transition.card')}</option><option value="off">{t('ui.transition.off')}</option></select></label><label>{t('locale.label')} <select aria-label={t('locale.label')} value={locale} onChange={e=>setLocale(e.target.value as 'hu'|'en')}><option value="hu">Magyar</option><option value="en">English</option></select></label><label>{t('ui.fontSize')} <select aria-label={t('ui.fontSize')} value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}><Icon name="sound"/>{muted?t('ui.sound.on'):t('ui.sound.off')}</button></div></header>
  {g.saveNotice&&<p className="notice" role="alert">{g.saveNotice==='write-failed'?t('save.writeFailed'):saveMessage(g.saveNotice,locale)}</p>}
  {locale==='en'&&<p className="notice" role="status">{t('locale.partial')}</p>}
- {g.mode==='title'?<Title/>:<><div className="status"><strong><Icon name="book"/>{t('ui.week.progress',{week:s.week})}</strong><span>{s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary')}</span><span><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</span><span><Icon name="money"/>{formatFt(s.money,locale)}</span><span>{t('ui.points',{points:s.activityPoints})}</span></div>
+ {g.mode==='title'?<Title/>:<Transition state={s} mode={transitionMode}><div className="status"><strong><Icon name="book"/>{t('ui.week.progress',{week:s.week})}</strong><span>{s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary')}</span><span><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</span><span><Icon name="money"/>{formatFt(s.money,locale)}</span><span>{t('ui.points',{points:s.activityPoints})}</span></div>
  {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<RoomPlanner key={s.week+'-'+s.slot}/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<PuzzleGame/>}
  {s.phase==='planner'&&<GiftReplies unreadOnly/>}
- {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{presentText(s.lastNote,s.name,locale)}</p>}{s.phase!=='planner'&&<Journal/>}</>}
+ {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{presentText(s.lastNote,s.name,locale)}</p>}{s.phase!=='planner'&&<Journal/>}</Transition>}
  <footer>{t('ui.artNotice')}</footer></div>;
 }
 function Title(){

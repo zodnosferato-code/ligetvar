@@ -1,3 +1,4 @@
+import {enterMandatoryScene} from './content/flow.ts';
 import type {GiftNote,Delivery} from './content/gifting.ts';
 import {create} from 'zustand';
 import {SCENES} from './content/catalog.ts';
@@ -12,7 +13,7 @@ interface GameStore{
  activity:(kind:'rest'|'recycling'|'archive')=>void;finishJob:()=>void;movePuzzle:(index:number)=>void;nextPair:()=>void;cancelJob:()=>void;buy:(id:string)=>void;gift:(girl:GirlId,id:string,note?:GiftNote,delivery?:Delivery)=>void;readGifts:()=>void;
 }
 export const useGame=create<GameStore>((set,get)=>{
- const update=(state:GameState)=>{if(state===get().state)return;let saved=false;try{saved=persist(localStorage,state);}catch{}set({state,hasSave:saved||get().hasSave,saveNotice:saved?null:'write-failed'});};
+ const update=(input:GameState)=>{const state=enterMandatoryScene(input);if(state===get().state)return;let saved=false;try{saved=persist(localStorage,state);}catch{}set({state,hasSave:saved||get().hasSave,saveNotice:saved?null:'write-failed'});};
  const act=(action:GameAction)=>update(applyAction(get().state,action));
  return {
  mode:'title',state:createInitial(''),hasSave:false,savePresent:false,confirmNewGame:false,saveNotice:null,
@@ -23,7 +24,7 @@ export const useGame=create<GameStore>((set,get)=>{
   update(createInitial(name));set({mode:'play',confirmNewGame:false,savePresent:true});
  },
  cancelNewGame:()=>set({confirmNewGame:false}),
- resume:()=>{let result:ReturnType<typeof readSave>={status:'unavailable'};try{result=readSave(localStorage,SCENES);}catch{}if(result.status==='ok')set({state:result.state,mode:'play',saveNotice:null});else set({hasSave:false,savePresent:result.status!=='missing',saveNotice:result});},
+ resume:()=>{let result:ReturnType<typeof readSave>={status:'unavailable'};try{result=readSave(localStorage,SCENES);}catch{}if(result.status==='ok'){update(result.state);set({mode:'play'});}else set({hasSave:false,savePresent:result.status!=='missing',saveNotice:result});},
  toTitle:()=>{set({mode:'title',confirmNewGame:false});get().boot();},
  scene:id=>act({type:'scene',id}),pick:id=>act({type:'choice',id}),advance:()=>act({type:'advance'}),direction:id=>act({type:'direction',id}),
  activity:kind=>act({type:'activity',kind}),finishJob:()=>act({type:'claim'}),movePuzzle:index=>act({type:'tile',index}),nextPair:()=>act({type:'next-pair'}),

@@ -67,3 +67,10 @@ Browser and playable CLI share action/query logic and campaign rules. CLI observ
 Game releases and saves are versioned. Incompatible schema/content epochs require an explained restart, with no migrations or backward-compatible alternate gameplay. See [VERSIONING.md](../VERSIONING.md).
 
 Active gameplay text is currently Hungarian. English design documentation is complete for this folder; localization infrastructure and a complete English game remain planned. Translation must preserve locale-neutral gameplay, browser/CLI parity and knowledge-aware journals.
+
+
+## Automatic arrivals and transitions — 28 October 2026
+
+User direction: mandatory events must take the player there automatically when due, replacing the browser's blocked planning hub/manual door selection. The browser enters the available weekly shared scene on new game, next week and resume, preserving prerequisites, pending choices and slot costs. Discretionary appointments remain player-selected. The CLI retains explicit scene actions for inspection and automation; both interfaces use the same scene availability and opening reducers.
+
+Browser transitions mark scene entry, changes of location/lighting within scenes, daytime/nighttime slots and weekly recaps/new weeks. Default background mode reveals the destination's existing art with a fade and slow camera movement, then dismisses automatically. Optional story-card mode displays the destination title, week, lighting and location until skipped. A persistent Transitions control selects Backgrounds, Story cards or Off. Skip/Escape dismisses only presentation; it never advances dialogue or time. Reduced motion removes animation and shortens automatic backgrounds. No extra calendar days or story events are introduced into the existing weekly schedule.

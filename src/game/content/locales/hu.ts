@@ -1,6 +1,11 @@
 import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
+  "ui.transition.label": "Átmenetek",
+  "ui.transition.background": "Háttérképek",
+  "ui.transition.card": "Történetkártyák",
+  "ui.transition.off": "Kikapcsolva",
+  "ui.transition.skip": "Átmenet kihagyása",
   ...openingHu,
   ...investigationHu,
   "save.unknownVersion": "ismeretlen játékverzió",

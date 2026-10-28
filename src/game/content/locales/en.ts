@@ -3,6 +3,11 @@ import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
+  "ui.transition.label": "Transitions",
+  "ui.transition.background": "Backgrounds",
+  "ui.transition.card": "Story cards",
+  "ui.transition.off": "Off",
+  "ui.transition.skip": "Skip transition",
   ...openingEn,
   ...investigationEn,
   "save.unknownVersion": "unknown game version",
