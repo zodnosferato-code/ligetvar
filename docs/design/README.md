@@ -7,6 +7,8 @@ Start here before changing gameplay, story, presentation or character design. Al
 | Document | Responsibility |
 | --- | --- |
 | [Story review and English outline](STORY-REVIEW.md) | Source-based editorial findings, confirmed romance-first direction and revised semester outline (incorporating late Soma reveal, less bureaucratic scenes, earlier relationship room, light magic, and Virág's sexual activity from the start); conversations unchanged |
+| [Narrative rewrite workflow](NARRATIVE-WORKFLOW.md) | Approved plot → character/scene specifications → scene rewrites → repeated playthrough cycle; no baseline patching |
+| [Playthrough findings](PLAYTHROUGH-FINDINGS.md) | Observed baseline issues and strengths; not applied fixes |
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |
 | [Character image prompts](CHARACTER-IMAGE-PROMPTS.md) | Derived positive/negative production prompts, framing and unresolved visual decisions |
