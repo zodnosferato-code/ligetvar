@@ -8,6 +8,9 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 const directory=await mkdtemp(join(tmpdir(),'ligetvar-later-'));
 const cases=[
+ {id:'early-window-curious',first:'ask',attraction:'curious',place:'outside'},
+ {id:'early-leave',first:'leave',earlyDecline:true},
+ {id:'early-friend',friend:true,earlyDecline:true},
  {id:'conflict-other',conflictReply:'name_fault',place:'outside'},
  {id:'conflict-withdraw',conflictDecline:true},
  {id:'late-date-conflict',dateWeek:49,conflictWeek:49,conflictNight:true,commitWeek:50,place:'outside'},
@@ -25,7 +28,9 @@ const cases=[
  {id:'latest-commit-night',commitWeek:50,night:true,future:'open',topic:'invite',place:'outside'}
 ];
 const results=[];
-for(const c of cases){
+const caseFlag=process.argv.indexOf('--case'),selectedCase=caseFlag<0?null:process.argv[caseFlag+1];
+if(caseFlag>=0&&!cases.some(c=>c.id===selectedCase))throw Error('Unknown review case');
+for(const c of cases.filter(c=>!selectedCase||c.id===selectedCase)){
  let child,reader,response,serial=0,restarts=0;const save=join(directory,c.id+'.json'),observed=[],context=[],requests=[];
  async function boot(){child=spawn(process.execPath,['--experimental-strip-types','src/game/cli/main.ts','--json','--locale','en','--save',save],{stdio:['pipe','pipe','inherit']});reader=createInterface({input:child.stdout})[Symbol.asyncIterator]();response=JSON.parse((await reader.next()).value);assert.equal(response.ok,true);}
  async function send(cmd,extra={}){const request={id:++serial,cmd,expectedRevision:response.revision,...extra};child.stdin.write(JSON.stringify(request)+'\n');response=JSON.parse((await reader.next()).value);assert.equal(response.ok,true,JSON.stringify(response.error));if(cmd==='act')requests.push({week:response.view.week,action:extra.action});return response.view;}
@@ -37,7 +42,7 @@ for(const c of cases){
   while(response.view.phase==='scene'){
    const v=response.view,s=v.scene;
    if(id.startsWith('rebeka_'))context.push({week:v.week,date:v.calendar.iso,period:v.period,scene:id,line:s.lineId,text:s.text});
-   if(['rebeka_4','rebeka_5','rebeka_6'].includes(id)){
+   if(id.startsWith('rebeka_')){
     const en=structuredClone(v),revision=response.revision;
     await send('locale',{locale:'hu'});const hu=structuredClone(response.view);
     assert.deepEqual(hu.actions.map(a=>a.action),en.actions.map(a=>a.action));assert.notEqual(hu.scene.text,en.scene.text,s.lineId);assert.equal(response.revision,revision);
@@ -47,7 +52,9 @@ for(const c of cases){
     if(c.restart&&(choices.length||s.lineId==='kiss_1'||s.lineId==='withdraw_0'||s.lineId==='after_fade'))await restart();
     if(s.lineId==='line_1'&&id==='rebeka_5'||s.lineId==='line_3'&&id==='rebeka_6')assert.ok(en.scene.text.includes('Álex $& {playerName}'));
    }
-   const wanted=id==='rebeka_3'?{romance_closeness:c.slow?'slow_touch':'hand',date_destination:'head_home'}[s.lineId]
+   const wanted=id==='rebeka_1'?{line_2:c.first??'interest'}[s.lineId]
+    :id==='rebeka_2'?{line_4:c.friend?'friend':'yes',romance_attraction:c.attraction??'honest'}[s.lineId]
+    :id==='rebeka_3'?{romance_closeness:c.slow?'slow_touch':'hand',date_destination:'head_home'}[s.lineId]
     :id==='rebeka_4'?{line_4:c.conflictDecline?'withdraw':'repair',romance_repair:c.conflictReply??'ask_space'}[s.lineId]
     :id==='rebeka_5'?{line_4:c.decline?'withdraw':'commit',romance_future:c.future??'ritual'}[s.lineId]
     :id==='rebeka_6'?{line_4:c.withdraw?'withdraw':'continue_together',after_topic:c.topic??'rest',after_invite:c.place,room_choice:c.physical,intimacy_choice:c.intimacy}[s.lineId]:undefined;
@@ -57,7 +64,7 @@ for(const c of cases){
  await boot();await send('new',{name:'Álex $& {playerName}'});const done=new Set();
  for(let w=1;w<=52;w++){
   const required=response.view.actions.find(a=>a.action.type==='scene'&&a.action.id.startsWith('shared_'));if(required)await scene(required.action.id);
-  if(w===32)await act({type:'direction',id:'rebeka'});
+  if(w===32&&!c.earlyDecline)await act({type:'direction',id:'rebeka'});
   while(response.view.phase==='planner'){
    const v=response.view;
    const planned=[...(c.prepared&&w===46?['prepare_backup']:[]),...(c.prepared&&w===48?['prepare_signals']:[]),...(c.coffee&&w===51?['coffee_rebeka_late']:[]),'rebeka_1','rebeka_2','rebeka_3','rebeka_4','rebeka_5','rebeka_6'];
@@ -66,10 +73,10 @@ for(const c of cases){
   }
   await act({type:'advance'});
  }
- assert.equal(response.view.phase,'ending');assert.equal(response.view.ending.relationship,c.withdraw||c.decline||c.conflictDecline?'estranged':'rebeka');
+ assert.equal(response.view.phase,'ending');assert.equal(response.view.ending.relationship,c.earlyDecline?'friendship':c.withdraw||c.decline||c.conflictDecline?'estranged':'rebeka');
  assert.equal(response.view.ending.cost,c.prepared?'supported':'exhausting');
  const after=observed.filter(x=>x.scene==='rebeka_6'),ids=after.map(x=>x.line);
- if(c.withdraw||c.decline||c.conflictDecline)assert.ok(!ids.includes('kiss_1')&&!ids.includes('room_0')&&!ids.includes('fade_1'));
+ if(c.withdraw||c.decline||c.conflictDecline||c.earlyDecline)assert.ok(!ids.includes('kiss_1')&&!ids.includes('room_0')&&!ids.includes('fade_1'));
  assert.equal(ids.includes('fade_1'),c.intimacy==='intimate');assert.equal(ids.includes('kiss_1'),c.physical==='kiss');
  if(!c.coffee)assert.ok(!after.flatMap(x=>x.choices).some(x=>x.id==='coffee'));
  if(c.prepared)assert.ok(done.has('prepare_backup')&&done.has('prepare_signals'));

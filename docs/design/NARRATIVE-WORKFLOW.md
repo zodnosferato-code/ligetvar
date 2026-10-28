@@ -109,3 +109,7 @@ For each batch state: exact scenes changed; recommendation IDs addressed and sti
 ### Current continuation after 0.9.4
 
 The next-agent ordering above remains the method. Rebeka `_3` was rewritten in 0.9.1, `_5`/`_6` in 0.9.3, then `_4` in 0.9.4. Do not redo these based solely on historical findings. `_4` no longer imposes presentation misuse; `_5`/`_6` no longer repeat aftermath or force intimacy before withdrawal. See current tracker/evidence. Next connected target is the early Rebeka `_1`/`_2` arc and its elapsed-time/English coverage, then Boglárka, Gréta and contract-led Virág passes. Other women's/triad physical defects and coordinated late-Soma migration remain open.
+
+### Current continuation after 0.9.5
+
+Rebeka `_1`/`_2` now complete her six-scene English-first/Hungarian main relationship pass. Current evidence/limits are in the tracker and the connected-arc findings, not historical MR observations alone. Next: fresh public-CLI Boglárka baseline, then refine `boglarka_3`/`boglarka_6` for MR-01/MR-02 before continuing her individual story. Keep her precise initiative and chosen quiet pleasures; do not copy Rebeka's photograph/film dispute. Gréta, contract-led Virág, triad and coordinated late-Soma migration remain open under the original method.

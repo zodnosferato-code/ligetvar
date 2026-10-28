@@ -11,7 +11,7 @@ function choice(id:string,suffix:string,next:string,extra:Partial<Choice>={}):Ch
  return {id,...message(key('choice.'+suffix)),reaction:'',next,...extra};
 }
 function stage(label:string,location:SceneStage['location'],proximity:SceneStage['proximity']='apart',participants:ActorId[]=['marton','rebeka']):SceneStage {
- return {label:storedMessage(key('stage.'+label)),location,background:location,participants,proximity};
+ return {label:storedMessage(key('stage.'+label)),location,background:location,participants,proximity,...(location==='apartment'?{lighting:'evening' as const}:{})};
 }
 export function rewriteRebekaLater(original:Scene):Scene {
  if(original.id!=='rebeka_5'&&original.id!=='rebeka_6')return original;

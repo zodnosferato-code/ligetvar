@@ -243,3 +243,7 @@ Canonical `timeline.en.ts` and `seasonal.en.ts` have typed Hungarian translation
 ## Rebeka disagreement — 0.9.4
 
 `rebeka_4`'s whole assembled graph and companion text now use canonical `rebeka-conflict.en.ts` and typed Hungarian translation. Every played node switches both ways in the public CLI; exhaustive branches resume without early effects or locale-dependent actions. New graph/persisted text uses schema4/content9. English migration beyond these scenes remains incomplete.
+
+## Connected Rebeka arc — 0.9.5
+
+Canonical `rebeka-early.en.ts` and typed Hungarian translation complete `_1`/`_2` text, branches, titles, choices, reactions, stages and journals. With the `_3–6` passes, all six main Rebeka relationship scenes now resolve in either locale, use literal chosen-name substitution and preserve identical actions/progression. Eighteen public-CLI years read the complete arc and exercise friendship/romance/refusal/physical alternatives; exhaustive tests cover each changed early node and date boundaries. Schema4/content10 reflects the replaced graphs/persisted prose. Optional coffees, triad, other routes, endings and the English no-preference default remain unfinished.

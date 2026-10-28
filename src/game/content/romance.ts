@@ -1,3 +1,4 @@
+import {rewriteRebekaEarly} from './rebeka-early.ts';
 import {rewriteRebekaConflict} from './rebeka-conflict.ts';
 import {rewriteRebekaLater} from './rebeka-later.ts';
 /** Authored romance scene expansion. */
@@ -251,6 +252,7 @@ function expandTriad(s:Scene){
 }
 
 export function expandRomance(original:Scene):Scene{
+ if(original.id==='rebeka_1'||original.id==='rebeka_2')return rewriteRebekaEarly(original);
  if(original.id==='rebeka_4')return rewriteRebekaConflict(original);
  if(original.id==='rebeka_5'||original.id==='rebeka_6')return rewriteRebekaLater(original);
  const match=/^(rebeka|boglarka|greta)_([2-6])$/.exec(original.id);

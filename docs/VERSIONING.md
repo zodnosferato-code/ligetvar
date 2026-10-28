@@ -106,3 +106,9 @@ Schema remains 4; content epoch advances to **8** because `rebeka_5`/`rebeka_6` 
 ## Rebeka disagreement — 0.9.4
 
 Schema4/content**9**. `_4`'s assembled graph and locale-neutral journal/reactions replace the imposed off-screen presentation violation with a present photograph/caption disagreement. Stable repair/withdraw effects still witness whether the couple worked through the disagreement; they no longer imply a compulsory past offence. New cursor and decision-context semantics intentionally reject epoch8 and earlier. Admission, rewards and scheduling stay unchanged; no migration. [Evidence](design/PLAYTHROUGH-FINDINGS.md#rebeka-disagreement-validation--28-october-2026).
+
+## Early Rebeka arc — 0.9.5
+
+Schema4/content**10**. `rebeka_1`/`rebeka_2` now have new assembled cursor graphs and locale-neutral journals/reactions; the curious topic recalls witnessed photographs instead of an invented bus conversation. Preserve original interest/attraction/withdrawal and topic-memory effects, admission and slot costs. Epoch9 and earlier require a fresh year, no migration. All six Rebeka main relationship scenes now have an English-first bilingual pass; whole-game localization remains partial. [Evidence](design/PLAYTHROUGH-FINDINGS.md#connected-rebeka-arc-validation--28-october-2026).
+
+The same release also corrects the optional Rebeka aftermath visit to the existing player's suite: room ownership, furniture, departure and indoor lighting now match the reused asset/location. IDs/effects remain unchanged by that continuity correction; the early-arc changes already require epoch10.

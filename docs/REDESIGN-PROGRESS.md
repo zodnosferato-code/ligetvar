@@ -348,3 +348,7 @@ Replaced assembled `rebeka_5`/`rebeka_6` under the individual-story handoff. Eng
 ## 28 October 2026 — Rebeka disagreement, 0.9.4
 
 Rewrote `_4` around her own caption draft and a present disagreement, removing unchosen off-screen wrongdoing. Bilingual branches preserve progression, window and single-slot cost. Fifteen public-CLI years, 42 restarts and focused exhaustive tests; full local checks. Schema4/content9, fresh year required. [Evidence/limits](design/PLAYTHROUGH-FINDINGS.md#rebeka-disagreement-validation--28-october-2026). Earlier `eb15890` Tests and Pages deployment both succeeded. Next: early Rebeka `_1`/`_2`.
+
+## 28 October 2026 — connected Rebeka early arc, 0.9.5
+
+Rewrote `_1` and `_2` with concrete photograph selection, an on-page bad-film activity, reciprocal interest and witnessed callbacks; translated all branches and companion text into Hungarian. All six main Rebeka meetings now have an English-first pass. 18 full public-CLI years, 77 process restarts, 184 local tests, typecheck/build; schema4/content10, fresh year required. [Evidence and acceptance limits](design/PLAYTHROUGH-FINDINGS.md#connected-rebeka-arc-validation--28-october-2026). Previous 0.9.4 Tests/Pages succeeded. Next: Boglárka's date and aftermath, then her connected arc; no whole-story completion claim.

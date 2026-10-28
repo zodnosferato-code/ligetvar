@@ -92,3 +92,7 @@ User-approved voice: 19, loud, witty, reasonable and persistently flirtatious. V
 ## Virág update — 0.6.0
 
 Latest user direction supersedes the earlier final-date treatment: immediate mutually chosen private encounter handled off-screen, and no final date or commitment milestone. Appearance belongs in [Character visual reference](CHARACTER-VISUALS.md); current asset availability belongs in [Art register](../ART-REGISTER.md). See `docs/VIRAG-STORY.md` and `docs/ANIMATION-PLAN.md` from the repository root for current scope. Content epoch 3 (changed scene graphs/removed final-date decisions), schema 4; no save migration. She remains sexually forward and initiating throughout.
+
+## Rebeka connected-arc checkpoint — 28 October 2026
+
+All six main Rebeka meetings now have deliberate English-first writing and Hungarian translation (first date in 0.9.1, remaining meetings in 0.9.3–0.9.5). Workshop photographs → terrible-film company → first date → unfinished caption disagreement → ordinary-time commitment → post-institutional continuation form a connected personal arc. Her wit invites argument, hides uncertainty and sometimes gives way to a direct request; player responses contribute specific observations and nervousness. Refusal retains an ordinary goodbye; touch and fade-to-black intimacy require separate present choices. This supersedes the older coverage paragraph only for these six meetings, not triad/coffee/other characters. [Validation and limits](PLAYTHROUGH-FINDINGS.md#connected-rebeka-arc-validation--28-october-2026).
