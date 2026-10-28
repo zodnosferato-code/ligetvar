@@ -1,8 +1,9 @@
+import {nextStory as nextWeek} from './test-calendar.ts';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {SCENES} from './catalog.ts';
 import {encodeSave,decodeSave} from './saves.ts';
-import {activity,applyChoice,createInitial,currentLine,evaluateEnding,nextWeek,openScene,setDirection} from './runtime.ts';
+import {activity,applyChoice,createInitial,currentLine,evaluateEnding,openScene,setDirection} from './runtime.ts';
 import type {GameState,GirlId,RouteId} from './types.ts';
 const triadPlan:Record<number,string[]>={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['triad_6'],13:['rebeka_5','boglarka_5'],14:['triad_7'],16:['triad_8']};
 type Picker=(scene:string,line:string,ids:string[])=>string;

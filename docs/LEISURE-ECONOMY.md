@@ -29,9 +29,9 @@ The first move starts the shift. Returning to the planner is available only befo
 | First personal outing | 4,000 Ft + 4 programpont |
 | Follow-up outing | 6,000 Ft + 6 programpont |
 
-Money represents discretionary spending; no new rent/bills simulation. Activity points are earned only by completed puzzles, never purchased with surplus money. Each paid outing is unique, has an introduction/previous-outing prerequisite, and expires after week 14. Starting charges the displayed cost exactly once, before the saved scene cursor is installed; continuing or reloading does not charge again. Completing the outing uses its day or night slot. The phone shows prices, prerequisites and missing funds before the outing becomes available. Affordable outings also appear at their destination.
+Money represents discretionary spending; no new rent/bills simulation. Activity points are earned only by completed puzzles, never purchased with surplus money. Each paid outing is unique, has an introduction/previous-outing prerequisite, and expires after week 50. Starting charges the displayed cost exactly once, before the saved scene cursor is installed; continuing or reloading does not charge again. Completing the outing uses its day or night slot. The phone shows prices, prerequisites and missing funds before the outing becomes available. Affordable outings also appear at their destination.
 
-One maximum-reward shift buys a first outing and leaves 16,000 Ft plus 2 points; another buys the follow-up and leaves 2 points. A minimum-reward shift still funds a modest gift and makes real progress toward an outing. At 16 weeks, unworked discretionary income totals 57,000 Ft. The player can afford some gifts without work, but cannot buy unlimited weekly presents. Completing every optional outing is not required; spending extra slots on all of them competes with other plans.
+One maximum-reward shift buys a first outing and leaves 16,000 Ft plus 2 points; another buys the follow-up and leaves 2 points. A minimum-reward shift still funds a modest gift and makes real progress toward an outing. At 52 weeks, unworked discretionary income totals 165,000 Ft (12,000 initial plus 51 weekly allowances). The player can afford some gifts without work, but cannot buy unlimited weekly presents. Completing every optional outing is not required; spending extra slots on all of them competes with other plans.
 
 ## Six optional personal scenes
 
@@ -47,7 +47,7 @@ An accepted thoughtful gift is recalled on arrival at an optional outing. Only a
 
 The shelf has a recipient, item, personal note and delivery choice. Sending an owned item is separate from buying it. Remote delivery produces a visible portrait reply; a short in-person handoff produces a personal reaction. These small exchanges cost no slot, while longer outings do. The reply receives focus and is scrolled into view. The phone retains the full history, including the note, item, week and delivery mode. Marking replies read removes the new-reply notice without deleting history.
 
-First-time suited gifts give +2 bond; a mismatched or repeated item gives no bond but has an explicit character-specific response. Repeating a gift later in the semester is recognized. Expensive gifts do not buy a larger affection bonus. One gift per woman per week remains the limit. The six item reactions and three note styles preserve the established voices; an invitation note is not an automatic commitment or booked date.
+First-time suited gifts give +2 bond; a mismatched or repeated item gives no bond but has an explicit character-specific response. Repeating a gift later in the year is recognized. Expensive gifts do not buy a larger affection bonus. One gift per woman per week remains the limit. The six item reactions and three note styles preserve the established voices; an invitation note is not an automatic commitment or booked date.
 
 ## Saves and source boundaries
 

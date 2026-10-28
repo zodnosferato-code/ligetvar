@@ -1,9 +1,10 @@
+import {CALENDAR} from './calendar.ts';
 /** Optional contextual conversations, separate from romance milestones. */
 import type {ActorId,Choice,Effect,GirlId,Line,Requirements,Scene} from './types.ts';
 type Beat=[ActorId,string];
 interface Topic {id:string;text:string;reply:Beat[];effect?:Effect;requires?:Requirements}
 function coffee(girl:GirlId,period:'early'|'middle'|'late',title:string,intro:Beat[],topics:Topic[],outro:Beat[]):Scene{
- const week=period==='early'?1:period==='middle'?8:15,deadline=period==='early'?7:period==='middle'?14:16;
+ const week=period==='early'?1:period==='middle'?CALENDAR.direction:CALENDAR.confrontation,deadline=period==='early'?CALENDAR.direction-1:period==='middle'?CALENDAR.lastPersonal:CALENDAR.weeks;
  const lines:Line[]=[],add=(prefix:string,beats:Beat[],next?:string)=>{beats.forEach(([speaker,text],i)=>lines.push({id:prefix+'_'+i,speaker,text,expression:'neutral',next:i<beats.length-1?prefix+'_'+(i+1):next}));return prefix+'_0';};
  add('intro',intro,'topics');
  const choices:Choice[]=topics.map(t=>({id:t.id,text:t.text,reaction:'',next:add(t.id,t.reply,'outro_0'),effect:t.effect,requires:t.requires}));

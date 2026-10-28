@@ -1,4 +1,4 @@
-import {periodAllowed} from './logic.ts';
+import {periodAllowed,storyDue} from './logic.ts';
 import type {GameState,Registry,RuntimeRules} from './types.ts';
 export interface StorageLike{getItem(key:string):string|null;setItem(key:string,value:string):void}
 export interface SaveMetadata {gameVersion:string;saveSchemaVersion:number;contentCompatibilityVersion:number;buildId?:string}
@@ -45,8 +45,10 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
   }
   if(s.journal.length!==Object.keys(s.completed).length||new Set(s.journal.map((j:any)=>j.scene)).size!==s.journal.length)return {status:'invalid'};
   const shared=Object.values(r).find(x=>x.kind==='shared'&&x.week===s.week);
-  for(let w=1;w<s.week;w++){const x=Object.values(r).find(x=>x.kind==='shared'&&x.week===w);if(!x||!(x.id in s.completed))return {status:'invalid'};}
-  if(!shared||(s.slot>0&&!(shared.id in s.completed))||(s.slot===0&&shared.id in s.completed))return {status:'invalid'};
+  for(let w=1;w<s.week;w++){const x=Object.values(r).find(x=>x.kind==='shared'&&x.week===w);if(storyDue(w,rules.schedule)&&(!x||!(x.id in s.completed)))return {status:'invalid'};}
+  if(storyDue(s.week,rules.schedule)){
+   if(!shared||(s.slot>0&&!(shared.id in s.completed))||(s.slot===0&&shared.id in s.completed))return {status:'invalid'};
+  }else if(s.slot===0||shared)return {status:'invalid'};
   if((s.phase==='summary'||s.phase==='ending')!==(s.slot===3))return {status:'invalid'};
   if(!rules.validateState(s as S,r))return {status:'invalid'};
   if(s.phase==='ending'&&(s.week!==rules.weeks||!rules.canFinish(s as S)))return {status:'invalid'};

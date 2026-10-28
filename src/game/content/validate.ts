@@ -1,3 +1,4 @@
+import {CALENDAR} from './calendar.ts';
 import type { Evidence, Registry, Requirements, Scene } from './types.ts';
 import {MOMENT_CLIPS,validateClip} from './animations.ts';
 export function validateRegistry(registry:Registry,evidence:Record<string,Evidence>,backgrounds:ReadonlySet<string>):void{
@@ -12,7 +13,7 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
   if(registry[s.id]!==s)fail('Scene ID/key mismatch: '+s.id);
   if(s.periods&&(!s.periods.length||new Set(s.periods).size!==s.periods.length||s.periods.some(p=>!['day','night'].includes(p))||s.kind==='shared'))fail('Invalid activity periods: '+s.id);
   if(!s.title.trim()||!s.journal.trim()||!s.participants.length)fail('Missing scene text: '+s.id);
-  if(!Number.isInteger(s.week)||s.week<1||s.deadline>16||s.week>s.deadline)fail('Invalid window: '+s.id);
+  if(!Number.isInteger(s.week)||s.week<1||s.deadline>CALENDAR.weeks||s.week>s.deadline)fail('Invalid window: '+s.id);
   if(!backgrounds.has(s.background)||s.background!==s.location)fail('Wrong background: '+s.id);
   for(const [id,stage] of Object.entries(s.stages??{})){
    if(!id||!stage.label.trim()||!backgrounds.has(stage.background)||stage.background!==stage.location||!['apart','beside','close'].includes(stage.proximity)||!stage.participants.length||new Set(stage.participants).size!==stage.participants.length||stage.participants.some(p=>!s.participants.includes(p))||(stage.lighting&&!['day','evening','night'].includes(stage.lighting)))fail('Invalid stage: '+s.id+'/'+id);
@@ -55,12 +56,13 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
   stack.delete(s.id);visited.add(s.id);
  }
  scenes.forEach(dependency);
- for(let week=1;week<=16;week++){
+ for(let week=1;week<=CALENDAR.weeks;week++){
   const shared=scenes.filter(s=>s.kind==='shared'&&s.week===week);
+  if(!CALENDAR.storyWeeks.some(w=>w===week)){if(shared.length)fail('Unscheduled shared scene: '+week);continue;}
   if(shared.length!==1||shared[0].deadline!==week)fail('One guaranteed shared scene required: '+week);
   const s=shared[0];
   if(s.requires.anyOf?.length||s.requires.decisions?.length||s.requires.notDecisions?.length||s.requires.directions?.length)fail('Choice blocks shared scene: '+s.id);
   for(const id of [...(s.requires.scenes??[]),...(s.requires.evidence??[]).map(e=>evidence[e].scene)])if(registry[id].kind!=='shared'||registry[id].week>=week)fail('Optional/future dependency blocks shared scene: '+s.id);
  }
- if(scenes.find(s=>s.resolution==='confrontation')?.week!==15||scenes.find(s=>s.resolution==='institution')?.week!==16)fail('Ending order metadata');
+ if(scenes.find(s=>s.resolution==='confrontation')?.week!==CALENDAR.confrontation||scenes.find(s=>s.resolution==='institution')?.week!==CALENDAR.aftermath)fail('Ending order metadata');
 }

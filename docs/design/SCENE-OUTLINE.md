@@ -1,5 +1,7 @@
 # Scene-by-scene rewrite outline
 
+
+**Calendar precedence — 28 October:** The approved [52-week year](YEAR-CAMPAIGN.md) supersedes the sixteen-week anchors below. Existing numbered briefs retain chapter coordinates, projected through `content/calendar.ts`; shared_15 occurs in week 51 and shared_16 in 52. Opening weeks 1–3 are unchanged. New scene briefs should specify actual calendar weeks. Narrative rewrites and unresolved proposals remain distinct from this scheduling implementation.
 > **Status:** First editorial draft, 28 October 2026; shared_1 pilot implemented; remaining briefs are not implemented or blanket approval. | **Purpose:** Translate the master plot into individual scene briefs for deliberate rewriting.
 
 ## Authority and boundaries

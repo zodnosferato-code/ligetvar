@@ -1,5 +1,7 @@
 # Story depth and expansion readiness
 
+
+**Subsequent implementation:** The user approved a one-year campaign. [YEAR-CAMPAIGN.md](YEAR-CAMPAIGN.md) records the 52-week calendar, sparse mandatory events and new validation. The 16-week/32-slot constraints below describe the audited pre-expansion baseline; story-size measurements remain historical evidence, not a measure of newly written content.
 > **Audit:** 28 October 2026. **Baseline:** main a69b656c9f2955d86824c527880dca64808e59b7; runtime 0.6.2/schema 4/content 5, unchanged from the [eight-route review](PLAYTHROUGH-MULTIROUTE-2026-10-28.md). Assessment and recommendations only; no schedule, mechanics or prose changed.
 
 ## Story size

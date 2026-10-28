@@ -1,3 +1,4 @@
+import {CALENDAR} from '../content/calendar.ts';
 import {Calendar} from './Calendar.tsx';
 import {AssetImage} from './AssetImage.tsx';
 import {calendarFor} from '../content/calendar.ts';
@@ -38,7 +39,7 @@ function Game(){
  <header className="masthead"><a className="brand" href="#" onClick={e=>{e.preventDefault();g.toTitle();}}><span className="brand-seal"><Icon name="book"/></span><span className="brand-copy">Ligetvár<small>{t('ui.semester')}</small></span></a><div className="tools"><label>{t('ui.transition.label')} <select value={transitionMode} onChange={e=>{const value=e.target.value as TransitionMode;setTransitionMode(value);try{localStorage.setItem('ligetvar-transitions',value);}catch{}}}><option value="background">{t('ui.transition.background')}</option><option value="card">{t('ui.transition.card')}</option><option value="off">{t('ui.transition.off')}</option></select></label><label>{t('locale.label')} <select aria-label={t('locale.label')} value={locale} onChange={e=>setLocale(e.target.value as 'hu'|'en')}><option value="hu">Magyar</option><option value="en">English</option></select></label><label>{t('ui.fontSize')} <select aria-label={t('ui.fontSize')} value={scale} onChange={e=>setScale(Number(e.target.value))}><option value={1}>100%</option><option value={1.15}>115%</option><option value={1.3}>130%</option></select></label><button onClick={()=>setMuted(toggleMute())}><Icon name="sound"/>{muted?t('ui.sound.on'):t('ui.sound.off')}</button></div></header>
  {g.saveNotice&&<p className="notice" role="alert">{g.saveNotice==='write-failed'?t('save.writeFailed'):saveMessage(g.saveNotice,locale)}</p>}
  {locale==='en'&&<p className="notice" role="status">{t('locale.partial')}</p>}
- {g.mode==='title'?<Title/>:<Transition state={s} mode={transitionMode}><Calendar week={s.week}/><div className="status"><strong><Icon name="book"/>{t('ui.week.progress',{week:s.week})}</strong><span>{s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary')}</span><span><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</span><span><Icon name="money"/>{formatFt(s.money,locale)}</span><span>{t('ui.points',{points:s.activityPoints})}</span></div>
+ {g.mode==='title'?<Title/>:<Transition state={s} mode={transitionMode}><Calendar week={s.week}/><div className="status"><strong><Icon name="book"/>{t('ui.week.progress',{week:s.week,total:CALENDAR.weeks})}</strong><span>{s.phase==='ending'?t('ui.closed'):s.slot===0?t('ui.activity.shared'):s.slot<3?(currentPeriod(s)==='night'?t('ui.activity.night'):t('ui.activity.day')):t('ui.summary')}</span><span><Icon name="energy"/>{t('ui.energy',{energy:s.energy})}</span><span><Icon name="money"/>{formatFt(s.money,locale)}</span><span>{t('ui.points',{points:s.activityPoints})}</span></div>
  {s.phase==='scene'?<Dialogue/>:s.phase==='planner'?<RoomPlanner key={s.week+'-'+s.slot}/>:s.phase==='summary'?<Summary/>:s.phase==='ending'?<Ending/>:<PuzzleGame/>}
  {s.phase==='planner'&&<GiftReplies unreadOnly/>}
  {s.phase!=='scene'&&s.phase!=='ending'&&s.lastNote&&<p className="notice" role="status">{presentText(s.lastNote,s.name,locale)}</p>}{s.phase!=='planner'&&<Journal/>}</Transition>}
@@ -67,10 +68,9 @@ function Dialogue(){
 }
 function Summary(){
  const t=useTranslation();const {locale}=useLocale();
- const g=useGame(),s=g.state;return <main className="panel"><p className="eyebrow">{t('ui.summary.witnessed')}</p><h1>{t('ui.summary.heading',{week:s.week})}</h1>{s.journal.filter(j=>j.week===s.week).map(j=><p key={j.scene}>{presentText(j.text,s.name,locale)}</p>)}{s.week===14&&<p className="notice">{t('ui.summary.deadline')}</p>}<button className="primary" onClick={g.advance}>{s.week===16?t('ui.end'):t('ui.week.start',{week:s.week+1})}</button></main>;
+ const g=useGame(),s=g.state;return <main className="panel"><p className="eyebrow">{t('ui.summary.witnessed')}</p><h1>{t('ui.summary.heading',{week:s.week})}</h1>{s.journal.filter(j=>j.week===s.week).map(j=><p key={j.scene}>{presentText(j.text,s.name,locale)}</p>)}{s.week===CALENDAR.lastPersonal&&<p className="notice">{t('ui.summary.deadline')}</p>}<button className="primary" onClick={g.advance}>{s.week===CALENDAR.weeks?t('ui.end'):t('ui.week.start',{week:s.week+1})}</button></main>;
 }
 function Ending(){
  const t=useTranslation();
  const s=useGame(x=>x.state),e=evaluateEnding(s);return <main className="panel ending"><p className="eyebrow">{t('ui.ending.after')}</p><h1>{t('ui.ending.heading')}</h1><h2>{t('ui.ending.threat')}</h2><p>{threatText(e.cost)}</p><h2>{t('ui.ending.college')}</h2><p>{e.institution?institutions[e.institution]:''}</p><h2>{t('ui.ending.relationships')}</h2><p>{relationships[e.relationship??'unresolved']}</p><h2>{t('ui.ending.report')}</h2><p>{viragEpilogue(s)}</p><button onClick={()=>useGame.getState().toTitle()}>{t('ui.title.back')}</button></main>;
 }
-

@@ -46,7 +46,7 @@ The user's 28 October direction supersedes Hungarian-first authoring: English is
 - One authoritative typed scene registry: `src/game/content/catalog.ts`. Content modules include shared, relationship, triad, optional, opening, conversation, romance and Virág scenes. Never reload archived dialogue/localization JSON into the runtime.
 - The engine must not know concrete actors, scene IDs, story milestones or endings. Campaign rules live in `content/rules.ts`, types in `content/types.ts`, epilogues in `content/epilogues.ts`; `content/runtime.ts` connects them to the generic engine.
 - The user decides new implementation directions. Preserve the approved TypeScript content approach and [character voices](docs/design/CHARACTER-VOICES.md); do not declare a new architecture or character direction approved.
-- A semester lasts 16 weeks. Each week has one guaranteed shared-story slot, one discretionary daytime slot and one discretionary nighttime slot, in that order, followed by recap. Continuing a scene is free; completing it consumes one slot. No extra automatic workshop.
+- The campaign lasts 52 weeks. Each week has one discretionary daytime slot and one discretionary nighttime slot, followed by recap. Sixteen mandatory story chapters occupy a preceding shared slot only on the dates in `content/calendar.ts`; ordinary weeks start at daytime. This user decision supersedes the 16-week semester; follow [YEAR-CAMPAIGN.md](docs/design/YEAR-CAMPAIGN.md). Continuing a scene is free; completing it consumes one slot. No extra automatic workshop.
 - The saved period determines the planning hub: daytime office or nighttime bedroom. Bedroom objects expose phone, journal, rest and gifts; work and preparation are daytime only. The door offers destinations and available scenes, not a free room switch. Opening object/destination menus costs no slot. The weekly shared scene cannot be skipped.
 - Background objects are clickable with outlines and labels always visible. If the art lacks a suitable object, use a visible labelled icon. Preserve hotspot alignment when changing backgrounds.
 - The phone arranges existing in-person meetings/coffee; the later leisure system also supplies persistent gift replies and six paid optional outings. Do not invent a separate phone-conversation system.
@@ -55,7 +55,7 @@ The user's 28 October direction supersedes Hungarian-first authoring: English is
 - Scenes explicitly identify participants, speaker, location, background, expression, prerequisites and deadlines. Use at most four contextual choices; no compulsory good/bad answer ladder.
 - Knowledge and affirmative decisions require witnessed scene completion. Repetition, money and gifts cannot grant commitment.
 - Márton–Rebeka, Márton–Boglárka, Rebeka–Boglárka and Márton–Gréta bonds are distinct. The triad needs affirmative agreement from all three participants.
-- Required ending order: week-15 confrontation and vampire death → week-16 institutional aftermath → personal follow-ups in two discretionary slots → ending and epilogue. Investigation remains playable without romance and with weak preparation.
+- Required ending order: week-51 confrontation and vampire death → week-52 institutional aftermath → personal follow-ups in two discretionary slots → ending and epilogue. Investigation remains playable without romance and with weak preparation.
 
 ## Assets and publication
 
@@ -90,7 +90,7 @@ Use [the current tracker](docs/design/TRACKER.md) for status and [IMPLEMENTATION
 
 Follow [CLI.md](docs/CLI.md). Use `npm run play:cli -- --save PATH`; agents use `npm run --silent play:cli -- --json --save PATH`. Browser and CLI share `content/actions.ts`. Normal observations hide unearned evidence and face-down cards; full catalog inspection requires explicit `--author`. Use separate saves per agent. Proofreader findings do not authorize automatic story changes. `npm test` includes engine/content and CLI process tests; `npm run test:headless` is the engine-only alias.
 
-[SCENE-STAGING.md](docs/SCENE-STAGING.md) governs multi-location scenes, same-scene memory, physical closeness/kissing and natural departures. Use explicit `Line.stage` references and the shared `sceneStage` resolver, not previously rendered lines. `localRequires` reads pending decisions within the active scene and must not certify global evidence early. Moving somewhere quieter and choosing physical closeness are separate choices. Campaign duration remains 16 weeks; configurable milestone scheduling is outstanding.
+[SCENE-STAGING.md](docs/SCENE-STAGING.md) governs multi-location scenes, same-scene memory, physical closeness/kissing and natural departures. Use explicit `Line.stage` references and the shared `sceneStage` resolver, not previously rendered lines. `localRequires` reads pending decisions within the active scene and must not certify global evidence early. Moving somewhere quieter and choosing physical closeness are separate choices. Campaign duration is 52 weeks; mandatory dates and milestones are centralized in `content/calendar.ts`. New scenes use actual weeks with `scene()`; existing chapter-coordinate briefs use `chapterScene()`.
 
 ## Virág and animation
 

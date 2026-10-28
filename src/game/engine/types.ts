@@ -1,6 +1,6 @@
 /** Story-agnostic runtime contracts. IDs and rules are supplied by content. */
 export type ActivityPeriod='day'|'night';
-export interface Schedule { slots:Partial<Record<0|1|2,ActivityPeriod>>; activities:Record<string,readonly ActivityPeriod[]> }
+export interface Schedule { storyWeeks?:readonly number[]; slots:Partial<Record<0|1|2,ActivityPeriod>>; activities:Record<string,readonly ActivityPeriod[]> }
 export type ActorId=string;
 export type BondId=string;
 export type RouteId=string;

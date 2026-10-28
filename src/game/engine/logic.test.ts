@@ -38,3 +38,21 @@ test('production engine has no campaign imports, identities, milestones or endin
   assert.doesNotMatch(source,/content\/|rebeka|boglarka|greta|marton|soma|triad|vampire|confrontation|institution|shared_8|ligetvar|hu-HU/);
  }
 });
+
+test('injected sparse story weeks allow ordinary weeks without bypassing required events',()=>{
+ const sparseRules:RuntimeRules<Voyage>={...rules,schedule:{storyWeeks:[1,3],slots:{1:'day',2:'night'},activities:{rest:['day','night']}}};
+ const sparse={voyage_1:registry.voyage_1,voyage_3:registry.voyage_3};
+ let s=createInitial('Ada',sparseRules);
+ s=applyChoice(applyChoice(openScene(s,'voyage_1',sparse,sparseRules.schedule),'north',sparse,sparseRules),'continue',sparse,sparseRules);
+ s=nextWeek(activity(activity(s,'rest',sparseRules),'rest',sparseRules),sparse,sparseRules);
+ assert.equal(s.week,2);assert.equal(s.slot,1);assert.equal(availableScenes(s,sparse,sparseRules.schedule).length,0);
+ assert.equal(decodeSave(encodeSave(s,sparseRules),sparse,sparseRules).status,'ok');
+ assert.equal(decodeSave(encodeSave({...s,slot:0},sparseRules),sparse,sparseRules).status,'invalid');
+ s=activity(activity(s,'rest',sparseRules),'rest',sparseRules);
+ assert.equal(nextWeek(s,{voyage_1:registry.voyage_1},sparseRules),s,'missing mandatory event must block advancement');
+ s=nextWeek(s,sparse,sparseRules);assert.equal(s.week,3);assert.equal(s.slot,0);
+ assert.equal(activity(s,'rest',sparseRules),s);
+ s=applyChoice(applyChoice(openScene(s,'voyage_3',sparse,sparseRules.schedule),'north',sparse,sparseRules),'continue',sparse,sparseRules);
+ s=nextWeek(activity(activity(s,'rest',sparseRules),'rest',sparseRules),sparse,sparseRules);
+ assert.equal(s.phase,'ending');assert.equal(decodeSave(encodeSave(s,sparseRules),sparse,sparseRules).status,'ok');
+});

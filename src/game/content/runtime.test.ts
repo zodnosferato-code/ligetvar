@@ -1,10 +1,11 @@
+import {nextStory as nextWeek,chapterWeek,CALENDAR} from './test-calendar.ts';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {existsSync,readFileSync} from 'node:fs';
 import {SCENES,EVIDENCE} from './catalog.ts';
 import {BACKGROUNDS,BACKGROUND_VARIANTS,backgroundFor,portraitFor} from './assets.ts';
 import {validateRegistry} from './validate.ts';
-import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,nextWeek,openScene,finishPuzzle,movePuzzle,nextPair,setDirection} from './runtime.ts';
+import {activity,applyChoice,applyEffect,availableScenes,activityAvailable,currentPeriod,sceneLighting,buyGift,createInitial,currentLine,evaluateEnding,giveGift,openScene,finishPuzzle,movePuzzle,nextPair,setDirection} from './runtime.ts';
 import {encodeSave,decodeSave,persist} from './saves.ts';
 import {SAVE_KEY,type GameState,type Registry,type RouteId} from './types.ts';
 function finishArchive(s:GameState){
@@ -16,7 +17,7 @@ function complete(s:GameState,id:string,choose?:(ids:string[])=>string,r:Registr
  for(let i=0;i<50;i++){if(s.phase!=='scene')return s;const ids=currentLine(s,r)!.choices?.map(c=>c.id)??['continue'];s=applyChoice(s,choose?.(ids)??ids[0],r);}throw new Error('Loop: '+id);
 }
 function fixtures():Registry{return Object.fromEntries(Array.from({length:16},(_,i)=>{const week=i+1;return ['shared_'+week,{
- id:'shared_'+week,title:'Teszt '+week,kind:'shared',week,deadline:week,participants:['soma'],location:'classroom',background:'classroom',lighting:'day',requires:i?{scenes:['shared_'+i]}:{},evidence:[],journal:'Tanúsított '+week,entry:'first',contentStatus:'fixture',
+ id:'shared_'+week,title:'Teszt '+week,kind:'shared',week:chapterWeek(week),deadline:chapterWeek(week),participants:['soma'],location:'classroom',background:'classroom',lighting:'day',requires:i?{scenes:['shared_'+i]}:{},evidence:[],journal:'Tanúsított '+week,entry:'first',contentStatus:'fixture',
  resolution:week===15?'confrontation':week===16?'institution':undefined,
  lines:[{id:'first',speaker:'soma',expression:'neutral',text:'Első sor',choices:[{id:'yes',text:'Rendben',next:'last',reaction:'Válasz',effect:{decisions:['witness_'+week]}}]},{id:'last',speaker:'narrator',expression:'neutral',text:'Második sor'}]
  }];})) as Registry;}
@@ -32,7 +33,7 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
  if(opts.missTwo){plan[1]=[];plan[2].push('rebeka_1');plan[5]=[];plan[6].push('triad_2');}
  if(opts.prepared){plan[12]=['prepare_backup',...(plan[12]??[])];plan[14]=['prepare_signals',...(plan[14]??[])];}
  for(let week=1;week<=16;week++){
-  assert.equal(s.week,week);assert.equal(evaluateEnding(s).relationship,null);assert.equal(nextWeek(s,SCENES),s);
+  assert.equal(s.week,chapterWeek(week));assert.equal(evaluateEnding(s).relationship,null);assert.equal(nextWeek(s,SCENES),s);
   const known=structuredClone(s.evidence);s=openScene(s,'shared_'+week,SCENES);
   for(let line=0;s.phase==='scene'&&line<50;line++){
    assert.deepEqual(s.evidence,known,'No knowledge before witnessed completion');
@@ -57,7 +58,7 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
   while(s.phase==='planner')s=activity(s,'rest');
   assert.equal(s.phase,'summary');assert.equal(decodeSave(encodeSave(s),SCENES).status,'ok');s=nextWeek(s,SCENES);
  }
- assert.equal(s.phase,'ending');assert.equal(s.week,16);assertKnowledge(s);
+ assert.equal(s.phase,'ending');assert.equal(s.week,CALENDAR.weeks);assertKnowledge(s);
  assert.equal(Object.keys(s.evidence).length,Object.keys(EVIDENCE).length);
  assert.equal(Object.keys(s.completed).filter(id=>SCENES[id].kind==='shared').length,16);
  assert.equal(decodeSave(encodeSave(s),SCENES).status,'ok');return {state:s,slots,minEnergy};
@@ -144,7 +145,7 @@ test('every destination reachable from the night hub uses night lighting and a n
 test('synthetic scheduler exercises 16 required slots and atomic continuations before content',()=>{
  const r=fixtures();validateRegistry(r,{},new Set(['classroom']));let s=createInitial('');
  for(let w=1;w<=16;w++){
-  assert.equal(s.week,w);assert.equal(activity(s,'rest'),s);assert.equal(nextWeek(s,r),s);
+  assert.equal(s.week,chapterWeek(w));assert.equal(activity(s,'rest'),s);assert.equal(nextWeek(s,r),s);
   s=openScene(s,'shared_'+w,r);s=applyChoice(s,'yes',r);assert.equal(s.slot,0);assert.equal(s.decisions['witness_'+w],undefined);
   assert.equal(decodeSave(encodeSave(s),r).status,'ok');s=applyChoice(s,'continue',r);assert.equal(s.slot,1);assert.ok(s.decisions['witness_'+w]);
   s=nextWeek(activity(activity(s,'rest'),'rest'),r);
@@ -170,21 +171,21 @@ test('registry rejects unresolved references, over-four choices and both cycle t
  r=fixtures();r.shared_1.requires.scenes=['shared_1'];assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/cycle/);
  r=fixtures();r.shared_2.requires.decisions=['not-a-decision'];assert.throws(()=>validateRegistry(r,{},new Set(['classroom'])),/Unknown decision/);
 });
-for(const girl of ['rebeka','boglarka','greta'] as const)test('authored 16-week single romance: '+girl,()=>{
+for(const girl of ['rebeka','boglarka','greta'] as const)test('authored year-long single romance: '+girl,()=>{
  const {state:s,slots,minEnergy}=run(girl,{prepared:true});assert.equal(evaluateEnding(s).relationship,girl);assert.equal(slots,8);assert.ok(minEnergy>0);assert.equal(s.institution,'acknowledged');
  for(const key of [girl+'_yes','marton_'+girl+'_yes',girl+'_repair']){const n=structuredClone(s);delete n.decisions[key];assert.equal(evaluateEnding(n).relationship,'unresolved');}
 });
 test('triad costs 18 slots and requires three separate affirmations plus the women bond',()=>{
  const {state:s,slots,minEnergy}=run('triad');assert.equal(slots,18);assert.ok(minEnergy>0);assert.equal(evaluateEnding(s).relationship,'triad');
- assert.equal(s.completed.triad_7,14);assert.equal(s.completed.triad_8,16);assert.ok(s.bonds.rebeka_boglarka>0);
+ assert.equal(s.completed.triad_7,CALENDAR.lastPersonal);assert.equal(s.completed.triad_8,CALENDAR.aftermath);assert.ok(s.bonds.rebeka_boglarka>0);
  for(const id of ['triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes','rb_rebeka_yes','rb_boglarka_yes']){const n=structuredClone(s);delete n.decisions[id];assert.equal(evaluateEnding(n).relationship,'unresolved',id);}
  assert.ok(s.decisions.rebeka_aftermath);assert.ok(s.decisions.boglarka_aftermath);
 });
 test('two missed triad appointments recover within 20 slots including preparation',()=>{
- const {state:s,slots,minEnergy}=run('triad',{missTwo:true,prepared:true});assert.equal(s.completed.rebeka_1,2);assert.equal(s.completed.triad_2,6);assert.equal(slots,20);assert.ok(minEnergy>0);assert.equal(evaluateEnding(s).relationship,'triad');assert.equal(s.confrontation,'supported');
+ const {state:s,slots,minEnergy}=run('triad',{missTwo:true,prepared:true});assert.equal(s.completed.rebeka_1,2);assert.equal(s.completed.triad_2,chapterWeek(6));assert.equal(slots,20);assert.ok(minEnergy>0);assert.equal(evaluateEnding(s).relationship,'triad');assert.equal(s.confrontation,'supported');
 });
 test('friendship has all evidence, institutional outcome and aftermath before closure',()=>{
- const {state:s}=run('friendship',{prepared:true});assert.equal(evaluateEnding(s).relationship,'friendship');assert.equal(s.completed.friendship_after,16);assert.equal(s.institution,'acknowledged');
+ const {state:s}=run('friendship',{prepared:true});assert.equal(evaluateEnding(s).relationship,'friendship');assert.equal(s.completed.friendship_after,CALENDAR.aftermath);assert.equal(s.institution,'acknowledged');
  assert.deepEqual(s.bonds,{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0});
 });
 test('poor preparation still kills the vampire and changes costs and response',()=>{
@@ -196,9 +197,9 @@ test('declined triad permits an agreed single without penalizing the women bond'
 test('late refusal yields estrangement and no automatic new commitment',()=>{
  const {state:s}=run('greta',{withdraw:true});assert.equal(evaluateEnding(s).relationship,'estranged');assert.equal(setDirection(s,'rebeka'),s);
 });
-test('pre-confrontation danger/romance cannot be replayed in week 15',()=>{
+test('pre-confrontation danger/romance cannot be replayed in the confrontation week',()=>{
  let s=createInitial('');for(let w=1;w<=14;w++)s=nextWeek(activity(activity(complete(s,'shared_'+w),'rest'),'rest'),SCENES);
- s=complete(s,'shared_15');assert.equal(availableScenes(s,SCENES).some(x=>x.deadline<15),false);assert.equal(openScene(s,'rebeka_1',SCENES),s);assert.ok(s.evidence.vampire_dead);
+ s=complete(s,'shared_15');assert.equal(availableScenes(s,SCENES).some(x=>x.deadline<CALENDAR.confrontation),false);assert.equal(openScene(s,'rebeka_1',SCENES),s);assert.ok(s.evidence.vampire_dead);
 });
 test('institutional suppression is independent of romance and never preserves the vampire',()=>{
  let s=createInitial('');for(let w=1;w<=15;w++)s=nextWeek(activity(activity(complete(s,'shared_'+w),'rest'),'rest'),SCENES);
@@ -221,6 +222,9 @@ test('active application has no retired routes, content adapters or explicit art
 });
 
 function witnessedWeek(week:number,earlyCoffee?:string){
+ const chapter=CALENDAR.storyWeeks.findIndex(w=>w===week)+1;
+ if(!chapter)throw new Error("Expected story week");
+ week=chapter;
  let s=createInitial('');
  for(let w=1;w<=week;w++){
   s=complete(s,'shared_'+w);
@@ -267,11 +271,11 @@ test('context conversations branch without granting romance and cannot be replay
 });
 test('middle conversations only recall topics that the player actually witnessed',()=>{
  for(const girl of ['rebeka','boglarka','greta']){
-  const id='coffee_'+girl+'_middle',without=witnessedWeek(8);
+  const id='coffee_'+girl+'_middle',without=witnessedWeek(chapterWeek(8));
   let s=openScene(without,id,SCENES);while(currentLine(s,SCENES)?.id!=='topics')s=applyChoice(s,'continue',SCENES);
   assert.equal(currentLine(s,SCENES)!.choices!.some(c=>c.id==='callback'),false);
   assert.equal(applyChoice(s,'callback',SCENES),s);
-  const withMemory=witnessedWeek(8,'coffee_'+girl+'_early');
+  const withMemory=witnessedWeek(chapterWeek(8),'coffee_'+girl+'_early');
   const paths=traverseBranches(withMemory,id);assert.equal(paths.visited.size,SCENES[id].lines.length);
   s=openScene(withMemory,id,SCENES);while(currentLine(s,SCENES)?.id!=='topics')s=applyChoice(s,'continue',SCENES);
   const restored=decodeSave(encodeSave(s),SCENES);assert.equal(restored.status,'ok');
@@ -305,7 +309,7 @@ test('fixed day/night periods gate reducer actions and advance only on completio
 });
 
 test('night-only shared evenings and daytime preparation respect both slots and deadlines',()=>{
- const snapshots:GameState[]=[];run('triad',{prepared:true,onPlanner:s=>{if(s.week===14)snapshots.push(structuredClone(s));}});
+ const snapshots:GameState[]=[];run('triad',{prepared:true,onPlanner:s=>{if(s.week===CALENDAR.lastPersonal)snapshots.push(structuredClone(s));}});
  const s=snapshots[0];assert.equal(s.slot,1);
  assert.equal(openScene(s,'triad_7',SCENES),s);
  assert.ok(availableScenes({...s,slot:2},SCENES).some(x=>x.id==='triad_7'));
@@ -313,7 +317,7 @@ test('night-only shared evenings and daytime preparation respect both slots and 
  const prep=s;
  assert.ok(availableScenes(prep,SCENES).some(x=>x.id==='prepare_signals'));
  assert.equal(openScene({...prep,slot:2},'prepare_signals',SCENES).phase,'planner');
- assert.equal(availableScenes({...s,week:15,slot:2},SCENES).some(x=>x.id==='triad_7'),false);
+ assert.equal(availableScenes({...s,week:CALENDAR.confrontation,slot:2},SCENES).some(x=>x.id==='triad_7'),false);
 });
 
 test('jobs cannot run or claim rewards outside daytime',()=>{

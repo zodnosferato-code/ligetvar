@@ -1,5 +1,5 @@
 import type {Scene} from './types.ts';
-import {say,scene} from './authoring.ts';
+import {say,chapterScene as scene} from './authoring.ts';
 export const optional:Scene[]=[
  scene('prepare_backup','Segítők és másolatok','preparation',12,14,'department',['marton','denes','julia','aron'],[
   say('narrator','Nem új nyomot keresnek: az ismert adatokból készül használható beosztás.'),
@@ -21,6 +21,6 @@ export const optional:Scene[]=[
   say('boglarka','A közös történet attól még történet, hogy nem lesz mindenkiből szerelmes.'),
   say('greta','A szerdát szabadon hagytam. Egy kávé is számít.'),
   say('marton','Szeretném megtartani ezt a barátságot. Köszönöm, hogy a saját dolgotokat is belehoztátok.'),
-  say('narrator','A következő alkalomnak nincs nyomozási feladata. A barátság a félév után is folytatódhat.')
+  say('narrator','A következő alkalomnak nincs nyomozási feladata. A barátság a év után is folytatódhat.')
  ],{scenes:['shared_16'],directions:['friendship']},[],'Barátként terveztünk új találkozót; a nyomozás nem követelt szerelmet.',{decisions:['friendship_aftermath']})
 ];

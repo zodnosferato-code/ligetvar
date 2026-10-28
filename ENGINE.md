@@ -10,7 +10,7 @@ Current design authority: [docs/design/README.md](docs/design/README.md). Featur
 | --- | --- | --- |
 | State | `src/game/engine/types.ts`, `content/types.ts` | Generic state and separate required campaign fields |
 | Engine | `src/game/engine/logic.ts` | Generic immutable reducers, slots, prerequisites and targeted effects |
-| Campaign | `content/rules.ts`, `runtime.ts` | Initial state, 16-week schedule, economy, directions, confrontation and ending rules |
+| Campaign | `content/rules.ts`, `runtime.ts` | Initial state, 52-week schedule, economy, directions, confrontation and ending rules |
 | Story | `content/catalog.ts` | Sole typed registry assembled from shared, relationship, triad, optional, opening, romance, conversation, outing and Virág modules |
 | Validation | `content/validate.ts` | References, text, choices, prerequisite/continuation cycles and story reachability |
 | Images / moments | `content/assets.ts`, `content/animations.ts` | Runtime selections; detailed availability in the [art register](docs/ART-REGISTER.md) |
@@ -25,12 +25,12 @@ Paths beginning `content/` or `engine/` above are relative to `src/game/`. The g
 
 | Slot | Period | Rule |
 | --- | --- | --- |
-| 0 | Shared story | Guaranteed weekly scene; uses its authored lighting |
+| 0 | Shared story | Required on the 16 configured story weeks only; uses authored lighting |
 | 1 | Daytime | One discretionary activity; office hub |
 | 2 | Nighttime | One discretionary activity; bedroom hub |
 | 3 | Recap | Advance only after required story and activity slots are complete |
 
-There are 16 shared and 32 discretionary opportunities, not three free slots plus an invisible workshop. The saved slot selects the planning hub. Opening menus, browsing destinations or changing dialogue lines costs no time. Completing a scene/activity consumes its one slot. Movement inside a staged scene does not add a charge.
+There are 16 scheduled shared events and 104 discretionary opportunities across 52 weeks. Ordinary weeks start at slot 1, skipping only the absent shared event, not either discretionary activity. `Schedule.storyWeeks` controls mandatory dates; omitting it preserves the generic every-week contract. See [the year campaign](docs/design/YEAR-CAMPAIGN.md). The saved slot selects the planning hub. Opening menus, browsing destinations or changing dialogue lines costs no time. Completing a scene/activity consumes its one slot. Movement inside a staged scene does not add a charge.
 
 `RoomPlanner.tsx` uses an uncropped room image with percentage hotspot coordinates. Outlines and action labels are always visible; no hidden-only hover clues. Missing background objects get labelled fallback icons. Keyboard focus remains visible, mobile targets are at least 44×44px, and hotspot regions must not overlap.
 
@@ -52,7 +52,7 @@ The door does not bypass time or enable nighttime jobs. The bedroom journal is n
 
 Personal scenes cost 8 energy; shared scenes restore 4, a new week restores 24, and rest/sleep restores up to 32. Low energy does not block required story. Supported confrontation costs another 8; weak preparation costs 28. Jobs claim one daytime slot and 12 energy. Exact money, points, gifts and puzzles are owned by [LEISURE-ECONOMY.md](docs/LEISURE-ECONOMY.md).
 
-Earlier personal milestones remain available from their recommended week through week 14, subject to explicit prerequisites. T7 is week 14 only; personal aftermath is week 16 only. Show actual deadlines. Missing an optional meeting never completes it automatically or blocks required investigation.
+Earlier personal milestones remain available from their recommended week through week 50, subject to explicit prerequisites. T7 is week 50 only; personal aftermath is week 52 only. Show actual deadlines. Missing an optional meeting never completes it automatically or blocks required investigation.
 
 ## Dialogue, presentation and staging
 
@@ -72,19 +72,19 @@ The first three expanded dates have optional quieter locations, mutually chosen 
 
 A scene cursor stores pending effects. Only the final completion commits `completed`, `evidence`, `decisions` and journal changes. Journals/recaps derive from witnessed state, never calendar-only future revelations. Effects name their target bond rather than inheriting the previous speaker.
 
-Week-8 direction is intent, not commitment. After an affirmative personal commitment, the planner does not silently rewrite direction; withdrawal is handled in authored follow-up. The triad tracks the two Márton bonds and the women's independent bond, separate conversations, all three affirmative decisions, and individual repair/commitment. Declined T5/T6 can lead to a mutually wanted single route or friendship. Gifts, repeated coffee and numeric scores cannot substitute.
+Week-32 direction is intent, not commitment. After an affirmative personal commitment, the planner does not silently rewrite direction; withdrawal is handled in authored follow-up. The triad tracks the two Márton bonds and the women's independent bond, separate conversations, all three affirmative decisions, and individual repair/commitment. Declined T5/T6 can lead to a mutually wanted single route or friendship. Gifts, repeated coffee and numeric scores cannot substitute.
 
-Nine contextual coffee scenes cover early (weeks 1–7), middle (8–14) and late (15–16) periods for each main woman. Each is once per character/period and costs one discretionary slot/8 energy. Completed earlier topics unlock callbacks. Coffee grants no romance commitment or indispensable evidence. The old repeatable `talk` activity is retired.
+Nine contextual coffee scenes cover early (weeks 1–31), middle (32–50) and late (51–52) periods for each main woman. Each is once per character/period and costs one discretionary slot/8 energy. Completed earlier topics unlock callbacks. Coffee grants no romance commitment or indispensable evidence. The old repeatable `talk` activity is retired.
 
 ## Confrontation and aftermath
 
-Week 15 always interrupts the ritual and kills the vampire on a completed campaign. Backup and signal preparation together support the intervention; without them helpers still act, with more exhaustion/evidence loss. Week 16 handles public/limited/internal disclosure and institutional acknowledgment, partial explanation or suppression. Romance is not required.
+Week 51 always interrupts the ritual and kills the vampire on a completed campaign. Backup and signal preparation together support the intervention; without them helpers still act, with more exhaustion/evidence loss. Week 52 handles public/limited/internal disclosure and institutional acknowledgment, partial explanation or suppression. Romance is not required.
 
-Two discretionary slots remain after the institutional scene. T8 combines both individual aftermath resolutions with the shared aftermath in one slot. Final relationship evaluation waits until the player actually closes the semester from week-16 recap. Single, triad, friendship, unresolved and estranged outcomes remain distinct. Relationship exposure is separate from supernatural preparation/danger.
+Two discretionary slots remain after the institutional scene. T8 combines both individual aftermath resolutions with the shared aftermath in one slot. Final relationship evaluation waits until the player actually closes the year from week-52 recap. Single, triad, friendship, unresolved and estranged outcomes remain distinct. Relationship exposure is separate from supernatural preparation/danger.
 
 ## Saves and CLI
 
-Current baseline: package release 0.6.0, schema 4, content epoch 3; read `package.json`/`src/game/release.ts` rather than relying on this snapshot after future changes. Stable browser key: `ligetvar-save`. Exact metadata, discovery precedence and restart policy are in [VERSIONING.md](docs/VERSIONING.md).
+Current baseline: package release 0.7.0, schema 4, content epoch 6; read `package.json`/`src/game/release.ts` rather than relying on this snapshot after future changes. Stable browser key: `ligetvar-save`. Exact metadata, discovery precedence and restart policy are in [VERSIONING.md](docs/VERSIONING.md).
 
 No migration, name import or alternate legacy gameplay. Reject incompatible versions, malformed JSON/state, unknown scene cursors, forged evidence origins and invalid pending effects. Failed loading never overwrites the stored save with a fresh game. Mid-scene saves retain cursor and pending effects. Browser write failures are visible while in-memory play may continue.
 

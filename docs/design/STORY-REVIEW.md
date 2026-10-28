@@ -1,5 +1,7 @@
 # Story review and revised English outline
 
+
+**28 October year update:** The user extended the campaign to 52 weeks, superseding the 16-week duration below. [YEAR-CAMPAIGN.md](YEAR-CAMPAIGN.md) owns actual chapter dates (confrontation 51, aftermath 52). Earlier numbered outline weeks are now chapter coordinates; do not use them directly as calendar dates. Existing plot/character principles remain; this change retimes the runtime without claiming a completed year of new prose.
 > **Status:** Source-reviewed 27 October 2026; direction confirmed by the user; runtime rewrite deferred. Recommendations from playtest notes incorporated. | **Purpose:** Diagnose narrative weaknesses and define the next writing pass without editing conversations.
 
 ## Scope and decisions

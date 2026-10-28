@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.6.2`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.7.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `5`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `6`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -18,13 +18,13 @@ Both compatibility epochs must exactly match the current release. A different `g
 
 ## Breaking updates and user messages
 
-- Older schema/content epochs: explain that a breaking update made the save unusable and a new semester is required.
+- Older schema/content epochs: explain that a breaking update made the save unusable and a new year is required.
 - A newer epoch: explain that a matching game release is needed to continue.
 - A raw historical save: report its format when known, and say the game release is unknown. Never invent release metadata.
 - Corrupt JSON, malformed metadata or invalid current state: report a damaged/incomplete save, rather than blaming a version change.
 - Unavailable storage: report the browser storage problem separately.
 
-Unusable Continue is disabled. Load failure never changes stored bytes or automatically starts a game. Starting a new semester when any stored save is detected requires an explicit confirmation; cancelling preserves the save. Historical keys are not deleted. If browser storage cannot be written, the existing in-memory-play warning remains visible.
+Unusable Continue is disabled. Load failure never changes stored bytes or automatically starts a game. Starting a new year when any stored save is detected requires an explicit confirmation; cancelling preserves the save. Historical keys are not deleted. If browser storage cannot be written, the existing in-memory-play warning remains visible.
 
 Discovery always checks the stable key first, including when its bytes are empty, corrupt or incompatible. It never falls back from a bad current record to a stale record. Only if that key is absent does it inspect `ligetvar-save-v3`, then v2, then v1, for **detection only**. None can be loaded, even if their contents resemble a current envelope. An existing valid stable-key record takes precedence over all historical records. Future releases continue using the stable key.
 
@@ -59,7 +59,7 @@ Schema 4 and content epoch 2 remain unchanged. Eight new optional scenes, one ac
 
 ## 0.6.0 — revised reporter scenes
 
-Schema stays 4; content epoch becomes 3 because reporter scene graphs and final-decision IDs changed. Saves from content epochs 1/2, including 0.2.0–0.5.0, are incompatible with the current game and require a new semester. No migration or silent restart. Read current values from `package.json` and `src/game/release.ts`; older release sections above explain their own historical decisions.
+Schema stays 4; content epoch becomes 3 because reporter scene graphs and final-decision IDs changed. Saves from content epochs 1/2, including 0.2.0–0.5.0, are incompatible with the current game and require a new year. No migration or silent restart. Read current values from `package.json` and `src/game/release.ts`; older release sections above explain their own historical decisions.
 
 Art availability is tracked in [ART-REGISTER.md](ART-REGISTER.md), not in this save contract.
 
@@ -75,3 +75,8 @@ Schema stays 4. Content epoch increases to 5 because shared_2/shared_3 journals 
 ## 28 October 2026 — automatic arrivals and transition presentation
 
 No release/epoch bump: scene IDs, choices, prerequisites, slot budgets and save structure remain unchanged. Browser orchestration enters the already available mandatory scene on arrival/resume; it does not reinterpret completed story. Transition preferences and playback are presentation-only and outside the save envelope. Current compatible saves retain their exact active line and pending choices.
+
+
+## One-year campaign — 0.7.0
+
+The 52-week schedule changes completion dates, deadlines and ending evaluation. Content epoch is 6, schema remains 4. Epoch-5 semester saves require a fresh year; no migration. Ordinary-week cursors and the full-year gift history are validated against the injected story dates. See [year contract](design/YEAR-CAMPAIGN.md).

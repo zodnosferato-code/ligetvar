@@ -1,7 +1,8 @@
+import {nextStory as nextWeek} from './test-calendar.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {SCENES} from './catalog.ts';
-import {activity,applyChoice,availableScenes,buyGift,createInitial,currentLine,finishPuzzle,giveGift,movePuzzle,nextPair,nextWeek,openScene} from './runtime.ts';
+import {activity,applyChoice,availableScenes,buyGift,createInitial,currentLine,finishPuzzle,giveGift,movePuzzle,nextPair,openScene} from './runtime.ts';
 import {legalSwap,matches,newPuzzle,puzzleDone,puzzleMove,puzzleReward,validPuzzle} from './puzzles.ts';
 import {encodeSave,decodeSave} from './saves.ts';
 import {GIRLS,type GameState} from './types.ts';

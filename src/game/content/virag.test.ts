@@ -1,8 +1,9 @@
+import {nextStory as nextWeek,chapterWeek} from './test-calendar.ts';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {SCENES} from './catalog.ts';
 import {viragScenes,viragEpilogue} from './virag.ts';
-import {activity,applyChoice,createInitial,currentLine,nextWeek,openScene,evaluateEnding} from './runtime.ts';
+import {activity,applyChoice,createInitial,currentLine,openScene,evaluateEnding} from './runtime.ts';
 import {decodeSave,encodeSave} from './saves.ts';
 import {gameView} from './view.ts';
 import {MOMENT_CLIPS,momentSource,validateClip} from './animations.ts';
@@ -15,7 +16,7 @@ function campaign(last=false,visit?:(s:GameState,id:string)=>void){
  let s=createInitial('Márton');
  for(let week=1;week<=16;week++){
   s=finish(openScene(s,'shared_'+week,SCENES));
-  for(const scene of viragScenes.filter(x=>x.week===week)){
+  for(const scene of viragScenes.filter(x=>x.week===chapterWeek(week))){
    visit?.(s,scene.id);const before=s;s=openScene(s,scene.id,SCENES);assert.notEqual(s,before,scene.id);s=finish(s,last);
   }
   while(s.phase==='planner')s=activity(s,'rest');s=nextWeek(s,SCENES);

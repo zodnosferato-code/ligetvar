@@ -1,3 +1,4 @@
+import {storyIdAt} from '../content/calendar.ts';
 import {CastleMap} from './CastleMap.tsx';
 import {AssetImage} from './AssetImage.tsx';
 import {backgroundFor} from '../content/assets.ts';
@@ -49,11 +50,12 @@ const SHORT_LABEL:Record<ObjectId,string>={desk:t('hub.short.workshop'),phone:t(
  const workshops=available.filter(x=>x.kind==='shared'||x.kind==='preparation');
  const meetings=available.filter(x=>x.kind==='relationship'),coffee=available.filter(x=>x.kind==='conversation'&&!x.cost);
  const blocked=Object.values(SCENES).filter(x=>(x.kind==='relationship'||x.kind==='conversation')&&x.week<=s.week&&x.deadline>=s.week&&!(x.id in s.completed)&&!x.cost&&!meets(s,x.requires));
- const committed=isCommitted(s);
+ const committed=isCommitted(s),hasShared=!!storyIdAt(s.week);
+ const rhythm=[...(hasShared?[t('hub.rhythm.shared')]:[]),t('hub.rhythm.day'),t('hub.rhythm.night'),t('hub.rhythm.recap')];
  const specials=Object.values(SCENES).filter(x=>x.cost&&x.week<=s.week&&x.deadline>=s.week&&!(x.id in s.completed));
  return <main className="room-planner">
   <div className="room-toolbar"><div><p className="eyebrow">{t('hub.period',{week:s.week,period:s.slot===0?t('hub.week.shared'):night?t('ui.activity.night'):t('ui.activity.day')})}</p><h1>{current.title}</h1></div></div>
-  <ol className="week-rhythm" aria-label={t('hub.rhythm')}>{[t('hub.rhythm.shared'),t('hub.rhythm.day'),t('hub.rhythm.night'),t('hub.rhythm.recap')].map((label,index)=><li key={label} aria-current={s.slot===index?'step':undefined} className={s.slot>index?'is-complete':''}><span aria-hidden="true">{s.slot>index?'✓':index+1}</span>{label}</li>)}</ol>
+  <ol className="week-rhythm" style={{'--rhythm-steps':rhythm.length} as CSSProperties} aria-label={t('hub.rhythm')}>{rhythm.map((label,index)=><li key={label} aria-current={s.slot===index+(hasShared?0:1)?'step':undefined} className={s.slot>index+(hasShared?0:1)?'is-complete':''}><span aria-hidden="true">{s.slot>index+(hasShared?0:1)?'✓':index+1}</span>{label}</li>)}</ol>
   <p className="room-guidance">{s.slot===0?t('hub.guide.shared'):night?t('hub.guide.night'):t('hub.guide.day')}  {t('hub.guide.free')}</p>
   <div className={'hub-room room-'+room}>
    <AssetImage className="hub-art" file={backgroundFor(hub,night?'night':'day',s.week).file} label={current.title}/>

@@ -20,10 +20,13 @@ try{
  const person=route==='withdraw'?'rebeka':route;
  const triad={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_2'],4:['triad_1','boglarka_2'],5:['triad_2'],6:['rebeka_3'],7:['boglarka_3','triad_3'],8:['triad_4'],9:['rebeka_4'],10:['boglarka_4'],11:['triad_5'],12:['triad_6'],13:['rebeka_5','boglarka_5'],14:['triad_7'],16:['triad_8']};
  const plan=person==='triad'?triad:person==='friendship'?{16:['friendship_after']}:{2:[person+'_1'],5:[person+'_2'],7:[person+'_3'],10:[person+'_4'],13:[person+'_5'],16:[person+'_6']};
- for(let week=1;week<=16;week++){
-  let v=await scene('shared_'+week);
-  if(week===8&&person!=='friendship')v=await act({type:'direction',id:person});
-  for(const id of plan[week]??[]){if(!v.actions.some(a=>a.action.type==='scene'&&a.action.id===id))v=await act({type:'activity',kind:'rest'});v=await scene(id);}
+ const storyWeeks=response.view.calendar.storyWeeks;
+ const calendarPlan=Object.fromEntries(Object.entries(plan).map(([chapter,ids])=>[storyWeeks[Number(chapter)-1],ids]));
+ for(let week=1;week<=response.view.totalWeeks;week++){
+  let v=response.view;const required=v.actions.find(a=>a.action.type==='scene'&&a.action.id.startsWith('shared_'));
+  if(required)v=await scene(required.action.id);
+  if(week===storyWeeks[7]&&person!=='friendship')v=await act({type:'direction',id:person});
+  for(const id of calendarPlan[week]??[]){if(!v.actions.some(a=>a.action.type==='scene'&&a.action.id===id))v=await act({type:'activity',kind:'rest'});v=await scene(id);}
   while(v.phase==='planner')v=await act({type:'activity',kind:'rest'});
   await act({type:'advance'});
  }
@@ -31,7 +34,7 @@ try{
  if(response.view.phase!=='ending'||response.view.ending.relationship!==expected)throw new Error('Wrong ending');
  if(transcript)await send('transcript',{path:transcript});
  const coverage=await send('coverage'); // Current view is returned alongside coverage.
- console.log(JSON.stringify({route,commands,phase:coverage.phase,ending:coverage.ending.relationship,playedLines:response.coverage.playedLines.length,release:response.release,save}));
+ console.log(JSON.stringify({route,commands,phase:coverage.phase,ending:coverage.ending.relationship,week:coverage.week,totalWeeks:coverage.totalWeeks,playedLines:response.coverage.playedLines.length,release:response.release,save}));
  await send('quit');child.stdin.end();
  const [code]=await once(child,'exit');if(code!==0)throw new Error('CLI exit '+code);
 }catch(error){child.kill();throw error;}

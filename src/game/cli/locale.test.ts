@@ -44,8 +44,10 @@ test('live locale changes preserve bytes, revisions, actions and hidden puzzle c
   const response=session.execute({cmd:'act',action,expectedRevision:session.revision});
   assert.equal(response.ok,true,JSON.stringify(response));return response.view!;
  }
- for(let week=1;week<=16;week++){
-  switchBoth();let view=act({type:'scene',id:'shared_'+week});switchBoth();
+ for(let week=1;week<=52;week++){
+  switchBoth();let view=session.execute({cmd:'look'}).view!;
+  const required=view.actions.find(a=>a.action.type==='scene'&&a.action.id.startsWith('shared_'));
+  if(required){view=act(required.action);switchBoth();}
   let guard=200;
   while(view.phase==='scene'&&guard--)view=act(view.actions[0].action);
   assert.ok(guard>0);

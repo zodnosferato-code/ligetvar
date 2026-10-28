@@ -1,3 +1,4 @@
+import {CALENDAR} from './content/calendar.ts';
 import { SCENES } from "./content/catalog.ts";
 import type { GameState, LocationId } from "./content/types.ts";
 
@@ -173,7 +174,7 @@ async function play(mood: MoodId) {
 
 export function moodFor(state: GameState): MoodId {
   if (state.phase === 'ending') return state.confrontation === 'supported' ? 'ending_true' : 'apartment_evening';
-  if (state.week >= 14 && state.week <= 15) return 'tension_low';
+  if (state.week >= CALENDAR.lastPersonal && state.week <= CALENDAR.confrontation) return 'tension_low';
   const place = state.scene ? PLACE[SCENES[state.scene.id]?.location] : undefined;
   if (place) return place;
   return state.slot === 0 ? 'office_morning' : state.slot === 1 ? 'library_quiet' : 'apartment_evening';

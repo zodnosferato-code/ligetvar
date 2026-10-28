@@ -29,7 +29,7 @@ Accepting a quieter stop does not accept touch. Choosing a slow physical pace ea
 - [x] Explicit endings on all three individual dates and all six paid outings.
 - [x] Same-scene choice memory without early global progression.
 
-The remaining work is tracked centrally as **S1–S5** (broader scene coverage, new locations/art, physical staging, ending review and richer callbacks) and **G1–G3** (pacing design, coordinated scheduling and full route/save verification) in the [current design tracker](design/TRACKER.md); detailed acceptance criteria remain in the [implementation roadmap](IMPLEMENTATION-ROADMAP.md#remaining-scene-improvements-and-adjustable-campaign-length). These tasks are planned only; the user requested a roadmap update without further implementation. The current campaign remains 16 weeks.
+The remaining work is tracked centrally as **S1–S5** (broader scene coverage, new locations/art, physical staging, ending review and richer callbacks) and **G1–G3** (pacing design, coordinated scheduling and full route/save verification) in the [current design tracker](design/TRACKER.md); detailed acceptance criteria remain in the [implementation roadmap](IMPLEMENTATION-ROADMAP.md#remaining-scene-improvements-and-adjustable-campaign-length). The earlier roadmap-only limitation is superseded for G1–G3 by the user-approved 52-week year; broader S1–S5 writing/art remains unfinished. The tracker and year contract own current status.
 
 Do not treat being alone as proof of romantic consent or turn privacy into a relationship reward. A private apartment visit should fit the established relationship and include an invitation and an equally valid departure branch. Existing bedroom art should not stand in for an invented living room.
 
@@ -40,3 +40,7 @@ Do not treat being alone as proof of romantic consent or turn privacy into a rel
 ## Current intimacy presentation
 
 The user's 27 October clarification keeps intimacy as part of relationship development, presented fade to black for now. Follow the [authoring contract](design/GAME-DESIGN.md#relationship-intimacy--27-october-2026) and INT1 acceptance gate. Privacy is not touch consent; off-screen presentation does not remove the invitation, reconsideration or aftermath. This documentation update does not certify or rewrite every existing branch.
+
+## Calendar update — 28 October 2026
+
+The user-approved year supersedes earlier fixed sixteen-week dates. Existing scene IDs and stage graphs are preserved; actual dates come from [YEAR-CAMPAIGN.md](design/YEAR-CAMPAIGN.md). T7/T8 are nighttime in weeks 50/52. Stage movement remains within one activity.

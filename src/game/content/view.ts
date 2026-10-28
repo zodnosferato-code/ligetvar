@@ -1,3 +1,4 @@
+import {CALENDAR} from './calendar.ts';
 import {calendarFor} from './calendar.ts';
 import {presentText,sceneTitle} from './scene-localization.ts';
 import {formatFt} from './format.ts';
@@ -37,7 +38,7 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
   for(const kind of ['rest','recycling','archive'] as const)if(R.activityAvailable(s,kind))actions.push({label:{rest:t('ui.activity.rest'),recycling:t('cli.recycling'),archive:t('cli.archive')}[kind],action:{type:'activity',kind}});
   if(R.canChooseDirection(s)&&!R.isCommitted(s))for(const id of Object.keys(R.ROUTES) as (keyof typeof R.ROUTES)[])if(id!==s.direction)actions.push({label:t(`route.${id}`),action:{type:'direction',id}});
  }
- if(s.phase==='summary')actions.push({label:s.week===16?t('cli.end'):t('cli.nextWeek'),action:{type:'advance'}});
+ if(s.phase==='summary')actions.push({label:s.week===CALENDAR.weeks?t('cli.end'):t('cli.nextWeek'),action:{type:'advance'}});
  const p=s.puzzle;
  if(s.phase==='minigame'&&p){
   if(puzzleDone(p))actions.push({label:t('cli.claim'),action:{type:'claim'}});
@@ -47,7 +48,7 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
  }
  const ending=s.phase==='ending'?R.evaluateEnding(s):null;
  return {
-  calendar:calendarFor(s.week),phase:s.phase,week:s.week,slot:s.slot,period:R.currentPeriod(s),money:s.money,activityPoints:s.activityPoints,energy:s.energy,direction:s.direction,lastNote:presentText(s.lastNote,s.name,locale),
+  phase:s.phase,week:s.week,totalWeeks:CALENDAR.weeks,calendar:{...calendarFor(s.week),storyWeeks:CALENDAR.storyWeeks},slot:s.slot,period:R.currentPeriod(s),money:s.money,activityPoints:s.activityPoints,energy:s.energy,direction:s.direction,lastNote:presentText(s.lastNote,s.name,locale),
   scene:scene&&line?{id:scene.id,title:sceneTitle(scene,locale),location:t(`location.${R.sceneStage(s,scene,locale).location}`),staging:R.sceneStage(s,scene,locale),lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:line.speaker==='narrator'?t('actor.narrator'):ACTOR_NAME[line.speaker],expression:line.expression,text:line.text,moment:line.moment?{id:line.moment,...MOMENT_CLIPS[line.moment],rendered:MOMENT_CLIPS[line.moment].status==='reviewed'}:null}:null,
   assets,actions,
   puzzle:p?{kind:p.kind,instructions:p.kind==='archive'?t('cli.memory.instructions'):t('cli.recycling.instructions'),width:p.kind==='archive'?4:5,movesLeft:MOVE_LIMIT[p.kind]-p.moves,score:p.score,reward:puzzleReward(p),done:puzzleDone(p),selected:p.selected,matched:p.matched,tiles:p.board.map((v,i)=>p.kind==='archive'&&!p.selected.includes(i)&&!p.matched.includes(i)?null:v),legend:p.kind==='archive'?[t('puzzle.card.key'),t('puzzle.card.letter'),t('puzzle.card.moon'),t('puzzle.card.tower'),t('puzzle.card.book'),t('puzzle.card.map'),t('puzzle.card.seal'),t('puzzle.card.pen')]:[t('cli.object.green'),t('cli.object.blue'),t('cli.object.copper'),t('cli.object.purple')]}:null,

@@ -2,7 +2,7 @@
 
 > **Status:** Playable Hungarian game; redesign and final acceptance remain in progress. | **Purpose:** Project overview, current design entry point and local setup.
 
-Ligetvár is a gothic romance visual novel set across a castle year in sixteen story chapters at a castle college. Relationships drive the experience while disappearances, lost memories and a vampire investigation shape the shared story. Play individual romances, the Rebeka–Boglárka–Márton relationship, friendship and withdrawal paths.
+Ligetvár is a gothic romance visual novel set over a 52-week year with sixteen story chapters at a castle college. Relationships drive the experience while disappearances, lost memories and a vampire investigation shape the shared story. Play individual romances, the Rebeka–Boglárka–Márton relationship, friendship and withdrawal paths.
 
 ## Design and development
 
@@ -34,11 +34,11 @@ Open http://localhost:5173/ligetvar/. Vite uses `/ligetvar/` as its base path an
 
 ## Play
 
-Each week has a guaranteed shared-story activity, one discretionary daytime activity and one nighttime activity, followed by a recap. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings.
+Each of the 52 weeks has one discretionary daytime activity and one nighttime activity, followed by a recap. Sixteen mandatory story chapters open on scheduled weeks; ordinary weeks begin in the daytime planner. See the [year campaign](docs/design/YEAR-CAMPAIGN.md) for dates and remaining writing scope. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings.
 
 Relaxed move-limited job puzzles earn money and spendable program points. Gifts and optional outings add personal interactions, but do not replace witnessed relationship decisions. See the [economy contract](docs/LEISURE-ECONOMY.md) for exact costs and rewards.
 
-The game and saves are versioned. Incompatible schema/content updates explain that a new semester is required; no historical save migration is supported. See [versioning](docs/VERSIONING.md).
+The game and saves are versioned. Incompatible schema/content updates explain that a new year is required; no historical save migration is supported. See [versioning](docs/VERSIONING.md).
 
 ## Play from the command line
 

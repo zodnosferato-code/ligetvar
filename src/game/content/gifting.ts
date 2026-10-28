@@ -1,3 +1,4 @@
+import {CALENDAR} from './calendar.ts';
 import type {GameState,GirlId,Expression} from './types.ts';
 export const GIFTS={
  photo:{name:'Fotófüzet',price:5000,person:'rebeka',girl:'rebeka',bonus:2,description:'Vastag, matt lapok saját képeknek és széljegyzeteknek.'},
@@ -27,5 +28,5 @@ export function deliverGift(s:GameState,girl:GirlId,id:string,note:GiftNote='not
  return {...s,inventory:{...s.inventory,[gift]:s.inventory[gift]-1},giftsWeek:[...s.giftsWeek,girl],bonds:{...s.bonds,[bond]:Math.min(100,s.bonds[bond]+bonus)},giftHistory:[...history,receipt],lastNote:delivery==='remote'?'Megérkezett az ajándék. Új válasz a telefonodon.':'Az átadás után személyes választ kaptál.'};
 }
 export function validGiftHistory(value:unknown,week:number):value is GiftReceipt[]{
- return Array.isArray(value)&&value.length<=48&&value.every(h=>h&&typeof h==='object'&&Number.isInteger(h.week)&&h.week>=1&&h.week<=week&&Object.hasOwn(reactions,h.girl)&&Object.hasOwn(GIFTS,h.gift)&&Object.hasOwn(GIFT_NOTES,h.note)&&['remote','inPerson'].includes(h.delivery)&&typeof h.reaction==='string'&&h.reaction.length<=1500&&['neutral','amused','affectionate'].includes(h.expression)&&[0,2].includes(h.bonus)&&typeof h.read==='boolean')&&new Set(value.map(h=>h.week+':'+h.girl)).size===value.length;
+ return Array.isArray(value)&&value.length<=CALENDAR.weeks*3&&value.every(h=>h&&typeof h==='object'&&Number.isInteger(h.week)&&h.week>=1&&h.week<=week&&Object.hasOwn(reactions,h.girl)&&Object.hasOwn(GIFTS,h.gift)&&Object.hasOwn(GIFT_NOTES,h.note)&&['remote','inPerson'].includes(h.delivery)&&typeof h.reaction==='string'&&h.reaction.length<=1500&&['neutral','amused','affectionate'].includes(h.expression)&&[0,2].includes(h.bonus)&&typeof h.read==='boolean')&&new Set(value.map(h=>h.week+':'+h.girl)).size===value.length;
 }

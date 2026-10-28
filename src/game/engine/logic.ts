@@ -3,6 +3,7 @@ export function clamp(n:number,min:number,max:number){return Math.max(min,Math.m
 export function createInitial<S extends GameState>(name:string,rules:RuntimeRules<S>):S{return rules.initial(name);}
 export function meets(s:GameState,r:Requirements):boolean{return (!r.anyOf||r.anyOf.some(x=>meets(s,x)))&&(r.scenes??[]).every(x=>x in s.completed)&&(r.evidence??[]).every(x=>x in s.evidence)&&(r.decisions??[]).every(x=>x in s.decisions)&&(r.notDecisions??[]).every(x=>!(x in s.decisions))&&(!r.directions||r.directions.includes(s.direction));}
 export function sharedFor(r:Registry,w:number){return Object.values(r).find(x=>x.kind==='shared'&&x.week===w);}
+export function storyDue(week:number,schedule?:Schedule){return !schedule?.storyWeeks||schedule.storyWeeks.includes(week);}
 export function currentPeriod(s:GameState,schedule?:Schedule){return s.slot<3?schedule?.slots[s.slot as 0|1|2]??null:null;}
 export function periodAllowed(s:GameState,periods:Scene['periods'],schedule?:Schedule){const period=currentPeriod(s,schedule);return !periods||!schedule||!!period&&periods.includes(period);}
 export function activityAvailable<S extends GameState>(s:S,kind:string,rules:RuntimeRules<S>){return s.phase==='planner'&&s.slot>=1&&s.slot<=2&&(kind==='rest'||Object.hasOwn(rules.economy.jobs,kind))&&periodAllowed(s,rules.schedule?.activities[kind],rules.schedule);}
@@ -29,10 +30,11 @@ export function applyChoice<S extends GameState>(s:S,id:string,r:Registry,rules:
  rules.completeScene?.(n,x);n.scene=null;spendSlot(n);return n;
 }
 export function nextWeek<S extends GameState>(s:S,r:Registry,rules:RuntimeRules<S>):S{
- const required=sharedFor(r,s.week);if(s.phase!=='summary'||s.slot!==3||!required||!(required.id in s.completed))return s;
+ const required=sharedFor(r,s.week);if(s.phase!=='summary'||s.slot!==3||(storyDue(s.week,rules.schedule)&&(!required||!(required.id in s.completed))))return s;
  if(s.week===rules.weeks)return rules.canFinish(s)?{...s,phase:'ending'}:s;
- if(!sharedFor(r,s.week+1))return s;
- return {...s,week:s.week+1,slot:0,phase:'planner',energy:clamp(s.energy+rules.economy.weeklyEnergy,0,100),money:s.money+rules.economy.weeklyMoney,giftsWeek:[],lastNote:rules.notes.newWeek};
+ const due=storyDue(s.week+1,rules.schedule);
+ if(due&&!sharedFor(r,s.week+1))return s;
+ return {...s,week:s.week+1,slot:due?0:1,phase:'planner',energy:clamp(s.energy+rules.economy.weeklyEnergy,0,100),money:s.money+rules.economy.weeklyMoney,giftsWeek:[],lastNote:rules.notes.newWeek};
 }
 export function setDirection<S extends GameState>(s:S,direction:string,rules:RuntimeRules<S>):S{
  const result=rules.directionChange(s,direction);

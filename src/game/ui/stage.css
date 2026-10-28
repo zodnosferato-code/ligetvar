@@ -225,7 +225,7 @@ footer{font-size:.65em;line-height:1.6;color:#b5a08a;text-align:center;padding:2
 .destination-detail>.scene-grid{margin-top:16px}
 
 /* Weekly time is derived from the saved slot, never from room navigation. */
-.week-rhythm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:0;margin:18px 0;list-style:none}
+.week-rhythm{display:grid;grid-template-columns:repeat(var(--rhythm-steps,4),minmax(0,1fr));gap:8px;padding:0;margin:18px 0;list-style:none}
 .week-rhythm li{display:flex;align-items:center;gap:8px;padding:12px;border:1px solid #806344;border-radius:4px;color:var(--muted);font-size:.8em;min-width:0}
 .week-rhythm li>span{display:grid;place-items:center;flex-shrink:0;width:24px;height:24px;border:1px solid currentColor;border-radius:50%}
 .week-rhythm [aria-current=step]{border:2px solid #e4bd7b;color:#ffe5b8;background:#503642;font-weight:600}

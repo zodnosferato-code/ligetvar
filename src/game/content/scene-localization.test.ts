@@ -1,3 +1,4 @@
+import {nextStory as nextWeek} from './test-calendar.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {SCENES} from './catalog.ts';
@@ -5,7 +6,7 @@ import {catalogs,translate,type MessageKey} from './localization.ts';
 import {sceneTitle,presentLine} from './scene-localization.ts';
 import {investigationHu} from './locales/investigation.hu.ts';
 import {openingHu} from './locales/opening.hu.ts';
-import {createInitial,openScene,applyChoice,activity,nextWeek} from './runtime.ts';
+import {createInitial,openScene,applyChoice,activity} from './runtime.ts';
 import {gameView} from './view.ts';
 import {encodeSave,decodeSave} from './saves.ts';
 

@@ -1,5 +1,5 @@
 import type {LocationId,Scene} from './types.ts';
-import {say,option,scene} from './authoring.ts';
+import {say,option,chapterScene as scene} from './authoring.ts';
 export const foundations:Scene[]=[
  scene('rebeka_1','Rebeka — A kép széle','relationship',1,14,'classroom',['marton','rebeka'],[
   say('narrator','Rebeka három képet tesz az üres tanterem asztalára: egy elmosódott kezet, a radiátor fölötti ablakot és a kör helyét a padlón.'),
@@ -94,8 +94,8 @@ for(const girl of ['rebeka','boglarka','greta'] as const){
   say('narrator','A kamra után először találkoztok újabb ellenőrizendő nyom nélkül. A csendet nem siettetitek.'),
   say(girl,p.aftermath,'affectionate'),say('marton','Az együtt átélt veszély nem dönti el helyettünk, hogyan maradunk együtt.'),
   say(girl,'Én a kapcsolatunkat szeretném folytatni. A közös időt magamért is választom, nem azért, mert tartozom neked.'),
-  say('marton','A féléven túli választ is kimondom.','neutral',[
-   option('continue_together','Szeretnék veled maradni, a rendes napokon is.','Megbeszélitek a következő találkozót, még a félév lezárása előtt.',{decisions:[girl+'_aftermath'],bonds:{[bond]:6}}),
+  say('marton','A éven túli választ is kimondom.','neutral',[
+   option('continue_together','Szeretnék veled maradni, a rendes napokon is.','Megbeszélitek a következő találkozót, még a év lezárása előtt.',{decisions:[girl+'_aftermath'],bonds:{[bond]:6}}),
    option('withdraw','A történtek után sem szeretném folytatni a kapcsolatot.','A közös nyomozás nem lesz szerelmi tartozás.',{decisions:[girl+'_withdraw']})])
- ],{scenes:['shared_16',girl+'_5'],decisions:[girl+'_commit'],notDecisions:[girl+'_withdraw'],directions:[girl]},[],p.name+' és Márton a veszély után, a félév lezárása előtt döntöttek a személyes folytatásról.'));
+ ],{scenes:['shared_16',girl+'_5'],decisions:[girl+'_commit'],notDecisions:[girl+'_withdraw'],directions:[girl]},[],p.name+' és Márton a veszély után, a év lezárása előtt döntöttek a személyes folytatásról.'));
 }

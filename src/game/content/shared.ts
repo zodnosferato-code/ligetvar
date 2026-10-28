@@ -72,7 +72,7 @@ export const spine:Scene[]=[
  ],['pattern'],'Két visszatérő embernél azonos a kimerülés és a kieső idő mintája, eltérő személyes indítékok mellett.',{evidence:['borrowed_voice']}),
  shared(7,'A hiányos leírás','library',['marton','rebeka','boglarka','greta','julia','aron'],[
   say('aron','Felügyelettel hozzáférhettek a régi kísérleti anyagokhoz. Másolatot jegyzőkönyv mellett készítünk.'),
-  say('greta','Soma neve szerepel annál a kötetnél, amelyikből kitéptek egy lapot. A félév előtt kérte ki.'),
+  say('greta','Soma neve szerepel annál a kötetnél, amelyikből kitéptek egy lapot. A év előtt kérte ki.'),
   say('julia','A korábbi tanúk sikertelen sötétmágiai kísérletekről beszélnek. Ezek nem bizonyítanak korábbi vámpírtámadásokat.'),
   say('boglarka','A megmaradt rész önként végzett átalakulást ír le. Kölcsönzött életerőt említ; befejezés nélkül az állapot instabil.'),
   say('rebeka','A lap szélén ugyanaz a pinceablak van, mint egy régi képen. A kör vége viszont leszakadt.'),
@@ -129,13 +129,13 @@ export const spine:Scene[]=[
   say('aron','A régi karbantartási mellékletnél volt egy másodpéldány. Megvan a hiányzó lap, nem Soma hozta vissza.'),
   say('boglarka','A kölcsönzött életerőt helyhez kötött horgony tartja össze. A nyitott rítus horgonyának megszakítása végzetes összeomlást okoz az átalakultnak.'),
   say('julia','Ez ennek az instabil átalakulásnak a feltétele, nem általános vámpírellenes fegyver. A pontos helyet és időt is tudnunk kell.'),
-  say('greta','Soma a tizenötödik hétre kért éjszakai hozzáférést. Van határidőnk.'),
+  say('greta','Soma a ötvenegyedik hétre kért éjszakai hozzáférést. Van határidőnk.'),
   say('rebeka','A rajzon három padlóba süllyesztett rögzítés van. Az archív fotókon keresem meg, melyik helyiségben volt ilyen.'),
   say('marton','A következményt nem hallgatjuk el.','neutral',[
    option('explain','Mindenki értse, hogy Soma belehalhat a rítus megszakításába.','Senki nem kap hamis ígéretet veszélytelen megoldásról.'),
    option('help','Dénest és Áront is bevonjuk a kivonulás tervébe.','A szakmai segítség románctól függetlenül jár.')]),
   say('narrator','Külön helyeken őrzik a teljes másolatot. A végső gyengeség és az időpont még a konfrontáció előtt ismertté vált.')
- ],['anchor_rule','completion_date'],'Megvan a teljes leírás: a nyitott horgony megszakítása halálos összeomlást okoz. Soma a 15. hétre készül.',{evidence:['ritual_fragment','fascination_limit']}),
+ ],['anchor_rule','completion_date'],'Megvan a teljes leírás: a nyitott horgony megszakítása halálos összeomlást okoz. Soma a 51. hétre készül.',{evidence:['ritual_fragment','fascination_limit']}),
  shared(13,'A régi gépészeti kamra','chamber',['marton','rebeka','boglarka','greta','aron'],[
   say('narrator','Áron nappal nyitja ki a kamrát. Régi vezetékek futnak a falon, a szerelőakna körül három rögzítés látszik.'),
   say('rebeka','Ugyanaz a repedés, mint az archív fotón. Nem szép kép kell: a méretarány és a három pont legyen rajta.'),
@@ -180,7 +180,7 @@ export const spine:Scene[]=[
    option('private','A személyes védelmet választom, nyilvános ügy nélkül.','Az ellátás folytatódik. Az intézmény könnyebben hallgathat a lényegéről.',{disclosure:'private'})]),
   say('rebeka','Nem a kamra képével akarom lezárni a sorozatot. Kell egy délután, amikor nem bizonyítékot keresünk.'),
   say('boglarka','A nevemet írom a kész szövegre. Hogy kinek mutatom meg először, már nem a nyomozás feladata.'),
-  say('greta','Két szabad sávunk még van. A jelentés nem zárja be helyettünk a félévet.'),
+  say('greta','Két szabad sávunk még van. A jelentés nem zárja be helyettünk a évet.'),
   say('narrator','Az intézményi választ rögzítik. A személyes utóbeszélgetésekre és a baráti találkozóra még a végső epilógus előtt sor kerülhet.')
  ],['aftermath'],'Rendeztük a bizonyítékokat és a jelentést. A személyes utóbeszélgetésekre még két szabad sáv van.',{evidence:['vampire_dead']})
 ];

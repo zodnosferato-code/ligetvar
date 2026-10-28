@@ -1,9 +1,10 @@
+import {chapterWeek} from './calendar.ts';
 /** Optional adult side story. Decisions record individual invitations, never blanket consent. */
 import type {Choice,GameState,Line,LocationId,Scene} from './types.ts';
 const line=(id:string,speaker:Line['speaker'],text:string,next?:string,choices?:Choice[]):Line=>({id,speaker,text,next,choices,expression:speaker==='virag'?'amused':'neutral'});
 const choice=(id:string,text:string,next:string,reaction:string,decision?:string):Choice=>({id,text,next,reaction,...(decision?{effect:{decisions:[decision]}}:{})});
 function chapter(n:number,title:string,week:number,location:LocationId,lines:Line[],journal:string):Scene{
- return {id:'virag_'+n,title,kind:'conversation',week,deadline:14,periods:['day','night'],location,background:location,lighting:'day',participants:['marton','virag'],requires:n===1?{}:{scenes:['virag_'+(n-1)]},evidence:[],journal,entry:lines[0].id,lines,contentStatus:'authored'};
+ return {id:'virag_'+n,title,kind:'conversation',week:chapterWeek(week),deadline:chapterWeek(14),periods:['day','night'],location,background:location,lighting:'day',participants:['marton','virag'],requires:n===1?{}:{scenes:['virag_'+(n-1)]},evidence:[],journal,entry:lines[0].id,lines,contentStatus:'authored'};
 }
 export const viragScenes:Scene[]=[
  chapter(1,'Virág · Az elveszett elsőéves',2,'hallway',[
@@ -147,9 +148,9 @@ for(const x of viragScenes){
  x.stages=Object.fromEntries(x.lines.map(l=>[l.id,{label:x.title,location:destinations[l.id]??x.location,background:destinations[l.id]??x.background,participants:x.participants,proximity:near.has(l.id)?'close' as const:'apart' as const}]));
  for(const l of x.lines){l.stage=l.id;if(['admit','reason','facts','limit','explain','offer'].includes(l.id))l.expression='neutral';if(['hurt','caught'].includes(l.id))l.expression='vulnerable';}
 }
-/** Public end-of-semester report: successful even if the player skipped the route. */
+/** Public end-of-year report: successful even if the player skipped the route. */
 export function viragEpilogue(s:GameState):string{
- const report='A Mérceháló félév végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.';
+ const report='A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.';
  if(!s.completed.virag_1)return report;
  return report+' Virág új megbízáson dolgozik. Időnként egy szemtelen üzenettel jelentkezik; nincs búcsúrandi, kizárólagossági ígéret vagy lezáró párkapcsolati döntés.';
 }

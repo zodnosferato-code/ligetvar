@@ -1,5 +1,5 @@
 import type {Scene} from './types.ts';
-import {say,option,scene} from './authoring.ts';
+import {say,option,chapterScene as scene} from './authoring.ts';
 export const triad:Scene[]=[
  scene('triad_1','T1 — Kinek a mondata?','relationship',4,14,'library',['marton','rebeka','boglarka'],[
   say('narrator','Rebeka képaláírása: „Boglárka a kastély régi hangját keresi.” Boglárka maga elé húzza a lapot.'),
@@ -67,7 +67,7 @@ export const triad:Scene[]=[
   say('boglarka','Én is folytatni szeretném veletek. Elkészült a szövegem, de a következő találkozó nem jutalom érte. Magamnak választom.','affectionate'),
   say('marton','A vállalást a rendes napokon kell betartani.'),
   say('rebeka','Ma az is belefér, hogy fáradtak vagyunk. Ez nem újabb próba.'),
-  say('marton','A félév utáni időre is válaszolok.','neutral',[
+  say('marton','A év utáni időre is válaszolok.','neutral',[
    option('continue_together','Szeretnék veletek maradni, külön és közösen is időt vállalva.','Mindhárman megerősítettétek a folytatást. Az egyetlen alkalom mindkét személyes utóbeszélgetést is rendezi.',{decisions:['triad_aftermath','rebeka_aftermath','boglarka_aftermath'],bonds:{marton_rebeka:6,marton_boglarka:6,rebeka_boglarka:6}}),
    option('withdraw','Nem szeretném folytatni a közös kapcsolatot.','Egy korábbi ígéret nem tartja életben a közös kapcsolatot.',{decisions:['rebeka_withdraw','boglarka_withdraw'],direction:'friendship'})])
  ],{scenes:['shared_16','triad_7'],decisions:['rebeka_commit','boglarka_commit','triad_marton_yes','triad_rebeka_yes','triad_boglarka_yes'],directions:['triad']},[],'A közös utóbeszélgetésben mindhárom résztvevő megszólalt, egyetlen sávban rendezték a folytatást.',undefined,['night'])

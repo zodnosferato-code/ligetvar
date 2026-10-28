@@ -1,3 +1,4 @@
+import {CALENDAR} from './calendar.ts';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {enterMandatoryScene} from './flow.ts';
@@ -23,8 +24,9 @@ test('next week enters its required scene; discretionary slots remain player con
  assert.equal(arrival.week,2);assert.equal(arrival.scene?.id,'shared_2');assert.equal(arrival.slot,0);
 });
 test('unmet prerequisites are not bypassed and active choices are preserved',()=>{
- const state={...createInitial('Miki'),week:16};
+ const state={...createInitial('Miki'),week:CALENDAR.aftermath};
  assert.equal(enterMandatoryScene(state),state);
  const active=enterMandatoryScene(createInitial('Miki'));
  assert.equal(enterMandatoryScene({...active,scene:{...active.scene!,pending:[{decisions:['sample']}]}}).scene?.pending.length,1);
 });
+

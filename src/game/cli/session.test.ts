@@ -1,3 +1,4 @@
+import {CALENDAR,chapterWeek,storyIdAt} from '../content/calendar.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Session} from './session.ts';
@@ -19,14 +20,15 @@ const triad:Record<number,string[]>={1:['rebeka_1'],2:['boglarka_1'],3:['rebeka_
 for(const route of ['friendship','rebeka','boglarka','greta','triad','withdraw'] as const)test('CLI campaign reaches ending through player commands: '+route,()=>{
  const {s,file}=play(),person=route==='withdraw'?'rebeka':route;
  const plan:Record<number,string[]>=person==='triad'?triad:person==='friendship'?{16:['friendship_after']}:{2:[person+'_1'],5:[person+'_2'],7:[person+'_3'],10:[person+'_4'],13:[person+'_5'],16:[person+'_6']};
- for(let week=1;week<=16;week++){
-  let v=scene(s,'shared_'+week);
-  if(week===8&&person!=='friendship')v=act(s,{type:'direction',id:person});
-  for(const id of plan[week]??[]){if(v.slot===1&&SCENES[id].periods?.length===1&&SCENES[id].periods?.[0]==='night')v=act(s,{type:'activity',kind:'rest'});v=scene(s,id,route==='withdraw'&&id.endsWith('_6'));}
+ const calendarPlan=Object.fromEntries(Object.entries(plan).map(([chapter,ids])=>[chapterWeek(Number(chapter)),ids]));
+ for(let week=1;week<=CALENDAR.weeks;week++){
+  let v=s.execute({cmd:'look'}).view!;const required=storyIdAt(week);if(required)v=scene(s,required);
+  if(week===CALENDAR.direction&&person!=='friendship')v=act(s,{type:'direction',id:person});
+  for(const id of calendarPlan[week]??[]){if(v.slot===1&&SCENES[id].periods?.length===1&&SCENES[id].periods?.[0]==='night')v=act(s,{type:'activity',kind:'rest'});v=scene(s,id,route==='withdraw'&&id.endsWith('_6'));}
   while(v.phase==='planner')v=act(s,{type:'activity',kind:'rest'});
   const loaded=decodeSave(file.read(),SCENES);assert.equal(loaded.status,'ok');if(loaded.status==='ok')assert.deepEqual(gameView(loaded.state),v);
   v=act(s,{type:'advance'});
-  if(week===16){assert.equal(v.phase,'ending');assert.equal(v.ending!.relationship,route==='withdraw'?'estranged':person);}
+  if(week===CALENDAR.weeks){assert.equal(v.phase,'ending');assert.equal(v.ending!.relationship,route==='withdraw'?'estranged':person);}
  }
 });
 test('shared browser/CLI actions match and invalid or stale actions are atomic',()=>{

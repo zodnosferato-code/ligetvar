@@ -1,3 +1,4 @@
+import {CALENDAR} from '../content/calendar.ts';
 import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {SCENES} from '../content/catalog.ts';
 import {assetUrl,backgroundFor} from '../content/assets.ts';
@@ -37,7 +38,7 @@ export function Transition({state,mode,children}:{state:GameState;mode:Transitio
  useEffect(()=>{if(!active){const target=content.current?.querySelector<HTMLElement>('h1,button');if(target){target.tabIndex=-1;target.focus({preventScroll:true});}}},[active]);
  return <><div ref={content} {...(active?{inert:''}:{})} aria-hidden={active||undefined}>{children}</div>{active&&mode!=='off'&&<section key={target.key} className={'chapter-transition transition-'+mode+' lighting-'+target.lighting} onKeyDown={event=>{if(event.key==='Tab'){event.preventDefault();skip.current?.focus();}}} role="dialog" aria-modal="true" aria-labelledby="transition-title">
  {mode==='background'&&target.background.file&&<img className="transition-background" src={assetUrl(target.background.file)} alt=""/>}
- <div className="transition-copy"><p className="eyebrow">{t('ui.week.progress',{week:state.week})} · {t(target.lighting==='night'?'ui.light.night':target.lighting==='evening'?'ui.light.evening':'ui.light.day')}</p><span className="transition-ornament" aria-hidden="true">✦</span>
+ <div className="transition-copy"><p className="eyebrow">{t('ui.week.progress',{week:state.week,total:CALENDAR.weeks})} · {t(target.lighting==='night'?'ui.light.night':target.lighting==='evening'?'ui.light.evening':'ui.light.day')}</p><span className="transition-ornament" aria-hidden="true">✦</span>
  <h1 id="transition-title">{target.scene?sceneTitle(target.scene,locale):state.phase==='summary'?t('ui.summary'):state.phase==='ending'?t('ui.closed'):t(target.lighting==='night'?'ui.activity.night':'ui.activity.day')}</h1>
  {target.stage&&<p>{t(`location.${target.stage.location}`)}</p>}
  <button ref={skip} className="primary" onClick={()=>setActive(false)}>{t('ui.transition.skip')}</button></div>

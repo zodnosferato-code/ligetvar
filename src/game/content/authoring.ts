@@ -1,3 +1,4 @@
+import {chapterWeek} from './calendar.ts';
 import type {TextReference} from './scene-localization.ts';
 /** Content authoring helpers. No scene text or campaign rules belong in the engine. */
 import type { ActorId, Choice, Effect, Expression, Line, LocationId, Requirements, Scene } from './types.ts';
@@ -8,5 +9,7 @@ export function scene(id:string,title:string|TextReference,kind:Scene['kind'],we
  const lines:Line[]=spoken.map((l,i)=>({...l,id:'line_'+i,expression:l.expression??'neutral',...(i<spoken.length-1?{next:'line_'+(i+1)}:{})}));
  return {periods:periods??(kind==='shared'?undefined:kind==='preparation'?['day']:['day','night']),id,title:typeof title==='string'?title:title.text,...(typeof title==='string'?{}:{titleKey:title.textKey}),kind,week,deadline,location,background:location,lighting:periods?.length===1&&periods[0]==='night'?'evening':location==='holdkor'?'night':'day',participants,requires,evidence,journal,entry:'line_0',lines,contentStatus:'authored',onComplete};
 }
-export const shared=(week:number,title:string|TextReference,location:LocationId,participants:ActorId[],lines:Spoken[],evidence:string[],journal:string,extra:Requirements={}):Scene=>scene('shared_'+week,title,'shared',week,week,location,participants,lines,{...extra,scenes:week>1?['shared_'+(week-1)]:[]},evidence,journal);
+/** Adapter for existing chapter-coordinate briefs; new content can use scene() with actual weeks. */
+export const chapterScene:typeof scene=(id,title,kind,chapter,deadline,...rest)=>scene(id,title,kind,chapterWeek(chapter),chapterWeek(deadline),...rest);
+export const shared=(week:number,title:string|TextReference,location:LocationId,participants:ActorId[],lines:Spoken[],evidence:string[],journal:string,extra:Requirements={}):Scene=>chapterScene('shared_'+week,title,'shared',week,week,location,participants,lines,{...extra,scenes:week>1?['shared_'+(week-1)]:[]},evidence,journal);
 

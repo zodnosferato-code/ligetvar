@@ -1,5 +1,5 @@
 /** Optional, paid side stories. Never prerequisites for the investigation or commitments. */
-import {scene,say,option} from './authoring.ts';
+import {chapterScene as scene,say,option} from './authoring.ts';
 import type {Scene,GirlId} from './types.ts';
 function outing(s:Scene,money:number,points:number):Scene{return {...s,cost:{money,points}};}
 export const outings:Scene[]=[
