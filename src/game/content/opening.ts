@@ -1,4 +1,4 @@
-import {message,type TextReference} from './scene-localization.ts';
+import {storedMessage,message,type TextReference} from './scene-localization.ts';
 /** Authored opening scene expansion. */
 import type {ActorId,Expression,Line,Scene} from './types.ts';
 type Beat=[ActorId,string|TextReference,Expression?];
@@ -40,7 +40,7 @@ export function expandOpening(original:Scene):Scene{
   after(s,'line_0','missing_inventory',[
    ['marton',message('scene.missing.lastContact')],
    ['greta',message('scene.missing.waiting')],
-   ['rebeka',message('scene.missing.nothingToSee'),'displeased'],
+   ['rebeka',message('scene.missing.nothingToSee'),'amused'],
    ['greta',message('scene.missing.lockDoor')],
    ['boglarka',message('scene.missing.twentyMinutes')],
    ['greta',message('scene.missing.witness')]
@@ -61,6 +61,15 @@ export function expandOpening(original:Scene):Scene{
    ['denes',message('scene.missing.letSleep')],
    ['narrator',message('scene.missing.message')]
   ]);
+ }
+ if(s.id==='shared_2'){
+  const group:ActorId[]=['marton','rebeka','boglarka','greta'];
+  s.stages={
+   gathering:{label:storedMessage('scene.missing.stage.gathering'),location:'department',background:'department',participants:group,proximity:'apart'},
+   private:{label:storedMessage('scene.missing.stage.private'),location:'department',background:'department',participants:[...group,'denes'],proximity:'apart'},
+   reply:{label:storedMessage('scene.missing.stage.reply'),location:'department',background:'department',participants:['marton'],proximity:'apart'}
+  };
+  for(const line of s.lines)line.stage=line.id==='line_6'?'reply':line.id==='line_0'||line.id.startsWith('missing_inventory_')?'gathering':'private';
  }
  if(s.id==='shared_3'){
   after(s,'line_1','interview_seating',[
@@ -93,6 +102,12 @@ export function expandOpening(original:Scene):Scene{
    ['lilla',message('scene.interview.decideLater')],
    ['narrator',message('scene.interview.crossedWords')]
   ]);
+ }
+ if(s.id==='shared_3'){
+  const group:ActorId[]=['marton','lilla','rebeka','boglarka','greta'];
+  s.stages={conversation:{label:storedMessage('scene.interview.stage.conversation'),location:'library',background:'library',participants:group,proximity:'apart'},
+   waiting:{label:storedMessage('scene.interview.stage.waiting'),location:'library',background:'library',participants:group.filter(id=>id!=='rebeka'),proximity:'apart'}};
+  for(const line of s.lines)line.stage=line.id==='line_7'?'waiting':'conversation';
  }
  if(s.id==='rebeka_1'){
   s.lines[1].text='A Holdkör szerint arc nélkül nincs történet. Szerintem csak könnyebb ráfogni valakire egyet. Na, melyiket mentenéd meg a háromból? A „mind érdekes” nem válasz.';

@@ -1,4 +1,4 @@
-import {presentLine} from './scene-localization.ts';
+import {presentText,presentLine} from './scene-localization.ts';
 import {DEFAULT_LOCALE,type Locale} from './localization.ts';
 /** Composition boundary: binds campaign data to the reusable engine. */
 import * as engine from '../engine/logic.ts';
@@ -14,9 +14,10 @@ export const activityAvailable=(s:GameState,kind:string)=>engine.activityAvailab
 export const sceneAvailable=(s:GameState,x:Scene)=>engine.sceneAvailable(s,x,RULES.schedule);
 // Free-slot scenes follow the current activity period.
 // Shared story scenes retain their authored lighting and internal time jumps.
-export function sceneStage(s:GameState,x:Scene):SceneStage {
+export function sceneStage(s:GameState,x:Scene,locale:Locale=DEFAULT_LOCALE):SceneStage {
  const line=s.scene?.id===x.id?x.lines.find(l=>l.id===s.scene?.line):undefined;
- return (line?.stage?x.stages?.[line.stage]:undefined)??{label:'',location:x.location,background:x.background,participants:x.participants,proximity:'apart'};
+ const stage=(line?.stage?x.stages?.[line.stage]:undefined)??{label:'',location:x.location,background:x.background,participants:x.participants,proximity:'apart' as const};
+ return {...stage,label:presentText(stage.label,s.name,locale)};
 }
 export const sceneLighting=(s:GameState,x:Scene)=>sceneStage(s,x).lighting??(x.kind!=='shared'&&currentPeriod(s)==='night'?'night':x.periods?.length===2?'day':x.lighting);
 export const createInitial=(name:string)=>engine.createInitial(name,RULES);

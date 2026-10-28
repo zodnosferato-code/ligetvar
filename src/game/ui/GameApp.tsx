@@ -51,7 +51,7 @@ function Title(){
 }
 function Dialogue(){
  const t=useTranslation();const {locale}=useLocale();
- const g=useGame(),s=g.state,x=SCENES[s.scene!.id],l=currentLine(s,SCENES,locale)!,portrait=portraitFor(l.speaker,l.expression,x.week),staging=sceneStage(s,x),lighting=sceneLighting(s,x),bg=backgroundFor(staging.background,lighting),narration=l.speaker==='narrator',showPortrait=l.speaker!=='narrator'&&l.speaker!=='marton',heading=useRef<HTMLHeadingElement>(null),stage=useRef<HTMLElement>(null),copy=useRef<HTMLDivElement>(null),[hasMoreText,setHasMoreText]=useState(false);
+ const g=useGame(),s=g.state,x=SCENES[s.scene!.id],l=currentLine(s,SCENES,locale)!,portrait=portraitFor(l.speaker,l.expression,x.week),staging=sceneStage(s,x,locale),lighting=sceneLighting(s,x),bg=backgroundFor(staging.background,lighting),narration=l.speaker==='narrator',showPortrait=l.speaker!=='narrator'&&l.speaker!=='marton',heading=useRef<HTMLHeadingElement>(null),stage=useRef<HTMLElement>(null),copy=useRef<HTMLDivElement>(null),[hasMoreText,setHasMoreText]=useState(false);
  useEffect(()=>{if(window.matchMedia('(max-width:700px)').matches)stage.current?.scrollIntoView({block:'start'});},[x.id,l.id]);
  useEffect(()=>{heading.current?.focus({preventScroll:true});const element=copy.current;if(!element)return;element.scrollTop=0;const measure=()=>setHasMoreText(element.scrollHeight>element.clientHeight+1);measure();const observer=new ResizeObserver(measure);observer.observe(element);return ()=>observer.disconnect();},[x.id,l.id]);
  const clip=l.moment?MOMENT_CLIPS[l.moment]:undefined;

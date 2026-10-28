@@ -77,7 +77,7 @@ test('weeks 2–3 have complete dialogue, title and choice references',()=>{
    }
   }
  }
- assert.deepEqual([...used].sort(),Object.keys(investigationHu).sort());
+ assert.deepEqual([...used].sort(),Object.keys(investigationHu).filter(k=>!k.includes('.reaction.')&&!k.endsWith('.journal')&&!k.includes('.knowledge')&&!k.includes('.stage.')).sort());
 });
 for(const [id,branches] of [['shared_2',['ask','space']],['shared_3',['listen','timeline']]] as const)
  for(const branch of branches)test(id+' '+branch+': locale and resumed actions preserve gameplay',()=>{
@@ -146,4 +146,50 @@ test('unknown persisted message references are rejected before rendering',()=>{
  const state=createInitial('Reader');
  state.lastNote='@message:scene.opening.unknown';
  assert.equal(decodeSave(encodeSave(state),SCENES).status,'invalid');
+});
+
+for(const contact of ['ask','space'])for(const interview of ['listen','timeline'])
+ test(`opening continuity ${contact}/${interview}: name, staging and earned knowledge`,()=>{
+  const name='Álex $& {playerName}';
+  let state=createInitial(name);
+  for(let week=1;week<=3;week++){
+   const id='shared_'+week,branch=week===1?'observe':week===2?contact:interview;
+   state=openScene(state,id,SCENES);let guard=80;
+   while(state.phase==='scene'&&guard--){
+    const raw=encodeSave(state),en=gameView(state,'en'),hu=gameView(state,'hu');
+    assert.equal(encodeSave(state),raw);
+    assert.ok(!en.scene!.text.includes('Márton'));
+    assert.ok(!hu.scene!.text.includes('Márton'));
+    assert.ok(!en.scene!.text.includes('@message:'));
+    assert.ok(!en.lastNote.includes('@message:'));
+    if(week===2){
+     assert.ok(!en.assets.some(a=>a.role==='portrait'&&a.file?.includes('/soma/')));
+     assert.ok(!en.scene!.staging.participants.includes('soma'));
+     assert.equal(state.evidence.returned_lilla,undefined);
+    }
+    if(week===3){assert.equal(state.evidence.phrase,undefined);assert.equal(state.evidence.time_gap,undefined);}
+    if(week===2&&state.scene!.line==='line_6'||week===3&&state.scene!.line==='line_0'){
+     assert.ok(en.scene!.text.includes(name));assert.ok(hu.scene!.text.includes(name));
+    }
+    const restored=decodeSave(raw,SCENES);assert.equal(restored.status,'ok');
+    if(restored.status!=='ok')throw Error('resume');
+    assert.deepEqual(gameView(restored.state,'en'),en);
+    const line=SCENES[id].lines.find(l=>l.id===state.scene!.line)!;
+    state=applyChoice(restored.state,line.choices?.length?branch:'continue',SCENES);
+   }
+   assert.ok(guard>0);assert.equal(state.slot,1);
+   assert.ok(gameView(state,'en').journal.every(j=>!j.text.includes('@message:')));
+   if(week<3)state=nextWeek(activity(activity(state,'rest'),'rest'),SCENES);
+  }
+  assert.deepEqual(Object.keys(state.evidence).sort(),['grounding','phrase','returned_lilla','time_gap']);
+  assert.deepEqual(state.bonds,createInitial(name).bonds);assert.deepEqual(state.decisions,{});
+  state=nextWeek(activity(activity(state,'rest'),'rest'),SCENES);
+  assert.equal(openScene(state,'shared_4',SCENES).scene?.id,'shared_4');
+ });
+
+test('pre-continuation content saves require a fresh semester',()=>{
+ const saved=JSON.parse(encodeSave(createInitial('Reader')));saved.contentCompatibilityVersion=4;
+ const result=decodeSave(JSON.stringify(saved),SCENES);
+ assert.equal(result.status,'unsupported');
+ if(result.status==='unsupported')assert.equal(result.reason,'content');
 });

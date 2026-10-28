@@ -15,29 +15,29 @@ export const spine:Scene[]=[
   say('marton',message('scene.opening.martonReply')),
   say('narrator',message('scene.opening.departure'))
  ],['grounding'],storedMessage('scene.opening.journal')),
- shared(2,message('scene.missing.title'),'department',['marton','soma','greta','rebeka','boglarka','denes'],[
-  say('greta',message('scene.missing.inventory')),
-  say('soma',message('scene.missing.somaSuccess'),'amused'),
+ shared(2,message('scene.missing.title'),'department',['marton','greta','rebeka','boglarka','denes'],[
+  say('narrator',message('scene.missing.inventory')),
+  say('narrator',message('scene.missing.somaSuccess')),
   say('rebeka',message('scene.missing.lillaReturn')),
   say('denes',message('scene.missing.examination')),
   say('boglarka',message('scene.missing.assumptions')),
   say('marton',message('scene.missing.askPermission'),'neutral',[
-   option('ask',message('scene.missing.choice.ask'),'Dénes vállalja, hogy megkérdezi. Az egészségi adatok nála maradnak.'),
-   option('space',message('scene.missing.choice.space'),'Lilla másnap üzen: tíz percet vállal, fénykép nélkül.')]),
+   option('ask',message('scene.missing.choice.ask'),storedMessage('scene.missing.reaction.ask')),
+   option('space',message('scene.missing.choice.space'),storedMessage('scene.missing.reaction.space'))]),
   say('narrator',message('scene.missing.separateFacts'))
- ],['returned_lilla'],'Lilla kimerülten tért vissza, és hiányzik egy estéje. Soma elmulasztott egy találkozót, majd feltűnően energikusan tért vissza. Az okot még nem ismerjük.'),
+ ],['returned_lilla'],storedMessage('scene.missing.journal')),
  shared(3,message('scene.interview.title'),'library',['marton','lilla','rebeka','boglarka','greta'],[
   say('lilla',message('scene.interview.limits')),
   say('rebeka',message('scene.interview.camera')),
   say('marton',message('scene.interview.stop'),'neutral',[
-   option('listen',message('scene.interview.choice.listen'),'Lilla maga választja ki, honnan kezdi.'),
-   option('timeline',message('scene.interview.choice.timeline'),'Gréta megmutatja a naplót; Lilla javítja a dátumot.')]),
+   option('listen',message('scene.interview.choice.listen'),storedMessage('scene.interview.reaction.listen')),
+   option('timeline',message('scene.interview.choice.timeline'),storedMessage('scene.interview.reaction.timeline'))]),
   say('lilla',message('scene.interview.invitation')),
   say('boglarka',message('scene.interview.unknownSpeaker')),
-  say('greta',message('scene.interview.accessLog')),
+  say('narrator',message('scene.interview.accessLog')),
   say('lilla',message('scene.interview.initial')),
   say('narrator',message('scene.interview.close'))
- ],['phrase','time_gap'],'Lilla engedélyével rögzítettük az ismételt mondatot és a hiányzó időt. A hang gazdája ismeretlen.',{evidence:['grounding','returned_lilla']}),
+ ],['phrase','time_gap'],storedMessage('scene.interview.journal'),{evidence:['grounding','returned_lilla']}),
  shared(4,'A képek és a névsor','library',['marton','rebeka','boglarka','greta','julia'],[
   say('narrator','Rebeka a helyszínképeket, Gréta a kártyanaplót hozza. Boglárka külön lapra teszi az idézeteket. Júlia csak a tanúk által megosztható változatot kapja meg.'),
   say('rebeka','A gépem órája hét percet siet. Ha ezt nem javítom, úgy látszik, mintha Lilla az eltűnése után is itt lett volna.'),

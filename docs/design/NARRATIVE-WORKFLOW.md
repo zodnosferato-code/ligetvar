@@ -1,6 +1,6 @@
 # Narrative rewrite workflow
 
-> **Status:** User-approved workflow, 28 October 2026; shared_1 pilot authorized and implemented; remaining rewrites deferred. | **Purpose:** Connect the master plot, character guidance, scene specifications and repeated playthrough review.
+> **Status:** User-approved workflow, 28 October 2026; shared_1–3 opening implemented; further scene rewrites proceed in reviewed batches. | **Purpose:** Connect the master plot, character guidance, scene specifications and repeated playthrough review.
 
 ## User decision and immediate scope
 Record problems first. Do not patch dialogue as problems arise during the baseline playthrough. This supersedes the suggestion to rewrite each encountered scene immediately. The user subsequently authorized drafting: [SCENE-OUTLINE.md](SCENE-OUTLINE.md) now provides first briefs and reconciliation notes for all 68 scene IDs. Resolve marked open decisions and refine branch details before implementing narrative changes.
@@ -24,3 +24,7 @@ Use [PLAYTHROUGH-FINDINGS.md](PLAYTHROUGH-FINDINGS.md) for observations, linked 
 Blind agent runs use only public CLI observations, no author inspection or scripted walkthrough. Record actual ending, route, errors, stalls, save/resume, transcript and coverage. A single route does not prove all routes. Browser visuals, animation playback and human enjoyment remain separate checks.
 
 After an approved revision, verify relevant branch/knowledge/name/localization behavior and save/resume, then the affected full route. Preserve mutually chosen intimacy and the confirmed fade-to-black direction. Record checks actually run. [TRACKER.md](TRACKER.md) remains the single feature-status tracker.
+
+## Natural dialogue direction — 28 October 2026 continuation
+
+The user authorized continuing the rewrite/playtest and removing unnatural permission asking. This supersedes repetitive permission/consent/evidence-policy speeches as a dialogue pattern. Ordinary conversation, practical help and harmless transitions should flow without ritual approval questions. Show consideration through actions and specific responses. Keep consequential player decisions, refusal paths, mutually chosen intimacy and control of private information; do not turn them into lectures or remove them by implication. Apply this direction scene by scene and check continuity through the public CLI.

@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.6.1`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.6.2`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `4`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `5`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -66,3 +66,7 @@ Art availability is tracked in [ART-REGISTER.md](ART-REGISTER.md), not in this s
 ## 0.6.1 — English-first opening pilot
 
 Schema remains 4: saved fields still have the same shapes. Content epoch becomes 4: shared_1 reactions and journal now store stable message-reference strings, resolved in the current locale with the chosen player name. This intentionally rejects epoch-3 saves rather than mixing historical persisted prose with the rewritten opening. No migration, key change or default-language change. Scene/line/choice IDs, evidence/effects, information order and semester scheduling are retained. Later prose remains outside this pilot.
+
+## 0.6.2 — opening continuation and natural dialogue
+
+Schema stays 4. Content epoch increases to 5 because shared_2/shared_3 journals and reactions now store message references instead of prose, and their assembled scene/cast presentation has been revised. Reject content epoch 4 and earlier with the existing fresh-semester explanation; do not migrate. Stable scene/line/choice IDs, evidence/effects, schedule and the Hungarian runtime default remain unchanged. Stage labels resolve at presentation time, so switching does not alter state or save bytes.

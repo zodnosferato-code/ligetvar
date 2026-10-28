@@ -1,9 +1,9 @@
 import {storedMessage} from './scene-localization.ts';
 export const knowledge:Record<string,string>={
  grounding:storedMessage('scene.opening.knowledge'),
- returned_lilla:'Lilla kimerülten tért vissza egy hiányzó este után.',
- phrase:'„Maradt még egy hely neked.” Lilla kétszer hallotta; a beszélő még ismeretlen.',
- time_gap:'Lilla emlékei és a kártyaadatok között többórás, megmagyarázatlan rés van.',
+ returned_lilla:storedMessage('scene.missing.knowledge'),
+ phrase:storedMessage('scene.interview.knowledge.phrase'),
+ time_gap:storedMessage('scene.interview.knowledge.timeGap'),
  timeline:'A korrigált fotóidő és a kártyanapló a lezárt lépcsőig vezeti a nyomot.',
  borrowed_voice:'A hang hallott mondatot ismétel, új választ nem ad.',
  pattern:'Két visszatérő embernél ugyanaz a kimerülés és időhiány jelentkezik.',

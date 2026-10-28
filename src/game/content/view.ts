@@ -20,7 +20,7 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
  const actions:{label:string;action:GameAction}[]=[],assets:VisibleAsset[]=[];
  const line=R.currentLine(s,SCENES,locale),scene=s.scene?SCENES[s.scene.id]:null;
  if(scene&&line){
-  const staging=R.sceneStage(s,scene),lighting=R.sceneLighting(s,scene);assets.push({...asset('background',backgroundFor(staging.background,lighting)),lighting});
+  const staging=R.sceneStage(s,scene,locale),lighting=R.sceneLighting(s,scene);assets.push({...asset('background',backgroundFor(staging.background,lighting)),lighting});
   const clip=line.moment?MOMENT_CLIPS[line.moment]:undefined;
   if(clip?.status==='reviewed')assets.push({role:'moment',file:clip.file,description:clip.description});
   else if(!['marton','narrator'].includes(line.speaker)){
@@ -47,7 +47,7 @@ export function gameView(s:GameState,locale:Locale=DEFAULT_LOCALE){
  const ending=s.phase==='ending'?R.evaluateEnding(s):null;
  return {
   phase:s.phase,week:s.week,slot:s.slot,period:R.currentPeriod(s),money:s.money,activityPoints:s.activityPoints,energy:s.energy,direction:s.direction,lastNote:presentText(s.lastNote,s.name,locale),
-  scene:scene&&line?{id:scene.id,title:sceneTitle(scene,locale),location:t(`location.${R.sceneStage(s,scene).location}`),staging:R.sceneStage(s,scene),lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:line.speaker==='narrator'?t('actor.narrator'):ACTOR_NAME[line.speaker],expression:line.expression,text:line.text,moment:line.moment?{id:line.moment,...MOMENT_CLIPS[line.moment],rendered:MOMENT_CLIPS[line.moment].status==='reviewed'}:null}:null,
+  scene:scene&&line?{id:scene.id,title:sceneTitle(scene,locale),location:t(`location.${R.sceneStage(s,scene,locale).location}`),staging:R.sceneStage(s,scene,locale),lineId:line.id,speakerId:line.speaker,speaker:line.speaker==='marton'?s.name:line.speaker==='narrator'?t('actor.narrator'):ACTOR_NAME[line.speaker],expression:line.expression,text:line.text,moment:line.moment?{id:line.moment,...MOMENT_CLIPS[line.moment],rendered:MOMENT_CLIPS[line.moment].status==='reviewed'}:null}:null,
   assets,actions,
   puzzle:p?{kind:p.kind,instructions:p.kind==='archive'?t('cli.memory.instructions'):t('cli.recycling.instructions'),width:p.kind==='archive'?4:5,movesLeft:MOVE_LIMIT[p.kind]-p.moves,score:p.score,reward:puzzleReward(p),done:puzzleDone(p),selected:p.selected,matched:p.matched,tiles:p.board.map((v,i)=>p.kind==='archive'&&!p.selected.includes(i)&&!p.matched.includes(i)?null:v),legend:p.kind==='archive'?[t('puzzle.card.key'),t('puzzle.card.letter'),t('puzzle.card.moon'),t('puzzle.card.tower'),t('puzzle.card.book'),t('puzzle.card.map'),t('puzzle.card.seal'),t('puzzle.card.pen')]:[t('cli.object.green'),t('cli.object.blue'),t('cli.object.copper'),t('cli.object.purple')]}:null,
   journal:s.journal.map(j=>({...j,text:presentText(j.text,s.name,locale)})),evidence:Object.entries(s.evidence).map(([id,witness])=>({id,text:presentText(EVIDENCE[id].text,s.name,locale),...witness})),bonds:s.bonds,exposure:s.exposure,

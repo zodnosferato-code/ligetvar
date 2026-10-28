@@ -10,6 +10,10 @@ The user approved these contrasts on 19 October 2026. They guide speech, initiat
 | Boglárka | Observant, quieter, dry humor. Chooses precise words and follows an idea enthusiastically when invited. | Pauses or withdraws first, then names the specific injury. Can disagree without becoming louder. | Makes small deliberate invitations; her initiative grows without replacing her personality. | Infantilizing shyness, permanent passivity, making every sentence a research disclaimer. |
 | Gréta | Direct, practical, energetic. Starts things, proposes a place, notices what needs doing. | Takes charge, becomes impatient, tries to solve what may only need company. | Respect first; deliberate private flirting; learning to leave a task unfinished. | Reducing her to an administrator, perfectly composed boundary speeches, making her organize every scene for everyone. |
 
+## Natural conversation — user direction, 28 October 2026
+
+Remove repetitive permission asking and abstract reassurance speeches during the scene-by-scene rewrite. Let people answer questions directly, make ordinary offers, tease, hesitate and act. One stated preference followed in action is stronger than several characters repeating its principle. Consequential invitations and refusals remain meaningful choices; express them in each character's own voice, without a formal approval exchange for every harmless step. This is a writing direction, not a bulk mechanical replacement of phrases across unreviewed scenes.
+
 ## Expanded character profiles
 
 ### Rebeka Dorn
