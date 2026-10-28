@@ -102,3 +102,7 @@ Schema 4/content 7 retained. Compact chrome, modal task menus, phone categories 
 ## Rebeka commitment and aftermath — 0.9.3
 
 Schema remains 4; content epoch advances to **8** because `rebeka_5`/`rebeka_6` replace assembled cursor graphs and persist new locale-neutral journals/reactions. Original commitment/continuation/withdrawal effects, direction prerequisites, date windows and slot costs remain. Epoch-7 and earlier saves require a fresh year; no migration or storage-key change. Neither a first-date hand choice nor commitment authorizes later physical escalation. [Evidence](design/PLAYTHROUGH-FINDINGS.md#rebeka-commitmentaftermath-validation--28-october-2026).
+
+## Rebeka disagreement — 0.9.4
+
+Schema4/content**9**. `_4`'s assembled graph and locale-neutral journal/reactions replace the imposed off-screen presentation violation with a present photograph/caption disagreement. Stable repair/withdraw effects still witness whether the couple worked through the disagreement; they no longer imply a compulsory past offence. New cursor and decision-context semantics intentionally reject epoch8 and earlier. Admission, rewards and scheduling stay unchanged; no migration. [Evidence](design/PLAYTHROUGH-FINDINGS.md#rebeka-disagreement-validation--28-october-2026).

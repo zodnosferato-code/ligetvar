@@ -1,3 +1,4 @@
+import {rewriteRebekaConflict} from './rebeka-conflict.ts';
 import {rewriteRebekaLater} from './rebeka-later.ts';
 /** Authored romance scene expansion. */
 import {dateConclusion} from './date-staging.ts';
@@ -181,9 +182,8 @@ function expandIndividual(s:Scene,girl:GirlId,stage:number){
  if(stage===6){
   after(s,'line_0','romance_after',p.after);
   // short private continuation — append after the last beat of the previous after() chain
-  const cont:Beat[] = girl==='rebeka'
-    ? [['narrator','A beszélgetés után Rebeka lehúzza a pulóvert. Közelebb húz, csókja mély és éhes. Térdre ereszkedik anélkül, hogy kérnéd: szájával rajtad, lassú majd mély, szemével felnéz. Amikor feláll, a ruhája már a bokájánál van; a heg a hasán nyitva. Lovagol rajtad, te diktálod a tempót. Beleélvez; ott marad, zihálva.'],['rebeka','Ez maradjon köztünk. Maradj, amíg a fény visszajön.','affectionate']]
-    : girl==='boglarka'
+  // Rebeka's aftermath is authored separately, before this generic expansion.
+  const cont:Beat[] = girl==='boglarka'
     ? [['narrator','Boglárka leveszi a kardigánt, aztán lassan a ruhát is. Figyeli az arcodat, ahogy elpirul. Először te nyalsz, lassú és alapos; ő nyög halkan, aztán visszaadja, óvatos és pontos. Lovagol, te végig dicséred a melleit, a hasát, a combjait. Többször elélvez. Beleélvez, miközben mondod, milyen jól néz ki. A kardigán félig rajta marad.'],['boglarka','Jó volt. Maradj még. Legközelebb nem hozom a könyvet.','affectionate']]
     : [['narrator','Gréta a mellényt a székre dobja, az inget kigombolja. Szoknya fel, már nedves. Az asztalnál térdre ereszkedik, szájával rajtad, szemével felnéz. Aztán az asztalra hajol, kezei a háta mögött. Könnyű ütések a fenekén; csak nyög és „igen”. Beléd hatolsz, bent maradsz. Utána egy percig az asztalon marad, aztán egyszer röviden felnevet.'],['greta','Ne tedd bele a jegyzőkönyvbe. A telefon marad a táskában.','amused']];
   const lastAfter = 'romance_after_' + (p.after.length - 1);
@@ -251,6 +251,7 @@ function expandTriad(s:Scene){
 }
 
 export function expandRomance(original:Scene):Scene{
+ if(original.id==='rebeka_4')return rewriteRebekaConflict(original);
  if(original.id==='rebeka_5'||original.id==='rebeka_6')return rewriteRebekaLater(original);
  const match=/^(rebeka|boglarka|greta)_([2-6])$/.exec(original.id);
  if(!match&&!['triad_3','triad_4','triad_7','triad_8'].includes(original.id))return original;

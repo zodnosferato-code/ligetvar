@@ -105,3 +105,7 @@ The example runner follows a predetermined route and generally first choices. To
 ### Commit handoff
 
 For each batch state: exact scenes changed; recommendation IDs addressed and still open; actual calendar/continuity issues resolved; choices/locales/timing extremes played; tested commit/build and ending; save/restart result; tests/Actions; remaining acceptance gaps; and the next specific scene to tackle. Keep transcript evidence reproducible and distinguish committed evidence from ephemeral `/tmp` files. Update the existing tracker rather than creating a competing rewrite checklist. Go slowly enough to understand and verify each character's scene; do not perform a bulk synonym pass or expand the whole catalog without intervening playtests.
+
+### Current continuation after 0.9.4
+
+The next-agent ordering above remains the method. Rebeka `_3` was rewritten in 0.9.1, `_5`/`_6` in 0.9.3, then `_4` in 0.9.4. Do not redo these based solely on historical findings. `_4` no longer imposes presentation misuse; `_5`/`_6` no longer repeat aftermath or force intimacy before withdrawal. See current tracker/evidence. Next connected target is the early Rebeka `_1`/`_2` arc and its elapsed-time/English coverage, then Boglárka, Gréta and contract-led Virág passes. Other women's/triad physical defects and coordinated late-Soma migration remain open.

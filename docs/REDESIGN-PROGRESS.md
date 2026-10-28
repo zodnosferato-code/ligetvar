@@ -344,3 +344,7 @@ Reproduce after build with `PLAYWRIGHT_MODULE_PATH` and `CHROMIUM_EXECUTABLE_PAT
 ## 28 October 2026 — Rebeka commitment and aftermath, 0.9.3
 
 Replaced assembled `rebeka_5`/`rebeka_6` under the individual-story handoff. English-first bilingual film-list activity, different pre-danger/post-institutional conversations, bounded physical choices, fade-to-black and natural departures. Schema4/content8: obsolete cursors require fresh saves. Twelve targeted CLI years, 32 process restarts, triad/friendship regressions, exhaustive save/locale/branch tests and full local checks; [evidence and remaining limits](design/PLAYTHROUGH-FINDINGS.md#rebeka-commitmentaftermath-validation--28-october-2026). Next: `rebeka_4`, then the other individual arcs. No whole-story, visual or human acceptance claim.
+
+## 28 October 2026 — Rebeka disagreement, 0.9.4
+
+Rewrote `_4` around her own caption draft and a present disagreement, removing unchosen off-screen wrongdoing. Bilingual branches preserve progression, window and single-slot cost. Fifteen public-CLI years, 42 restarts and focused exhaustive tests; full local checks. Schema4/content9, fresh year required. [Evidence/limits](design/PLAYTHROUGH-FINDINGS.md#rebeka-disagreement-validation--28-october-2026). Earlier `eb15890` Tests and Pages deployment both succeeded. Next: early Rebeka `_1`/`_2`.

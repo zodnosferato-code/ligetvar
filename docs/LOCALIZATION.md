@@ -239,3 +239,7 @@ Canonical `timeline.en.ts` and `seasonal.en.ts` have typed Hungarian translation
 ## Rebeka commitment and aftermath — 0.9.3
 
 `rebeka_5`/`rebeka_6` now have canonical `rebeka-later.en.ts` and typed Hungarian translation, including every authored branch, choice, title, stage, reaction and journal. Names resolve literally at presentation time. Public CLI switches at every played node and resumes both languages without changing progression. Schema 4/content 8 reflects replaced cursor/persisted-text assumptions. Whole-game English coverage and default-language migration remain partial. [Evidence](design/PLAYTHROUGH-FINDINGS.md#rebeka-commitmentaftermath-validation--28-october-2026).
+
+## Rebeka disagreement — 0.9.4
+
+`rebeka_4`'s whole assembled graph and companion text now use canonical `rebeka-conflict.en.ts` and typed Hungarian translation. Every played node switches both ways in the public CLI; exhaustive branches resume without early effects or locale-dependent actions. New graph/persisted text uses schema4/content9. English migration beyond these scenes remains incomplete.
