@@ -98,3 +98,7 @@ Schema remains 4; content epoch becomes **7**. The assembled `rebeka_3` hand-hol
 ## Focused mobile interface — 0.9.2
 
 Schema 4/content 7 retained. Compact chrome, modal task menus, phone categories and automatic job-result presentation change no saved fields, scene IDs, scheduling, puzzle rules or reward semantics. Unclaimed finished boards reopen their result dialog and use the existing shared claim action exactly once. Current 0.9.1 saves remain compatible; no migration or restart is introduced.
+
+## Rebeka commitment and aftermath — 0.9.3
+
+Schema remains 4; content epoch advances to **8** because `rebeka_5`/`rebeka_6` replace assembled cursor graphs and persist new locale-neutral journals/reactions. Original commitment/continuation/withdrawal effects, direction prerequisites, date windows and slot costs remain. Epoch-7 and earlier saves require a fresh year; no migration or storage-key change. Neither a first-date hand choice nor commitment authorizes later physical escalation. [Evidence](design/PLAYTHROUGH-FINDINGS.md#rebeka-commitmentaftermath-validation--28-october-2026).

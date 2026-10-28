@@ -1,0 +1,2429 @@
+{
+  "method": "Scripted public JSON CLI, newest revisions, fresh saves; no author inspection/save editing. Per-node English/Hungarian switching and real process restart. Not blind play or visual acceptance.",
+  "baseline": {
+    "commit": "e37b0914b98e578b307135044b710368078d4d37",
+    "release": "0.9.2/schema4/content7",
+    "routes": [
+      "rebeka",
+      "withdraw"
+    ],
+    "duplicate": [
+      "rebeka_5/romance_commit_end_0–2",
+      "rebeka_6/romance_after_0–2"
+    ],
+    "unselectedIntimacy": "rebeka_6/romance_private_cont_0–1 precedes line_4/withdraw"
+  },
+  "observations": {
+    "rebeka_5/line_0|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "line_0",
+      "en": "Rebeka sits on the courtyard bench with a folded sheet on her knee. Three film titles are crossed out. Beside the fourth she has drawn a question mark large enough to swallow it.",
+      "hu": "Rebeka az udvari padon ül, térdén összehajtott lap. Három filmcímet kihúzott. A negyedik mellé akkora kérdőjelet rajzolt, hogy majdnem elnyeli a címet.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/list|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "list",
+      "en": "A difficult selection?",
+      "hu": "Nehéz a választás?",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/defence|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "defence",
+      "en": "I’m trying to choose something you can dislike without ruining my entire personality. It’s a surprisingly narrow category.",
+      "hu": "Olyasmit keresek, amit utálhatsz anélkül, hogy az egész személyiségem összeomlana. Meglepően szűk kategória.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/offer|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "offer",
+      "en": "We could start with the one you actually want to see.",
+      "hu": "Kezdhetnénk azzal, amit tényleg látni szeretnél.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/hesitate|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "hesitate",
+      "en": "That’s the crossed-out one. Naturally.",
+      "hu": "Azt húztam ki. Természetesen.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/line_1|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "line_1",
+      "en": "I keep turning an invitation into a little exhibition. Good choice of film, good joke, something worth coming for. I want you to come for me, Álex $& {playerName}. That sounds much worse aloud.",
+      "hu": "Folyton kis kiállítást csinálok egy meghívásból. Jó film, jó vicc, valami, amiért érdemes eljönni. Azt szeretném, ha miattam jönnél, Álex $& {playerName}. Kimondva sokkal rosszabbul hangzik.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/line_2|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "line_2",
+      "en": "I like the jokes. I also like the moment after one, when you’re deciding whether to tell me something else.",
+      "hu": "Szeretem a vicceidet. Azt a pillanatot is szeretem utánuk, amikor még gondolkodsz, elmondj-e valami mást.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/answer|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "answer",
+      "en": "You could help by telling me things too. Otherwise I’m going to fill every silence. Very impressively, but still.",
+      "hu": "Te is segíthetnél azzal, hogy elmondasz dolgokat. Különben minden csöndet én töltök ki. Káprázatosan, de akkor is.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/admission|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "admission",
+      "en": "I want to see you when I have nothing clever ready. I’m less good at arranging that than I am at wanting it.",
+      "hu": "Akkor is látni szeretnélek, amikor semmi okosat nem készítettem elő. Megszervezni nehezebben tudom, mint vágyni rá.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/line_3|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "line_3",
+      "en": "Then make room for me. I want a relationship with you. Time that’s ours, and the chance to tell you when something hurts. I’m asking for that myself; I’m not answering for anyone else.",
+      "hu": "Akkor csinálj nekem helyet. Kapcsolatot szeretnék veled. Saját közös időt, és hogy elmondhassam, ha valami fáj. Ezt én kérem; más helyett nem válaszolok.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/line_4|commit,withdraw": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "line_4",
+      "en": "She puts the pen down and waits for my answer.",
+      "hu": "Leteszi a tollat, és várja a válaszomat.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "commit",
+          "en": "I want a relationship with you too. Let’s make room for it.",
+          "hu": "Én is kapcsolatot szeretnék veled. Csináljunk neki helyet."
+        },
+        {
+          "id": "withdraw",
+          "en": "I can’t promise that. I don’t want to continue the romance.",
+          "hu": "Ezt nem tudom megígérni. Nem szeretném romantikusan folytatni."
+        }
+      ]
+    },
+    "rebeka_5/romance_future|ritual,open": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "romance_future",
+      "en": "I sit beside her. She turns the list towards me, including the crossed-out title.",
+      "hu": "Leülök mellé. Felém fordítja a listát, a kihúzott címmel együtt.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "ritual",
+          "en": "Let’s keep time for each other even when neither of us has anything to show.",
+          "hu": "Akkor is legyen időnk egymásra, amikor egyikünknek sincs mit mutatnia."
+        },
+        {
+          "id": "open",
+          "en": "I’d like to choose our next outing. Something I want to share with you.",
+          "hu": "A következő programot szeretném én választani. Valamit, amit megmutatnék neked."
+        }
+      ]
+    },
+    "rebeka_5/romance_future_ritual_0|": {
+      "scene": "rebeka_5",
+      "week": 48,
+      "date": "2027-08-26",
+      "period": "day",
+      "line": "romance_future_ritual_0",
+      "en": "Even if the film is dreadful?",
+      "hu": "Akkor is, ha rettenetes a film?",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_5/romance_future_ritual_1|": {
+      "scene": "rebeka_5",
+      "week": 48,
+      "date": "2027-08-26",
+      "period": "day",
+      "line": "romance_future_ritual_1",
+      "en": "Especially if it is. But I’d like some time together that doesn’t need a film at all.",
+      "hu": "Akkor különösen. De szeretnék olyan közös időt is, amihez film sem kell.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_5/romance_future_ritual_2|": {
+      "scene": "rebeka_5",
+      "week": 48,
+      "date": "2027-08-26",
+      "period": "day",
+      "line": "romance_future_ritual_2",
+      "en": "Good. Sometimes I’m tired and disagreeable. I’d hate to waste all that on myself.",
+      "hu": "Jó. Néha fáradt és elviselhetetlen vagyok. Kár lenne mindet magamra pazarolnom.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_5/commit_leave|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "commit_leave",
+      "en": "She circles the crossed-out title without making a reservation. We still have to find a time. At the courtyard gate she pockets the list and turns back to finish a thought. I stay to hear it before we part.",
+      "hu": "Bekarikázza a kihúzott címet, de nem foglal semmit. Az időpontot még meg kell találnunk. Az udvar kapujánál zsebre teszi a listát, aztán visszafordul, hogy befejezzen egy gondolatot. Megvárom, mielőtt elköszönünk.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/line_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "line_0",
+      "en": "The institutional meeting is over. In the courtyard Rebeka unfolds her old film list, then folds it again. I sit at the other end of the bench. For a while she watches someone wrestling a bicycle through the gate.",
+      "hu": "Vége az intézményi megbeszélésnek. Az udvaron Rebeka szétnyitja a régi filmlistáját, aztán újra összehajtja. Leülök a pad másik végére. Egy darabig azt nézi, ahogy valaki átügyeskedik egy biciklit a kapun.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/bike|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "bike",
+      "en": "There. That’s the picture I want to take. Someone having an entirely ordinary, stupid problem.",
+      "hu": "Na. Ezt szeretném lefényképezni. Valakinek teljesen hétköznapi, ostoba problémája van.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/bicycle|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "bicycle",
+      "en": "The bicycle seems to have a fairly strong opinion.",
+      "hu": "A biciklinek elég határozott véleménye van.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/laugh|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "laugh",
+      "en": "She almost laughs. Then the bicycle disappears and she keeps looking at the gate.",
+      "hu": "Majdnem felnevet. Aztán eltűnik a bicikli, ő pedig tovább nézi a kaput.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/line_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "line_1",
+      "en": "I want to keep seeing you. I also want a day when I don’t catch myself checking how everyone got home. I can’t promise to be marvellous company yet.",
+      "hu": "Szeretnélek továbbra is látni. Olyan napot is szeretnék, amikor nem kapom magam azon, hogy azt ellenőrzöm, mindenki hazaért-e. Egyelőre nem ígérek ragyogó társaságot.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/line_2|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "line_2",
+      "en": "I wouldn’t know how to be marvellous either. I keep finding things I meant to tell you, then forgetting them when I see you.",
+      "hu": "Én sem tudnék ragyogó lenni. Folyton eszembe jut valami, amit elmondanék neked, aztán amikor meglátlak, elfelejtem.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/line_3|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "line_3",
+      "en": "Tell me one when it comes back. But first, Álex $& {playerName}—are we still choosing this? I want to hear you, before I start planning for both of us.",
+      "hu": "Mondd el az egyiket, ha eszedbe jut. De előbb, Álex $& {playerName}… még mindig ezt választjuk? Hallani szeretnélek, mielőtt kettőnk helyett kezdenék tervezni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/line_4|continue_together,withdraw": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "line_4",
+      "en": "Her hands stay around the folded paper. There is space between us on the bench.",
+      "hu": "A kezében tartja az összehajtott papírt. Még van köztünk hely a padon.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue_together",
+          "en": "Yes. I want us to keep seeing each other.",
+          "hu": "Igen. Szeretném, ha továbbra is együtt lennénk."
+        },
+        {
+          "id": "withdraw",
+          "en": "I don’t want to continue our relationship.",
+          "hu": "Nem szeretném folytatni a kapcsolatunkat."
+        }
+      ]
+    },
+    "rebeka_6/after_topic|ordinary,rest": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "after_topic",
+      "en": "I move beside her. She lets out a breath and smooths the list against her knee.",
+      "hu": "Odaülök mellé. Kifújja a levegőt, és kisimítja a listát a térdén.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "ordinary",
+          "en": "Return to our plan for ordinary time together.",
+          "hu": "Térjünk vissza a hétköznapi közös idő tervéhez."
+        },
+        {
+          "id": "rest",
+          "en": "What would you like to photograph now?",
+          "hu": "Most mit szeretnél fényképezni?"
+        }
+      ]
+    },
+    "rebeka_6/ordinary_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "ordinary_0",
+      "en": "We said we wanted time together without an occasion. We could start with a short walk.",
+      "hu": "Azt mondtuk, alkalom nélkül is szeretnénk együtt lenni. Kezdhetnénk egy rövid sétával.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/ordinary_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "ordinary_1",
+      "en": "A very short one. I want to complain about the bicycle before we take on anything ambitious.",
+      "hu": "Nagyon röviddel. Előbb szeretnék panaszkodni a biciklire, mielőtt nagy vállalkozásba fogunk.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/after_invite|room,outside,leave": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "after_invite",
+      "en": "I could stay out here with you. Or you could come back to my room, just us. I’d like some quiet company.",
+      "hu": "Maradhatnék itt veled. Vagy feljöhetnél a szobámba, kettesben. Csendes társaságra vágyom.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "room",
+          "en": "I’d like to come to your room and talk.",
+          "hu": "Szívesen felmegyek veled beszélgetni."
+        },
+        {
+          "id": "outside",
+          "en": "Let’s stay out here a little longer.",
+          "hu": "Maradjunk még egy kicsit itt kint."
+        },
+        {
+          "id": "leave",
+          "en": "I’d like to go home now.",
+          "hu": "Most szeretnék hazamenni."
+        }
+      ]
+    },
+    "rebeka_6/outside_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "outside_0",
+      "en": "We stay on the bench and turn the sheet over. On its blank side I draw the bicycle; Rebeka adds a gate much too small for it. Her shoulders loosen as we argue about whose drawing is worse.",
+      "hu": "A padon maradunk, és megfordítjuk a lapot. Az üres oldalára lerajzolom a biciklit; Rebeka túl szűk kaput rajzol hozzá. Miközben azon vitatkozunk, melyikünk rajza rosszabb, lassan leengedi a vállát.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/outside_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "outside_1",
+      "en": "We’ll keep that on the back. Finally, a programme with illustrations as bad as the films.",
+      "hu": "Ez maradjon a hátoldalán. Végre egy műsor, aminek az illusztrációi ugyanolyan rosszak, mint a filmjei.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/goodbye|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "goodbye",
+      "en": "At the courtyard gate we decide to find a time for a short film, with room to change our minds about the film. We say goodbye there and leave separately. Nothing has been made effortless; I’m glad there will be another ordinary decision to make.",
+      "hu": "Az udvar kapujánál abban maradunk, hogy időt keresünk egy rövid filmre, amiről még meggondolhatjuk magunkat. Ott elköszönünk, és külön indulunk haza. Nem lett minden könnyű; jólesik, hogy lesz még egy hétköznapi döntésünk.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/romance_future_open_0|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "romance_future_open_0",
+      "en": "You choose? I was about to give you six conditions.",
+      "hu": "Te választasz? Már majdnem felsoroltam hat feltételt.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_5/romance_future_open_1|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "romance_future_open_1",
+      "en": "Keep one. I’ll tell you my idea before I book anything.",
+      "hu": "Egyet tarts meg. Elmondom az ötletem, mielőtt bármit lefoglalnék.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_5/romance_future_open_2|": {
+      "scene": "rebeka_5",
+      "week": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "line": "romance_future_open_2",
+      "en": "Then nothing chosen because you think I ought to admire it. Pick something you’d enjoy with me. I’ll try to survive your taste.",
+      "hu": "Akkor ne azért válassz valamit, mert szerinted csodálnom kellene. Olyat, amit szívesen néznél velem. Megpróbálom túlélni az ízlésedet.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/after_topic|invite,rest": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "after_topic",
+      "en": "I move beside her. She lets out a breath and smooths the list against her knee.",
+      "hu": "Odaülök mellé. Kifújja a levegőt, és kisimítja a listát a térdén.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "invite",
+          "en": "Offer the next invitation I said I’d bring.",
+          "hu": "Én hívom el, ahogy megígértem."
+        },
+        {
+          "id": "rest",
+          "en": "What would you like to photograph now?",
+          "hu": "Most mit szeretnél fényképezni?"
+        }
+      ]
+    },
+    "rebeka_6/invite_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "invite_0",
+      "en": "I said I’d bring an idea. A short comedy, when you feel like it. If it’s terrible, I’ll stay for the review.",
+      "hu": "Azt mondtam, hozok egy ötletet. Egy rövid vígjátékot, amikor kedved lesz hozzá. Ha rettenetes, a kritikát is végighallgatom.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/invite_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "invite_1",
+      "en": "Twenty minutes. I can risk twenty minutes of your taste. Then we’re allowed to switch it off.",
+      "hu": "Húsz perc. Húsz percet megkockáztatok az ízlésedből. Aztán szabad kikapcsolni.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/room_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "room_0",
+      "en": "We leave the courtyard together. At her door Rebeka takes out her key and leads me into her bedroom. She puts the list on the desk. I take the chair; she sits on the edge of the bed, still dressed for the meeting.",
+      "hu": "Együtt hagyjuk el az udvart. Az ajtajánál Rebeka előveszi a kulcsát, és bevezet a hálószobájába. A listát az asztalra teszi. Én a székre ülök, ő az ágy szélére, még a megbeszélésre felvett ruhájában.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/room_choice|kiss,talk,leave": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "room_choice",
+      "en": "You’re very far away over there. I’d like a kiss. Would you?",
+      "hu": "Ott nagyon messze vagy. Szeretnélek megcsókolni. Te is?",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "kiss",
+          "en": "Yes. I’d like a kiss too.",
+          "hu": "Igen. Én is szeretnélek megcsókolni."
+        },
+        {
+          "id": "talk",
+          "en": "I’d rather just talk today.",
+          "hu": "Ma inkább csak beszélgetnék."
+        },
+        {
+          "id": "leave",
+          "en": "I’m ready to head home.",
+          "hu": "Szeretnék hazaindulni."
+        }
+      ]
+    },
+    "rebeka_6/talk_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "talk_0",
+      "en": "I’d rather just talk today. I’m glad I came with you.",
+      "hu": "Ma inkább csak beszélgetnék. Örülök, hogy feljöttem veled.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/talk_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "talk_1",
+      "en": "Stay in that dreadful chair, then. Its expression suits you.",
+      "hu": "Akkor maradj azon a szörnyű széken. Illik hozzád az arckifejezése.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/quiet_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "quiet_0",
+      "en": "I remembered what I wanted to tell you. I tried to read a novel and spent a whole page wondering why nobody had checked the door. Then I realised it was a comedy.",
+      "hu": "Eszembe jutott, mit akartam mondani. Megpróbáltam regényt olvasni, és egy egész oldalon azon gondolkodtam, miért nem ellenőrizte senki az ajtót. Aztán rájöttem, hogy vígjáték.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/quiet_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "quiet_1",
+      "en": "Keep reading. I’d like to know how the door gets on.",
+      "hu": "Olvasd tovább. Érdekel, mi lesz az ajtóval.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/quiet_2|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "quiet_2",
+      "en": "We talk about the book without trying to make the joke mean that everything is better. When the conversation slows, I stand to go. She leaves the list on the desk.",
+      "hu": "A könyvről beszélgetünk, és nem próbáljuk a viccel bizonyítani, hogy már minden jobb. Amikor elcsendesedünk, felállok, hogy induljak. A listát az asztalon hagyja.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/room_leave|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "room_leave",
+      "en": "Ready to leave, I pause by her door. She adds a short comedy to the list and says it can stay, whatever else she crosses out. We say goodbye; she stays in her room as I go.",
+      "hu": "Indulásra készen megállok az ajtajánál. Felír egy rövid vígjátékot a listára; azt mondja, ez maradhat, akármi mást húz ki. Elköszönünk; ő a szobájában marad, én elindulok.",
+      "stage": {
+        "label": "Leaving her room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/homeward|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "homeward",
+      "en": "Back in the courtyard I remember the bicycle. It is leaning against the wall now, perfectly ordinary. I take the path home.",
+      "hu": "Az udvarra visszaérve eszembe jut a bicikli. Most a falnak támasztva áll, teljesen hétköznapian. Elindulok hazafelé.",
+      "stage": {
+        "label": "Walking home",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/rest_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "rest_0",
+      "en": "I keep trying to choose a last picture for the sequence. As if I could close the folder and be finished with all of it.",
+      "hu": "Folyton utolsó képet próbálok választani a sorozatba. Mintha becsukhatnám a mappát, és az egésszel végeznék.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/rest_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "rest_1",
+      "en": "Leave it open for a while. What would you photograph if it didn’t have to finish anything?",
+      "hu": "Hagyd nyitva egy darabig. Mit fényképeznél, ha semmit nem kellene lezárnia?",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/rest_2|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "rest_2",
+      "en": "The bicycle. I told you. You’re going to have to become less perceptive; it’s exhausting.",
+      "hu": "A biciklit. Mondtam már. Kevésbé éleslátónak kellene lenned; ez fárasztó.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/kiss_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "kiss_0",
+      "en": "Yes. I’d like to kiss you.",
+      "hu": "Igen. Szeretnélek megcsókolni.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/kiss_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "kiss_1",
+      "en": "I leave the chair and sit beside her. She turns towards me; we kiss, then draw apart. Her hand rests beside mine on the cover.",
+      "hu": "Felállok a székről, és leülök mellé. Felém fordul; megcsókoljuk egymást, aztán elhúzódunk. A keze az enyém mellett pihen az ágytakarón.",
+      "stage": {
+        "label": "A chosen kiss",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close"
+      },
+      "choices": []
+    },
+    "rebeka_6/intimacy_choice|intimate,stop,leave": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "intimacy_choice",
+      "en": "I want to stay close to you. More than kissing, if you want that too. We can stop here.",
+      "hu": "Szeretnék veled maradni. A csóknál is közelebb, ha te is szeretnéd. Itt is megállhatunk.",
+      "stage": {
+        "label": "A chosen kiss",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close"
+      },
+      "choices": [
+        {
+          "id": "intimate",
+          "en": "I want to be intimate with you.",
+          "hu": "Én is szeretnék közelebb kerülni hozzád."
+        },
+        {
+          "id": "stop",
+          "en": "Let’s leave it at kissing today.",
+          "hu": "Ma maradjunk a csóknál."
+        },
+        {
+          "id": "leave",
+          "en": "I’d like to stop here and go home.",
+          "hu": "Most szeretnék megállni és hazamenni."
+        }
+      ]
+    },
+    "rebeka_6/stop_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "stop_0",
+      "en": "I’d like to leave it at the kiss today.",
+      "hu": "Ma szeretnék a csóknál maradni.",
+      "stage": {
+        "label": "A chosen kiss",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close"
+      },
+      "choices": []
+    },
+    "rebeka_6/stop_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "stop_1",
+      "en": "Then stay a little and tell me that thing you forgot. I’ll settle for a very bad first sentence.",
+      "hu": "Akkor maradj még egy kicsit, és mondd el, amit elfelejtettél. Egy nagyon rossz első mondattal is beérem.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/fade_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "fade_0",
+      "en": "I want that too. Let’s take our time.",
+      "hu": "Én is szeretném. Lassan, ráérünk.",
+      "stage": {
+        "label": "A chosen kiss",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close"
+      },
+      "choices": []
+    },
+    "rebeka_6/fade_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "fade_1",
+      "en": "She takes my hand and draws me closer. We pause, smiling awkwardly at the same moment, then choose to continue together. The room fades from view.",
+      "hu": "Megfogja a kezem, és közelebb húz. Megállunk egy pillanatra, egyszerre mosolyodunk el zavartan, aztán együtt folytatjuk. A szoba képe lassan elsötétül.",
+      "stage": {
+        "label": "A chosen kiss",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close"
+      },
+      "choices": []
+    },
+    "rebeka_6/after_fade|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "after_fade",
+      "en": "Afterward we lie quietly together. The film list is still on the desk. Rebeka asks for water; I bring two glasses, and she makes room for mine beside hers. We talk until it is time for me to get ready to leave.",
+      "hu": "Utána csendben fekszünk egymás mellett. A filmlista még az asztalon van. Rebeka vizet kér; két poharat hozok, ő pedig helyet csinál az enyémnek a sajátja mellett. Beszélgetünk, amíg el nem kezdek készülődni az induláshoz.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/room_depart|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "room_depart",
+      "en": "I’d like to head home now. I’m glad we had this time.",
+      "hu": "Most szeretnék hazamenni. Örülök, hogy volt ez a közös időnk.",
+      "stage": {
+        "label": "Rebeka’s room",
+        "location": "apartment",
+        "background": "apartment",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/after_topic|ordinary,coffee,rest": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "after_topic",
+      "en": "I move beside her. She lets out a breath and smooths the list against her knee.",
+      "hu": "Odaülök mellé. Kifújja a levegőt, és kisimítja a listát a térdén.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "ordinary",
+          "en": "Return to our plan for ordinary time together.",
+          "hu": "Térjünk vissza a hétköznapi közös idő tervéhez."
+        },
+        {
+          "id": "coffee",
+          "en": "I liked our coffee after the confrontation.",
+          "hu": "Jó volt a konfrontáció utáni kávézásunk."
+        },
+        {
+          "id": "rest",
+          "en": "What would you like to photograph now?",
+          "hu": "Most mit szeretnél fényképezni?"
+        }
+      ]
+    },
+    "rebeka_6/coffee_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "coffee_0",
+      "en": "That coffee helped. Not the coffee itself. I think the machine has finally given up pretending.",
+      "hu": "Az a kávé jólesett. Nem maga a kávé. Azt hiszem, a gép végleg feladta a színlelést.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/coffee_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "coffee_1",
+      "en": "I liked sitting with you. We don’t have to find a new reason today.",
+      "hu": "Jó volt veled ülni. Ma sem kell új indokot keresnünk.",
+      "stage": {
+        "label": "Together on the bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": []
+    },
+    "rebeka_6/withdraw_0|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "withdraw_0",
+      "en": "All right. I can’t turn that into a joke just yet.",
+      "hu": "Rendben. Ebből még nem tudok viccet csinálni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/withdraw_1|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "withdraw_1",
+      "en": "You don’t have to. I’m sorry this hurts.",
+      "hu": "Nem is kell. Sajnálom, hogy ez fáj.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_6/withdraw_2|": {
+      "scene": "rebeka_6",
+      "week": 52,
+      "date": "2027-09-23",
+      "period": "day",
+      "line": "withdraw_2",
+      "en": "I wait while she folds the paper. She says she’d like to leave on her own. I stay on the bench until she has gone, then take a different path home.",
+      "hu": "Megvárom, amíg összehajtja a lapot. Azt mondja, egyedül szeretne elindulni. A padon maradok, amíg elmegy, aztán másik úton indulok haza.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/commit_decline|": {
+      "scene": "rebeka_5",
+      "week": 48,
+      "date": "2027-08-26",
+      "period": "day",
+      "line": "commit_decline",
+      "en": "I wanted a different answer. Give me a minute before we try being graceful about it.",
+      "hu": "Más választ szerettem volna. Adj egy percet, mielőtt megpróbálunk méltóságteljesen viselkedni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    },
+    "rebeka_5/commit_decline_end|": {
+      "scene": "rebeka_5",
+      "week": 48,
+      "date": "2027-08-26",
+      "period": "day",
+      "line": "commit_decline_end",
+      "en": "I wait at the other end of the bench while she puts the list away. When she stands, we say goodbye. I leave without offering a consolation embrace.",
+      "hu": "A pad másik végén várok, amíg elteszi a listát. Amikor feláll, elköszönünk. Nem próbálom vigasztaló öleléssel lezárni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": []
+    }
+  },
+  "cases": [
+    {
+      "id": "ordinary-outside",
+      "policy": {
+        "id": "ordinary-outside",
+        "future": "ritual",
+        "topic": "ordinary",
+        "place": "outside",
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 5,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/ordinary_0|",
+        "rebeka_6/ordinary_1|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/outside_0|",
+        "rebeka_6/outside_1|",
+        "rebeka_6/goodbye|"
+      ],
+      "playedActions": 432,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "invite-private-talk",
+      "policy": {
+        "id": "invite-private-talk",
+        "future": "open",
+        "topic": "invite",
+        "place": "room",
+        "physical": "talk",
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 6,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_open_0|",
+        "rebeka_5/romance_future_open_1|",
+        "rebeka_5/romance_future_open_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|invite,rest",
+        "rebeka_6/invite_0|",
+        "rebeka_6/invite_1|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/room_0|",
+        "rebeka_6/room_choice|kiss,talk,leave",
+        "rebeka_6/talk_0|",
+        "rebeka_6/talk_1|",
+        "rebeka_6/quiet_0|",
+        "rebeka_6/quiet_1|",
+        "rebeka_6/quiet_2|",
+        "rebeka_6/room_leave|",
+        "rebeka_6/homeward|"
+      ],
+      "playedActions": 438,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "kiss-stop",
+      "policy": {
+        "id": "kiss-stop",
+        "place": "room",
+        "physical": "kiss",
+        "intimacy": "stop",
+        "slow": true,
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 8,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/rest_0|",
+        "rebeka_6/rest_1|",
+        "rebeka_6/rest_2|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/room_0|",
+        "rebeka_6/room_choice|kiss,talk,leave",
+        "rebeka_6/kiss_0|",
+        "rebeka_6/kiss_1|",
+        "rebeka_6/intimacy_choice|intimate,stop,leave",
+        "rebeka_6/stop_0|",
+        "rebeka_6/stop_1|",
+        "rebeka_6/quiet_0|",
+        "rebeka_6/quiet_1|",
+        "rebeka_6/quiet_2|",
+        "rebeka_6/room_leave|",
+        "rebeka_6/homeward|"
+      ],
+      "playedActions": 441,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "mutual-intimacy",
+      "policy": {
+        "id": "mutual-intimacy",
+        "place": "room",
+        "physical": "kiss",
+        "intimacy": "intimate",
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 9,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/rest_0|",
+        "rebeka_6/rest_1|",
+        "rebeka_6/rest_2|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/room_0|",
+        "rebeka_6/room_choice|kiss,talk,leave",
+        "rebeka_6/kiss_0|",
+        "rebeka_6/kiss_1|",
+        "rebeka_6/intimacy_choice|intimate,stop,leave",
+        "rebeka_6/fade_0|",
+        "rebeka_6/fade_1|",
+        "rebeka_6/after_fade|",
+        "rebeka_6/room_leave|",
+        "rebeka_6/homeward|"
+      ],
+      "playedActions": 440,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "private-depart",
+      "policy": {
+        "id": "private-depart",
+        "place": "room",
+        "physical": "leave"
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/rest_0|",
+        "rebeka_6/rest_1|",
+        "rebeka_6/rest_2|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/room_0|",
+        "rebeka_6/room_choice|kiss,talk,leave",
+        "rebeka_6/room_depart|",
+        "rebeka_6/room_leave|",
+        "rebeka_6/homeward|"
+      ],
+      "playedActions": 435,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "kiss-depart",
+      "policy": {
+        "id": "kiss-depart",
+        "place": "room",
+        "physical": "kiss",
+        "intimacy": "leave"
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/rest_0|",
+        "rebeka_6/rest_1|",
+        "rebeka_6/rest_2|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/room_0|",
+        "rebeka_6/room_choice|kiss,talk,leave",
+        "rebeka_6/kiss_0|",
+        "rebeka_6/kiss_1|",
+        "rebeka_6/intimacy_choice|intimate,stop,leave",
+        "rebeka_6/room_depart|",
+        "rebeka_6/room_leave|",
+        "rebeka_6/homeward|"
+      ],
+      "playedActions": 438,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "courtyard-depart",
+      "policy": {
+        "id": "courtyard-depart",
+        "place": "leave",
+        "slow": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/rest_0|",
+        "rebeka_6/rest_1|",
+        "rebeka_6/rest_2|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/goodbye|"
+      ],
+      "playedActions": 430,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "late-coffee",
+      "policy": {
+        "id": "late-coffee",
+        "coffee": true,
+        "topic": "coffee",
+        "place": "outside"
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "coffee_rebeka_late",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,coffee,rest",
+        "rebeka_6/coffee_0|",
+        "rebeka_6/coffee_1|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/outside_0|",
+        "rebeka_6/outside_1|",
+        "rebeka_6/goodbye|"
+      ],
+      "playedActions": 440,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "supported",
+      "policy": {
+        "id": "supported",
+        "prepared": true,
+        "place": "outside"
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "supported",
+        "institution": "acknowledged",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola nyilvánosan elismeri az esetet. Az engedélyezett tanúvallomásokat a megőrzött iratokkal együtt adják át. A felépüléshez külön támogatást biztosítanak.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A gyakorlás és a segítők jelenléte csökkentette a kimerülést, a bizonyítékok megmaradtak. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "prepare_backup",
+        "prepare_signals",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|ordinary,rest",
+        "rebeka_6/rest_0|",
+        "rebeka_6/rest_1|",
+        "rebeka_6/rest_2|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/outside_0|",
+        "rebeka_6/outside_1|",
+        "rebeka_6/goodbye|"
+      ],
+      "playedActions": 443,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "night"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "withdraw",
+      "policy": {
+        "id": "withdraw",
+        "withdraw": true,
+        "slow": true,
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 4,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "estranged",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "A visszalépést tiszteletben tartották. A közös nyomozás megmarad, a magánéleti találkozások elmaradnak. Senki nem tartozik érzelmekkel azért, mert segítséget kapott.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_ritual_0|",
+        "rebeka_5/romance_future_ritual_1|",
+        "rebeka_5/romance_future_ritual_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/withdraw_0|",
+        "rebeka_6/withdraw_1|",
+        "rebeka_6/withdraw_2|"
+      ],
+      "playedActions": 427,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "commit-decline",
+      "policy": {
+        "id": "commit-decline",
+        "decline": true
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "estranged",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "A visszalépést tiszteletben tartották. A közös nyomozás megmarad, a magánéleti találkozások elmaradnak. Senki nem tartozik érzelmekkel azért, mert segítséget kapott.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/commit_decline|",
+        "rebeka_5/commit_decline_end|"
+      ],
+      "playedActions": 414,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 48,
+          "date": "2027-08-26",
+          "period": "day"
+        }
+      }
+    },
+    {
+      "id": "latest-commit-night",
+      "policy": {
+        "id": "latest-commit-night",
+        "commitWeek": 50,
+        "night": true,
+        "future": "open",
+        "topic": "invite",
+        "place": "outside"
+      },
+      "release": {
+        "gameVersion": "0.9.3",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 8
+      },
+      "buildId": "e37b0914b98e578b307135044b710368078d4d37-dirty",
+      "restarts": 0,
+      "ending": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "rebeka",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "Rebeka maga választ képet a kiállításához. Nem a tanár elismerését kéri: Mártonnal olyan időt keresnek, amelyben egyiküknek sem kell szerepelnie. Ami a nézők elé kerül, arról ő dönt.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "observations": [
+        "rebeka_5/line_0|",
+        "rebeka_5/list|",
+        "rebeka_5/defence|",
+        "rebeka_5/offer|",
+        "rebeka_5/hesitate|",
+        "rebeka_5/line_1|",
+        "rebeka_5/line_2|",
+        "rebeka_5/answer|",
+        "rebeka_5/admission|",
+        "rebeka_5/line_3|",
+        "rebeka_5/line_4|commit,withdraw",
+        "rebeka_5/romance_future|ritual,open",
+        "rebeka_5/romance_future_open_0|",
+        "rebeka_5/romance_future_open_1|",
+        "rebeka_5/romance_future_open_2|",
+        "rebeka_5/commit_leave|",
+        "rebeka_6/line_0|",
+        "rebeka_6/bike|",
+        "rebeka_6/bicycle|",
+        "rebeka_6/laugh|",
+        "rebeka_6/line_1|",
+        "rebeka_6/line_2|",
+        "rebeka_6/line_3|",
+        "rebeka_6/line_4|continue_together,withdraw",
+        "rebeka_6/after_topic|invite,rest",
+        "rebeka_6/invite_0|",
+        "rebeka_6/invite_1|",
+        "rebeka_6/after_invite|room,outside,leave",
+        "rebeka_6/outside_0|",
+        "rebeka_6/outside_1|",
+        "rebeka_6/goodbye|"
+      ],
+      "playedActions": 432,
+      "sceneDates": {
+        "rebeka_5": {
+          "week": 50,
+          "date": "2027-09-09",
+          "period": "night"
+        },
+        "rebeka_6": {
+          "week": 52,
+          "date": "2027-09-23",
+          "period": "day"
+        }
+      }
+    }
+  ]
+}

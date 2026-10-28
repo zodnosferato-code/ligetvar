@@ -1,3 +1,4 @@
+import {rebekaLaterHu} from './rebeka-later.hu.ts';
 import {rebekaDateHu} from './rebeka-date.hu.ts';
 import {seasonalHu} from './seasonal.hu.ts';
 import {timelineHu} from './timeline.hu.ts';
@@ -11,6 +12,7 @@ export const hu = {
   "hub.phone.meetings": "Találkozók",
   "hub.phone.outings": "Programok",
   "hub.phone.replies": "Válaszok",
+  ...rebekaLaterHu,
   ...rebekaDateHu,
   "ui.transition.label": "Átmenetek",
   "ui.transition.background": "Háttérképek",

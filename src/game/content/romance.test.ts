@@ -40,7 +40,7 @@ for(const girl of ['rebeka','boglarka','greta'] as GirlId[])test(girl+': slower 
 });
 test('every new romantic branch saves, resumes and completes atomically in one slot',()=>{
  const starts=new Map<string,GameState>();
- for(const route of ['rebeka','boglarka','greta','triad'] as const)campaign(route,undefined,(s,id)=>{if(SCENES[id].lines.some(l=>l.id.startsWith('romance_')))starts.set(id,s);});
+ for(const route of ['rebeka','boglarka','greta','triad'] as const)campaign(route,undefined,(s,id)=>{if(id==='rebeka_6'||SCENES[id].lines.some(l=>l.id.startsWith('romance_')))starts.set(id,s);});
  assert.equal(starts.size,19);
  for(const [id,start] of starts){
   const pending=[openScene(start,id,SCENES)];let terminals=0;

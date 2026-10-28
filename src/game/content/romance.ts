@@ -1,3 +1,4 @@
+import {rewriteRebekaLater} from './rebeka-later.ts';
 /** Authored romance scene expansion. */
 import {dateConclusion} from './date-staging.ts';
 import type {ActorId,Choice,Expression,GirlId,Scene} from './types.ts';
@@ -250,6 +251,7 @@ function expandTriad(s:Scene){
 }
 
 export function expandRomance(original:Scene):Scene{
+ if(original.id==='rebeka_5'||original.id==='rebeka_6')return rewriteRebekaLater(original);
  const match=/^(rebeka|boglarka|greta)_([2-6])$/.exec(original.id);
  if(!match&&!['triad_3','triad_4','triad_7','triad_8'].includes(original.id))return original;
  const s=structuredClone(original);

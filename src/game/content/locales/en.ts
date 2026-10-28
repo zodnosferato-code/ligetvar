@@ -1,3 +1,4 @@
+import {rebekaLaterEn} from './rebeka-later.en.ts';
 import {rebekaDateEn} from './rebeka-date.en.ts';
 import {seasonalEn} from './seasonal.en.ts';
 import {timelineEn} from './timeline.en.ts';
@@ -13,6 +14,7 @@ export const en:Record<keyof typeof hu,string> = {
   "hub.phone.meetings": "Meetings",
   "hub.phone.outings": "Outings",
   "hub.phone.replies": "Replies",
+  ...rebekaLaterEn,
   ...rebekaDateEn,
   "ui.transition.label": "Transitions",
   "ui.transition.background": "Backgrounds",

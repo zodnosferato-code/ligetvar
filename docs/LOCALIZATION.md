@@ -235,3 +235,7 @@ Canonical `timeline.en.ts` and `seasonal.en.ts` have typed Hungarian translation
 ## Rebeka first date — 0.9.1
 
 `rebeka_3` now has canonical English and reviewed Hungarian text across every assembled branch, title, choice, reaction, stage label and journal. Chosen names are interpolated literally. Public-CLI review switches both directions at each played node, including refusal/slower branches, and resumes at choice points; exhaustive engine traversal covers all 37 terminal paths. The rest of the individual arc, endings and default-language migration remain partial. Content epoch 7 reflects removed old cursor IDs and newly referenced persisted text; schema remains 4. [Evidence and limits](design/PLAYTHROUGH-FINDINGS.md#rebeka-first-date-validation--28-october-2026).
+
+## Rebeka commitment and aftermath — 0.9.3
+
+`rebeka_5`/`rebeka_6` now have canonical `rebeka-later.en.ts` and typed Hungarian translation, including every authored branch, choice, title, stage, reaction and journal. Names resolve literally at presentation time. Public CLI switches at every played node and resumes both languages without changing progression. Schema 4/content 8 reflects replaced cursor/persisted-text assumptions. Whole-game English coverage and default-language migration remain partial. [Evidence](design/PLAYTHROUGH-FINDINGS.md#rebeka-commitmentaftermath-validation--28-october-2026).
