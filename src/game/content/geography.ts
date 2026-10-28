@@ -12,7 +12,7 @@ export const PLACE_DETAILS:Record<PlaceId,{east:number;north:number;elevation:nu
  library:{east:40,north:55,elevation:220,floor:0,description:'East-wing double-height library with a gallery, entered at ground level.'},
  classroom:{east:35,north:110,elevation:220,floor:0,description:'Former north-wing ballroom divided into teaching rooms.'},
  holdkor:{east:140,north:-50,elevation:211,floor:-1,description:'Cellar screening room beneath the converted eastern granary.'},
- chamber:{east:75,north:15,elevation:216,floor:-1,description:'Service chamber beneath the east wing; separate east service exit.'},
+ chamber:{east:75,north:15,elevation:216,floor:-1,description:'Service chamber beneath the attached east service annex; separate east service exit.'},
  gate:{east:0,north:-300,elevation:212,floor:0,description:'Southern gatehouse and campus arrival court.'},
  residences:{east:210,north:-200,elevation:213,floor:0,description:'Student residences in converted stable and steward-house ranges.'},
  workshop:{east:-180,north:-100,elevation:218,floor:0,description:'Former riding hall, now the mystical gymnastics workshop.'},

@@ -1,0 +1,1206 @@
+{
+  "schemaVersion": 1,
+  "units": "metres",
+  "crs": "fictional local Cartesian; x=east y=north; origin=courtyard centre",
+  "precision": "Design dimensions, not a real survey. Exact centreline lengths before rounding; display to 0.1 m.",
+  "estateBoundary": [
+    [
+      -700,
+      -400
+    ],
+    [
+      1000,
+      -400
+    ],
+    [
+      1000,
+      1200
+    ],
+    [
+      -700,
+      1200
+    ]
+  ],
+  "places": {
+    "courtyard": {
+      "east": 0,
+      "north": 0,
+      "elevation": 220,
+      "floor": 0
+    },
+    "hallway": {
+      "east": 0,
+      "north": 35,
+      "elevation": 220,
+      "floor": 0
+    },
+    "department": {
+      "east": -30,
+      "north": 45,
+      "elevation": 225,
+      "floor": 1
+    },
+    "apartment": {
+      "east": -35,
+      "north": 70,
+      "elevation": 230,
+      "floor": 2
+    },
+    "library": {
+      "east": 40,
+      "north": 55,
+      "elevation": 220,
+      "floor": 0
+    },
+    "classroom": {
+      "east": 35,
+      "north": 110,
+      "elevation": 220,
+      "floor": 0
+    },
+    "holdkor": {
+      "east": 140,
+      "north": -50,
+      "elevation": 211,
+      "floor": -1
+    },
+    "chamber": {
+      "east": 75,
+      "north": 15,
+      "elevation": 216,
+      "floor": -1
+    },
+    "gate": {
+      "east": 0,
+      "north": -300,
+      "elevation": 212,
+      "floor": 0
+    },
+    "residences": {
+      "east": 210,
+      "north": -200,
+      "elevation": 213,
+      "floor": 0
+    },
+    "workshop": {
+      "east": -180,
+      "north": -100,
+      "elevation": 218,
+      "floor": 0
+    },
+    "bekas": {
+      "east": 650,
+      "north": 350,
+      "elevation": 196,
+      "floor": 0
+    },
+    "forest": {
+      "east": 0,
+      "north": 600,
+      "elevation": 240,
+      "floor": 0
+    },
+    "hill": {
+      "east": -650,
+      "north": 1000,
+      "elevation": 325,
+      "floor": 0
+    },
+    "village": {
+      "east": 300,
+      "north": -3100,
+      "elevation": 185,
+      "floor": 0
+    }
+  },
+  "buildings": [
+    {
+      "id": "west_wing",
+      "polygon": [
+        [
+          -55,
+          20
+        ],
+        [
+          -15,
+          20
+        ],
+        [
+          -15,
+          100
+        ],
+        [
+          -55,
+          100
+        ]
+      ],
+      "height": 16,
+      "ridgeHeight": 23,
+      "floors": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "east_wing",
+      "polygon": [
+        [
+          15,
+          20
+        ],
+        [
+          55,
+          20
+        ],
+        [
+          55,
+          100
+        ],
+        [
+          15,
+          100
+        ]
+      ],
+      "height": 16,
+      "ridgeHeight": 23,
+      "floors": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "north_range",
+      "polygon": [
+        [
+          -55,
+          100
+        ],
+        [
+          55,
+          100
+        ],
+        [
+          55,
+          135
+        ],
+        [
+          -55,
+          135
+        ]
+      ],
+      "height": 16,
+      "ridgeHeight": 23,
+      "floors": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "entrance_link",
+      "polygon": [
+        [
+          -15,
+          20
+        ],
+        [
+          15,
+          20
+        ],
+        [
+          15,
+          45
+        ],
+        [
+          -15,
+          45
+        ]
+      ],
+      "height": 6,
+      "ridgeHeight": 9,
+      "floors": [
+        0
+      ]
+    },
+    {
+      "id": "clock_tower",
+      "polygon": [
+        [
+          45,
+          20
+        ],
+        [
+          59,
+          20
+        ],
+        [
+          59,
+          34
+        ],
+        [
+          45,
+          34
+        ]
+      ],
+      "height": 30,
+      "ridgeHeight": 36,
+      "floors": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "service_annex",
+      "polygon": [
+        [
+          55,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          90,
+          30
+        ],
+        [
+          55,
+          30
+        ]
+      ],
+      "height": 5,
+      "ridgeHeight": 8,
+      "floors": [
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "granary",
+      "polygon": [
+        [
+          120,
+          -70
+        ],
+        [
+          160,
+          -70
+        ],
+        [
+          160,
+          -30
+        ],
+        [
+          120,
+          -30
+        ]
+      ],
+      "height": 9,
+      "ridgeHeight": 14,
+      "floors": [
+        -1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "stable_residence",
+      "polygon": [
+        [
+          170,
+          -220
+        ],
+        [
+          250,
+          -220
+        ],
+        [
+          250,
+          -180
+        ],
+        [
+          170,
+          -180
+        ]
+      ],
+      "height": 8,
+      "ridgeHeight": 12,
+      "floors": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "steward_residence",
+      "polygon": [
+        [
+          270,
+          -250
+        ],
+        [
+          310,
+          -250
+        ],
+        [
+          310,
+          -220
+        ],
+        [
+          270,
+          -220
+        ]
+      ],
+      "height": 8,
+      "ridgeHeight": 12,
+      "floors": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "riding_hall",
+      "polygon": [
+        [
+          -210,
+          -118
+        ],
+        [
+          -150,
+          -118
+        ],
+        [
+          -150,
+          -82
+        ],
+        [
+          -210,
+          -82
+        ]
+      ],
+      "height": 10,
+      "ridgeHeight": 16,
+      "floors": [
+        0
+      ]
+    },
+    {
+      "id": "gatehouse",
+      "polygon": [
+        [
+          -25,
+          -310
+        ],
+        [
+          -7,
+          -310
+        ],
+        [
+          -7,
+          -290
+        ],
+        [
+          -25,
+          -290
+        ]
+      ],
+      "height": 6,
+      "ridgeHeight": 10,
+      "floors": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "boathouse",
+      "polygon": [
+        [
+          675,
+          315
+        ],
+        [
+          687,
+          315
+        ],
+        [
+          687,
+          323
+        ],
+        [
+          675,
+          323
+        ]
+      ],
+      "height": 4,
+      "ridgeHeight": 6,
+      "floors": [
+        0
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "hallway",
+      "building": "entrance_link",
+      "floor": 0,
+      "polygon": [
+        [
+          -12,
+          22
+        ],
+        [
+          12,
+          22
+        ],
+        [
+          12,
+          42
+        ],
+        [
+          -12,
+          42
+        ]
+      ],
+      "door": [
+        0,
+        20
+      ],
+      "ceiling": 5.5
+    },
+    {
+      "id": "department",
+      "building": "west_wing",
+      "floor": 1,
+      "polygon": [
+        [
+          -37,
+          39
+        ],
+        [
+          -23,
+          39
+        ],
+        [
+          -23,
+          51
+        ],
+        [
+          -37,
+          51
+        ]
+      ],
+      "door": [
+        -23,
+        45
+      ],
+      "ceiling": 4
+    },
+    {
+      "id": "apartment",
+      "building": "west_wing",
+      "floor": 2,
+      "polygon": [
+        [
+          -51,
+          60
+        ],
+        [
+          -19,
+          60
+        ],
+        [
+          -19,
+          82
+        ],
+        [
+          -51,
+          82
+        ]
+      ],
+      "door": [
+        -19,
+        70
+      ],
+      "ceiling": 3.8
+    },
+    {
+      "id": "library",
+      "building": "east_wing",
+      "floor": 0,
+      "polygon": [
+        [
+          26,
+          35
+        ],
+        [
+          54,
+          35
+        ],
+        [
+          54,
+          85
+        ],
+        [
+          26,
+          85
+        ]
+      ],
+      "door": [
+        26,
+        55
+      ],
+      "ceiling": 9
+    },
+    {
+      "id": "classroom",
+      "building": "north_range",
+      "floor": 0,
+      "polygon": [
+        [
+          20,
+          101
+        ],
+        [
+          50,
+          101
+        ],
+        [
+          50,
+          125
+        ],
+        [
+          20,
+          125
+        ]
+      ],
+      "door": [
+        20,
+        110
+      ],
+      "ceiling": 5.5
+    },
+    {
+      "id": "holdkor",
+      "building": "granary",
+      "floor": -1,
+      "polygon": [
+        [
+          125,
+          -65
+        ],
+        [
+          155,
+          -65
+        ],
+        [
+          155,
+          -35
+        ],
+        [
+          125,
+          -35
+        ]
+      ],
+      "door": [
+        125,
+        -50
+      ],
+      "ceiling": 3.2
+    },
+    {
+      "id": "chamber",
+      "building": "service_annex",
+      "floor": -1,
+      "polygon": [
+        [
+          65,
+          5
+        ],
+        [
+          85,
+          5
+        ],
+        [
+          85,
+          25
+        ],
+        [
+          65,
+          25
+        ]
+      ],
+      "door": [
+        85,
+        15
+      ],
+      "ceiling": 3
+    }
+  ],
+  "courtyard": [
+    [
+      -27.5,
+      -20
+    ],
+    [
+      27.5,
+      -20
+    ],
+    [
+      27.5,
+      20
+    ],
+    [
+      -27.5,
+      20
+    ]
+  ],
+  "innerGarden": [
+    [
+      -15,
+      45
+    ],
+    [
+      15,
+      45
+    ],
+    [
+      15,
+      100
+    ],
+    [
+      -15,
+      100
+    ]
+  ],
+  "lake": {
+    "waterElevation": 195,
+    "maxDepth": 4.5,
+    "shoreline": [
+      [
+        650,
+        350
+      ],
+      [
+        690,
+        330
+      ],
+      [
+        770,
+        335
+      ],
+      [
+        850,
+        340
+      ],
+      [
+        925,
+        370
+      ],
+      [
+        960,
+        410
+      ],
+      [
+        950,
+        460
+      ],
+      [
+        900,
+        490
+      ],
+      [
+        830,
+        510
+      ],
+      [
+        745,
+        500
+      ],
+      [
+        680,
+        470
+      ],
+      [
+        640,
+        410
+      ]
+    ],
+    "landing": [
+      [
+        646,
+        346
+      ],
+      [
+        654,
+        346
+      ],
+      [
+        654,
+        354
+      ],
+      [
+        646,
+        354
+      ]
+    ],
+    "reedBay": [
+      [
+        895,
+        390
+      ],
+      [
+        945,
+        390
+      ],
+      [
+        945,
+        445
+      ],
+      [
+        895,
+        445
+      ]
+    ]
+  },
+  "paths": [
+    {
+      "fromPlace": "courtyard",
+      "toPlace": "holdkor",
+      "lengthMetres": 180,
+      "widthMetres": 2,
+      "centreline": [
+        [
+          0,
+          0
+        ],
+        [
+          70,
+          -30
+        ],
+        [
+          94.82862245754635,
+          -75.5998213985878
+        ],
+        [
+          140,
+          -50
+        ]
+      ],
+      "minutes": 4
+    },
+    {
+      "fromPlace": "courtyard",
+      "toPlace": "gate",
+      "lengthMetres": 330,
+      "widthMetres": 6,
+      "centreline": [
+        [
+          0,
+          0
+        ],
+        [
+          -68.7386354243376,
+          -150.0
+        ],
+        [
+          0,
+          -300
+        ]
+      ],
+      "minutes": 5
+    },
+    {
+      "fromPlace": "gate",
+      "toPlace": "residences",
+      "lengthMetres": 260,
+      "widthMetres": 4,
+      "centreline": [
+        [
+          0,
+          -300
+        ],
+        [
+          129.97688395252337,
+          -302.45145630029907
+        ],
+        [
+          210,
+          -200
+        ]
+      ],
+      "minutes": 4
+    },
+    {
+      "fromPlace": "courtyard",
+      "toPlace": "workshop",
+      "lengthMetres": 240,
+      "widthMetres": 3,
+      "centreline": [
+        [
+          0,
+          0
+        ],
+        [
+          -119.93704085400458,
+          3.886673537208239
+        ],
+        [
+          -180,
+          -100
+        ]
+      ],
+      "minutes": 4
+    },
+    {
+      "fromPlace": "courtyard",
+      "toPlace": "bekas",
+      "lengthMetres": 850,
+      "widthMetres": 2.5,
+      "centreline": [
+        [
+          0,
+          0
+        ],
+        [
+          70,
+          -30
+        ],
+        [
+          350,
+          80
+        ],
+        [
+          582.5016503279166,
+          123.33149963564823
+        ],
+        [
+          650,
+          350
+        ]
+      ],
+      "minutes": 12
+    },
+    {
+      "fromPlace": "holdkor",
+      "toPlace": "bekas",
+      "lengthMetres": 780,
+      "widthMetres": 2,
+      "centreline": [
+        [
+          140,
+          -50
+        ],
+        [
+          350,
+          20
+        ],
+        [
+          624.4657943373448,
+          71.84927787514107
+        ],
+        [
+          650,
+          350
+        ]
+      ],
+      "minutes": 12
+    },
+    {
+      "fromPlace": "courtyard",
+      "toPlace": "forest",
+      "lengthMetres": 720,
+      "widthMetres": 2,
+      "centreline": [
+        [
+          0,
+          0
+        ],
+        [
+          -80,
+          0
+        ],
+        [
+          -100,
+          150
+        ],
+        [
+          -100,
+          400
+        ],
+        [
+          -12.678205866513132,
+          481.3391029332566
+        ],
+        [
+          0,
+          600
+        ]
+      ],
+      "minutes": 12
+    },
+    {
+      "fromPlace": "forest",
+      "toPlace": "hill",
+      "lengthMetres": 1050,
+      "widthMetres": 1.5,
+      "centreline": [
+        [
+          0,
+          600
+        ],
+        [
+          -136.03398584285648,
+          1107.0697730053582
+        ],
+        [
+          -650,
+          1000
+        ]
+      ],
+      "minutes": 22
+    },
+    {
+      "fromPlace": "gate",
+      "toPlace": "village",
+      "lengthMetres": 3200,
+      "widthMetres": 5,
+      "centreline": [
+        [
+          0,
+          -300
+        ],
+        [
+          -605.6095390715627,
+          -1780.9581649005245
+        ],
+        [
+          300,
+          -3100
+        ]
+      ],
+      "minutes": 48
+    }
+  ],
+  "brook": {
+    "inlet": [
+      [
+        760,
+        1200
+      ],
+      [
+        740,
+        900
+      ],
+      [
+        780,
+        700
+      ],
+      [
+        825,
+        510
+      ]
+    ],
+    "outlet": [
+      [
+        925,
+        370
+      ],
+      [
+        1030,
+        250
+      ],
+      [
+        1100,
+        100
+      ]
+    ]
+  },
+  "terrainContours": [
+    {
+      "elevation": 200,
+      "line": [
+        [
+          480,
+          -400
+        ],
+        [
+          540,
+          0
+        ],
+        [
+          600,
+          250
+        ],
+        [
+          615,
+          430
+        ],
+        [
+          660,
+          600
+        ],
+        [
+          950,
+          650
+        ]
+      ]
+    },
+    {
+      "elevation": 220,
+      "line": [
+        [
+          -700,
+          -250
+        ],
+        [
+          -350,
+          -200
+        ],
+        [
+          0,
+          -50
+        ],
+        [
+          180,
+          150
+        ],
+        [
+          350,
+          400
+        ],
+        [
+          600,
+          800
+        ],
+        [
+          800,
+          1200
+        ]
+      ]
+    },
+    {
+      "elevation": 240,
+      "line": [
+        [
+          -700,
+          100
+        ],
+        [
+          -400,
+          250
+        ],
+        [
+          0,
+          600
+        ],
+        [
+          250,
+          900
+        ],
+        [
+          400,
+          1200
+        ]
+      ]
+    },
+    {
+      "elevation": 280,
+      "line": [
+        [
+          -700,
+          500
+        ],
+        [
+          -480,
+          650
+        ],
+        [
+          -250,
+          1000
+        ],
+        [
+          -200,
+          1200
+        ]
+      ]
+    },
+    {
+      "elevation": 320,
+      "line": [
+        [
+          -700,
+          850
+        ],
+        [
+          -550,
+          950
+        ],
+        [
+          -620,
+          1120
+        ],
+        [
+          -700,
+          1150
+        ]
+      ]
+    }
+  ],
+  "vegetationZones": [
+    {
+      "id": "managed_park",
+      "polygon": [
+        [
+          -350,
+          -300
+        ],
+        [
+          400,
+          -300
+        ],
+        [
+          570,
+          180
+        ],
+        [
+          580,
+          500
+        ],
+        [
+          250,
+          650
+        ],
+        [
+          -350,
+          450
+        ]
+      ],
+      "canopy": "open lawns, lime avenue, scattered specimen trees"
+    },
+    {
+      "id": "deep_forest",
+      "extent": "All land outside managed_park except water, buildings, paths and village; clear only marked lookout and building curtilages",
+      "canopy": "oak/hornbeam, beech on cool northwest slope"
+    }
+  ],
+  "sightlines": [
+    {
+      "fromPlace": "apartment",
+      "bearing": 270,
+      "visible": "western trees and riding-hall roof; lake excluded"
+    },
+    {
+      "fromPlace": "bekas",
+      "bearing": 245,
+      "visible": "distant castle tower, partly obscured; castle uphill"
+    },
+    {
+      "fromPlace": "library",
+      "bearing": 65,
+      "visible": "trees and partial distant lake in leafless season"
+    }
+  ]
+}

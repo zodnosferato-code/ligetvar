@@ -136,3 +136,7 @@ STORY/L4–L6 remain **Partial**, broader S1–S5 **Planned**. `boglarka_3`/`bog
 | Item | Status | Evidence | Remaining gate |
 | --- | --- | --- | --- |
 | GEO | Partial | User-selected 15–20 minute suite/lake walk, multi-building campus and deep forest/distant village; [spatial authority](CASTLE-GEOGRAPHY.md), nine existing location assignments, estate ecology and tested authoring route calculator in `content/geography.ts`. Validation: 194 tests (163 engine/content + 31 CLI), typecheck, production build and diff whitespace check passed. | Full assembled-scene bilingual travel pass, geographic map presentation, user refinements and later asset regeneration; existing art is not certified spatially consistent. |
+
+GEO measured extension: `maps/estate-plan.json`, `estate-plan.svg`, [production specification](maps/MAP-GENERATION.md) and `map-prompts.json` add building/room polygons, door and stair dimensions, route polylines, shoreline, terrain guides, scale transforms and explicit negative prompts. Geometry remains an authoring reference; generated map imagery is not claimed.
+
+Measured-extension validation: 195 tests (164 engine/content + 31 CLI), typecheck and production build passed; route polylines match canonical lengths within 0.01 m, room envelopes fit their building polygons, and sampled outdoor routes avoid unrelated building interiors. SVG rendered with Inkscape and visually reviewed. First geography publication `c4e292c`: Tests and Pages checked separately; see GitHub Actions. No runtime dialogue or new bitmap assets changed.

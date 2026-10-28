@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1100" viewBox="0 0 1200 1100">
+<rect width="1200" height="1100" fill="#e9e6d3"/>
+<style>text{font:14px sans-serif;fill:#26382d}.title{font-size:26px;font-weight:bold}.note{font-size:13px}</style>
+<text x="40" y="45" class="title">Ligetvár — measured estate plan</text>
+<text x="40" y="72">North up · local metres · architectural baseline, 28 October 2026</text>
+<polygon points="80.00,950.00 930.00,950.00 930.00,150.00 80.00,150.00" fill="#b8c6a0" stroke="#536e50" stroke-dasharray="7 5"/>
+<polygon points="255.00,900.00 630.00,900.00 715.00,660.00 720.00,500.00 555.00,425.00 255.00,525.00" fill="#dce0b2"/>
+<polyline points="670.00,950.00 700.00,750.00 730.00,625.00 737.50,535.00 760.00,450.00 905.00,425.00" fill="none" stroke="#929b77" stroke-width="1"/>
+<polyline points="80.00,875.00 255.00,850.00 430.00,775.00 520.00,675.00 605.00,550.00 730.00,350.00 830.00,150.00" fill="none" stroke="#929b77" stroke-width="1"/>
+<polyline points="80.00,700.00 230.00,625.00 430.00,450.00 555.00,300.00 630.00,150.00" fill="none" stroke="#929b77" stroke-width="1"/>
+<polyline points="80.00,500.00 190.00,425.00 305.00,250.00 330.00,150.00" fill="none" stroke="#929b77" stroke-width="1"/>
+<polyline points="80.00,325.00 155.00,275.00 120.00,190.00 80.00,175.00" fill="none" stroke="#929b77" stroke-width="1"/>
+<polyline points="810.00,150.00 800.00,300.00 820.00,400.00 842.50,495.00" fill="none" stroke="#719eaf" stroke-width="3"/>
+<polyline points="892.50,565.00 945.00,625.00 980.00,700.00" fill="none" stroke="#719eaf" stroke-width="3"/>
+<polygon points="755.00,575.00 775.00,585.00 815.00,582.50 855.00,580.00 892.50,565.00 910.00,545.00 905.00,520.00 880.00,505.00 845.00,495.00 802.50,500.00 770.00,515.00 750.00,545.00" fill="#8fb8c4" stroke="#4b7e8c"/>
+<polyline points="430.00,750.00 465.00,765.00 477.41,787.80 500.00,775.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polyline points="430.00,750.00 395.63,825.00 430.00,900.00" fill="none" stroke="#b49a72" stroke-width="3.0"/>
+<polyline points="430.00,900.00 494.99,901.23 535.00,850.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polyline points="430.00,750.00 370.03,748.06 340.00,800.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polyline points="430.00,750.00 465.00,765.00 605.00,710.00 721.25,688.33 755.00,575.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polyline points="500.00,775.00 605.00,740.00 742.23,714.08 755.00,575.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polyline points="430.00,750.00 390.00,750.00 380.00,675.00 380.00,550.00 423.66,509.33 430.00,450.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polyline points="430.00,450.00 361.98,196.47 105.00,250.00" fill="none" stroke="#b49a72" stroke-width="2"/>
+<polygon points="402.50,740.00 422.50,740.00 422.50,700.00 402.50,700.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="437.50,740.00 457.50,740.00 457.50,700.00 437.50,700.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="402.50,700.00 457.50,700.00 457.50,682.50 402.50,682.50" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="422.50,740.00 437.50,740.00 437.50,727.50 422.50,727.50" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="452.50,740.00 459.50,740.00 459.50,733.00 452.50,733.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="457.50,750.00 475.00,750.00 475.00,735.00 457.50,735.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="490.00,785.00 510.00,785.00 510.00,765.00 490.00,765.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="515.00,860.00 555.00,860.00 555.00,840.00 515.00,840.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="565.00,875.00 585.00,875.00 585.00,860.00 565.00,860.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="325.00,809.00 355.00,809.00 355.00,791.00 325.00,791.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="417.50,905.00 426.50,905.00 426.50,895.00 417.50,895.00" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="767.50,592.50 773.50,592.50 773.50,588.50 767.50,588.50" fill="#806c69" stroke="#433b38" stroke-width="1"/>
+<polygon points="416.25,760.00 443.75,760.00 443.75,740.00 416.25,740.00" fill="#c5b89f" stroke="#85775f"/>
+<text x="280.0" y="745.0">Castle / courtyard</text>
+<text x="150.0" y="805.0">Riding hall / workshop</text>
+<text x="520.0" y="767.0">Granary / Holdkör</text>
+<text x="560.0" y="860.0">Student residences</text>
+<text x="455.0" y="910.0">Gatehouse</text>
+<text x="780.0" y="557.0">Békás Lake</text>
+<text x="450.0" y="450.0">Forest boundary</text>
+<text x="100.0" y="232.0">Ridge lookout 325 m</text>
+<path d="M1100 170V110m0 0-8 14m8-14 8 14" fill="none" stroke="#26382d" stroke-width="3"/><text x="1094" y="98">N</text>
+<path d="M50 980h100m-100-5v10m100-10v10" stroke="#26382d" stroke-width="2"/><text x="50" y="1005">200 m</text>
+<text x="400" y="1000">South road continues to village square: courtyard → village 3,530 m / 53 min.</text>
+<text x="40" y="1045" class="note">Building footprints true to scale; labels enlarged. Dashed line = estate boundary. Tan = path; blue = water.</text>
+<text x="40" y="1068" class="note">Source: estate-plan.json. Room plans are separate layers; this overview does not stack floors.</text>
+</svg>
