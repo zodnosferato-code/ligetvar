@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.5`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.6`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `10`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `11`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -112,3 +112,7 @@ Schema4/content**9**. `_4`'s assembled graph and locale-neutral journal/reaction
 Schema4/content**10**. `rebeka_1`/`rebeka_2` now have new assembled cursor graphs and locale-neutral journals/reactions; the curious topic recalls witnessed photographs instead of an invented bus conversation. Preserve original interest/attraction/withdrawal and topic-memory effects, admission and slot costs. Epoch9 and earlier require a fresh year, no migration. All six Rebeka main relationship scenes now have an English-first bilingual pass; whole-game localization remains partial. [Evidence](design/PLAYTHROUGH-FINDINGS.md#connected-rebeka-arc-validation--28-october-2026).
 
 The same release also corrects the optional Rebeka aftermath visit to the existing player's suite: room ownership, furniture, departure and indoor lighting now match the reused asset/location. IDs/effects remain unchanged by that continuity correction; the early-arc changes already require epoch10.
+
+## Boglárka date and aftermath — 0.9.6
+
+Schema remains 4; content epoch advances to **11**. `boglarka_3`/`boglarka_6` replace incompatible assembled cursor graphs and persisted prose with localized message references. A kiss no longer authorizes deeper intimacy, and the final continuation decision precedes touch. Stable original invitation/withdrawal/aftermath effects, knowledge, deadlines and one-slot costs remain. Epoch10 and earlier require a fresh year; no migration or storage-key/default-language change. [Baseline and validation](design/PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026).

@@ -247,3 +247,7 @@ Canonical `timeline.en.ts` and `seasonal.en.ts` have typed Hungarian translation
 ## Connected Rebeka arc — 0.9.5
 
 Canonical `rebeka-early.en.ts` and typed Hungarian translation complete `_1`/`_2` text, branches, titles, choices, reactions, stages and journals. With the `_3–6` passes, all six main Rebeka relationship scenes now resolve in either locale, use literal chosen-name substitution and preserve identical actions/progression. Eighteen public-CLI years read the complete arc and exercise friendship/romance/refusal/physical alternatives; exhaustive tests cover each changed early node and date boundaries. Schema4/content10 reflects the replaced graphs/persisted prose. Optional coffees, triad, other routes, endings and the English no-preference default remain unfinished.
+
+## Boglárka date and aftermath — 0.9.6
+
+Canonical `boglarka-personal.en.ts` and typed Hungarian translation cover `_3`/`_6`: dialogue, choices, titles, stage labels, reactions and journals. Chosen names resolve literally; public CLI switches both ways at every observed node, including refusals, slow pace and private alternatives. Schema4/content11 reflects replaced assembled graphs and locale-neutral persisted text. Other Boglárka scenes, whole-game English and default-language migration remain partial.

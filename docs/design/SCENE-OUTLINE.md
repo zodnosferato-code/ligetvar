@@ -229,3 +229,17 @@ Connected two-scene early-arc pass after `_3–6`; English canonical/Hungarian t
 | Change/exit | Keep working title and possible fourth image, her initiative and control of the print; part without invented promised date. `_2` prerequisites unchanged. | Preserve `rebeka_unpolished` and `rebeka_small_moment` only on their selected branches. “Two calm people” and a voluntary next invitation connect to `_3`; no fixed date or physical escalation. Close projector/show departure before farewell. |
 
 Chosen name is literal, first-person narration avoids hardcoded player identity. Both scenes remain worthwhile without romance. No new favourite-location assignment, art, magic, investigation evidence or automatic off-screen event is introduced.
+
+## Refined Boglárka date and aftermath — 28 October 2026
+
+Authorized continuation, bounded to `boglarka_3` and `boglarka_6` for MR-01/MR-02. Canonical English then Hungarian translation; retain admission, one-slot cost, investigation independence, invitation/withdrawal/aftermath effects and distinct triad affirmations. Replace incompatible cursors and increment content epoch; no engine changes.
+
+| Check | `boglarka_3` | `boglarka_6` |
+| --- | --- | --- |
+| Actual time | Weeks28–50, 8 Apr–9 Sep2027; day/night. Old chapter7 is not week7. | Week52, 23 Sep2027, day/night, after shared_16. |
+| Prior contact | `_2` earliest week6, may finish in same week as date; no fixed elapsed gap or assumed concert attendance. | `_5` weeks48–50; optional late coffee may have happened in week51 or earlier slot52. Do not claim first post-danger meeting. |
+| Entry knowledge | Mutual attraction, no commitment; quiet-topic callback only with `boglarka_quiet`. Mandatory chapter7 already played. | Commitment and institutional aftermath witnessed; music/invitation future memory only when chosen in `_5`; coffee only when completed. |
+| Physical state | Courtyard, two people initially apart; her own book stays in her bag. Optional library window alcove within existing access; no invented closing hour or clothes/weather assumption. | Courtyard, her submission receipt on phone; books remain at home. Optional visit is to player's existing suite, no invented living room or library bed. |
+| Change/exit | Show quiet woman enjoying loud music and deliberate invitation; reciprocal nervousness/music choices. Accept date or end romance; kiss or no touch, optional library company, second kiss only after earlier chosen kiss, then return and goodbye. | Submission is not acceptance/publication. Ask for ordinary future company; continue or withdraw before touch. Conditional music/concert/coffee callbacks with fallback. Courtyard or suite; talk/kiss/depart; separately chosen fade, reconsideration and ordinary aftermath. Natural exit without automatic next-day plans. |
+
+Each branch gets a specific response. A no-touch date preserves romantic progress. The final meeting responds to her authorship and chosen pleasures without repeating the commitment speech, inventing a joint concert, or claiming the danger made everything worthwhile. Independent Rebeka–Boglárka content and unresolved late-Soma migration remain unchanged. Next connected pass: `_4`/`_5` conflict and commitment continuity, then `_1`/`_2` English-first arc.

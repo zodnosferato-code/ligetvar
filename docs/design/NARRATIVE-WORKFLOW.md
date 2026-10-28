@@ -113,3 +113,7 @@ The next-agent ordering above remains the method. Rebeka `_3` was rewritten in 0
 ### Current continuation after 0.9.5
 
 Rebeka `_1`/`_2` now complete her six-scene English-first/Hungarian main relationship pass. Current evidence/limits are in the tracker and the connected-arc findings, not historical MR observations alone. Next: fresh public-CLI Boglárka baseline, then refine `boglarka_3`/`boglarka_6` for MR-01/MR-02 before continuing her individual story. Keep her precise initiative and chosen quiet pleasures; do not copy Rebeka's photograph/film dispute. Gréta, contract-led Virág, triad and coordinated late-Soma migration remain open under the original method.
+
+### Current continuation after 0.9.6
+
+Boglárka `_3`/`_6` now have deliberate English-first/Hungarian passes for MR-01/MR-02, with bounded kiss choices, music/disagreement, continuation before closeness, optional suite visit and fade-to-black/stop/depart alternatives. [Current evidence](PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026). Next connected batch: fresh CLI review of `_4`/`_5`, remove imposed interruption and invented yesterday-meeting history, give authorship/conflict/commitment distinct present activities without copying Rebeka. Then `_1`/`_2` for the early arc. Preserve witnessed music/concert future decisions consumed by `_6`. The week50 date scheduling limit remains recorded; no schedule redesign is approved. Other outstanding character/triad/shared and late-Soma work remains under the original method.

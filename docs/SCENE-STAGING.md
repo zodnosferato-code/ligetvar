@@ -44,3 +44,7 @@ The user's 27 October clarification keeps intimacy as part of relationship devel
 ## Calendar update — 28 October 2026
 
 The user-approved year supersedes earlier fixed sixteen-week dates. Existing scene IDs and stage graphs are preserved; actual dates come from [YEAR-CAMPAIGN.md](design/YEAR-CAMPAIGN.md). T7/T8 are nighttime in weeks 50/52. Stage movement remains within one activity.
+
+## Boglárka continuation — 0.9.6
+
+Her first date retains courtyard→library→courtyard movement. The book is her own and stays in her bag; an earlier kiss stays brief and a slow branch never gains a later kiss implicitly. Her final meeting starts apart in the courtyard after institutional resolution. Continuing precedes an optional invitation to the player's existing suite; going inside, kissing and fade-to-black intimacy each have their own alternatives. The suite is still the player's suite at departure, including his solo return indoors. No new location artwork or activity period is introduced. [Validation](design/PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026).
