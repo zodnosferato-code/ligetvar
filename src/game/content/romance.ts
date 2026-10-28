@@ -59,15 +59,11 @@ const dates:Record<GirlId,{intro:Beat[];replies:Reply[];touch:Reply[];end:Beat[]
   {id:'wish',text:'Milyen lenne egy este, amit csak magadnak választanál?',beats:[['rebeka','Rossz film. Közepes pizza. Valaki, aki nem akarja megjavítani az ízlésemet.'],['marton','Vitatkozni szabad?'],['rebeka','Muszáj. De ne engem próbálj megnyerni azzal, hogy mindenben igazat adsz.'],['marton','A pizzában már most nem értünk egyet.'],['rebeka','Végre egy komoly akadály.','amused']]},
   {id:'fear',text:'Nekem az a nehéz, hogy ne akarjam rögtön bebizonyítani, jó választás vagyok.',beats:[['rebeka','Én meg egy jó mondatot szeretnék, amitől egész hazáig rám gondolsz.'],['marton','Ez eddig működött.'],['rebeka','Tudom. Csak nem akarok minden alkalommal jobbat kitalálni.','vulnerable'],['marton','Akkor ma sétáljunk egyet akkor is, ha elfogynak.']]}
  ],touch:[
-  {id:'hand',text:'Fogd meg. Most.',memory:'rebeka_date_hand',beats:[
-   ['narrator','Rebeka szabad kezét nyújtja. Előbb óvatosan, aztán biztosabban kulcsolja az ujjait a tieid közé. A tópart sötét, csak a lámpa fénye marad.'],
-   ['rebeka','Most valami nagyon rossz viccet kellene mondanom. De nincs közönség.','vulnerable'],
-   ['marton','Akkor ne mondj. Csak maradj.'],
-   ['narrator','Közelebb húz. A csók mély, nyelve lassú, aztán éhes. Kezed a derekán. A fekete ruha kulcslyuka már nyitva a szegycsontig; engedi, hogy lecsúszd a karján. Kilép belőle. Fekete alsónemű. A jobb hasán a heg látszik; nem takarja el.'],
-   ['rebeka','Vedd le a többit is. Én… engedek.','vulnerable'],
-   ['narrator','Térdre ereszkedik anélkül, hogy kérnéd. Szája rajtad, először lassú, aztán éhes és mély, szemével felnéz. Amikor elhúzódik, hangja rekedt, nyál fénylik az ajkán: „Most te vezess.”'],
-   ['narrator','A sötét part menti padon vagy a bokrok árnyékában előrehajol, kezeit hátul tartja. A ruha felcsúszik, te mögé lépsz. Mély, kemény lökések; nyög a párnába vagy a kőbe. Később lovagol rajtad, a hege a szád alatt, te diktálod a tempót. Beleélvez; ott marad rajtad, zihálva, nem viccel.'],
-   ['rebeka','Maradj, amíg a fény visszajön. Nem kell vicc.','affectionate']
+  {id:'hand',text:'Megfogom a kezét.',memory:'rebeka_date_hand',beats:[
+   ["narrator","Megfogom a kezét. Az ujjai az enyéim közé simulnak; apróbbakat kell lépnünk, mire felvesszük egymás tempóját."],
+   ["rebeka","Ez kényelmetlen lesz. Általában mindkét kezemre szükségem van, hogy elmagyarázzam, milyen rossz egy film."],
+   ["marton","A katasztrófa méretét bemondásra is elhiszem."],
+   ["narrator","Nevet, és egyszer meglendíti összekulcsolt kezünket. Folytatjuk a sétát; amikor felém fordul, hogy mondjon valamit, megint elvétjük a lépést."]
   ]},
   {id:'slow_touch',text:'Szeretnék veled randizni, de ma még csak sétálnék.',memory:'rebeka_date_slow',beats:[['rebeka','Rendben. Akkor ma a séta. Nem kell előjegyzést kérnem a kezedre.','amused'],['marton','A következő találkozót azért szeretném.'],['rebeka','Azt én is. Az első rossz film kiválasztásáról még úgyis vitánk lesz.']]}
  ],end:[['rebeka','A következőnél én választok filmet. Te meg szólj közben, ha unatkozol. Ezt most komolyan mondom.'],['narrator','A sétány végén lassít, mielőtt elbúcsúztok. Aztán ő mondja ki: jó volt veled. Nem tesz mögé csípős megjegyzést.']]},

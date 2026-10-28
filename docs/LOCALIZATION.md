@@ -231,3 +231,7 @@ Release 0.6.2/schema 4/content 5 intentionally rejects older content saves under
 ## 0.9.0 — timeline and seasonal meetings
 
 Canonical `timeline.en.ts` and `seasonal.en.ts` have typed Hungarian translations. shared_4 and two new seasonal meetings resolve every line/choice/title plus reactions and journals in either locale; timeline knowledge uses a presentation-time reference. Names are substituted literally. Existing plain-text journals remain valid and unchanged; schema 4/content 6 remain. Per-node tests check switching and resume, and actual CLI processes restart before/after both seasonal choices with English/Hungarian parity. No new default language or whole-game English completion is claimed. [Evidence](design/PLAYTHROUGH-FINDINGS.md#seasonal-expansion-validation--28-october-2026).
+
+## Rebeka first date — 0.9.1
+
+`rebeka_3` now has canonical English and reviewed Hungarian text across every assembled branch, title, choice, reaction, stage label and journal. Chosen names are interpolated literally. Public-CLI review switches both directions at each played node, including refusal/slower branches, and resumes at choice points; exhaustive engine traversal covers all 37 terminal paths. The rest of the individual arc, endings and default-language migration remain partial. Content epoch 7 reflects removed old cursor IDs and newly referenced persisted text; schema remains 4. [Evidence and limits](design/PLAYTHROUGH-FINDINGS.md#rebeka-first-date-validation--28-october-2026).

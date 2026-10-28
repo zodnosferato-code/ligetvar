@@ -1,3 +1,4 @@
+import {rebekaDateEn} from './rebeka-date.en.ts';
 import {seasonalEn} from './seasonal.en.ts';
 import {timelineEn} from './timeline.en.ts';
 import {holidaysEn} from './holidays.en.ts';
@@ -6,6 +7,7 @@ import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
+  ...rebekaDateEn,
   "ui.transition.label": "Transitions",
   "ui.transition.background": "Backgrounds",
   "ui.transition.card": "Story cards",

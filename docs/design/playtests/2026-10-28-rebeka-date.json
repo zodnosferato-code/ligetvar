@@ -1,0 +1,3417 @@
+{
+  "sourceMain": "aa8dd6048ff077845aca44153ee8938d90ff7f29",
+  "method": "Scripted public JSON CLI; fresh saves, latest revisions, no author mode or save manipulation; per-node locale parity; actual observed endings. Later unrevised scenes remain known defects.",
+  "fileSha256": {
+    "src/game/content/romance.ts": "aa9009e6185339c13aa11e666ef564607a02a80c4be3d4980c87cc97a676ad2e",
+    "src/game/content/rebeka-date.ts": "bf6b837b96bf004e3c44fe1ad9146b52328fad4eb7dfb9e537f4e09375967148",
+    "src/game/content/catalog.ts": "a219756129526413d4aac8fcab3532b7d873a5dfb59f986f81c223582ab9cf23",
+    "src/game/content/locales/en.ts": "1a1c42de5f60485ca783a02e4eff3e5a81731cd21835846f1385a19c6f0ef982",
+    "src/game/content/locales/hu.ts": "8cbba6c526d99a854a3446166231aeb1f38f2aaac8ded01bd055fbf2df19e69d",
+    "src/game/content/locales/rebeka-date.en.ts": "13132a1daaa7b652f573ca52d75ba6e774dfad4a3fc2decc01c1258824f1d176",
+    "src/game/content/locales/rebeka-date.hu.ts": "eb660a350391ad2ba5415c98a5f7c17e8b2ea8e758128b85dccbed960a96b8bd",
+    "src/game/release.ts": "7b5df667ef2f4b2005c95c71d0bc1c58d04ea6627fc99aa34f702f085ad0c78e",
+    "package.json": "0ee256455d82939626bd548674b7b5972e49429f1750dde22c737b89b22e2048",
+    "tools/review-rebeka-date.mjs": "6317b3c34879fd1cddc173853f0db0ef28aa2d0d17adeaa85f5d5a21c96e1e7a"
+  },
+  "cases": [
+    {
+      "id": "hand-kiss",
+      "policy": {
+        "id": "hand-kiss",
+        "topic": "callback",
+        "pace": "hand",
+        "destination": "quiet_place",
+        "private": "kiss",
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 495,
+      "restarts": 5,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_callback_0",
+        "romance_date_topic_callback_1",
+        "romance_date_topic_callback_2",
+        "romance_closeness",
+        "romance_closeness_hand_0",
+        "romance_closeness_hand_1",
+        "romance_closeness_hand_2",
+        "romance_closeness_hand_3",
+        "date_destination",
+        "date_together_0",
+        "date_together_1",
+        "date_private_choice",
+        "date_kiss_0",
+        "date_kiss_1",
+        "date_kiss_2",
+        "date_return_0",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "hand-walk-talk",
+      "policy": {
+        "id": "hand-walk-talk",
+        "topic": "wish",
+        "pace": "hand",
+        "destination": "together",
+        "private": "stay_close"
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 499,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_hand_0",
+        "romance_closeness_hand_1",
+        "romance_closeness_hand_2",
+        "romance_closeness_hand_3",
+        "date_destination",
+        "date_remembered_0",
+        "date_remembered_1",
+        "date_together_0",
+        "date_together_1",
+        "date_private_choice",
+        "date_quiet_0",
+        "date_quiet_1",
+        "date_return_0",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "hand-private-depart",
+      "policy": {
+        "id": "hand-private-depart",
+        "topic": "fear",
+        "pace": "hand",
+        "destination": "quiet_place",
+        "private": "head_home"
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 484,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_fear_0",
+        "romance_date_topic_fear_1",
+        "romance_date_topic_fear_2",
+        "romance_date_topic_fear_3",
+        "romance_closeness",
+        "romance_closeness_hand_0",
+        "romance_closeness_hand_1",
+        "romance_closeness_hand_2",
+        "romance_closeness_hand_3",
+        "date_destination",
+        "date_together_0",
+        "date_together_1",
+        "date_private_choice",
+        "date_return_0",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "hand-outside",
+      "policy": {
+        "id": "hand-outside",
+        "topic": "fear",
+        "pace": "hand",
+        "destination": "stay_outside"
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 472,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_fear_0",
+        "romance_date_topic_fear_1",
+        "romance_date_topic_fear_2",
+        "romance_date_topic_fear_3",
+        "romance_closeness",
+        "romance_closeness_hand_0",
+        "romance_closeness_hand_1",
+        "romance_closeness_hand_2",
+        "romance_closeness_hand_3",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "hand-depart",
+      "policy": {
+        "id": "hand-depart",
+        "topic": "wish",
+        "pace": "hand",
+        "destination": "head_home"
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 475,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_hand_0",
+        "romance_closeness_hand_1",
+        "romance_closeness_hand_2",
+        "romance_closeness_hand_3",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "slow-talk",
+      "policy": {
+        "id": "slow-talk",
+        "topic": "fear",
+        "pace": "slow_touch",
+        "destination": "quiet_place",
+        "private": "stay_close",
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 492,
+      "restarts": 5,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_fear_0",
+        "romance_date_topic_fear_1",
+        "romance_date_topic_fear_2",
+        "romance_date_topic_fear_3",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_together_0",
+        "date_together_1",
+        "date_private_choice",
+        "date_quiet_0",
+        "date_quiet_1",
+        "date_return_0",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "slow-private-depart",
+      "policy": {
+        "id": "slow-private-depart",
+        "topic": "wish",
+        "pace": "slow_touch",
+        "destination": "quiet_place",
+        "private": "head_home"
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 484,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_together_0",
+        "date_together_1",
+        "date_private_choice",
+        "date_return_0",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "slow-outside-night",
+      "policy": {
+        "id": "slow-outside-night",
+        "topic": "callback",
+        "pace": "slow_touch",
+        "destination": "stay_outside",
+        "night": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 466,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "night",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_callback_0",
+        "romance_date_topic_callback_1",
+        "romance_date_topic_callback_2",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "slow-depart",
+      "policy": {
+        "id": "slow-depart",
+        "topic": "wish",
+        "pace": "slow_touch",
+        "destination": "head_home"
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 472,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "decline",
+      "policy": {
+        "id": "decline",
+        "decline": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 396,
+      "restarts": 0,
+      "ending": "friendship",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "date_declined_0",
+        "date_declined_1"
+      ]
+    },
+    {
+      "id": "same-week",
+      "policy": {
+        "id": "same-week",
+        "topic": "wish",
+        "pace": "slow_touch",
+        "destination": "head_home",
+        "attractionWeek": 16,
+        "night": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 472,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "night",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "latest-romance",
+      "policy": {
+        "id": "latest-romance",
+        "topic": "wish",
+        "pace": "hand",
+        "destination": "together",
+        "private": "kiss",
+        "week": 49,
+        "night": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 502,
+      "restarts": 0,
+      "ending": "rebeka",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 49,
+      "date": "2027-09-02",
+      "period": "night",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_hand_0",
+        "romance_closeness_hand_1",
+        "romance_closeness_hand_2",
+        "romance_closeness_hand_3",
+        "date_destination",
+        "date_remembered_0",
+        "date_remembered_1",
+        "date_together_0",
+        "date_together_1",
+        "date_private_choice",
+        "date_kiss_0",
+        "date_kiss_1",
+        "date_kiss_2",
+        "date_return_0",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "late-withdrawal",
+      "policy": {
+        "id": "late-withdrawal",
+        "topic": "wish",
+        "pace": "slow_touch",
+        "destination": "head_home",
+        "withdraw": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 472,
+      "restarts": 0,
+      "ending": "estranged",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3",
+        "rebeka_4",
+        "rebeka_5",
+        "rebeka_6"
+      ],
+      "dateWeek": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_wish_0",
+        "romance_date_topic_wish_1",
+        "romance_date_topic_wish_2",
+        "romance_date_topic_wish_3",
+        "romance_date_topic_wish_4",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    },
+    {
+      "id": "latest-night",
+      "policy": {
+        "id": "latest-night",
+        "topic": "fear",
+        "pace": "slow_touch",
+        "destination": "head_home",
+        "week": 50,
+        "night": true
+      },
+      "release": {
+        "gameVersion": "0.9.1",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 7
+      },
+      "buildId": "aa8dd6048ff077845aca44153ee8938d90ff7f29-dirty",
+      "commands": 430,
+      "restarts": 0,
+      "ending": "unresolved",
+      "scenes": [
+        "rebeka_1",
+        "rebeka_2",
+        "rebeka_3"
+      ],
+      "dateWeek": 50,
+      "date": "2027-09-09",
+      "period": "night",
+      "playedDateLines": [
+        "line_0",
+        "line_1",
+        "line_2",
+        "line_3",
+        "romance_date_intro_0",
+        "romance_date_intro_1",
+        "romance_date_intro_2",
+        "line_4",
+        "romance_date_topic",
+        "romance_date_topic_fear_0",
+        "romance_date_topic_fear_1",
+        "romance_date_topic_fear_2",
+        "romance_date_topic_fear_3",
+        "romance_closeness",
+        "romance_closeness_slow_touch_0",
+        "romance_closeness_slow_touch_1",
+        "romance_closeness_slow_touch_2",
+        "date_destination",
+        "date_goodbye_0",
+        "date_goodbye_1",
+        "date_goodbye_2"
+      ]
+    }
+  ],
+  "reviewedDateObservations": [
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "line_0",
+      "speaker": "narrator",
+      "en": "Rebeka waits by the lake with two paper cups. There is no camera strap across her shoulder. She holds one cup out to me before I can think of an opening line.",
+      "hu": "Rebeka két papírpohárral vár a tónál. Nem lóg fényképezőgép a vállán. Az egyiket felém nyújtja, mielőtt kitalálhatnék egy kezdőmondatot.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "line_1",
+      "speaker": "rebeka",
+      "en": "We left an invitation hanging after that screening. I was beginning to think we’d need a sequel before we got to it.",
+      "hu": "A vetítés után félbemaradt az a meghívás. Már azt hittem, előbb elkészül a folytatás, mint hogy sorra kerülünk.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "line_2",
+      "speaker": "marton",
+      "en": "I’m glad we got here. No screening to hide behind this time.",
+      "hu": "Örülök, hogy itt vagyunk. Most nincs vetítés, ami mögé elbújhatnánk.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "line_3",
+      "speaker": "rebeka",
+      "en": "I can still supply terrible films. But I wanted to see you without an audience, Álex $& {playerName}. As a date.",
+      "hu": "Rettenetes filmeket továbbra is tudok ajánlani. De most közönség nélkül szeretnélek látni, Álex $& {playerName}. Randira hívtalak.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_intro_0",
+      "speaker": "marton",
+      "en": "No photographs today?",
+      "hu": "Ma nincsenek képek?",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_intro_1",
+      "speaker": "rebeka",
+      "en": "At home. I took all the faces out of the new sequence. Now it’s mostly doors. One of them looks considerably more interesting than its owner.",
+      "hu": "Otthon maradtak. Az új sorozatból kiszedtem az összes arcot. Most főleg ajtókból áll. Az egyik lényegesen érdekesebbnek látszik a tulajdonosánál.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_intro_2",
+      "speaker": "narrator",
+      "en": "I laugh. “You don’t have to show me everything.” She looks into her coffee. “Good. I haven’t decided whether the doors are clever or just a way of hiding.”",
+      "hu": "Elnevetem magam. „Nem kell mindent megmutatnod nekem.” A kávéjába néz. „Jó. Még nem döntöttem el, hogy az ajtók okos ötletnek számítanak, vagy csak mögéjük bújok.”",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "line_4",
+      "speaker": "marton",
+      "en": "I turn towards her, cup warming my fingers.",
+      "hu": "Felé fordulok; a pohár melegíti az ujjaimat.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "yes",
+          "en": "Yes. I want this to be a date too.",
+          "hu": "Igen. Én is randit szeretnék."
+        },
+        {
+          "id": "slow",
+          "en": "I like your company, but I don’t want a romance.",
+          "hu": "Jó veled lenni, de romantikus kapcsolatot nem szeretnék."
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic",
+      "speaker": "marton",
+      "en": "We walk at the water’s edge. She waits for me to choose a subject for once.",
+      "hu": "A víz mellett sétálunk. Most kivárja, hogy egyszer én válasszak témát.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "callback",
+          "en": "Still two very calm people? I remember taking that unnecessary detour.",
+          "hu": "Még mindig két nagyon higgadt ember? Emlékszem arra a fölösleges kerülőmre."
+        },
+        {
+          "id": "wish",
+          "en": "Tell me about a film you love and absolutely cannot defend.",
+          "hu": "Mesélj egy filmről, amit szeretsz, de semmivel sem tudsz megvédeni."
+        },
+        {
+          "id": "fear",
+          "en": "I keep trying to make a good impression. It’s making me rather dull.",
+          "hu": "Folyton jó benyomást próbálok kelteni. Kezdek elég unalmas lenni tőle."
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_callback_0",
+      "speaker": "rebeka",
+      "en": "Oh, I remember. I nearly told you I’d seen you walk past. Ruined a perfectly good joke by worrying you’d leave.",
+      "hu": "Ó, emlékszem. Majdnem elmondtam, hogy láttalak elsétálni. Tönkretettem egy egészen jó viccet azzal, hogy attól tartottam, elmész.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_callback_1",
+      "speaker": "marton",
+      "en": "I wasn’t leaving. I just wanted to arrive as someone who hadn’t rehearsed arriving.",
+      "hu": "Nem akartam elmenni. Csak úgy akartam megérkezni, mint aki nem próbálta el előre a megérkezést.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_callback_2",
+      "speaker": "rebeka",
+      "en": "That’s appalling. I like it. I’ve rehearsed looking surprised when you say something nice. The timing still needs work.",
+      "hu": "Ez borzalmas. Tetszik. Én azt próbáltam el, hogy meglepődöm, ha valami kedveset mondasz. Az időzítésen még dolgoznom kell.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness",
+      "speaker": "narrator",
+      "en": "We drop the empty cups into a bin beside the path. Rebeka brushes a paper fleck from her fingers, then offers me her hand.",
+      "hu": "Az üres poharakat a sétány melletti szemetesbe dobjuk. Rebeka lesöpör egy papírdarabkát az ujjáról, aztán felém nyújtja a kezét.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "hand",
+          "en": "Take her hand.",
+          "hu": "Megfogom a kezét."
+        },
+        {
+          "id": "slow_touch",
+          "en": "I’d like to keep walking with you, without touching today.",
+          "hu": "Szívesen sétálnék még veled, de ma érintés nélkül."
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_hand_0",
+      "speaker": "narrator",
+      "en": "I take her hand. Her fingers settle between mine; we have to shorten our steps to find the same pace.",
+      "hu": "Megfogom a kezét. Az ujjai az enyéim közé simulnak; apróbbakat kell lépnünk, mire felvesszük egymás tempóját.",
+      "stage": {
+        "label": "Walking side by side",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_hand_1",
+      "speaker": "rebeka",
+      "en": "This is inconvenient. I usually need both hands to explain how bad a film is.",
+      "hu": "Ez kényelmetlen lesz. Általában mindkét kezemre szükségem van, hogy elmagyarázzam, milyen rossz egy film.",
+      "stage": {
+        "label": "Walking side by side",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_hand_2",
+      "speaker": "marton",
+      "en": "I’ll take your word for the size of the disaster.",
+      "hu": "A katasztrófa méretét bemondásra is elhiszem.",
+      "stage": {
+        "label": "Walking side by side",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_hand_3",
+      "speaker": "narrator",
+      "en": "She laughs and swings our joined hands once. We carry on beside the lake, getting the steps wrong again when she turns to tell me something. At the fork she stops and lets go, looking up towards the castle.",
+      "hu": "Nevet, és egyszer meglendíti összekulcsolt kezünket. Folytatjuk a sétát; amikor felém fordul, hogy mondjon valamit, megint elvétjük a lépést. Az elágazásnál megáll, elengedi a kezem, és felnéz a kastélyra.",
+      "stage": {
+        "label": "Walking side by side",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_destination",
+      "speaker": "rebeka",
+      "en": "We could stop at the Holdkör on the way back. The screening room is quiet, and I’m not quite finished talking to you. Come and sit with me?",
+      "hu": "Visszafelé megállhatnánk a Holdkörnél. A vetítőterem csendes, és még nem végeztem veled. Bejössz egy kicsit beszélgetni?",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "quiet_place",
+          "en": "Yes. Let’s sit and talk.",
+          "hu": "Igen. Üljünk le beszélgetni."
+        },
+        {
+          "id": "together",
+          "en": "Let’s go. I’d like to hold your hand on the way.",
+          "hu": "Menjünk. Útközben is szívesen fognám a kezed."
+        },
+        {
+          "id": "stay_outside",
+          "en": "I’d rather stay outside. Walk with me to the junction?",
+          "hu": "Inkább kint maradnék. Elkísérsz az elágazásig?"
+        },
+        {
+          "id": "head_home",
+          "en": "I’ve enjoyed this. I’d like to head home now.",
+          "hu": "Jól éreztem magam. Most hazafelé indulnék."
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_together_0",
+      "speaker": "narrator",
+      "en": "Inside the empty screening room, Rebeka pulls two chairs beside each other. The projector is off; she leaves it alone. The drawn curtains soften the room’s light.",
+      "hu": "Az üres vetítőteremben Rebeka egymás mellé húz két széket. A vetítő ki van kapcsolva; nem nyúl hozzá. A behúzott függönyök tompítják a terem fényét.",
+      "stage": {
+        "label": "Empty screening room",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_together_1",
+      "speaker": "rebeka",
+      "en": "An empty screen. My most economical work. You’ll notice I’ve resisted photographing it.",
+      "hu": "Üres vászon. A legtakarékosabb alkotásom. Mint látod, ellenálltam a kísértésnek, hogy lefényképezzem.",
+      "stage": {
+        "label": "Empty screening room",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_private_choice",
+      "speaker": "narrator",
+      "en": "Her chair creaks when she turns towards me.",
+      "hu": "Megnyikordul a széke, amikor felém fordul.",
+      "stage": {
+        "label": "Empty screening room",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "kiss",
+          "en": "I’d like to kiss you.",
+          "hu": "Szeretnélek megcsókolni."
+        },
+        {
+          "id": "stay_close",
+          "en": "Stay and talk a little longer.",
+          "hu": "Maradok még beszélgetni."
+        },
+        {
+          "id": "head_home",
+          "en": "I should go now. Walk back with me?",
+          "hu": "Most indulnék. Visszasétálsz velem?"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_kiss_0",
+      "speaker": "rebeka",
+      "en": "Yes. I’d like that.",
+      "hu": "Igen. Szeretném.",
+      "stage": {
+        "label": "Beside the screening-room chairs",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_kiss_1",
+      "speaker": "narrator",
+      "en": "She leans towards me; I meet her halfway. We kiss, briefly enough that the scrape of her chair is still settling when we draw apart.",
+      "hu": "Felém hajol; félúton találkozunk. Rövid csók, olyan rövid, hogy a szék csikordulása szinte még el sem halt, amikor elhúzódunk.",
+      "stage": {
+        "label": "Beside the screening-room chairs",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_kiss_2",
+      "speaker": "rebeka",
+      "en": "That chair has dreadful timing. I was doing rather well.",
+      "hu": "Rettenetes ennek a széknek az időzítése. Pedig egész jól ment.",
+      "stage": {
+        "label": "Beside the screening-room chairs",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "close",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_return_0",
+      "speaker": "narrator",
+      "en": "We leave the chairs together and walk out of the Holdkör. Back by the lake, she points out the path where we will part.",
+      "hu": "Egymás mellett hagyjuk a székeket, és kimegyünk a Holdkörből. A tónál megmutatja az ösvényt, ahol elválik az utunk.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_goodbye_0",
+      "speaker": "rebeka",
+      "en": "If we do watch a film together, you can hate it. Just don’t spend ninety minutes pretending you don’t.",
+      "hu": "Ha egyszer együtt nézünk filmet, utálhatod. Csak ne tölts kilencven percet azzal, hogy úgy teszel, mintha nem utálnád.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_goodbye_1",
+      "speaker": "narrator",
+      "en": "At the junction she stops. “I’m glad we did this.” For once she leaves the sentence there.",
+      "hu": "Az elágazásnál megáll. „Örülök, hogy eljöttünk.” Most az egyszer ennyiben hagyja a mondatot.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_goodbye_2",
+      "speaker": "narrator",
+      "en": "“Me too.” We say goodbye and take our separate paths. I turn once; she is still there, then lifts a hand and starts home.",
+      "hu": "„Én is.” Elköszönünk, és külön indulunk tovább. Egyszer visszanézek; még ott áll, aztán felemeli a kezét, és ő is elindul hazafelé.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Finish meeting",
+          "hu": "Alkalom befejezése"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_wish_0",
+      "speaker": "rebeka",
+      "en": "A vampire inherits a lighthouse. Every time he goes upstairs, somebody explains the stairs to him. It’s ninety minutes long.",
+      "hu": "Egy vámpír világítótornyot örököl. Valahányszor felmegy, valaki elmagyarázza neki a lépcsőt. Kilencven perces.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_wish_1",
+      "speaker": "marton",
+      "en": "Does he ever reach the light?",
+      "hu": "Egyszer azért felér a lámpához?",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_wish_2",
+      "speaker": "rebeka",
+      "en": "Don’t be vulgar. It’s about alienation. Also, they clearly couldn’t afford the top floor.",
+      "hu": "Ne légy közönséges. Ez az elidegenedésről szól. Meg arról, hogy a felső szintre már nem futotta.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_wish_3",
+      "speaker": "marton",
+      "en": "I’d watch that with you. I reserve the right to support the stairs.",
+      "hu": "Megnézném veled. Fenntartom a jogot, hogy a lépcsőnek szurkoljak.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_wish_4",
+      "speaker": "rebeka",
+      "en": "Finally, a serious disagreement. I tried to review it once. Wrote three pages about the framing instead of admitting I’d had a lovely time.",
+      "hu": "Végre egy komoly nézeteltérés. Egyszer megpróbáltam kritikát írni róla. Három oldalt írtam a képkompozícióról, ahelyett hogy bevallottam volna, milyen jól szórakoztam.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_remembered_0",
+      "speaker": "rebeka",
+      "en": "Good. I was trying to find a subtle way of asking.",
+      "hu": "Jó. Épp valami finom utalást próbáltam kitalálni.",
+      "stage": {
+        "label": "Walking side by side",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_remembered_1",
+      "speaker": "narrator",
+      "en": "We walk hand in hand to the Holdkör. At the entrance she lets go to open the door.",
+      "hu": "Kézen fogva sétálunk a Holdkörig. A bejáratnál elengedi a kezem, hogy kinyissa az ajtót.",
+      "stage": {
+        "label": "Walking side by side",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_quiet_0",
+      "speaker": "rebeka",
+      "en": "Stay. I want your opinion on a vampire buying curtains for his lighthouse.",
+      "hu": "Maradj. Tudnom kell, mit gondolsz egy vámpírról, aki függönyt vesz a világítótornyára.",
+      "stage": {
+        "label": "Empty screening room",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_quiet_1",
+      "speaker": "narrator",
+      "en": "She sketches the absurd set in the air. I add a door where it cannot possibly open. Soon we are arguing about a film I haven’t seen, our chairs still side by side.",
+      "hu": "A levegőbe rajzolja a képtelen díszletet. Odateszek egy ajtót, ahol biztosan nem nyílhatna ki. Hamarosan egy olyan filmen vitatkozunk, amit még nem láttam; a székeink egymás mellett maradnak.",
+      "stage": {
+        "label": "Empty screening room",
+        "location": "holdkor",
+        "background": "holdkor",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "beside",
+        "lighting": "evening"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_fear_0",
+      "speaker": "rebeka",
+      "en": "You were about to ask something devastatingly perceptive about the doors, weren’t you?",
+      "hu": "Épp valami pusztítóan éleslátót készültél kérdezni az ajtókról, ugye?",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_fear_1",
+      "speaker": "marton",
+      "en": "I was going to ask whether you’d photographed the handles. I’m relieved you stopped me.",
+      "hu": "Azt akartam kérdezni, lefényképezted-e a kilincseket. Megkönnyebbültem, hogy megállítottál.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_fear_2",
+      "speaker": "rebeka",
+      "en": "I did. All of them. Then I spent an hour choosing the most casual-looking one. There. Now we’re both unbearable.",
+      "hu": "Lefényképeztem. Az összeset. Aztán egy óráig válogattam, melyik látszik a legesetlegesebbnek. Tessék. Most már mindketten elviselhetetlenek vagyunk.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_date_topic_fear_3",
+      "speaker": "marton",
+      "en": "Then we can stop auditioning. I’d rather hear which one you actually liked.",
+      "hu": "Akkor abbahagyhatjuk a szereplőválogatást. Inkább azt hallanám, neked melyik tetszett.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_slow_touch_0",
+      "speaker": "rebeka",
+      "en": "All right. You’ll have to endure the full range of gestures, then.",
+      "hu": "Rendben. Akkor a teljes gesztuskészletemet el kell viselned.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_slow_touch_1",
+      "speaker": "marton",
+      "en": "I was just beginning to appreciate them.",
+      "hu": "Épp kezdtem értékelni őket.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "romance_closeness_slow_touch_2",
+      "speaker": "narrator",
+      "en": "“You haven’t seen anything yet.” She lowers her hand and uses both to demonstrate the scale of her next objection.",
+      "hu": "„Még semmit sem láttál.” Leengedi a kezét, aztán mindkettővel szemlélteti a következő ellenvetése méretét.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_declined_0",
+      "speaker": "rebeka",
+      "en": "Oh. I’d hoped otherwise. But I’d rather hear that than spend the whole walk trying to guess.",
+      "hu": "Ó. Másban reménykedtem. De inkább ezt halljam, mint hogy az egész séta alatt találgassak.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "date": "2027-01-14",
+      "period": "day",
+      "line": "date_declined_1",
+      "speaker": "narrator",
+      "en": "She gathers her cup. I wait while she puts the lid back on, then we say goodbye by the path.",
+      "hu": "Felveszi a poharát. Megvárom, amíg visszanyomja rá a fedelet, aztán a sétánynál elköszönünk.",
+      "stage": {
+        "label": "Lakeside path",
+        "location": "bekas",
+        "background": "bekas",
+        "participants": [
+          "marton",
+          "rebeka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Finish meeting",
+          "hu": "Alkalom befejezése"
+        }
+      ]
+    }
+  ],
+  "connectedArc": [
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "line_0",
+      "text": "Rebeka három képet tesz az üres tanterem asztalára: egy elmosódott kezet, a radiátor fölötti ablakot és a kör helyét a padlón.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "line_1",
+      "text": "A Holdkör szerint arc nélkül nincs történet. Szerintem csak könnyebb ráfogni valakire egyet. Na, melyiket mentenéd meg a háromból? A „mind érdekes” nem válasz.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_scrutiny_0",
+      "text": "Azért kell választanom, mert neked is nehéz, vagy mert tudni akarod, mellébeszélek-e?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_scrutiny_1",
+      "text": "Miért ne lehetne mindkettő?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_scrutiny_2",
+      "text": "Rebeka a hátlapjára fordítja az egyik fotót. Alul zsűrimegjegyzés látszik: technikailag bizonytalan. A hüvelykujja eltakarja a szerző nevét.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_scrutiny_3",
+      "text": "Ezt valaki már elbírálta.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_scrutiny_4",
+      "text": "Az ember attól még nézhet rá újra. Vagy a tanszéken csak egyszer lehet véleménye?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "line_2",
+      "text": "Mit szeretnél, hogy észrevegyek?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "interest"
+        },
+        {
+          "type": "choice",
+          "id": "ask"
+        },
+        {
+          "type": "choice",
+          "id": "leave"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_motion_0",
+      "text": "Az egész körben ez az egy kép nem éles. Természetesen erre sikerült ráírniuk, hogy bizonytalan.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_motion_1",
+      "text": "A kéz gazdája akart rajta maradni?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_motion_2",
+      "text": "Nem. Megmutattam neki. Azt mondta, így igen.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_motion_3",
+      "text": "Akkor ez nem csak technikai döntés volt.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_motion_4",
+      "text": "Vigyázz, még a végén érted, miért nem élesítem ki. Utána már nehezebb lesz okos tanácsot adni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "rebeka_motion_5",
+      "text": "Közelebb tolja a kontaktmásolatot. A vállatok még nem ér össze; nem is húzódik arrébb, amikor fölé hajolsz.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "line_3",
+      "text": "A munkacím: Ami kívül marad. Nem kell rá bók. Szólj, ha a saját magyarázatom is túl kényelmes.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "line_4",
+      "text": "A műhelyben én adom a feladatot. Itt te mondod meg, mit kezdesz a véleményemmel.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "period": "day",
+      "scene": "rebeka_1",
+      "line": "line_5",
+      "text": "Rebeka visszarendezi a fotókat. Egy negyediket is letesz: ugyanaz az ablak, egy elhagyott kávéscsészével. Nem feladatnak szánja.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "line_0",
+      "text": "A vetítés után csak a ventilátor hallatszik. Rebeka a képernyő helyett most rád néz.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_hesitation_0",
+      "text": "Egész idefelé azon gondolkodtam, milyen rossz viccel kezdem. Aztán mind olyan jól sikerült, hogy egyiket sem merem használni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_hesitation_1",
+      "text": "Most is mondhatsz valamit komolyan.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_hesitation_2",
+      "text": "Az sokkal kínosabb. Például hogy megnéztem, jössz-e, pedig én írtam neked. Háromszor.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "line_1",
+      "text": "A képeimről könnyű veled beszélni. Ha flörtölök, azt hiszik, mindent elmondtam. Pedig tetszel, csak nem szeretném, ha ettől a műhelyben másnak lenne igaza.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "line_2",
+      "text": "Mit szeretnél, hogy most ne értsek félre?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "line_3",
+      "text": "Lassan szeretnék közelebb kerülni. Nem akarom egyszerre elmondani az egész történetet.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "line_4",
+      "text": "Én is szeretnék őszintén válaszolni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "yes"
+        },
+        {
+          "type": "choice",
+          "id": "friend"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction",
+      "text": "Mi az, amit eddig nem mondtam el?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "honest"
+        },
+        {
+          "type": "choice",
+          "id": "curious"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_honest_0",
+      "text": "Na jó. Akkor két nagyon higgadt ember ül itt.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_honest_1",
+      "text": "A műhely előtt könnyebb megszólalnom, mint most. Ott legalább tudom, mi következik.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_honest_2",
+      "text": "Én se tudom. De ne kezdj el úgy beszélni, mintha ez is gyakorlat volna.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_honest_3",
+      "text": "Szeretném, ha lenne következő találkozónk. Ezt tudom.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_honest_4",
+      "text": "Így már elhiszem.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_end_0",
+      "text": "Legközelebb is kérdezz. Akkor is, ha előbb valami szemtelenséget mondok.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "period": "day",
+      "scene": "rebeka_2",
+      "line": "romance_attraction_end_1",
+      "text": "A vetítés már véget ért. Rebeka még marad, és ezúttal nem keres újabb képet, amelyet ürügyül mutathatna.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "line_0",
+      "text": "Rebeka waits by the lake with two paper cups. There is no camera strap across her shoulder. She holds one cup out to me before I can think of an opening line.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "line_1",
+      "text": "We left an invitation hanging after that screening. I was beginning to think we’d need a sequel before we got to it.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "line_2",
+      "text": "I’m glad we got here. No screening to hide behind this time.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "line_3",
+      "text": "I can still supply terrible films. But I wanted to see you without an audience, Álex $& {playerName}. As a date.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_intro_0",
+      "text": "No photographs today?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_intro_1",
+      "text": "At home. I took all the faces out of the new sequence. Now it’s mostly doors. One of them looks considerably more interesting than its owner.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_intro_2",
+      "text": "I laugh. “You don’t have to show me everything.” She looks into her coffee. “Good. I haven’t decided whether the doors are clever or just a way of hiding.”",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "line_4",
+      "text": "I turn towards her, cup warming my fingers.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "yes"
+        },
+        {
+          "type": "choice",
+          "id": "slow"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_topic",
+      "text": "We walk at the water’s edge. She waits for me to choose a subject for once.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "callback"
+        },
+        {
+          "type": "choice",
+          "id": "wish"
+        },
+        {
+          "type": "choice",
+          "id": "fear"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_topic_callback_0",
+      "text": "Oh, I remember. I nearly told you I’d seen you walk past. Ruined a perfectly good joke by worrying you’d leave.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_topic_callback_1",
+      "text": "I wasn’t leaving. I just wanted to arrive as someone who hadn’t rehearsed arriving.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_date_topic_callback_2",
+      "text": "That’s appalling. I like it. I’ve rehearsed looking surprised when you say something nice. The timing still needs work.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_closeness",
+      "text": "We drop the empty cups into a bin beside the path. Rebeka brushes a paper fleck from her fingers, then offers me her hand.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "hand"
+        },
+        {
+          "type": "choice",
+          "id": "slow_touch"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_closeness_hand_0",
+      "text": "I take her hand. Her fingers settle between mine; we have to shorten our steps to find the same pace.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_closeness_hand_1",
+      "text": "This is inconvenient. I usually need both hands to explain how bad a film is.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_closeness_hand_2",
+      "text": "I’ll take your word for the size of the disaster.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "romance_closeness_hand_3",
+      "text": "She laughs and swings our joined hands once. We carry on beside the lake, getting the steps wrong again when she turns to tell me something. At the fork she stops and lets go, looking up towards the castle.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_destination",
+      "text": "We could stop at the Holdkör on the way back. The screening room is quiet, and I’m not quite finished talking to you. Come and sit with me?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "quiet_place"
+        },
+        {
+          "type": "choice",
+          "id": "together"
+        },
+        {
+          "type": "choice",
+          "id": "stay_outside"
+        },
+        {
+          "type": "choice",
+          "id": "head_home"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_together_0",
+      "text": "Inside the empty screening room, Rebeka pulls two chairs beside each other. The projector is off; she leaves it alone. The drawn curtains soften the room’s light.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_together_1",
+      "text": "An empty screen. My most economical work. You’ll notice I’ve resisted photographing it.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_private_choice",
+      "text": "Her chair creaks when she turns towards me.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "kiss"
+        },
+        {
+          "type": "choice",
+          "id": "stay_close"
+        },
+        {
+          "type": "choice",
+          "id": "head_home"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_kiss_0",
+      "text": "Yes. I’d like that.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_kiss_1",
+      "text": "She leans towards me; I meet her halfway. We kiss, briefly enough that the scrape of her chair is still settling when we draw apart.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_kiss_2",
+      "text": "That chair has dreadful timing. I was doing rather well.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_return_0",
+      "text": "We leave the chairs together and walk out of the Holdkör. Back by the lake, she points out the path where we will part.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_goodbye_0",
+      "text": "If we do watch a film together, you can hate it. Just don’t spend ninety minutes pretending you don’t.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_goodbye_1",
+      "text": "At the junction she stops. “I’m glad we did this.” For once she leaves the sentence there.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "period": "day",
+      "scene": "rebeka_3",
+      "line": "date_goodbye_2",
+      "text": "“Me too.” We say goodbye and take our separate paths. I turn once; she is still there, then lifts a hand and starts home.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "line_0",
+      "text": "A műhely bemutatójának vázlatában a tóparti beszélgetésetek egyik gondolata szerepel.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "line_1",
+      "text": "Azt hittem, ami ott elhangzott, nem lesz reklámszöveg. Nem írtad bele a nevemet, mégis tudom, melyik mondat az enyém.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_conflict_0",
+      "text": "A tóparton azt mondtad, nem kell megmutatnom. Aztán visszahallottam magamat a bemutatódban. Ugyanazzal a mondattal.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_conflict_1",
+      "text": "Jól hangzott, és könnyű volt átvennem. Nem álltam meg megkérdezni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_conflict_2",
+      "text": "Tudom, hogy jól hangzott. Én mondtam. Most meg azt figyelem, mit mondhatok neked anélkül, hogy később valahol visszaköszönne.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "line_2",
+      "text": "Szeretném megérteni, mi történt köztünk, mielőtt válaszolok.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "line_3",
+      "text": "Ne azt mondd, hogy nem úgy gondoltad. Azt mondd, mit csinálsz most másképp.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "line_4",
+      "text": "Nem szeretném egy bocsánatkéréssel elintézni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "repair"
+        },
+        {
+          "type": "choice",
+          "id": "withdraw"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_repair",
+      "text": "Hogyan kezdjük újra ezt a beszélgetést?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "ask_space"
+        },
+        {
+          "type": "choice",
+          "id": "name_fault"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_repair_ask_space_0",
+      "text": "Maradj. Csak ne kérdezd meg ötpercenként, hogy akkor most már jó-e.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_repair_ask_space_1",
+      "text": "Nem kérek gyors választ. A bemutatót ma kijavítom.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_repair_ask_space_2",
+      "text": "És ne írd bele, hogy miattam. Ne kelljen a többiek előtt megvédenem, miért lett volna ez magánügy.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_repair_end_0",
+      "text": "Márton kiveszi a mondatot a vázlatból, és elküldi a javított változatot. Rebeka megnézi, de nem mondja rögtön, hogy minden rendben.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 40,
+      "period": "day",
+      "scene": "rebeka_4",
+      "line": "romance_repair_end_1",
+      "text": "Most még haragszom. Ettől még szeretném, ha legközelebb találkoznánk. Csak ne próbálj addig egyetlen nagy gesztussal meggyőzni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "line_0",
+      "text": "A csendes udvaron most nem a következő veszélyről beszéltek. A korábbi jóvátételnek azóta is érvényt kellett szerezni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_changed_0",
+      "text": "Tegnap majdnem elküldtem egy képet. Aztán rájöttem, nincs hozzá semmi különös mondanivalóm. Csak veled akartam beszélni.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_changed_1",
+      "text": "Elküldhetted volna így is.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_changed_2",
+      "text": "Tudom. Most már talán el is hiszem. A bemutató azóta sem került vissza a régi szöveggel. Figyeltem.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "line_1",
+      "text": "A képeket eltehetem. Azt kérdezem, velem szeretnél-e lenni akkor is, ha nincs mit megmutatnom.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "line_2",
+      "text": "Nem ígérek olyat, amit más helyett kellene eldöntenem.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "line_3",
+      "text": "Én szeretném. Ha valami nem jó köztünk, mondd meg. Azt is, ha éppen velem van bajod.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "line_4",
+      "text": "A vállalásomhoz a saját időmből és a kényelmes titkolózásból is engednem kell.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "commit"
+        },
+        {
+          "type": "choice",
+          "id": "withdraw"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_future",
+      "text": "Mit szeretnél a következő találkozón?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "ritual"
+        },
+        {
+          "type": "choice",
+          "id": "open"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_future_ritual_0",
+      "text": "A rossz film ettől még jöhet?",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_future_ritual_1",
+      "text": "Jöhet. De nem kell megmentened az estét, ha egyikünknek sincs nagy története.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_future_ritual_2",
+      "text": "Kedden ráérek. Nem fogom azt mondani, hogy csak arra jártam.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_commit_end_0",
+      "text": "Az előbb valaki gratulált a képekhez. Már majdnem azt mondtam, minden megérte. Pedig nem. Vannak részek, amiket szívesen kihagytam volna.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_commit_end_1",
+      "text": "Nem kell jó történetté rendezned miattam.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 48,
+      "period": "day",
+      "scene": "rebeka_5",
+      "line": "romance_commit_end_2",
+      "text": "Ma tényleg nincs kedvem. Egy rossz filmet viszont végig tudnék szidni veled.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "line_0",
+      "text": "A kamra után először találkoztok újabb ellenőrizendő nyom nélkül. A csendet nem siettetitek.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "romance_after_0",
+      "text": "Az előbb valaki gratulált a képekhez. Már majdnem azt mondtam, minden megérte. Pedig nem. Vannak részek, amiket szívesen kihagytam volna.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "romance_after_1",
+      "text": "Nem kell jó történetté rendezned miattam.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "romance_after_2",
+      "text": "Ma tényleg nincs kedvem. Egy rossz filmet viszont végig tudnék szidni veled.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "romance_private_cont_0",
+      "text": "A beszélgetés után Rebeka lehúzza a pulóvert. Közelebb húz, csókja mély és éhes. Térdre ereszkedik anélkül, hogy kérnéd: szájával rajtad, lassú majd mély, szemével felnéz. Amikor feláll, a ruhája már a bokájánál van; a heg a hasán nyitva. Lovagol rajtad, te diktálod a tempót. Beleélvez; ott marad, zihálva.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "romance_private_cont_1",
+      "text": "Ez maradjon köztünk. Maradj, amíg a fény visszajön.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "line_1",
+      "text": "A kiállítás képét én választom. Utána viszont nem gratulálni szeretnélek látni, hanem hazasétálni veled.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "line_2",
+      "text": "Az együtt átélt veszély nem dönti el helyettünk, hogyan maradunk együtt.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "line_3",
+      "text": "Én a kapcsolatunkat szeretném folytatni. A közös időt magamért is választom, nem azért, mert tartozom neked.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "week": 52,
+      "period": "day",
+      "scene": "rebeka_6",
+      "line": "line_4",
+      "text": "A éven túli választ is kimondom.",
+      "choices": [
+        {
+          "type": "choice",
+          "id": "continue_together"
+        },
+        {
+          "type": "choice",
+          "id": "withdraw"
+        }
+      ]
+    }
+  ]
+}

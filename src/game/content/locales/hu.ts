@@ -1,9 +1,11 @@
+import {rebekaDateHu} from './rebeka-date.hu.ts';
 import {seasonalHu} from './seasonal.hu.ts';
 import {timelineHu} from './timeline.hu.ts';
 import {holidaysHu} from './holidays.hu.ts';
 import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
+  ...rebekaDateHu,
   "ui.transition.label": "Átmenetek",
   "ui.transition.background": "Háttérképek",
   "ui.transition.card": "Történetkártyák",
