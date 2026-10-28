@@ -59,7 +59,7 @@ These items remain backlog. This documentation task does not authorize starting 
 | S3 | Planned | Broader character-specific physical staging/art | Virág clips do not complete main-cast coverage. Preserve mutually chosen touch, neutral alternatives, mobile containment and reduced motion. |
 | S4 | Planned | Later-scene ending coverage | Audit later romantic/shared/triad meetings; preserve already implemented first-date and paid-outing goodbyes. |
 | S5 | Planned | Richer conversation callbacks | Broaden local memory with valid fallbacks and no premature global evidence. |
-| G1 | Planned | Design adjustable pacing | Choose profiles and slot budgets while preserving relationship access and ending order. Current baseline stays 16 weeks. |
+| G1 | Planned | Design adjustable pacing; 28 October [readiness audit](EXPANSION-READINESS.md) records route text and slot-capacity limits, without changing the 16-week schedule | Choose profiles and slot budgets while preserving relationship access and ending order. Current baseline stays 16 weeks. |
 | G2 | Planned | Coordinated campaign scheduling | G1 first; share scene windows, milestones and labels across browser/CLI. |
 | G3 | Planned | Pacing save policy and route acceptance | G2 first; verify every supported duration and route, including refusal, weak preparation and save/resume. |
 
