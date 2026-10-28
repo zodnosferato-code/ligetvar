@@ -91,3 +91,9 @@ If blocked, state the dependency and the work that can still proceed. When a pro
 | 27 October 2026 | Created the design authority, migrated current character briefs and reconciled the redesign/future-feature tracker. | Baseline main 805b3e0, package 0.6.0, existing contracts and animation manifest checked. Documentation links checked in this change; no new gameplay or image review claimed. |
 
 | 27 October 2026 | Reviewed legacy foundations/conflicts and recorded the user's fade-to-black intimacy decision; corrected stale release/save/art documentation. | Documentation/source review only; no story rewrite, new asset or fresh visual/listening acceptance claimed. |
+
+## Castle-year implementation — 28 October 2026
+
+| ID | Status | Evidence | Remaining gate |
+| --- | --- | --- | --- |
+| YEAR-ASSETS | Partial | [Calendar/map and asset contract](CALENDAR-ASSETS.md): sixteen chapters dated across a full year; seasonal/weather and event outfits; visible image fallbacks; castle map and portrait meeting selectors; catalog/audit and positive/negative production briefs. | Generate and review seasonal/outfit art; recover legacy original prompts; revise semester prose/labels; interactive browser/mobile acceptance. Existing story scheduling and location assignments retained. |

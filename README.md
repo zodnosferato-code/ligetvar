@@ -2,7 +2,7 @@
 
 > **Status:** Playable Hungarian game; redesign and final acceptance remain in progress. | **Purpose:** Project overview, current design entry point and local setup.
 
-Ligetvár is a gothic romance visual novel set over a sixteen-week semester at a castle college. Relationships drive the experience while disappearances, lost memories and a vampire investigation shape the shared story. Play individual romances, the Rebeka–Boglárka–Márton relationship, friendship and withdrawal paths.
+Ligetvár is a gothic romance visual novel set across a castle year in sixteen story chapters at a castle college. Relationships drive the experience while disappearances, lost memories and a vampire investigation shape the shared story. Play individual romances, the Rebeka–Boglárka–Márton relationship, friendship and withdrawal paths.
 
 ## Design and development
 

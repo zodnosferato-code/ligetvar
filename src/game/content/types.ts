@@ -1,3 +1,4 @@
+import type {Outfit} from './calendar.ts';
 import type {MessageKey} from './localization.ts';
 import type {PuzzleState} from './puzzles.ts';
 import type {GiftReceipt} from './gifting.ts';
@@ -16,6 +17,7 @@ export interface SceneStage { label:string; location:LocationId; background:Loca
 export interface Choice { textKey?:MessageKey; localRequires?:string[]; requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
 export interface Line { textKey?:MessageKey; moment?:string; stage?:string; id:string; speaker:ActorId; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
+ outfits?:Partial<Record<ActorId,Outfit>>;
  titleKey?:MessageKey;
  stages?:Record<string,SceneStage>;
  cost?:{money:number;points:number};

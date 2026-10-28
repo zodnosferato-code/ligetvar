@@ -1,5 +1,6 @@
+import {calendarFor,type Outfit} from './calendar.ts';
 import type {ActorId,Expression,LocationId} from './types.ts';
-export interface ArtAsset{file:string|null;status:'reviewed'|'transitional'|'placeholder';note:string;lightingBaked?:boolean}
+export interface ArtAsset{file:string|null;status:'reviewed'|'transitional'|'placeholder';note:string;lightingBaked?:boolean;missingVariant?:string}
 export const BACKGROUNDS:Record<LocationId,ArtAsset>={
  hallway:{file:'backgrounds/hallway-day-v1.webp',status:'reviewed',lightingBaked:true,note:'Átnézett üres nappali egyetemi folyosó, pad és hirdetőtábla.'},
  classroom:{file:'backgrounds/classroom-anime-v1.webp',status:'reviewed',note:'Átnézett nappali anime tanterem; külön alkonyati változattal.'},library:{file:'backgrounds/library-anime-v1.webp',status:'reviewed',note:'ChatGPT segítségével javított üres anime könyvtár, ülő játékosnézet és szabad társszék.'},department:{file:'backgrounds/department-anime-v1.webp',status:'reviewed',note:'Átnézett nappali anime tervezőiroda; az ajtó, íróasztal, telefon, napló, fotel, polc és zsák hotspothelye ellenőrizve.'},
@@ -18,7 +19,9 @@ export const BACKGROUND_VARIANTS:Partial<Record<LocationId,Partial<Record<Lighti
  apartment:{night:{...BACKGROUNDS.apartment,lightingBaked:true}},
  holdkor:{night:{...BACKGROUNDS.holdkor,lightingBaked:true}}
 };
-export function backgroundFor(location:LocationId,lighting:Lighting):ArtAsset{
+export const SEASONAL_BACKGROUNDS:Record<string,ArtAsset>={};
+export function backgroundFor(location:LocationId,lighting:Lighting,week?:number):ArtAsset{
+ if(week!==undefined){const c=calendarFor(week),key=`${location}/${c.season}/${c.weather}/${lighting}`;const variant=SEASONAL_BACKGROUNDS[key];if(variant?.file)return variant;return {...backgroundFor(location,lighting),missingVariant:key};}
  const variants=BACKGROUND_VARIANTS[location];
  return variants?.[lighting]??(lighting==='night'?variants?.evening:lighting==='evening'?variants?.night:undefined)??BACKGROUNDS[location];
 }
@@ -40,10 +43,16 @@ export const PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,ArtAsset
 const TRANSFORMED_PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,ArtAsset>>>>={
  soma:{neutral:{file:'characters/soma/transformed-v1.webp',status:'reviewed',note:'Miki által véglegesített vámpírportré; a 2. héttől aktív.'}}
 };
-export function portraitFor(actor:ActorId,expression:Expression,week=1):ArtAsset{
+export const OUTFIT_PORTRAITS:Partial<Record<ActorId,Partial<Record<Outfit,Partial<Record<Expression,ArtAsset>>>>>>={};
+export function portraitFor(actor:ActorId,expression:Expression,week=1,outfit?:Outfit):ArtAsset{
  if(actor==='marton'||actor==='narrator')return {file:null,status:'placeholder',note:''};
+ const clothing=outfit??calendarFor(week).outfit;
+ const variant=OUTFIT_PORTRAITS[actor]?.[clothing];
+ if(variant?.[expression]?.file)return variant[expression]!;
+ if(variant?.neutral?.file)return {...variant.neutral,missingVariant:expression} as ArtAsset;
  const portraits=week>=2?(TRANSFORMED_PORTRAITS[actor]??PORTRAITS[actor]):PORTRAITS[actor];
- return portraits?.[expression]??portraits?.neutral??{file:null,status:'placeholder',note:'Új portré készül: '+ACTOR_NAME[actor]};
+ const base=portraits?.[expression]??portraits?.neutral??{file:null,status:'placeholder' as const,note:'Portrait pending: '+ACTOR_NAME[actor]};
+ return clothing==='everyday'?base:{...base,missingVariant:actor+'/'+clothing+'/'+expression};
 }
 export function assetUrl(file:string){const env=(import.meta as ImportMeta&{env?:{BASE_URL?:string}}).env;return (env?.BASE_URL??'/')+file;}
 

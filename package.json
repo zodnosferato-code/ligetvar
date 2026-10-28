@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "venice:smoke": "node scripts/venice-smoke.mjs",
     "play:cli": "node --experimental-strip-types src/game/cli/main.ts",
-    "test:cli": "node --experimental-strip-types --test src/game/cli/*.test.ts"
+    "test:cli": "node --experimental-strip-types --test src/game/cli/*.test.ts",
+    "assets:audit": "node scripts/audit-assets.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
