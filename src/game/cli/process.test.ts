@@ -60,3 +60,12 @@ test('actual CLI supports startup and live locales in JSON and text modes',()=>{
   const invalid=run(join(dir,'invalid.json'),[],['--locale','de']);assert.equal(invalid.status,2);assert.equal(existsSync(join(dir,'invalid.json')),false);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
+
+for(const choice of ['join','leave'])test('public CLI completes both holidays and the year with '+choice,()=>{
+ const dir=mkdtempSync(join(tmpdir(),'ligetvar-holidays-'));
+ try{
+  const result=spawnSync(process.execPath,['tools/cli-playthrough.mjs','--route','friendship','--holidays','--holiday-choice',choice,'--locale',choice==='join'?'en':'hu','--save',join(dir,'save.json')],{encoding:'utf8',timeout:30000,maxBuffer:1_000_000});
+  assert.equal(result.status,0,result.stderr);const report=JSON.parse(result.stdout);
+  assert.equal(report.week,52);assert.equal(report.ending,'friendship');assert.deepEqual(report.holidayScenes,['holiday_halloween','holiday_christmas']);
+ }finally{rmSync(dir,{recursive:true,force:true});}
+});

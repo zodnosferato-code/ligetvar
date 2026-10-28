@@ -3314,6 +3314,600 @@
       "status": "unproduced",
       "prompt": "lilla, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference exactly. christmas clothing, affectionate expression. Detailed non-pixel anime cel shading. Transparent background; preserve face, hair, proportions and portrait framing. Christmas: tasteful festive outfit. Winter: layered clothing. Summer: light everyday clothing.",
       "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background"
+    },
+    {
+      "file": "assets/characters/rebeka/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "rebeka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/rebeka/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "rebeka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/rebeka/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "rebeka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/rebeka/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "rebeka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/rebeka/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "rebeka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/boglarka/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "boglarka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/boglarka/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "boglarka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/boglarka/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "boglarka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/boglarka/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "boglarka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/boglarka/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "boglarka, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/greta/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "greta, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/greta/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "greta, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/greta/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "greta, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/greta/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "greta, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/greta/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "greta, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/virag/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "virag, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/virag/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "virag, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/virag/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "virag, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/virag/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "virag, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/virag/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "virag, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/soma/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "soma, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/soma/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "soma, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/soma/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "soma, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/soma/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "soma, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/soma/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "soma, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/denes/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "denes, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/denes/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "denes, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/denes/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "denes, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/denes/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "denes, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/denes/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "denes, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/julia/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "julia, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/julia/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "julia, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/julia/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "julia, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/julia/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "julia, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/julia/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "julia, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/aron/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "aron, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/aron/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "aron, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/aron/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "aron, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/aron/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "aron, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/aron/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "aron, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/lilla/outfits/halloween/neutral.webp",
+      "status": "unproduced",
+      "prompt": "lilla, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. neutral expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/lilla/outfits/halloween/amused.webp",
+      "status": "unproduced",
+      "prompt": "lilla, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. amused expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/lilla/outfits/halloween/displeased.webp",
+      "status": "unproduced",
+      "prompt": "lilla, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. displeased expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/lilla/outfits/halloween/vulnerable.webp",
+      "status": "unproduced",
+      "prompt": "lilla, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. vulnerable expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/characters/lilla/outfits/halloween/affectionate.webp",
+      "status": "unproduced",
+      "prompt": "lilla, adult character matching docs/design/CHARACTER-VISUALS.md and reviewed neutral reference. Playful clothed Halloween costume with a removable paper accessory; preserve the established face, hair and proportions. affectionate expression. Detailed non-pixel anime cel shading, transparent background, existing portrait framing. Costume must not imply a real supernatural transformation.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, changed face, changed hair, opaque background, nudity, blood, gore"
+    },
+    {
+      "file": "assets/backgrounds/hallway/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar hallway, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/hallway/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar hallway, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/hallway/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar hallway, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/hallway/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar hallway, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/hallway/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar hallway, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/hallway/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar hallway, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/classroom/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar classroom, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/classroom/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar classroom, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/classroom/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar classroom, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/classroom/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar classroom, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/classroom/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar classroom, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/classroom/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar classroom, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/library/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar library, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/library/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar library, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/library/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar library, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/library/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar library, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/library/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar library, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/library/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar library, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/department/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar department, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/department/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar department, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/department/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar department, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/department/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar department, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/department/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar department, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/department/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar department, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/holdkor/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar holdkor, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/holdkor/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar holdkor, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/holdkor/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar holdkor, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/holdkor/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar holdkor, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/holdkor/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar holdkor, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/holdkor/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar holdkor, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/courtyard/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar courtyard, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/courtyard/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar courtyard, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/courtyard/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar courtyard, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/courtyard/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar courtyard, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/courtyard/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar courtyard, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/courtyard/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar courtyard, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/apartment/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar apartment, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/apartment/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar apartment, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/apartment/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar apartment, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/apartment/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar apartment, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/apartment/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar apartment, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/apartment/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar apartment, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/bekas/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar bekas, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/bekas/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar bekas, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/bekas/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar bekas, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/bekas/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar bekas, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/bekas/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar bekas, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/bekas/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar bekas, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/chamber/events/halloween/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar chamber, day lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/chamber/events/halloween/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar chamber, evening lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/chamber/events/halloween/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar chamber, night lighting, tasteful removable halloween paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/chamber/events/christmas/day.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar chamber, day lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/chamber/events/christmas/evening.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar chamber, evening lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
+    },
+    {
+      "file": "assets/backgrounds/chamber/events/christmas/night.webp",
+      "status": "unproduced",
+      "prompt": "Existing Ligetvar chamber, night lighting, tasteful removable christmas paper decorations and warm lamps. Preserve reviewed architecture, player viewpoint, natural companion seat, uncluttered portrait region and exact planner hotspot positions. Detailed anime cel shading, empty location, no people, no lettering. Halloween: paper bats and lanterns, no real monsters. Christmas: paper stars and warm string lights; snow only where outdoor weather is visible.",
+      "negativePrompt": "watermark, text, logo, photorealism, pixel art, distorted anatomy, extra limbs, inconsistent identity, inconsistent castle architecture, people, blocked exits, obscured planner hotspots, snow indoors, gore"
     }
   ]
 }

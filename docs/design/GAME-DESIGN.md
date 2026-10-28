@@ -78,3 +78,7 @@ Browser transitions mark scene entry, changes of location/lighting within scenes
 ## Castle year — user direction, 28 October 2026
 
 The year-long castle setting supersedes the semester-only setting. The 52 playable weeks contain sixteen mandatory story chapters, with ordinary weeks for discretionary activities; actual dates and budgets follow [the year campaign](YEAR-CAMPAIGN.md). Calendar-driven seasons, weather and clothing, map travel and portrait meeting selectors follow [the calendar/asset contract](CALENDAR-ASSETS.md). Existing semester prose still needs coordinated revision; seasonal and clothing generation is outstanding.
+
+## Optional holidays — 0.8.0
+
+Halloween and Christmas provide ordinary shared experiences in weeks 5 and 13, independent of the vampire plot or romance choices. The player can join a story/activity or leave early. [Holiday briefs and engine contract](HOLIDAY-EVENTS.md) define calendar conditions, costumes, decorated backgrounds, callbacks and validation. These two bilingual meetings are implemented; new seasonal/holiday bitmap production remains open.

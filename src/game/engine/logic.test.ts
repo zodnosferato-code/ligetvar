@@ -56,3 +56,17 @@ test('injected sparse story weeks allow ordinary weeks without bypassing require
  s=nextWeek(activity(activity(s,'rest',sparseRules),'rest',sparseRules),sparse,sparseRules);
  assert.equal(s.phase,'ending');assert.equal(decodeSave(encodeSave(s,sparseRules),sparse,sparseRules).status,'ok');
 });
+
+test('calendar admission and choice gates use injected campaign context, including pending-save validation',()=>{
+ const calendarRules:RuntimeRules<Voyage>={...rules,schedule:{slots:{1:'day',2:'night'},activities:{},calendar:week=>({season:week===1?'cold':'warm',events:week===1?['festival']:[]})}};
+ const r=structuredClone(registry);r.voyage_1.requires={calendar:{seasons:['cold'],events:['festival']}};
+ r.voyage_1.lines[0].choices!.push({id:'summer',text:'Warm route',reaction:'',next:'north',requires:{calendar:{seasons:['warm']}},effect:{decisions:['summer_only']}});
+ const start=createInitial('Ada',calendarRules);
+ assert.equal(openScene(start,'voyage_1',r),start,'calendar requirements fail closed without injected context');
+ const s=openScene(start,'voyage_1',r,calendarRules.schedule);assert.equal(s.phase,'scene');
+ assert.equal(currentLine(s,r,calendarRules.schedule)!.choices!.some(c=>c.id==='summer'),false);
+ assert.equal(applyChoice(s,'summer',r,calendarRules),s);
+ const forged=structuredClone(s);forged.scene!.pending=[{decisions:['summer_only']}];
+ assert.equal(decodeSave(encodeSave(forged,calendarRules),r,calendarRules).status,'invalid');
+ assert.equal(decodeSave(encodeSave(s,calendarRules),r,calendarRules).status,'ok');
+});

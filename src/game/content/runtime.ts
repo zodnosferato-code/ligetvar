@@ -6,9 +6,10 @@ import {outingGirl} from './outings.ts';
 import {deliverGift,type GiftNote,type Delivery} from './gifting.ts';
 import {newPuzzle,puzzleMove,closePair,puzzleDone,puzzleReward} from './puzzles.ts';
 import {RULES} from './rules.ts';
-import type {Effect,GameState,GirlId,Line,Registry,RouteId,Scene,SceneStage} from './types.ts';
-export {clamp,meets,sharedFor} from '../engine/logic.ts';
+import type {Effect,GameState,GirlId,Line,Registry,RouteId,Scene,SceneStage,Requirements} from './types.ts';
+export {clamp,sharedFor} from '../engine/logic.ts';
 export {GIFTS,ROUTES,evaluateEnding,isCommitted,canChooseDirection} from './rules.ts';
+export const meets=(s:GameState,r:Requirements)=>engine.meets(s,r,RULES.schedule);
 export const currentPeriod=(s:GameState)=>engine.currentPeriod(s,RULES.schedule);
 export const activityAvailable=(s:GameState,kind:string)=>engine.activityAvailable(s,kind,RULES);
 export const sceneAvailable=(s:GameState,x:Scene)=>engine.sceneAvailable(s,x,RULES.schedule);
@@ -23,7 +24,7 @@ export const sceneLighting=(s:GameState,x:Scene)=>sceneStage(s,x).lighting??(x.k
 export const createInitial=(name:string)=>engine.createInitial(name,RULES);
 export const availableScenes=(s:GameState,r:Registry)=>engine.availableScenes(s,r,RULES.schedule) as Scene[];
 export const currentLine=(s:GameState,r:Registry,locale:Locale=DEFAULT_LOCALE)=>{
- const line=engine.currentLine(s,r) as Line|undefined,x=s.scene?r[s.scene.id]:undefined,girl=x?outingGirl(x):undefined;
+ const line=engine.currentLine(s,r,RULES.schedule) as Line|undefined,x=s.scene?r[s.scene.id]:undefined,girl=x?outingGirl(x):undefined;
  const gift=girl?s.giftHistory.filter(h=>h.girl===girl&&h.bonus>0).at(-1):undefined;
  if(!line)return line;
  const visible=presentLine(line,locale,s.name);

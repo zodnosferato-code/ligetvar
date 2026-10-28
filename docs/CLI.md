@@ -146,3 +146,7 @@ diagnostics remain English. This is not complete English gameplay. See
 ## Year calendar — 0.7.0
 
 The campaign has 52 weeks and 104 discretionary slots. Observations include `totalWeeks` and `calendar.storyWeeks`. Sixteen stable shared chapter IDs occur only on their configured dates; do not call `shared_<calendar week>` every week. Use offered actions. Ordinary weeks begin in daytime, without a phantom shared scene. The route example now follows this calendar and reports final week 52. [Schedule and limits](design/YEAR-CAMPAIGN.md).
+
+## Optional holiday route coverage — 0.8.0
+
+Calendar observations include `events` and the primary `event`; shared action admission enforces scene/choice calendar requirements. `node tools/cli-playthrough.mjs --route friendship --holidays --locale en --save NEW_PATH` includes Halloween and Christmas when offered. `--holiday-choice leave` takes both departure branches. The report includes `holidayScenes`; omitted `--holidays` preserves the existing route policy. [Full authoring/validation contract](design/HOLIDAY-EVENTS.md).

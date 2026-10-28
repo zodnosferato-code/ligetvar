@@ -1,4 +1,4 @@
-import {CALENDAR} from './calendar.ts';
+import {CALENDAR,calendarFor} from './calendar.ts';
 import {validStoredText} from './scene-localization.ts';
 /** Ligetvár's campaign rules. The engine never imports this module. */
 import {RELEASE} from '../release.ts';
@@ -20,7 +20,7 @@ export function evaluateEnding(s:GameState):Ending{
  return {threat:'resolved',cost:s.confrontation,institution:s.institution,relationship};
 }
 export const RULES:RuntimeRules<GameState>={
- schedule:{storyWeeks:CALENDAR.storyWeeks,slots:{1:'day',2:'night'},activities:{rest:['day','night'],recycling:['day'],archive:['day']}},
+ schedule:{calendar:calendarFor,storyWeeks:CALENDAR.storyWeeks,slots:{1:'day',2:'night'},activities:{rest:['day','night'],recycling:['day'],archive:['day']}},
  weeks:CALENDAR.weeks,saveKey:SAVE_KEY,saveVersions:RELEASE,
  initial:name=>({name:name.trim().slice(0,32)||'Márton Kelényi',week:1,slot:0,phase:'planner',scene:null,minigame:null,money:12000,activityPoints:0,puzzle:null,giftHistory:[],energy:78,exposure:0,
   bonds:{marton_rebeka:0,marton_boglarka:0,marton_greta:0,rebeka_boglarka:0},direction:'friendship',decisions:{},evidence:{},completed:{},preparation:[],disclosure:'limited',inventory:{},giftsWeek:[],journal:[],confrontation:null,institution:null,lastNote:'Egy év Ligetváron: heti egy nappali és egy éjszakai tevékenység, a kijelölt heteken közös történeti alkalommal.'}),

@@ -1,4 +1,4 @@
-import {periodAllowed,storyDue} from './logic.ts';
+import {periodAllowed,storyDue,calendarRequirementsMatch} from './logic.ts';
 import type {GameState,Registry,RuntimeRules} from './types.ts';
 export interface StorageLike{getItem(key:string):string|null;setItem(key:string,value:string):void}
 export interface SaveMetadata {gameVersion:string;saveSchemaVersion:number;contentCompatibilityVersion:number;buildId?:string}
@@ -33,7 +33,7 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
    &&Array.isArray(s.journal)&&s.journal.every((j:any)=>object(j)&&typeof j.text==='string'&&r[j.scene]&&j.week===s.completed[j.scene]);
   if(!valid)return {status:'invalid'};
   for(const [id,week] of Object.entries(s.completed)){
-   const x=r[id];if(!x||!Number.isInteger(week)||Number(week)<x.week||Number(week)>x.deadline||Number(week)>s.week)return {status:'invalid'};
+   const x=r[id];if(!x||!calendarRequirementsMatch(Number(week),x.requires,rules.schedule)||!Number.isInteger(week)||Number(week)<x.week||Number(week)>x.deadline||Number(week)>s.week)return {status:'invalid'};
    if(!x.evidence.every(id=>s.evidence[id]?.scene===x.id&&s.evidence[id]?.week===week))return {status:'invalid'};
    if(!(x.requires.scenes??[]).every(id=>id in s.completed&&s.completed[id]<=Number(week)))return {status:'invalid'};
    if(!(x.requires.evidence??[]).every(id=>s.evidence[id]?.week<=Number(week)))return {status:'invalid'};
@@ -41,7 +41,7 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
   for(const record of [...Object.values(s.decisions),...Object.values(s.evidence)] as any[])if(!object(record)||!r[record.scene]||record.week!==s.completed[record.scene])return {status:'invalid'};
   for(const [id,record] of Object.entries(s.evidence) as [string,any][])if(!r[record.scene].evidence.includes(id))return {status:'invalid'};
   for(const [id,record] of Object.entries(s.decisions) as [string,any][]){
-   const x=r[record.scene];if(![x.onComplete,...x.lines.flatMap(l=>(l.choices??[]).map(c=>c.effect))].some(e=>e?.decisions?.includes(id)))return {status:'invalid'};
+   const x=r[record.scene];if(![x.onComplete,...x.lines.flatMap(l=>(l.choices??[]).filter(c=>!c.requires||calendarRequirementsMatch(record.week,c.requires,rules.schedule)).map(c=>c.effect))].some(e=>e?.decisions?.includes(id)))return {status:'invalid'};
   }
   if(s.journal.length!==Object.keys(s.completed).length||new Set(s.journal.map((j:any)=>j.scene)).size!==s.journal.length)return {status:'invalid'};
   const shared=Object.values(r).find(x=>x.kind==='shared'&&x.week===s.week);
@@ -54,9 +54,9 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
   if(s.phase==='ending'&&(s.week!==rules.weeks||!rules.canFinish(s as S)))return {status:'invalid'};
   if(s.phase==='scene'){
    if(!object(s.scene)||!r[s.scene.id]||s.scene.id in s.completed||!r[s.scene.id].lines.some(l=>l.id===s.scene.line)||!Array.isArray(s.scene.pending))return {status:'invalid'};
-   const x=r[s.scene.id],allowed=x.lines.flatMap(l=>(l.choices??[]).map(c=>JSON.stringify(c.effect)));
+   const x=r[s.scene.id],allowed=x.lines.flatMap(l=>(l.choices??[]).filter(c=>!c.requires||calendarRequirementsMatch(s.week,c.requires,rules.schedule)).map(c=>JSON.stringify(c.effect)));
    if(!s.scene.pending.every((e:any)=>object(e)&&allowed.includes(JSON.stringify(e))))return {status:'invalid'};
-   if(!periodAllowed(s as S,x.periods,rules.schedule)||s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
+   if(!calendarRequirementsMatch(s.week,x.requires,rules.schedule)||!periodAllowed(s as S,x.periods,rules.schedule)||s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
   }else if(s.scene!==null)return {status:'invalid'};
   if(s.phase==='minigame'?!(s.minigame in rules.economy.jobs)||s.slot<1||s.slot>2||!periodAllowed(s as S,rules.schedule?.activities[s.minigame],rules.schedule):s.minigame!==null)return {status:'invalid'};
   return {status:'ok',state:s as S,metadata};

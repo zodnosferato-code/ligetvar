@@ -1,4 +1,5 @@
-import {CALENDAR} from './calendar.ts';
+import {calendarRequirementsMatch} from '../engine/logic.ts';
+import {CALENDAR,calendarFor,HOLIDAYS,OUTFITS} from './calendar.ts';
 import type { Evidence, Registry, Requirements, Scene } from './types.ts';
 import {MOMENT_CLIPS,validateClip} from './animations.ts';
 export function validateRegistry(registry:Registry,evidence:Record<string,Evidence>,backgrounds:ReadonlySet<string>):void{
@@ -9,6 +10,12 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
  for(const s of scenes)for(const e of [s.onComplete,...s.lines.flatMap(l=>(l.choices??[]).map(c=>c.effect))])
   for(const d of e?.decisions??[])producers.set(d,[...(producers.get(d)??[]),s.id]);
  for(const s of scenes){
+  for(const r of requirements(s.requires).concat(s.lines.flatMap(l=>(l.choices??[]).flatMap(c=>c.requires?requirements(c.requires):[]))))if(r.calendar){
+   if(!r.calendar.events&&!r.calendar.seasons)fail('Empty calendar condition: '+s.id);
+   for(const [values,known] of [[r.calendar.events,Object.keys(HOLIDAYS)],[r.calendar.seasons,['autumn','winter','spring','summer']]] as const)if(values&&(!Array.isArray(values)||!values.length||new Set(values).size!==values.length||values.some(v=>!(known as readonly string[]).includes(v))))fail('Invalid calendar condition: '+s.id);
+   if(!Array.from({length:s.deadline-s.week+1},(_,i)=>s.week+i).some(week=>calendarRequirementsMatch(week,r,{calendar:calendarFor,slots:{},activities:{}})))fail('Impossible calendar condition: '+s.id);
+  }
+  for(const [actor,outfit] of Object.entries(s.outfits??{}))if(!s.participants.includes(actor as Scene['participants'][number])||!OUTFITS.some(id=>id===outfit))fail('Invalid scene outfit: '+s.id);
   if(s.cost&&(s.kind==='shared'||![s.cost.money,s.cost.points].every(n=>Number.isSafeInteger(n)&&n>=0)))fail('Invalid optional scene cost: '+s.id);
   if(registry[s.id]!==s)fail('Scene ID/key mismatch: '+s.id);
   if(s.periods&&(!s.periods.length||new Set(s.periods).size!==s.periods.length||s.periods.some(p=>!['day','night'].includes(p))||s.kind==='shared'))fail('Invalid activity periods: '+s.id);
@@ -61,7 +68,7 @@ export function validateRegistry(registry:Registry,evidence:Record<string,Eviden
   if(!CALENDAR.storyWeeks.some(w=>w===week)){if(shared.length)fail('Unscheduled shared scene: '+week);continue;}
   if(shared.length!==1||shared[0].deadline!==week)fail('One guaranteed shared scene required: '+week);
   const s=shared[0];
-  if(s.requires.anyOf?.length||s.requires.decisions?.length||s.requires.notDecisions?.length||s.requires.directions?.length)fail('Choice blocks shared scene: '+s.id);
+  if(s.requires.calendar||s.requires.anyOf?.length||s.requires.decisions?.length||s.requires.notDecisions?.length||s.requires.directions?.length)fail('Choice blocks shared scene: '+s.id);
   for(const id of [...(s.requires.scenes??[]),...(s.requires.evidence??[]).map(e=>evidence[e].scene)])if(registry[id].kind!=='shared'||registry[id].week>=week)fail('Optional/future dependency blocks shared scene: '+s.id);
  }
  if(scenes.find(s=>s.resolution==='confrontation')?.week!==CALENDAR.confrontation||scenes.find(s=>s.resolution==='institution')?.week!==CALENDAR.aftermath)fail('Ending order metadata');

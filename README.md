@@ -36,6 +36,8 @@ Open http://localhost:5173/ligetvar/. Vite uses `/ligetvar/` as its base path an
 
 Each of the 52 weeks has one discretionary daytime activity and one nighttime activity, followed by a recap. Sixteen mandatory story chapters open on scheduled weeks; ordinary weeks begin in the daytime planner. See the [year campaign](docs/design/YEAR-CAMPAIGN.md) for dates and remaining writing scope. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings.
 
+Optional Halloween and Christmas gatherings use the year calendar and normal activity slots. Engine conditions, seasonal clothing/decorated-background registration and honest art fallbacks are documented in [holiday events](docs/design/HOLIDAY-EVENTS.md); new bitmap production remains unfinished.
+
 Relaxed move-limited job puzzles earn money and spendable program points. Gifts and optional outings add personal interactions, but do not replace witnessed relationship decisions. See the [economy contract](docs/LEISURE-ECONOMY.md) for exact costs and rewards.
 
 The game and saves are versioned. Incompatible schema/content updates explain that a new year is required; no historical save migration is supported. See [versioning](docs/VERSIONING.md).

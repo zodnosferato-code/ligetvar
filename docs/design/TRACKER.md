@@ -96,4 +96,5 @@ If blocked, state the dependency and the work that can still proceed. When a pro
 
 | ID | Status | Evidence | Remaining gate |
 | --- | --- | --- | --- |
+| HOLIDAYS | Partial | 0.8.0: optional bilingual Halloween (week 5, night) and Christmas (week 13) gatherings; generic calendar/choice gates, save-date checks, event-first outfit/background selection and localized calendar. [Contract and evidence](HOLIDAY-EVENTS.md): 143 tests, build/typecheck, asset audit and UI markup checks pass. | Produce/review holiday and seasonal bitmap art, interactive browser/mobile and human literary acceptance. Existing art remains a labelled fallback. |
 | YEAR-ASSETS | Partial | [Calendar/map and asset contract](CALENDAR-ASSETS.md): 52 weekly calendar dates with sixteen mandatory chapters; seasonal/weather and event outfits; visible image fallbacks; castle map and portrait meeting selectors; catalog/audit and positive/negative production briefs. | Generate and review seasonal/outfit art; recover legacy original prompts; revise semester prose/labels; interactive browser/mobile acceptance. Scheduling now follows [the year contract](YEAR-CAMPAIGN.md); location assignments retained. |

@@ -11,7 +11,7 @@ export type RouteId='friendship'|GirlId|'triad';
 export type LocationId='hallway'|'classroom'|'library'|'department'|'holdkor'|'courtyard'|'apartment'|'bekas'|'chamber';
 export type Expression='neutral'|'amused'|'displeased'|'vulnerable'|'affectionate';
 export const SAVE_KEY='ligetvar-save';
-export interface Requirements { scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:RouteId[]; anyOf?:Requirements[] }
+export interface Requirements { calendar?:{seasons?:string[];events?:string[]}; scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:RouteId[]; anyOf?:Requirements[] }
 export interface Effect { bonds?:Partial<Record<BondId,number>>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:RouteId; disclosure?:'public'|'limited'|'private' }
 export interface SceneStage { label:string; location:LocationId; background:LocationId; participants:ActorId[]; lighting?:'day'|'evening'|'night'; proximity:'apart'|'beside'|'close' }
 export interface Choice { textKey?:MessageKey; localRequires?:string[]; requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }

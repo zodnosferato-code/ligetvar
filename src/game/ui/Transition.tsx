@@ -17,7 +17,7 @@ function destination(s:GameState){
  const stage=scene?sceneStage(s,scene):undefined;
  const lighting=scene?sceneLighting(s,scene):(s.phase==='summary'||currentPeriod(s)==='night')?'night':'day';
  return {key:[s.week,s.slot,s.phase,scene?.id,stage?.location,stage?.background,lighting].join('/'),scene,stage,lighting,
-  background:backgroundFor(stage?.background??(lighting==='night'?'apartment':'department'),lighting)};
+  background:backgroundFor(stage?.background??(lighting==='night'?'apartment':'department'),lighting,s.week)};
 }
 /** Presentation only: closing/skipping never consumes a choice or a time slot. */
 export function Transition({state,mode,children}:{state:GameState;mode:TransitionMode;children:React.ReactNode}){

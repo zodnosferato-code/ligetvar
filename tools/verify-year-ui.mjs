@@ -33,6 +33,16 @@ try {
     assert.equal((rhythm.match(/aria-current="step"/g)||[]).length,1);checks++;
    }
   }
+  if(week===5||week===13){
+   const before=state,event=week===5?'halloween':'christmas';
+   for(locale of ['en','hu']){
+    state=week===5?activity(before,'rest'):before;state=openScene(state,'holiday_'+event,SCENES);
+    const markup=render();assert.ok(markup.includes('data-event="'+event+'"'));assert.ok(markup.includes('data-outdoors="false"'));
+    assert.ok(markup.includes('title="'+(event==='halloween'?'Halloween':locale==='en'?'Christmas':'Karácsony')+'"'));
+    checks++;
+   }
+   state=before;
+  }
   state=activity(activity(state,'rest'),'rest');
   if(week===52){locale='en';const markup=render();assert.match(markup,/Complete year and read epilogues/);assert.ok(!markup.includes('Start week 53'));checks++;}
   state=nextWeek(state,SCENES);

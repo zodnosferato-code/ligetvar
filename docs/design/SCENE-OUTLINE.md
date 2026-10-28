@@ -5,7 +5,7 @@
 > **Status:** First editorial draft, 28 October 2026; shared_1 pilot implemented; remaining briefs are not implemented or blanket approval. | **Purpose:** Translate the master plot into individual scene briefs for deliberate rewriting.
 
 ## Authority and boundaries
-Read [master plot](STORY-REVIEW.md), [character voices](CHARACTER-VOICES.md), [visual authority](CHARACTER-VISUALS.md), [workflow](NARRATIVE-WORKFLOW.md), [baseline findings](PLAYTHROUGH-FINDINGS.md) and [runtime inventory](../SCENE-INVENTORY.md). Existing IDs below identify rewrite targets, not unchanged runtime prerequisites. This draft covers all 68 inventory scene IDs.
+Read [master plot](STORY-REVIEW.md), [character voices](CHARACTER-VOICES.md), [visual authority](CHARACTER-VISUALS.md), [workflow](NARRATIVE-WORKFLOW.md), [baseline findings](PLAYTHROUGH-FINDINGS.md) and [runtime inventory](../SCENE-INVENTORY.md). Existing IDs below identify rewrite targets, not unchanged runtime prerequisites. This original draft covers 68 scene IDs; the two additional holiday scene briefs are maintained in [HOLIDAY-EVENTS.md](HOLIDAY-EVENTS.md).
 
 Confirmed anchors: romance first; sixteen weeks; genuine mystical gymnastics; Soma peripheral until late identification; deliberate vampirism, fascination cannot compel affection; victims return exhausted with missing time; week-15 vampire death; week-16 institution then personal aftermath. Keep independent bonds, triad agreement and Virág's independent reporting/casual route. Player name always comes from saved chosen-name variable; use “player” here rather than baking a name into prose.
 

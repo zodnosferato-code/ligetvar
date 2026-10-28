@@ -19,9 +19,17 @@ export const BACKGROUND_VARIANTS:Partial<Record<LocationId,Partial<Record<Lighti
  apartment:{night:{...BACKGROUNDS.apartment,lightingBaked:true}},
  holdkor:{night:{...BACKGROUNDS.holdkor,lightingBaked:true}}
 };
+export const EVENT_BACKGROUNDS:Record<string,ArtAsset>={};
 export const SEASONAL_BACKGROUNDS:Record<string,ArtAsset>={};
 export function backgroundFor(location:LocationId,lighting:Lighting,week?:number):ArtAsset{
- if(week!==undefined){const c=calendarFor(week),key=`${location}/${c.season}/${c.weather}/${lighting}`;const variant=SEASONAL_BACKGROUNDS[key];if(variant?.file)return variant;return {...backgroundFor(location,lighting),missingVariant:key};}
+ if(week!==undefined){
+  const c=calendarFor(week),key=`${location}/${c.season}/${c.weather}/${lighting}`,eventKey=c.event?`${location}/${c.event}/${lighting}`:null;
+  const event=eventKey?EVENT_BACKGROUNDS[eventKey]:undefined;
+  if(event?.file&&event.status==='reviewed')return event;
+  const variant=[SEASONAL_BACKGROUNDS[key],SEASONAL_BACKGROUNDS[`${location}/${c.season}/${lighting}`]].find(a=>a?.file&&a.status==='reviewed');
+  const fallback=variant?.file&&variant.status==='reviewed'?variant:backgroundFor(location,lighting);
+  return {...fallback,missingVariant:eventKey??key};
+ }
  const variants=BACKGROUND_VARIANTS[location];
  return variants?.[lighting]??(lighting==='night'?variants?.evening:lighting==='evening'?variants?.night:undefined)??BACKGROUNDS[location];
 }
@@ -46,10 +54,13 @@ const TRANSFORMED_PORTRAITS:Partial<Record<ActorId,Partial<Record<Expression,Art
 export const OUTFIT_PORTRAITS:Partial<Record<ActorId,Partial<Record<Outfit,Partial<Record<Expression,ArtAsset>>>>>>={};
 export function portraitFor(actor:ActorId,expression:Expression,week=1,outfit?:Outfit):ArtAsset{
  if(actor==='marton'||actor==='narrator')return {file:null,status:'placeholder',note:''};
- const clothing=outfit??calendarFor(week).outfit;
- const variant=OUTFIT_PORTRAITS[actor]?.[clothing];
- if(variant?.[expression]?.file)return variant[expression]!;
- if(variant?.neutral?.file)return {...variant.neutral,missingVariant:expression} as ArtAsset;
+ const c=calendarFor(week),clothing=outfit??c.outfit;
+ const candidates=[...new Set(outfit?[outfit]:[clothing,c.seasonalOutfit])];
+ for(const candidate of candidates){
+  const variant=OUTFIT_PORTRAITS[actor]?.[candidate],exact=variant?.[expression],neutral=variant?.neutral;
+  if(exact?.file&&exact.status==='reviewed')return candidate===clothing?exact:{...exact,missingVariant:actor+'/'+clothing+'/'+expression};
+  if(neutral?.file&&neutral.status==='reviewed')return {...neutral,missingVariant:actor+'/'+clothing+'/'+expression};
+ }
  const portraits=week>=2?(TRANSFORMED_PORTRAITS[actor]??PORTRAITS[actor]):PORTRAITS[actor];
  const base=portraits?.[expression]??portraits?.neutral??{file:null,status:'placeholder' as const,note:'Portrait pending: '+ACTOR_NAME[actor]};
  return clothing==='everyday'?base:{...base,missingVariant:actor+'/'+clothing+'/'+expression};

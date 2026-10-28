@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.7.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.8.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `6`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -80,3 +80,7 @@ No release/epoch bump: scene IDs, choices, prerequisites, slot budgets and save 
 ## One-year campaign — 0.7.0
 
 The 52-week schedule changes completion dates, deadlines and ending evaluation. Content epoch is 6, schema remains 4. Epoch-5 semester saves require a fresh year; no migration. Ordinary-week cursors and the full-year gift history are validated against the injected story dates. See [year contract](design/YEAR-CAMPAIGN.md).
+
+## Optional holidays — 0.8.0
+
+Schema 4/content 6 retained: new optional scenes, derived calendar/event metadata, seasonal admission and presentation add no saved fields or changed dates for existing scenes. Legitimate 0.7.0 saves remain supported; already passed holidays are not replayed. [Validation and limits](design/HOLIDAY-EVENTS.md).

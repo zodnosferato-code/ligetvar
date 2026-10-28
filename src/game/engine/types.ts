@@ -1,12 +1,13 @@
 /** Story-agnostic runtime contracts. IDs and rules are supplied by content. */
 export type ActivityPeriod='day'|'night';
-export interface Schedule { storyWeeks?:readonly number[]; slots:Partial<Record<0|1|2,ActivityPeriod>>; activities:Record<string,readonly ActivityPeriod[]> }
+export interface CalendarContext {season:string;events:readonly string[]}
+export interface Schedule { calendar?:(week:number)=>CalendarContext; storyWeeks?:readonly number[]; slots:Partial<Record<0|1|2,ActivityPeriod>>; activities:Record<string,readonly ActivityPeriod[]> }
 export type ActorId=string;
 export type BondId=string;
 export type RouteId=string;
 export type LocationId=string;
 export type Expression='neutral'|'amused'|'displeased'|'vulnerable'|'affectionate';
-export interface Requirements { scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:string[]; anyOf?:Requirements[] }
+export interface Requirements { calendar?:{seasons?:string[];events?:string[]}; scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:string[]; anyOf?:Requirements[] }
 export interface Effect { bonds?:Record<string,number|undefined>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:string }
 export interface SceneStage { label:string; location:LocationId; background:LocationId; participants:ActorId[]; lighting?:'day'|'evening'|'night'; proximity:'apart'|'beside'|'close' }
 export interface Choice { localRequires?:string[]; requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
