@@ -9,6 +9,8 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Story review and English outline](STORY-REVIEW.md) | Source-based editorial findings, confirmed romance-first direction and revised semester outline (incorporating late Soma reveal, less bureaucratic scenes, earlier relationship room, light magic, and Virág's sexual activity from the start); conversations unchanged |
 | [Narrative rewrite workflow](NARRATIVE-WORKFLOW.md) | Approved plot → character/scene specifications → scene rewrites → repeated playthrough cycle; no baseline patching |
 | [Playthrough findings](PLAYTHROUGH-FINDINGS.md) | Observed baseline issues and strengths; not applied fixes |
+| [Scene-by-scene outline](SCENE-OUTLINE.md) | First editorial draft for all 68 scene IDs; connected plot, character, knowledge and branch briefs; not implemented |
+| [Completed baseline report](PLAYTHROUGH-REPORT-2026-10-28.md) | One autonomous Rebeka-route completion, exact editorial findings and test limits |
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |
 | [Character image prompts](CHARACTER-IMAGE-PROMPTS.md) | Derived positive/negative production prompts, framing and unresolved visual decisions |

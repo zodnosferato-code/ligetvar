@@ -1,8 +1,8 @@
 # Playthrough findings
 
-> **Status:** Baseline run in progress, 28 October 2026; no dialogue fixes applied. | **Purpose:** Preserve observations for later scene planning and deliberate revision.
+> **Status:** Baseline run completed, 28 October 2026; no dialogue fixes applied. | **Purpose:** Preserve observations for later scene planning and deliberate revision.
 
-Tested runtime: main `e191733f3865260de4b3397982b928540bb500d2`. Independent worker uses normal JSON CLI observations, custom name **Alex Test**, no author mode or route walkthrough. Reported progress: week 6; completion and save/resume not yet verified. Findings below cover encountered branches only.
+Tested runtime: main `e191733f3865260de4b3397982b928540bb500d2`. Independent worker uses normal JSON CLI observations, custom name **Alex Test**, no author mode or route walkthrough. Completed week 16 on Rebeka's route; week-8 restart/resume passed. See [full report](PLAYTHROUGH-REPORT-2026-10-28.md) for 25 findings, 29 played scenes / 316 observed lines, evidence and methodological limits. Findings below cover encountered branches only.
 
 | ID | Observed reference | Finding | Later revision direction |
 | --- | --- | --- | --- |
@@ -15,6 +15,6 @@ Tested runtime: main `e191733f3865260de4b3397982b928540bb500d2`. Independent wor
 
 Strengths to preserve: shared_1 opening_questions_0–4 banter; shared_3 seating action.
 
-Gameplay observations so far: archive memory puzzle completed using revealed-card memory, reward 20,000 Ft / 6 points. One premature request for rebeka_3 in week 5 was rejected without state change; worker recovered from offered actions. No reported blocking failure so far. These are interim observations, not a completed test result.
+Gameplay observations so far: archive memory puzzle completed using revealed-card memory, reward 20,000 Ft / 6 points. One premature request for rebeka_3 in week 5 was rejected without state change; worker recovered from offered actions. No blocking failure during the completed route. These earlier observations are preserved; the linked final report supplies completed-run results.
 
 Follow [NARRATIVE-WORKFLOW.md](NARRATIVE-WORKFLOW.md). Append later evidence with tested commit and branch; do not overwrite the baseline or claim unplayed coverage.

@@ -16,7 +16,7 @@ Use the [documentation index](docs/README.md) for technical contracts and produc
 
 Agents start with [AGENTS.md](AGENTS.md), which points to the maintained [contributor guide](AGENT.md#archives-and-refactor-workflow). Deprecated dialogue/localization is in [legacy-narrative](docs/archive/legacy-narrative/README.md); superseded plans are in [legacy-design](docs/archive/legacy-design/README.md). See the [archive map](docs/archive/README.md). These are historical sources, not active implementation instructions.
 
-Follow current design, the single tracker and relevant technical contracts before refactoring. For story work, follow the [narrative workflow](docs/design/NARRATIVE-WORKFLOW.md): master plot → character guidance and scene specifications → individual rewrites → repeated playthroughs. Record [findings](docs/design/PLAYTHROUGH-FINDINGS.md) first; do not patch during baseline runs. Detailed scene planning is pending. Check references before moving files, preserve runtime contracts, and update documentation with verified results.
+Follow current design, the single tracker and relevant technical contracts before refactoring. For story work, follow the [narrative workflow](docs/design/NARRATIVE-WORKFLOW.md): master plot → character guidance and scene specifications → individual rewrites → repeated playthroughs. Record [findings](docs/design/PLAYTHROUGH-FINDINGS.md) first; do not patch during baseline runs. A [first scene outline](docs/design/SCENE-OUTLINE.md) is available; marked proposals and detailed branch work remain open. Check references before moving files, preserve runtime contracts, and update documentation with verified results.
 
 ## Run locally
 
