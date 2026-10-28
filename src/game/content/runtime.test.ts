@@ -65,7 +65,7 @@ function run(route:RouteId,opts:{missTwo?:boolean;prepared?:boolean;declineTriad
 }
 test('authoritative registry resolves every Hungarian line, asset and prerequisite',()=>{
  validateRegistry(SCENES,EVIDENCE,new Set(Object.keys(BACKGROUNDS)));
- assert.equal(Object.keys(SCENES).length,70);assert.equal(Object.values(SCENES).some(x=>x.contentStatus!=='authored'),false);
+ assert.equal(Object.keys(SCENES).length,72);assert.equal(Object.values(SCENES).some(x=>x.contentStatus!=='authored'),false);
  for(const art of Object.values(BACKGROUNDS))if(art.file)assert.ok(existsSync('public/'+art.file),art.file);
  for(const x of Object.values(SCENES))for(const l of x.lines){const p=portraitFor(l.speaker,l.expression);if(p.file)assert.ok(existsSync('public/'+p.file));}
 });

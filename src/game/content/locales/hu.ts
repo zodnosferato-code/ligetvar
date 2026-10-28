@@ -1,3 +1,5 @@
+import {seasonalHu} from './seasonal.hu.ts';
+import {timelineHu} from './timeline.hu.ts';
 import {holidaysHu} from './holidays.hu.ts';
 import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
@@ -9,6 +11,8 @@ export const hu = {
   "ui.transition.skip": "Átmenet kihagyása",
   ...openingHu,
   ...holidaysHu,
+  ...seasonalHu,
+  ...timelineHu,
   ...investigationHu,
   "save.unknownVersion": "ismeretlen játékverzió",
   "save.format": " (formátum: {format})",

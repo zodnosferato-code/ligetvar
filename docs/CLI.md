@@ -150,3 +150,14 @@ The campaign has 52 weeks and 104 discretionary slots. Observations include `tot
 ## Optional holiday route coverage — 0.8.0
 
 Calendar observations include `events` and the primary `event`; shared action admission enforces scene/choice calendar requirements. `node tools/cli-playthrough.mjs --route friendship --holidays --locale en --save NEW_PATH` includes Halloween and Christmas when offered. `--holiday-choice leave` takes both departure branches. The report includes `holidayScenes`; omitted `--holidays` preserves the existing route policy. [Full authoring/validation contract](design/HOLIDAY-EVENTS.md).
+
+
+## Spring/summer and revised timeline coverage — 0.9.0
+
+Add `--seasons` to `tools/cli-playthrough.mjs` to include the optional spring (weeks 23–25, day) and summer (37–39, day) gatherings. `--seasonal-choice first|second|leave` covers their two activities or departure. `--timeline-choice separate|check` selects the revised shared_4 branch. These are example-agent policies using public actions, not forced-scene commands. Output separates `seasonalScenes` from `holidayScenes`; omitting the flags preserves ordinary route policies.
+
+```bash
+node tools/cli-playthrough.mjs --route friendship --holidays --seasons --seasonal-choice second --timeline-choice check --locale en --save /tmp/seasons-new.json
+```
+
+The new/revised scenes are bilingual; later shared chapters and other unextracted content remain partly Hungarian. Current release is 0.9.0, schema 4/content 6; older release-specific notes above remain historical.

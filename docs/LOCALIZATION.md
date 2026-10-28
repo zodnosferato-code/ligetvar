@@ -226,3 +226,8 @@ The catalog contains 75 keys: the original 61 title/line/choice keys, four react
 The player name appears literally in Lilla's invitation and spoken address; first-person narration avoids a hardcoded default elsewhere. Soma is mentioned only in an ordinary completed lamp-check callback, without a scene appearance or transformed portrait. The natural-dialogue direction is recorded in [character voices](design/CHARACTER-VOICES.md#natural-conversation--user-direction-28-october-2026): practical actions replace repeated permission and privacy speeches. Consequential choices remain intact.
 
 Release 0.6.2/schema 4/content 5 intentionally rejects older content saves under the no-migration policy. Whole-game translation and the English no-preference default remain pending. [Continuation playtest evidence](design/PLAYTHROUGH-FINDINGS.md#opening-continuation-playtest--28-october-2026) distinguishes tested branches/routes from remaining editorial work.
+
+
+## 0.9.0 — timeline and seasonal meetings
+
+Canonical `timeline.en.ts` and `seasonal.en.ts` have typed Hungarian translations. shared_4 and two new seasonal meetings resolve every line/choice/title plus reactions and journals in either locale; timeline knowledge uses a presentation-time reference. Names are substituted literally. Existing plain-text journals remain valid and unchanged; schema 4/content 6 remain. Per-node tests check switching and resume, and actual CLI processes restart before/after both seasonal choices with English/Hungarian parity. No new default language or whole-game English completion is claimed. [Evidence](design/PLAYTHROUGH-FINDINGS.md#seasonal-expansion-validation--28-october-2026).

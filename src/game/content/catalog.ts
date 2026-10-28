@@ -1,3 +1,4 @@
+import {seasonal} from './seasonal.ts';
 import {holidays} from './holidays.ts';
 /** Sole active narrative registry, assembled from independent content modules. */
 import type {Evidence,Registry} from './types.ts';
@@ -11,7 +12,7 @@ import {conversations} from './conversations.ts';
 import {outings} from './outings.ts';
 import {viragScenes} from './virag.ts';
 import {knowledge} from './knowledge.ts';
-const all=[...spine,...foundations,...triad,...optional,...conversations,...outings,...viragScenes,...holidays].map(expandOpening).map(expandRomance);
+const all=[...spine,...foundations,...triad,...optional,...conversations,...outings,...viragScenes,...holidays,...seasonal].map(expandOpening).map(expandRomance);
 if(new Set(all.map(s=>s.id)).size!==all.length)throw new Error('Duplicate scene ID');
 export const SCENES:Registry=Object.fromEntries(all.map(s=>[s.id,s]));
 export const EVIDENCE:Record<string,Evidence>=Object.fromEntries(all.flatMap(s=>s.evidence.map(id=>[id,{id,scene:s.id,text:knowledge[id]}])));

@@ -36,7 +36,7 @@ Open http://localhost:5173/ligetvar/. Vite uses `/ligetvar/` as its base path an
 
 Each of the 52 weeks has one discretionary daytime activity and one nighttime activity, followed by a recap. Sixteen mandatory story chapters open on scheduled weeks; ordinary weeks begin in the daytime planner. See the [year campaign](docs/design/YEAR-CAMPAIGN.md) for dates and remaining writing scope. Dialogue continuation and movement inside a scene do not consume extra slots. The office and bedroom offer labelled clickable objects for planning; the door opens destinations and the phone arranges meetings and optional outings.
 
-Optional Halloween and Christmas gatherings use the year calendar and normal activity slots. Engine conditions, seasonal clothing/decorated-background registration and honest art fallbacks are documented in [holiday events](docs/design/HOLIDAY-EVENTS.md); new bitmap production remains unfinished.
+Optional Halloween and Christmas gatherings, spring planting in the courtyard and a summer lakeside picnic use the year calendar and normal activity slots. Engine conditions, seasonal clothing/decorated-background registration and honest art fallbacks are documented in [holiday events](docs/design/HOLIDAY-EVENTS.md); new bitmap production remains unfinished.
 
 Relaxed move-limited job puzzles earn money and spendable program points. Gifts and optional outings add personal interactions, but do not replace witnessed relationship decisions. See the [economy contract](docs/LEISURE-ECONOMY.md) for exact costs and rewards.
 
@@ -52,7 +52,7 @@ npm run --silent play:cli -- --json --save /tmp/ligetvar-agent.json
 
 Start with `new YourName`, select numbered actions and use `help`. Progress saves after each action. The [CLI guide](docs/CLI.md) documents commands, visual descriptions, transcripts, author inspection and route examples.
 
-Hungarian and partial English are selectable at any time in the browser and CLI (`--locale en`, then `locale hu` / `locale en`). UI labels, save feedback, location names and relationship directions have English translations; the first workshop conversation also has English dialogue and choices. Later conversations, reaction notices, journals and remaining content still appear in Hungarian. See the [localization contract](docs/LOCALIZATION.md) and [tracker](docs/design/TRACKER.md) for extraction boundaries and remaining work.
+Hungarian and partial English are selectable at any time in the browser and CLI (`--locale en`, then `locale hu` / `locale en`). UI labels, save feedback, location names and relationship directions have English translations; the first four shared chapters and all four seasonal gatherings also have English dialogue and choices. Later conversations, reaction notices, journals and remaining content still appear in Hungarian. See the [localization contract](docs/LOCALIZATION.md) and [tracker](docs/design/TRACKER.md) for extraction boundaries and remaining work.
 
 ## Art and developer tooling
 

@@ -55,7 +55,7 @@ for(const branch of ['demonstrate','observe'])test(`opening ${branch}: switching
 });
 
 test('unextracted scenes retain source text and presentation never mutates the registry',()=>{
- const scene=SCENES.shared_4,source=JSON.stringify(SCENES);
+ const scene=SCENES.shared_5,source=JSON.stringify(SCENES);
  assert.equal(sceneTitle(scene,'en'),scene.title);
  assert.equal(presentLine(scene.lines[0],'en').text,scene.lines[0].text);
  for(const line of SCENES.shared_1.lines)presentLine(line,'en');

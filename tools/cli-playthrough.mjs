@@ -4,6 +4,8 @@ import {createInterface} from 'node:readline';
 import {once} from 'node:events';
 import {fileURLToPath} from 'node:url';
 const args=process.argv.slice(2),option=(name,fallback)=>args.includes(name)?args[args.indexOf(name)+1]:fallback;
+const includeSeasons=args.includes('--seasons'),seasonalChoice=option('--seasonal-choice','first'),timelineChoice=option('--timeline-choice','separate');
+if(!['first','second','leave'].includes(seasonalChoice)||!['separate','check'].includes(timelineChoice))throw new Error('Use --seasonal-choice first|second|leave and --timeline-choice separate|check.');
 const includeHolidays=args.includes('--holidays'),holidayChoice=option('--holiday-choice','join'),playedEvents=new Set();
 if(!['join','leave'].includes(holidayChoice))throw new Error('Use --holiday-choice join|leave.');
 const route=option('--route','friendship'),save=option('--save',null),transcript=option('--transcript',null);
@@ -15,7 +17,21 @@ const next=async()=>{const row=await lines.next();if(row.done)throw new Error('C
 let response=await next(),commands=0;
 async function send(cmd,extra={}){child.stdin.write(JSON.stringify({id:++commands,cmd,expectedRevision:response.revision,...extra})+'\n');response=await next();if(!response.ok)throw new Error(JSON.stringify(response.error));return response.view;}
 const act=action=>send('act',{action});
-async function scene(id){let view=await act({type:'scene',id});for(let i=0;view.phase==='scene'&&i<200;i++){const action=(includeHolidays&&id.startsWith('holiday_')&&holidayChoice==='leave'?view.actions.find(a=>a.action.id==='leave'):null)??(route==='withdraw'&&id==='rebeka_6'?view.actions.find(a=>a.action.id==='withdraw'):null)??view.actions[0];view=await act(action.action);}if(view.phase==='scene')throw new Error('Scene budget exceeded');if(id.startsWith('holiday_'))playedEvents.add(id);return view;}
+async function scene(id){
+ let view=await act({type:'scene',id});
+ for(let i=0;view.phase==='scene'&&i<200;i++){
+  const choices=view.actions.filter(a=>a.action.type==='choice'&&a.action.id!=='continue');
+  const chosen=id.startsWith('seasonal_')&&choices.length
+   ? (seasonalChoice==='leave'?choices.find(a=>a.action.id==='leave'):choices[seasonalChoice==='second'?1:0])
+   : id==='shared_4'?choices.find(a=>a.action.id===timelineChoice)
+   : includeHolidays&&id.startsWith('holiday_')&&holidayChoice==='leave'?choices.find(a=>a.action.id==='leave')
+   : route==='withdraw'&&id==='rebeka_6'?choices.find(a=>a.action.id==='withdraw'):null;
+  view=await act((chosen??view.actions[0]).action);
+ }
+ if(view.phase==='scene')throw new Error('Scene budget exceeded');
+ if(id.startsWith('holiday_')||id.startsWith('seasonal_'))playedEvents.add(id);
+ return view;
+}
 try{
  if(response.view)throw new Error('Use a fresh save path; this example will not overwrite existing progress.');
  await send('new',{name:'CLI route tester'});
@@ -29,14 +45,14 @@ try{
   if(required)v=await scene(required.action.id);
   if(week===storyWeeks[7]&&person!=='friendship')v=await act({type:'direction',id:person});
   for(const id of calendarPlan[week]??[]){if(!v.actions.some(a=>a.action.type==='scene'&&a.action.id===id))v=await act({type:'activity',kind:'rest'});v=await scene(id);}
-  while(v.phase==='planner'){const holiday=includeHolidays?v.actions.find(a=>a.action.type==='scene'&&a.action.id.startsWith('holiday_')):null;v=holiday?await scene(holiday.action.id):await act({type:'activity',kind:'rest'});}
+  while(v.phase==='planner'){const holiday=v.actions.find(a=>a.action.type==='scene'&&((includeHolidays&&a.action.id.startsWith('holiday_'))||(includeSeasons&&a.action.id.startsWith('seasonal_'))));v=holiday?await scene(holiday.action.id):await act({type:'activity',kind:'rest'});}
   await act({type:'advance'});
  }
  const expected=route==='withdraw'?'estranged':route;
  if(response.view.phase!=='ending'||response.view.ending.relationship!==expected)throw new Error('Wrong ending');
  if(transcript)await send('transcript',{path:transcript});
  const coverage=await send('coverage'); // Current view is returned alongside coverage.
- console.log(JSON.stringify({route,commands,phase:coverage.phase,ending:coverage.ending.relationship,holidayScenes:[...playedEvents],week:coverage.week,totalWeeks:coverage.totalWeeks,playedLines:response.coverage.playedLines.length,release:response.release,save}));
+ console.log(JSON.stringify({route,commands,phase:coverage.phase,ending:coverage.ending.relationship,holidayScenes:[...playedEvents].filter(id=>id.startsWith('holiday_')),seasonalScenes:[...playedEvents].filter(id=>id.startsWith('seasonal_')),week:coverage.week,totalWeeks:coverage.totalWeeks,playedLines:response.coverage.playedLines.length,release:response.release,save}));
  await send('quit');child.stdin.end();
  const [code]=await once(child,'exit');if(code!==0)throw new Error('CLI exit '+code);
 }catch(error){child.kill();throw error;}

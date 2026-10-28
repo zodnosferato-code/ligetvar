@@ -1,3 +1,5 @@
+import {seasonalEn} from './seasonal.en.ts';
+import {timelineEn} from './timeline.en.ts';
 import {holidaysEn} from './holidays.en.ts';
 import {investigationEn} from './investigation.en.ts';
 import {openingEn} from './opening.en.ts';
@@ -11,6 +13,8 @@ export const en:Record<keyof typeof hu,string> = {
   "ui.transition.skip": "Skip transition",
   ...openingEn,
   ...holidaysEn,
+  ...seasonalEn,
+  ...timelineEn,
   ...investigationEn,
   "save.unknownVersion": "unknown game version",
   "save.format": " (format: {format})",

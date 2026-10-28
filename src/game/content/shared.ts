@@ -38,17 +38,17 @@ export const spine:Scene[]=[
   say('lilla',message('scene.interview.initial')),
   say('narrator',message('scene.interview.close'))
  ],['phrase','time_gap'],storedMessage('scene.interview.journal'),{evidence:['grounding','returned_lilla']}),
- shared(4,'A képek és a névsor','library',['marton','rebeka','boglarka','greta','julia'],[
-  say('narrator','Rebeka a helyszínképeket, Gréta a kártyanaplót hozza. Boglárka külön lapra teszi az idézeteket. Júlia csak a tanúk által megosztható változatot kapja meg.'),
-  say('rebeka','A gépem órája hét percet siet. Ha ezt nem javítom, úgy látszik, mintha Lilla az eltűnése után is itt lett volna.'),
-  say('greta','A belépési rendszer óráját aznap állították be. Az időpontokat ehhez igazítom.'),
-  say('boglarka','Az „elvitték” szót húzzuk ki. Azt tudjuk, hogy bement a folyosóra. Azt még nem, hogy kivel és miért.'),
-  say('julia','A helyi történetekben van hívogató hang, de a hasonlóság nem bizonyíték. A pontos lejegyzés többet ér egy hangzatos párhuzamnál.'),
-  say('marton','Külön maradjon a tény és a feltételezés.','neutral',[
-   option('separate','Közösen javítsuk az időrendet, az eredetiket megőrizve.','A hétperces eltérést és a javítás szerzőjét is rögzítitek.'),
-   option('check','Előbb mindenki ellenőrizze a saját forrását.','Gréta három oszlopot nyit, és jelöli a bizonytalanságokat.')]),
-  say('narrator','A három külön hozzájárulásból összeáll a könyvtártól a lezárt lépcsőig vezető út. Az ajtón túl továbbra is hiányzik az este.')
- ],['timeline'],'A korrigált fényképidő, az eredeti idézet és a belépési napló a lezárt lépcsőig vezet.',{evidence:['phrase','time_gap']}),
+ shared(4,message('scene.timeline.title'),'library',['marton','rebeka','boglarka','greta','julia'],[
+  say('narrator',message('scene.timeline.arrival')),
+  say('rebeka',message('scene.timeline.camera'),'amused'),
+  say('greta',message('scene.timeline.log')),
+  say('narrator',message('scene.timeline.edge')),
+  say('julia',message('scene.timeline.julia')),
+  say('narrator',message('scene.timeline.question'),'neutral',[
+   option('separate',message('scene.timeline.separate.choice'),storedMessage('scene.timeline.separate.reaction')),
+   option('check',message('scene.timeline.check.choice'),storedMessage('scene.timeline.check.reaction'))]),
+  say('narrator',message('scene.timeline.departure'))
+ ],['timeline'],storedMessage('scene.timeline.journal'),{evidence:['phrase','time_gap']}),
  shared(5,'Ugyanaz a mondat','holdkor',['marton','rebeka','boglarka','greta'],[
   say('narrator','A vetítőt keresik. A szomszédos, üres tárolóból ismerős hang szól: „Maradt még egy hely neked.”'),
   say('rebeka','Ez az én hangom. De én nem mondtam semmit.','displeased'),

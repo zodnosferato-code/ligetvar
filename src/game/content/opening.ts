@@ -36,6 +36,18 @@ export function expandOpening(original:Scene):Scene{
    ['narrator',message('scene.opening.keys')]
   ]);
  }
+ if(s.id==='shared_4'){
+  branch(s,'line_5','separate','timeline_separate',[
+   ['narrator',message('scene.timeline.separate.0')],
+   ['rebeka',message('scene.timeline.separate.1')],
+   ['narrator',message('scene.timeline.separate.2')]
+  ]);
+  branch(s,'line_5','check','timeline_check',[
+   ['greta',message('scene.timeline.check.0')],
+   ['rebeka',message('scene.timeline.check.1'),'amused'],
+   ['narrator',message('scene.timeline.check.2')]
+  ]);
+ }
  if(s.id==='shared_2'){
   after(s,'line_0','missing_inventory',[
    ['marton',message('scene.missing.lastContact')],

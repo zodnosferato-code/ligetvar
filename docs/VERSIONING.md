@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.8.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.0`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `6`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -84,3 +84,8 @@ The 52-week schedule changes completion dates, deadlines and ending evaluation. 
 ## Optional holidays — 0.8.0
 
 Schema 4/content 6 retained: new optional scenes, derived calendar/event metadata, seasonal admission and presentation add no saved fields or changed dates for existing scenes. Legitimate 0.7.0 saves remain supported; already passed holidays are not replayed. [Validation and limits](design/HOLIDAY-EVENTS.md).
+
+
+## Seasonal company and timeline dialogue — 0.9.0
+
+Schema 4/content 6 retained. Two optional spring/summer scenes add no saved fields, remove no existing IDs and change no mandatory dates, evidence or relationship effects. shared_4 preserves line_0–6, separate/check choice IDs, prerequisites and completion-only timeline evidence; added response nodes are optional continuations, and old pending effects remain valid. New text references resolve alongside accepted historical plain text. Existing completed journal prose stays as recorded; no migration or retrospective event replay. A real unchanged 0.8.0 week-52 CLI save decodes successfully. Both revised branches and every seasonal branch resume at each node in tests; actual CLI processes also restart on both sides of each new meeting's choice in both languages. See [playtest evidence](design/PLAYTHROUGH-FINDINGS.md#seasonal-expansion-validation--28-october-2026).

@@ -4,7 +4,7 @@ export const knowledge:Record<string,string>={
  returned_lilla:storedMessage('scene.missing.knowledge'),
  phrase:storedMessage('scene.interview.knowledge.phrase'),
  time_gap:storedMessage('scene.interview.knowledge.timeGap'),
- timeline:'A korrigált fotóidő és a kártyanapló a lezárt lépcsőig vezeti a nyomot.',
+ timeline:storedMessage('scene.timeline.knowledge'),
  borrowed_voice:'A hang hallott mondatot ismétel, új választ nem ad.',
  pattern:'Két visszatérő embernél ugyanaz a kimerülés és időhiány jelentkezik.',
  ritual_fragment:'Önkéntes, életerőt kölcsönző átalakulás; befejezés nélkül instabil.',

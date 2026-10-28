@@ -69,3 +69,14 @@ for(const choice of ['join','leave'])test('public CLI completes both holidays an
   assert.equal(report.week,52);assert.equal(report.ending,'friendship');assert.deepEqual(report.holidayScenes,['holiday_halloween','holiday_christmas']);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
+
+for(const choice of ['first','second','leave'])test('public CLI completes all seasonal gatherings: '+choice,()=>{
+ const dir=mkdtempSync(join(tmpdir(),'ligetvar-seasons-'));
+ try{
+  const result=spawnSync(process.execPath,['tools/cli-playthrough.mjs','--route','friendship','--holidays','--seasons','--seasonal-choice',choice,'--timeline-choice',choice==='second'?'check':'separate','--locale',choice==='second'?'hu':'en','--save',join(dir,'save.json')],{encoding:'utf8',timeout:30000,maxBuffer:1_000_000});
+  assert.equal(result.status,0,result.stderr);const report=JSON.parse(result.stdout);
+  assert.equal(report.ending,'friendship');assert.equal(report.week,52);
+  assert.deepEqual(report.holidayScenes,['holiday_halloween','holiday_christmas']);
+  assert.deepEqual(report.seasonalScenes,['seasonal_spring','seasonal_summer']);
+ }finally{rmSync(dir,{recursive:true,force:true});}
+});
