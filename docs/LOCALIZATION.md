@@ -2,6 +2,23 @@
 
 > Status: Partial translation with live browser/CLI switching, 27 October 2026. Unextracted content remains Hungarian.
 
+## English-first direction — 28 October 2026
+
+**User-approved target:** English is the canonical writing/source language and the default player language. Hungarian is a translation of the English version. This supersedes earlier Hungarian-source/Hungarian-default authoring policy. The implementation checkpoints below describe historical/current behavior, not the desired final direction.
+
+Write and revise each scene in natural English against the master plot, scene brief and character profiles; then translate that approved scene into natural Hungarian, preserving voice, meaning, choices and knowledge. Do not merely translate old Hungarian lines into English and treat their defects as fixed. Revisions to English require a corresponding Hungarian translation review.
+
+Runtime migration is still outstanding: the current default and MessageKey type derive from Hungarian, most narrative remains Hungarian, and saves persist prose. Changing policy in this document does not switch the running game or make it fully English.
+
+Implementation sequence:
+1. Establish English source catalogs/key authority and English scene authoring, preserving stable semantic IDs and placeholder parity. Parameterize the chosen player name throughout both languages.
+2. Rewrite scenes in English according to the narrative workflow; translate them into Hungarian scene by scene. Audit UI, reactions, journals, gifts, evidence, descriptions and epilogues as well as dialogue.
+3. Convert persisted prose to event/message references as required by the save policy. Apply compatibility epochs to actual persisted/content changes; do not bump for documentation.
+4. Make English the no-preference default in browser, CLI and shared presentation APIs; retain explicit Hungarian choice, existing user preferences and live switching. Incomplete-language indicators must reflect actual per-language coverage, not assume English is always the translation.
+5. Verify complete English and Hungarian routes, save/resume, literal chosen-name interpolation, placeholder/key parity and browser/mobile presentation. No locale-dependent mechanics or save-state mutations.
+
+Track this migration in L1–L6 of the single design tracker. Do not maintain two competing source versions or describe the runtime migration as complete before implementation.
+
 ## Shared API
 
 Browser and CLI presentation code may call `translate(key, params, locale)` from
@@ -9,7 +26,7 @@ Browser and CLI presentation code may call `translate(key, params, locale)` from
 to Hungarian, and is not global mutable state. Save feedback accepts the same
 optional locale: `saveMessage(result, 'en')`. Existing callers retain Hungarian.
 
-Hungarian is the source catalog. Use stable semantic keys such as
+**Current implementation, pending English-first migration:** Hungarian is the source catalog. Use stable semantic keys such as
 `save.incompatible`, never source sentences or array positions. English must
 contain exactly the same keys and named placeholders. Translate complete
 sentences, with named `{parameter}` slots; do not assemble translated sentence

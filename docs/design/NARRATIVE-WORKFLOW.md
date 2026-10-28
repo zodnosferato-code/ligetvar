@@ -5,6 +5,9 @@
 ## User decision and immediate scope
 Record problems first. Do not patch dialogue as problems arise during the baseline playthrough. This supersedes the suggestion to rewrite each encountered scene immediately. The user subsequently authorized drafting: [SCENE-OUTLINE.md](SCENE-OUTLINE.md) now provides first briefs and reconciliation notes for all 68 scene IDs. Resolve marked open decisions and refine branch details before implementing narrative changes.
 
+## Writing language — 28 October 2026
+English is the canonical source for new and revised dialogue, narration, choices and accompanying text. Hungarian is translated from the reviewed English version. English is also the approved target default player language; runtime migration remains pending under [LOCALIZATION.md](../LOCALIZATION.md). Preserve character names/accents and interpolate the chosen player name. Review Hungarian again whenever its English source changes. This supersedes Hungarian-first authorship, not the findings-first planning/rewrite cycle.
+
 ## Sources and order
 1. **Master plot:** [STORY-REVIEW.md](STORY-REVIEW.md) is the maintained overall plot/semester outline. Its confirmed direction and explicitly proposed beats remain distinct; this workflow does not approve every proposed detail. Preserve its source-review findings as context.
 2. **Characters:** [CHARACTER-VOICES.md](CHARACTER-VOICES.md) owns personality, motives and speech; [CHARACTER-VISUALS.md](CHARACTER-VISUALS.md) owns appearance. Reconcile contradictions with the master plot explicitly, asking the user about material story/character decisions.

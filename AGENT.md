@@ -36,6 +36,10 @@ Before a refactor:
 5. Before relocating deprecated material, check runtime/build/test/tool/document references. Preserve provenance and update archive indexes and links; do not delete or revive legacy content merely to simplify a refactor.
 6. Validate affected behavior with the checks below and relevant route/save tests. Narrative changes need branch/knowledge/continuity review; browser changes need browser checks. Update owning documentation and the single tracker with actual evidence in the same commit. Never equate passing builds with literary, visual or user acceptance.
 
+## English-first writing and localization
+
+The user's 28 October direction supersedes Hungarian-first authoring: English is the canonical source for new/revised game text and the target default player language; Hungarian is its translation. Follow [LOCALIZATION.md](docs/LOCALIZATION.md#english-first-direction--28-october-2026) and the narrative workflow. Current runtime still defaults to Hungarian and has partial English coverage; migrate catalogs, persisted text and defaults deliberately, preserving explicit preferences and live switching. Do not call the migration complete based on this documentation update. Write scenes naturally in English against plot/character/scene guidance, then translate and review Hungarian; preserve choices, knowledge, effects and player-name variables in both.
+
 ## Active system
 
 - React, Zustand and Vite remain the technology stack. UI-independent reducer logic lives in `src/game/engine/` with injected campaign rules.
