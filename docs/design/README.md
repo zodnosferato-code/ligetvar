@@ -10,6 +10,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Narrative rewrite workflow](NARRATIVE-WORKFLOW.md) | Approved plot → character/scene specifications → scene rewrites → repeated playthrough cycle; no baseline patching |
 | [Playthrough findings](PLAYTHROUGH-FINDINGS.md) | Observed baseline issues and strengths; not applied fixes |
 | [Scene-by-scene outline](SCENE-OUTLINE.md) | First editorial draft for all 68 scene IDs; connected plot, character, knowledge and branch briefs; not implemented |
+| [Eight-route CLI feedback](PLAYTHROUGH-MULTIROUTE-2026-10-28.md) | Eight completed campaigns, 18 prioritized story/dialogue findings, strengths and reproducible public-observation evidence; feedback only |
 | [Completed baseline report](PLAYTHROUGH-REPORT-2026-10-28.md) | One autonomous Rebeka-route completion, exact editorial findings and test limits |
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |

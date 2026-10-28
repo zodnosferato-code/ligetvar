@@ -1,0 +1,66 @@
+[
+  {
+    "route": "friendship",
+    "observedLines": 163,
+    "scenes": 17,
+    "requests": 228,
+    "relationship": "friendship",
+    "sha256": "dddc65d2ff4aa72a0305a2427ebcbf5fb87c082419c0953bcfc719cf763ada8f"
+  },
+  {
+    "route": "rebeka",
+    "observedLines": 261,
+    "scenes": 22,
+    "requests": 327,
+    "relationship": "rebeka",
+    "sha256": "fb61eae2f029b62a32beb861f66a653f3befd94d7047604e8c951a9eda5ba61e"
+  },
+  {
+    "route": "boglarka",
+    "observedLines": 263,
+    "scenes": 22,
+    "requests": 329,
+    "relationship": "boglarka",
+    "sha256": "d88a19fca7dbc5977a3cf3acdcfd634241f985c09d0ed96a751f3d60304321e1"
+  },
+  {
+    "route": "greta",
+    "observedLines": 259,
+    "scenes": 22,
+    "requests": 325,
+    "relationship": "greta",
+    "sha256": "dac568a6ef5f90797648ff151ccc1e96b4a347948d4647fb659231091b286482"
+  },
+  {
+    "route": "triad",
+    "observedLines": 444,
+    "scenes": 34,
+    "requests": 510,
+    "relationship": "triad",
+    "sha256": "ec8e04d32a30e48cd75fd5b39b4add30bc794466b5ed1d86a9852537a0360892"
+  },
+  {
+    "route": "withdraw",
+    "observedLines": 261,
+    "scenes": 22,
+    "requests": 327,
+    "relationship": "estranged",
+    "sha256": "8ec0a680ac0095a2ad794e185955e8e08e11f9eec75ad129ef964df4675da76f"
+  },
+  {
+    "route": "slow",
+    "observedLines": 249,
+    "scenes": 22,
+    "requests": 315,
+    "relationship": "rebeka",
+    "sha256": "2f3c98e68210bb4169fbdbb2f26558d021ac83286dd3af3627854b6c11ab5a1b"
+  },
+  {
+    "route": "explore",
+    "observedLines": 380,
+    "scenes": 42,
+    "requests": 445,
+    "relationship": "friendship",
+    "sha256": "88bc9b92956903aa3c880fa2786dc9ae0902659244c09e9836ed0f5e9494d232"
+  }
+]
