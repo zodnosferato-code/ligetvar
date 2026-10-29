@@ -117,3 +117,7 @@ The `_1`/`_2` English-first/Hungarian pass completes deliberate bilingual revisi
 ## Gréta connected middle — 29 October 2026
 
 `_4`/`_5` now have a bilingual present disagreement and commitment: her overfilled leisure card, honest difference in preferences, equal participation and shared lopsided food. She remains competent and energetic, can dislike a response without becoming an administrator of the relationship, and asks for company on unproductive days. No invented player wrongdoing/yesterday date or compulsory touch. `_3–6` have deliberate passes; early `_1`/`_2`, triad/Virág/shared writing and INT2's midpoint/later meetings remain unfinished. [Evidence](PLAYTHROUGH-FINDINGS.md#gréta-disagreement-and-commitment-validation--29-october-2026).
+
+## Gréta connected-arc checkpoint — 29 October 2026
+
+`_1`/`_2` complete deliberate bilingual passes across her six main meetings. She draws an absurd duck on a useful map, enjoys unsuccessful stone-skimming, shares an uneven snack and names attraction without using work as a pretext. Practical energy remains a strength and a source of humour, not a problem cured by one conversation. Original imperfect-company/shared-habit memories remain alternatives; refusal and departures are complete. Her later picnic, overplanned walk and shared-food commitment now have a personal beginning. INT2's midpoint/later exploration and wider yearly density remain unfinished. [Validation](PLAYTHROUGH-FINDINGS.md#gréta-early-arc-validation--29-october-2026).

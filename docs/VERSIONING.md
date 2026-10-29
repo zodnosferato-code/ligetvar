@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.9`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.12`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `13`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `16`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -138,3 +138,7 @@ Schema4 unchanged; content epoch14 replaces13. Assembled `greta_3`/`greta_6` cur
 ## Gréta disagreement and commitment — 0.9.11
 
 Schema4 retained; content epoch15 replaces14. Assembled `_4`/`_5` graphs and persisted journal/reaction references change, replacing incompatible cursors and the imposed off-screen incident. Epoch14 and earlier require a fresh year; no migration or automatic overwrite. Original admission, repair/withdraw/commit/yes effects, future-memory IDs, dates and one-slot costs remain. This is a coherent bilingual prose repair, not the planned INT2 scene expansion.
+
+## Gréta early meetings — 0.9.12
+
+Schema4 retained; content epoch16 replaces15. Assembled `_1`/`_2` graphs and persisted journals/reactions change incompatibly. Earlier saves require a new year; no migration or automatic overwrite. Original admission, interest/attraction/withdrawal, topic memories and slot costs remain. All six main Gréta meetings now have bilingual writing passes; INT2 midpoint/later additions remain unimplemented.

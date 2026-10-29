@@ -319,3 +319,16 @@ Implementation dependencies: register new stable scene/decision IDs, bilingual t
 | Exit/consumers | Repair or withdrawal retains original effects and slot cost; natural goodbye, card stays with her. `_5` can recall this exact witnessed event. | Stable commit/yes/exposure/future memories consumed by `_6`. No exclusivity promise beyond existing direction contract; no sex implied. Goodbye, no tomorrow guarantee. |
 
 English canonical, Hungarian translated; literal player-name placeholder at commitment. Preserve original `repair`/`withdraw`, `commit`/`withdraw`, `ritual`/`open` and repair `ask`/`own` IDs/effects where applicable. This batch repairs continuity inside the annual plan; it adds no midpoint encounter and cannot complete INT2.
+
+## Refined early Gréta briefs — 29 October 2026
+
+Next two-scene batch within the connected annual plan above. English canonical, Hungarian translation. Existing actual admission remains `_1` weeks2–50 and `_2` weeks10–50, either period; the plan's preferred early windows are not new hard deadlines. Preserve interest/attraction/withdrawal and `greta_no_plan`/`greta_shared_habit` effects, one-slot costs and subsequent date admission.
+
+| Continuity | `greta_1` | `greta_2` |
+| --- | --- | --- |
+| Date/prior contact | 8Oct2026–9Sep2027, after shared_2; no prior private meeting assumed. | 3Dec2026–9Sep2027, after `_1` interest; same-week or months later; optional coffee/events skipped. |
+| Place/props | First-floor department office, two adults, room key, finished booking sheet and her annotated lake map. No physical trip to lake, invented bridges or weather. | Main courtyard bench, two adults, her bag and a roll in paper. No rain/clothing assumption across seasons. |
+| Beats | Key handover finishes work before personal interest. Her annotated map reveals a favourite stopping place rather than administrative competence. Compare shortest route with preferred stop, or discuss her comically poor stone-skimming; player contributes a preference. | Share an ordinary snack, joke about its lopsided cut, then name attraction. Reciprocate through accepting imperfect company or admitting the temptation to hide invitations inside work; no invented prior joint meeting. |
+| Change/exit | Original interest branches remain distinct; no work-for-affection exchange. She packs map, player leaves with key. Refusal gets a full goodbye. | Preserve original topic memories; no automatic touch or fixed next appointment. Pack wrapper/bag, part at adjacent gallery entrance without starting an unseen lake outing. Refusal is disappointed but complete. |
+
+Both scenes remain separate from the investigation. Neither grants commitment, touch or intimate history. Later picnic/conflict/commitment can build on her appetite, initiative and tendency to organize without claiming that she has already solved that habit. Midpoint and later exploration additions remain the next implementation phase; this early pass cannot satisfy INT2.

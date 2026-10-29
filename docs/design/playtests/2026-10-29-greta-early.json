@@ -1,0 +1,3378 @@
+{
+  "baseline": "b87e763cd389f7aa90e68734bba211f56f4aa7bb",
+  "release": "0.9.12/schema4/content16",
+  "method": "Scripted public JSON CLI, no author mode or edited saves. Standard tools/cli-playthrough.mjs with scratch adaptations: for early refusal omit later personal scenes while still selecting Gréta direction at32; --early-week moves first and second meetings to the two slots of48, combined with --date-week49 (date/conflict49, commitment50). No runtime scheduling change. Other flags are standard runner flags. Every restart includes a live locale roundtrip. playedLines is final process only.",
+  "runs": [
+    {
+      "case": "ordinary",
+      "arguments": [
+        "--holidays",
+        "--seasons",
+        "--restart-at",
+        "greta_1/route_2",
+        "--restart-at",
+        "greta_2/ordinary_2"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 492,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [
+          "holiday_halloween",
+          "holiday_christmas"
+        ],
+        "seasonalScenes": [
+          "seasonal_spring",
+          "seasonal_summer"
+        ],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 185,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "ordinary_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Excellent. I chose badly. I’d like to be annoyed about it without making a shopping plan.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Then I’ll stay sitting. And admit that I’m glad you wanted me here.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I did. You can stop looking for the hidden errand.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We linger on the bench. Gréta asks what I do when I abandon a plan; I tell her about reading the same page three times because I’m listening to the corridor instead.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Then we should try being outside together. Fewer corridors for you. Fewer cupboards full of things I could put away.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like a walk with you. We can find a time when we’re both free.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Good. And we’ll bring two rolls. I refuse to make fair division my great personal challenge.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the wrapper into her bag. When we finally stand, we walk as far as the adjacent gallery entrance together.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We say goodbye there. Gréta heads inside, then glances back once before turning into the gallery. I stay by the entrance a moment longer before heading back.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "At the department desk, Gréta puts a room key on a completed booking sheet. Beside it lies a lake map covered in small handwritten notes. She has drawn a duck much larger than the landing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Here you are, CLI route tester. The booking is sorted. Ignore the duck; it isn’t to scale.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "That’s a relief. I was about to cancel any plans involving the lake.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It stole half my lunch once. I’ve given it the territory it thinks it owns.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I pick up the key. Gréta caps her pen and pushes the booking sheet aside, leaving the map between us.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "And the rest of the notes? Are those yours too?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. Places worth stopping. The printed version only tells you how to get past them. I keep meaning to draw a better one, then I start measuring things and ruin it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She straightens the map, then deliberately leaves one corner folded. The work is finished; this is hers.",
+          "choices": [
+            {
+              "label": "Show me your route. I suspect the shortest one misses the point.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "What do you do when you reach the water?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "I only have time to collect the key today.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "From the courtyard, through the east passage and down the lime avenue. About twelve minutes to the landing if you actually keep walking.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "You say that as though you’ve never managed it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "There’s a willow by the water. I stop there and forget I was supposed to be getting exercise. Once I spent the whole break watching a duck fail to swallow a leaf.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_2",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Van egy fűz a víznél. Ott megállok, és elfelejtem, hogy mozogni indultam. Egyszer az egész szünetben azt néztem, ahogy egy kacsa nem bír lenyelni egy levelet.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I stop for sounds. A loose shutter, someone practising badly. Then I pretend I was checking the building.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Then your map would be useless to anyone in a hurry. Good. Mine needs company.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m good at getting everyone where they need to be. Sometimes I’d like to arrive somewhere without checking who’s missing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like to hear more about where you stop. Even if the map never gets finished.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It won’t, at this rate. The duck keeps expanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the map into her bag and leaves the completed sheet on the desk. I check that the key is in my pocket before we move to the door.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta says goodbye with a last grin at the duck joke. I leave the office; she turns back for her bag. No walk has been arranged, but I know what I’d like to ask her about next.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta is on a courtyard bench with a paper-wrapped roll balanced on her bag. She moves the bag to her other side when I arrive.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Sit down. I bought something to eat, then realised it was an awkward way to start a conversation. I’m going to spend half of it chewing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We could split it. Then neither of us has to carry the conversation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She breaks the roll over its paper and offers me a piece. Mine is noticeably larger. I hold the halves beside each other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Don’t start. I can divide rooms between forty people. Apparently lunch is more demanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I was going to say I’m delighted with the allocation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We eat before the conversation can become a solution to anything. Gréta brushes a crumb off the paper and looks at me.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I wanted to see you. Not because a room needs changing. I keep reaching for a useful reason, and I’m getting tired of myself.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m listening. The room can stay where it is.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I like you, CLI route tester. I’d like to find out what we’re like together when neither of us has a job for the other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She leaves the empty wrapper on her lap instead of finding something else to tidy.",
+          "choices": [
+            {
+              "label": "I’m attracted to you too. I’d like to keep meeting like this.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "I like being with you, but I want friendship.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Good. I’ve been quite brave for someone holding a bag full of crumbs. Now you have to say something too.",
+          "choices": [
+            {
+              "label": "What would make this a good break for you?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "I nearly asked you about work just now. It seemed safer than saying I wanted to stay.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "This was a good start. Food, a seat, someone who doesn’t mind if I complain about my shoes.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I have no useful advice about shoes. This could work.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_2",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Kiváló. Rosszul választottam. Most bosszankodnék rajta egy kicsit anélkül, hogy bevásárlólistát írnék.",
+          "choices": []
+        }
+      ]
+    },
+    {
+      "case": "admit",
+      "arguments": [
+        "--choice",
+        "greta_1/line_4=ask",
+        "--choice",
+        "greta_2/romance_attraction=admit",
+        "--restart-at",
+        "greta_1/water_2",
+        "--restart-at",
+        "greta_2/admit_2"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 456,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 158,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "admit_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We could waste an astonishing amount of time like that. Very professionally.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I want to stay here with you a little longer. There. No agenda.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. I’d like that. And I’m not going to turn it into an appointment while you’re still sitting here.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We linger on the bench. Gréta asks what I do when I abandon a plan; I tell her about reading the same page three times because I’m listening to the corridor instead.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Then we should try being outside together. Fewer corridors for you. Fewer cupboards full of things I could put away.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like a walk with you. We can find a time when we’re both free.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Good. And we’ll bring two rolls. I refuse to make fair division my great personal challenge.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the wrapper into her bag. When we finally stand, we walk as far as the adjacent gallery entrance together.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We say goodbye there. Gréta heads inside, then glances back once before turning into the gallery. I stay by the entrance a moment longer before heading back.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "At the department desk, Gréta puts a room key on a completed booking sheet. Beside it lies a lake map covered in small handwritten notes. She has drawn a duck much larger than the landing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Here you are, CLI route tester. The booking is sorted. Ignore the duck; it isn’t to scale.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "That’s a relief. I was about to cancel any plans involving the lake.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It stole half my lunch once. I’ve given it the territory it thinks it owns.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I pick up the key. Gréta caps her pen and pushes the booking sheet aside, leaving the map between us.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "And the rest of the notes? Are those yours too?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. Places worth stopping. The printed version only tells you how to get past them. I keep meaning to draw a better one, then I start measuring things and ruin it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She straightens the map, then deliberately leaves one corner folded. The work is finished; this is hers.",
+          "choices": [
+            {
+              "label": "Show me your route. I suspect the shortest one misses the point.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "What do you do when you reach the water?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "I only have time to collect the key today.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Throw stones. Badly. That oval is supposed to be a flat stone, before you ask.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "How badly?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Straight down, usually. I can explain the angle perfectly. The stone refuses to attend the explanation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_2",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Többnyire egyenesen lefelé. A szöget tökéletesen el tudom magyarázni. A kő nem hajlandó végighallgatni.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d count the sound. A good splash ought to be worth something.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I like that. Though the minute I start keeping score, I’ll want a better splash. You’ve been warned.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m good at getting everyone where they need to be. Sometimes I’d like to arrive somewhere without checking who’s missing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like to hear more about where you stop. Even if the map never gets finished.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It won’t, at this rate. The duck keeps expanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the map into her bag and leaves the completed sheet on the desk. I check that the key is in my pocket before we move to the door.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta says goodbye with a last grin at the duck joke. I leave the office; she turns back for her bag. No walk has been arranged, but I know what I’d like to ask her about next.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta is on a courtyard bench with a paper-wrapped roll balanced on her bag. She moves the bag to her other side when I arrive.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Sit down. I bought something to eat, then realised it was an awkward way to start a conversation. I’m going to spend half of it chewing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We could split it. Then neither of us has to carry the conversation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She breaks the roll over its paper and offers me a piece. Mine is noticeably larger. I hold the halves beside each other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Don’t start. I can divide rooms between forty people. Apparently lunch is more demanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I was going to say I’m delighted with the allocation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We eat before the conversation can become a solution to anything. Gréta brushes a crumb off the paper and looks at me.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I wanted to see you. Not because a room needs changing. I keep reaching for a useful reason, and I’m getting tired of myself.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m listening. The room can stay where it is.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I like you, CLI route tester. I’d like to find out what we’re like together when neither of us has a job for the other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She leaves the empty wrapper on her lap instead of finding something else to tidy.",
+          "choices": [
+            {
+              "label": "I’m attracted to you too. I’d like to keep meeting like this.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "I like being with you, but I want friendship.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Good. I’ve been quite brave for someone holding a bag full of crumbs. Now you have to say something too.",
+          "choices": [
+            {
+              "label": "What would make this a good break for you?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "I nearly asked you about work just now. It seemed safer than saying I wanted to stay.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I nearly answered one you hadn’t asked. I was going to tell you the booking was sorted.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "That would have given me another five minutes without saying anything difficult.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_2",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Elképesztő mennyiségű időt tudnánk így elpazarolni. Roppant szakszerűen.",
+          "choices": []
+        }
+      ]
+    },
+    {
+      "case": "hu-night",
+      "arguments": [
+        "--locale",
+        "hu",
+        "--night-personal",
+        "--restart-at",
+        "greta_1/pack",
+        "--restart-at",
+        "greta_2/pack"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 456,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 151,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Összehajtja a papírt, és a táskájába teszi. Amikor végül felállunk, együtt megyünk a szomszédos galériabejáratig.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Ott elköszönünk. Gréta bemegy, de még egyszer visszanéz, mielőtt befordul a galériába. Én még egy pillanatig a bejáratnál maradok, mielőtt visszaindulnék.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "A tanszéki íróasztalnál Gréta egy kitöltött teremfoglaló lapra teszi a kulcsot. Mellette apró kézírásos jegyzetek borítanak egy tótérképet. A rárajzolt kacsa jóval nagyobb a stégnél.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Tessék, CLI route tester. A teremfoglalás rendben van. A kacsát ne nézd, az nem méretarányos.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Megnyugodtam. Már majdnem lemondtam minden tóparti programot.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Egyszer ellopta az ebédem felét. Annyi területet adtam neki, amennyit magáénak képzel.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Elveszem a kulcsot. Gréta visszateszi a kupakot a tollára, és félretolja a teremfoglaló lapot. A térkép marad kettőnk között.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "És a többi jegyzet? Azokat is te írtad?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Igen. Ahol érdemes megállni. A nyomtatott csak azt mutatja, hogyan jutsz el mellettük. Mindig nekiállok egy jobbnak, aztán elkezdek méricskélni, és elrontom.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Kisimítja a térképet, aztán az egyik sarkát mégis behajtva hagyja. A munka kész; ez már az ő térképe.",
+          "choices": [
+            {
+              "label": "Mutasd a saját útvonaladat. Gyanítom, a legrövidebbből kimarad a lényeg.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "Mit csinálsz, amikor odaérsz a vízhez?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "Ma csak a kulcsért tudtam beugrani.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_0",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Az udvarról a keleti átjárón át, aztán le a hársfasoron. Úgy tizenkét perc a stég, ha tényleg végigmész.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_1",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Úgy mondod, mintha neked még sosem sikerült volna.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_2",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Van egy fűz a víznél. Ott megállok, és elfelejtem, hogy mozogni indultam. Egyszer az egész szünetben azt néztem, ahogy egy kacsa nem bír lenyelni egy levelet.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_3",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Én a hangoknál állok meg. Zörgő spaletta, valaki ügyetlenül gyakorol. Aztán úgy teszek, mintha az épületet ellenőriztem volna.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_4",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Akkor a te térképed sem érne semmit annak, aki siet. Helyes. Az enyém legalább nincs egyedül.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Abban jó vagyok, hogy mindenki odaérjen, ahová kell. Néha úgy érkeznék meg valahová, hogy nem nézem meg rögtön, ki hiányzik.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Engem az is érdekel, hol állsz meg. Akkor is, ha sosem készül el a térkép.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Ebben a tempóban nem is fog. A kacsa folyton terjeszkedik.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Összehajtja a térképet, és a táskájába teszi. A kitöltött lap az asztalon marad. Megnézem, hogy a kulcs a zsebemben van-e, aztán az ajtóhoz lépünk.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "night",
+          "locale": "en",
+          "text": "She folds the map into her bag and leaves the completed sheet on the desk. I check that the key is in my pocket before we move to the door.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 2,
+          "period": "night",
+          "locale": "hu",
+          "text": "Gréta elköszön, és még egyszer elvigyorodik a kacsás viccen. Kilépek az irodából, ő visszafordul a táskájáért. Sétát még nem beszéltünk meg, de már tudom, miről kérdezném legközelebb.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Gréta az udvari padon ül, a táskáján papírba csomagolt zsemle egyensúlyoz. Amikor odaérek, a másik oldalára teszi a táskát.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Ülj le. Vettem valamit enni, aztán rájöttem, hogy így elég nehéz beszélgetést kezdeni. A felében rágni fogok.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Elfelezhetjük. Akkor egyikünknek sem kell egyedül beszélgetnie.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "A papír fölött kettétöri a zsemlét, és felém nyújtja az egyik darabot. Az enyém láthatóan nagyobb. Egymás mellé tartom a két felet.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "El ne kezdd. Negyven ember között el tudom osztani a termeket. Az ebéd láthatóan nehezebb.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Csak azt akartam mondani, hogy teljesen elégedett vagyok az elosztással.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Eszünk, mielőtt a beszélgetésből valami megoldandó feladat lehetne. Gréta lesöpör egy morzsát a papírról, és rám néz.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Látni akartalak. Nem azért, mert termet kell cserélni. Folyton valami hasznos indokot keresek, és már kezdem unni magamat.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Figyelek. A terem maradhat a helyén.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Tetszel nekem, CLI route tester. Szeretném megtudni, milyenek vagyunk együtt, amikor egyikünk sem ad feladatot a másiknak.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Az üres csomagolópapírt az ölében hagyja, nem keres újabb elpakolnivalót.",
+          "choices": [
+            {
+              "label": "Te is tetszel nekem. Szeretnék még így találkozni veled.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "Jó veled lenni, de barátságot szeretnék.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Jó. Egész bátor voltam ahhoz képest, hogy egy morzsás zacskót szorongatok. Most már neked is mondanod kell valamit.",
+          "choices": [
+            {
+              "label": "Mitől lenne neked jó ez a szünet?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "Az előbb majdnem a munkáról kérdeztelek. Könnyebbnek tűnt, mint kimondani, hogy maradni szeretnék.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_0",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Ez jó kezdet volt. Ennivaló, ülőhely, valaki, akit nem zavar, ha a cipőmre panaszkodom.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_1",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "A cipőkhöz semmi hasznos tanácsom nincs. Ez működhet.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_2",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Kiváló. Rosszul választottam. Most bosszankodnék rajta egy kicsit anélkül, hogy bevásárlólistát írnék.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_3",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Akkor ülve maradok. És bevallom, hogy örülök, hogy engem akartál itt látni.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_4",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Téged. Abbahagyhatod a rejtett feladat keresését.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_0",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Még maradunk a padon. Gréta megkérdezi, mit csinálok, ha elengedek egy tervet. Elmesélem, hogy néha háromszor olvasom el ugyanazt az oldalt, mert közben a folyosót hallgatom.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_1",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Akkor próbáljuk ki együtt a szabad levegőt. Neked kevesebb folyosó. Nekem kevesebb szekrény, amibe elpakolhatok.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_2",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Szívesen sétálnék veled. Keresünk rá egy időpontot, amikor mindketten ráérünk.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_3",
+          "week": 10,
+          "period": "night",
+          "locale": "hu",
+          "text": "Jó. És két zsemlét hozunk. Nem vagyok hajlandó életem nagy kihívásává tenni az igazságos felezést.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 10,
+          "period": "night",
+          "locale": "en",
+          "text": "She folds the wrapper into her bag. When we finally stand, we walk as far as the adjacent gallery entrance together.",
+          "choices": []
+        }
+      ]
+    },
+    {
+      "case": "slow",
+      "arguments": [
+        "--choice",
+        "greta_3/hand_offer=slow_touch",
+        "--choice",
+        "greta_6/invitation=outside",
+        "--restart-at",
+        "greta_2/line_4"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 444,
+        "restarts": 1,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 154,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She leaves the empty wrapper on her lap instead of finding something else to tidy.",
+          "choices": [
+            {
+              "label": "I’m attracted to you too. I’d like to keep meeting like this.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "I like being with you, but I want friendship.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Good. I’ve been quite brave for someone holding a bag full of crumbs. Now you have to say something too.",
+          "choices": [
+            {
+              "label": "What would make this a good break for you?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "I nearly asked you about work just now. It seemed safer than saying I wanted to stay.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "This was a good start. Food, a seat, someone who doesn’t mind if I complain about my shoes.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I have no useful advice about shoes. This could work.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Excellent. I chose badly. I’d like to be annoyed about it without making a shopping plan.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Then I’ll stay sitting. And admit that I’m glad you wanted me here.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I did. You can stop looking for the hidden errand.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We linger on the bench. Gréta asks what I do when I abandon a plan; I tell her about reading the same page three times because I’m listening to the corridor instead.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Then we should try being outside together. Fewer corridors for you. Fewer cupboards full of things I could put away.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like a walk with you. We can find a time when we’re both free.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Good. And we’ll bring two rolls. I refuse to make fair division my great personal challenge.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the wrapper into her bag. When we finally stand, we walk as far as the adjacent gallery entrance together.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We say goodbye there. Gréta heads inside, then glances back once before turning into the gallery. I stay by the entrance a moment longer before heading back.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "At the department desk, Gréta puts a room key on a completed booking sheet. Beside it lies a lake map covered in small handwritten notes. She has drawn a duck much larger than the landing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Here you are, CLI route tester. The booking is sorted. Ignore the duck; it isn’t to scale.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "That’s a relief. I was about to cancel any plans involving the lake.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It stole half my lunch once. I’ve given it the territory it thinks it owns.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I pick up the key. Gréta caps her pen and pushes the booking sheet aside, leaving the map between us.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "And the rest of the notes? Are those yours too?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. Places worth stopping. The printed version only tells you how to get past them. I keep meaning to draw a better one, then I start measuring things and ruin it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She straightens the map, then deliberately leaves one corner folded. The work is finished; this is hers.",
+          "choices": [
+            {
+              "label": "Show me your route. I suspect the shortest one misses the point.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "What do you do when you reach the water?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "I only have time to collect the key today.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "From the courtyard, through the east passage and down the lime avenue. About twelve minutes to the landing if you actually keep walking.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "You say that as though you’ve never managed it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "There’s a willow by the water. I stop there and forget I was supposed to be getting exercise. Once I spent the whole break watching a duck fail to swallow a leaf.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I stop for sounds. A loose shutter, someone practising badly. Then I pretend I was checking the building.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Then your map would be useless to anyone in a hurry. Good. Mine needs company.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m good at getting everyone where they need to be. Sometimes I’d like to arrive somewhere without checking who’s missing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like to hear more about where you stop. Even if the map never gets finished.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It won’t, at this rate. The duck keeps expanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the map into her bag and leaves the completed sheet on the desk. I check that the key is in my pocket before we move to the door.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta says goodbye with a last grin at the duck joke. I leave the office; she turns back for her bag. No walk has been arranged, but I know what I’d like to ask her about next.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta is on a courtyard bench with a paper-wrapped roll balanced on her bag. She moves the bag to her other side when I arrive.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Sit down. I bought something to eat, then realised it was an awkward way to start a conversation. I’m going to spend half of it chewing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We could split it. Then neither of us has to carry the conversation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She breaks the roll over its paper and offers me a piece. Mine is noticeably larger. I hold the halves beside each other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Don’t start. I can divide rooms between forty people. Apparently lunch is more demanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I was going to say I’m delighted with the allocation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We eat before the conversation can become a solution to anything. Gréta brushes a crumb off the paper and looks at me.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I wanted to see you. Not because a room needs changing. I keep reaching for a useful reason, and I’m getting tired of myself.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m listening. The room can stay where it is.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I like you, CLI route tester. I’d like to find out what we’re like together when neither of us has a job for the other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Az üres csomagolópapírt az ölében hagyja, nem keres újabb elpakolnivalót.",
+          "choices": [
+            {
+              "label": "Te is tetszel nekem. Szeretnék még így találkozni veled.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "Jó veled lenni, de barátságot szeretnék.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "first-refusal",
+      "arguments": [
+        "--choice",
+        "greta_1/line_4=leave",
+        "--restart-at",
+        "greta_1/leave_1"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 350,
+        "restarts": 1,
+        "phase": "ending",
+        "ending": "estranged",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 119,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_1",
+          "line": "leave_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I thank her for the key and say goodbye at the door. She folds her map as I leave.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "At the department desk, Gréta puts a room key on a completed booking sheet. Beside it lies a lake map covered in small handwritten notes. She has drawn a duck much larger than the landing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Here you are, CLI route tester. The booking is sorted. Ignore the duck; it isn’t to scale.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "That’s a relief. I was about to cancel any plans involving the lake.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It stole half my lunch once. I’ve given it the territory it thinks it owns.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I pick up the key. Gréta caps her pen and pushes the booking sheet aside, leaving the map between us.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "And the rest of the notes? Are those yours too?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. Places worth stopping. The printed version only tells you how to get past them. I keep meaning to draw a better one, then I start measuring things and ruin it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She straightens the map, then deliberately leaves one corner folded. The work is finished; this is hers.",
+          "choices": [
+            {
+              "label": "Show me your route. I suspect the shortest one misses the point.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "What do you do when you reach the water?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "I only have time to collect the key today.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "leave_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Of course. You’ve got it. I’ll put this away before someone asks me to add the duck to the room schedule.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "leave_1",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Megköszönöm a kulcsot, és az ajtóban elköszönök. Távozás közben még látom, ahogy összehajtja a térképét.",
+          "choices": []
+        }
+      ]
+    },
+    {
+      "case": "second-refusal",
+      "arguments": [
+        "--choice",
+        "greta_2/line_4=friend",
+        "--restart-at",
+        "greta_2/friend_1"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 372,
+        "restarts": 1,
+        "phase": "ending",
+        "ending": "estranged",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 80,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "friend_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I wait while she folds the wrapper and puts it in her bag. Neither of us invents an errand to fill the silence. Then she gets to her feet.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "friend_exit",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We say goodbye at the gallery entrance. She goes inside with her bag; I leave the courtyard without making a romantic invitation I don’t mean.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "At the department desk, Gréta puts a room key on a completed booking sheet. Beside it lies a lake map covered in small handwritten notes. She has drawn a duck much larger than the landing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Here you are, CLI route tester. The booking is sorted. Ignore the duck; it isn’t to scale.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "That’s a relief. I was about to cancel any plans involving the lake.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It stole half my lunch once. I’ve given it the territory it thinks it owns.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I pick up the key. Gréta caps her pen and pushes the booking sheet aside, leaving the map between us.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "And the rest of the notes? Are those yours too?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. Places worth stopping. The printed version only tells you how to get past them. I keep meaning to draw a better one, then I start measuring things and ruin it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She straightens the map, then deliberately leaves one corner folded. The work is finished; this is hers.",
+          "choices": [
+            {
+              "label": "Show me your route. I suspect the shortest one misses the point.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "What do you do when you reach the water?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "I only have time to collect the key today.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "From the courtyard, through the east passage and down the lime avenue. About twelve minutes to the landing if you actually keep walking.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "You say that as though you’ve never managed it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "There’s a willow by the water. I stop there and forget I was supposed to be getting exercise. Once I spent the whole break watching a duck fail to swallow a leaf.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_3",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I stop for sounds. A loose shutter, someone practising badly. Then I pretend I was checking the building.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_4",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Then your map would be useless to anyone in a hurry. Good. Mine needs company.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m good at getting everyone where they need to be. Sometimes I’d like to arrive somewhere without checking who’s missing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like to hear more about where you stop. Even if the map never gets finished.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "It won’t, at this rate. The duck keeps expanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the map into her bag and leaves the completed sheet on the desk. I check that the key is in my pocket before we move to the door.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 2,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta says goodbye with a last grin at the duck joke. I leave the office; she turns back for her bag. No walk has been arranged, but I know what I’d like to ask her about next.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta is on a courtyard bench with a paper-wrapped roll balanced on her bag. She moves the bag to her other side when I arrive.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Sit down. I bought something to eat, then realised it was an awkward way to start a conversation. I’m going to spend half of it chewing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We could split it. Then neither of us has to carry the conversation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She breaks the roll over its paper and offers me a piece. Mine is noticeably larger. I hold the halves beside each other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "Don’t start. I can divide rooms between forty people. Apparently lunch is more demanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I was going to say I’m delighted with the allocation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We eat before the conversation can become a solution to anything. Gréta brushes a crumb off the paper and looks at me.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I wanted to see you. Not because a room needs changing. I keep reaching for a useful reason, and I’m getting tired of myself.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m listening. The room can stay where it is.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "I like you, CLI route tester. I’d like to find out what we’re like together when neither of us has a job for the other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "She leaves the empty wrapper on her lap instead of finding something else to tidy.",
+          "choices": [
+            {
+              "label": "I’m attracted to you too. I’d like to keep meeting like this.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "I like being with you, but I want friendship.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "friend_0",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "All right. That wasn’t the answer I wanted, but I’m glad I asked. Give me a moment before we start talking about anything else.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "friend_1",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Megvárom, amíg összehajtja a papírt, és a táskájába teszi. Egyikünk sem talál ki valami elintéznivalót a csend helyére. Aztán feláll.",
+          "choices": []
+        }
+      ]
+    },
+    {
+      "case": "late",
+      "arguments": [
+        "--early-week",
+        "--date-week",
+        "49",
+        "--restart-at",
+        "greta_1/line_4",
+        "--restart-at",
+        "greta_2/romance_attraction"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 456,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 106,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Good. I’ve been quite brave for someone holding a bag full of crumbs. Now you have to say something too.",
+          "choices": [
+            {
+              "label": "What would make this a good break for you?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "I nearly asked you about work just now. It seemed safer than saying I wanted to stay.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_0",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "This was a good start. Food, a seat, someone who doesn’t mind if I complain about my shoes.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_1",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I have no useful advice about shoes. This could work.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_2",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Excellent. I chose badly. I’d like to be annoyed about it without making a shopping plan.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_3",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Then I’ll stay sitting. And admit that I’m glad you wanted me here.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "ordinary_4",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I did. You can stop looking for the hidden errand.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_0",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "We linger on the bench. Gréta asks what I do when I abandon a plan; I tell her about reading the same page three times because I’m listening to the corridor instead.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_1",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Then we should try being outside together. Fewer corridors for you. Fewer cupboards full of things I could put away.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_2",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I’d like a walk with you. We can find a time when we’re both free.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_3",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Good. And we’ll bring two rolls. I refuse to make fair division my great personal challenge.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "She folds the wrapper into her bag. When we finally stand, we walk as far as the adjacent gallery entrance together.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "We say goodbye there. Gréta heads inside, then glances back once before turning into the gallery. I stay by the entrance a moment longer before heading back.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "At the department desk, Gréta puts a room key on a completed booking sheet. Beside it lies a lake map covered in small handwritten notes. She has drawn a duck much larger than the landing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "Here you are, CLI route tester. The booking is sorted. Ignore the duck; it isn’t to scale.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "That’s a relief. I was about to cancel any plans involving the lake.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "It stole half my lunch once. I’ve given it the territory it thinks it owns.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "I pick up the key. Gréta caps her pen and pushes the booking sheet aside, leaving the map between us.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "And the rest of the notes? Are those yours too?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "Yes. Places worth stopping. The printed version only tells you how to get past them. I keep meaning to draw a better one, then I start measuring things and ruin it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "She straightens the map, then deliberately leaves one corner folded. The work is finished; this is hers.",
+          "choices": [
+            {
+              "label": "Show me your route. I suspect the shortest one misses the point.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "What do you do when you reach the water?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "I only have time to collect the key today.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 48,
+          "period": "day",
+          "locale": "hu",
+          "text": "Kisimítja a térképet, aztán az egyik sarkát mégis behajtva hagyja. A munka kész; ez már az ő térképe.",
+          "choices": [
+            {
+              "label": "Mutasd a saját útvonaladat. Gyanítom, a legrövidebbből kimarad a lényeg.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "Mit csinálsz, amikor odaérsz a vízhez?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "Ma csak a kulcsért tudtam beugrani.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_0",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "From the courtyard, through the east passage and down the lime avenue. About twelve minutes to the landing if you actually keep walking.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_1",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "You say that as though you’ve never managed it.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_2",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "There’s a willow by the water. I stop there and forget I was supposed to be getting exercise. Once I spent the whole break watching a duck fail to swallow a leaf.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_3",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "I stop for sounds. A loose shutter, someone practising badly. Then I pretend I was checking the building.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "route_4",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "Then your map would be useless to anyone in a hurry. Good. Mine needs company.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "I’m good at getting everyone where they need to be. Sometimes I’d like to arrive somewhere without checking who’s missing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "I’d like to hear more about where you stop. Even if the map never gets finished.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "It won’t, at this rate. The duck keeps expanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "She folds the map into her bag and leaves the completed sheet on the desk. I check that the key is in my pocket before we move to the door.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 48,
+          "period": "day",
+          "locale": "en",
+          "text": "Gréta says goodbye with a last grin at the duck joke. I leave the office; she turns back for her bag. No walk has been arranged, but I know what I’d like to ask her about next.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Gréta is on a courtyard bench with a paper-wrapped roll balanced on her bag. She moves the bag to her other side when I arrive.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Sit down. I bought something to eat, then realised it was an awkward way to start a conversation. I’m going to spend half of it chewing.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "We could split it. Then neither of us has to carry the conversation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "She breaks the roll over its paper and offers me a piece. Mine is noticeably larger. I hold the halves beside each other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "Don’t start. I can divide rooms between forty people. Apparently lunch is more demanding.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I was going to say I’m delighted with the allocation.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "We eat before the conversation can become a solution to anything. Gréta brushes a crumb off the paper and looks at me.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I wanted to see you. Not because a room needs changing. I keep reaching for a useful reason, and I’m getting tired of myself.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I’m listening. The room can stay where it is.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "I like you, CLI route tester. I’d like to find out what we’re like together when neither of us has a job for the other.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 48,
+          "period": "night",
+          "locale": "en",
+          "text": "She leaves the empty wrapper on her lap instead of finding something else to tidy.",
+          "choices": [
+            {
+              "label": "I’m attracted to you too. I’d like to keep meeting like this.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "I like being with you, but I want friendship.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 48,
+          "period": "night",
+          "locale": "hu",
+          "text": "Jó. Egész bátor voltam ahhoz képest, hogy egy morzsás zacskót szorongatok. Most már neked is mondanod kell valamit.",
+          "choices": [
+            {
+              "label": "Mitől lenne neked jó ez a szünet?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "Az előbb majdnem a munkáról kérdeztelek. Könnyebbnek tűnt, mint kimondani, hogy maradni szeretnék.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "hu-admit",
+      "arguments": [
+        "--locale",
+        "hu",
+        "--choice",
+        "greta_1/line_4=ask",
+        "--choice",
+        "greta_2/romance_attraction=admit",
+        "--restart-at",
+        "greta_2/exit"
+      ],
+      "report": {
+        "route": "greta",
+        "commands": 452,
+        "restarts": 1,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 150,
+        "release": {
+          "gameVersion": "0.9.12",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "earlySceneObservations": [
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Ott elköszönünk. Gréta bemegy, de még egyszer visszanéz, mielőtt befordul a galériába. Én még egy pillanatig a bejáratnál maradok, mielőtt visszaindulnék.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_0",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "A tanszéki íróasztalnál Gréta egy kitöltött teremfoglaló lapra teszi a kulcsot. Mellette apró kézírásos jegyzetek borítanak egy tótérképet. A rárajzolt kacsa jóval nagyobb a stégnél.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_1",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Tessék, CLI route tester. A teremfoglalás rendben van. A kacsát ne nézd, az nem méretarányos.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "duck",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Megnyugodtam. Már majdnem lemondtam minden tóparti programot.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "answer",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Egyszer ellopta az ebédem felét. Annyi területet adtam neki, amennyit magáénak képzel.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "map",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Elveszem a kulcsot. Gréta visszateszi a kupakot a tollára, és félretolja a teremfoglaló lapot. A térkép marad kettőnk között.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_2",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "És a többi jegyzet? Azokat is te írtad?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_3",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Igen. Ahol érdemes megállni. A nyomtatott csak azt mutatja, hogyan jutsz el mellettük. Mindig nekiállok egy jobbnak, aztán elkezdek méricskélni, és elrontom.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "line_4",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Kisimítja a térképet, aztán az egyik sarkát mégis behajtva hagyja. A munka kész; ez már az ő térképe.",
+          "choices": [
+            {
+              "label": "Mutasd a saját útvonaladat. Gyanítom, a legrövidebbből kimarad a lényeg.",
+              "action": {
+                "type": "choice",
+                "id": "interest"
+              }
+            },
+            {
+              "label": "Mit csinálsz, amikor odaérsz a vízhez?",
+              "action": {
+                "type": "choice",
+                "id": "ask"
+              }
+            },
+            {
+              "label": "Ma csak a kulcsért tudtam beugrani.",
+              "action": {
+                "type": "choice",
+                "id": "leave"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_0",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Köveket dobálok. Rosszul. Az az ovális egy lapos kő lenne, mielőtt megkérdezed.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_1",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Mennyire rosszul?",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_2",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Többnyire egyenesen lefelé. A szöget tökéletesen el tudom magyarázni. A kő nem hajlandó végighallgatni.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_3",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Én a hangját pontoznám. Egy rendes csobbanás is érjen valamit.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "water_4",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Ez tetszik. Bár amint pontozni kezdem, máris jobb csobbanást akarok majd. Én szóltam.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_0",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Abban jó vagyok, hogy mindenki odaérjen, ahová kell. Néha úgy érkeznék meg valahová, hogy nem nézem meg rögtön, ki hiányzik.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_1",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Engem az is érdekel, hol állsz meg. Akkor is, ha sosem készül el a térkép.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "end_2",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Ebben a tempóban nem is fog. A kacsa folyton terjeszkedik.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "pack",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Összehajtja a térképet, és a táskájába teszi. A kitöltött lap az asztalon marad. Megnézem, hogy a kulcs a zsebemben van-e, aztán az ajtóhoz lépünk.",
+          "choices": []
+        },
+        {
+          "scene": "greta_1",
+          "line": "exit",
+          "week": 2,
+          "period": "day",
+          "locale": "hu",
+          "text": "Gréta elköszön, és még egyszer elvigyorodik a kacsás viccen. Kilépek az irodából, ő visszafordul a táskájáért. Sétát még nem beszéltünk meg, de már tudom, miről kérdezném legközelebb.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_0",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Gréta az udvari padon ül, a táskáján papírba csomagolt zsemle egyensúlyoz. Amikor odaérek, a másik oldalára teszi a táskát.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "snack",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Ülj le. Vettem valamit enni, aztán rájöttem, hogy így elég nehéz beszélgetést kezdeni. A felében rágni fogok.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "reply",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Elfelezhetjük. Akkor egyikünknek sem kell egyedül beszélgetnie.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "split",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "A papír fölött kettétöri a zsemlét, és felém nyújtja az egyik darabot. Az enyém láthatóan nagyobb. Egymás mellé tartom a két felet.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "uneven",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "El ne kezdd. Negyven ember között el tudom osztani a termeket. Az ebéd láthatóan nehezebb.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "counter",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Csak azt akartam mondani, hogy teljesen elégedett vagyok az elosztással.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "eat",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Eszünk, mielőtt a beszélgetésből valami megoldandó feladat lehetne. Gréta lesöpör egy morzsát a papírról, és rám néz.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_1",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Látni akartalak. Nem azért, mert termet kell cserélni. Folyton valami hasznos indokot keresek, és már kezdem unni magamat.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_2",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Figyelek. A terem maradhat a helyén.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_3",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Tetszel nekem, CLI route tester. Szeretném megtudni, milyenek vagyunk együtt, amikor egyikünk sem ad feladatot a másiknak.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "line_4",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Az üres csomagolópapírt az ölében hagyja, nem keres újabb elpakolnivalót.",
+          "choices": [
+            {
+              "label": "Te is tetszel nekem. Szeretnék még így találkozni veled.",
+              "action": {
+                "type": "choice",
+                "id": "yes"
+              }
+            },
+            {
+              "label": "Jó veled lenni, de barátságot szeretnék.",
+              "action": {
+                "type": "choice",
+                "id": "friend"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "romance_attraction",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Jó. Egész bátor voltam ahhoz képest, hogy egy morzsás zacskót szorongatok. Most már neked is mondanod kell valamit.",
+          "choices": [
+            {
+              "label": "Mitől lenne neked jó ez a szünet?",
+              "action": {
+                "type": "choice",
+                "id": "ordinary"
+              }
+            },
+            {
+              "label": "Az előbb majdnem a munkáról kérdeztelek. Könnyebbnek tűnt, mint kimondani, hogy maradni szeretnék.",
+              "action": {
+                "type": "choice",
+                "id": "admit"
+              }
+            }
+          ]
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_0",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Én meg majdnem válaszoltam egy kérdésre, amit fel sem tettél. Már mondtam volna, hogy rendben van a teremfoglalás.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_1",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Azzal nyertem volna még öt percet anélkül, hogy bármi nehezet kimondanék.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_2",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Elképesztő mennyiségű időt tudnánk így elpazarolni. Roppant szakszerűen.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_3",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Szeretnék még itt maradni veled egy kicsit. Tessék. Napirend nélkül.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "admit_4",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Igen. Én is. És nem csinálok belőle időpont-egyeztetést, amíg még itt ülsz.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_0",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Még maradunk a padon. Gréta megkérdezi, mit csinálok, ha elengedek egy tervet. Elmesélem, hogy néha háromszor olvasom el ugyanazt az oldalt, mert közben a folyosót hallgatom.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_1",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Akkor próbáljuk ki együtt a szabad levegőt. Neked kevesebb folyosó. Nekem kevesebb szekrény, amibe elpakolhatok.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_2",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Szívesen sétálnék veled. Keresünk rá egy időpontot, amikor mindketten ráérünk.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "end_3",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Jó. És két zsemlét hozunk. Nem vagyok hajlandó életem nagy kihívásává tenni az igazságos felezést.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "pack",
+          "week": 10,
+          "period": "day",
+          "locale": "hu",
+          "text": "Összehajtja a papírt, és a táskájába teszi. Amikor végül felállunk, együtt megyünk a szomszédos galériabejáratig.",
+          "choices": []
+        },
+        {
+          "scene": "greta_2",
+          "line": "exit",
+          "week": 10,
+          "period": "day",
+          "locale": "en",
+          "text": "We say goodbye there. Gréta heads inside, then glances back once before turning into the gallery. I stay by the entrance a moment longer before heading back.",
+          "choices": []
+        }
+      ]
+    }
+  ]
+}
