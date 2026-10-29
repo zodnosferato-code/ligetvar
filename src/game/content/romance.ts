@@ -1,3 +1,4 @@
+import {rewriteGretaPersonal} from './greta-personal.ts';
 import {rewriteBoglarkaPersonal} from './boglarka-personal.ts';
 import {rewriteRebekaEarly} from './rebeka-early.ts';
 import {rewriteRebekaConflict} from './rebeka-conflict.ts';
@@ -253,6 +254,7 @@ function expandTriad(s:Scene){
 }
 
 export function expandRomance(original:Scene):Scene{
+ if(original.id==='greta_3'||original.id==='greta_6')return rewriteGretaPersonal(original);
  if(original.id==='boglarka_3'||original.id==='boglarka_6')return rewriteBoglarkaPersonal(original);
  if(original.id==='rebeka_1'||original.id==='rebeka_2')return rewriteRebekaEarly(original);
  if(original.id==='rebeka_4')return rewriteRebekaConflict(original);

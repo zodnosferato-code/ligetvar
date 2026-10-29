@@ -130,3 +130,7 @@ Presentation-only update: schema 4/content 12 unchanged from 0.9.7. Resource vis
 ## Boglárka early meetings — 0.9.9
 
 Schema4 remains; content epoch13 replaces12. The assembled `_1`/`_2` graphs remove old opening/romance cursor nodes and replace persisted prose with locale-neutral message references. Existing epoch12 saves intentionally require a fresh year; no migration or automatic overwrite. Original scene IDs, admission, consequential choices/effects and later quiet/listening memories remain. This is a content compatibility change, not a new state shape. The preceding 0.9.8 UI changes are retained. [Validation](design/PLAYTHROUGH-FINDINGS.md#boglárka-early-arc-validation--29-october-2026).
+
+## Gréta date and aftermath — 0.9.10
+
+Schema4 unchanged; content epoch14 replaces13. Assembled `greta_3`/`greta_6` cursor graphs and persisted journals change incompatibly. Hand-holding no longer authorizes sex, and aftermath continuation/withdrawal precedes physical choices. Original admission, invitation/withdrawal/aftermath effects, date windows, slot costs and three bounded date memories remain. Epoch13 and earlier saves require a fresh year; no migration or default-language change. [Validation](design/PLAYTHROUGH-FINDINGS.md#gréta-dateaftermath-baseline--29-october-2026).

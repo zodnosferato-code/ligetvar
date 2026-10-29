@@ -161,3 +161,9 @@ node tools/cli-playthrough.mjs --route friendship --holidays --seasons --seasona
 ```
 
 The new/revised scenes are bilingual; later shared chapters and other unextracted content remain partly Hungarian. Current release is 0.9.0, schema 4/content 6; older release-specific notes above remain historical.
+
+## Editorial route policies — 0.9.10
+
+The example runner accepts repeatable `--choice SCENE/LINE=CHOICE` overrides; requested choices must be currently offered. Repeatable `--restart-at SCENE/LINE` switches locale out/back, compares public views, then quits/restarts and compares the resumed view. With `--transcript PATH`, each pre-restart session is exported as `PATH.partN.json`; the final session uses PATH. Coverage counts are process-local. These are scripted author-review policies, not blind playtests or forced progress.
+
+For Gréta use `--night-personal` on the standard itinerary to exercise nighttime meetings; `--date-week 28..49` delays her date and, when needed, moves conflict/commitment within existing windows. Week50 can admit the date in isolation but cannot finish all three remaining personal scenes in its two slots. Combine only policies that fit available periods/slots; the engine rejects impossible actions. [Concrete reproduction](design/PLAYTHROUGH-FINDINGS.md#gréta-dateaftermath-baseline--29-october-2026).

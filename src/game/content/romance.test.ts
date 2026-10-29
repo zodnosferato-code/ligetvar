@@ -32,7 +32,7 @@ function campaign(route:RouteId,pick?:Picker,before?:(s:GameState,id:string)=>vo
 }
 for(const girl of ['rebeka','boglarka','greta'] as GirlId[])test(girl+': slower physical pace preserves full romance and equal bond',()=>{
  const normal=campaign(girl);
- const slow=campaign(girl,(_s,line,ids)=>line==='romance_closeness'?'slow_touch':ids[0]);
+ const slow=campaign(girl,(_s,line,ids)=>(line==='romance_closeness'||line==='hand_offer')?'slow_touch':ids[0]);
  assert.equal(evaluateEnding(normal).relationship,girl);assert.equal(evaluateEnding(slow).relationship,girl);
  assert.equal(normal.bonds['marton_'+girl as keyof typeof normal.bonds],slow.bonds['marton_'+girl as keyof typeof slow.bonds]);
  assert.ok(slow.decisions[girl+'_date_slow']);assert.ok(slow.decisions[girl+'_invitation']);
@@ -40,7 +40,7 @@ for(const girl of ['rebeka','boglarka','greta'] as GirlId[])test(girl+': slower 
 });
 test('every new romantic branch saves, resumes and completes atomically in one slot',()=>{
  const starts=new Map<string,GameState>();
- for(const route of ['rebeka','boglarka','greta','triad'] as const)campaign(route,undefined,(s,id)=>{if(id==='rebeka_6'||SCENES[id].lines.some(l=>l.id.startsWith('romance_')))starts.set(id,s);});
+ for(const route of ['rebeka','boglarka','greta','triad'] as const)campaign(route,undefined,(s,id)=>{if(id==='rebeka_6'||id==='greta_3'||id==='greta_6'||SCENES[id].lines.some(l=>l.id.startsWith('romance_')))starts.set(id,s);});
  assert.equal(starts.size,19);
  for(const [id,start] of starts){
   const pending=[openScene(start,id,SCENES)];let terminals=0;
@@ -80,7 +80,7 @@ test('naming insecurity on the shared evening keeps the triad and all three affi
 });
 
 // Exercise the new stage graph through real earned campaign states, not edited save cursors.
-for(const girl of ['rebeka','boglarka','greta'] as const)test(girl+': private destination, local memory, kiss and goodbye share one saved activity',async()=>{
+for(const girl of ['rebeka','boglarka'] as const)test(girl+': private destination, local memory, kiss and goodbye share one saved activity',async()=>{
  const {gameView}=await import('./view.ts');
  const {sceneStage}=await import('./runtime.ts');
  let start:GameState|undefined;
