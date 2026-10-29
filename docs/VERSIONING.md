@@ -170,3 +170,7 @@ Schema4/content16 remain unchanged. The shared decoder now requires each complet
 This is a structural consistency check, not a reconstruction or authentication of all gameplay. Completed saves do not store choice order or historical global conditions. Mutable direction and other historical global choice gates are deliberately not evaluated against today's state. Bonds, money and the complete resource history are not replayed. Active cursor validation retains its stricter current-entry checks. Compatible valid saves keep their format, progression and epochs; no migration or forced restart.
 
 Validation: four generic regression cases cover exclusive/missing/local decisions, effect-free paths, changed direction, terminal effects, calendar conditions, overwritten ownership and cycle termination. A real Rebeka CLI load/import regression verifies `SAVE_INVALID` without changing the live view, revision or existing bytes. The full suite includes six annual public CLI campaigns and exhaustive relationship save roundtrips. See the tracker for final check results.
+
+## 0.9.18 — Hungarian folklore and estate history
+
+Schema 4/content 16 retained. Two additive optional scenes introduce new IDs and localized completion memories, leaving all existing cursor graphs, effects and gates intact. Existing saves load; passed event weeks stay passed. No migration or forced restart. A real pre-change 0.9.17 CLI save was checked under the expanded catalog.

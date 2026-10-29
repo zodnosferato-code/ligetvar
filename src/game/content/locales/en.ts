@@ -1,3 +1,4 @@
+import {folkloreEn} from './folklore.en.ts';
 import {gretaExplorationEn} from './greta-exploration.en.ts';
 import {gretaYearEn} from './greta-year.en.ts';
 import {gretaEarlyEn} from './greta-early.en.ts';
@@ -18,6 +19,7 @@ import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
+  ...folkloreEn,
   ...gretaYearEn,
   ...gretaExplorationEn,
   ...gretaEarlyEn,

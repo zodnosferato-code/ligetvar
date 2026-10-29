@@ -81,3 +81,7 @@ Rebeka's `date_return_0` currently returns from Holdkör to the lake without sta
 ## Measured drawing extension — 28 October 2026
 
 [Map specification and positive/negative prompts](maps/MAP-GENERATION.md) provide exact footprint/room envelopes, doors, stair levels, shoreline, route centre lines, terrain guides and drawing scales. [JSON geometry](maps/estate-plan.json) and its [north-up SVG](maps/estate-plan.svg) are the measured reference. The larger main-house north–south dimension and attached service-annex placement clarify the earlier approximate footprint; room anchors and canonical walking times remain unchanged.
+
+## Hungarian world expansion — 29 October 2026
+
+[Hungarian world and folklore](HUNGARIAN-WORLD.md) adds the user-requested cultural and historical layer: a clearly fictional estate chronology, sourced real influences and character-specific memories. It preserves this document’s existing authority. Two optional bilingual gatherings introduce these details; the broader foundation is not all runtime dialogue. No folklore-based clue, new magical power, ancestry retcon or geometry change is implied.

@@ -255,3 +255,7 @@ Canonical `boglarka-personal.en.ts` and typed Hungarian translation cover `_3`/`
 ## Connected Boglárka arc — 0.9.9
 
 `boglarka-early.en.ts` and its typed Hungarian translation cover `_1`/`_2`: every assembled line, title, branch choice, reaction, stage label and journal. With the earlier `_3–6` passes, all six main personal scenes resolve in both languages with literal chosen-name substitution and identical progression. Fourteen public CLI years switch at every observed Boglárka node and restart 34 times at early choices; exhaustive tests traverse both window boundaries and periods. Content epoch13/schema4 reflects replaced old cursors and newly referenced persisted prose. Whole-game English/default migration, optional coffees and triad remain partial. [Evidence](design/PLAYTHROUGH-FINDINGS.md#boglárka-early-arc-validation--29-october-2026).
+
+## 0.9.18 — folklore gatherings
+
+`folklore.en.ts` is canonical; `folklore.hu.ts` is a key-checked Hungarian translation. Both new meetings localize titles, every line, choices, player name and journal. No whole-game coverage or default-language change is implied.

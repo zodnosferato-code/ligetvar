@@ -1,0 +1,456 @@
+{
+  "baseline": "32b5b6b9070bcbb5e52357a60c54d5dbd96b7010",
+  "kind": "scripted public CLI observations; not blind or human acceptance",
+  "runs": [
+    {
+      "route": "friendship",
+      "locale": "en",
+      "commands": 415,
+      "restartsAndLocaleRoundtrips": 2,
+      "ending": "friendship",
+      "week": 52,
+      "playedFolkloreNodes": [
+        {
+          "scene": "folklore_ivan",
+          "line": "admit",
+          "text": "Eventually. We kept the exercise. Lost the grand name. The workshop had enough of its own strangeness without borrowing someone else’s past."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "answer",
+          "text": "And did you tell him that?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "arrival",
+          "text": "For the week of Szent Iván, the group has gathered beneath the courtyard arcade. Rain ticks beyond its edge. Paper flames glow around a battery lantern; the linden stands dark above the wet paving."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "choice",
+          "text": "Then give this very modern lantern some company. A tune, or a seat beside the cherries?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "custom",
+          "text": "The old Szent Iván fires had songs, and in some places people jumped over them. Some jumps were read as marriage predictions. We’ve kept the gathering and left out the jumping."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "end",
+          "text": "When the bowl is empty, you stack the chairs under the arcade. Gréta switches off the lantern. You say your goodbyes in the courtyard; the path to the residences and the gallery stairs lead in different directions."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "fire",
+          "text": "The twenty-fourth falls in this week. We have cherries, somewhere dry to sit, and a fire that won’t burn my eyebrows off. I’m calling that a good start."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "memory",
+          "text": "When I first taught here, I tried calling a balance exercise a táltos trial. An older colleague asked which source I’d found it in. I hadn’t. I liked the sound."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "retort",
+          "text": "Excellent. I refuse to let my romantic prospects depend on my ability to clear a lantern."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "song_0",
+          "text": "My grandmother hummed while washing the dishes. I once asked her to do it again for a recording. She said she’d already washed everything."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "song_1",
+          "text": "A collector defeated by a clean kitchen."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "song_2",
+          "text": "I was thirteen. I’d just discovered that Bartók and Kodály collected songs and thought owning a recorder made me ready. Now I’d start by asking what she liked singing."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "song_3",
+          "text": "She hums a short phrase, then changes its ending until she likes it. You repeat the easier half. Rebeka supplies an extravagant final note; Gréta nearly loses a cherry laughing."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "song_4",
+          "text": "That one is ours. No archive number."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "arrival",
+          "text": "In the east-wing library, Boglárka has covered a table with newspaper. A shallow dish, a packet of wheat and a book compete for the only clean patch. Beyond the high windows, bare branches interrupt the distant lake."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "end",
+          "text": "Before leaving, you help fold the newspaper around the loose husks. Boglárka keeps the wheat for the thirteenth. You leave her at the library table and return through the entrance gallery; nothing has grown in a single afternoon."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "frame",
+          "text": "Then I want a photograph of the cupboard. Preferably with the enormous portrait looking offended in the background."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "history",
+          "text": "Look at this reading-room card. Ilona Sárközi, 1892. She paid for evening lessons on the estate. The family portrait gets a whole wall; her little cupboard of books gets three lines."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "joke",
+          "text": "So the family gave up breakfast for agriculture. Mine would have photographed the breakfast and claimed it was still there."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "marton",
+          "text": "Did you keep it for the prediction, or because you liked watching it grow?"
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "offer",
+          "text": "There’s room beside me, CLI route tester. We can sort the wheat, or rescue this tree from the book before Gréta plants something in it."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "reply",
+          "text": "We ate standing up. The wheat sat. By Christmas it had the best place in the house."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "seed",
+          "text": "Luca day is on the thirteenth. I’m getting the wheat ready for it. At home, my grandmother always found room for one more dish, even when there was nowhere left to put breakfast."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "teleki",
+          "text": "She wrote that reading about Teleki Blanka’s school gave her the idea. Teleki opened hers in Pest in 1846. Not here, whatever the campus tour manages to imply."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "want",
+          "text": "I liked having something green that hadn’t come out of a box. The harvest prediction belonged to the story she told while watering it. I wanted the story too."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "wheat_0",
+          "text": "You pull up a chair and tip a few grains into your palm. Boglárka removes a splinter of husk with the solemn care of someone disarming a very small trap."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "wheat_1",
+          "text": "My contribution to the harvest: finding the one thing in this packet that isn’t wheat."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "wheat_2",
+          "text": "A promising start. My grandmother would already have given you another dish."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "wheat_3",
+          "text": "I used to like the people who opened schools. Now I keep wondering who found enough chairs. That isn’t the same as wanting to spend my evening counting ours."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "wheat_4",
+          "text": "Gréta sits on the last free chair. The packet passes around the table; for a while, the only work anyone does is separating wheat from chaff."
+        }
+      ]
+    },
+    {
+      "route": "boglarka",
+      "locale": "hu",
+      "commands": 496,
+      "restartsAndLocaleRoundtrips": 2,
+      "ending": "boglarka",
+      "week": 52,
+      "playedFolkloreNodes": [
+        {
+          "scene": "folklore_ivan",
+          "line": "admit",
+          "text": "Végül igen. A gyakorlat megmaradt, a hangzatos név nem. Volt a műhelynek elég saját furcsasága, nem kellett hozzá kölcsönvenni mások múltját."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "answer",
+          "text": "És ezt meg is mondtad neki?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "arrival",
+          "text": "Szent Iván hetére az udvari árkád alá gyűlt a társaság. A peremén túl eső kopog. Papírlángok derengenek egy elemes lámpás körül; a hárs sötéten magasodik a vizes kövezet fölé."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "bench_0",
+          "text": "Leülsz a tál mellé. Rebeka lencsével lefelé teszi a fényképezőgépét a táskájára, és kinyújtja a lábát a papírtűz felé."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "bench_1",
+          "text": "Apám őrzött egy képeslapot egy ilyen kastélyról: Nádasdladány. Se kuka, se bevásárlást cipelő ember. Azt hittem, az ilyen házak valahogy a hétköznapokon kívül léteznek."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "bench_2",
+          "text": "És most?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "bench_3",
+          "text": "Most itt lakom egy mellett, és ugyanúgy elfogy a tiszta zoknim. Sokkal jobb téma. A pompás épület maradhat, de minket nem vághat le a képről."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "bench_4",
+          "text": "Akkor az én cseresznyemagjaimat hagyd a képen. Keményen megdolgoztam ezért a kis hegyért."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "choice",
+          "text": "Akkor tarts társaságot ennek a nagyon mai lámpásnak. Dúdolás, vagy egy hely a cseresznye mellett?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "custom",
+          "text": "A régi Szent Iván-i tüzekhez énekek tartoztak, és néhol át is ugrották őket. Az ugrásból házasságra is jósoltak. Az összejövetelt megtartottuk, az ugrást kihagytuk."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "end",
+          "text": "Amikor kiürül a tál, összerakjátok a székeket az árkád alatt. Gréta lekapcsolja a lámpást. Az udvaron elköszöntök; a lakóépületekhez vezető út és a galéria lépcsője másfelé visz."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "fire",
+          "text": "Erre a hétre esik huszonnegyedike. Van cseresznyénk, száraz ülőhelyünk, meg olyan tüzünk, ami nem égeti le a szemöldökömet. Kezdetnek megteszi."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "memory",
+          "text": "Amikor tanítani kezdtem itt, egy egyensúlygyakorlatot táltospróbának neveztem el. Egy idősebb kollégám megkérdezte, melyik forrásban találtam. Semelyikben. Tetszett a hangzása."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "retort",
+          "text": "Helyes. Nem vagyok hajlandó egy lámpás átugrására bízni a szerelmi életemet."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "arrival",
+          "text": "A keleti szárny könyvtárában Boglárka újságpapírral terített le egy asztalt. Egy lapos tál, egy zacskó búza és egy könyv verseng az egyetlen tiszta foltért. A magas ablakokon túl csupasz ágak takarják a távoli tavat."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "end",
+          "text": "Indulás előtt összehajtogatjátok az újságpapírt a szétszóródott pelyva körül. Boglárka félreteszi a búzát tizenharmadikára. A könyvtári asztalnál búcsúzol el tőle, és a bejárati galérián át indulsz vissza; egyetlen délután alatt még semmi sem nőtt ki."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "frame",
+          "text": "Akkor én a szekrényt akarom lefotózni. Lehetőleg úgy, hogy a hatalmas portré sértődötten nézzen a háttérben."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "history",
+          "text": "Nézzétek ezt az olvasószobai kartont. Sárközi Ilona, 1892. Ő fizette a birtok esti tanfolyamait. A családi portrénak egy egész fal jut; az ő kis könyvesszekrényének három sor."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "joke",
+          "text": "Szóval a család feláldozta a reggelit a mezőgazdaságért. Az enyém lefotózta volna, aztán azt mondja, hogy ott van az."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "marton",
+          "text": "A jóslás miatt tartottátok, vagy szeretted nézni, ahogy nő?"
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "offer",
+          "text": "Van mellettem hely, CLI route tester. Kiválogathatjuk a búzát, vagy kimenthetjük ezt a fát a könyvből, mielőtt Gréta beleültet valamit."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "reply",
+          "text": "Állva ettünk. A búza ült. Karácsonyra övé volt a legjobb hely a házban."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "seed",
+          "text": "Tizenharmadikán van Luca napja. Előkészítem hozzá a búzát. Otthon a nagymamám mindig szorított helyet még egy tálnak, akkor is, ha a reggeli már sehová sem fért."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "teleki",
+          "text": "Azt írta, hogy Teleki Blanka iskolájáról olvasva kapta az ötletet. Teleki 1846-ban, Pesten nyitotta meg az intézetét. Nem itt, bármit sejtessen is az egyetemi körbevezetés."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "tree_0",
+          "text": "Az égig érő fa. Egy egész másik világ az ágak fölött. Gyerekkoromban mindig rajzoltam hozzá még néhány ágat, mert nem akartam, hogy véget érjen a mászás."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "tree_1",
+          "text": "Én félúton elhelyeznék egy padot. Még egy hős is le akarhat ülni."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "tree_2",
+          "text": "És kész is a mi változatunk: egy férfi felmászik az égbe, hogy panaszkodjon az ülőhelyekre. Megnézném."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "tree_3",
+          "text": "A mi változatunk, igen. Nem csempészem bele a padot Kriza gyűjteményébe, mintha mindig is ott lett volna. A Vadrózsák 1863-ban jelent meg; eddig kibírta a bútoraink nélkül."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "tree_4",
+          "text": "Boglárka egy papírfecnire fát rajzol, rajta egy képtelenül kényelmes paddal. Feléd fordítja a lapot, hogy hozzárajzolhasd a létrát. A könyv biztos távolságban marad a ceruzától."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "want",
+          "text": "Szerettem, hogy van valami zöld, ami nem egy dobozból került elő. A termésjóslás ahhoz a történethez tartozott, amit locsolás közben mesélt. A történetet is szerettem."
+        }
+      ]
+    },
+    {
+      "route": "triad",
+      "locale": "en",
+      "commands": 655,
+      "restartsAndLocaleRoundtrips": 0,
+      "ending": "triad",
+      "week": 52,
+      "playedFolkloreNodes": [
+        {
+          "scene": "folklore_ivan",
+          "line": "admit",
+          "text": "Eventually. We kept the exercise. Lost the grand name. The workshop had enough of its own strangeness without borrowing someone else’s past."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "answer",
+          "text": "And did you tell him that?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "arrival",
+          "text": "For the week of Szent Iván, the group has gathered beneath the courtyard arcade. Rain ticks beyond its edge. Paper flames glow around a battery lantern; the linden stands dark above the wet paving."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "choice",
+          "text": "Then give this very modern lantern some company. A tune, or a seat beside the cherries?"
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "custom",
+          "text": "The old Szent Iván fires had songs, and in some places people jumped over them. Some jumps were read as marriage predictions. We’ve kept the gathering and left out the jumping."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "fire",
+          "text": "The twenty-fourth falls in this week. We have cherries, somewhere dry to sit, and a fire that won’t burn my eyebrows off. I’m calling that a good start."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "leave_0",
+          "text": "I’m heading in. Save my eyebrows a place in the legend."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "leave_1",
+          "text": "Both of them. We’re generous tonight."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "leave_2",
+          "text": "You wave from the gallery entrance. Under the arcade, their conversation goes on around the little paper fire."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "memory",
+          "text": "When I first taught here, I tried calling a balance exercise a táltos trial. An older colleague asked which source I’d found it in. I hadn’t. I liked the sound."
+        },
+        {
+          "scene": "folklore_ivan",
+          "line": "retort",
+          "text": "Excellent. I refuse to let my romantic prospects depend on my ability to clear a lantern."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "arrival",
+          "text": "In the east-wing library, Boglárka has covered a table with newspaper. A shallow dish, a packet of wheat and a book compete for the only clean patch. Beyond the high windows, bare branches interrupt the distant lake."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "frame",
+          "text": "Then I want a photograph of the cupboard. Preferably with the enormous portrait looking offended in the background."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "history",
+          "text": "Look at this reading-room card. Ilona Sárközi, 1892. She paid for evening lessons on the estate. The family portrait gets a whole wall; her little cupboard of books gets three lines."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "joke",
+          "text": "So the family gave up breakfast for agriculture. Mine would have photographed the breakfast and claimed it was still there."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "leave_0",
+          "text": "I’ll leave you the table. I’m glad the cupboard finally has a photographer."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "leave_1",
+          "text": "A demanding client. It refuses to turn its good side towards the light."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "leave_2",
+          "text": "You say goodbye and leave through the gallery. Behind you, Boglárka asks Gréta to move the book before the water arrives."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "marton",
+          "text": "Did you keep it for the prediction, or because you liked watching it grow?"
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "offer",
+          "text": "There’s room beside me, CLI route tester. We can sort the wheat, or rescue this tree from the book before Gréta plants something in it."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "reply",
+          "text": "We ate standing up. The wheat sat. By Christmas it had the best place in the house."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "seed",
+          "text": "Luca day is on the thirteenth. I’m getting the wheat ready for it. At home, my grandmother always found room for one more dish, even when there was nowhere left to put breakfast."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "teleki",
+          "text": "She wrote that reading about Teleki Blanka’s school gave her the idea. Teleki opened hers in Pest in 1846. Not here, whatever the campus tour manages to imply."
+        },
+        {
+          "scene": "folklore_luca",
+          "line": "want",
+          "text": "I liked having something green that hadn’t come out of a box. The harvest prediction belonged to the story she told while watering it. I wanted the story too."
+        }
+      ]
+    }
+  ]
+}

@@ -176,3 +176,7 @@ For Gréta use `--night-personal` on the standard itinerary to exercise nighttim
 ## Gréta later exploration policies — 0.9.14
 
 Add `--greta-exploration` to `--route greta --greta-year` to play dance38 and sketch44. `--dance-week 38..42` and `--sketch-week 44..47` select other legal dates; `--skip-dance` still plays sketch and checks its independent admission. Existing choice/restart/night/locale policies apply. These are offered-action policies, never forced scenes. [Nine reproduced itineraries and observations](design/playtests/2026-10-29-greta-exploration.json) cover midpoint/repeated intimacy, first intimacy later, no-sex, stopping, declining, skipping, latest windows, Hungarian nighttime and final withdrawal. Saves/transcripts use fresh paths; recreate them outside the repository as needed.
+
+## Optional Hungarian folklore — 0.9.18
+
+Use `node tools/cli-playthrough.mjs --route friendship --folklore --locale en --save NEW_PATH`. `--folklore-choice first|second|leave` selects each gathering’s activity or goodbye; `folkloreScenes` reports completed scene IDs. Luca preparations use week 11/day; Szent Iván company uses week 39/night. Combine with `--holidays --seasons` or a romance route; these meetings never grant romance/evidence. Existing example policies are unchanged without `--folklore`.

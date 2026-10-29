@@ -121,3 +121,7 @@ The `_1`/`_2` English-first/Hungarian pass completes deliberate bilingual revisi
 ## Gréta connected-arc checkpoint — 29 October 2026
 
 `_1`/`_2` complete deliberate bilingual passes across her six main meetings. She draws an absurd duck on a useful map, enjoys unsuccessful stone-skimming, shares an uneven snack and names attraction without using work as a pretext. Practical energy remains a strength and a source of humour, not a problem cured by one conversation. Original imperfect-company/shared-habit memories remain alternatives; refusal and departures are complete. Her later picnic, overplanned walk and shared-food commitment now have a personal beginning. INT2's midpoint/later exploration and wider yearly density remain unfinished. [Validation](PLAYTHROUGH-FINDINGS.md#gréta-early-arc-validation--29-october-2026).
+
+## Hungarian world expansion — 29 October 2026
+
+[Hungarian world and folklore](HUNGARIAN-WORLD.md) adds the user-requested cultural and historical layer: a clearly fictional estate chronology, sourced real influences and character-specific memories. It preserves this document’s existing authority. Two optional bilingual gatherings introduce these details; the broader foundation is not all runtime dialogue. No folklore-based clue, new magical power, ancestry retcon or geometry change is implied.

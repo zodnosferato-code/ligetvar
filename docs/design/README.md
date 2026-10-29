@@ -5,6 +5,7 @@
 Start here before changing gameplay, story, presentation or character design. All maintained design documents in this folder are written in English; this does not mean the game's Hungarian text has been localized.
 
 | Document | Responsibility |
+| [Hungarian world and folklore](HUNGARIAN-WORLD.md) | Sourced cultural influences, fictional estate chronology, personal history and two optional folklore meeting briefs |
 | [Castle geography](CASTLE-GEOGRAPHY.md) | Spatial authority: architecture, floors, measured paths, walking times, surroundings, ecology and future image continuity |
 | [Castle year, assets and map](CALENDAR-ASSETS.md) | Year calendar, weather/outfit selection, map meetings, folder and provenance contract |
 | --- | --- |

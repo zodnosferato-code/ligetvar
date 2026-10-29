@@ -4,6 +4,8 @@ import {createInterface} from 'node:readline';
 import {once} from 'node:events';
 import {fileURLToPath} from 'node:url';
 const args=process.argv.slice(2),option=(name,fallback)=>args.includes(name)?args[args.indexOf(name)+1]:fallback;
+const includeFolklore=args.includes('--folklore'),folkloreChoice=option('--folklore-choice','first');
+if(!['first','second','leave'].includes(folkloreChoice))throw new Error('Use --folklore-choice first|second|leave.');
 const includeSeasons=args.includes('--seasons'),seasonalChoice=option('--seasonal-choice','first'),timelineChoice=option('--timeline-choice','separate');
 if(!['first','second','leave'].includes(seasonalChoice)||!['separate','check'].includes(timelineChoice))throw new Error('Use --seasonal-choice first|second|leave and --timeline-choice separate|check.');
 const includeHolidays=args.includes('--holidays'),holidayChoice=option('--holiday-choice','join'),playedEvents=new Set();
@@ -44,6 +46,8 @@ async function scene(id){
   }
   const choices=view.actions.filter(a=>a.action.type==='choice'&&a.action.id!=='continue');
   const chosen=overrides.has(node)?choices.find(a=>a.action.id===overrides.get(node))
+   : id.startsWith('folklore_')&&choices.length
+   ? (folkloreChoice==='leave'?choices.find(a=>a.action.id==='leave'):choices[folkloreChoice==='second'?1:0])
    : id.startsWith('seasonal_')&&choices.length
    ? (seasonalChoice==='leave'?choices.find(a=>a.action.id==='leave'):choices[seasonalChoice==='second'?1:0])
    : id==='shared_4'?choices.find(a=>a.action.id===timelineChoice)
@@ -53,7 +57,7 @@ async function scene(id){
   view=await act((chosen??view.actions[0]).action);
  }
  if(view.phase==='scene')throw new Error('Scene budget exceeded');
- if(id.startsWith('holiday_')||id.startsWith('seasonal_'))playedEvents.add(id);
+ if(id.startsWith('folklore_')||id.startsWith('holiday_')||id.startsWith('seasonal_'))playedEvents.add(id);
  return view;
 }
 try{
@@ -84,14 +88,14 @@ try{
   if(required)v=await scene(required.action.id);
   if(week===storyWeeks[7]&&person!=='friendship')v=await act({type:'direction',id:person});
   for(const id of calendarPlan[week]??[]){if(args.includes('--night-personal')&&id.startsWith('greta_')&&v.period==='day')v=await act({type:'activity',kind:'rest'});if(!v.actions.some(a=>a.action.type==='scene'&&a.action.id===id))v=await act({type:'activity',kind:'rest'});v=await scene(id);}
-  while(v.phase==='planner'){const holiday=v.actions.find(a=>a.action.type==='scene'&&((includeHolidays&&a.action.id.startsWith('holiday_'))||(includeSeasons&&a.action.id.startsWith('seasonal_'))));v=holiday?await scene(holiday.action.id):await act({type:'activity',kind:'rest'});}
+  while(v.phase==='planner'){const holiday=v.actions.find(a=>a.action.type==='scene'&&((includeFolklore&&a.action.id.startsWith('folklore_'))||(includeHolidays&&a.action.id.startsWith('holiday_'))||(includeSeasons&&a.action.id.startsWith('seasonal_'))));v=holiday?await scene(holiday.action.id):await act({type:'activity',kind:'rest'});}
   await act({type:'advance'});
  }
  const expected=route==='withdraw'||overrides.get('greta_6/line_4')==='withdraw'?'estranged':route;
  if(response.view.phase!=='ending'||response.view.ending.relationship!==expected)throw new Error('Wrong ending');
  if(transcript)await send('transcript',{path:transcript});
  const coverage=await send('coverage'); // Current view is returned alongside coverage.
- console.log(JSON.stringify({route,commands,restarts,phase:coverage.phase,ending:coverage.ending.relationship,holidayScenes:[...playedEvents].filter(id=>id.startsWith('holiday_')),seasonalScenes:[...playedEvents].filter(id=>id.startsWith('seasonal_')),week:coverage.week,totalWeeks:coverage.totalWeeks,playedLines:response.coverage.playedLines.length,release:response.release,save}));
+ console.log(JSON.stringify({route,commands,restarts,phase:coverage.phase,ending:coverage.ending.relationship,folkloreScenes:[...playedEvents].filter(id=>id.startsWith('folklore_')),holidayScenes:[...playedEvents].filter(id=>id.startsWith('holiday_')),seasonalScenes:[...playedEvents].filter(id=>id.startsWith('seasonal_')),week:coverage.week,totalWeeks:coverage.totalWeeks,playedLines:response.coverage.playedLines.length,release:response.release,save}));
  await send('quit');child.stdin.end();
  const [code]=await once(child,'exit');if(code!==0)throw new Error('CLI exit '+code);
 }catch(error){child.kill();throw error;}

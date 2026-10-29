@@ -136,3 +136,7 @@ Rebeka and Boglárka retain their own places on the triad route; a shared evenin
 4. What concrete professional/secrecy stakes are enjoyable within a romance-first fantasy?
 
 The remaining specifics remain open. This review does not authorize a localization architecture, runtime schedule changes or edits to conversations.
+
+## Hungarian world expansion — 29 October 2026
+
+[Hungarian world and folklore](HUNGARIAN-WORLD.md) adds the user-requested cultural and historical layer: a clearly fictional estate chronology, sourced real influences and character-specific memories. It preserves this document’s existing authority. Two optional bilingual gatherings introduce these details; the broader foundation is not all runtime dialogue. No folklore-based clue, new magical power, ancestry retcon or geometry change is implied.

@@ -43,3 +43,7 @@ The current user request authorizes additional seasonal events. These extend the
 - **seasonal_summer — The Unofficial Championship.** Weeks 37–39 (10–24 June), daytime Békás lakeside, same ensemble; completed first workshop, summer season. A sheltered picnic and absurd stone-skimming rules give Gréta time away from tasks. Choose skimming, the picnic-table game, or early departure. Concrete reciprocal banter and packing up conclude both activity branches. Text works with calendar rain/clear weather by placing the basket under the existing shelter, without claiming an illustrated new stage.
 
 Both are once per year and cost one daytime slot. Neither charges money/points, gives bond bonuses, introduces investigation evidence, gates another scene, assumes the other event was played, or grants commitment. One locally witnessed activity decision is recorded only on completion. Three-week windows offer flexibility around the mandatory plot. Seasonal clothing/background selection uses existing resolvers and honest missing-art fallbacks; no new art is claimed.
+
+## Hungarian folklore gatherings — 29 October 2026
+
+[Refined briefs and sources](HUNGARIAN-WORLD.md) add Luca preparations in actualweek11/day and Szent Iván company in39/night. These use ordinary optional scenes with exact week windows and season requirements; they do not add `HOLIDAYS` identities, event-specific outfits or calendar badges. They appear as available meetings in the existing planner/map/CLI. Battery lantern and grain are narrated props; new painted art remains unproduced.

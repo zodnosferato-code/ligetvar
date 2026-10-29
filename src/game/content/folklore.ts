@@ -1,0 +1,213 @@
+/** Optional cultural company; actual weekly dates, no investigation or romance rewards. */
+import {scene} from './authoring.ts';
+import {message,storedMessage} from './scene-localization.ts';
+import type {folkloreEn} from './locales/folklore.en.ts';
+import type {ActorId,Line,Scene} from './types.ts';
+type Part='luca'|'ivan';
+type Key=keyof typeof folkloreEn;
+const key=(part:Part,id:string)=>('folklore.'+part+'.'+id) as Key;
+const rows:Record<Part,[string,ActorId][]>= {
+  "luca": [
+    [
+      "arrival",
+      "narrator"
+    ],
+    [
+      "seed",
+      "boglarka"
+    ],
+    [
+      "joke",
+      "rebeka"
+    ],
+    [
+      "reply",
+      "boglarka"
+    ],
+    [
+      "marton",
+      "marton"
+    ],
+    [
+      "want",
+      "boglarka"
+    ],
+    [
+      "history",
+      "greta"
+    ],
+    [
+      "teleki",
+      "boglarka"
+    ],
+    [
+      "frame",
+      "rebeka"
+    ],
+    [
+      "offer",
+      "boglarka"
+    ],
+    [
+      "wheat_0",
+      "narrator"
+    ],
+    [
+      "wheat_1",
+      "marton"
+    ],
+    [
+      "wheat_2",
+      "boglarka"
+    ],
+    [
+      "wheat_3",
+      "greta"
+    ],
+    [
+      "wheat_4",
+      "narrator"
+    ],
+    [
+      "tree_0",
+      "boglarka"
+    ],
+    [
+      "tree_1",
+      "marton"
+    ],
+    [
+      "tree_2",
+      "rebeka"
+    ],
+    [
+      "tree_3",
+      "boglarka"
+    ],
+    [
+      "tree_4",
+      "narrator"
+    ],
+    [
+      "end",
+      "narrator"
+    ],
+    [
+      "leave_0",
+      "marton"
+    ],
+    [
+      "leave_1",
+      "rebeka"
+    ],
+    [
+      "leave_2",
+      "narrator"
+    ]
+  ],
+  "ivan": [
+    [
+      "arrival",
+      "narrator"
+    ],
+    [
+      "fire",
+      "greta"
+    ],
+    [
+      "custom",
+      "boglarka"
+    ],
+    [
+      "retort",
+      "rebeka"
+    ],
+    [
+      "memory",
+      "marton"
+    ],
+    [
+      "answer",
+      "boglarka"
+    ],
+    [
+      "admit",
+      "marton"
+    ],
+    [
+      "choice",
+      "greta"
+    ],
+    [
+      "song_0",
+      "boglarka"
+    ],
+    [
+      "song_1",
+      "marton"
+    ],
+    [
+      "song_2",
+      "boglarka"
+    ],
+    [
+      "song_3",
+      "narrator"
+    ],
+    [
+      "song_4",
+      "boglarka"
+    ],
+    [
+      "bench_0",
+      "narrator"
+    ],
+    [
+      "bench_1",
+      "rebeka"
+    ],
+    [
+      "bench_2",
+      "marton"
+    ],
+    [
+      "bench_3",
+      "rebeka"
+    ],
+    [
+      "bench_4",
+      "greta"
+    ],
+    [
+      "end",
+      "narrator"
+    ],
+    [
+      "leave_0",
+      "marton"
+    ],
+    [
+      "leave_1",
+      "greta"
+    ],
+    [
+      "leave_2",
+      "narrator"
+    ]
+  ]
+};
+function gathering(part:Part):Scene {
+ const luca=part==='luca',week=luca?11:39;
+ const s=scene('folklore_'+part,message(key(part,'title')),'conversation',week,week,luca?'library':'courtyard',
+  ['marton','rebeka','boglarka','greta'],[],{scenes:['shared_1'],calendar:{seasons:[luca?'winter':'summer']}},[],storedMessage(key(part,'journal')),undefined,[luca?'day':'night']);
+ s.entry='arrival';
+ const branches=luca?['wheat','tree','leave']:['song','bench','leave'];
+ const menu=luca?'offer':'choice';
+ s.lines=rows[part].map(([id,speaker],i):Line=>{
+  const next=id==='end'||id==='leave_2'?undefined:id.endsWith('_4')?'end':rows[part][i+1]?.[0];
+  return {id,speaker,...message(key(part,id)),expression:speaker==='narrator'?'neutral':'amused',
+   ...(id===menu?{choices:branches.map(branch=>({id:branch,...message(key(part,'choose.'+branch)),next:branch+'_0',reaction:'',effect:{decisions:['folklore_'+part+'_'+branch]}}))}:next?{next}:{})};
+ });
+ return s;
+}
+export const folklore=[gathering('luca'),gathering('ivan')];
