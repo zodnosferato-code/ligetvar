@@ -1,3 +1,4 @@
+import {boglarkaEarlyHu} from './boglarka-early.hu.ts';
 import {boglarkaLaterHu} from './boglarka-later.hu.ts';
 import {boglarkaPersonalHu} from './boglarka-personal.hu.ts';
 import {rebekaEarlyHu} from './rebeka-early.hu.ts';
@@ -10,6 +11,7 @@ import {holidaysHu} from './holidays.hu.ts';
 import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
+  ...boglarkaEarlyHu,
   "ui.resources": "Erőforrások",
   "ui.calendar": "Naptár",
   "hub.actions": "Szobai tevékenységek",

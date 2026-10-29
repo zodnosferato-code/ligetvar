@@ -251,3 +251,7 @@ Canonical `rebeka-early.en.ts` and typed Hungarian translation complete `_1`/`_2
 ## Boglárka date and aftermath — 0.9.6
 
 Canonical `boglarka-personal.en.ts` and typed Hungarian translation cover `_3`/`_6`: dialogue, choices, titles, stage labels, reactions and journals. Chosen names resolve literally; public CLI switches both ways at every observed node, including refusals, slow pace and private alternatives. Schema4/content11 reflects replaced assembled graphs and locale-neutral persisted text. Other Boglárka scenes, whole-game English and default-language migration remain partial.
+
+## Connected Boglárka arc — 0.9.9
+
+`boglarka-early.en.ts` and its typed Hungarian translation cover `_1`/`_2`: every assembled line, title, branch choice, reaction, stage label and journal. With the earlier `_3–6` passes, all six main personal scenes resolve in both languages with literal chosen-name substitution and identical progression. Fourteen public CLI years switch at every observed Boglárka node and restart 34 times at early choices; exhaustive tests traverse both window boundaries and periods. Content epoch13/schema4 reflects replaced old cursors and newly referenced persisted prose. Whole-game English/default migration, optional coffees and triad remain partial. [Evidence](design/PLAYTHROUGH-FINDINGS.md#boglárka-early-arc-validation--29-october-2026).

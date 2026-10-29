@@ -1,3 +1,4 @@
+import {boglarkaEarlyEn} from './boglarka-early.en.ts';
 import {boglarkaLaterEn} from './boglarka-later.en.ts';
 import {boglarkaPersonalEn} from './boglarka-personal.en.ts';
 import {rebekaEarlyEn} from './rebeka-early.en.ts';
@@ -12,6 +13,7 @@ import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
+  ...boglarkaEarlyEn,
   "ui.resources": "Resources",
   "ui.calendar": "Calendar",
   "hub.actions": "Room activities",

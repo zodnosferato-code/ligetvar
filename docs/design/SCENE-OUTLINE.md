@@ -257,3 +257,17 @@ Approved continuation of her connected arc, `_4`/`_5`; English first, Hungarian 
 | Change/exit | A present disagreement about leading with a story or argument reveals her fear of dismissal and wish to be liked. Player tries two distinct readings; she revises without surrendering authorship. Continuing the relationship is a separate choice from editorial taste. Withdrawal has an ordinary departure. | She names her wish for a relationship without academic excuses. Commit or withdraw; commitment chooses music or a concert invitation, recording original future memories. Plans remain unscheduled, article unfinished; `_6` later supplies submission and actual continuation. |
 
 Retain distinct voices: precise observation, dry tea joke, self-directed revision, reciprocal player admission of procrastination. No forced apology, permission ritual, automatic touch or supernatural clue. `_1`/`_2` remain the next English-first connected writing targets.
+
+## Refined early Boglárka briefs — 29 October 2026
+
+Authorized next connected batch: `_1`/`_2`, canonical English followed by Hungarian translation. Preserve the existing admission, original interest/attraction/refusal effects and `boglarka_quiet`/`boglarka_listening` memories consumed by later dates. No new evidence, third-party scandal resolution, off-screen messages or relationship milestones.
+
+| Check | `boglarka_1` | `boglarka_2` |
+| --- | --- | --- |
+| Actual time | Weeks2–50, 8Oct2026–9Sep2027; day/night, after shared_2. | Weeks6–50, 5Nov2026–9Sep2027; day/night. |
+| Prior contact | Workshop witnessed; no prior private meeting, coffee or source-help assumed. | `_1` interest witnessed, may be same week/preceding slot or many months earlier. No fixed yesterday/last-week claim. |
+| Entry knowledge | Her own collection and credited-name grievance are personal work, not vampire evidence. Player knows only what she shows now. | She still owns an unfinished article; the player engaged with either her wording or letter. No presumed chosen first branch or romance. |
+| Physical state | East-wing ground-floor library table; folktale transcription, circulated draft, correction-letter drafts, pencil and her folder. Both seated apart; no outfit/weather assumptions. | Two chairs in library window alcove, two cups she brings and her own paperback containing a loose handwritten bookmark. No weather or lake sightline claimed. |
+| Change/exit | Read a particular folklore passage before discussing credit. Two approaches: remove apologies from correction letter, or defend the original “perhaps.” She writes one concrete sentence, keeps her papers and initiates the goodbye. Refusal returns requested book and ends normally. No letter sent or dispute resolved on player's behalf. | She invites playful rival interpretations of her own bookmark, then plainly names attraction. Yes leads to quiet/shared-nervousness replies with existing memories; friendship accepts disappointment without touch. Pack away book/cups and part at library door; proposed next invitation has no fixed date. |
+
+Show precision and dry humor without making her permanently defensive. A folktale passage is invented ordinary reading, explicitly unrelated to the disappearance investigation; do not insert a clue, new magical rule or completed off-screen shared encounter. No physical escalation in either scene. Every branch uses the same present props and a natural departure; later `_3` retains the first date/kiss and `_6` the eventual submission.

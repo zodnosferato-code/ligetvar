@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.8`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.9`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `12`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `13`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -125,3 +125,8 @@ Schema4/content**12**. `_4`/`_5` replace assembled cursor graphs and persisted j
 ## Interface visibility — 0.9.8
 
 Presentation-only update: schema 4/content 12 unchanged from 0.9.7. Resource visibility, responsive room navigation, availability badges and motion do not change saved state or story progression.
+
+
+## Boglárka early meetings — 0.9.9
+
+Schema4 remains; content epoch13 replaces12. The assembled `_1`/`_2` graphs remove old opening/romance cursor nodes and replace persisted prose with locale-neutral message references. Existing epoch12 saves intentionally require a fresh year; no migration or automatic overwrite. Original scene IDs, admission, consequential choices/effects and later quiet/listening memories remain. This is a content compatibility change, not a new state shape. The preceding 0.9.8 UI changes are retained. [Validation](design/PLAYTHROUGH-FINDINGS.md#boglárka-early-arc-validation--29-october-2026).
