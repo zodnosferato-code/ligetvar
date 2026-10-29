@@ -14,6 +14,11 @@ The user approved these contrasts on 19 October 2026. They guide speech, initiat
 
 Remove repetitive permission asking and abstract reassurance speeches during the scene-by-scene rewrite. Let people answer questions directly, make ordinary offers, tease, hesitate and act. One stated preference followed in action is stronger than several characters repeating its principle. Consequential invitations and refusals remain meaningful choices; express them in each character's own voice, without a formal approval exchange for every harmless step. This is a writing direction, not a bulk mechanical replacement of phrases across unreviewed scenes.
 
+## Ongoing intimate relationships — user direction, 29 October 2026
+
+Follow [the year-long progression contract](GAME-DESIGN.md#relationship-progression-across-the-year--29-october-2026): first optional sexual intimacy around the midpoint, continued later-half exploration and ordinary affection, then an ending about a lived relationship. Existing six-meeting bilingual coverage below does not mean that arc is complete. Give each woman distinct desires, initiative, uncertainty, humor and changing familiarity before and after fades; avoid making all routes repeat the same first-time scene. Carry witnessed intimacy or slower/refusal history into later dialogue. Virág retains early casual encounters and no commitment finale; the triad preserves each pair's independent development. Do not invent off-screen participation to fill the missing months.
+
+
 ## Expanded character profiles
 
 ### Rebeka Dorn

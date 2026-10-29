@@ -22,6 +22,26 @@ Give intimacy a meaningful narrative place: character-specific attraction and pa
 
 This is the current authoring contract, not a claim that every existing branch has been rewritten. INT1 in the [tracker](TRACKER.md) records the remaining branch audit and implementation acceptance.
 
+## Relationship progression across the year — 29 October 2026
+
+**User-approved requirement:** sexual intimacy should begin around the middle of the game and develop through its later half. It must not be reserved as a single encounter at the end of a route. This supersedes the ending-only pacing implicit in the current six-meeting individual scaffold and the week-50 triad encounter. It extends, rather than replaces, the fade-to-black presentation decision above.
+
+| Phase | Required relationship experience |
+| --- | --- |
+| First half | Character-specific attraction, reciprocal conversation, dates and growing affection; establish reasons to want time together beyond solving the mystery. |
+| Around the midpoint | Offer the first mutually chosen sexual intimacy on a pursued adult romance route, with timing appropriate to that character. The midpoint means roughly the middle of the 52-week campaign, not chapter8 or the final commitment window. It is an opportunity, never a compulsory action or a deadline to accept. |
+| Later half, before the climax | Provide several distinct optional meetings that develop an ongoing intimate relationship. Explore desire, preferences, initiative, vulnerability, awkwardness and growing familiarity through non-graphic conversation, chosen closeness, fade-to-black where appropriate, and meaningful aftermath. Include ordinary affection, humor, dates and time together between sexual encounters. |
+| Ending and aftermath | Resolve what this already lived relationship means for the future and how the year's events affect it. A final intimate scene may be included, but cannot be the route's only sexual encounter or substitute for the later-half development. |
+
+Acceptance requires a playable connected arc, not moving one fade earlier, repeating an unchanged encounter, or asserting unseen intimacy in a journal/epilogue. Later scenes must respond to witnessed choices: an established intimate relationship, a slower pace, refusal of a particular encounter, or changed preferences. Declining one encounter must not automatically end the romance, grant unchosen physical history or remove worthwhile later company. Sex is not a prerequisite for commitment, investigation success or a valid ending. Formal commitment and first sexual intimacy are separate developments; review their prerequisites and windows so a week48–50 commitment gate cannot silently force intimacy back to the finale.
+
+Preserve distinct voices and individual initiative. The Rebeka–Boglárka relationship and both relationships with Márton develop independently; individual intimacy never implies agreement to group intimacy. The triad also needs ongoing later-half exploration, rather than one encounter in week50. Virág retains her approved early/casual sexual direction, no final-date or commitment requirement, and independent professional success; her later chapters still need continued personal exploration rather than becoming only case updates. No exclusive or new partner arrangement is authorized by this pacing decision.
+
+Fade-to-black controls how sexual acts are presented, not how often relationships develop. Keep invitations and choices natural, retain reconsideration and departure, and return to character-specific conversation/care/changed familiarity. No graphic prose or art is required. Existing clothing/private-gift proposals remain separate proposals; purchases must not buy intimacy.
+
+**Implementation boundary:** this is an approved writing/scheduling requirement, not a claim of shipped expansion. At reviewed main `9acff02`, Rebeka/Boglárka/Gréta each have only one optional sexual fade in week52; their earlier dates offer affection/kisses. Triad has one encounter in week50; Virág has encounters available from weeks2/16 but sparse later exploration. Coffee/outing/seasonal company does not close this gap. Exact scene counts, per-character dates, new IDs, commitment windows and save impacts must be specified in the connected scene briefs before implementation. Keep the 52-week calendar, two discretionary slots, mandatory ending order, knowledge rules and generic engine/content separation. Track delivery in INT2 in [the tracker](TRACKER.md).
+
+
 ## Foundations retained from older writing
 
 The shared work gives each woman her own reason to participate: photography/documentation, folklore/source analysis, or organization/records. Each should contribute judgment and pursue goals beyond romance. Everyday college details and quiet decompression after frightening events keep the setting lived-in.

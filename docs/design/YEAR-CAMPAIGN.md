@@ -10,6 +10,11 @@ This is the calendar and engine expansion, not a claim that the year has a finis
 
 The early opening is contiguous so its tomorrow/next-week arrangements remain coherent. Later gaps create space for optional relationships, outings and future writing. The existing clue order remains; the year places identity corroboration in week 40, the existing confession in 43, confrontation in 51, institutional aftermath and personal follow-ups in 52. Further refinement of the late reveal and the multi-route report's continuity issues remains STORY work.
 
+## Required relationship pacing — 29 October 2026
+
+The [approved relationship structure](GAME-DESIGN.md#relationship-progression-across-the-year--29-october-2026) requires an optional sexual-intimacy opportunity around the midpoint of the 52-week campaign, followed by several later-half exploration meetings and ordinary affectionate time. A first encounter confined to week52 (or one triad encounter in 50) does not satisfy it. The current commitment windows and six-meeting scaffold are implementation limitations to review, not a mandated wait until the ending. Exact per-route weeks/prerequisites remain to be planned; keep 104 discretionary slots, mandatory chapter dates and ending order. Slower/refusal paths must remain feasible and meaningful. This documentation decision adds no scenes or runtime schedule changes; INT2 tracks the missing expansion.
+
+
 ## Authoritative schedule
 
 `src/game/content/calendar.ts` owns total weeks, story dates and milestones. It also supplies 52 UTC presentation dates from 1 October 2026 to the week beginning 23 September 2027, seasons, illustrative weather and Christmas clothing. The existing calendar/map/asset work from commit `945171b1940fc714e114870771a02af10ad6ca41` is preserved and integrated with the playable weeks. No alternate duration selector or legacy 16-week runtime is retained.

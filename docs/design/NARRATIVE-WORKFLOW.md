@@ -8,6 +8,17 @@ Record problems first. Do not patch dialogue as problems arise during the baseli
 ## Writing language — 28 October 2026
 English is the canonical source for new and revised dialogue, narration, choices and accompanying text. Hungarian is translated from the reviewed English version. English is also the approved target default player language; runtime migration remains pending under [LOCALIZATION.md](../LOCALIZATION.md). Preserve character names/accents and interpolate the chosen player name. Review Hungarian again whenever its English source changes. This supersedes Hungarian-first authorship, not the findings-first planning/rewrite cycle.
 
+## Required relationship-arc expansion — 29 October 2026
+
+The user's [year-long relationship progression requirement](GAME-DESIGN.md#relationship-progression-across-the-year--29-october-2026) overrides older handoffs that treat polishing six existing meetings as completion. Retain their useful prose and branch repairs, but do not preserve ending-only intimacy as a design constraint.
+
+Before the next relationship rewrite, map the selected route across actual calendar weeks: attraction/date, first optional sexual intimacy around the midpoint, several later-half exploration meetings, ordinary affectionate time, commitment and aftermath. Identify what exists, what must be added, admission/prerequisite changes and dependencies on the independent/triad arcs. Refine this connected plan in SCENE-OUTLINE before implementing one/two-scene batches. Planning the arc does not authorize a bulk rewrite, a new engine architecture or an arbitrary fixed timetable for every woman.
+
+Each later meeting needs a distinct activity or personal development, entry intimacy/pace history, offered physical choices, resulting witnessed memories, aftermath and next callback. Write meaningful alternatives for first-time, already-intimate and slower/no-sex histories as applicable; do not imply that the player accepted an earlier encounter. Character-specific exploration can be emotional, conversational or physical without every meeting ending in sex. English remains canonical, Hungarian its reviewed translation.
+
+Validation must follow a route that chooses midpoint intimacy and at least two later exploration meetings through week52, plus a slower/refusal path that retains the romance and avoids invented sexual history. Check earliest/latest feasible scheduling, skipped optional events, ordinary company, distinct individual/triad agreements, save/restart and locale switching. Verify that the week48–50 commitment gate no longer prevents the planned midpoint opportunity where dependencies change. Keep required plot/ending order and one-slot costs. Record actual coverage and gaps under INT2; a translated six-scene pass or one final fade cannot satisfy this gate.
+
+
 ## Sources and order
 1. **Master plot:** [STORY-REVIEW.md](STORY-REVIEW.md) is the maintained overall plot/semester outline. Its confirmed direction and explicitly proposed beats remain distinct; this workflow does not approve every proposed detail. Preserve its source-review findings as context.
 2. **Characters:** [CHARACTER-VOICES.md](CHARACTER-VOICES.md) owns personality, motives and speech; [CHARACTER-VISUALS.md](CHARACTER-VISUALS.md) owns appearance. Reconcile contradictions with the master plot explicitly, asking the user about material story/character decisions.

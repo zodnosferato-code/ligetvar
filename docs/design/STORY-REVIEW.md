@@ -14,6 +14,11 @@ Playtest recommendations (late Soma reveal weeks 13–14, less bureaucratic shar
 
 Review evidence: current main's catalog, shared spine, opening expansion, relationship foundations and windows, triad, preparation scenes, rules, epilogues, current game design, voice coverage and Virág contract. Opening overrides were read; relationship expansion coverage was consulted through its current voice document, not certified by a complete branch-by-branch literary audit. No gameplay run, timing measurement or conversation modification was performed. This is a structural/editorial review, not complete proofreading.
 
+## Approved relationship pacing correction — 29 October 2026
+
+The user requires first optional sexual intimacy around the middle of the game and continued exploration through its later half. [The game-design contract](GAME-DESIGN.md#relationship-progression-across-the-year--29-october-2026) is authoritative: attraction/dating → midpoint intimacy opportunity → several later meetings exploring an ongoing relationship alongside ordinary affection → future-facing ending. This supersedes ending-only intimacy implicit in earlier outline/scaffold descriptions. Fade-to-black remains the presentation style. Historical chapter/semester sections below do not fix the new encounters' actual-year dates. Character pacing differs; slower/no-sex romance remains viable. Virág keeps her earlier casual direction; triad progression preserves three independent relationships and separate group choices. Existing rewrites do not yet satisfy this full-year requirement; plan connected scene additions and schedule dependencies before the next implementation batch.
+
+
 ## Master plot and scene planning — 28 October 2026
 
 This remains the maintained master plot. The user authorized drafting scene-by-scene descriptions against this plot and the character documentation, with questions for drastic direction changes. [SCENE-OUTLINE.md](SCENE-OUTLINE.md) now covers all 68 current scene IDs as an editorial draft. Detailed timing, clues, favourite-place assignments and interlude framing explicitly marked proposed remain unresolved; the drafting authorization does not approve every proposed detail. No dialogue/runtime rewrite is included.

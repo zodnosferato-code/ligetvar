@@ -11,6 +11,11 @@ Confirmed anchors: romance first; sixteen weeks; genuine mystical gymnastics; So
 
 Editorial proposals: identification in week 13, corroboration/plan in 14; earlier commitment windows; named favourite places for the three main women; clearly marked independent interludes. These elaborate existing recommendations, not new approved runtime rules. Do not add new magic rules, punitive authority consequences, different endings or cast relationships without discussing a material direction change.
 
+## Required connected relationship briefs — 29 October 2026
+
+The [approved year-long progression](GAME-DESIGN.md#relationship-progression-across-the-year--29-october-2026) takes precedence over all older six-scene and ending-only intimacy briefs below. Existing rewritten scenes remain usable foundations, not a complete relationship arc. Before further route implementation, extend its connected brief with actual week windows for first optional sexual intimacy around the midpoint, several distinct later-half exploration meetings and ordinary affection, then commitment/aftermath. Record slower/refusal/already-intimate variants, witnessed memories, independent triad agreements, time gaps and feasible slot/prerequisite changes. Do not merely move `_6` earlier or promise off-screen encounters. Exact new scene IDs/counts and character-specific dates are to be authored; this requirement does not itself change runtime admission. INT2 in TRACKER owns delivery status.
+
+
 ## Refined pilot specification: shared_1 — 28 October 2026
 
 User-authorized English-first pilot; supersedes only the draft shared_1 row's level of detail. English source: `locales/opening.en.ts`; Hungarian translation: `locales/opening.hu.ts`. Implementation keeps the assembled 28-node graph, semantic keys and both choice IDs.
