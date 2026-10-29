@@ -1,3 +1,4 @@
+import {gretaExplorationHu} from './greta-exploration.hu.ts';
 import {gretaYearHu} from './greta-year.hu.ts';
 import {gretaEarlyHu} from './greta-early.hu.ts';
 import {gretaLaterHu} from './greta-later.hu.ts';
@@ -16,6 +17,7 @@ import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
   ...gretaYearHu,
+  ...gretaExplorationHu,
   ...gretaEarlyHu,
   ...gretaPersonalHu,
   ...gretaLaterHu,

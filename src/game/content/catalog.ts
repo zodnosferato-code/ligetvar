@@ -1,3 +1,4 @@
+import {gretaExploration} from './greta-exploration.ts';
 import {gretaYear} from './greta-year.ts';
 import {rewriteGretaEarly} from './greta-early.ts';
 import {rewriteBoglarkaEarly} from './boglarka-early.ts';
@@ -17,7 +18,7 @@ import {conversations} from './conversations.ts';
 import {outings} from './outings.ts';
 import {viragScenes} from './virag.ts';
 import {knowledge} from './knowledge.ts';
-const all=[...spine,...gretaYear,...foundations,...triad,...optional,...conversations,...outings,...viragScenes,...holidays,...seasonal].map(expandOpening).map(expandRomance).map(rewriteRebekaDate).map(rewriteBoglarkaLater).map(rewriteBoglarkaEarly).map(rewriteGretaEarly);
+const all=[...spine,...gretaYear,...gretaExploration,...foundations,...triad,...optional,...conversations,...outings,...viragScenes,...holidays,...seasonal].map(expandOpening).map(expandRomance).map(rewriteRebekaDate).map(rewriteBoglarkaLater).map(rewriteBoglarkaEarly).map(rewriteGretaEarly);
 if(new Set(all.map(s=>s.id)).size!==all.length)throw new Error('Duplicate scene ID');
 export const SCENES:Registry=Object.fromEntries(all.map(s=>[s.id,s]));
 export const EVIDENCE:Record<string,Evidence>=Object.fromEntries(all.flatMap(s=>s.evidence.map(id=>[id,{id,scene:s.id,text:knowledge[id]}])));

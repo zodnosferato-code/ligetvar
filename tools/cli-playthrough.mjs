@@ -72,6 +72,13 @@ try{
   calendarPlan[privateWeek]=[...(calendarPlan[privateWeek]??[]),'greta_private'];
   calendarPlan[companyWeek]=[...(calendarPlan[companyWeek]??[]),'greta_company'];
  }
+ if(args.includes('--greta-exploration')){
+  if(person!=='greta'||!args.includes('--greta-year'))throw new Error('--greta-exploration requires --route greta --greta-year');
+  const danceWeek=Number(option('--dance-week','38')),sketchWeek=Number(option('--sketch-week','44'));
+  if(!Number.isInteger(danceWeek)||danceWeek<38||danceWeek>42||!Number.isInteger(sketchWeek)||sketchWeek<44||sketchWeek>47)throw new Error('Use dance week38–42 and sketch week44–47.');
+  if(!args.includes('--skip-dance'))calendarPlan[danceWeek]=[...(calendarPlan[danceWeek]??[]),'greta_dance'];
+  calendarPlan[sketchWeek]=[...(calendarPlan[sketchWeek]??[]),'greta_sketch'];
+ }
  for(let week=1;week<=response.view.totalWeeks;week++){
   let v=response.view;const required=v.actions.find(a=>a.action.type==='scene'&&a.action.id.startsWith('shared_'));
   if(required)v=await scene(required.action.id);

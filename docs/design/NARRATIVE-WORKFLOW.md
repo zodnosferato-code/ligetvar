@@ -145,3 +145,8 @@ Gréta `_1`/`_2` now complete her six-main-meeting bilingual pass; [validation](
 ### Current continuation after 0.9.13
 
 Gréta's private28–32 and company33–37 meetings now exist in both languages. Do not repeat the midpoint addition. INT2 is Partial: next refine exploration38–42 after company, including already-intimate, quiet-company, declined and first-time alternatives; then44–47 and history-aware final callbacks. Preserve the original optionality of these additions and one-slot costs. [Evidence and limitations](PLAYTHROUGH-FINDINGS.md#gréta-midpoint-and-company-validation--29-october-2026). At least two later exploration meetings through52 remain required; this batch includes only one. Other routes still need their own annual plans and additions.
+
+
+### Current continuation after 0.9.14
+
+Gréta's dance38–42 and sketch44–47 now follow private28–32 and company33–37. [Nine scripted years](PLAYTHROUGH-FINDINGS.md#gréta-later-exploration-validation--29-october-2026) validate midpoint→several later meetings→week52 and slower/refusal paths. Do not repeat these additions. Next refine a focused `_6` callback pass for witnessed midpoint/dance/ordinary-time memories, with a fallback for skipped additions and withdrawal before touch. The original final scene is still playable and unchanged, but does not yet explicitly recall the annual additions. Other characters need their own annual plans; INT2 remains Partial overall. Keep the one/two-scene method and no new engine architecture.

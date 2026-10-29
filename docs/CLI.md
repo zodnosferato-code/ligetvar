@@ -171,3 +171,8 @@ For Gréta use `--night-personal` on the standard itinerary to exercise nighttim
 ## Gréta annual expansion policies — 0.9.13
 
 `--route greta --greta-year` adds the optional private meeting (default29) and company (default33) to the scripted itinerary. `--private-week 28..32` and `--company-week 33..37` exercise their legal windows. `--private-week 28` follows the daytime date with nighttime private time; do not combine that same-week itinerary with `--night-personal`, which would use the only nighttime slot for the date. For late catch-up use `--date-week 32 --private-week 32 --company-week 37`. Ordinary choice/restart overrides apply. Omit `--greta-year` to retain the original route and test skipped additions. These policies select offered public actions and cannot bypass admission or manufacture memories. [Reproduction commands and condensed observations](design/playtests/2026-10-29-greta-year.json).
+
+
+## Gréta later exploration policies — 0.9.14
+
+Add `--greta-exploration` to `--route greta --greta-year` to play dance38 and sketch44. `--dance-week 38..42` and `--sketch-week 44..47` select other legal dates; `--skip-dance` still plays sketch and checks its independent admission. Existing choice/restart/night/locale policies apply. These are offered-action policies, never forced scenes. [Nine reproduced itineraries and observations](design/playtests/2026-10-29-greta-exploration.json) cover midpoint/repeated intimacy, first intimacy later, no-sex, stopping, declining, skipping, latest windows, Hungarian nighttime and final withdrawal. Saves/transcripts use fresh paths; recreate them outside the repository as needed.

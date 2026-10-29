@@ -1,0 +1,2069 @@
+{
+  "baseline": "9cb6901",
+  "kind": "Scripted public CLI; not blind; no save editing. Condensed observed excerpts, not full transcripts. Commands reproduce full transcripts at fresh paths.",
+  "runs": [
+    {
+      "case": "repeated",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/repeated.save.json --transcript /tmp/greta-exploration-verified/repeated.transcript.json --restart-at greta_dance/further --restart-at greta_sketch/history",
+      "result": {
+        "route": "greta",
+        "commands": 531,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 88,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "arrival",
+          "text": "Gréta waits beneath the courtyard arcade. Her bag is on the bench. She takes two sideways steps, frowns at her feet, and notices me watching.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "request",
+          "text": "I have a favour to ask. A foolish one. I can keep a whole workshop moving and still lose track of my own feet when I try to dance.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "answer",
+          "text": "You may have chosen the wrong expert. I can offer enthusiasm and a reasonably convincing count to three.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "familiar",
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "familiar",
+          "text": "I remember laughing in your suite. I liked that part as much as the rest. I would like some more of it, without having to arrange a perfect occasion.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "offer",
+          "text": "Will you try a few steps with me? Or give me a rhythm from the bench. I keep speeding up when I get embarrassed.",
+          "choices": [
+            "steps",
+            "rhythm",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "steps",
+          "text": "I offer my hand. She takes it and rests her other hand on my shoulder. We try a small turning step while she hums. On the second turn, I tread on my own shoe.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "steps_reply",
+          "text": "That is considerate. I was expecting you to tread on mine.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "steps_answer",
+          "text": "Give me time. I am still finding my range.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "release",
+          "text": "We stop and let go, laughing. She tries the turn once more on her own, much more slowly.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "honest",
+          "text": "I nearly cancelled this idea. I wanted you to think I was good at it. Then I would have had to learn it alone before asking you.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "reply",
+          "text": "I would have missed the best part. I liked hearing you lose the tune because you were laughing.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "invite",
+          "text": "I liked you being here. I would like to go back to your suite for a while. No dance lesson. Just us.",
+          "choices": [
+            "room",
+            "outside",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room",
+          "text": "She collects her bag. We take the gallery and stairs to my suite, a walk of about five minutes. Inside, she puts the bag down by the chair and turns to me.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room_choice",
+          "text": "I would like to kiss you, CLI route tester. I am rather less worried about getting that wrong.",
+          "choices": [
+            "kiss",
+            "talk",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "kiss",
+          "text": "I tell her I would like that too and step towards her. She kisses me, then draws back just enough to look at me.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "further",
+          "text": "I want to stay. More than kissing, if you want that too.",
+          "choices": [
+            "again",
+            "stop",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "further",
+          "text": "Szeretnék maradni. Többet szeretnék a csóknál, ha te is.",
+          "choices": [
+            "again",
+            "stop",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "again",
+          "text": "Yes. And the bag is already safely out of the way. I am beginning to think I put it there on purpose.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "fade",
+          "text": "We choose to stay together. She takes my hand; the rest of our private time slips out of the telling.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "later",
+          "text": "Later, we sit with a glass of water each. Gréta taps the missing rhythm on the arm of her chair and suddenly remembers the tune.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "later_reply",
+          "text": "That was the bit. I knew it would come back if I stopped trying to win.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room_end",
+          "text": "When it is time to leave, Gréta retrieves her bag. At my door she gives me a last, deliberately terrible line of the song. I am still laughing as she heads for the stairs.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "arrival",
+          "text": "Gréta has spread two sheets of paper on the lakeside bench. A pencil keeps one corner from curling. She moves her bag to make room for me.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "paper",
+          "text": "I bought a sketchbook. It has been sitting unopened because I did not want to spoil the first page. So I brought ordinary paper. Much less intimidating.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "dance",
+            "later_private",
+            "midpoint",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "Felém nyújtja a ceruzát. A két üres lap kellemesen jelentéktelennek tűnik.",
+          "choices": [
+            "dance",
+            "later_private",
+            "midpoint",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "dance",
+          "text": "I thought of that tune when I bought it. We were allowed to be bad at something together. I wanted another go.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "subject",
+          "text": "We can draw each other. Or design a better bench. This one gives my bag more room than my knees.",
+          "choices": [
+            "portraits",
+            "bench"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "portraits",
+          "text": "We take turns with the pencil. I give her a determined chin and one enormous eyebrow. She draws me leaning so far forward that I seem about to fall off the paper.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "portrait_reply",
+          "text": "You do lean in like that when you want to know something. I like it. The elbow was an accident.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "portrait_answer",
+          "text": "Keep it. I have always wanted an elbow with ambition.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "pleasure",
+          "text": "I used to abandon things as soon as I was not improving. Drawing, running a different route, even finishing a book I liked slowly. I made all of them into races.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "question",
+          "text": "What do you do when nobody is there to be impressed? Something just for yourself.",
+          "choices": [
+            "sing",
+            "read"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "sing",
+          "text": "Sing badly. Start again halfway through because I like the beginning more. Sometimes I never get to the end.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "sing_reply",
+          "text": "I would listen to that. With complaints if you stopped at the best bit.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "keep",
+          "text": "I want to keep these. Both ridiculous pages. Or you can take one, if you want a reminder of my promising artistic career.",
+          "choices": [
+            "exchange",
+            "hers"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "hand_offer",
+          "text": "I am glad you came. I would like your hand for a little while. Or just stay and tell me what else you enjoy doing badly.",
+          "choices": [
+            "hand",
+            "company",
+            "leave"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "hand",
+          "text": "I take her offered hand. We sit beside the packed bag. Her thumb settles against mine; neither of us finds a reason to hurry.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "hand_reply",
+          "text": "I think I will use the first page. Something small. I am not promising it will be good.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "release",
+          "text": "We let go when we stand. She picks up her bag.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "slow",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/slow.save.json --transcript /tmp/greta-exploration-verified/slow.transcript.json --restart-at greta_dance/offer --restart-at greta_sketch/keep --choice greta_3/hand_offer=slow_touch --choice greta_3/bench=talk --choice greta_private/invite=outside --choice greta_company/hand_offer=company --choice greta_dance/offer=rhythm --choice greta_dance/invite=outside --choice greta_sketch/subject=bench --choice greta_sketch/question=read --choice greta_sketch/keep=hers --choice greta_sketch/hand_offer=company --choice greta_6/invitation=outside",
+      "result": {
+        "route": "greta",
+        "commands": 509,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 71,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "outside",
+          "text": "Then stay on the bench with me. I have exhausted my repertoire anyway.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "court_end",
+          "text": "Gréta picks up her bag. We say goodbye beneath the arcade; she is still humming when we turn in different directions.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "dance",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "dance",
+          "text": "I thought of that tune when I bought it. We were allowed to be bad at something together. I wanted another go.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "hers",
+          "text": "She folds both sheets and puts them in her bag with the pencil. I tell her I like them as they are. She leaves the eraser alone.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "company_end",
+          "text": "I explain the fate of a particularly stubborn omelette. Gréta laughs, offers one impractical improvement, and finally picks up her bag.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "first_later",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/first_later.save.json --transcript /tmp/greta-exploration-verified/first_later.transcript.json --restart-at greta_dance/first --restart-at greta_sketch/later_private --choice greta_private/invite=leave --choice greta_dance/offer=rhythm --choice greta_sketch/history=later_private",
+      "result": {
+        "route": "greta",
+        "commands": 522,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 87,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "first",
+          "text": "I am glad we took our time. Come here.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "first",
+          "text": "Örülök, hogy nem siettünk. Gyere ide.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "fade",
+          "text": "We choose to stay together. She takes my hand; the rest of our private time slips out of the telling.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room_end",
+          "text": "When it is time to leave, Gréta retrieves her bag. At my door she gives me a last, deliberately terrible line of the song. I am still laughing as she heads for the stairs.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "dance",
+            "later_private",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "later_private",
+          "text": "I liked staying with you after the dancing. And I like having something to look forward to that fits on a bench. Both, it turns out.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "later_private",
+          "text": "Jó volt veled maradni a tánc után. És az is jó, hogy olyasmit várhatok, ami elfér egy padon. Kiderült, hogy mindkettőt szeretem.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "reconsider",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/reconsider.save.json --transcript /tmp/greta-exploration-verified/reconsider.transcript.json --restart-at greta_dance/stop --restart-at greta_sketch/history --choice greta_private/room_choice=talk --choice greta_dance/further=stop --choice greta_sketch/hand_offer=company --choice greta_6/room_choice=talk",
+      "result": {
+        "route": "greta",
+        "commands": 524,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 84,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "quiet",
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "stop",
+          "text": "Then a kiss is plenty. Sit with me. I still owe you the end of that tune.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "stop",
+          "text": "Akkor elég a csók. Ülj ide mellém. Még tartozom a dallam végével.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "talk",
+          "text": "I used to hum through every part of a song I did not know. Eventually there were no words left.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room_end",
+          "text": "When it is time to leave, Gréta retrieves her bag. At my door she gives me a last, deliberately terrible line of the song. I am still laughing as she heads for the stairs.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "dance",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "Felém nyújtja a ceruzát. A két üres lap kellemesen jelentéktelennek tűnik.",
+          "choices": [
+            "dance",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "dance",
+          "text": "I thought of that tune when I bought it. We were allowed to be bad at something together. I wanted another go.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "company_end",
+          "text": "I explain the fate of a particularly stubborn omelette. Gréta laughs, offers one impractical improvement, and finally picks up her bag.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "decline",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/decline.save.json --transcript /tmp/greta-exploration-verified/decline.transcript.json --restart-at greta_dance/offer --restart-at greta_sketch/hand_offer --choice greta_private/invite=leave --choice greta_dance/offer=leave --choice greta_sketch/hand_offer=leave --choice greta_6/invitation=leave",
+      "result": {
+        "route": "greta",
+        "commands": 497,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 64,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "court_end",
+          "text": "Gréta picks up her bag. We say goodbye beneath the arcade; she is still humming when we turn in different directions.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "skip_dance",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/skip_dance.save.json --transcript /tmp/greta-exploration-verified/skip_dance.transcript.json --restart-at greta_sketch/history --skip-dance --choice greta_private/invite=leave --choice greta_sketch/subject=bench",
+      "result": {
+        "route": "greta",
+        "commands": 497,
+        "restarts": 1,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 89,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "Felém nyújtja a ceruzát. A két üres lap kellemesen jelentéktelennek tűnik.",
+          "choices": [
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "latest",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/latest.save.json --transcript /tmp/greta-exploration-verified/latest.transcript.json --restart-at greta_dance/room_choice --restart-at greta_sketch/history --date-week 32 --private-week 32 --company-week 37 --dance-week 42 --sketch-week 47 --choice greta_sketch/history=midpoint",
+      "result": {
+        "route": "greta",
+        "commands": 531,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 81,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 42,
+          "date": "2027-07-15",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "familiar",
+            "snack"
+          ]
+        },
+        {
+          "week": 42,
+          "date": "2027-07-15",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "again",
+          "text": "Yes. And the bag is already safely out of the way. I am beginning to think I put it there on purpose.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 42,
+          "date": "2027-07-15",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "fade",
+          "text": "We choose to stay together. She takes my hand; the rest of our private time slips out of the telling.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 42,
+          "date": "2027-07-15",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room_end",
+          "text": "When it is time to leave, Gréta retrieves her bag. At my door she gives me a last, deliberately terrible line of the song. I am still laughing as she heads for the stairs.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 47,
+          "date": "2027-08-19",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "dance",
+            "later_private",
+            "midpoint",
+            "present"
+          ]
+        },
+        {
+          "week": 47,
+          "date": "2027-08-19",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "Felém nyújtja a ceruzát. A két üres lap kellemesen jelentéktelennek tűnik.",
+          "choices": [
+            "dance",
+            "later_private",
+            "midpoint",
+            "present"
+          ]
+        },
+        {
+          "week": 47,
+          "date": "2027-08-19",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "midpoint",
+          "text": "I remember. I still like the thought of being close to you. Today I also want to see what you can do to a perfectly innocent piece of paper.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 47,
+          "date": "2027-08-19",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 47,
+          "date": "2027-08-19",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          32,
+          "2027-05-06",
+          "night"
+        ],
+        [
+          "greta_company",
+          37,
+          "2027-06-10",
+          "day"
+        ],
+        [
+          "greta_dance",
+          42,
+          "2027-07-15",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          47,
+          "2027-08-19",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    },
+    {
+      "case": "hungarian_night",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale hu --save /tmp/greta-exploration-verified/hungarian_night.save.json --transcript /tmp/greta-exploration-verified/hungarian_night.transcript.json --restart-at greta_dance/room_choice --restart-at greta_sketch/keep --night-personal --choice greta_dance/room_choice=talk --choice greta_sketch/keep=hers",
+      "result": {
+        "route": "greta",
+        "commands": 528,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 78,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "arrival",
+          "text": "Gréta az udvari árkád alatt vár. A táskája a padon hever. Kettőt lép oldalra, összehúzott szemmel nézi a lábát, aztán észreveszi, hogy figyelem.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "request",
+          "text": "Kérnék valamit. Elég butaság. Egy egész műhelyfoglalkozást levezényelek, de ha táncolni próbálok, a saját lábamat sem találom.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "answer",
+          "text": "Lehet, hogy rossz szakértőt választottál. Lelkesedést tudok ajánlani, és elég meggyőzően számolok háromig.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "A lelkesedés megteszi. Ki akartam próbálni veled valamit, amiben nyugodtan lehetek ügyetlen.",
+          "choices": [
+            "familiar",
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "familiar",
+          "text": "Emlékszem, mennyit nevettünk a lakosztályodban. Az is ugyanolyan jó volt, mint a többi. Szeretnék még ilyet, anélkül, hogy tökéletes alkalmat szerveznék hozzá.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "offer",
+          "text": "Megpróbálsz velem néhány lépést? Vagy üsd nekem a ritmust a padról. Ha zavarba jövök, mindig felgyorsulok.",
+          "choices": [
+            "steps",
+            "rhythm",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "steps",
+          "text": "Felé nyújtom a kezem. Megfogja, a másikat a vállamra teszi. Egy apró fordulóval próbálkozunk, ő közben dúdol. A második fordulónál rálépek a saját cipőmre.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "steps_reply",
+          "text": "Ez figyelmes volt. Azt hittem, az enyémre fogsz rálépni.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "steps_answer",
+          "text": "Adj időt. Még keresem a határaimat.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "release",
+          "text": "Megállunk, nevetve elengedjük egymást. Még egyszer megpróbálja a fordulót egyedül, most sokkal lassabban.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "honest",
+          "text": "Majdnem letettem az egészről. Azt akartam, hogy ügyesnek láss. Akkor viszont egyedül kellett volna megtanulnom, mielőtt megkérlek.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "reply",
+          "text": "A legjobb részről maradtam volna le. Tetszett, ahogy a nevetéstől elvesztetted a dallamot.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "invite",
+          "text": "Jó volt, hogy itt voltál. Szívesen felmennék veled egy kicsit a lakosztályodba. Táncóra nélkül. Csak mi ketten.",
+          "choices": [
+            "room",
+            "outside",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "room",
+          "text": "Felveszi a táskáját. A galérián és a lépcsőn át megyünk a lakosztályomhoz, nagyjából öt perc alatt. Bent leteszi a táskáját a szék mellé, és felém fordul.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "room_choice",
+          "text": "Szeretnélek megcsókolni, CLI route tester. Attól jóval kevésbé félek, hogy elrontom.",
+          "choices": [
+            "kiss",
+            "talk",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "room_choice",
+          "text": "I would like to kiss you, CLI route tester. I am rather less worried about getting that wrong.",
+          "choices": [
+            "kiss",
+            "talk",
+            "leave"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "talk",
+          "text": "Régebben minden részt eldúdoltam, aminek nem tudtam a szövegét. A végére már egy szó sem maradt.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "talk_reply",
+          "text": "Én kitaláltam a szöveget. Hangosan. Rettenetesen mérges lettem, ha kijavítottak. Hiszen feljavítottam.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "talk_answer",
+          "text": "Nagyon népszerűtlen duót alkothattunk volna.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "night",
+          "scene": "greta_dance",
+          "line": "room_end",
+          "text": "Amikor indulnia kell, Gréta felveszi a táskáját. Az ajtómban még elénekel egy szándékosan borzalmas sort. Még nevetek, amikor elindul a lépcső felé.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "arrival",
+          "text": "Gréta két papírlapot terített a tóparti padra. Az egyik sarkot ceruza tartja lent. Odébb teszi a táskáját, hogy nekem is legyen hely.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "paper",
+          "text": "Vettem egy vázlatfüzetet. Azóta sem nyitottam ki, mert nem akartam elrontani az első oldalt. Úgyhogy sima papírt hoztam. Sokkal kevésbé félelmetes.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "Felém nyújtja a ceruzát. A két üres lap kellemesen jelentéktelennek tűnik.",
+          "choices": [
+            "dance",
+            "midpoint",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "dance",
+          "text": "Eszembe jutott az a dallam, amikor megvettem. Együtt is lehettünk ügyetlenek. Szerettem volna megint valami ilyet.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "subject",
+          "text": "Lerajzolhatjuk egymást. Vagy tervezhetünk egy jobb padot. Ezen a táskámnak több hely jut, mint a térdemnek.",
+          "choices": [
+            "portraits",
+            "bench"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "portraits",
+          "text": "Felváltva használjuk a ceruzát. Határozott állat és egy óriási szemöldököt rajzolok neki. Ő annyira előredőlve rajzol le, hogy majdnem leesem a lapról.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "portrait_reply",
+          "text": "Tényleg így hajolsz előre, ha kíváncsi vagy valamire. Szeretem. A könyök baleset volt.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "portrait_answer",
+          "text": "Hagyd úgy. Mindig is becsvágyó könyökre vágytam.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "pleasure",
+          "text": "Régebben mindent abbahagytam, amint nem fejlődtem benne. A rajzolást, egy új futóútvonalat, még azt is, hogy lassan olvassak egy jó könyvet. Mindenből versenyt csináltam.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "question",
+          "text": "Te mit csinálsz, amikor senkit sem kell lenyűgöznöd? Csak úgy, a magad örömére.",
+          "choices": [
+            "sing",
+            "read"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "sing",
+          "text": "Rosszul énekelek. Félúton újrakezdem, mert az elejét jobban szeretem. Néha sosem jutok el a végéig.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "sing_reply",
+          "text": "Azt szívesen hallgatnám. Bár panaszkodnék, ha a legjobb résznél hagynád abba.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "keep",
+          "text": "Meg akarom tartani ezeket. Mindkét nevetséges lapot. Vagy elviheted az egyiket, ha szeretnél emléket az ígéretes művészi pályámról.",
+          "choices": [
+            "exchange",
+            "hers"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "keep",
+          "text": "I want to keep these. Both ridiculous pages. Or you can take one, if you want a reminder of my promising artistic career.",
+          "choices": [
+            "exchange",
+            "hers"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "hers",
+          "text": "Összehajtja mindkét lapot, és a ceruzával együtt a táskájába teszi őket. Azt mondom, nekem így tetszenek. Békén hagyja a radírt.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "hand_offer",
+          "text": "Örülök, hogy eljöttél. Szívesen fognám egy kicsit a kezed. Vagy csak maradj, és mesélj, mit szeretsz még ügyetlenül csinálni.",
+          "choices": [
+            "hand",
+            "company",
+            "leave"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "hand",
+          "text": "Megfogom a felém nyújtott kezét. A bepakolt táska mellett ülünk. A hüvelykujja az enyémhez simul; egyikünk sem talál okot a sietségre.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "hand_reply",
+          "text": "Azt hiszem, használni fogom az első oldalt. Valami apróságra. Nem ígérem, hogy jó lesz.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "release",
+          "text": "Amikor felállunk, elengedjük egymást. Felveszi a táskáját.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "night",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "Az ösvénynél elbúcsúzunk. Gréta a táskájával indul tovább; én a parkon át megyek vissza, kényelmes sétával hagyva magam mögött a tavat.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "night"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "night"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "night"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "night"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "night"
+        ]
+      ]
+    },
+    {
+      "case": "withdraw",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --greta-exploration --locale en --save /tmp/greta-exploration-verified/withdraw.save.json --transcript /tmp/greta-exploration-verified/withdraw.transcript.json --restart-at greta_dance/further --restart-at greta_sketch/hand_offer --choice greta_6/line_4=withdraw",
+      "result": {
+        "route": "greta",
+        "commands": 521,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "estranged",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 66,
+        "release": {
+          "gameVersion": "0.9.14",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        }
+      },
+      "observations": [
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "history",
+          "text": "Enthusiasm will do. I wanted to try something with you that I am allowed to be bad at.",
+          "choices": [
+            "familiar",
+            "snack"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "again",
+          "text": "Yes. And the bag is already safely out of the way. I am beginning to think I put it there on purpose.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "fade",
+          "text": "We choose to stay together. She takes my hand; the rest of our private time slips out of the telling.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 38,
+          "date": "2027-06-17",
+          "period": "day",
+          "scene": "greta_dance",
+          "line": "room_end",
+          "text": "When it is time to leave, Gréta retrieves her bag. At my door she gives me a last, deliberately terrible line of the song. I am still laughing as she heads for the stairs.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "history",
+          "text": "She offers me the pencil. The blank sheets look agreeably unimportant.",
+          "choices": [
+            "dance",
+            "later_private",
+            "midpoint",
+            "present"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "dance",
+          "text": "I thought of that tune when I bought it. We were allowed to be bad at something together. I wanted another go.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "exchange",
+          "text": "We each choose a sheet and fold it. I put mine away; she slips hers into her bag with the pencil.",
+          "choices": [
+            "continue"
+          ]
+        },
+        {
+          "week": 44,
+          "date": "2027-07-29",
+          "period": "day",
+          "scene": "greta_sketch",
+          "line": "leave",
+          "text": "At the path we say goodbye. Gréta carries her bag away; I head back through the park, leaving the lake behind at an ordinary walking pace.",
+          "choices": [
+            "continue"
+          ]
+        }
+      ],
+      "playedTargetMeetings": [
+        [
+          "greta_private",
+          29,
+          "2027-04-15",
+          "day"
+        ],
+        [
+          "greta_company",
+          33,
+          "2027-05-13",
+          "day"
+        ],
+        [
+          "greta_dance",
+          38,
+          "2027-06-17",
+          "day"
+        ],
+        [
+          "greta_sketch",
+          44,
+          "2027-07-29",
+          "day"
+        ],
+        [
+          "greta_6",
+          52,
+          "2027-09-23",
+          "day"
+        ]
+      ]
+    }
+  ]
+}

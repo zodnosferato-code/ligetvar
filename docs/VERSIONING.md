@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.13`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.14`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `16`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -146,3 +146,8 @@ Schema4 retained; content epoch16 replaces15. Assembled `_1`/`_2` graphs and per
 ## 0.9.13 — additive Gréta midpoint and company meetings
 
 Schema4/content16 remain unchanged. Two optional scenes introduce new IDs and completion-only decisions without altering any existing graph cursor, persisted message, prerequisite or decision meaning. Existing `_1–6` and mandatory ending order are unchanged. Passed optional windows do not reopen; players can start a new year if they want to see missed additions. An actual0.9.12 CLI baseline save was decoded successfully by0.9.13, and every new branch round-trips current saves. No migration or forced restart is introduced.
+
+
+## 0.9.14 — additive Gréta later exploration
+
+Schema4/content16 remain. `greta_dance` and `greta_sketch` add optional IDs, message references and completion-only decisions without replacing existing cursors, messages or progression assumptions. Existing windows do not reopen; missed optional meetings do not block the original route. An actual0.9.13 full-year CLI save loads under0.9.14; exhaustive new-node tests round-trip saves and verify that pending choices are not global memories. No migration or forced restart.
