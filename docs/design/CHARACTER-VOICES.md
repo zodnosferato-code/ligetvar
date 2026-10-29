@@ -100,3 +100,7 @@ All six main Rebeka meetings now have deliberate English-first writing and Hunga
 ## Boglárka checkpoint — 28 October 2026
 
 `boglarka_3`/`boglarka_6` now connect deliberate invitations with her pleasure in rough, loud music, a reciprocal disagreement and a submitted article in her own name. She offers a kiss herself, keeps company without touch when chosen, and can want ordinary time without having to perform scholarship. The final meeting distinguishes submission from publication and recalls music/concert plans or quiet coffee only when witnessed. Its optional intimacy stays off-screen after present choices and can stop or end in departure. This is a two-scene pass, not a completed six-scene or triad rewrite. [Evidence and next scenes](PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026).
+
+## Boglárka connected middle — 29 October 2026
+
+`_4`/`_5` continue the bilingual `_3`/`_6` pass. Her fear that her work will be dismissed now appears in a concrete disagreement over two opening paragraphs, rather than a compulsory unplayed offence by Márton. She revises, teases his taste and admits wanting approval without surrendering her judgment. Commitment grows out of choosing company without a manuscript as an excuse; music/concert invitations remain future plans. Submission still occurs in `_6`. Early `_1`/`_2` and her triad writing remain unfinished; no completed whole-route English claim. [Validation](PLAYTHROUGH-FINDINGS.md#boglárka-disagreement-and-commitment-validation--29-october-2026).

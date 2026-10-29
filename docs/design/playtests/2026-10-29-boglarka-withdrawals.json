@@ -1,0 +1,4885 @@
+{
+  "format": 2,
+  "columns": {
+    "observed": [
+      "week",
+      "date",
+      "period",
+      "viewsIndex"
+    ],
+    "context": [
+      "week",
+      "period",
+      "contextViewsIndex"
+    ]
+  },
+  "views": [
+    {
+      "scene": "boglarka_3",
+      "line": "line_0",
+      "speaker": "narrator",
+      "en": "Boglárka has put a closed book on the courtyard bench. She moves it onto her lap when I arrive, leaving room for me.",
+      "hu": "Boglárka csukott könyvet tett az udvari padra. Amikor megérkezem, az ölébe veszi, helyet hagyva nekem.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_1",
+      "speaker": "boglarka",
+      "en": "I brought a poem to start with. Then I realised I was making somebody else ask you out.",
+      "hu": "Egy verssel akartam kezdeni. Aztán rájöttem, hogy megint valaki mással hívatlak el randizni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_2",
+      "speaker": "marton",
+      "en": "I might have mistaken it for homework. This is much better.",
+      "hu": "Azt talán házi feladatnak néztem volna. Ez sokkal jobb.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_3",
+      "speaker": "boglarka",
+      "en": "Then let me be quite clear, Álex $& {playerName}. I want this to be a date.",
+      "hu": "Akkor egészen pontos leszek, Álex $& {playerName}. Szeretném, ha ez randi lenne.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_alibi",
+      "speaker": "boglarka",
+      "en": "The book is mine. An excellent alibi. I haven't managed to read a word of it.",
+      "hu": "A könyv a sajátom. Kiváló alibi. Egyetlen szót sem sikerült elolvasnom belőle.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_reply",
+      "speaker": "marton",
+      "en": "I nearly brought notes. Fortunately I couldn't decide on a heading.",
+      "hu": "Én majdnem jegyzeteket hoztam. Szerencsére nem tudtam eldönteni, mi legyen a címük.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_4",
+      "speaker": "narrator",
+      "en": "I sit at the other end of the bench. She waits, one finger still marking a page she hasn't read.",
+      "hu": "Leülök a pad másik végére. Vár. Egy ujja még mindig azt az oldalt jelöli, amelyet nem olvasott el.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "yes",
+          "en": "Yes. I want to be here with you.",
+          "hu": "Igen. Veled szeretnék itt lenni."
+        },
+        {
+          "id": "slow",
+          "en": "I like your company, but I don’t want a romance.",
+          "hu": "Szeretek veled lenni, de nem szeretnék szerelmi kapcsolatot."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic",
+      "speaker": "narrator",
+      "en": "She puts the book away. A folded slip of paper escapes; she catches it and smiles at what she has written.",
+      "hu": "Elteszi a könyvet. Kicsúszik belőle egy összehajtott papír; elkapja, és elmosolyodik azon, amit ráírt.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "callback",
+          "en": "Still thinking, or enjoying the quiet?",
+          "hu": "Még gondolkodsz, vagy jólesik a csönd?"
+        },
+        {
+          "id": "music",
+          "en": "What would you show me if you hadn’t brought a book?",
+          "hu": "Mit mutatnál nekem, ha nem hoztál volna könyvet?"
+        },
+        {
+          "id": "self",
+          "en": "I rehearsed the invitation too. Not this part, unfortunately.",
+          "hu": "Én is elpróbáltam a meghívást. Sajnos nem ezt a részét."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_music_0",
+      "speaker": "boglarka",
+      "en": "Music. Particularly the kind people are surprised I like. Apparently I should only listen to a solitary cello.",
+      "hu": "Zenét. Főleg olyat, amin meglepődnek, hogy szeretem. Úgy látszik, nekem csak magányos csellót szabadna hallgatnom.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_music_1",
+      "speaker": "marton",
+      "en": "And what does the cello have to compete with?",
+      "hu": "És mivel kell versenyeznie a csellónak?",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_music_2",
+      "speaker": "boglarka",
+      "en": "A singer who sometimes misses the note because she'd rather shout it. I like that she doesn't tidy it away.",
+      "hu": "Egy énekesnővel, aki néha nem találja el a hangot, mert inkább kiabálni akar. Szeretem, hogy nem próbálja szebbre csiszolni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_offer",
+      "speaker": "boglarka",
+      "en": "Here. The first one. You can tell me if you hate it. I'd rather have an argument than watch you being politely moved.",
+      "hu": "Tessék. Az első. Megmondhatod, ha utálod. Inkább vitatkozom, mint hogy azt nézzem, milyen udvariasan meghatódsz.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_listen",
+      "speaker": "narrator",
+      "en": "She plays a short piece from her phone, quietly enough for the two of us. Her foot keeps the beat. At the chorus she almost sings, then catches my eye.",
+      "hu": "Halkan elindít egy részletet a telefonján, csak kettőnknek. A lábával veri az ütemet. A refrénnél majdnem énekelni kezd, aztán elkapja a tekintetemet.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_answer",
+      "speaker": "narrator",
+      "en": "The recording stops. She leaves the phone in her hand, waiting for my actual answer.",
+      "hu": "Véget ér a felvétel. A kezében hagyja a telefont, és az igazi válaszomat várja.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "like",
+          "en": "I like the rough edge. It sounds as though she means it.",
+          "hu": "Tetszik, hogy érdes. Úgy hangzik, mintha komolyan gondolná."
+        },
+        {
+          "id": "differ",
+          "en": "I like the verse. The chorus loses me.",
+          "hu": "A versszak tetszik. A refrénnél elveszítesz."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_differ",
+      "speaker": "boglarka",
+      "en": "Fair. I like that she loses her temper. But I admit the drummer sounds as though he's moving furniture.",
+      "hu": "Jogos. Én szeretem, hogy elveszti a türelmét. De elismerem, hogy a dobos úgy szól, mintha bútorokat tologatna.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_differ_reply",
+      "speaker": "marton",
+      "en": "The furniture was winning me over, actually.",
+      "hu": "Engem éppen a bútorok kezdtek meggyőzni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness",
+      "speaker": "boglarka",
+      "en": "I'd like to kiss you. I've been trying to find a graceful point to say it, but the drummer has rather ruined that.",
+      "hu": "Szeretnélek megcsókolni. Kerestem, hol mondhatnám elegánsan, de ezt a dobos kissé megnehezítette.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "kiss",
+          "en": "I’d like that. Lean towards her.",
+          "hu": "Én is szeretném. Közelebb hajolok."
+        },
+        {
+          "id": "slow_touch",
+          "en": "I’d like to keep talking, without a kiss today.",
+          "hu": "Ma még csók nélkül beszélgetnék veled tovább."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_slow_touch_0",
+      "speaker": "boglarka",
+      "en": "Then let's keep talking. I haven't even asked what you listen to yet.",
+      "hu": "Akkor beszélgessünk tovább. Még azt sem kérdeztem meg, te mit hallgatsz.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_slow_touch_1",
+      "speaker": "marton",
+      "en": "I'll find something you can argue with. I enjoyed that part.",
+      "hu": "Keresek valamit, amivel vitatkozhatsz. Azt a részt élveztem.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_destination",
+      "speaker": "boglarka",
+      "en": "The window alcove in the library is free. We could sit there a little longer. I want to hear your choice, too.",
+      "hu": "Szabad az ablakfülke a könyvtárban. Még leülhetnénk oda egy kicsit. A te választásodat is szeretném hallani.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "quiet_place",
+          "en": "Yes. Let’s sit and talk there.",
+          "hu": "Igen. Üljünk le oda beszélgetni."
+        },
+        {
+          "id": "stay_outside",
+          "en": "I’d rather stay outside. Walk with me to the gate?",
+          "hu": "Inkább kint maradnék. Elkísérsz a kapuig?"
+        },
+        {
+          "id": "head_home",
+          "en": "I’ve enjoyed this. I should go now.",
+          "hu": "Jó volt veled. Most indulnék."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_goodbye_0",
+      "speaker": "boglarka",
+      "en": "I'd like to do this again. I can bring something considerably worse to listen to.",
+      "hu": "Szeretném ezt megismételni. Tudok ennél lényegesen rosszabb zenét is hozni.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_goodbye_1",
+      "speaker": "marton",
+      "en": "I'd like that. Including the part where you nearly sing.",
+      "hu": "Én is. Azzal a résszel együtt, amikor majdnem énekelsz.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_goodbye_2",
+      "speaker": "narrator",
+      "en": "“I might, next time.” She says goodbye at the gate. I watch her go a little way before turning towards my own door.",
+      "hu": "„Legközelebb talán fogok is.” A kapunál elköszön. Egy darabig nézem, ahogy távolodik, aztán a saját ajtóm felé fordulok.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Finish meeting",
+          "hu": "Alkalom befejezése"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_0",
+      "speaker": "narrator",
+      "en": "Boglárka has spread two versions of an opening paragraph across the library table. One begins with a claim. The other begins with a woman waiting at a locked door.",
+      "hu": "Boglárka két bevezetőt terített a könyvtári asztalra. Az egyik egy állítással kezdődik. A másik egy asszonnyal, aki zárt ajtó előtt vár.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_1",
+      "speaker": "boglarka",
+      "en": "The second one is mine. The first is also mine, unfortunately. I wrote it to sound harder to dismiss.",
+      "hu": "A második az enyém. Sajnos az első is. Azt azért írtam, hogy nehezebb legyen lesöpörni.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_2",
+      "speaker": "marton",
+      "en": "The first tells me what you can prove. With the second, I want to know why she is waiting.",
+      "hu": "Az elsőből megtudom, mit tudsz bizonyítani. A másodiknál arra vagyok kíváncsi, miért vár az asszony.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_3",
+      "speaker": "boglarka",
+      "en": "I want that curiosity. But if I lead with her, someone will call it a pretty story and stop reading. I can almost hear them.",
+      "hu": "Pont ezt a kíváncsiságot szeretném. De ha vele kezdem, valaki szép mesének nevezi, és nem olvassa tovább. Szinte hallom.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_4",
+      "speaker": "boglarka",
+      "en": "Which would you actually keep? Not which one would make me easier company.",
+      "hu": "Te melyiket tartanád meg? Ne azt mondd, amelyiktől kellemesebb társaság leszek.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "repair",
+          "en": "Stay and work through the two openings.",
+          "hu": "Maradjunk, nézzük meg a két bevezetőt."
+        },
+        {
+          "id": "withdraw",
+          "en": "End the romantic relationship.",
+          "hu": "Zárjuk le a romantikus kapcsolatot."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "withdraw_0",
+      "speaker": "marton",
+      "en": "I can talk about the pages, but I do not want to keep building a relationship I cannot promise to continue.",
+      "hu": "A szövegről tudok beszélni, de nem szeretnék tovább építeni egy kapcsolatot, amelynek a folytatását nem tudom vállalni.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "withdraw_1",
+      "speaker": "boglarka",
+      "en": "That is a different answer. All right. I will put these away for now.",
+      "hu": "Ez egy másik válasz. Rendben. Akkor most elteszem ezeket.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "withdraw_2",
+      "speaker": "narrator",
+      "en": "She closes the folder. You say goodbye by the shelves and leave separately; the unfinished article stays with her.",
+      "hu": "Becsukja a mappát. A polcok mellett elköszöntök, aztán külön indultok el; a befejezetlen tanulmány nála marad.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Finish meeting",
+          "hu": "Alkalom befejezése"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_self_0",
+      "speaker": "boglarka",
+      "en": "Did your rehearsal include me dropping the book? Because that was nearly my opening.",
+      "hu": "A próbádban az is benne volt, hogy elejtem a könyvet? Mert majdnem azzal kezdtem.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_self_1",
+      "speaker": "marton",
+      "en": "Mine ended at hello. I thought I ought to leave you some lines.",
+      "hu": "Az enyém a köszönésig tartott. Gondoltam, neked is hagyok néhány mondatot.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_self_2",
+      "speaker": "boglarka",
+      "en": "Very generous. I have a whole list. Only one of them is sensible.",
+      "hu": "Nagylelkű. Nekem egész listám van. Csak egyetlen értelmes dolog szerepel rajta.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_like",
+      "speaker": "boglarka",
+      "en": "Exactly. It would be a worse song if she sang it properly. Don't tell anyone I said that about doing something properly.",
+      "hu": "Pontosan. Rosszabb szám lenne, ha rendesen énekelné. Senkinek ne mondd el, hogy ilyet mondtam a rendes munkáról.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_kiss_0",
+      "speaker": "narrator",
+      "en": "I lean towards her. She meets me with a brief kiss, then sits back, still smiling. Her phone is safely in her lap.",
+      "hu": "Közelebb hajolok. Rövid csókkal fogad, aztán hátradől, még mindig mosolyogva. A telefonja biztonságban az ölében.",
+      "stage": {
+        "label": "Beside the courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_kiss_1",
+      "speaker": "boglarka",
+      "en": "There. I was afraid I'd spend the entire date deciding where to put that sentence.",
+      "hu": "Na. Attól féltem, az egész randit azzal töltöm, hogy helyet keresek ennek a mondatnak.",
+      "stage": {
+        "label": "Beside the courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "beside"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_destination",
+      "speaker": "boglarka",
+      "en": "The window alcove in the library is free. We could sit there a little longer. I want to hear your choice, too.",
+      "hu": "Szabad az ablakfülke a könyvtárban. Még leülhetnénk oda egy kicsit. A te választásodat is szeretném hallani.",
+      "stage": {
+        "label": "Courtyard bench",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "quiet_place",
+          "en": "Yes. Let’s sit and talk there.",
+          "hu": "Igen. Üljünk le oda beszélgetni."
+        },
+        {
+          "id": "together",
+          "en": "I’m still smiling about that kiss. I’d like to come.",
+          "hu": "Még mindig mosolygok attól a csóktól. Szívesen veled megyek."
+        },
+        {
+          "id": "stay_outside",
+          "en": "I’d rather stay outside. Walk with me to the gate?",
+          "hu": "Inkább kint maradnék. Elkísérsz a kapuig?"
+        },
+        {
+          "id": "head_home",
+          "en": "I’ve enjoyed this. I should go now.",
+          "hu": "Jó volt veled. Most indulnék."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "romance_repair",
+      "speaker": "marton",
+      "en": "I would keep reading. That is not quite the same as knowing which opening to choose.",
+      "hu": "Én tovább olvasnék. De ez még nem jelenti, hogy tudom, melyik bevezetőt választanám.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "signal",
+          "en": "Begin with the woman at the door.",
+          "hu": "Kezdjünk az asszonnyal az ajtónál."
+        },
+        {
+          "id": "own_it",
+          "en": "Keep the claim; make it less defensive.",
+          "hu": "Maradjon az állítás, de legyen kevésbé védekező."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "signal_0",
+      "speaker": "marton",
+      "en": "Read the story first. Then show me the sentence where curiosity has to become an argument.",
+      "hu": "Olvasd fel előbb a történetet. Aztán mutasd meg azt a mondatot, ahol a kíváncsiságból már érvnek kell lennie.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "signal_1",
+      "speaker": "narrator",
+      "en": "She reads without looking up. At the locked door she pauses, crosses out an adjective, and continues into the evidence. You wait until she reaches the end.",
+      "hu": "Úgy olvas, hogy fel sem néz. A zárt ajtónál megáll, kihúz egy jelzőt, aztán rátér a bizonyítékokra. Megvárod, míg a végére ér.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "signal_2",
+      "speaker": "boglarka",
+      "en": "There. That transition works. I was defending the whole paragraph because I liked one sentence. An extremely scholarly method.",
+      "hu": "Na. Ez az átmenet működik. Az egész bekezdést védtem, mert tetszett egy mondata. Rendkívül tudományos módszer.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_0",
+      "speaker": "boglarka",
+      "en": "Better. Not finished. I wanted you to like it, and then I got annoyed because that mattered so much.",
+      "hu": "Jobb. Még nincs kész. Azt akartam, hogy tetsszen neked, aztán bosszantott, hogy ez ennyire fontos.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_1",
+      "speaker": "marton",
+      "en": "I like listening to you. Sometimes I am still going to prefer the other paragraph.",
+      "hu": "Szeretlek hallgatni. Ettől még néha a másik bekezdést fogom választani.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_2",
+      "speaker": "boglarka",
+      "en": "I suppose I can survive questionable taste. You have survived mine in music.",
+      "hu": "Azt hiszem, túlélem a kétes ízlésedet. Te is túlélted az én zenémet.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_3",
+      "speaker": "narrator",
+      "en": "She gathers both drafts into her folder rather than throwing either away. At the library door she stays beside you for another moment.",
+      "hu": "Mindkét változatot a mappájába teszi, egyiket sem dobja ki. A könyvtár ajtajában még egy pillanatra melletted marad.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_4",
+      "speaker": "boglarka",
+      "en": "Next time, something we do not have to improve. I would like that.",
+      "hu": "Legközelebb olyasmit csináljunk, amin nem kell javítani. Annak örülnék.",
+      "stage": {
+        "label": "Library table and doorway",
+        "location": "library",
+        "background": "library",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Finish meeting",
+          "hu": "Alkalom befejezése"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_0",
+      "speaker": "narrator",
+      "en": "In the courtyard, Boglárka takes a folded page from her bag, then puts it away before you can read it.",
+      "hu": "Az udvaron Boglárka elővesz egy összehajtott lapot a táskájából, aztán elteszi, mielőtt elolvashatnád.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "draft",
+      "speaker": "boglarka",
+      "en": "Still a draft. I keep improving the opening instead of letting anyone reject the rest. It is a remarkably efficient way not to finish.",
+      "hu": "Még mindig kézirat. A kezdést javítgatom ahelyett, hogy hagynám, hogy valaki elutasítsa a többit. Rendkívül hatékony módszer arra, hogy ne készüljek el.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "reply",
+      "speaker": "marton",
+      "en": "I can invent a reason to delay almost anything. Usually it sounds very responsible.",
+      "hu": "Én szinte bármihez tudok halogatási okot találni. Általában nagyon felelősen hangzik.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_1",
+      "speaker": "boglarka",
+      "en": "Then I will try not to do it with this. With us, I mean. I want a relationship with you. Not just meetings I can explain away as something else.",
+      "hu": "Akkor ezt most megpróbálom nem halogatni. Minket, úgy értem. Kapcsolatot szeretnék veled. Nem csak találkozókat, amelyekre mindig van valami más magyarázat.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_2",
+      "speaker": "marton",
+      "en": "I do not want you to have to bring a page every time you want to see me.",
+      "hu": "Nem szeretném, hogy minden alkalommal kéziratot kelljen hoznod, ha látni akarsz.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_3",
+      "speaker": "boglarka",
+      "en": "Good. Some days I am going to be poor company. And I will still want you there. If we choose a shared relationship, I am not asking for a secret promise that excludes someone else.",
+      "hu": "Jó. Lesznek napok, amikor csapnivaló társaság leszek. És akkor is szeretném, ha ott lennél. Ha közös kapcsolatot választunk, nem kérek titkos ígéretet arra, hogy valaki mást kizárunk belőle.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_4",
+      "speaker": "boglarka",
+      "en": "What do you want, Álex $& {playerName}?",
+      "hu": "Te mit szeretnél, Álex $& {playerName}?",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "commit",
+          "en": "I want this relationship too.",
+          "hu": "Én is ezt a kapcsolatot szeretném."
+        },
+        {
+          "id": "withdraw",
+          "en": "I cannot promise commitment.",
+          "hu": "Nem tudok elköteleződést ígérni."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "withdraw_0",
+      "speaker": "boglarka",
+      "en": "I hoped for a different answer. I would rather know, though.",
+      "hu": "Más válaszban reménykedtem. De azért jobb, hogy tudom.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Continue",
+          "hu": "Tovább"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "withdraw_1",
+      "speaker": "narrator",
+      "en": "You stay long enough to say goodbye properly. Boglárka takes her bag toward the east passage; you leave the courtyard separately.",
+      "hu": "Maradsz még annyit, hogy rendesen elköszönjetek. Boglárka a táskájával a keleti átjáró felé indul; külön hagyjátok el az udvart.",
+      "stage": {
+        "label": "Courtyard bench and gallery entrance",
+        "location": "courtyard",
+        "background": "courtyard",
+        "participants": [
+          "marton",
+          "boglarka"
+        ],
+        "proximity": "apart"
+      },
+      "choices": [
+        {
+          "id": "continue",
+          "en": "Finish meeting",
+          "hu": "Alkalom befejezése"
+        }
+      ]
+    }
+  ],
+  "contextViews": [
+    {
+      "scene": "boglarka_1",
+      "line": "line_0",
+      "text": "Boglárka három eltérő átiratot tesz az asztalra. Az egyikben a saját mondatai szerepelnek egy ismertebb kutató neve alatt.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "line_1",
+      "text": "Nem akarok rögtön botrányt. De attól, hogy csendben javítok, még nem azé, aki hangosabban mondja el.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_margins_0",
+      "text": "Megmutatod, hol változott meg a szöveg?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_margins_1",
+      "text": "Itt. Az eredeti adatközlő azt mondta, talán. Az átiratban ebből bizonyosan lett. Nagyon sikeres szó: egy tollvonással megszűnt tőle minden kétség.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_margins_2",
+      "text": "És a neved?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_margins_3",
+      "text": "A köszönetnyilvánításban elfért. A munkám kevésbé.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_margins_4",
+      "text": "Nem emeli fel a hangját. A lapot viszont most úgy fordítja feléd, hogy az ujját a saját neve mellett tartja.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_margins_5",
+      "text": "Nem kell helyettem felhívnod senkit. Előbb szeretném rendesen megírni, miért kérek javítást.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "line_2",
+      "text": "Mit szeretnél kezdeni a gyűjtéssel?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "line_3",
+      "text": "Egy rövid tanulmányt. A nevemmel. Egyetlen olyan lábjegyzet nélkül, amit csak azért írok oda, hogy valaki ne sértődjön meg.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "line_4",
+      "text": "Abban segítek, amire megkérsz.",
+      "choices": [
+        {
+          "id": "interest",
+          "label": "Elolvasom a változatokat, aztán a saját érveidet kérem."
+        },
+        {
+          "id": "ask",
+          "label": "Melyik szóhoz ragaszkodsz leginkább?"
+        },
+        {
+          "id": "leave",
+          "label": "Ma csak a könyvért ugrottam be."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_0",
+      "text": "Az első változatban háromszor is azt írom, hogy elnézést. A másodikban már csak egyszer. Ez jelentős stilisztikai fejlődés.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_1",
+      "text": "Mi maradna, ha azt is kivennéd?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_2",
+      "text": "A mondat, amit közölni szeretnék. Kínos, milyen kevés munkám lenne utána.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_3",
+      "text": "Kihúzza a szót, aztán egy percig nem ír semmit. Márton kivárja.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_4",
+      "text": "A gyűjtés az enyém. A helyneveket is én ellenőriztem. Ezt nem kérdezni akarom tőlük.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_5",
+      "text": "Ez már levélkezdésnek is jó.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_1",
+      "line": "boglarka_versions_6",
+      "text": "Igen. Azt hiszem, most először én is elolvasnám.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Finish meeting"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "line_0",
+      "text": "Boglárka két csészével érkezik. Az üres helyre most nem tesz füzetet.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_hesitation_0",
+      "text": "Boglárka a két csészét egymás mellé teszi, aztán a tiedet közelebb tolja.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_hesitation_1",
+      "text": "A meghívás fejben sokkal rövidebb volt. Ott te rögtön tudtad, miért van két csésze.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_hesitation_2",
+      "text": "Én néha azt is félreértem, amihez használati utasítást adnak.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_hesitation_3",
+      "text": "Akkor most kivételesen nem hagyom a mondat végét a képzeletedre.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "line_1",
+      "text": "A második teát neked hoztam. Nem azért, mert tanár vagy, és nem azért, hogy elolvasd a dolgozatomat.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "line_2",
+      "text": "Mit szeretnél, hogy most ne értsek félre?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "line_3",
+      "text": "Maradj tíz percig feladat nélkül. Azt hiszem, többet szeretnék a beszélgetéseinktől. Még nem tudom gyorsabban mondani.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "line_4",
+      "text": "Én is szeretnék őszintén válaszolni.",
+      "choices": [
+        {
+          "id": "yes",
+          "label": "Én is keresem ezeket a találkozókat. Szeretnélek közelebbről megismerni."
+        },
+        {
+          "id": "friend",
+          "label": "Jó veled lenni, de baráti kapcsolatot szeretnék."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction",
+      "text": "Mi az, amit eddig nem mondtam el?",
+      "choices": [
+        {
+          "id": "quiet",
+          "label": "A közös csöndet is várom. Veled nem érzem, hogy rögtön ki kell töltenem."
+        },
+        {
+          "id": "share",
+          "label": "Én attól tartok, hogy túl sokat beszélek, amikor szeretnék jó benyomást kelteni."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction_quiet_0",
+      "text": "Én néha igen. Csak közben még keresem a megfelelő mondatot.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction_quiet_1",
+      "text": "Akkor honnan tudjam, mikor várjak?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction_quiet_2",
+      "text": "Megmondom, hogy még gondolkodom. Te meg ne indulj el közben megmenteni a beszélgetést.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction_quiet_3",
+      "text": "Egy ideig mindketten isznak. Boglárka most nem néz a könyvtári órára.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction_end_0",
+      "text": "A következő teát már nem fogom véletlenül túl soknak főzni. Meghívlak rá.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_2",
+      "line": "romance_attraction_end_1",
+      "text": "Boglárka kimondja az időpontot. Nem teszi hozzá, hogy csak akkor, ha amúgy is erre jársz.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Finish meeting"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_0",
+      "text": "Boglárka has put a closed book on the courtyard bench. She moves it onto her lap when I arrive, leaving room for me.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_1",
+      "text": "I brought a poem to start with. Then I realised I was making somebody else ask you out.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_2",
+      "text": "I might have mistaken it for homework. This is much better.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_3",
+      "text": "Then let me be quite clear, Álex $& {playerName}. I want this to be a date.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_alibi",
+      "text": "The book is mine. An excellent alibi. I haven't managed to read a word of it.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_reply",
+      "text": "I nearly brought notes. Fortunately I couldn't decide on a heading.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "line_4",
+      "text": "I sit at the other end of the bench. She waits, one finger still marking a page she hasn't read.",
+      "choices": [
+        {
+          "id": "yes",
+          "label": "Yes. I want to be here with you."
+        },
+        {
+          "id": "slow",
+          "label": "I like your company, but I don’t want a romance."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic",
+      "text": "She puts the book away. A folded slip of paper escapes; she catches it and smiles at what she has written.",
+      "choices": [
+        {
+          "id": "callback",
+          "label": "Still thinking, or enjoying the quiet?"
+        },
+        {
+          "id": "music",
+          "label": "What would you show me if you hadn’t brought a book?"
+        },
+        {
+          "id": "self",
+          "label": "I rehearsed the invitation too. Not this part, unfortunately."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_music_0",
+      "text": "Music. Particularly the kind people are surprised I like. Apparently I should only listen to a solitary cello.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_music_1",
+      "text": "And what does the cello have to compete with?",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_music_2",
+      "text": "A singer who sometimes misses the note because she'd rather shout it. I like that she doesn't tidy it away.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_offer",
+      "text": "Here. The first one. You can tell me if you hate it. I'd rather have an argument than watch you being politely moved.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_listen",
+      "text": "She plays a short piece from her phone, quietly enough for the two of us. Her foot keeps the beat. At the chorus she almost sings, then catches my eye.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_answer",
+      "text": "The recording stops. She leaves the phone in her hand, waiting for my actual answer.",
+      "choices": [
+        {
+          "id": "like",
+          "label": "I like the rough edge. It sounds as though she means it."
+        },
+        {
+          "id": "differ",
+          "label": "I like the verse. The chorus loses me."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_differ",
+      "text": "Fair. I like that she loses her temper. But I admit the drummer sounds as though he's moving furniture.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_differ_reply",
+      "text": "The furniture was winning me over, actually.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness",
+      "text": "I'd like to kiss you. I've been trying to find a graceful point to say it, but the drummer has rather ruined that.",
+      "choices": [
+        {
+          "id": "kiss",
+          "label": "I’d like that. Lean towards her."
+        },
+        {
+          "id": "slow_touch",
+          "label": "I’d like to keep talking, without a kiss today."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_slow_touch_0",
+      "text": "Then let's keep talking. I haven't even asked what you listen to yet.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_slow_touch_1",
+      "text": "I'll find something you can argue with. I enjoyed that part.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_destination",
+      "text": "The window alcove in the library is free. We could sit there a little longer. I want to hear your choice, too.",
+      "choices": [
+        {
+          "id": "quiet_place",
+          "label": "Yes. Let’s sit and talk there."
+        },
+        {
+          "id": "stay_outside",
+          "label": "I’d rather stay outside. Walk with me to the gate?"
+        },
+        {
+          "id": "head_home",
+          "label": "I’ve enjoyed this. I should go now."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_goodbye_0",
+      "text": "I'd like to do this again. I can bring something considerably worse to listen to.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_goodbye_1",
+      "text": "I'd like that. Including the part where you nearly sing.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_goodbye_2",
+      "text": "“I might, next time.” She says goodbye at the gate. I watch her go a little way before turning towards my own door.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Finish meeting"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_0",
+      "text": "Boglárka has spread two versions of an opening paragraph across the library table. One begins with a claim. The other begins with a woman waiting at a locked door.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_1",
+      "text": "The second one is mine. The first is also mine, unfortunately. I wrote it to sound harder to dismiss.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_2",
+      "text": "The first tells me what you can prove. With the second, I want to know why she is waiting.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_3",
+      "text": "I want that curiosity. But if I lead with her, someone will call it a pretty story and stop reading. I can almost hear them.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "line_4",
+      "text": "Which would you actually keep? Not which one would make me easier company.",
+      "choices": [
+        {
+          "id": "repair",
+          "label": "Stay and work through the two openings."
+        },
+        {
+          "id": "withdraw",
+          "label": "End the romantic relationship."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "withdraw_0",
+      "text": "I can talk about the pages, but I do not want to keep building a relationship I cannot promise to continue.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "withdraw_1",
+      "text": "That is a different answer. All right. I will put these away for now.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "withdraw_2",
+      "text": "She closes the folder. You say goodbye by the shelves and leave separately; the unfinished article stays with her.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Finish meeting"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_self_0",
+      "text": "Did your rehearsal include me dropping the book? Because that was nearly my opening.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_self_1",
+      "text": "Mine ended at hello. I thought I ought to leave you some lines.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_date_topic_self_2",
+      "text": "Very generous. I have a whole list. Only one of them is sensible.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "music_like",
+      "text": "Exactly. It would be a worse song if she sang it properly. Don't tell anyone I said that about doing something properly.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_kiss_0",
+      "text": "I lean towards her. She meets me with a brief kiss, then sits back, still smiling. Her phone is safely in her lap.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "romance_closeness_kiss_1",
+      "text": "There. I was afraid I'd spend the entire date deciding where to put that sentence.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_3",
+      "line": "date_destination",
+      "text": "The window alcove in the library is free. We could sit there a little longer. I want to hear your choice, too.",
+      "choices": [
+        {
+          "id": "quiet_place",
+          "label": "Yes. Let’s sit and talk there."
+        },
+        {
+          "id": "together",
+          "label": "I’m still smiling about that kiss. I’d like to come."
+        },
+        {
+          "id": "stay_outside",
+          "label": "I’d rather stay outside. Walk with me to the gate?"
+        },
+        {
+          "id": "head_home",
+          "label": "I’ve enjoyed this. I should go now."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "romance_repair",
+      "text": "I would keep reading. That is not quite the same as knowing which opening to choose.",
+      "choices": [
+        {
+          "id": "signal",
+          "label": "Begin with the woman at the door."
+        },
+        {
+          "id": "own_it",
+          "label": "Keep the claim; make it less defensive."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "signal_0",
+      "text": "Read the story first. Then show me the sentence where curiosity has to become an argument.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "signal_1",
+      "text": "She reads without looking up. At the locked door she pauses, crosses out an adjective, and continues into the evidence. You wait until she reaches the end.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "signal_2",
+      "text": "There. That transition works. I was defending the whole paragraph because I liked one sentence. An extremely scholarly method.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_0",
+      "text": "Better. Not finished. I wanted you to like it, and then I got annoyed because that mattered so much.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_1",
+      "text": "I like listening to you. Sometimes I am still going to prefer the other paragraph.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_2",
+      "text": "I suppose I can survive questionable taste. You have survived mine in music.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_3",
+      "text": "She gathers both drafts into her folder rather than throwing either away. At the library door she stays beside you for another moment.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_4",
+      "line": "settle_4",
+      "text": "Next time, something we do not have to improve. I would like that.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Finish meeting"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_0",
+      "text": "In the courtyard, Boglárka takes a folded page from her bag, then puts it away before you can read it.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "draft",
+      "text": "Still a draft. I keep improving the opening instead of letting anyone reject the rest. It is a remarkably efficient way not to finish.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "reply",
+      "text": "I can invent a reason to delay almost anything. Usually it sounds very responsible.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_1",
+      "text": "Then I will try not to do it with this. With us, I mean. I want a relationship with you. Not just meetings I can explain away as something else.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_2",
+      "text": "I do not want you to have to bring a page every time you want to see me.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_3",
+      "text": "Good. Some days I am going to be poor company. And I will still want you there. If we choose a shared relationship, I am not asking for a secret promise that excludes someone else.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "line_4",
+      "text": "What do you want, Álex $& {playerName}?",
+      "choices": [
+        {
+          "id": "commit",
+          "label": "I want this relationship too."
+        },
+        {
+          "id": "withdraw",
+          "label": "I cannot promise commitment."
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "withdraw_0",
+      "text": "I hoped for a different answer. I would rather know, though.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Continue"
+        }
+      ]
+    },
+    {
+      "scene": "boglarka_5",
+      "line": "withdraw_1",
+      "text": "You stay long enough to say goodbye properly. Boglárka takes her bag toward the east passage; you leave the courtyard separately.",
+      "choices": [
+        {
+          "id": "continue",
+          "label": "Finish meeting"
+        }
+      ]
+    }
+  ],
+  "method": "Scripted public JSON CLI, fresh saves, latest revision per action, per-node EN/HU switching, process restart, no author mode/save manipulation. No optional gatherings/preparation. One latest-window run cannot fit commitment and is intentionally unresolved.",
+  "baseline": {
+    "release": {
+      "gameVersion": "0.9.6",
+      "saveSchemaVersion": 4,
+      "contentCompatibilityVersion": 11
+    },
+    "buildId": "835ae3386b25fa8d6a90326778a61e38abf90a04",
+    "observed": [
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "line_0",
+        "text": "Boglárka has put a closed book on the courtyard bench. She moves it onto her lap when I arrive, leaving room for me."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "line_1",
+        "text": "I brought a poem to start with. Then I realised I was making somebody else ask you out."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "line_2",
+        "text": "I might have mistaken it for homework. This is much better."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "line_3",
+        "text": "Then let me be quite clear, CLI route tester. I want this to be a date."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_alibi",
+        "text": "The book is mine. An excellent alibi. I haven't managed to read a word of it."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_reply",
+        "text": "I nearly brought notes. Fortunately I couldn't decide on a heading."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "line_4",
+        "text": "I sit at the other end of the bench. She waits, one finger still marking a page she hasn't read."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_date_topic",
+        "text": "She puts the book away. A folded slip of paper escapes; she catches it and smiles at what she has written."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_date_topic_callback_0",
+        "text": "Thinking. But about something much less dignified than you probably imagine."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_date_topic_callback_1",
+        "text": "Now you have to tell me."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_date_topic_callback_2",
+        "text": "I wrote down a song to play you. Then three alternatives, in case you disliked the first. An entire emergency programme."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "music_offer",
+        "text": "Here. The first one. You can tell me if you hate it. I'd rather have an argument than watch you being politely moved."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "music_listen",
+        "text": "She plays a short piece from her phone, quietly enough for the two of us. Her foot keeps the beat. At the chorus she almost sings, then catches my eye."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "music_answer",
+        "text": "The recording stops. She leaves the phone in her hand, waiting for my actual answer."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "music_like",
+        "text": "Exactly. It would be a worse song if she sang it properly. Don't tell anyone I said that about doing something properly."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_closeness",
+        "text": "I'd like to kiss you. I've been trying to find a graceful point to say it, but the drummer has rather ruined that."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_closeness_kiss_0",
+        "text": "I lean towards her. She meets me with a brief kiss, then sits back, still smiling. Her phone is safely in her lap."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "romance_closeness_kiss_1",
+        "text": "There. I was afraid I'd spend the entire date deciding where to put that sentence."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_destination",
+        "text": "The window alcove in the library is free. We could sit there a little longer. I want to hear your choice, too."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_together_0",
+        "text": "We go into the library and take the two chairs by the window. Her book stays in her bag; she sets her phone between us."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_together_1",
+        "text": "Here. Nobody comes to this corner unless they want to stay. It's my favourite thing about it."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_private_choice",
+        "text": "She turns her chair a little towards mine. There is time for another song, or another subject."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_kiss_0",
+        "text": "Yes. I was hoping you would."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_kiss_1",
+        "text": "This time she reaches me first. We kiss, and she laughs softly against my cheek before moving back to her chair."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_kiss_2",
+        "text": "I like having somewhere to come back to. I mean this corner. Also this."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_return_0",
+        "text": "We put our phones away and leave the library together. Outside, she adjusts her bag and walks with me towards the gate."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_goodbye_0",
+        "text": "I'd like to do this again. I can bring something considerably worse to listen to."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_goodbye_1",
+        "text": "I'd like that. Including the part where you nearly sing."
+      },
+      {
+        "week": 28,
+        "date": "2027-04-08",
+        "period": "day",
+        "scene": "boglarka_3",
+        "line": "date_goodbye_2",
+        "text": "“I might, next time.” She says goodbye at the gate. I watch her go a little way before turning towards my own door."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "line_0",
+        "text": "Egy megbeszélésen Márton Boglárka helyett fejezett be egy magyarázatot. A könyvtárban Boglárka nem ül le rögtön."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "line_1",
+        "text": "Segíteni akartál, de mindenki megint téged hallott. Veled sem szeretnék lábjegyzet lenni."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_conflict_0",
+        "text": "Láttam, hogy tudod, mire gondolok. Még örültem is. Aztán már te mondtad, én meg ott álltam melletted."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_conflict_1",
+        "text": "Azt hittem, megkönnyítem, ha sürgetnek."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_conflict_2",
+        "text": "Nehéz volt. De el akartam mondani. Most neked köszönték meg, én meg megint majdnem csatlakoztam hozzájuk."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "line_2",
+        "text": "Szeretném megérteni, mi történt köztünk, mielőtt válaszolok."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "line_3",
+        "text": "A következő alkalommal várd ki a mondatomat. Akkor is, ha túl lassúnak tartasz."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "line_4",
+        "text": "Nem szeretném egy bocsánatkéréssel elintézni."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair",
+        "text": "Hogyan kezdjük újra ezt a beszélgetést?"
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair_signal_0",
+        "text": "Azt fogom mondani, hogy még nem fejeztem be. Nem titkos jel kell hozzá."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair_signal_1",
+        "text": "Akkor megállok. Nem kell megindokolnod."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair_signal_2",
+        "text": "És ha nem kérek segítséget, attól még lehet nehéz. A kettőt szeretném én különválasztani."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair_end_0",
+        "text": "Márton megírja a helyesbítést. Boglárka egy mondatot kihúz, a saját megfogalmazását írja a helyére; ez a változat megy a csoportnak."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair_end_1",
+        "text": "Nem attól leszünk közel, hogy mindig ugyanarra jutunk. Legközelebb lehet, hogy vitatkozom is veled."
+      },
+      {
+        "week": 43,
+        "date": "2027-07-22",
+        "period": "day",
+        "scene": "boglarka_4",
+        "line": "romance_repair_end_2",
+        "text": "Szeretném végighallgatni."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "line_0",
+        "text": "A csendes udvaron most nem a következő veszélyről beszéltek. A korábbi jóvátételnek azóta is érvényt kellett szerezni."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_changed_0",
+        "text": "A megbeszélésen tegnap nem segítettél ki. Észrevetted, milyen sokáig kerestem azt a szót?"
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_changed_1",
+        "text": "Igen."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_changed_2",
+        "text": "Én meg azt, hogy kivártad. Utána már azt is ki mertem mondani, amiben nem értettem egyet veled. Jó volt úgy kijönni, hogy nem kellett visszamennem a saját mondatomért."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "line_1",
+        "text": "A saját szavaimmal mondom: kapcsolatot szeretnék veled, nem meg nem nevezett mellékszálat valaki életében."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "line_2",
+        "text": "Nem ígérek olyat, amit más helyett kellene eldöntenem."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "line_3",
+        "text": "Én ezt választom. Szeretnék helyet az életedben, amiről beszélhetünk, akkor is, ha nem értünk egyet."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "line_4",
+        "text": "A vállalásomhoz a saját időmből és a kényelmes titkolózásból is engednem kell."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_future",
+        "text": "Mit szeretnél a következő találkozón?"
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_future_ritual_0",
+        "text": "Az első számot én választom. Még mindig nincs hozzá szövegelemzés."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_future_ritual_1",
+        "text": "A második az enyém. Lehet, hogy nem fog tetszeni."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_future_ritual_2",
+        "text": "Akkor végre kölcsönös lesz a kockázat."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_commit_end_0",
+        "text": "Elküldtem a tanulmányt. Utána tíz percig néztem az elküldött üzenetet. A nevem ott volt. Aztán még mindig ott volt."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_commit_end_1",
+        "text": "Örülök."
+      },
+      {
+        "week": 48,
+        "date": "2027-08-26",
+        "period": "day",
+        "scene": "boglarka_5",
+        "line": "romance_commit_end_2",
+        "text": "Én is. Most már nem kell újraolvasnom, hogy biztos legyek benne."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "line_0",
+        "text": "After the institutional meeting I find Boglárka by the courtyard bench. She is staring at her phone. When she sees me, she turns the screen my way."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "receipt",
+        "text": "Submission received. That's all it says. I've read it enough times to have a strong opinion about the punctuation."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "reply",
+        "text": "You sent it. With your name on it."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "line_1",
+        "text": "Yes. Not accepted, not published. Sent. I keep trying to skip to knowing whether they like it."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "line_2",
+        "text": "I wish there were a receipt for the rest of this year. Something that said we'd finished with it."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "line_3",
+        "text": "I don't think I'd believe it. I still stop when I hear a door shut below us. But I don't want every time I see you to be about that door."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "after_want",
+        "text": "I want to keep seeing you, CLI route tester. With things to tell you that haven't happened yet."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "line_4",
+        "text": "Her thumb rests on the edge of the screen. I sit on the other end of the bench before I answer."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "romance_after_topic",
+        "text": "She turns the phone face down between us. For a moment we watch a leaf travel along a crack in the paving."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "after_music",
+        "text": "Our music evening. Yes. I still have the list. I've added something you might actually like; it felt rather reckless."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "after_invite",
+        "text": "I left the books at home. I'd like a little more time with you. We could stay here, or go up to your suite."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "room_0",
+        "text": "We walk to my suite. I put my keys on the desk and move a pile of papers off the spare chair. She takes it, setting her bag beside her feet."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "room_detail",
+        "text": "So this is where all the unfinished sentences live. I feel quite at home."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "room_choice",
+        "text": "She looks up at me, amused. I leave the papers where they are."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "kiss_0",
+        "text": "Yes. Come here."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "kiss_1",
+        "text": "I move closer. She stands to meet me, resting a hand on my shoulder as we kiss. When we draw apart she keeps looking at me."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "intimacy_choice",
+        "text": "I'd like to stay with you, properly alone. Not just for another song."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "fade_0",
+        "text": "I want that too."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "fade_1",
+        "text": "She sets her phone beside mine and takes my hand. We leave the chairs behind. The rest of our time together stays private."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "after_fade",
+        "text": "Later, she reaches for the glass of water on my desk. I almost start apologising for the papers. She raises an eyebrow before I can."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "after_fade_reply",
+        "text": "Leave them. I like knowing you don't finish everything either."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "room_leave",
+        "text": "We gather the phones. Boglárka lifts her bag, and I walk her to my door. She says she'd like to bring the next song herself."
+      },
+      {
+        "week": 52,
+        "date": "2027-09-23",
+        "period": "day",
+        "scene": "boglarka_6",
+        "line": "homeward",
+        "text": "We say goodbye. Her steps recede along the corridor; I go back inside and leave the papers until later."
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "disagreement-withdrawal",
+      "policy": {
+        "id": "disagreement-withdrawal",
+        "topic": "music",
+        "answer": "differ",
+        "pace": "slow_touch",
+        "destination": "head_home",
+        "withdraw4": true,
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.7",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 12
+      },
+      "commands": 467,
+      "restarts": 6,
+      "ending": "estranged",
+      "outcome": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "estranged",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "A visszalépést tiszteletben tartották. A közös nyomozás megmarad, a magánéleti találkozások elmaradnak. Senki nem tartozik érzelmekkel azért, mert segítséget kapott.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "boglarka_1",
+        "boglarka_2",
+        "boglarka_3",
+        "boglarka_4"
+      ],
+      "observed": [
+        [
+          28,
+          "2027-04-08",
+          "day",
+          0
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          1
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          2
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          3
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          4
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          5
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          6
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          7
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          8
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          9
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          10
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          11
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          12
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          13
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          14
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          15
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          16
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          17
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          18
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          19
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          20
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          21
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          22
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          23
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          24
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          25
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          26
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          27
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          28
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          29
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          30
+        ]
+      ],
+      "context": [
+        [
+          2,
+          "day",
+          0
+        ],
+        [
+          2,
+          "day",
+          1
+        ],
+        [
+          2,
+          "day",
+          2
+        ],
+        [
+          2,
+          "day",
+          3
+        ],
+        [
+          2,
+          "day",
+          4
+        ],
+        [
+          2,
+          "day",
+          5
+        ],
+        [
+          2,
+          "day",
+          6
+        ],
+        [
+          2,
+          "day",
+          7
+        ],
+        [
+          2,
+          "day",
+          8
+        ],
+        [
+          2,
+          "day",
+          9
+        ],
+        [
+          2,
+          "day",
+          10
+        ],
+        [
+          2,
+          "day",
+          11
+        ],
+        [
+          2,
+          "day",
+          12
+        ],
+        [
+          2,
+          "day",
+          13
+        ],
+        [
+          2,
+          "day",
+          14
+        ],
+        [
+          2,
+          "day",
+          15
+        ],
+        [
+          2,
+          "day",
+          16
+        ],
+        [
+          2,
+          "day",
+          17
+        ],
+        [
+          6,
+          "day",
+          18
+        ],
+        [
+          6,
+          "day",
+          19
+        ],
+        [
+          6,
+          "day",
+          20
+        ],
+        [
+          6,
+          "day",
+          21
+        ],
+        [
+          6,
+          "day",
+          22
+        ],
+        [
+          6,
+          "day",
+          23
+        ],
+        [
+          6,
+          "day",
+          24
+        ],
+        [
+          6,
+          "day",
+          25
+        ],
+        [
+          6,
+          "day",
+          26
+        ],
+        [
+          6,
+          "day",
+          27
+        ],
+        [
+          6,
+          "day",
+          28
+        ],
+        [
+          6,
+          "day",
+          29
+        ],
+        [
+          6,
+          "day",
+          30
+        ],
+        [
+          6,
+          "day",
+          31
+        ],
+        [
+          6,
+          "day",
+          32
+        ],
+        [
+          6,
+          "day",
+          33
+        ],
+        [
+          28,
+          "day",
+          34
+        ],
+        [
+          28,
+          "day",
+          35
+        ],
+        [
+          28,
+          "day",
+          36
+        ],
+        [
+          28,
+          "day",
+          37
+        ],
+        [
+          28,
+          "day",
+          38
+        ],
+        [
+          28,
+          "day",
+          39
+        ],
+        [
+          28,
+          "day",
+          40
+        ],
+        [
+          28,
+          "day",
+          41
+        ],
+        [
+          28,
+          "day",
+          42
+        ],
+        [
+          28,
+          "day",
+          43
+        ],
+        [
+          28,
+          "day",
+          44
+        ],
+        [
+          28,
+          "day",
+          45
+        ],
+        [
+          28,
+          "day",
+          46
+        ],
+        [
+          28,
+          "day",
+          47
+        ],
+        [
+          28,
+          "day",
+          48
+        ],
+        [
+          28,
+          "day",
+          49
+        ],
+        [
+          28,
+          "day",
+          50
+        ],
+        [
+          28,
+          "day",
+          51
+        ],
+        [
+          28,
+          "day",
+          52
+        ],
+        [
+          28,
+          "day",
+          53
+        ],
+        [
+          28,
+          "day",
+          54
+        ],
+        [
+          28,
+          "day",
+          55
+        ],
+        [
+          28,
+          "day",
+          56
+        ],
+        [
+          43,
+          "day",
+          57
+        ],
+        [
+          43,
+          "day",
+          58
+        ],
+        [
+          43,
+          "day",
+          59
+        ],
+        [
+          43,
+          "day",
+          60
+        ],
+        [
+          43,
+          "day",
+          61
+        ],
+        [
+          43,
+          "day",
+          62
+        ],
+        [
+          43,
+          "day",
+          63
+        ],
+        [
+          43,
+          "day",
+          64
+        ]
+      ],
+      "requests": [
+        {
+          "week": 1,
+          "scene": "shared_1",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "demonstrate"
+          }
+        },
+        {
+          "week": 2,
+          "scene": "shared_2",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "ask"
+          }
+        },
+        {
+          "week": 2,
+          "scene": "boglarka_1",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "interest"
+          }
+        },
+        {
+          "week": 3,
+          "scene": "shared_3",
+          "line": "line_2",
+          "action": {
+            "type": "choice",
+            "id": "listen"
+          }
+        },
+        {
+          "week": 6,
+          "scene": "shared_4",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "separate"
+          }
+        },
+        {
+          "week": 6,
+          "scene": "boglarka_2",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "yes"
+          }
+        },
+        {
+          "week": 6,
+          "scene": "boglarka_2",
+          "line": "romance_attraction",
+          "action": {
+            "type": "choice",
+            "id": "quiet"
+          }
+        },
+        {
+          "week": 10,
+          "scene": "shared_5",
+          "line": "line_2",
+          "action": {
+            "type": "choice",
+            "id": "ground"
+          }
+        },
+        {
+          "week": 16,
+          "scene": "shared_6",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "protect"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "shared_7",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "copy"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "yes"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "romance_date_topic",
+          "action": {
+            "type": "choice",
+            "id": "music"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "music_answer",
+          "action": {
+            "type": "choice",
+            "id": "differ"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "romance_closeness",
+          "action": {
+            "type": "choice",
+            "id": "slow_touch"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "date_destination",
+          "action": {
+            "type": "choice",
+            "id": "head_home"
+          }
+        },
+        {
+          "week": 32,
+          "scene": "shared_8",
+          "line": "line_3",
+          "action": {
+            "type": "choice",
+            "id": "public"
+          }
+        },
+        {
+          "week": 40,
+          "scene": "shared_9",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "document"
+          }
+        },
+        {
+          "week": 43,
+          "scene": "shared_10",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "refuse"
+          }
+        },
+        {
+          "week": 43,
+          "scene": "boglarka_4",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "withdraw"
+          }
+        },
+        {
+          "week": 44,
+          "scene": "shared_11",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "support"
+          }
+        },
+        {
+          "week": 46,
+          "scene": "shared_12",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "explain"
+          }
+        },
+        {
+          "week": 48,
+          "scene": "shared_13",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "map"
+          }
+        },
+        {
+          "week": 50,
+          "scene": "shared_14",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "share"
+          }
+        },
+        {
+          "week": 51,
+          "scene": "shared_15",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "signal"
+          }
+        },
+        {
+          "week": 52,
+          "scene": "shared_16",
+          "line": "line_3",
+          "action": {
+            "type": "choice",
+            "id": "public"
+          }
+        }
+      ]
+    },
+    {
+      "id": "commitment-withdrawal",
+      "policy": {
+        "id": "commitment-withdrawal",
+        "topic": "self",
+        "answer": "like",
+        "pace": "kiss",
+        "destination": "stay_outside",
+        "withdraw5": true,
+        "restart": true
+      },
+      "release": {
+        "gameVersion": "0.9.7",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 12
+      },
+      "commands": 511,
+      "restarts": 8,
+      "ending": "estranged",
+      "outcome": {
+        "threat": "resolved",
+        "cost": "exhausting",
+        "institution": "incomplete",
+        "relationship": "estranged",
+        "viragText": "A Mérceháló év végi cikksorozatában Virág feltárja a visszatartott ösztöndíjak, a valótlan felújítási teljesítések és az elhallgatott panaszok ügyét. A pénzeket kiutalják, a hibás teljesítést visszavonják, a felelős vezetőt leváltják. Riporteri nyomozása sikeresen lezárul; a hatósági utóeljárás folytatódik.",
+        "institutionText": "A főiskola részleges tájékoztatást ad. A sérült vagy visszatartott bizonyítékok miatt több kérdés nyitva marad.",
+        "relationshipText": "A visszalépést tiszteletben tartották. A közös nyomozás megmarad, a magánéleti találkozások elmaradnak. Senki nem tartozik érzelmekkel azért, mert segítséget kapott.",
+        "threatText": "A vámpír meghalt a megszakított átalakulásban. A segítők megállították a rítust, de a csoport súlyosan kimerült, és iratok sérültek meg. Lilla és a többiek fokozatosan épülnek fel; az emlékek nem térnek vissza egyszerre."
+      },
+      "scenes": [
+        "boglarka_1",
+        "boglarka_2",
+        "boglarka_3",
+        "boglarka_4",
+        "boglarka_5"
+      ],
+      "observed": [
+        [
+          28,
+          "2027-04-08",
+          "day",
+          0
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          1
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          2
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          3
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          4
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          5
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          6
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          7
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          31
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          32
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          33
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          11
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          12
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          13
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          34
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          16
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          35
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          36
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          37
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          20
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          21
+        ],
+        [
+          28,
+          "2027-04-08",
+          "day",
+          22
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          23
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          24
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          25
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          26
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          27
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          38
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          39
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          40
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          41
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          42
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          43
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          44
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          45
+        ],
+        [
+          43,
+          "2027-07-22",
+          "day",
+          46
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          47
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          48
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          49
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          50
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          51
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          52
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          53
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          54
+        ],
+        [
+          48,
+          "2027-08-26",
+          "day",
+          55
+        ]
+      ],
+      "context": [
+        [
+          2,
+          "day",
+          0
+        ],
+        [
+          2,
+          "day",
+          1
+        ],
+        [
+          2,
+          "day",
+          2
+        ],
+        [
+          2,
+          "day",
+          3
+        ],
+        [
+          2,
+          "day",
+          4
+        ],
+        [
+          2,
+          "day",
+          5
+        ],
+        [
+          2,
+          "day",
+          6
+        ],
+        [
+          2,
+          "day",
+          7
+        ],
+        [
+          2,
+          "day",
+          8
+        ],
+        [
+          2,
+          "day",
+          9
+        ],
+        [
+          2,
+          "day",
+          10
+        ],
+        [
+          2,
+          "day",
+          11
+        ],
+        [
+          2,
+          "day",
+          12
+        ],
+        [
+          2,
+          "day",
+          13
+        ],
+        [
+          2,
+          "day",
+          14
+        ],
+        [
+          2,
+          "day",
+          15
+        ],
+        [
+          2,
+          "day",
+          16
+        ],
+        [
+          2,
+          "day",
+          17
+        ],
+        [
+          6,
+          "day",
+          18
+        ],
+        [
+          6,
+          "day",
+          19
+        ],
+        [
+          6,
+          "day",
+          20
+        ],
+        [
+          6,
+          "day",
+          21
+        ],
+        [
+          6,
+          "day",
+          22
+        ],
+        [
+          6,
+          "day",
+          23
+        ],
+        [
+          6,
+          "day",
+          24
+        ],
+        [
+          6,
+          "day",
+          25
+        ],
+        [
+          6,
+          "day",
+          26
+        ],
+        [
+          6,
+          "day",
+          27
+        ],
+        [
+          6,
+          "day",
+          28
+        ],
+        [
+          6,
+          "day",
+          29
+        ],
+        [
+          6,
+          "day",
+          30
+        ],
+        [
+          6,
+          "day",
+          31
+        ],
+        [
+          6,
+          "day",
+          32
+        ],
+        [
+          6,
+          "day",
+          33
+        ],
+        [
+          28,
+          "day",
+          34
+        ],
+        [
+          28,
+          "day",
+          35
+        ],
+        [
+          28,
+          "day",
+          36
+        ],
+        [
+          28,
+          "day",
+          37
+        ],
+        [
+          28,
+          "day",
+          38
+        ],
+        [
+          28,
+          "day",
+          39
+        ],
+        [
+          28,
+          "day",
+          40
+        ],
+        [
+          28,
+          "day",
+          41
+        ],
+        [
+          28,
+          "day",
+          65
+        ],
+        [
+          28,
+          "day",
+          66
+        ],
+        [
+          28,
+          "day",
+          67
+        ],
+        [
+          28,
+          "day",
+          45
+        ],
+        [
+          28,
+          "day",
+          46
+        ],
+        [
+          28,
+          "day",
+          47
+        ],
+        [
+          28,
+          "day",
+          68
+        ],
+        [
+          28,
+          "day",
+          50
+        ],
+        [
+          28,
+          "day",
+          69
+        ],
+        [
+          28,
+          "day",
+          70
+        ],
+        [
+          28,
+          "day",
+          71
+        ],
+        [
+          28,
+          "day",
+          54
+        ],
+        [
+          28,
+          "day",
+          55
+        ],
+        [
+          28,
+          "day",
+          56
+        ],
+        [
+          43,
+          "day",
+          57
+        ],
+        [
+          43,
+          "day",
+          58
+        ],
+        [
+          43,
+          "day",
+          59
+        ],
+        [
+          43,
+          "day",
+          60
+        ],
+        [
+          43,
+          "day",
+          61
+        ],
+        [
+          43,
+          "day",
+          72
+        ],
+        [
+          43,
+          "day",
+          73
+        ],
+        [
+          43,
+          "day",
+          74
+        ],
+        [
+          43,
+          "day",
+          75
+        ],
+        [
+          43,
+          "day",
+          76
+        ],
+        [
+          43,
+          "day",
+          77
+        ],
+        [
+          43,
+          "day",
+          78
+        ],
+        [
+          43,
+          "day",
+          79
+        ],
+        [
+          43,
+          "day",
+          80
+        ],
+        [
+          48,
+          "day",
+          81
+        ],
+        [
+          48,
+          "day",
+          82
+        ],
+        [
+          48,
+          "day",
+          83
+        ],
+        [
+          48,
+          "day",
+          84
+        ],
+        [
+          48,
+          "day",
+          85
+        ],
+        [
+          48,
+          "day",
+          86
+        ],
+        [
+          48,
+          "day",
+          87
+        ],
+        [
+          48,
+          "day",
+          88
+        ],
+        [
+          48,
+          "day",
+          89
+        ]
+      ],
+      "requests": [
+        {
+          "week": 1,
+          "scene": "shared_1",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "demonstrate"
+          }
+        },
+        {
+          "week": 2,
+          "scene": "shared_2",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "ask"
+          }
+        },
+        {
+          "week": 2,
+          "scene": "boglarka_1",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "interest"
+          }
+        },
+        {
+          "week": 3,
+          "scene": "shared_3",
+          "line": "line_2",
+          "action": {
+            "type": "choice",
+            "id": "listen"
+          }
+        },
+        {
+          "week": 6,
+          "scene": "shared_4",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "separate"
+          }
+        },
+        {
+          "week": 6,
+          "scene": "boglarka_2",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "yes"
+          }
+        },
+        {
+          "week": 6,
+          "scene": "boglarka_2",
+          "line": "romance_attraction",
+          "action": {
+            "type": "choice",
+            "id": "quiet"
+          }
+        },
+        {
+          "week": 10,
+          "scene": "shared_5",
+          "line": "line_2",
+          "action": {
+            "type": "choice",
+            "id": "ground"
+          }
+        },
+        {
+          "week": 16,
+          "scene": "shared_6",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "protect"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "shared_7",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "copy"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "yes"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "romance_date_topic",
+          "action": {
+            "type": "choice",
+            "id": "self"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "music_answer",
+          "action": {
+            "type": "choice",
+            "id": "like"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "romance_closeness",
+          "action": {
+            "type": "choice",
+            "id": "kiss"
+          }
+        },
+        {
+          "week": 28,
+          "scene": "boglarka_3",
+          "line": "date_destination",
+          "action": {
+            "type": "choice",
+            "id": "stay_outside"
+          }
+        },
+        {
+          "week": 32,
+          "scene": "shared_8",
+          "line": "line_3",
+          "action": {
+            "type": "choice",
+            "id": "public"
+          }
+        },
+        {
+          "week": 40,
+          "scene": "shared_9",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "document"
+          }
+        },
+        {
+          "week": 43,
+          "scene": "shared_10",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "refuse"
+          }
+        },
+        {
+          "week": 43,
+          "scene": "boglarka_4",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "repair"
+          }
+        },
+        {
+          "week": 43,
+          "scene": "boglarka_4",
+          "line": "romance_repair",
+          "action": {
+            "type": "choice",
+            "id": "signal"
+          }
+        },
+        {
+          "week": 44,
+          "scene": "shared_11",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "support"
+          }
+        },
+        {
+          "week": 46,
+          "scene": "shared_12",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "explain"
+          }
+        },
+        {
+          "week": 48,
+          "scene": "shared_13",
+          "line": "line_5",
+          "action": {
+            "type": "choice",
+            "id": "map"
+          }
+        },
+        {
+          "week": 48,
+          "scene": "boglarka_5",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "withdraw"
+          }
+        },
+        {
+          "week": 50,
+          "scene": "shared_14",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "share"
+          }
+        },
+        {
+          "week": 51,
+          "scene": "shared_15",
+          "line": "line_4",
+          "action": {
+            "type": "choice",
+            "id": "signal"
+          }
+        },
+        {
+          "week": 52,
+          "scene": "shared_16",
+          "line": "line_3",
+          "action": {
+            "type": "choice",
+            "id": "public"
+          }
+        }
+      ]
+    }
+  ]
+}

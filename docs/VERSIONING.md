@@ -6,9 +6,9 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.6`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.7`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
-| `contentCompatibilityVersion` | `11`, in `src/game/release.ts` | Story/progression compatibility epoch |
+| `contentCompatibilityVersion` | `12`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
 | Storage key | `ligetvar-save` | Stable across subsequent releases |
 
@@ -116,3 +116,7 @@ The same release also corrects the optional Rebeka aftermath visit to the existi
 ## Boglárka date and aftermath — 0.9.6
 
 Schema remains 4; content epoch advances to **11**. `boglarka_3`/`boglarka_6` replace incompatible assembled cursor graphs and persisted prose with localized message references. A kiss no longer authorizes deeper intimacy, and the final continuation decision precedes touch. Stable original invitation/withdrawal/aftermath effects, knowledge, deadlines and one-slot costs remain. Epoch10 and earlier require a fresh year; no migration or storage-key/default-language change. [Baseline and validation](design/PLAYTHROUGH-FINDINGS.md#boglárka-date-and-aftermath-validation--28-october-2026).
+
+## Boglárka disagreement and commitment — 0.9.7
+
+Schema4/content**12**. `_4`/`_5` replace assembled cursor graphs and persisted journals/reactions with bilingual message references; the repair decision now witnesses a present disagreement rather than an invented off-screen offence. Stable admission, repair/commit/withdraw effects, future-memory IDs, triad requirements, schedule and slot costs remain. Epoch11 and earlier require a fresh year; no migration or default-language change. Article submission belongs to `_6`, not an unconditional `_5` postscript.

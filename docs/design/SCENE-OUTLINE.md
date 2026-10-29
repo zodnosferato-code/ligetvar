@@ -243,3 +243,17 @@ Authorized continuation, bounded to `boglarka_3` and `boglarka_6` for MR-01/MR-0
 | Change/exit | Show quiet woman enjoying loud music and deliberate invitation; reciprocal nervousness/music choices. Accept date or end romance; kiss or no touch, optional library company, second kiss only after earlier chosen kiss, then return and goodbye. | Submission is not acceptance/publication. Ask for ordinary future company; continue or withdraw before touch. Conditional music/concert/coffee callbacks with fallback. Courtyard or suite; talk/kiss/depart; separately chosen fade, reconsideration and ordinary aftermath. Natural exit without automatic next-day plans. |
 
 Each branch gets a specific response. A no-touch date preserves romantic progress. The final meeting responds to her authorship and chosen pleasures without repeating the commitment speech, inventing a joint concert, or claiming the danger made everything worthwhile. Independent Rebeka–Boglárka content and unresolved late-Soma migration remain unchanged. Next connected pass: `_4`/`_5` conflict and commitment continuity, then `_1`/`_2` English-first arc.
+
+## Refined Boglárka disagreement and commitment — 29 October 2026
+
+Approved continuation of her connected arc, `_4`/`_5`; English first, Hungarian translation. Do not invent a player offence or an off-screen successful repair meeting. Preserve original repair/commit/withdraw effects and triad eligibility. This pass replaces their assembled graphs, not the investigation or schedule.
+
+| Check | `_4` | `_5` |
+| --- | --- | --- |
+| Actual time | Weeks43–50 (22 July–9 September 2027), either period; old chapter10. | Weeks48–50 (26 August–9 September 2027), either period; old chapter13. |
+| Prior contact | `_3` completed, possibly in the same week; may be many weeks earlier. Music was heard on every accepted date; no optional coffee assumed. | `_4` repaired, possibly in the preceding slot; no fixed elapsed gap or subsequent group meeting assumed. |
+| Entry | Mutual attraction/invitation, no commitment; her unfinished article and ability to disagree matter. | Repair witnessed, direction chosen, triad affirmations required on that route. No confrontation or submission yet. |
+| Physical state | Two drafts at library table, folder and tea; both present, no touch. Papers leave with Boglárka; goodbye at library doorway. | Courtyard, folded draft in her bag. No seasonal clothing/weather assumptions. Goodbye at adjacent gallery entrance, no invented travel. |
+| Change/exit | A present disagreement about leading with a story or argument reveals her fear of dismissal and wish to be liked. Player tries two distinct readings; she revises without surrendering authorship. Continuing the relationship is a separate choice from editorial taste. Withdrawal has an ordinary departure. | She names her wish for a relationship without academic excuses. Commit or withdraw; commitment chooses music or a concert invitation, recording original future memories. Plans remain unscheduled, article unfinished; `_6` later supplies submission and actual continuation. |
+
+Retain distinct voices: precise observation, dry tea joke, self-directed revision, reciprocal player admission of procrastination. No forced apology, permission ritual, automatic touch or supernatural clue. `_1`/`_2` remain the next English-first connected writing targets.

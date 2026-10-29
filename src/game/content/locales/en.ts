@@ -1,3 +1,4 @@
+import {boglarkaLaterEn} from './boglarka-later.en.ts';
 import {boglarkaPersonalEn} from './boglarka-personal.en.ts';
 import {rebekaEarlyEn} from './rebeka-early.en.ts';
 import {rebekaConflictEn} from './rebeka-conflict.en.ts';
@@ -17,6 +18,7 @@ export const en:Record<keyof typeof hu,string> = {
   "hub.phone.meetings": "Meetings",
   "hub.phone.outings": "Outings",
   "hub.phone.replies": "Replies",
+  ...boglarkaLaterEn,
   ...boglarkaPersonalEn,
   ...rebekaEarlyEn,
   ...rebekaConflictEn,
