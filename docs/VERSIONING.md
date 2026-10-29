@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.16`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.17`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `16`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -161,3 +161,12 @@ Schema4/content16 remain unchanged. The shared browser/CLI decoder now verifies 
 ## 0.9.16 — Gréta final annual callbacks
 
 Schema4/content16 retained. Optional effect-free memories and a repeated-intimacy reply extend `greta_6`; all existing cursor IDs, consequential effects, stored journals and admission remain. Earlier-intimacy history offers `again` instead of `intimate`, reaching the existing fade without new pending effects. Every prior final graph cursor/effect path is exercised against the new decoder, including skipped additions and midpoint/later intimacy. Existing same-epoch saves remain supported; no migration, replay of missed meetings or forced restart.
+
+
+## 0.9.17 — validate completed conversation decisions
+
+Schema4/content16 remain unchanged. The shared decoder now requires each completed scene's recorded decisions to fit one entry-to-terminal path, including terminal-choice effects, mandatory `onComplete` decisions, local prerequisites and the calendar at completion. It rejects mixtures of exclusive branches and incomplete decision histories. Effect-free alternatives remain valid. Later scenes may overwrite a decision's owner; journal order establishes which overwrite is later.
+
+This is a structural consistency check, not a reconstruction or authentication of all gameplay. Completed saves do not store choice order or historical global conditions. Mutable direction and other historical global choice gates are deliberately not evaluated against today's state. Bonds, money and the complete resource history are not replayed. Active cursor validation retains its stricter current-entry checks. Compatible valid saves keep their format, progression and epochs; no migration or forced restart.
+
+Validation: four generic regression cases cover exclusive/missing/local decisions, effect-free paths, changed direction, terminal effects, calendar conditions, overwritten ownership and cycle termination. A real Rebeka CLI load/import regression verifies `SAVE_INVALID` without changing the live view, revision or existing bytes. The full suite includes six annual public CLI campaigns and exhaustive relationship save roundtrips. See the tracker for final check results.

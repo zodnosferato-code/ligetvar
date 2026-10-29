@@ -36,6 +36,37 @@ function reachableCursor(s:GameState,x:Scene,schedule?:Schedule):boolean {
  }
  return false;
 }
+/** Completed saves retain decision sets, not choice order. Require at least one
+ * terminal path that produces that set. Historical direction/global conditions
+ * cannot be reconstructed from today's state; only calendar and local gates
+ * are checked here. Later scenes may legitimately overwrite a decision owner.
+ */
+function reachableCompletion(s:GameState,x:Scene,schedule?:Schedule):boolean {
+ const required=new Set(Object.keys(s.decisions).filter(id=>s.decisions[id].scene===x.id));
+ const order=s.journal.findIndex(j=>j.scene===x.id);
+ const allowed=(id:string)=>required.has(id)||!!s.decisions[id]&&s.journal.findIndex(j=>j.scene===s.decisions[id].scene)>order;
+ const completion=x.onComplete?.decisions??[];
+ if(!completion.every(allowed))return false;
+ const lines=new Map(x.lines.map(l=>[l.id,l]));
+ const queue:[string,Set<string>][]=[[x.entry,new Set()]],seen=new Set<string>();
+ while(queue.length){
+  const [id,decisions]=queue.pop()!;
+  const key=JSON.stringify([id,[...decisions].sort()]);if(seen.has(key))continue;seen.add(key);
+  const line=lines.get(id);if(!line)continue;
+  const steps=line.choices??[undefined];
+  for(const choice of steps){
+   if(choice?.requires&&!calendarRequirementsMatch(s.completed[x.id],choice.requires,schedule))continue;
+   if(!(choice?.localRequires??[]).every(d=>decisions.has(d)))continue;
+   const added=choice?.effect?.decisions??[];if(!added.every(allowed))continue;
+   const nextDecisions=new Set([...decisions,...added]);
+   const next=choice?.next??line.next;
+   if(next){queue.push([next,nextDecisions]);continue;}
+   const final=new Set([...nextDecisions,...completion]);
+   if([...required].every(d=>final.has(d)))return true;
+  }
+ }
+ return false;
+}
 export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules:RuntimeRules<S>):SaveResult<S>{
  if(raw===null)return {status:'missing'};
  try{
@@ -71,6 +102,7 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
    const x=r[record.scene];if(![x.onComplete,...x.lines.flatMap(l=>(l.choices??[]).filter(c=>!c.requires||calendarRequirementsMatch(record.week,c.requires,rules.schedule)).map(c=>c.effect))].some(e=>e?.decisions?.includes(id)))return {status:'invalid'};
   }
   if(s.journal.length!==Object.keys(s.completed).length||new Set(s.journal.map((j:any)=>j.scene)).size!==s.journal.length)return {status:'invalid'};
+  if(!Object.keys(s.completed).every(id=>reachableCompletion(s as S,r[id],rules.schedule)))return {status:'invalid'};
   const shared=Object.values(r).find(x=>x.kind==='shared'&&x.week===s.week);
   for(let w=1;w<s.week;w++){const x=Object.values(r).find(x=>x.kind==='shared'&&x.week===w);if(storyDue(w,rules.schedule)&&(!x||!(x.id in s.completed)))return {status:'invalid'};}
   if(storyDue(s.week,rules.schedule)){

@@ -132,3 +132,21 @@ test('loading or importing an impossible scene history preserves the session and
   assert.deepEqual(resumed.execute({cmd:'look'}).view,before);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
+
+test('contradictory completed decisions cannot replace a live CLI session',()=>{
+ const {s,file}=play();scene(s,'shared_1');scene(s,'rebeka_1');
+ const raw=file.read()!,broken=JSON.parse(raw),revision=s.revision,before=s.execute({cmd:'look'}).view;
+ assert.ok(broken.state.decisions.rebeka_interest);
+ broken.state.decisions.rebeka_withdraw={scene:'rebeka_1',week:1};
+ const invalid=JSON.stringify(broken);file.write(invalid);
+ const load=s.execute({cmd:'load',expectedRevision:revision});
+ assert.equal((load as unknown as {error:{code:string}}).error.code,'SAVE_INVALID');
+ assert.equal(load.ok,false);assert.equal(s.revision,revision);assert.deepEqual(load.view,before);assert.equal(file.read(),invalid);
+ const dir=mkdtempSync(join(tmpdir(),'ligetvar-completed-path-'));
+ try{
+  const path=join(dir,'invalid.json');writeFileSync(path,invalid);file.write(raw);
+  const imported=s.execute({cmd:'import',path,replace:true,expectedRevision:revision});
+  assert.equal((imported as unknown as {error:{code:string}}).error.code,'SAVE_INVALID');
+  assert.equal(imported.ok,false);assert.equal(s.revision,revision);assert.deepEqual(imported.view,before);assert.equal(file.read(),raw);
+ }finally{rmSync(dir,{recursive:true,force:true});}
+});

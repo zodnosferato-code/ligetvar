@@ -140,3 +140,68 @@ test('cursor validation terminates on effect-free cycles in injected graphs',()=
  const bad=openScene(createInitial('Ada',rules),'voyage_1',r);bad.scene!.line='end';
  assert.equal(decodeSave(encodeSave(bad,rules),r,rules).status,'invalid');
 });
+
+test('completed saves require decisions from one terminal conversation path',()=>{
+ const r=pathFixture();
+ r.voyage_1.onComplete={decisions:['finished']};
+ const start=openScene(createInitial('Ada',rules),'voyage_1',r);
+ let done=applyChoice(applyChoice(applyChoice(applyChoice(start,'north',r,rules),'follow',r,rules),'continue',r,rules),'continue',r,rules);
+ assert.equal(done.phase,'planner');
+ const check=(s:Voyage)=>decodeSave(encodeSave(s,rules),r,rules).status;
+ assert.equal(check(done),'ok');
+ const mixed=structuredClone(done);mixed.decisions.south={scene:'voyage_1',week:1};
+ assert.equal(check(mixed),'invalid','mutually exclusive choices cannot both be witnessed');
+ const missing=structuredClone(done);delete missing.decisions.finished;
+ assert.equal(check(missing),'invalid','completion decisions are compulsory');
+ const impossible=structuredClone(done);delete impossible.decisions.north;impossible.decisions.south={scene:'voyage_1',week:1};
+ assert.equal(check(impossible),'invalid','a later local choice needs its own earlier branch');
+ const prefix=structuredClone(done);delete prefix.decisions.followed;
+ assert.equal(check(prefix),'invalid','an unfinished branch is not a completed conversation');
+});
+
+test('completed paths preserve effect-free alternatives and historical direction changes',()=>{
+ const r=pathFixture();
+ r.voyage_1.lines[0].choices![0].requires={directions:['north']};
+ let s=openScene(createInitial('Ada',rules),'voyage_1',r);
+ for(const id of ['north','follow','continue','continue'])s=applyChoice(s,id,r,rules);
+ s=setDirection(s,'south',rules);
+ assert.equal(decodeSave(encodeSave(s,rules),r,rules).status,'ok','today\'s direction is not the historical direction');
+ r.voyage_1.lines[0].choices!.push({id:'quiet',text:'Quiet',reaction:'',next:'end'});
+ let quiet=openScene(createInitial('Ada',rules),'voyage_1',r);
+ quiet=applyChoice(applyChoice(quiet,'quiet',r,rules),'continue',r,rules);
+ assert.equal(decodeSave(encodeSave(quiet,rules),r,rules).status,'ok');
+});
+
+test('completed paths check terminal choice effects, calendar and completion-only local gates',()=>{
+ const calendarRules:RuntimeRules<Voyage>={...rules,schedule:{slots:{1:'day',2:'night'},activities:{},calendar:()=>({season:'cold',events:[]})}};
+ const r=pathFixture();
+ r.voyage_1.onComplete={decisions:['finished']};
+ r.voyage_1.lines=[{id:'start',speaker:'navigator',text:'Choose',expression:'neutral',choices:[
+  {id:'stop',text:'Stop',reaction:'',effect:{decisions:['stopped']}},
+  {id:'warm',text:'Warm',reaction:'',requires:{calendar:{seasons:['warm']}},effect:{decisions:['warm']}},
+  {id:'local',text:'Local',reaction:'',localRequires:['finished'],effect:{decisions:['local']}},
+ ]}];
+ const done=applyChoice(openScene(createInitial('Ada',calendarRules),'voyage_1',r,calendarRules.schedule),'stop',r,calendarRules);
+ assert.equal(decodeSave(encodeSave(done,calendarRules),r,calendarRules).status,'ok');
+ for(const replacement of ['warm','local']){
+  const bad=structuredClone(done);delete bad.decisions.stopped;bad.decisions[replacement]={scene:'voyage_1',week:1};
+  assert.equal(decodeSave(encodeSave(bad,calendarRules),r,calendarRules).status,'invalid');
+ }
+});
+
+test('completed paths allow later decision ownership but reject erasure and terminate on cycles',()=>{
+ const r=structuredClone(registry);
+ for(const x of Object.values(r))x.lines[0].choices=x.lines[0].choices!.filter(c=>!c.requires);
+ r.voyage_2.lines[0].choices![0].effect={decisions:['charted_1']};
+ let s=createInitial('Ada',rules);
+ for(const id of ['voyage_1','voyage_2']){
+  s=applyChoice(applyChoice(openScene(s,id,r),'north',r,rules),'continue',r,rules);
+  if(id==='voyage_1')s=nextWeek(activity(activity(s,'rest',rules),'rest',rules),r,rules);
+ }
+ assert.equal(s.decisions.charted_1.scene,'voyage_2');
+ assert.equal(decodeSave(encodeSave(s,rules),r,rules).status,'ok');
+ const missing=structuredClone(s);delete missing.decisions.charted_1;
+ assert.equal(decodeSave(encodeSave(missing,rules),r,rules).status,'invalid');
+ r.voyage_1.lines[0].choices=[{id:'loop',text:'Loop',reaction:'',next:'start'}];
+ assert.equal(decodeSave(encodeSave(s,rules),r,rules).status,'invalid','a cycle without a terminal path cannot be completed');
+});
