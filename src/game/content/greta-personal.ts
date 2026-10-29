@@ -562,5 +562,28 @@ export function rewriteGretaPersonal(original:Scene):Scene {
   return c;
  });
  for(const l of s.lines)if(l.speaker==='greta'&&(l.id.startsWith('withdraw')||l.id==='line_3'&&p==='after'))l.expression='vulnerable';
+ if(p==='after'){
+  const intimate={anyOf:[{decisions:['greta_midpoint_intimate']},{decisions:['greta_dance_intimate']}]};
+  const recall=(id:string,next:string,requires:Choice['requires']):Choice=>({id,next,requires,...message(key('after.history.'+id)),reaction:''});
+  s.lines.find(l=>l.id==='future')!.choices!.push(recall('remember','history',{scenes:['greta_company']}));
+  const rows:Row[]=[
+   ['history','greta','beside',null],
+   ['sketch_memory','marton','beside','sketch_reply'],['sketch_reply','greta','beside','pour'],
+   ['dance_memory','marton','beside','dance_reply'],['dance_reply','greta','beside','pour'],
+   ['private_memory','marton','beside','private_reply'],['private_reply','greta','beside','pour'],
+   ['company_memory','marton','beside','company_reply'],['company_reply','greta','beside','pour'],
+   ['again','greta','private','fade']
+  ];
+  s.lines.push(...rows.map(([id,speaker,stage,next]):Line=>({id,speaker,stage,...message(key('after.'+id)),expression:speaker==='greta'?'affectionate':'neutral',...(next?{next}:{})})));
+  s.lines.find(l=>l.id==='history')!.choices=[
+   recall('sketch','sketch_memory',{scenes:['greta_sketch']}),
+   recall('dance','dance_memory',{anyOf:[{decisions:['greta_dance_steps']},{decisions:['greta_dance_rhythm']}]}),
+   recall('private','private_memory',intimate),
+   recall('company','company_memory',undefined)
+  ];
+  const choices=s.lines.find(l=>l.id==='intimacy')!.choices!;
+  choices.find(c=>c.id==='intimate')!.requires={notDecisions:['greta_midpoint_intimate','greta_dance_intimate']};
+  choices.splice(1,0,{id:'again',next:'again',requires:intimate,...message(key('after.intimacy.again')),reaction:''});
+ }
  return s;
 }

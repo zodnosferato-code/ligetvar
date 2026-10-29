@@ -1,0 +1,1144 @@
+{
+  "baseline": "dcfd54a",
+  "scope": "Scripted public CLI; final-session coverage resets on process restart. Excerpts assembled from transcript parts. No blind/browser acceptance.",
+  "runs": [
+    {
+      "case": "repeat-sketch",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--choice",
+        "greta_6/future=remember",
+        "--choice",
+        "greta_6/history=sketch",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-repeat-sketch.json",
+        "--transcript",
+        "/tmp/greta-finale-final-repeat-sketch-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 542,
+        "restarts": 4,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 5,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-repeat-sketch.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "again",
+          "text": "I was hoping you would say that. I liked being close to you before. I want this time too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room_end",
+          "text": "When she is ready to go, she picks up her bag. I walk her to my door. We say goodbye there, with another outing still ahead of us.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "So do I. Which one are you thinking of? I am hoping it is something we were terrible at.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "private"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "Én is. Mire gondolsz? Remélem, valamire, amiben borzalmasak voltunk.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "private"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "sketch_memory",
+          "text": "Drawing with you. We both carried on after the first terrible line. I would like more of that.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "sketch_reply",
+          "text": "I nearly brought a ruler. Imagine how much worse it could have been. Next time, you choose what we draw. I want to see what catches your eye.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room",
+          "text": "We pack both cups and the flask, then walk back through the park. About seventeen minutes later I unlock my suite. She puts her bag beside the spare chair.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "I want to stay with you. More than a kiss, if you want that too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "again"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "Veled szeretnék maradni. Többre vágyom egy csóknál, ha te is.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "again"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "again",
+          "text": "Reméltem, hogy ezt mondod. Jó volt veled korábban. Most is szeretném.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "no-sex-company",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--choice",
+        "greta_private/invite=outside",
+        "--choice",
+        "greta_dance/offer=rhythm",
+        "--choice",
+        "greta_dance/invite=outside",
+        "--choice",
+        "greta_sketch/hand_offer=company",
+        "--choice",
+        "greta_6/future=remember",
+        "--choice",
+        "greta_6/history=company",
+        "--choice",
+        "greta_6/room_choice=talk",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-no-sex-company.json",
+        "--transcript",
+        "/tmp/greta-finale-final-no-sex-company-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 515,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 11,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-no-sex-company.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "history",
+          "text": "So do I. Which one are you thinking of? I am hoping it is something we were terrible at.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "company_memory",
+          "text": "Our food in the courtyard. I want more time when neither of us has to turn up with something impressive.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "company_reply",
+          "text": "Good. I can manage bread. Although if you bring something awful, I reserve the right to complain while eating it. You can sit there and defend your cooking.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room",
+          "text": "We pack both cups and the flask, then walk back through the park. About seventeen minutes later I unlock my suite. She puts her bag beside the spare chair.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room_end",
+          "text": "When she is ready to go, she picks up her bag. I walk her to my door. We say goodbye there, with another outing still ahead of us.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "Én is. Mire gondolsz? Remélem, valamire, amiben borzalmasak voltunk.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "first-at-ending",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--choice",
+        "greta_private/invite=outside",
+        "--choice",
+        "greta_dance/invite=outside",
+        "--choice",
+        "greta_6/future=remember",
+        "--choice",
+        "greta_6/history=company",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-first-at-ending.json",
+        "--transcript",
+        "/tmp/greta-finale-final-first-at-ending-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 524,
+        "restarts": 3,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 5,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-first-at-ending.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "intimacy",
+          "text": "I want to stay with you. More than a kiss, if you want that too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "room_end",
+          "text": "When she is ready to go, she picks up her bag. I walk her to my door. We say goodbye there, with another outing still ahead of us.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "So do I. Which one are you thinking of? I am hoping it is something we were terrible at.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "Én is. Mire gondolsz? Remélem, valamire, amiben borzalmasak voltunk.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "company_memory",
+          "text": "Our food in the courtyard. I want more time when neither of us has to turn up with something impressive.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "company_reply",
+          "text": "Good. I can manage bread. Although if you bring something awful, I reserve the right to complain while eating it. You can sit there and defend your cooking.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room",
+          "text": "We pack both cups and the flask, then walk back through the park. About seventeen minutes later I unlock my suite. She puts her bag beside the spare chair.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "Veled szeretnék maradni. Többre vágyom egy csóknál, ha te is.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "dance-private",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--choice",
+        "greta_private/invite=outside",
+        "--choice",
+        "greta_6/future=remember",
+        "--choice",
+        "greta_6/history=private",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-dance-private.json",
+        "--transcript",
+        "/tmp/greta-finale-final-dance-private-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 535,
+        "restarts": 4,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 5,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-dance-private.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "again",
+          "text": "I was hoping you would say that. I liked being close to you before. I want this time too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room_end",
+          "text": "When she is ready to go, she picks up her bag. I walk her to my door. We say goodbye there, with another outing still ahead of us.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "So do I. Which one are you thinking of? I am hoping it is something we were terrible at.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "private"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "Én is. Mire gondolsz? Remélem, valamire, amiben borzalmasak voltunk.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "private"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "private_memory",
+          "text": "Being alone with you. I liked having time together afterwards as much as anything.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "private_reply",
+          "text": "I had been trying to look terribly composed. That lasted about a minute. I want more time like that with you. And enough time afterwards to stop pretending I need to rush off.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room",
+          "text": "We pack both cups and the flask, then walk back through the park. About seventeen minutes later I unlock my suite. She puts her bag beside the spare chair.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "I want to stay with you. More than a kiss, if you want that too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "again"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "Veled szeretnék maradni. Többre vágyom egy csóknál, ha te is.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "again"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "again",
+          "text": "Reméltem, hogy ezt mondod. Jó volt veled korábban. Most is szeretném.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "skipped-dance",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--skip-dance",
+        "--choice",
+        "greta_private/invite=leave",
+        "--choice",
+        "greta_6/future=remember",
+        "--choice",
+        "greta_6/history=sketch",
+        "--choice",
+        "greta_6/invitation=outside",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-skipped-dance.json",
+        "--transcript",
+        "/tmp/greta-finale-final-skipped-dance-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 496,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 8,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-skipped-dance.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "history",
+          "text": "So do I. Which one are you thinking of? I am hoping it is something we were terrible at.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "sketch_memory",
+          "text": "Drawing with you. We both carried on after the first terrible line. I would like more of that.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "sketch_reply",
+          "text": "I nearly brought a ruler. Imagine how much worse it could have been. Next time, you choose what we draw. I want to see what catches your eye.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "lake_end",
+          "text": "We pack the cups and say goodbye on the lakeside path. We will choose a day for another outing when we both know our plans. I take the park route back towards my suite.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "Én is. Mire gondolsz? Remélem, valamire, amiben borzalmasak voltunk.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "withdraw",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--choice",
+        "greta_6/line_4=withdraw",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-withdraw.json",
+        "--transcript",
+        "/tmp/greta-finale-final-withdraw-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 517,
+        "restarts": 1,
+        "phase": "ending",
+        "ending": "estranged",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 5,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-withdraw.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "withdraw",
+          "text": "Oh. I was expecting us to argue about where to go. Not whether.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "withdraw_leave",
+          "text": "I say goodbye and let her leave first. When she has gone, I take the longer path back through the park.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "latest-hu-night",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--greta-year",
+        "--greta-exploration",
+        "--private-week",
+        "32",
+        "--company-week",
+        "37",
+        "--dance-week",
+        "42",
+        "--sketch-week",
+        "47",
+        "--night-personal",
+        "--locale",
+        "hu",
+        "--choice",
+        "greta_6/future=remember",
+        "--choice",
+        "greta_6/history=dance",
+        "--choice",
+        "greta_6/intimacy=stop",
+        "--save",
+        "/tmp/greta-finale-final-latest-hu-night.json",
+        "--transcript",
+        "/tmp/greta-finale-final-latest-hu-night-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 537,
+        "restarts": 3,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 5,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-latest-hu-night.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "intimacy",
+          "text": "Veled szeretnék maradni. Többre vágyom egy csóknál, ha te is.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "again"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "room_end",
+          "text": "Amikor indulni készül, felveszi a táskáját. Kikísérem az ajtómhoz. Ott köszönünk el; egy újabb kirándulás még előttünk van.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "Én is. Mire gondolsz? Remélem, valamire, amiben borzalmasak voltunk.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "private"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "history",
+          "text": "So do I. Which one are you thinking of? I am hoping it is something we were terrible at.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "sketch"
+            },
+            {
+              "type": "choice",
+              "id": "dance"
+            },
+            {
+              "type": "choice",
+              "id": "private"
+            },
+            {
+              "type": "choice",
+              "id": "company"
+            }
+          ]
+        },
+        {
+          "lineId": "dance_memory",
+          "text": "Az udvaron dúdolt dallamodra. Még mindig nem találom az ütemét, de jó volt ott lenni veled.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "dance_reply",
+          "text": "Én is belezavarodtam. Reméltem, hogy nem vetted észre. Próbálhatnánk egy másikat. Vagy ezt ronthatnánk el megint, de igazán alaposan.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room",
+          "text": "Elcsomagoljuk mindkét poharat és a termoszt, aztán visszasétálunk a parkon át. Nagyjából tizenhét perc múlva kinyitom a lakosztályomat. A táskáját a második szék mellé teszi.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "I want to stay with you. More than a kiss, if you want that too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "again"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "skipped-all",
+      "command": [
+        "node",
+        "tools/cli-playthrough.mjs",
+        "--route",
+        "greta",
+        "--locale",
+        "en",
+        "--save",
+        "/tmp/greta-finale-final-skipped-all.json",
+        "--transcript",
+        "/tmp/greta-finale-final-skipped-all-transcript.json",
+        "--restart-at",
+        "greta_6/line_4",
+        "--restart-at",
+        "greta_6/history",
+        "--restart-at",
+        "greta_6/intimacy",
+        "--restart-at",
+        "greta_6/again"
+      ],
+      "summary": {
+        "route": "greta",
+        "commands": 456,
+        "restarts": 2,
+        "phase": "ending",
+        "ending": "greta",
+        "holidayScenes": [],
+        "seasonalScenes": [],
+        "week": 52,
+        "totalWeeks": 52,
+        "playedLines": 5,
+        "release": {
+          "gameVersion": "0.9.16",
+          "saveSchemaVersion": 4,
+          "contentCompatibilityVersion": 16
+        },
+        "save": "/tmp/greta-finale-final-skipped-all.json"
+      },
+      "finalScene": [
+        {
+          "lineId": "intimacy",
+          "text": "I want to stay with you. More than a kiss, if you want that too.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        },
+        {
+          "lineId": "room_end",
+          "text": "When she is ready to go, she picks up her bag. I walk her to my door. We say goodbye there, with another outing still ahead of us.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "room",
+          "text": "We pack both cups and the flask, then walk back through the park. About seventeen minutes later I unlock my suite. She puts her bag beside the spare chair.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "lineId": "intimacy",
+          "text": "Veled szeretnék maradni. Többre vágyom egy csóknál, ha te is.",
+          "actions": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "stop"
+            },
+            {
+              "type": "choice",
+              "id": "leave"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

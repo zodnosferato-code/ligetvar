@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.15`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.16`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `16`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -156,3 +156,8 @@ Schema4/content16 remain. `greta_dance` and `greta_sketch` add optional IDs, mes
 ## 0.9.15 — validate active dialogue history
 
 Schema4/content16 remain unchanged. The shared browser/CLI decoder now verifies active scene prerequisites and a playable path from the scene entry to the saved cursor with the exact ordered pending effects. Global and local choice conditions apply along that path; fabricated, duplicated or misplaced pending choices are invalid saves. Paid scene costs are not checked a second time because entry already deducted them. Valid saves retain their existing IDs, structure and semantics; no migration or forced restart. Effect-free choices are not stored, so any legal path matching the cursor/effects is sufficient. This checks active dialogue consistency, not a cryptographic proof of the entire campaign history.
+
+
+## 0.9.16 — Gréta final annual callbacks
+
+Schema4/content16 retained. Optional effect-free memories and a repeated-intimacy reply extend `greta_6`; all existing cursor IDs, consequential effects, stored journals and admission remain. Earlier-intimacy history offers `again` instead of `intimate`, reaching the existing fade without new pending effects. Every prior final graph cursor/effect path is exercised against the new decoder, including skipped additions and midpoint/later intimacy. Existing same-epoch saves remain supported; no migration, replay of missed meetings or forced restart.
