@@ -140,3 +140,8 @@ Gréta `_4`/`_5` now have one coherent present disagreement and a distinct ordin
 ### Current continuation after 0.9.12
 
 Gréta `_1`/`_2` now complete her six-main-meeting bilingual pass; [validation](PLAYTHROUGH-FINDINGS.md#gréta-early-arc-validation--29-october-2026) covers eight full CLI years, early refusals, late catch-up and12 restarts. Next implement her first optional private/company meeting in actual weeks28–32 after the existing date, under the [connected annual plan](SCENE-OUTLINE.md#connected-gréta-annual-expansion-plan--29-october-2026). Preserve separate present choices for company/kiss/intimacy/reconsideration, completion-only history and meaningful slower outcomes. Then add connected later-half exploration in small batches; midpoint plus at least two later meetings through52 is still required before satisfying INT2. No new timetable, architecture or blanket rewrite is implied.
+
+
+### Current continuation after 0.9.13
+
+Gréta's private28–32 and company33–37 meetings now exist in both languages. Do not repeat the midpoint addition. INT2 is Partial: next refine exploration38–42 after company, including already-intimate, quiet-company, declined and first-time alternatives; then44–47 and history-aware final callbacks. Preserve the original optionality of these additions and one-slot costs. [Evidence and limitations](PLAYTHROUGH-FINDINGS.md#gréta-midpoint-and-company-validation--29-october-2026). At least two later exploration meetings through52 remain required; this batch includes only one. Other routes still need their own annual plans and additions.

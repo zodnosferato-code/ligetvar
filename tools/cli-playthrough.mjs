@@ -65,6 +65,13 @@ try{
  const storyWeeks=response.view.calendar.storyWeeks;
  const calendarPlan=Object.fromEntries(Object.entries(plan).map(([chapter,ids])=>[storyWeeks[Number(chapter)-1],ids]));
  if(args.includes('--date-week')&&person==='greta'){const dateWeek=Number(option('--date-week','28'));if(!Number.isInteger(dateWeek)||dateWeek<28||dateWeek>49)throw new Error('Complete-route date week must be 28–49; week50 leaves no commitment slot.');delete calendarPlan[storyWeeks[6]];if(dateWeek>=43){delete calendarPlan[43];delete calendarPlan[48];calendarPlan[dateWeek]=['greta_3','greta_4'];calendarPlan[Math.max(48,dateWeek+1)]=['greta_5'];}else calendarPlan[dateWeek]=['greta_3'];}
+ if(args.includes('--greta-year')){
+  if(person!=='greta')throw new Error('--greta-year requires --route greta');
+  const privateWeek=Number(option('--private-week','29')),companyWeek=Number(option('--company-week','33'));
+  if(!Number.isInteger(privateWeek)||privateWeek<28||privateWeek>32||!Number.isInteger(companyWeek)||companyWeek<33||companyWeek>37)throw new Error('Use private week28–32 and company week33–37.');
+  calendarPlan[privateWeek]=[...(calendarPlan[privateWeek]??[]),'greta_private'];
+  calendarPlan[companyWeek]=[...(calendarPlan[companyWeek]??[]),'greta_company'];
+ }
  for(let week=1;week<=response.view.totalWeeks;week++){
   let v=response.view;const required=v.actions.find(a=>a.action.type==='scene'&&a.action.id.startsWith('shared_'));
   if(required)v=await scene(required.action.id);

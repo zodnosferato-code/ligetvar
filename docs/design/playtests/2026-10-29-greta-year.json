@@ -1,0 +1,1040 @@
+{
+  "baselineCommit": "f5394098ba187da62ff71f47307dec230a9c4a41",
+  "release": "0.9.13",
+  "method": "Scripted public JSON CLI, fresh saves, no author inspection or injected state during play. Excerpts are condensed; original temporary transcripts are identified by hash. Use fresh paths when reproducing.",
+  "sourceHashes": {
+    "src/game/content/greta-year.ts": "d1d013459a562c3dd3aef258e1f23c12ac54b8dcd0ace64ce9f0041c6cfb78b9",
+    "src/game/content/locales/greta-year.en.ts": "a60ddd713293ec9a7682e4c347019a16ae2ed2b2a057158385747e14d3b5f1b0",
+    "src/game/content/locales/greta-year.hu.ts": "ba0254c32a4c530cc16956aca3d6866e4088ac131ea2d15f298bbbb622b65382",
+    "tools/cli-playthrough.mjs": "d3935a3b2e8801cc765611719d0c3c71cd2c90687cc86e292e6a76b19f457cd1"
+  },
+  "baseline": {
+    "release": "0.9.12",
+    "commands": 448,
+    "week": 52,
+    "ending": "greta",
+    "playedLines": 272,
+    "actualSaveLoadsInNewRelease": true
+  },
+  "finalRuns": [
+    {
+      "case": "intimate",
+      "route": "greta",
+      "commands": 494,
+      "restarts": 3,
+      "ending": "greta",
+      "week": 52,
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --private-week 28 --locale en --save /tmp/greta-year-final-intimate.json --transcript /tmp/greta-year-final-intimate-transcript.json --restart-at greta_private/further --restart-at greta_private/later --restart-at greta_company/history",
+      "playedWeeks": {
+        "greta_company": 33,
+        "greta_private": 28
+      },
+      "excerpts": [
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "intimate",
+          "locale": "en",
+          "text": "I have thought about that too. I liked being close to you. I also wanted to find out whether we could simply eat something together afterwards. On another day, with terrible bread.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 28,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "en",
+          "text": "I wanted to see you again, CLI route tester. I had a whole walk in mind. Then you arrived and I stopped caring where we went.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 28,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "fade",
+          "locale": "en",
+          "text": "I tell her I do. She takes my hand and draws me with her, both of us choosing to stay. The rest is ours, away from the telling.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 28,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "en",
+          "text": "When it is time to go, Gréta collects her bag. We say goodbye at my door. She takes the crooked boat with her; I leave the chairs where they are.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "hu",
+          "text": "Közénk húzza a csomagot, és megvárja, hogy válasszak. Jólesik, hogy most csak valami olyan apróságban kell közösen dönteni, mint az ennivaló.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-intimate-transcript.json": "4460b59f4ea98eb84da9758d7f62323a135a47702ddb6d6fba6d7a3d301a2ca2",
+        "greta-year-final-intimate-transcript.json.part0.json": "f4cb9b54b980c95350cf8e1aa8bd50b13cdd34e01151810713c8b30e9f3cd218",
+        "greta-year-final-intimate-transcript.json.part1.json": "bbba584989c831580dbe90efca9b98b7cad24d7f1a7f75f7bc9a7a78a0f234f2",
+        "greta-year-final-intimate-transcript.json.part2.json": "4bd98c271875951ef1ca4d0a160b90f5c057cee1bd43b3e07ad59fbc65d26ce6"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 483,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 112,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "quiet",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-quiet.json --transcript /tmp/greta-year-final-quiet-transcript.json --locale hu --night-personal --choice greta_private/room_choice=talk --choice greta_company/hand_offer=company --choice greta_6/room_choice=talk --restart-at greta_private/talk --restart-at greta_company/history",
+      "playedWeeks": {
+        "greta_company": 33,
+        "greta_private": 29
+      },
+      "excerpts": [
+        {
+          "week": 33,
+          "period": "night",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "hu",
+          "text": "Közénk húzza a csomagot, és megvárja, hogy válasszak. Jólesik, hogy most csak valami olyan apróságban kell közösen dönteni, mint az ennivaló.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "quiet"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "night",
+          "scene": "greta_company",
+          "line": "quiet",
+          "locale": "hu",
+          "text": "A cipősdobozflotta. Eszembe jutott, amikor megláttam egy nagyon komoly hajómakettet. Ki kellett mennem, mielőtt elnevettem magam.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "hu",
+          "text": "Szerettelek volna újra látni, CLI route tester. Egy egész sétát kitaláltam. Aztán megjöttél, és már nem érdekelt annyira, merre megyünk.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "talk_reply",
+          "locale": "hu",
+          "text": "Én akadálypályát csináltam a kertben. Aztán egyedül futottam végig, mert mindenki más mást akart játszani.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "hu",
+          "text": "Amikor indulni kell, Gréta felveszi a táskáját. Az ajtómnál elköszönünk. A ferde hajót magával viszi; én ott hagyom a székeket, ahol vannak.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "night",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "quiet"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-quiet-transcript.json": "a7a850b3939c8903704fed111519624ab97d70601b01b1edf75e5bf6b003c5e0",
+        "greta-year-final-quiet-transcript.json.part0.json": "df239d9914f3feff003e255696a90d705f34bcc9a35e66565d08c5fe58547a37",
+        "greta-year-final-quiet-transcript.json.part1.json": "77ea17a7b291f3365ab0719dcfe304d0643483748fe0597b0b072aeaca63430a"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 489,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 113,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "stopped",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-stopped.json --transcript /tmp/greta-year-final-stopped-transcript.json --locale en --choice greta_private/activity=ugly --choice greta_private/further=stop --choice greta_company/share=menu --choice greta_company/hand_offer=company --choice greta_6/room_choice=talk --restart-at greta_private/stop --restart-at greta_company/quiet",
+      "playedWeeks": {
+        "greta_company": 33,
+        "greta_private": 29
+      },
+      "excerpts": [
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "quiet",
+          "locale": "en",
+          "text": "The shoe-box fleet. I remembered it while looking at a very serious model ship. I had to leave before I laughed.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "menu_eat",
+          "locale": "en",
+          "text": "We eat while suggesting increasingly unsuitable dishes for the menu. By the time the food is gone, Gréta is laughing too hard to finish naming the dessert.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "en",
+          "text": "I wanted to see you again, CLI route tester. I had a whole walk in mind. Then you arrived and I stopped caring where we went.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "stop",
+          "locale": "en",
+          "text": "Then just the kiss. I liked it. I would still like some time with you.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "stop",
+          "locale": "hu",
+          "text": "Akkor maradjunk a csóknál. Jólesett. Még szívesen maradnék veled.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "talk_reply",
+          "locale": "en",
+          "text": "I used to make obstacle courses in the garden. Then run them alone because everyone else wanted a different game.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "en",
+          "text": "When it is time to go, Gréta collects her bag. We say goodbye at my door. She takes the crooked boat with her; I leave the chairs where they are.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "quiet"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "quiet",
+          "locale": "hu",
+          "text": "A cipősdobozflotta. Eszembe jutott, amikor megláttam egy nagyon komoly hajómakettet. Ki kellett mennem, mielőtt elnevettem magam.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-stopped-transcript.json": "28b8bcf7cc0866c3c6dd06464fa5fd8bc5112c1967f8723dfcd727071dca2b84",
+        "greta-year-final-stopped-transcript.json.part0.json": "f7ca57f3fcc19a16ea66dcc362fef7ad8f0cad6429a57468501f1f4e807beb83",
+        "greta-year-final-stopped-transcript.json.part1.json": "6c717f787102d286cdce72b76257db219745b5e77e04009f9df4bb3a539afeb8"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 477,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 110,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "outside",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-outside.json --transcript /tmp/greta-year-final-outside-transcript.json --locale hu --choice greta_private/invite=outside --choice greta_company/share=menu --choice greta_6/invitation=outside --restart-at greta_private/outside --restart-at greta_company/outside",
+      "playedWeeks": {
+        "greta_company": 33,
+        "greta_private": 29
+      },
+      "excerpts": [
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "outside",
+          "locale": "hu",
+          "text": "Az Admirális a polcomon van. Még mindig ferde. Miután rangot adtam neki, már nem dobhattam ki.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "menu_eat",
+          "locale": "hu",
+          "text": "Evés közben egyre képtelenebb fogásokat ajánlunk az étlapra. Mire elfogy az ennivaló, Gréta annyira nevet, hogy a desszert nevét már nem tudja végigmondani.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "hu",
+          "text": "Szerettelek volna újra látni, CLI route tester. Egy egész sétát kitaláltam. Aztán megjöttél, és már nem érdekelt annyira, merre megyünk.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "outside",
+          "locale": "hu",
+          "text": "Akkor itt. Kezdtem megkedvelni ezt a sikertelen kikötőt.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "outside",
+          "locale": "en",
+          "text": "Then here. I was getting fond of our unsuccessful harbour.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "outside_time",
+          "locale": "hu",
+          "text": "Ülünk, és a hajó nevén vitatkozunk. Gréta minden nagyszabású ötletemet elveti, aztán Admirálisnak nevezi el. A papír ferdére szárad a kövön.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "hu",
+          "text": "Közénk húzza a csomagot, és megvárja, hogy válasszak. Jólesik, hogy most csak valami olyan apróságban kell közösen dönteni, mint az ennivaló.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "outside"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "outside",
+          "locale": "en",
+          "text": "Admiral is on my shelf. Still crooked. I could not throw it away after giving it a rank.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-outside-transcript.json": "5be607b4cfd566133e5848aafdc5fb090203dee596d53a91a8b3726bbd75b581",
+        "greta-year-final-outside-transcript.json.part0.json": "7f6d341a0f6c7e095acedd1fd7c00734d48b898b61de729f33149c232feae467",
+        "greta-year-final-outside-transcript.json.part1.json": "c61d40cbdd621470a9bff4249528e569f7e0f285d28763eb08173ea71adfc320"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 472,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 107,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "declined",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-declined.json --transcript /tmp/greta-year-final-declined-transcript.json --locale en --choice greta_private/invite=leave --choice greta_6/invitation=leave --restart-at greta_private/lake_end --restart-at greta_company/present",
+      "playedWeeks": {
+        "greta_company": 33,
+        "greta_private": 29
+      },
+      "excerpts": [
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "en",
+          "text": "I wanted to see you again, CLI route tester. I had a whole walk in mind. Then you arrived and I stopped caring where we went.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-declined-transcript.json": "3f8b4fba893deaf983282c192879651e2e528ae768900d5121b8a455fdcd5d5a",
+        "greta-year-final-declined-transcript.json.part0.json": "f3fda3958231899e07f1a195b53ad5c130546e001512ebccec10bf0216bf35f5",
+        "greta-year-final-declined-transcript.json.part1.json": "83e37501e1c54718cc2a08b4ba260e1990b06f5a936dde6c03798c3f1e722993"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 478,
+      "restarts": 1,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 125,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "room-leave",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-room-leave.json --transcript /tmp/greta-year-final-room-leave-transcript.json --locale en --choice greta_private/room_choice=leave --choice greta_company/hand_offer=leave --restart-at greta_private/room_end",
+      "playedWeeks": {
+        "greta_private": 29,
+        "greta_company": 33
+      },
+      "excerpts": [
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "en",
+          "text": "When it is time to go, Gréta collects her bag. We say goodbye at my door. She takes the crooked boat with her; I leave the chairs where they are.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "en",
+          "text": "I wanted to see you again, CLI route tester. I had a whole walk in mind. Then you arrived and I stopped caring where we went.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "hu",
+          "text": "Amikor indulni kell, Gréta felveszi a táskáját. Az ajtómnál elköszönünk. A ferde hajót magával viszi; én ott hagyom a székeket, ahol vannak.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-room-leave-transcript.json": "65dd1e0745359ff255f187349a42b742dcd5b8cef76f84b21135e152d122dc2a",
+        "greta-year-final-room-leave-transcript.json.part0.json": "ae2f9959766872d93609721bc60b1247dcade45ba1928cb60110288d7dfdd1f6"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 487,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 117,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "kiss-leave",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-kiss-leave.json --transcript /tmp/greta-year-final-kiss-leave-transcript.json --locale hu --choice greta_private/further=leave --choice greta_company/history=present --restart-at greta_private/further --restart-at greta_company/history",
+      "playedWeeks": {
+        "greta_company": 33,
+        "greta_private": 29
+      },
+      "excerpts": [
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "hu",
+          "text": "Közénk húzza a csomagot, és megvárja, hogy válasszak. Jólesik, hogy most csak valami olyan apróságban kell közösen dönteni, mint az ennivaló.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "hu",
+          "text": "Szerettelek volna újra látni, CLI route tester. Egy egész sétát kitaláltam. Aztán megjöttél, és már nem érdekelt annyira, merre megyünk.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "hu",
+          "text": "Amikor indulni kell, Gréta felveszi a táskáját. Az ajtómnál elköszönünk. A ferde hajót magával viszi; én ott hagyom a székeket, ahol vannak.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-kiss-leave-transcript.json": "c7efaedc21e2543772270a108366b9bc6dc85c9ea88d3d71996ba50a24534d67",
+        "greta-year-final-kiss-leave-transcript.json.part0.json": "0c91117617da4215ebd64706fb10304a8104c977e902e937f5aabaeb8149fabc",
+        "greta-year-final-kiss-leave-transcript.json.part1.json": "5d7797ec94636f013e6de78be3ca7bf23bd1fdf1e2baf6ad5bb5be8ae4995d1d"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 492,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 110,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "late",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-late.json --transcript /tmp/greta-year-final-late-transcript.json --locale en --date-week 32 --private-week 32 --company-week 37 --choice greta_company/share=menu --restart-at greta_private/fade --restart-at greta_company/hand_offer",
+      "playedWeeks": {
+        "greta_company": 37,
+        "greta_private": 32
+      },
+      "excerpts": [
+        {
+          "week": 32,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "en",
+          "text": "I wanted to see you again, CLI route tester. I had a whole walk in mind. Then you arrived and I stopped caring where we went.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 32,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "fade",
+          "locale": "en",
+          "text": "I tell her I do. She takes my hand and draws me with her, both of us choosing to stay. The rest is ours, away from the telling.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 32,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "fade",
+          "locale": "hu",
+          "text": "Azt mondom, én is. Megfogja a kezem, és magával húz; mindketten ezt akarjuk. Ami ezután történik, csak a miénk marad.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 32,
+          "period": "night",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "en",
+          "text": "When it is time to go, Gréta collects her bag. We say goodbye at my door. She takes the crooked boat with her; I leave the chairs where they are.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 37,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 37,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "intimate",
+          "locale": "en",
+          "text": "I have thought about that too. I liked being close to you. I also wanted to find out whether we could simply eat something together afterwards. On another day, with terrible bread.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 37,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "menu_eat",
+          "locale": "en",
+          "text": "We eat while suggesting increasingly unsuitable dishes for the menu. By the time the food is gone, Gréta is laughing too hard to finish naming the dessert.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-late-transcript.json": "4552f9b5d1f1a187913bb4032a7ba25182cfb8cf85e624c5e390fcd2b02442e9",
+        "greta-year-final-late-transcript.json.part0.json": "60bff5b45f843bd0212d26f655419afa2c7b3b18695723c76b07b34150b4530b",
+        "greta-year-final-late-transcript.json.part1.json": "c1d719a2fa7061e97d4356e2c90abb8df6bcd288905b23bd27a1775dee860fa3"
+      }
+    },
+    {
+      "route": "greta",
+      "commands": 481,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "estranged",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 121,
+      "release": {
+        "gameVersion": "0.9.13",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 16
+      },
+      "case": "intimate-day",
+      "command": "node tools/cli-playthrough.mjs --route greta --greta-year --save /tmp/greta-year-final-intimate-day.json --transcript /tmp/greta-year-final-intimate-day-transcript.json --locale en --private-week 29 --choice greta_company/history=present --choice greta_6/line_4=withdraw --restart-at greta_private/kiss --restart-at greta_private/fade",
+      "playedWeeks": {
+        "greta_private": 29,
+        "greta_company": 33
+      },
+      "excerpts": [
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "fade",
+          "locale": "en",
+          "text": "I tell her I do. She takes my hand and draws me with her, both of us choosing to stay. The rest is ours, away from the telling.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "room_end",
+          "locale": "en",
+          "text": "When it is time to go, Gréta collects her bag. We say goodbye at my door. She takes the crooked boat with her; I leave the chairs where they are.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 33,
+          "period": "day",
+          "scene": "greta_company",
+          "line": "history",
+          "locale": "en",
+          "text": "She moves the parcel between us and waits for me to choose. It is good to have something as small as a snack to decide together.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "intimate"
+            },
+            {
+              "type": "choice",
+              "id": "present"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "want",
+          "locale": "en",
+          "text": "I wanted to see you again, CLI route tester. I had a whole walk in mind. Then you arrived and I stopped caring where we went.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        },
+        {
+          "week": 29,
+          "period": "day",
+          "scene": "greta_private",
+          "line": "fade",
+          "locale": "hu",
+          "text": "Azt mondom, én is. Megfogja a kezem, és magával húz; mindketten ezt akarjuk. Ami ezután történik, csak a miénk marad.",
+          "choices": [
+            {
+              "type": "choice",
+              "id": "continue"
+            }
+          ]
+        }
+      ],
+      "transcriptHashes": {
+        "greta-year-final-intimate-day-transcript.json": "61584bcdc5a26ec229914a24666ee81da5916c3c667fedb8765eec1d1c3f8737",
+        "greta-year-final-intimate-day-transcript.json.part0.json": "354455894601e7dd010f19c89ad551df6cd944e136431ade9900c314fbe50c72",
+        "greta-year-final-intimate-day-transcript.json.part1.json": "9dd7adb639386c614d449a158bc8d66fd00f9e70cd2568969af7b6feb6ffdf0f"
+      }
+    }
+  ],
+  "checks": {
+    "engineContentTests": 210,
+    "cliTests": 31,
+    "typecheck": "pass",
+    "build": "pass",
+    "exhaustivePrivateTerminalPathsPerBoundary": 14,
+    "restartLocaleRoundtrips": 18
+  },
+  "limits": [
+    "Only one later company meeting is implemented; INT2 remains partial.",
+    "No browser/human literary acceptance or new artwork.",
+    "Other routes retain their current pacing; coordinated clue migration remains open."
+  ]
+}
