@@ -12,6 +12,10 @@ import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
+  "ui.resources": "Resources",
+  "ui.calendar": "Calendar",
+  "hub.actions": "Room activities",
+  "hub.availableCount": "{count} available",
   "ui.settings": "Settings",
   "ui.status": "Status & calendar",
   "hub.help": "Help & week plan",

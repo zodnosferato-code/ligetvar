@@ -45,8 +45,17 @@ let browser,currentPage;
    await seed(initial);
    if(kind==='recycling'){
     await page.locator('.hub-art').evaluate(img=>img.decode());
-    assert.ok((await page.locator('.hub-room').boundingBox()).y<220,'room visible near top');
+    assert.ok((await page.locator('.hub-room').boundingBox()).y<280,'room visible near top');
     assert.equal(await page.locator('.week-rhythm').isVisible(),false);
+    assert.ok(await page.locator('.resource-strip').isVisible());
+    assert.equal(await page.locator('.resource-strip>span').count(),3);
+    assert.equal(await page.locator('.spot-phone .availability-badge').innerText(),String(R.availableScenes(initial,SCENES).filter(x=>x.kind==='relationship'||x.kind==='conversation').length));
+    const boxes=await page.locator('.room-hotspot').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};}));
+    for(const b of boxes)assert.ok(b.w>=44&&b.h>=44,'touch target');
+    if(width<700)for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert.ok(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y,'overlapping room controls');}
+    await page.emulateMedia({reducedMotion:'reduce'});
+    assert.equal(await page.locator('.hub-room').evaluate(el=>getComputedStyle(el).animationName),'none');
+    await page.emulateMedia({reducedMotion:'no-preference'});
     assert.equal(await page.locator('.tools').count(),0);
     await page.locator('.status-toggle').click();await page.getByRole('dialog').waitFor();
     assert.ok(await page.locator('.status-details').isVisible());

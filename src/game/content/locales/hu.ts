@@ -10,6 +10,10 @@ import {holidaysHu} from './holidays.hu.ts';
 import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
+  "ui.resources": "Erőforrások",
+  "ui.calendar": "Naptár",
+  "hub.actions": "Szobai tevékenységek",
+  "hub.availableCount": "{count} elérhető",
   "ui.settings": "Beállítások",
   "ui.status": "Állapot és naptár",
   "hub.help": "Súgó és heti terv",

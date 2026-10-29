@@ -50,15 +50,18 @@ const SHORT_LABEL:Record<ObjectId,string>={desk:t('hub.short.workshop'),phone:t(
  const workshops=available.filter(x=>x.kind==='shared'||x.kind==='preparation');
  const meetings=available.filter(x=>x.kind==='relationship'),coffee=available.filter(x=>x.kind==='conversation'&&!x.cost);
  const blocked=Object.values(SCENES).filter(x=>(x.kind==='relationship'||x.kind==='conversation')&&x.week<=s.week&&x.deadline>=s.week&&!(x.id in s.completed)&&!x.cost&&!meets(s,x.requires));
+ const phoneCount=available.filter(x=>x.kind==='relationship'||x.kind==='conversation').length;
+ const counts:Partial<Record<PanelId,number>>={phone:phoneCount,desk:workshops.length,travel:available.length};
+ const badge=(id:PanelId)=>counts[id]?<span className="availability-badge" aria-label={t('hub.availableCount',{count:counts[id]!})}>{counts[id]}</span>:null;
  const committed=isCommitted(s),hasShared=!!storyIdAt(s.week);
  const rhythm=[...(hasShared?[t('hub.rhythm.shared')]:[]),t('hub.rhythm.day'),t('hub.rhythm.night'),t('hub.rhythm.recap')];
  const specials=Object.values(SCENES).filter(x=>x.cost&&x.week<=s.week&&x.deadline>=s.week&&!(x.id in s.completed));
  return <main className="room-planner">
   <div className="room-toolbar"><div><h1>{current.title}</h1></div></div>
-  <div className={'hub-room room-'+room}>
+  <div className={'hub-room room-'+room} role="group" aria-label={t('hub.actions')}>
    <AssetImage className="hub-art" file={backgroundFor(hub,night?'night':'day',s.week).file} label={current.title}/>
-   {visibleObjects.map(id=><button key={id} ref={button=>{hotspots.current[id]=button??undefined;}} className={'room-hotspot spot-'+id+(current.fallbacks.includes(id)?' is-fallback':'')} style={{'--spot-x':current.objects[id][0]+'%','--spot-y':current.objects[id][1]+'%'} as CSSProperties} aria-label={id==='chair'&&night?t('hub.chair.night'):OBJECTS[id].label} aria-expanded={selected===id} aria-controls="room-actions" onClick={()=>open(id)}>{<span className="spot-mark" aria-hidden="true"><Icon name={OBJECTS[id].icon}/></span>}<span className="spot-label" aria-hidden="true">{id==='chair'&&night?t('hub.sleep'):SHORT_LABEL[id]}</span></button>)}
-   <button ref={button=>{hotspots.current.travel=button??undefined;}} className="room-hotspot spot-door" style={{'--spot-x':current.door[0]+'%','--spot-y':current.door[1]+'%'} as CSSProperties} aria-label={t('hub.door')} aria-expanded={selected==='travel'} aria-controls="room-actions" onClick={()=>open('travel')}><span className="spot-mark" aria-hidden="true"><Icon name="door"/></span><span className="spot-label" aria-hidden="true">{t('hub.leave')}</span></button>
+   {visibleObjects.map(id=><button key={id} ref={button=>{hotspots.current[id]=button??undefined;}} className={'room-hotspot spot-'+id+(current.fallbacks.includes(id)?' is-fallback':'')} style={{'--spot-x':current.objects[id][0]+'%','--spot-y':current.objects[id][1]+'%'} as CSSProperties} aria-label={(id==='chair'&&night?t('hub.chair.night'):OBJECTS[id].label)+(counts[id]?' · '+t('hub.availableCount',{count:counts[id]!}):'')} aria-expanded={selected===id} aria-controls="room-actions" onClick={()=>open(id)}>{<span className="spot-mark" aria-hidden="true"><Icon name={OBJECTS[id].icon}/></span>}<span className="spot-label" aria-hidden="true">{id==='chair'&&night?t('hub.sleep'):SHORT_LABEL[id]}</span>{badge(id)}</button>)}
+   <button ref={button=>{hotspots.current.travel=button??undefined;}} className="room-hotspot spot-door" style={{'--spot-x':current.door[0]+'%','--spot-y':current.door[1]+'%'} as CSSProperties} aria-label={t('hub.door')+(counts.travel?' · '+t('hub.availableCount',{count:counts.travel}):'')} aria-expanded={selected==='travel'} aria-controls="room-actions" onClick={()=>open('travel')}><span className="spot-mark" aria-hidden="true"><Icon name="door"/></span><span className="spot-label" aria-hidden="true">{t('hub.leave')}</span>{badge('travel')}</button>
   </div>
   {selected&&<Modal className="room-actions" title={selected==='travel'?t('hub.where'):OBJECTS[selected].title} onClose={close}><div id="room-actions">
    {selected==='travel'&&<><p>{t('hub.travel.help')}</p><CastleMap scenes={available} week={s.week} onScene={g.scene}/></>}
@@ -70,9 +73,10 @@ const SHORT_LABEL:Record<ObjectId,string>={desk:t('hub.short.workshop'),phone:t(
    {selected==='shelf'&&(s.slot===0?<p className="notice">{t('hub.shared.first')}</p>:<GiftShop/>)}
    {selected==='journal'&&<><Journal open/>{canChooseDirection(s)&&<section><h3>{t('hub.direction',{status:committed?t('hub.direction.committed'):t('hub.direction.intended'),route:t(`route.${s.direction}`)})}</h3><p>{committed?t('hub.direction.locked'):t('hub.direction.help')}</p><div className="actions">{(Object.keys(ROUTES) as RouteId[]).map(id=><button key={id} disabled={committed} aria-pressed={s.direction===id} onClick={()=>g.direction(id as RouteId)}>{t(`route.${id}`)}</button>)}</div></section>}</>}
   </div></Modal>}
+  {!!upcoming.length&&<aside className="tonight-preview"><Icon name="heart"/><div><strong>{t('hub.upcoming')}</strong><p>{upcoming.map(x=>sceneTitle(x,locale)).join(' · ')}</p></div></aside>}
   <details className="hub-help"><summary>{t('hub.help')}</summary>  <ol className="week-rhythm" style={{'--rhythm-steps':rhythm.length} as CSSProperties} aria-label={t('hub.rhythm')}>{rhythm.map((label,index)=><li key={label} aria-current={s.slot===index+(hasShared?0:1)?'step':undefined} className={s.slot>index+(hasShared?0:1)?'is-complete':''}><span aria-hidden="true">{s.slot>index+(hasShared?0:1)?'✓':index+1}</span>{label}</li>)}</ol>
   <p className="room-guidance">{s.slot===0?t('hub.guide.shared'):night?t('hub.guide.night'):t('hub.guide.day')}  {t('hub.guide.free')}</p>
-  {!!upcoming.length&&<aside className="upcoming-night"><h2>{t('hub.upcoming')}</h2><p>{t('hub.upcoming.help')}</p>{upcoming.map(x=><p key={x.id}><strong>{sceneTitle(x,locale)}</strong><small>{t('hub.upcoming.detail',{location:t(`location.${x.location}`),week:x.deadline})}</small></p>)}</aside>}
+
   </details>
  </main>;
 }

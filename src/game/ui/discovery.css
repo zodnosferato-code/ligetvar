@@ -1,0 +1,46 @@
+/* The illustration is navigation on desktop; narrow screens use the same controls
+   in an inlaid rail, so labels never overlap or rely on a precise tap in the art. */
+.resource-strip{display:flex;flex-wrap:wrap;gap:8px 22px;padding:10px 0;color:#e5d2b4;font-size:.78em;border-bottom:1px solid #95744655}
+.resource-strip>span{display:inline-flex;align-items:center;gap:5px;min-width:0}
+.resource-strip .ui-icon{width:20px;height:20px;margin:0}
+.status-label{margin-left:auto;color:#efd3a0;font-size:.9em}
+.play-bar .status-toggle{border-color:#95744666;border-radius:4px;background:#281c23}
+.room-toolbar h1{color:#f0d9b1}
+.hub-room{border-radius:20px 20px 4px 4px;box-shadow:0 12px 40px #0004}
+.availability-badge{position:absolute;right:-8px;top:-10px;display:grid;place-items:center;min-width:23px;height:23px;padding:0 5px;background:#f0d299;color:#2a1921;border:1px solid #fff0cc;border-radius:50%;font:700 12px/1 system-ui;box-shadow:0 2px 8px #0008;pointer-events:none}
+.tonight-preview{display:flex;align-items:flex-start;gap:10px;margin:14px 0;padding:12px 16px;border-left:2px solid #b997c7;background:linear-gradient(90deg,#352637,transparent);font-size:.82em}
+.tonight-preview>.ui-icon{margin:0;flex-shrink:0}
+.tonight-preview strong{color:#e1c7ed;font-weight:500}
+.tonight-preview p{margin:3px 0 0;line-height:1.5;color:#deceb8}
+.hub-help>summary{cursor:pointer;min-height:44px;padding:12px 0}
+@media(max-width:700px){
+ .resource-strip{font-size:.7em;gap:6px 12px;padding:8px 0}
+ .resource-strip .ui-icon{width:17px;height:17px}
+ .play-bar{flex-wrap:wrap}
+ .play-bar .status-toggle{gap:6px}
+ .play-bar>button:last-child .ui-icon{display:none}
+ .status-label{display:none}
+ .hub-room{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 10px 10px;background:linear-gradient(145deg,#35252c,#21171f)}
+ .hub-art{grid-column:1/-1;width:calc(100% + 20px);max-width:none;margin:0 -10px 4px;aspect-ratio:3/2;object-fit:contain;background:#171118;border-bottom:1px solid #957446}
+ .room-hotspot{position:relative;inset:auto;transform:none;min-width:0;width:100%;height:auto;min-height:70px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:8px 4px;border:1px solid #9b7954;border-radius:14px 14px 4px 4px;background:linear-gradient(#4a303b,#30222c);box-shadow:inset 0 0 0 3px #1c141833}
+ .room-hotspot .spot-mark{border:0;background:none;width:28px;height:28px}
+ .room-hotspot .spot-mark .ui-icon{width:26px;height:26px}
+ .room-hotspot .spot-label{position:static;inset:auto;transform:none;white-space:normal;text-align:center;font-size:.75em;line-height:1.3;background:none;border:0;padding:0;overflow-wrap:anywhere}
+ .room-hotspot .availability-badge{top:4px;right:4px;min-width:19px;height:19px;font-size:11px}
+ .spot-door{grid-column:1/-1;min-height:48px;flex-direction:row;border-color:#d2ac70;background:linear-gradient(90deg,#684633,#3a2830)}
+ .room-hotspot:hover:not(:disabled),.room-hotspot[aria-expanded=true]{background:#56394a;border-color:#ffe1a8}
+}
+@media(prefers-reduced-motion:no-preference){
+ .hub-room,.tonight-preview{animation:room-arrival .35s ease-out both}
+ .game-modal{animation:menu-arrival .18s ease-out}
+ .room-hotspot{transition:background .18s,border-color .18s,box-shadow .18s}
+ .room-hotspot:hover:not(:disabled){box-shadow:0 0 16px #e4bd7b55}
+ .availability-badge{animation:badge-arrival .4s ease-out both}
+ @keyframes room-arrival{from{opacity:.4;translate:0 5px}to{opacity:1;translate:0 0}}
+ @keyframes menu-arrival{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+ @keyframes badge-arrival{from{scale:.7;opacity:0}to{scale:1;opacity:1}}
+}
+/* Fit the full desktop room into tall viewports without cropping hotspot coordinates. */
+@media(min-width:701px) and (min-height:700px){
+ .hub-room{width:min(100%,max(600px,calc((100svh - 280px) * 1.5)));margin-inline:auto}
+}

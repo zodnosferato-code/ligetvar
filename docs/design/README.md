@@ -17,6 +17,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Story depth and expansion readiness](EXPANSION-READINESS.md) | Measured route/catalog text, current extension points, schedule/activity constraints and proposed expansion acceptance gates |
 | [Eight-route CLI feedback](PLAYTHROUGH-MULTIROUTE-2026-10-28.md) | Eight completed campaigns, 18 prioritized story/dialogue findings, strengths and reproducible public-observation evidence; feedback only |
 | [Completed baseline report](PLAYTHROUGH-REPORT-2026-10-28.md) | One autonomous Rebeka-route completion, exact editorial findings and test limits |
+| [Interface visibility review](UI-REVIEW.md) | Current UI findings, visibility changes, gothic presentation and remaining acceptance scope |
 | [Game design](GAME-DESIGN.md) | Product direction, current gameplay, story and presentation constraints |
 | [Character visuals](CHARACTER-VISUALS.md) | Sole written appearance authority, identity references and approval states for the complete cast |
 | [Character image prompts](CHARACTER-IMAGE-PROMPTS.md) | Derived positive/negative production prompts, framing and unresolved visual decisions |

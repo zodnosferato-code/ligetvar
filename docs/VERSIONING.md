@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.7`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.8`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `12`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -120,3 +120,8 @@ Schema remains 4; content epoch advances to **11**. `boglarka_3`/`boglarka_6` re
 ## Boglárka disagreement and commitment — 0.9.7
 
 Schema4/content**12**. `_4`/`_5` replace assembled cursor graphs and persisted journals/reactions with bilingual message references; the repair decision now witnesses a present disagreement rather than an invented off-screen offence. Stable admission, repair/commit/withdraw effects, future-memory IDs, triad requirements, schedule and slot costs remain. Epoch11 and earlier require a fresh year; no migration or default-language change. Article submission belongs to `_6`, not an unconditional `_5` postscript.
+
+
+## Interface visibility — 0.9.8
+
+Presentation-only update: schema 4/content 12 unchanged from 0.9.7. Resource visibility, responsive room navigation, availability badges and motion do not change saved state or story progression.
