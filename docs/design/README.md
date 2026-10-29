@@ -13,6 +13,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Playthrough findings](PLAYTHROUGH-FINDINGS.md) | Observed baseline issues and strengths; not applied fixes |
 | [Scene-by-scene outline](SCENE-OUTLINE.md) | First editorial draft for all 68 scene IDs; connected plot, character, knowledge and branch briefs; not implemented |
 | [Holidays and seasonal events](HOLIDAY-EVENTS.md) | Halloween/Christmas and spring/summer scene briefs and bilingual meetings, engine calendar conditions, clothing/background precedence, validation and unproduced art |
+| [Annual schedule and gifting review](YEAR-SCHEDULE-GIFTING-REVIEW.md) | Source-based event inventory, pacing gaps and proposed clothing/private-gift design; no new mechanics approved |
 | [One-year campaign](YEAR-CAMPAIGN.md) | Approved 52-week duration, actual chapter dates, ordinary weeks, authoring/save contracts and validation; writing expansion remains partial |
 | [Story depth and expansion readiness](EXPANSION-READINESS.md) | Measured route/catalog text, current extension points, schedule/activity constraints and proposed expansion acceptance gates |
 | [Eight-route CLI feedback](PLAYTHROUGH-MULTIROUTE-2026-10-28.md) | Eight completed campaigns, 18 prioritized story/dialogue findings, strengths and reproducible public-observation evidence; feedback only |
