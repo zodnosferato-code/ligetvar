@@ -1,0 +1,1883 @@
+{
+  "baseline": "6245e1582077a027724eb2b62371507aed09c2f7",
+  "method": "Scripted public JSON CLI author review; no state editing or author commands. Transcript excerpts are deduplicated scene observations, not a full replay artifact.",
+  "runs": [
+    {
+      "route": "greta",
+      "commands": 487,
+      "restarts": 3,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [
+        "holiday_halloween",
+        "holiday_christmas"
+      ],
+      "seasonalScenes": [
+        "seasonal_spring",
+        "seasonal_summer"
+      ],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 50,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/en-ask-ordinary.json",
+      "case": "en-ask-ordinary",
+      "options": [
+        "--restart-at",
+        "greta_4/line_4",
+        "--restart-at",
+        "greta_4/settle_0",
+        "--restart-at",
+        "greta_5/romance_future",
+        "--holidays",
+        "--seasons"
+      ],
+      "observedScenes": [
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Good. Then what shall we keep making room for? I have suggestions, naturally. I am leaving space for yours."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_0",
+          "text": "A walk and something to eat. Sometimes the same route. I do not need every meeting to be better than the last."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_1",
+          "text": "Including sitting on this bench? I like this bench. I have now spent a very respectable amount of time on it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_2",
+          "text": "Especially the bench. We can choose a time when we know we are both free."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "I am glad I asked you. That was much harder than dividing the rolls."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "You finish eating together. She folds the empty paper bag and stays to hear your complaint about the filling. At the gallery entrance she turns back before you part."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "For next time: I liked the filling. We can disagree about that too. Goodbye, CLI route tester."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "She draws a single line through the extra stops and folds the card along its old crease. The lake stays visible."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "I nearly asked you to tell me it was a good plan anyway. I am glad you did not. Give me a minute to enjoy being glad."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "I can sit here for a minute."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "You stay on the bench until she starts pointing out the least plausible detour on the card. This time you add one of your own. When you part by the gallery, she takes the card with her."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Next time, bring an appetite. I will try not to bring an expedition."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta has brought two rolls to the courtyard bench. She holds up the smaller one, considers it, and breaks a piece off the larger to put beside it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "There. Fair enough. I remembered the appetite part. The expedition stayed at home."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "I would have taken the small one without lodging a complaint."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "I know. I want half the good one too. That is the part I am practising saying."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "I want more of this. Seeing you without first finding a reason you are needed."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "So do I. I still like being good at things. I just want to have a bad day and know I can ask to see you anyway. I want us to be together."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "What do you want, CLI route tester?"
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta unfolds a route card on the courtyard bench. Three stops have become seven; two are squeezed into the margin."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "A walk, something to eat, the lookout. Then I thought we could fit in the village too. It looks less ridiculous on the other side."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "I would spend the whole walk worrying about getting to the next stop. I would rather miss half of it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "I wanted to bring you something worth coming out for. Now I am arguing for a timetable nobody asked me to make. I know how that sounds. It still stings."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Tell me which part you do want. I am having trouble hearing it under the part you do not."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "Your company. I should have started there. But I meant what I said about rushing."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_0",
+          "text": "Choose one stop you would still want if I were not here. I will choose something too."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_1",
+          "text": "The lake. Something to eat on the way. That is technically two, before you start counting."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_2",
+          "text": "A bench afterward. Long enough to complain about the food if it deserves it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_3",
+          "text": "That I can do. The village survives another day without our inspection."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 451,
+      "restarts": 3,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 14,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/en-own-ask.json",
+      "case": "en-own-ask",
+      "options": [
+        "--choice",
+        "greta_4/romance_repair=own",
+        "--choice",
+        "greta_5/romance_future=open",
+        "--choice",
+        "greta_6/future=ask",
+        "--restart-at",
+        "greta_4/own_1",
+        "--restart-at",
+        "greta_5/open_1",
+        "--restart-at",
+        "greta_6/future"
+      ],
+      "observedScenes": [
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "open_1",
+          "text": "Then my next suggestion is the lake. The long way. You can suggest somewhere else; I may argue for mine."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "open_2",
+          "text": "I would be disappointed if you did not."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "I am glad I asked you. That was much harder than dividing the rolls."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "You finish eating together. She folds the empty paper bag and stays to hear your complaint about the filling. At the gallery entrance she turns back before you part."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "For next time: I liked the filling. We can disagree about that too. Goodbye, CLI route tester."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_1",
+          "text": "And I have brought you a reading list with hills. I did want all these things. Just not all at once."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_2",
+          "text": "Keep the card. Pick the bit you want most. I get to suggest the next one, when we actually arrange it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_3",
+          "text": "The lake, then. And you are allowed to like somewhere I have never put on a map. I will cope."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "She draws a single line through the extra stops and folds the card along its old crease. The lake stays visible."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "I nearly asked you to tell me it was a good plan anyway. I am glad you did not. Give me a minute to enjoy being glad."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "I can sit here for a minute."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "You stay on the bench until she starts pointing out the least plausible detour on the card. This time you add one of your own. When you part by the gallery, she takes the card with her."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Next time, bring an appetite. I will try not to bring an expedition."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta has brought two rolls to the courtyard bench. She holds up the smaller one, considers it, and breaks a piece off the larger to put beside it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "There. Fair enough. I remembered the appetite part. The expedition stayed at home."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "I would have taken the small one without lodging a complaint."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "I know. I want half the good one too. That is the part I am practising saying."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "I want more of this. Seeing you without first finding a reason you are needed."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "So do I. I still like being good at things. I just want to have a bad day and know I can ask to see you anyway. I want us to be together."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "What do you want, CLI route tester?"
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Good. Then what shall we keep making room for? I have suggestions, naturally. I am leaving space for yours."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "open_0",
+          "text": "Take turns choosing. Ask me where I want to go before you make a route, and I will do the same."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta unfolds a route card on the courtyard bench. Three stops have become seven; two are squeezed into the margin."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "A walk, something to eat, the lookout. Then I thought we could fit in the village too. It looks less ridiculous on the other side."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "I would spend the whole walk worrying about getting to the next stop. I would rather miss half of it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "I wanted to bring you something worth coming out for. Now I am arguing for a timetable nobody asked me to make. I know how that sounds. It still stings."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Tell me which part you do want. I am having trouble hearing it under the part you do not."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "Your company. I should have started there. But I meant what I said about rushing."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_0",
+          "text": "I do this with books. Choose three for a free evening, then feel behind before I have opened one."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 435,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 4,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/en-slow-company.json",
+      "case": "en-slow-company",
+      "options": [
+        "--choice",
+        "greta_3/hand_offer=slow_touch",
+        "--choice",
+        "greta_3/destination=head_home",
+        "--choice",
+        "greta_6/invitation=outside",
+        "--restart-at",
+        "greta_5/line_4",
+        "--restart-at",
+        "greta_6/invitation"
+      ],
+      "observedScenes": [
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "What do you want, CLI route tester?"
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Good. Then what shall we keep making room for? I have suggestions, naturally. I am leaving space for yours."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_0",
+          "text": "A walk and something to eat. Sometimes the same route. I do not need every meeting to be better than the last."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_1",
+          "text": "Including sitting on this bench? I like this bench. I have now spent a very respectable amount of time on it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_2",
+          "text": "Especially the bench. We can choose a time when we know we are both free."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "I am glad I asked you. That was much harder than dividing the rolls."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "You finish eating together. She folds the empty paper bag and stays to hear your complaint about the filling. At the gallery entrance she turns back before you part."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "For next time: I liked the filling. We can disagree about that too. Goodbye, CLI route tester."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta unfolds a route card on the courtyard bench. Three stops have become seven; two are squeezed into the margin."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "A walk, something to eat, the lookout. Then I thought we could fit in the village too. It looks less ridiculous on the other side."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "I would spend the whole walk worrying about getting to the next stop. I would rather miss half of it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "I wanted to bring you something worth coming out for. Now I am arguing for a timetable nobody asked me to make. I know how that sounds. It still stings."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Tell me which part you do want. I am having trouble hearing it under the part you do not."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "Your company. I should have started there. But I meant what I said about rushing."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_0",
+          "text": "Choose one stop you would still want if I were not here. I will choose something too."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_1",
+          "text": "The lake. Something to eat on the way. That is technically two, before you start counting."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_2",
+          "text": "A bench afterward. Long enough to complain about the food if it deserves it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_3",
+          "text": "That I can do. The village survives another day without our inspection."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "She draws a single line through the extra stops and folds the card along its old crease. The lake stays visible."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "I nearly asked you to tell me it was a good plan anyway. I am glad you did not. Give me a minute to enjoy being glad."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "I can sit here for a minute."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "You stay on the bench until she starts pointing out the least plausible detour on the card. This time you add one of your own. When you part by the gallery, she takes the card with her."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Next time, bring an appetite. I will try not to bring an expedition."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta has brought two rolls to the courtyard bench. She holds up the smaller one, considers it, and breaks a piece off the larger to put beside it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "There. Fair enough. I remembered the appetite part. The expedition stayed at home."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "I would have taken the small one without lodging a complaint."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "I know. I want half the good one too. That is the part I am practising saying."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "I want more of this. Seeing you without first finding a reason you are needed."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "So do I. I still like being good at things. I just want to have a bad day and know I can ask to see you anyway. I want us to be together."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 443,
+      "restarts": 1,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 5,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/en-stop.json",
+      "case": "en-stop",
+      "options": [
+        "--choice",
+        "greta_6/intimacy=stop",
+        "--restart-at",
+        "greta_6/intimacy"
+      ],
+      "observedScenes": [
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta unfolds a route card on the courtyard bench. Three stops have become seven; two are squeezed into the margin."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "A walk, something to eat, the lookout. Then I thought we could fit in the village too. It looks less ridiculous on the other side."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "I would spend the whole walk worrying about getting to the next stop. I would rather miss half of it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "I wanted to bring you something worth coming out for. Now I am arguing for a timetable nobody asked me to make. I know how that sounds. It still stings."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Tell me which part you do want. I am having trouble hearing it under the part you do not."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "Your company. I should have started there. But I meant what I said about rushing."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_0",
+          "text": "Choose one stop you would still want if I were not here. I will choose something too."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_1",
+          "text": "The lake. Something to eat on the way. That is technically two, before you start counting."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_2",
+          "text": "A bench afterward. Long enough to complain about the food if it deserves it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_3",
+          "text": "That I can do. The village survives another day without our inspection."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "She draws a single line through the extra stops and folds the card along its old crease. The lake stays visible."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "I nearly asked you to tell me it was a good plan anyway. I am glad you did not. Give me a minute to enjoy being glad."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "I can sit here for a minute."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "You stay on the bench until she starts pointing out the least plausible detour on the card. This time you add one of your own. When you part by the gallery, she takes the card with her."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Next time, bring an appetite. I will try not to bring an expedition."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta has brought two rolls to the courtyard bench. She holds up the smaller one, considers it, and breaks a piece off the larger to put beside it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "There. Fair enough. I remembered the appetite part. The expedition stayed at home."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "I would have taken the small one without lodging a complaint."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "I know. I want half the good one too. That is the part I am practising saying."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "I want more of this. Seeing you without first finding a reason you are needed."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "So do I. I still like being good at things. I just want to have a bad day and know I can ask to see you anyway. I want us to be together."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "What do you want, CLI route tester?"
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Good. Then what shall we keep making room for? I have suggestions, naturally. I am leaving space for yours."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_0",
+          "text": "A walk and something to eat. Sometimes the same route. I do not need every meeting to be better than the last."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_1",
+          "text": "Including sitting on this bench? I like this bench. I have now spent a very respectable amount of time on it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_2",
+          "text": "Especially the bench. We can choose a time when we know we are both free."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "I am glad I asked you. That was much harder than dividing the rolls."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "You finish eating together. She folds the empty paper bag and stays to hear your complaint about the filling. At the gallery entrance she turns back before you part."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "For next time: I liked the filling. We can disagree about that too. Goodbye, CLI route tester."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 433,
+      "restarts": 1,
+      "phase": "ending",
+      "ending": "estranged",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 5,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/en-withdraw.json",
+      "case": "en-withdraw",
+      "options": [
+        "--choice",
+        "greta_6/line_4=withdraw",
+        "--restart-at",
+        "greta_6/line_4"
+      ],
+      "observedScenes": [
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta unfolds a route card on the courtyard bench. Three stops have become seven; two are squeezed into the margin."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "A walk, something to eat, the lookout. Then I thought we could fit in the village too. It looks less ridiculous on the other side."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "I would spend the whole walk worrying about getting to the next stop. I would rather miss half of it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "I wanted to bring you something worth coming out for. Now I am arguing for a timetable nobody asked me to make. I know how that sounds. It still stings."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Tell me which part you do want. I am having trouble hearing it under the part you do not."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "Your company. I should have started there. But I meant what I said about rushing."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_0",
+          "text": "Choose one stop you would still want if I were not here. I will choose something too."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_1",
+          "text": "The lake. Something to eat on the way. That is technically two, before you start counting."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_2",
+          "text": "A bench afterward. Long enough to complain about the food if it deserves it."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "ask_3",
+          "text": "That I can do. The village survives another day without our inspection."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "She draws a single line through the extra stops and folds the card along its old crease. The lake stays visible."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "I nearly asked you to tell me it was a good plan anyway. I am glad you did not. Give me a minute to enjoy being glad."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "I can sit here for a minute."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "You stay on the bench until she starts pointing out the least plausible detour on the card. This time you add one of your own. When you part by the gallery, she takes the card with her."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Next time, bring an appetite. I will try not to bring an expedition."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta has brought two rolls to the courtyard bench. She holds up the smaller one, considers it, and breaks a piece off the larger to put beside it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "There. Fair enough. I remembered the appetite part. The expedition stayed at home."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "I would have taken the small one without lodging a complaint."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "I know. I want half the good one too. That is the part I am practising saying."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "I want more of this. Seeing you without first finding a reason you are needed."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "So do I. I still like being good at things. I just want to have a bad day and know I can ask to see you anyway. I want us to be together."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "What do you want, CLI route tester?"
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Good. Then what shall we keep making room for? I have suggestions, naturally. I am leaving space for yours."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_0",
+          "text": "A walk and something to eat. Sometimes the same route. I do not need every meeting to be better than the last."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_1",
+          "text": "Including sitting on this bench? I like this bench. I have now spent a very respectable amount of time on it."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_2",
+          "text": "Especially the bench. We can choose a time when we know we are both free."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "I am glad I asked you. That was much harder than dividing the rolls."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "You finish eating together. She folds the empty paper bag and stays to hear your complaint about the filling. At the gallery entrance she turns back before you part."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "For next time: I liked the filling. We can disagree about that too. Goodbye, CLI route tester."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 447,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 44,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/en-late.json",
+      "case": "en-late",
+      "options": [
+        "--date-week",
+        "49",
+        "--choice",
+        "greta_4/romance_repair=own",
+        "--restart-at",
+        "greta_4/line_4",
+        "--restart-at",
+        "greta_5/line_4"
+      ],
+      "observedScenes": [
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "What do you want, CLI route tester?"
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Good. Then what shall we keep making room for? I have suggestions, naturally. I am leaving space for yours."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_0",
+          "text": "A walk and something to eat. Sometimes the same route. I do not need every meeting to be better than the last."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_1",
+          "text": "Including sitting on this bench? I like this bench. I have now spent a very respectable amount of time on it."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "ritual_2",
+          "text": "Especially the bench. We can choose a time when we know we are both free."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "I am glad I asked you. That was much harder than dividing the rolls."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "You finish eating together. She folds the empty paper bag and stays to hear your complaint about the filling. At the gallery entrance she turns back before you part."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "For next time: I liked the filling. We can disagree about that too. Goodbye, CLI route tester."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Tell me which part you do want. I am having trouble hearing it under the part you do not."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "Your company. I should have started there. But I meant what I said about rushing."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "own_0",
+          "text": "I do this with books. Choose three for a free evening, then feel behind before I have opened one."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "own_1",
+          "text": "And I have brought you a reading list with hills. I did want all these things. Just not all at once."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "own_2",
+          "text": "Keep the card. Pick the bit you want most. I get to suggest the next one, when we actually arrange it."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "own_3",
+          "text": "The lake, then. And you are allowed to like somewhere I have never put on a map. I will cope."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "She draws a single line through the extra stops and folds the card along its old crease. The lake stays visible."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "I nearly asked you to tell me it was a good plan anyway. I am glad you did not. Give me a minute to enjoy being glad."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "I can sit here for a minute."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "You stay on the bench until she starts pointing out the least plausible detour on the card. This time you add one of your own. When you part by the gallery, she takes the card with her."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Next time, bring an appetite. I will try not to bring an expedition."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta has brought two rolls to the courtyard bench. She holds up the smaller one, considers it, and breaks a piece off the larger to put beside it."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "There. Fair enough. I remembered the appetite part. The expedition stayed at home."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "I would have taken the small one without lodging a complaint."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "I know. I want half the good one too. That is the part I am practising saying."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "I want more of this. Seeing you without first finding a reason you are needed."
+        },
+        {
+          "week": 50,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "So do I. I still like being good at things. I just want to have a bad day and know I can ask to see you anyway. I want us to be together."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta unfolds a route card on the courtyard bench. Three stops have become seven; two are squeezed into the margin."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "A walk, something to eat, the lookout. Then I thought we could fit in the village too. It looks less ridiculous on the other side."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "I would spend the whole walk worrying about getting to the next stop. I would rather miss half of it."
+        },
+        {
+          "week": 49,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "I wanted to bring you something worth coming out for. Now I am arguing for a timetable nobody asked me to make. I know how that sounds. It still stings."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 440,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 44,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/hu-night.json",
+      "case": "hu-night",
+      "options": [
+        "--night-personal",
+        "--restart-at",
+        "greta_4/line_4",
+        "--restart-at",
+        "greta_5/line_4",
+        "--choice",
+        "greta_6/invitation=outside"
+      ],
+      "observedScenes": [
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "Te mit szeretnél, CLI route tester?"
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Jó. Akkor minek csináljunk helyet ezután is? Természetesen vannak ötleteim. A tieidnek is hagyok helyet."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "ritual_0",
+          "text": "Séta és valami ennivaló. Néha ugyanazon az úton. Nem kell minden találkozónak jobbnak lennie az előzőnél."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "ritual_1",
+          "text": "Az is számít, ha ezen a padon ülünk? Szeretem ezt a padot. Mostanra egészen tisztességes mennyiségű időt töltöttem rajta."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "ritual_2",
+          "text": "A pad különösen számít. Akkor választunk időpontot, amikor tudjuk, hogy mindketten ráérünk."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "Örülök, hogy megkérdeztelek. Ez sokkal nehezebb volt, mint elosztani a péksüteményt."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "Együtt eszitek meg a maradékot. Összehajtja az üres papírzacskót, és végighallgatja a töltelékről szóló panaszodat. A galéria bejáratánál még visszafordul, mielőtt elválnátok."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "Legközelebbre: nekem ízlett a töltelék. Ebben is vitázhatunk. Szia, CLI route tester."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Mondd el, melyik részét szeretnéd. Most nehezen hallom ki abból, amit nem."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "A társaságodat. Ezzel kellett volna kezdenem. De a rohanást komolyan gondoltam."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "ask_0",
+          "text": "Válassz egy megállót, ahová akkor is mennél, ha én nem lennék itt. Aztán én is választok valamit."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "ask_1",
+          "text": "A tó. Útközben valami ennivaló. Ez szigorúan véve kettő, mielőtt elkezdenéd számolni."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "ask_2",
+          "text": "Utána egy pad. Elég idővel ahhoz, hogy szidjuk az ennivalót, ha megérdemli."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "ask_3",
+          "text": "Ez menni fog. A falu még egy napig kibírja az ellenőrzésünket."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "Egy vonallal áthúzza a plusz megállókat, és a régi hajtás mentén összehajtja a kártyát. A tó látható marad."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "Majdnem megkértelek, hogy azért mondd rá, hogy jó terv. Örülök, hogy nem mondtad. Adj egy percet, hogy ennek örülni is tudjak."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "Egy percig tudok itt ülni."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "A padon maradtok, amíg meg nem mutatja a kártya legképtelenebb kerülőjét. Most te is hozzáteszel egy sajátot. A galériánál búcsúztok el; a kártyát magával viszi."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Legközelebb étvágyat hozz. Én meg igyekszem nem egy expedícióval készülni."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta két péksüteményt hozott az udvari padhoz. Felemeli a kisebbet, megvizsgálja, aztán letör egy darabot a nagyobból, és melléteszi."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "Így már nagyjából igazságos. Az étvágyas részre emlékeztem. Az expedíció otthon maradt."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "A kisebbet is elvettem volna panasz nélkül."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "Tudom. Én meg a jóból is kérem a felét. A kimondásnak ezt a részét gyakorlom."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "Én ebből szeretnék többet. Úgy találkozni veled, hogy előbb nem keresek valami okot, amiért szükség van rád."
+        },
+        {
+          "week": 48,
+          "period": "night",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "Én is. Továbbra is szeretek jól csinálni dolgokat. Csak azt szeretném, hogy egy rossz napon is merjelek elhívni. Veled szeretnék lenni."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta útvonalkártyát hajt szét az udvari padon. A három megállóból hét lett; kettőt már csak a margóra tudott beszorítani."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "Séta, valami ennivaló, kilátó. Aztán arra gondoltam, a falu is beleférne. A másik oldalán kevésbé nevetséges."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "Az egész séta alatt azon aggódnék, hogy odaérünk-e a következő megállóhoz. Inkább kihagynám a felét."
+        },
+        {
+          "week": 43,
+          "period": "night",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "Valami olyat akartam kitalálni, amiért érdemes kijönnöd. Most meg egy menetrendet védelmezek, amit senki sem kért tőlem. Tudom, hogy hangzik. Attól még rosszul esik."
+        }
+      ]
+    },
+    {
+      "route": "greta",
+      "commands": 447,
+      "restarts": 2,
+      "phase": "ending",
+      "ending": "greta",
+      "holidayScenes": [],
+      "seasonalScenes": [],
+      "week": 52,
+      "totalWeeks": 52,
+      "playedLines": 48,
+      "release": {
+        "gameVersion": "0.9.11",
+        "saveSchemaVersion": 4,
+        "contentCompatibilityVersion": 15
+      },
+      "save": "/workspace/scratch/e73b570161a5/playtests/hu-own.json",
+      "case": "hu-own",
+      "options": [
+        "--choice",
+        "greta_4/romance_repair=own",
+        "--choice",
+        "greta_5/romance_future=open",
+        "--choice",
+        "greta_6/future=ask",
+        "--restart-at",
+        "greta_4/own_3",
+        "--restart-at",
+        "greta_5/open_1"
+      ],
+      "observedScenes": [
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "open_1",
+          "text": "Akkor az én következő ötletem a tó. A hosszabb úton. Mondhatsz mást is; lehet, hogy érvelni fogok a sajátom mellett."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "open_2",
+          "text": "Csalódott lennék, ha nem tennéd."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_0",
+          "text": "Örülök, hogy megkérdeztelek. Ez sokkal nehezebb volt, mint elosztani a péksüteményt."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_1",
+          "text": "Együtt eszitek meg a maradékot. Összehajtja az üres papírzacskót, és végighallgatja a töltelékről szóló panaszodat. A galéria bejáratánál még visszafordul, mielőtt elválnátok."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "end_2",
+          "text": "Legközelebbre: nekem ízlett a töltelék. Ebben is vitázhatunk. Szia, CLI route tester."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_0",
+          "text": "Gréta útvonalkártyát hajt szét az udvari padon. A három megállóból hét lett; kettőt már csak a margóra tudott beszorítani."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_1",
+          "text": "Séta, valami ennivaló, kilátó. Aztán arra gondoltam, a falu is beleférne. A másik oldalán kevésbé nevetséges."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_2",
+          "text": "Az egész séta alatt azon aggódnék, hogy odaérünk-e a következő megállóhoz. Inkább kihagynám a felét."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_3",
+          "text": "Valami olyat akartam kitalálni, amiért érdemes kijönnöd. Most meg egy menetrendet védelmezek, amit senki sem kért tőlem. Tudom, hogy hangzik. Attól még rosszul esik."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "line_4",
+          "text": "Mondd el, melyik részét szeretnéd. Most nehezen hallom ki abból, amit nem."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "romance_repair",
+          "text": "A társaságodat. Ezzel kellett volna kezdenem. De a rohanást komolyan gondoltam."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_0",
+          "text": "Én ezt könyvekkel csinálom. Kiválasztok hármat egy szabad estére, aztán már azelőtt lemaradásban érzem magam, hogy egyet is kinyitnék."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_1",
+          "text": "Én meg hoztam neked egy olvasmánylistát, hegyekkel. Tényleg szerettem volna mindezt. Csak nem egyszerre."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_2",
+          "text": "Tartsd meg a kártyát. Válaszd ki, melyik részéhez van leginkább kedved. A következőre én teszek javaslatot, amikor tényleg megszervezzük."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "own_3",
+          "text": "Akkor a tó. Te pedig szerethetsz olyan helyet is, amit még sosem jelöltem térképen. Majd feldolgozom."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_0",
+          "text": "Egy vonallal áthúzza a plusz megállókat, és a régi hajtás mentén összehajtja a kártyát. A tó látható marad."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_1",
+          "text": "Majdnem megkértelek, hogy azért mondd rá, hogy jó terv. Örülök, hogy nem mondtad. Adj egy percet, hogy ennek örülni is tudjak."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_2",
+          "text": "Egy percig tudok itt ülni."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_3",
+          "text": "A padon maradtok, amíg meg nem mutatja a kártya legképtelenebb kerülőjét. Most te is hozzáteszel egy sajátot. A galériánál búcsúztok el; a kártyát magával viszi."
+        },
+        {
+          "week": 43,
+          "period": "day",
+          "scene": "greta_4",
+          "line": "settle_4",
+          "text": "Legközelebb étvágyat hozz. Én meg igyekszem nem egy expedícióval készülni."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_0",
+          "text": "Gréta két péksüteményt hozott az udvari padhoz. Felemeli a kisebbet, megvizsgálja, aztán letör egy darabot a nagyobból, és melléteszi."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "food",
+          "text": "Így már nagyjából igazságos. Az étvágyas részre emlékeztem. Az expedíció otthon maradt."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "answer",
+          "text": "A kisebbet is elvettem volna panasz nélkül."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_1",
+          "text": "Tudom. Én meg a jóból is kérem a felét. A kimondásnak ezt a részét gyakorlom."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_2",
+          "text": "Én ebből szeretnék többet. Úgy találkozni veled, hogy előbb nem keresek valami okot, amiért szükség van rád."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_3",
+          "text": "Én is. Továbbra is szeretek jól csinálni dolgokat. Csak azt szeretném, hogy egy rossz napon is merjelek elhívni. Veled szeretnék lenni."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "line_4",
+          "text": "Te mit szeretnél, CLI route tester?"
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "romance_future",
+          "text": "Jó. Akkor minek csináljunk helyet ezután is? Természetesen vannak ötleteim. A tieidnek is hagyok helyet."
+        },
+        {
+          "week": 48,
+          "period": "day",
+          "scene": "greta_5",
+          "line": "open_0",
+          "text": "Felváltva választunk. Mielőtt útvonalat tervezel, kérdezd meg, hová mennék. Én is így teszek."
+        }
+      ]
+    }
+  ]
+}

@@ -134,3 +134,7 @@ Schema4 remains; content epoch13 replaces12. The assembled `_1`/`_2` graphs remo
 ## Gréta date and aftermath — 0.9.10
 
 Schema4 unchanged; content epoch14 replaces13. Assembled `greta_3`/`greta_6` cursor graphs and persisted journals change incompatibly. Hand-holding no longer authorizes sex, and aftermath continuation/withdrawal precedes physical choices. Original admission, invitation/withdrawal/aftermath effects, date windows, slot costs and three bounded date memories remain. Epoch13 and earlier saves require a fresh year; no migration or default-language change. [Validation](design/PLAYTHROUGH-FINDINGS.md#gréta-dateaftermath-baseline--29-october-2026).
+
+## Gréta disagreement and commitment — 0.9.11
+
+Schema4 retained; content epoch15 replaces14. Assembled `_4`/`_5` graphs and persisted journal/reaction references change, replacing incompatible cursors and the imposed off-screen incident. Epoch14 and earlier require a fresh year; no migration or automatic overwrite. Original admission, repair/withdraw/commit/yes effects, future-memory IDs, dates and one-slot costs remain. This is a coherent bilingual prose repair, not the planned INT2 scene expansion.

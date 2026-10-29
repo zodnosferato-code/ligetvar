@@ -288,3 +288,34 @@ Show precision and dry humor without making her permanently defensive. A folktal
 | Change and exit | Enjoy failure together instead of making a task succeed. Decline romance, hold hands or walk without touch; courtyard talk/kiss/departure. Goodbye at lake or courtyard; one slot. | Choose relationship continuation/withdrawal, then small outing plan; lake company or suite. Suite conversation, kiss, further intimacy and stop are separate choices. Chosen intimacy fades to black with tea afterwards; natural goodbye. One slot. |
 
 English canonical, Hungarian translation, literal player-name substitution. Stable original invitation/withdrawal/aftermath effects and scheduling retained; hand/slow/kiss memories retain their bounded meanings. No new mystery, favourite-place assignment, seasonal art or authority consequence. Date kiss remains unavailable after choosing no touch. `_4`/`_5` still need their coherent disagreement/commitment pass; do not imply it was completed here.
+
+## Connected Gréta annual expansion plan — 29 October 2026
+
+This selected-route plan implements the INT2 planning prerequisite. Proposed exact windows below are editorial targets within the approved year/relationship direction, **not shipped scenes or a new mechanic**. Retain one slot per completed meeting and independent investigation. Do not gate optional intimacy on week48 commitment or an exclusive direction.
+
+| Phase / actual weeks | Existing / addition | Dependencies and personal development |
+| --- | --- | --- |
+| Interest2–16, attraction10–24 | `_1`/`_2` exist; bilingual/elapsed-time pass still needed. | Preserve her practical energy, chosen pleasures and interest/attraction effects. Optional coffee/events need not have happened. |
+| Date24–30 | `_3` currently opens28; review opening24 when adding midpoint continuation. | Attraction, invitation and bounded hand/kiss/slow history. Retain imperfect picnic; no inferred touch. |
+| First private time26–32 | Add one optional meeting after completed date/invitation; no commitment/direction prerequisite. | Shared quiet after an imperfect activity; separate suite invitation, present kiss/further intimacy/stop/company choices, fade and aftermath. Completion-only history must distinguish intimacy from company and refusal; invitation alone is insufficient. |
+| Ordinary company33–37 | Add a food/detour meeting after private-time meeting, any physical outcome. | Re-entry without invented off-screen contact. First-time, already-intimate and slower/no-sex branches; choose something neither needs to organize. No obligation to repeat sex. |
+| Exploration38–42 | Add a reciprocal personal-choice meeting after company. | Let Gréta ask for something she finds difficult to request; player can express a preference. Separate physical invitation and aftermath; preserve ongoing romance without sex. No new magical power or clue. |
+| Disagreement43–50 | `_4`, repaired in this batch. | Current entry remains completed `_3`/invitation; future additions must stay optional so skipped meetings do not block main route. A present conflict over turning leisure into work, no assumed sexual history. |
+| Exploration44–47 | Add another meeting after company, independently of `_4` timing. | A different shared activity, own choices, callback to witnessed intimacy/pace only; time together is not a commitment reward. Explicit goodbye and next callback. |
+| Commitment48–50 | `_5`, repaired in this batch; existing direction gate retained. | Relationship answer, distinct future ordinary-time/asking memories. No first-intimacy unlock. Do not claim skipped additions occurred. |
+| Aftermath52 | Existing `_6`; update when new witnessed histories exist. | Confrontation51→institution52→personal follow-up. Continued/withdrawn relationship precedes physical choice. First-time/private-company/already-intimate histories need distinct wording. |
+
+Implementation dependencies: register new stable scene/decision IDs, bilingual text and journals; inspect decision validation/consumers; keep generic engine unchanged. Existing date minimum28 permits midpoint continuation28–32 without retiming; only widen to24 if earliest/latest itinerary review justifies it. Before additions, validate proposed scenes with 104-slot budget, skipped holidays, late catch-up, no-sex route, locale/restart and compatibility epoch. Triad is independent: no Gréta dependency or assumed Rebeka–Boglárka history. Rebeka/Boglárka/triad/Virág require their own connected plans. INT2 remains Planned until actual additions and midpoint→two later meetings→ending runs pass.
+
+## Refined Gréta disagreement and commitment — 29 October 2026
+
+| Continuity | `greta_4` | `greta_5` |
+| --- | --- | --- |
+| Actual time | Weeks43–50,22 July–9 September2027; either period, old chapter10. | Weeks48–50,26 August–9 September2027; either period, old chapter13. |
+| Prior contact | Completed date/invitation, potentially same week or months earlier; optional coffees/events skipped. | Completed `_4`/repair, direction Gréta; may follow in same week or later. |
+| Entry knowledge | Mutual attraction and chosen date only. No assumed kiss, sexual history, announcement or player misconduct. | Present disagreement was worked through. No invented yesterday meeting, off-screen repair or post-confrontation recovery. |
+| Physical state | Courtyard bench; Gréta brings her own leisure route card with too many stops. No office file or group-message prop. Both remain apart; no automatic touch. | Courtyard bench; two ordinary rolls in her own bag, no tasks or map required. No season-specific clothes/weather; one existing location. |
+| Beats/change | Her plan makes leisure another performance; player honestly dislikes rushing. She hears rejection of her company; clarify without a ritual apology. Choose fewer stops or acknowledge player's own habit of optimizing. She crosses out her own additions; equal participation rather than rescue. | Share lopsided food, each names a want. She asks to keep seeing each other when no one is useful. Choose commitment/refusal, then ordinary-time or asking-before-planning memory; future outing is not falsely completed. |
+| Exit/consumers | Repair or withdrawal retains original effects and slot cost; natural goodbye, card stays with her. `_5` can recall this exact witnessed event. | Stable commit/yes/exposure/future memories consumed by `_6`. No exclusivity promise beyond existing direction contract; no sex implied. Goodbye, no tomorrow guarantee. |
+
+English canonical, Hungarian translated; literal player-name placeholder at commitment. Preserve original `repair`/`withdraw`, `commit`/`withdraw`, `ritual`/`open` and repair `ask`/`own` IDs/effects where applicable. This batch repairs continuity inside the annual plan; it adds no midpoint encounter and cannot complete INT2.

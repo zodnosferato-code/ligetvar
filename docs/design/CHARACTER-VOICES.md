@@ -113,3 +113,7 @@ All six main Rebeka meetings now have deliberate English-first writing and Hunga
 ## Boglárka connected-arc checkpoint — 29 October 2026
 
 The `_1`/`_2` English-first/Hungarian pass completes deliberate bilingual revisions of all six main personal meetings. She enjoys a folktale's practical side character, jokes about her own apologetic drafts, and invents a missing novel chapter before naming attraction. Her quiet initiative grows into the later music/date, disagreement, commitment and submission; it does not require her to become more extroverted or treat every interaction as scholarship. Original quiet/listening memories remain earned alternatives. This supersedes the unfinished-early-scenes statement above only; coffees, triad, broader yearly density and human literary acceptance remain open. [Evidence](PLAYTHROUGH-FINDINGS.md#boglárka-early-arc-validation--29-october-2026).
+
+## Gréta connected middle — 29 October 2026
+
+`_4`/`_5` now have a bilingual present disagreement and commitment: her overfilled leisure card, honest difference in preferences, equal participation and shared lopsided food. She remains competent and energetic, can dislike a response without becoming an administrator of the relationship, and asks for company on unproductive days. No invented player wrongdoing/yesterday date or compulsory touch. `_3–6` have deliberate passes; early `_1`/`_2`, triad/Virág/shared writing and INT2's midpoint/later meetings remain unfinished. [Evidence](PLAYTHROUGH-FINDINGS.md#gréta-disagreement-and-commitment-validation--29-october-2026).

@@ -1,3 +1,4 @@
+import {gretaLaterEn} from './greta-later.en.ts';
 import {gretaPersonalEn} from './greta-personal.en.ts';
 import {boglarkaEarlyEn} from './boglarka-early.en.ts';
 import {boglarkaLaterEn} from './boglarka-later.en.ts';
@@ -15,6 +16,7 @@ import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
 export const en:Record<keyof typeof hu,string> = {
   ...gretaPersonalEn,
+  ...gretaLaterEn,
   ...boglarkaEarlyEn,
   "ui.resources": "Resources",
   "ui.calendar": "Calendar",
