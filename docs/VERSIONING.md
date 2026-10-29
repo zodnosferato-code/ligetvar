@@ -6,7 +6,7 @@
 
 | Field | Current value / source | Meaning |
 | --- | --- | --- |
-| `gameVersion` | `0.9.14`, from `package.json` | Release that wrote the save; displayed on the title screen |
+| `gameVersion` | `0.9.15`, from `package.json` | Release that wrote the save; displayed on the title screen |
 | `saveSchemaVersion` | `4`, in `src/game/release.ts` | Save envelope and state structure |
 | `contentCompatibilityVersion` | `16`, in `src/game/release.ts` | Story/progression compatibility epoch |
 | `buildId` | Optional; GitHub SHA in CI, Git HEAD plus `-dirty` for modified local builds | Diagnostic identity, never a compatibility gate |
@@ -151,3 +151,8 @@ Schema4/content16 remain unchanged. Two optional scenes introduce new IDs and co
 ## 0.9.14 — additive Gréta later exploration
 
 Schema4/content16 remain. `greta_dance` and `greta_sketch` add optional IDs, message references and completion-only decisions without replacing existing cursors, messages or progression assumptions. Existing windows do not reopen; missed optional meetings do not block the original route. An actual0.9.13 full-year CLI save loads under0.9.14; exhaustive new-node tests round-trip saves and verify that pending choices are not global memories. No migration or forced restart.
+
+
+## 0.9.15 — validate active dialogue history
+
+Schema4/content16 remain unchanged. The shared browser/CLI decoder now verifies active scene prerequisites and a playable path from the scene entry to the saved cursor with the exact ordered pending effects. Global and local choice conditions apply along that path; fabricated, duplicated or misplaced pending choices are invalid saves. Paid scene costs are not checked a second time because entry already deducted them. Valid saves retain their existing IDs, structure and semantics; no migration or forced restart. Effect-free choices are not stored, so any legal path matching the cursor/effects is sufficient. This checks active dialogue consistency, not a cryptographic proof of the entire campaign history.

@@ -70,3 +70,73 @@ test('calendar admission and choice gates use injected campaign context, includi
  assert.equal(decodeSave(encodeSave(forged,calendarRules),r,calendarRules).status,'invalid');
  assert.equal(decodeSave(encodeSave(s,calendarRules),r,calendarRules).status,'ok');
 });
+
+test('active saves reject unplayed, duplicated and missing pending choices',()=>{
+ const start=openScene(createInitial('Ada',rules),'voyage_1',registry);
+ const chosen=applyChoice(start,'north',registry,rules);
+ const check=(s:Voyage)=>decodeSave(encodeSave(s,rules),registry,rules).status;
+ assert.equal(check(start),'ok');assert.equal(check(chosen),'ok');
+ const early=structuredClone(start);early.scene!.pending=chosen.scene!.pending;
+ assert.equal(check(early),'invalid','a later choice cannot be pending at the entry');
+ const duplicate=structuredClone(chosen);duplicate.scene!.pending.push(...chosen.scene!.pending);
+ assert.equal(check(duplicate),'invalid','one choice cannot grant its effect twice');
+ const missing=structuredClone(chosen);missing.scene!.pending=[];
+ assert.equal(check(missing),'invalid','the effect-free hidden route is not available');
+});
+
+test('active saves enforce scene admission without charging a paid visit twice',()=>{
+ const start=openScene(createInitial('Ada',rules),'voyage_1',registry);
+ for(const requires of [{scenes:['voyage_2']},{evidence:['unearned']},{decisions:['unseen']},{directions:['south']},{anyOf:[{decisions:['unseen']},{directions:['south']}]}]){
+  const r=structuredClone(registry);r.voyage_1.requires=requires;
+  assert.equal(decodeSave(encodeSave(start,rules),r,rules).status,'invalid');
+ }
+ let s=applyChoice(applyChoice(start,'north',registry,rules),'continue',registry,rules);
+ const r=structuredClone(registry);
+ r.visit={...structuredClone(r.voyage_1),id:'visit',kind:'relationship',requires:{scenes:['voyage_1'],decisions:['charted_1'],notDecisions:['unseen']},cost:{money:4,points:2}};
+ s={...s,money:4,activityPoints:2};s=openScene(s,'visit',r);
+ assert.equal(s.money,0);assert.equal(s.activityPoints,0);
+ assert.equal(decodeSave(encodeSave(s,rules),r,rules).status,'ok','entry cost was already paid');
+ r.visit.requires.notDecisions=['charted_1'];
+ assert.equal(decodeSave(encodeSave(s,rules),r,rules).status,'invalid');
+});
+
+function pathFixture(){
+ const r=structuredClone(registry),base={speaker:'navigator',text:'Sailing',expression:'neutral' as const};
+ r.voyage_1.lines=[
+  {...base,id:'start',choices:[{id:'north',text:'North',reaction:'',next:'fork',effect:{decisions:['north']}},{id:'south',text:'South',reaction:'',next:'fork',effect:{decisions:['south']}}]},
+  {...base,id:'fork',next:'end',choices:[{id:'follow',text:'Follow',reaction:'',next:'local',localRequires:['north'],effect:{decisions:['followed']}},{id:'leave',text:'Leave',reaction:'',effect:{decisions:['left']}}]},
+  {...base,id:'local',next:'end'},
+  {...base,id:'end'},
+ ];return r;
+}
+test('pending history follows one ordered branch and local requirements',()=>{
+ const r=pathFixture(),start=openScene(createInitial('Ada',rules),'voyage_1',r);
+ const north=applyChoice(start,'north',r,rules),south=applyChoice(start,'south',r,rules);
+ const followed=applyChoice(north,'follow',r,rules);
+ for(const s of [north,south,followed,applyChoice(followed,'continue',r,rules),applyChoice(south,'leave',r,rules)])assert.equal(decodeSave(encodeSave(s,rules),r,rules).status,'ok');
+ for(const pending of [[...followed.scene!.pending].reverse(),[...south.scene!.pending,followed.scene!.pending[1]],[...north.scene!.pending,...south.scene!.pending]]){
+  const bad=structuredClone(followed);bad.scene!.pending=pending;
+  assert.equal(decodeSave(encodeSave(bad,rules),r,rules).status,'invalid');
+ }
+});
+
+test('effect-free branches still obey global gates and preserve valid alternative paths',()=>{
+ const r=pathFixture();r.voyage_1.lines[0].choices=[
+  {id:'hidden',text:'Hidden',reaction:'',next:'local',requires:{directions:['south']}},
+  {id:'safe',text:'Safe',reaction:'',next:'end'},
+ ];
+ const start=openScene(createInitial('Ada',rules),'voyage_1',r);
+ const bad=structuredClone(start);bad.scene!.line='local';
+ assert.equal(decodeSave(encodeSave(bad,rules),r,rules).status,'invalid');
+ const safe=applyChoice(start,'safe',r,rules);
+ assert.equal(decodeSave(encodeSave(safe,rules),r,rules).status,'ok');
+ // An equivalent valid route is enough; the save does not record effect-free choices.
+ r.voyage_1.lines[0].choices.push({id:'alternate',text:'Alternate',reaction:'',next:'local'});
+ assert.equal(decodeSave(encodeSave(bad,rules),r,rules).status,'ok');
+});
+
+test('cursor validation terminates on effect-free cycles in injected graphs',()=>{
+ const r=pathFixture();r.voyage_1.lines[0].choices=[{id:'loop',text:'Loop',reaction:'',next:'start'}];
+ const bad=openScene(createInitial('Ada',rules),'voyage_1',r);bad.scene!.line='end';
+ assert.equal(decodeSave(encodeSave(bad,rules),r,rules).status,'invalid');
+});

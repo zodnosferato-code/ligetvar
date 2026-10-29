@@ -1,5 +1,5 @@
-import {periodAllowed,storyDue,calendarRequirementsMatch} from './logic.ts';
-import type {GameState,Registry,RuntimeRules} from './types.ts';
+import {periodAllowed,storyDue,calendarRequirementsMatch,meets} from './logic.ts';
+import type {GameState,Registry,RuntimeRules,Scene,Schedule} from './types.ts';
 export interface StorageLike{getItem(key:string):string|null;setItem(key:string,value:string):void}
 export interface SaveMetadata {gameVersion:string;saveSchemaVersion:number;contentCompatibilityVersion:number;buildId?:string}
 export type SaveResult<S extends GameState=GameState>=
@@ -9,6 +9,33 @@ export type SaveResult<S extends GameState=GameState>=
 export const encodeSave=<S extends GameState>(state:S,rules:RuntimeRules<S>)=>JSON.stringify({...rules.saveVersions,state});
 const object=(x:unknown):x is Record<string,any>=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const strings=(x:unknown):x is string[]=>Array.isArray(x)&&x.every(v=>typeof v==='string');
+/** Pending effects must describe one playable path to the saved cursor, in order.
+ * Effects remain deferred, so global requirements use the unchanged scene-entry state.
+ * A visited (line, effect-count) pair also bounds traversal of cyclic fixture graphs.
+ */
+function reachableCursor(s:GameState,x:Scene,schedule?:Schedule):boolean {
+ const cursor=s.scene!;
+ const effects=cursor.pending.map(e=>JSON.stringify(e));
+ const lines=new Map(x.lines.map(l=>[l.id,l]));
+ const queue:[string,number][]=[[x.entry,0]],seen=new Map<string,Set<number>>();
+ while(queue.length){
+  const [id,count]=queue.pop()!;
+  if(seen.get(id)?.has(count))continue;
+  if(!seen.has(id))seen.set(id,new Set());seen.get(id)!.add(count);
+  if(id===cursor.line&&count===effects.length)return true;
+  const line=lines.get(id);if(!line)continue;
+  if(!line.choices){if(line.next)queue.push([line.next,count]);continue;}
+  for(const choice of line.choices){
+   if(choice.requires&&!meets(s,choice.requires,schedule))continue;
+   if(!(choice.localRequires??[]).every(d=>cursor.pending.slice(0,count).some(e=>e.decisions?.includes(d))))continue;
+   const next=choice.next??line.next;if(!next)continue;
+   if(choice.effect){
+    if(count<effects.length&&JSON.stringify(choice.effect)===effects[count])queue.push([next,count+1]);
+   }else queue.push([next,count]);
+  }
+ }
+ return false;
+}
 export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules:RuntimeRules<S>):SaveResult<S>{
  if(raw===null)return {status:'missing'};
  try{
@@ -56,7 +83,8 @@ export function decodeSave<S extends GameState>(raw:string|null,r:Registry,rules
    if(!object(s.scene)||!r[s.scene.id]||s.scene.id in s.completed||!r[s.scene.id].lines.some(l=>l.id===s.scene.line)||!Array.isArray(s.scene.pending))return {status:'invalid'};
    const x=r[s.scene.id],allowed=x.lines.flatMap(l=>(l.choices??[]).filter(c=>!c.requires||calendarRequirementsMatch(s.week,c.requires,rules.schedule)).map(c=>JSON.stringify(c.effect)));
    if(!s.scene.pending.every((e:any)=>object(e)&&allowed.includes(JSON.stringify(e))))return {status:'invalid'};
-   if(!calendarRequirementsMatch(s.week,x.requires,rules.schedule)||!periodAllowed(s as S,x.periods,rules.schedule)||s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
+   if(!meets(s as S,x.requires,rules.schedule)||!periodAllowed(s as S,x.periods,rules.schedule)||s.week<x.week||s.week>x.deadline||(s.slot===0)!==(x.kind==='shared'))return {status:'invalid'};
+   if(!reachableCursor(s as S,x,rules.schedule))return {status:'invalid'};
   }else if(s.scene!==null)return {status:'invalid'};
   if(s.phase==='minigame'?!(s.minigame in rules.economy.jobs)||s.slot<1||s.slot>2||!periodAllowed(s as S,rules.schedule?.activities[s.minigame],rules.schedule):s.minigame!==null)return {status:'invalid'};
   return {status:'ok',state:s as S,metadata};

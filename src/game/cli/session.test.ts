@@ -9,7 +9,7 @@ import {applyAction,type GameAction} from '../content/actions.ts';
 import {gameView} from '../content/view.ts';
 import {ASSET_DESCRIPTIONS} from '../content/asset-descriptions.ts';
 import {BACKGROUNDS,BACKGROUND_VARIANTS,PORTRAITS,portraitFor} from '../content/assets.ts';
-import {statSync,mkdtempSync,readFileSync,rmSync} from 'node:fs';
+import {statSync,mkdtempSync,readFileSync,writeFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 function memory(raw:string|null=null){return {read:()=>raw,write:(next:string)=>{raw=next;}};}
@@ -106,5 +106,29 @@ test('transcripts replay deterministically and current browser envelopes interch
   const path=join(dir,'export.json');assert.equal(s.execute({cmd:'export',path}).ok,true);assert.equal(decodeSave(readFileSync(path,'utf8'),SCENES).status,'ok');
   const target=memory(),imported=new Session(target);assert.equal(imported.execute({cmd:'import',path,expectedRevision:0}).ok,true);assert.equal(target.read(),file.read());
   const before=target.read();assert.equal(imported.execute({cmd:'new',expectedRevision:1}).ok,false);assert.equal(target.read(),before);
+ }finally{rmSync(dir,{recursive:true,force:true});}
+});
+
+test('loading or importing an impossible scene history preserves the session and stored bytes',()=>{
+ const {s,file}=play();scene(s,'shared_1');
+ act(s,{type:'scene',id:'coffee_boglarka_early'});
+ const raw=file.read()!,before=s.execute({cmd:'look'}).view,revision=s.revision;
+ const broken=JSON.parse(raw);
+ const effect=SCENES.coffee_boglarka_early.lines.flatMap(l=>l.choices??[]).find(c=>c.effect)!.effect;
+ broken.state.scene.pending=[effect,effect];
+ const invalid=JSON.stringify(broken);file.write(invalid);
+ const load=s.execute({cmd:'load',expectedRevision:revision});
+ assert.equal(load.ok,false);assert.equal((load as unknown as {error:{code:string}}).error.code,'SAVE_INVALID');
+ assert.deepEqual(load.view,before);assert.equal(s.revision,revision);assert.equal(file.read(),invalid);
+ const dir=mkdtempSync(join(tmpdir(),'ligetvar-invalid-path-'));
+ try{
+  const path=join(dir,'invalid.json');
+  // Keep the malformed import separate from the valid session save.
+  writeFileSync(path,invalid);file.write(raw);
+  const imported=s.execute({cmd:'import',path,replace:true,expectedRevision:revision});
+  assert.equal(imported.ok,false);assert.equal((imported as unknown as {error:{code:string}}).error.code,'SAVE_INVALID');
+  assert.deepEqual(imported.view,before);assert.equal(s.revision,revision);assert.equal(file.read(),raw);
+  const resumed=new Session(file);assert.equal(resumed.execute({cmd:'load',expectedRevision:0}).ok,true);
+  assert.deepEqual(resumed.execute({cmd:'look'}).view,before);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
