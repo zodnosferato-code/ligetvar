@@ -20,14 +20,14 @@
 
 ## Multi-provider generation for transparent assets and animations
 
-**Hard rule: Always try Venice first**, in the hope that credits are available. Do not skip Venice merely because an earlier checkpoint reported exhausted credits. Attempt a cheap pilot (1K low quality on a transparent-supporting model) and only fall back if the API returns 402/insufficient balance or the request is rejected for another hard reason.
-
-Venice advantages: native transparent PNG/WebP (real alpha, soft edges), private/uncensored models (Lustify etc. with `safe_mode: false`), existing repo tooling (`scripts/venice-generate-assets.mjs`, Actions workflow), and consistent provenance under `assets/generated/venice/`.
-
-Fallbacks only after Venice fails or is unavailable:
-- Non-explicit work → ChatGPT (current historical default after earlier credit exhaustion).
-- Suggestive content → Grok Imagine + Background Removal, or Venice uncensored models when Venice is reachable.
+**Provider routing (current):**
+- **Venice** — only for fully explicit content (uncensored models, `safe_mode: false`). Do not use Venice for non-explicit or merely suggestive work.
+- **Prefer editing for consistency** — whenever an existing approved reference or previous generation exists, try image editing (Venice edit, ChatGPT edit, Grok edit, or local tools) instead of fresh generation so identity, style and crop stay locked.
+- Non-explicit work → ChatGPT (or Recraft for icons/UI).
+- Suggestive (but not fully explicit) content → Grok Imagine + Background Removal.
 - Icons/UI → Recraft or ChatGPT.
+
+Venice advantages for explicit work: native transparent PNG/WebP, private/uncensored models, existing repo tooling.
 
 **Generation rule for cutouts:** When native transparency is not available, generate the subject isolated on a pure solid background (`#FFFFFF` or `#000000`) with no gradients, shadows that touch the edge, or complex environments. This enables clean post-process cutouts via `scripts/process-assets.mjs`.
 
@@ -35,9 +35,9 @@ Fallbacks only after Venice fails or is unavailable:
 
 | Provider | Approach | Notes |
 |----------|----------|-------|
-| **Venice** (always try first) | Native: `transparent_background: true` + `format: png/webp` on models with `supportsTransparentBackground` (currently GPT Image 1.5 / 2.5 Flare / Sunburst and -edit variants). Or post `/image/background-remove`. | Real alpha including soft edges/shadows. Check live model list. Uncensored models available. |
-| **ChatGPT** | Generate on pure white (or white + black pair). App is inconsistent for real alpha; prefer API `background: "transparent"` when available. | Post-process with `process-assets.mjs cutout` or remove.bg / Recraft / Transparify. |
-| **Grok Imagine 2.0** | Generate, then use built-in Background Removal → export PNG. | Good for suggestive content. |
+| **Venice** (fully explicit only) | Native: `transparent_background: true` + `format: png/webp` on models with `supportsTransparentBackground` (currently GPT Image 1.5 / 2.5 Flare / Sunburst and -edit variants). Or post `/image/background-remove`. Prefer edit endpoints when a reference exists. | Real alpha including soft edges/shadows. Uncensored models available. |
+| **ChatGPT** | Generate or edit on pure white (or white + black pair). App is inconsistent for real alpha; prefer API `background: "transparent"` when available. | Post-process with `process-assets.mjs cutout` or remove.bg / Recraft / Transparify. |
+| **Grok Imagine 2.0** | Generate or edit, then use built-in Background Removal → export PNG. | Good for suggestive content. |
 | **Recraft** | Generate then Remove BG + export PNG/WebP. | Strong for icons/UI. |
 
 Always verify real alpha (Pillow `mode == RGBA` and transparent pixel share > 0). Do not trust viewer checkerboards or file extensions. Prompt with “isolated, no background, die-cut, pure white background” in addition to any API flag.
@@ -52,8 +52,8 @@ node scripts/process-assets.mjs cutout raw/portrait.png out/portrait.png --key w
 
 Follow [ANIMATION-PLAN.md]: 3–6 consistent keyframes, 1.5–3 s, held poses, separate static poster, < 750 KB preferred.
 
-1. Generate identity/composition master (transparent if possible) — Venice first. Otherwise solid pure background.
-2. Produce key pose frames as transparent PNGs (Venice native preferred; solid-bg + cutout only if Venice fails). Keep canvas, crop, lighting and identity locked.
+1. Prefer editing an existing identity/composition master for new poses/keyframes so consistency is preserved.
+2. Produce key pose frames as transparent PNGs (Venice native only if fully explicit; otherwise ChatGPT/Grok + cutout). Keep canvas, crop, lighting and identity locked.
 3. Assemble locally with the repo script (uses `libwebp_anim` so previous frames clear correctly):
    ```bash
    node scripts/process-assets.mjs anim frames/frame_%04d.png assets/animations/virag/wink.webp --fps 6
@@ -67,17 +67,20 @@ Follow [ANIMATION-PLAN.md]: 3–6 consistent keyframes, 1.5–3 s, held poses, s
 4. Export independent poster. Record frame count, durations, dimensions, byte size and hashes.
 5. Place reviewed exports under `assets/animations/<actor>/`; sources and provenance under `assets/generated/`.
 
-Venice video models or Grok video can be used for intermediate motion then frame extraction, but the preferred path remains authored keyframes for consistency and cost control. No automatic paid generation of large batches without explicit authorization; single pilots are acceptable to test credit availability.
+Venice video models or Grok video can be used for intermediate motion then frame extraction, but the preferred path remains authored keyframes for consistency and cost control. No automatic paid generation of large batches without explicit authorization.
 
 ### Practical order for new assets
 
-1. **Always attempt Venice first** (hope credits are available). Use a low-cost transparent pilot.
-2. If Venice returns insufficient balance / 402, fall back: non-explicit → ChatGPT on pure solid background; suggestive → Grok Imagine + BG Removal.
-3. Run `scripts/process-assets.mjs cutout` on solid-bg results.
-4. Assemble animations with `scripts/process-assets.mjs anim`.
-5. Always post-process and verify alpha; review against character visual brief and art register before publishing.
+1. **Prefer editing** an existing approved reference or previous generation for consistency.
+2. Fully explicit content → Venice (edit preferred, then generate).
+3. Suggestive → Grok Imagine + BG Removal (edit preferred).
+4. Non-explicit → ChatGPT on pure solid background (edit preferred).
+5. Icons / UI → Recraft or ChatGPT.
+6. Run `scripts/process-assets.mjs cutout` on solid-bg results.
+7. Assemble animations with `scripts/process-assets.mjs anim`.
+8. Always post-process and verify alpha; review against character visual brief and art register before publishing.
 
-Existing Venice Actions workflow (`.github/workflows/venice-assets.yml`) and `art-jobs/venice/` can be used for authorized batches. Documentation updates alone do not authorize large paid runs; a single pilot to test credits is preferred.
+Existing Venice Actions workflow (`.github/workflows/venice-assets.yml`) and `art-jobs/venice/` are reserved for fully explicit authorized batches. Documentation updates alone do not authorize large paid runs.
 
 Manual processing is also available via the `process-assets` workflow (Actions → Process assets).
 
