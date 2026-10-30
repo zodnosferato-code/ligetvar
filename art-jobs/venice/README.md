@@ -1,8 +1,8 @@
 # Venice asset requests
 
-> **Status:** Tooling retained. Agents must always try Venice first (hope credits are available); only fall back after 402/insufficient balance. | **Purpose:** Run bounded, reproducible image batches with the repository secret.
+> **Status:** Tooling retained. Venice is only for fully explicit content. Prefer editing for consistency. | **Purpose:** Run bounded, reproducible image batches with the repository secret.
 
-Current instructions: read [AGENT.md](../../AGENT.md), the [design index](../../docs/design/README.md) and [asset workflow](../../docs/ASSET-AGENT-WORKFLOW.md). Always attempt Venice for new asset generation before other providers. A single low-cost pilot is preferred to test credit availability. Do not change requests or dispatch large paid batches as part of documentation/asset audits. The following describes retained tooling. Counts, provider capabilities and alpha behavior below are dated assumptions; verify them only within an explicitly authorized provider task.
+Current instructions: read [AGENT.md](../../AGENT.md), the [design index](../../docs/design/README.md) and [asset workflow](../../docs/ASSET-AGENT-WORKFLOW.md). Use Venice only for fully explicit assets. Prefer image-edit endpoints when a reference exists so identity and style stay consistent. Do not change requests or dispatch large paid batches as part of documentation/asset audits. The following describes retained tooling. Counts, provider capabilities and alpha behavior below are dated assumptions; verify them only within an explicitly authorized provider task.
 
 `request.json` is the explicit production request. A change to that file on `main` starts `.github/workflows/venice-assets.yml`. Manual dispatch is also available. The runner reads only the Actions secret `IMAGE_GENERATOR_KEY`; it is never exposed to Vite, saved in Git, or printed.
 
@@ -27,4 +27,4 @@ API references checked on 19 October 2026:
 
 The user selected **WAI Illustrious + FireRed** on 19 October 2026 after the live Venice model list showed the earlier GPT models unavailable. `wai-Illustrious` generates the initial anime portrait at 1024×1280; `firered-image-edit` edits referenced portraits and locations. All 37 prompts fit the live 1500-character limits. The runner sends only supported model parameters. Portrait alpha is extracted through Venice's `/image/background-remove`; raw billed output is checkpointed first so an extraction failure does not require another generation charge. No local background-removal model or other image provider is used.
 
-For new transparent work, prefer models that support `transparent_background: true` (GPT Image 1.5 / 2.5 variants) when available; fall back to generate + `/image/background-remove` on WAI/FireRed. Always try Venice first.
+For new transparent work on fully explicit content, prefer models that support `transparent_background: true` (GPT Image 1.5 / 2.5 variants) when available; fall back to generate + `/image/background-remove` on WAI/FireRed. Prefer edit endpoints for consistency.
