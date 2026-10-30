@@ -28,6 +28,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Foundation review](FOUNDATION-REVIEW.md) | Document-by-document assessment of old foundations, conflicts, retained ideas and superseded instructions |
 | [Redesign tracker](TRACKER.md) | Current implementation status, evidence, remaining gates and future features |
 | [NSFW explicit content plan](NSFW-IMPLEMENTATION-PLAN.md) | Agent-ready plan for drawn anime-style explicit scenes, dialogue, spontaneous events, engine hooks and assets (mid-to-late progression, no sex-gating). |
+| [Side-character one-off events](SIDE-EVENTS-NSFW.md) | Niche fantasies and art presentation strategy for optional low-commitment encounters with Lilla and Júlia (CGs + moment loops; assets later). |
 
 ## Authority
 
