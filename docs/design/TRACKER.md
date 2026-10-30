@@ -45,3 +45,9 @@ See `docs/design/MASTER-TRACKER.md` for the consolidated SE-* / AS-* list. INT2 
 | ID | Status | Scope | Evidence / remaining |
 | --- | --- | --- | --- |
 | STORY-SHARED7 | Partial | shared_7 expanded English-first (then Hungarian). Added supervised arrival, clearer distinction from earlier failed experiments, plan for photo re-examination, natural departure. Evidence `ritual_fragment`/`archive_access` unchanged. | Implemented in `shared.ts` + `locales/shared7.{en,hu}.ts`. |
+
+## shared_8 expansion — 30 October 2026
+
+| ID | Status | Scope | Evidence / remaining |
+| --- | --- | --- | --- |
+| STORY-SHARED8 | Partial | shared_8 expanded English-first (then Hungarian). Added classroom arrival with date/loan materials, distinct character priorities (Gréta dates, Rebeka photo re-shoot, Boglárka completion question), disclosure choices preserved, natural departure. Evidence `investigation_plan` and prerequisites unchanged. | Locales `shared8.{en,hu}.ts` added; scene definition in `shared.ts` updated to message() keys. Literary acceptance open. Later shared scenes remain sparse. |
