@@ -18,6 +18,55 @@
 4. Inspect appearance, dimensions, transparency, crop and file size. For animated assets check loop timing and a separate static poster; verify pause, reduced-motion and missing-media behavior. Follow [ANIMATION-PLAN.md](ANIMATION-PLAN.md) for animation budgets.
 5. Update the appropriate runtime manifest, CLI descriptions and production record. Record prompts, source/export hashes and honest review status. Generated, reviewed, uploaded and published are different states. Do not mark planned artwork complete.
 
+## Multi-provider generation for transparent assets and animations
+
+Current production preference (as of late October 2026): ChatGPT built-in image generation for non-explicit work after Venice credits were reported exhausted. Venice tooling remains available and should be tried first when credits exist (native transparency on supported models, private/uncensored options). Grok Imagine is suitable for suggestive content via its Background Removal tool. Recraft is useful for icons and design assets.
+
+### Transparent stills (portraits, stickers, cutouts)
+
+| Provider | Approach | Notes |
+|----------|----------|-------|
+| **Venice** (try first if credits) | Native: `transparent_background: true` + `format: png/webp` on models with `supportsTransparentBackground` (currently GPT Image 1.5 / 2.5 Flare / Sunburst and -edit variants). Or post `/image/background-remove`. | Real alpha including soft edges/shadows. Check live model list. Uncensored models (Lustify etc.) available with `safe_mode: false`. |
+| **ChatGPT** | Generate on pure white (or white + black pair). App is inconsistent for real alpha; prefer API `background: "transparent"` when available. | Post-process with remove.bg / Recraft / Transparify (dual-bg method preserves soft edges). |
+| **Grok Imagine 2.0** | Generate, then use built-in Background Removal → export PNG. | Good for suggestive content. |
+| **Recraft** | Generate then Remove BG + export PNG/WebP. | Strong for icons/UI. |
+
+Always verify real alpha (Pillow `mode == RGBA` and transparent pixel share > 0). Do not trust viewer checkerboards or file extensions. Prompt with “isolated, no background, die-cut” in addition to any API flag.
+
+### Animations (prefer animated WebP with alpha)
+
+Follow [ANIMATION-PLAN.md]: 3–6 consistent keyframes, 1.5–3 s, held poses, separate static poster, < 750 KB preferred.
+
+1. Generate identity/composition master (transparent if possible).
+2. Produce key pose frames as transparent PNGs (Venice native or ChatGPT + post-process). Keep canvas, crop, lighting and identity locked.
+3. Assemble locally:
+   ```bash
+   # From numbered transparent PNG frames
+   ffmpeg -i frame_%04d.png \
+     -c:v libwebp_anim \
+     -pix_fmt yuva420p \
+     -lossless 1 \
+     -loop 0 \
+     -an \
+     animation.webp
+   ```
+   Use `libwebp_anim` so previous frames clear correctly. Lossy quality ~80 is often smaller with acceptable edges. GIF is fallback only (binary transparency, larger).
+4. Export independent poster. Record frame count, durations, dimensions, byte size and hashes.
+5. Place reviewed exports under `assets/animations/<actor>/`; sources and provenance under `assets/generated/`.
+
+Venice video models or Grok video can be used for intermediate motion then frame extraction, but the preferred path remains authored keyframes for consistency and cost control. No automatic paid generation without explicit authorization.
+
+### Practical order for new assets
+
+1. Check Venice credit balance; if available, prefer it for transparency and privacy.
+2. Non-explicit portraits/backgrounds → ChatGPT (current default).
+3. Suggestive moments → Grok Imagine + BG Removal, or Venice uncensored models.
+4. Icons / UI → Recraft or ChatGPT.
+5. Always post-process and verify alpha; assemble animations locally with ffmpeg/webpmux.
+6. Review against character visual brief and art register before publishing.
+
+Existing Venice Actions workflow (`.github/workflows/venice-assets.yml`) and `art-jobs/venice/` remain paused pending credit confirmation and user direction. Do not dispatch paid jobs as part of documentation updates.
+
 ## Publish one image at a time
 
 Use the connected GitHub tools for all remote reads and writes. Local Python/Git commands may inspect files and calculate hashes; no shell GitHub credentials, `git push`, `gh auth`, personal access token or browser upload is required. The connector does not accept a local file path: the orchestration code below bridges local bytes to its base64 argument without emitting them into model context.
