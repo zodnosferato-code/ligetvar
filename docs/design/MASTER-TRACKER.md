@@ -19,7 +19,7 @@ This is the single consolidated master tracker for story-engine-supported narrat
 | SE-05 | P1 | Implemented (maintain) | **Knowledge & save integrity** | Every new scene preserves witnessed prerequisites, distinct bonds, decision order, and save-history validation. | `ENGINE.md`, `VERSIONING.md`. |
 | SE-06 | P2 | Partial | **Optional world / folklore density** | Additional witnessed customs, Virág/Soma foundations, regional callbacks without gating the investigation. | `HUNGARIAN-WORLD.md`. |
 | SE-07 | P2 | Planned | **Favourite-place dating experiences (S2)** | Distinct favourite locations for each woman with matching art and night-slot feasibility. | User direction recorded. |
-| SE-08 | P1 | Partial | **Side-character one-off NSFW events** | Lilla sensory reclaiming and Júlia guided instruction: short optional scenes with mutual choice, preference flags, gallery unlocks, intimacy stages. Assets later. | Implemented structure in `side-events.ts`; engine hooks for preferences/gallery. See SIDE-EVENTS-NSFW.md. |
+| SE-08 | P1 | Partial | **Side-character one-off NSFW events** | Lilla sensory reclaiming and Júlia guided instruction (two each) plus a small spontaneous pool example (`lilla_spontaneous_touch`, `julia_spontaneous_instruction`). Mutual choice, preferences, gallery, intimacy stages. Assets later. | Structure in `side-events.ts` and `spontaneous-events.ts`; engine hooks ready. See SIDE-EVENTS-NSFW.md. |
 
 ---
 
@@ -55,4 +55,4 @@ This is the single consolidated master tracker for story-engine-supported narrat
 - Optional content must never gate the mandatory vampire investigation.  
 - No save migrations; content epoch bumps require a new year.
 
-**Next recommended action:** Expand main-route INT2 explicit scenes using the new preference/gallery hooks, or produce identity/CG assets for the side events.
+**Next recommended action:** Expand main-route INT2 explicit scenes (preferably Gréta) using the new preference/gallery hooks, or produce identity/CG assets for the side and spontaneous events.
