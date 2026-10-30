@@ -6,7 +6,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 
 | Document | Responsibility |
 | [Master tracker — story engine & assets](MASTER-TRACKER.md) | Consolidated prioritized working list for story-engine narrative tasks and all asset-related work. Agents must use this for those areas. |
-| [Hungarian world and folklore](HUNGARIAN-WORLD.md) | Sourced cultural influences, fictional estate chronology, personal history and two optional folklore meeting briefs |
+| [Hungarian world and folklore](HUNGARIAN-WORLD.md) | Sourced cultural influences, fictional estate chronology, personal history, winter provisioning (disznóvágás), wine/pálinka customs and three optional folklore meeting briefs |
 | [Castle geography](CASTLE-GEOGRAPHY.md) | Spatial authority: architecture, floors, measured paths, walking times, surroundings, ecology and future image continuity |
 | [Castle year, assets and map](CALENDAR-ASSETS.md) | Year calendar, weather/outfit selection, map meetings, folder and provenance contract |
 | --- | --- |
