@@ -12,7 +12,7 @@ This is the single consolidated master tracker for story-engine-supported narrat
 
 | ID | Priority | Status | Task | Acceptance / Remaining Gate | Dependency / Notes |
 |----|----------|--------|------|-----------------------------|--------------------|
-| SE-01 | P0 | Partial | **Complete story writing depth (STORY)** — shared_5–8 expanded 30 Oct | English-first rewrites + Hungarian translations for remaining shared chapters, individual romance, triad, and early identity/confession scenes. Broader literary/user acceptance. | Follow `SCENE-OUTLINE.md`, `NARRATIVE-WORKFLOW.md`, `CHARACTER-VOICES.md`. CLI validation + playthrough findings first. |
+| SE-01 | P0 | Partial | **Complete story writing depth (STORY)** — shared_5–9 expanded 30 Oct | English-first rewrites + Hungarian translations for remaining shared chapters, individual romance, triad, and early identity/confession scenes. Broader literary/user acceptance. | Follow `SCENE-OUTLINE.md`, `NARRATIVE-WORKFLOW.md`, `CHARACTER-VOICES.md`. CLI validation + playthrough findings first. |
 | SE-02 | P0 | Partial | **INT2 — connected annual relationship exploration** | Rebeka, Boglárka, triad, and Virág get connected midpoint → later-half meetings → ending (model after Gréta). Preserve no-sex routes, witnessed history, mutual choice. | Gréta already CLI-validated; additional optional private continuation `greta_private_1` added with preference/gallery hooks. Do not claim whole-game completion. |
 | SE-03 | P1 | Partial | **Localization completion** | Full English catalog as canonical source / target default; complete Hungarian translation. | Runtime still Hungarian-first. |
 | SE-04 | P1 | Planned | **Scene staging expansions (S1–S5)** | Multi-location staging, character-specific physical beats, later-scene endings/goodbyes, richer callbacks. | `SCENE-STAGING.md`. |
@@ -55,4 +55,4 @@ This is the single consolidated master tracker for story-engine-supported narrat
 - Optional content must never gate the mandatory vampire investigation.  
 - No save migrations; content epoch bumps require a new year.
 
-**Next recommended action:** Expand shared_9 onward, or a connected INT2 batch for Rebeka / Boglárka midpoint + first later exploration.
+**Next recommended action:** Expand shared_10 onward, or a connected INT2 batch for Rebeka / Boglárka midpoint + first later exploration.
