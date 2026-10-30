@@ -47,3 +47,14 @@ Both are once per year and cost one daytime slot. Neither charges money/points, 
 ## Hungarian folklore gatherings — 29 October 2026
 
 [Refined briefs and sources](HUNGARIAN-WORLD.md) add Luca preparations in actualweek11/day and Szent Iván company in39/night. These use ordinary optional scenes with exact week windows and season requirements; they do not add `HOLIDAYS` identities, event-specific outfits or calendar badges. They appear as available meetings in the existing planner/map/CLI. Battery lantern and grain are narrated props; new painted art remains unproduced.
+
+## Seasonal drinking nights — 30 October 2026
+
+Four ordinary optional scenes add one casual drinking/party night per season. They use the same contract as the existing seasonal and folklore gatherings: `shared_1` required, season gate, three choices (join a small toast, talk with a soft alternative, or leave early), one slot, no bonds/evidence/commitment, bilingual, early-leave complete. Soft drinks and water are always available; no alcohol is forced. Journals do not claim unchosen activities.
+
+- **drinking_autumn — Fröccs Under the Arcade.** Weeks 7–8 (night), courtyard. Mild October evening; white wine, soda and water. Gréta offers ratios or silence; Rebeka treats the choice as optional. Branches: small toast with eye contact, water and conversation, or early goodbye.
+- **drinking_winter — A Small Glass in the Library.** Week 15 (day or night), library alcove. Plum pálinka and tea. Boglárka mentions fogópálinka as the glass for people about to work; the conversation stays on the table afterwards, not the slaughter. Branches: small toast, tea and memory, or leave the quiet.
+- **drinking_spring — Wine After the Walk.** Weeks 26–28 (night), courtyard. After a longer walk than planned. Rebeka brings wine; Gréta has soda. Branches: small glass, soda and the argument about the path, or leave.
+- **drinking_summer — Glasses by the Lake.** Weeks 35–37 (night), Békás shelter. Cherries and white wine. Gréta offers both, one or neither. Branches: small glass with cherries, cherries and the view only, or early departure.
+
+Implemented in `src/game/content/drinking.ts` and registered in the catalog. Locales in `drinking.en.ts` / `drinking.hu.ts`. No new art, outfits or HOLIDAYS entries. Existing saves remain compatible; the scenes appear only in their season windows after `shared_1`.
