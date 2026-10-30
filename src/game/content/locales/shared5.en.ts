@@ -1,0 +1,25 @@
+/** Canonical English source for shared_5. */
+export const shared5En = {
+  "scene.same.title": "The Same Sentence",
+  "scene.same.arrival": "The Holdkör projection room smells of dust and old film. We’re looking for the spare projector before the evening screening. Rebeka has the camera bag; Gréta is checking the equipment list. Boglárka stands by the open storeroom door with her notebook.",
+  "scene.same.ordinary": "If the bulb is still good we can test it here. Otherwise we’ll be late for our own seats.",
+  "scene.same.voice": "From the empty storeroom a voice says, clear and close: “There’s still a place for you.” It is Rebeka’s voice.",
+  "scene.same.rebeka": "That’s mine. I didn’t say it. I haven’t said anything.",
+  "scene.same.boglarkaAsk": "Boglárka steps closer to the doorway but does not cross it. “Who are you speaking to? What place?”",
+  "scene.same.repeat": "The voice repeats the same sentence with the same pause. It does not answer her.",
+  "scene.same.instruction": "Don’t follow it. Feet on the floor, your own breath, the clock on the wall. Stay with what you can feel.",
+  "scene.same.choice.ground": "I’ll lead the grounding we already know.",
+  "scene.same.choice.withdraw": "First we step back to the lit stairs.",
+  "scene.same.ground.reaction": "We shift our weight together. The clock is louder than the voice.",
+  "scene.same.withdraw.reaction": "We move to the brighter landing. The doorway stays in sight.",
+  "scene.same.boglarka": "Same pause. No answer. This is a recording of a sentence, not a conversation.",
+  "scene.same.greta": "I have the key. We are not opening that door alone. Áron is already on his way down.",
+  "scene.same.third": "The voice takes the same breath a third time. By the time Áron reaches the bottom of the stairs it has stopped.",
+  "scene.same.aron": "Áron checks the lock from outside. The room is empty. Nothing has been moved.",
+  "scene.same.departure": "We leave the projector for later. The grounding brought our attention back to the room we were actually in. It did not show us where the voice came from.",
+  "scene.same.journal": "In the Holdkör storeroom Rebeka’s own sentence was spoken in her voice. It repeated without answering Boglárka’s question. Grounding returned our attention; the source remained unseen. Áron confirmed the room was empty.",
+  "scene.same.knowledge": "A borrowed voice repeated a known sentence from an empty room. It could not answer a new question.",
+  "scene.same.stage.arrival": "Looking for the projector",
+  "scene.same.stage.voice": "The empty storeroom",
+  "scene.same.stage.departure": "After Áron arrives"
+} as const;

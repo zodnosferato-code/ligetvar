@@ -1,0 +1,25 @@
+/** Hungarian translation of shared_5. */
+export const shared5Hu = {
+  "scene.same.title": "Ugyanaz a mondat",
+  "scene.same.arrival": "A Holdkör vetőterme poros, régi filmszagú. A tartalék vetítőt keressük az esti vetítés előtt. Rebeka a fényképezőgép táskáját tartja; Gréta a felszereléslistát ellenőrzi. Boglárka a nyitott raktár ajtajánál áll a jegyzetfüzetével.",
+  "scene.same.ordinary": "Ha az izzó még jó, itt tesztelhetjük. Különben elkésünk a saját helyünkről.",
+  "scene.same.voice": "Az üres raktárból tisztán, közelről szól egy hang: „Maradt még egy hely neked.” Rebeka hangja.",
+  "scene.same.rebeka": "Ez az enyém. Én nem mondtam. Semmit sem mondtam.",
+  "scene.same.boglarkaAsk": "Boglárka közelebb lép az ajtóhoz, de nem lépi át. „Kihez beszélsz? Milyen helyhez?”",
+  "scene.same.repeat": "A hang ugyanazzal a szünettel ismétli a mondatot. Nem válaszol neki.",
+  "scene.same.instruction": "Ne induljatok utána. Talp a padlón, saját lélegzet, a fali óra. Maradjatok annál, amit éreztek.",
+  "scene.same.choice.ground": "Végigvezetem a már megtanult földelést.",
+  "scene.same.choice.withdraw": "Előbb visszalépünk a világos lépcsőhöz.",
+  "scene.same.ground.reaction": "Együtt helyezzük át a súlyt. Az óra hangosabb, mint a hang.",
+  "scene.same.withdraw.reaction": "A világosabb pihenőre lépünk. Az ajtó a látóterünkben marad.",
+  "scene.same.boglarka": "Ugyanaz a szünet. Nincs válasz. Ez egy mondat felvétele, nem beszélgetés.",
+  "scene.same.greta": "Nálam van a kulcs. Nem nyitjuk ki egyedül. Áron már lefelé jön.",
+  "scene.same.third": "A hang harmadszor is ugyanott vesz levegőt. Mire Áron leér a lépcső aljára, elhallgat.",
+  "scene.same.aron": "Áron kívülről ellenőrzi a zárat. A szoba üres. Semmi sem mozdult el.",
+  "scene.same.departure": "A vetítőt későbbre hagyjuk. A földelés visszahozt a figyelmünket a szobába, ahol valójában voltunk. Nem mutatta meg, honnan jött a hang.",
+  "scene.same.journal": "A Holdkör raktárában Rebeka saját mondata hangzott el az ő hangján. Boglárka kérdésére nem válaszolt, csak ismételt. A földelés visszahozt a figyelmünket; a forrás láthatatlan maradt. Áron megerősítette, hogy a szoba üres.",
+  "scene.same.knowledge": "Kölcsönzött hang ismételt egy ismert mondatot egy üres szobából. Új kérdésre nem tudott válaszolni.",
+  "scene.same.stage.arrival": "A vetítő keresése",
+  "scene.same.stage.voice": "Az üres raktár",
+  "scene.same.stage.departure": "Áron érkezése után"
+} as const;
