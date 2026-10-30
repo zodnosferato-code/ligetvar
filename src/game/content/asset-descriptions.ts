@@ -26,7 +26,6 @@ export const ASSET_DESCRIPTIONS:Record<string,string>={
 const people={virag:'Rövid, kék pixie frizurás felnőtt nő, szürkéskék szemmel, nyitott gallérú fehér blúzban és bordó kardigánban; egyik keze a csípőjén.',rebeka:'Hosszú fekete hajú nő lila hajtinccsel, fekete felsőben és fémes nyakpánttal.',boglarka:'Barna hajú nő oldalt lelógó fonattal, zöld kardigánban és világos felsőben.',greta:'Vörös hajú, szemüveges nő lófarokkal, zöld mellényben és fehér galléros ingben.'};
 const expressions={neutral:'Nyugodt, visszafogott arckifejezés.',amused:'Félmosoly, enyhén megemelt szemöldök.',displeased:'Összehúzott szemöldök, szigorú tekintet.',vulnerable:'Bizonytalan, kissé aggodalmas arc, résnyire nyitott száj.',affectionate:'Lágy mosoly és kipirult arc.'};
 for(const [person,description] of Object.entries(people))for(const [expression,face] of Object.entries(expressions)){
- if(person==='greta'&&expression==='affectionate')continue;
  ASSET_DESCRIPTIONS[`characters/${person}/${expression}-v1.webp`]=`${description} ${face}`;
 }
 export function describeAsset(asset:ArtAsset){return asset.file?ASSET_DESCRIPTIONS[asset.file]??'Ehhez a képhez még nincs leírás.':asset.note||'Nem jelenik meg kép.';}
