@@ -73,7 +73,7 @@ Canonical image files live under `assets/`. Runtime images are selected by `src/
 
 Preserve detailed non-pixel anime/cel-shaded character art and gothic castle-college backgrounds. Conversation backgrounds use the player's viewpoint and a natural companion seat. Intimacy is a meaningful relationship beat, presented fade to black for now under the user's 27 October decision. Preserve invitations, mutual choice, reconsideration and aftermath; do not erase the beat or require graphic prose/art. See the [authoring contract](docs/design/GAME-DESIGN.md#relationship-intimacy--27-october-2026).
 
-**NSFW asset rule:** Agents unable to generate or process NSFW/suggestive images must leave existing NSFW assets, prompts and references untouched. Do not delete them, replace them with censored versions, or omit planned suggestive work solely due to content filters. Prefer providers that can handle the content (e.g. Grok Imagine for suggestive material) when authorized; otherwise skip the task and leave the files as-is.
+**NSFW asset rule:** Agents unable to generate or process NSFW/suggestive images must leave existing NSFW assets, prompts and references untouched. Do not delete them, replace them with censored versions, or omit planned suggestive work solely due to content filters. Prefer providers that can handle the content when authorized; otherwise skip the task and leave the files as-is.
 
 ## Verification and repository workflow
 
@@ -112,11 +112,11 @@ The latest story direction allows an immediate mutually chosen private encounter
 
 ## Provider tooling and historical production
 
-Always try Venice first for new asset generation in the hope that credits are available (see [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md)). Fall back only after a 402/insufficient-balance response. The latest workflow permits independent generation followed by batch review; never chain an unreviewed output as an identity master. Record actual prompts, source/output hashes, dimensions, alpha and honest review status. Retain planner backgrounds until replacements and hotspot alignment have been checked.
+**Venice is only for fully explicit content.** For everything else use ChatGPT (non-explicit) or Grok Imagine (suggestive). Always prefer image editing over fresh generation when a reference exists, to keep identity and style consistent. See [ASSET-AGENT-WORKFLOW.md](docs/ASSET-AGENT-WORKFLOW.md). The latest workflow permits independent generation followed by batch review; never chain an unreviewed output as an identity master. Record actual prompts, source/output hashes, dimensions, alpha and honest review status. Retain planner backgrounds until replacements and hotspot alignment have been checked.
 
 Historical [Venice production](docs/VENICE-PRODUCTION.md) and [ChatGPT production](docs/CHATGPT-PRODUCTION.md) describe dated batches, not current file availability. The initial Venice pair was WAI Illustrious + FireRed; profile parameters live in `scripts/venice/profile.mjs` and requests in `art-jobs/venice/request.json`. Older alpha/billing failures are historical and must not be reported as newly tested capabilities.
 
-For an explicitly authorized future server-side Venice task:
+For an explicitly authorized future server-side Venice task (fully explicit only):
 - OpenAI-compatible base URL: https://api.venice.ai/api/v1; historical chat model `zai-org-glm-5-2`.
 - Read chat credentials only from `process.env.VENICE_API_KEY`; use GitHub Actions secrets. Image tooling historically uses `IMAGE_GENERATOR_KEY`. Never commit/log credentials or expose them via VITE_* or client code.
 - `npm run venice:smoke` requires a trusted Node 22+ environment and an available secret. It sends a minimal non-sensitive chat request and reports HTTP failure without response bodies. Chat connectivity does not validate image endpoints.
