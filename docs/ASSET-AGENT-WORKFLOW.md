@@ -20,13 +20,20 @@
 
 ## Multi-provider generation for transparent assets and animations
 
-Current production preference (as of late October 2026): ChatGPT built-in image generation for non-explicit work after Venice credits were reported exhausted. Venice tooling remains available and should be tried first when credits exist (native transparency on supported models, private/uncensored options). Grok Imagine is suitable for suggestive content via its Background Removal tool. Recraft is useful for icons and design assets.
+**Hard rule: Always try Venice first**, in the hope that credits are available. Do not skip Venice merely because an earlier checkpoint reported exhausted credits. Attempt a cheap pilot (1K low quality on a transparent-supporting model) and only fall back if the API returns 402/insufficient balance or the request is rejected for another hard reason.
+
+Venice advantages: native transparent PNG/WebP (real alpha, soft edges), private/uncensored models (Lustify etc. with `safe_mode: false`), existing repo tooling (`scripts/venice-generate-assets.mjs`, Actions workflow), and consistent provenance under `assets/generated/venice/`.
+
+Fallbacks only after Venice fails or is unavailable:
+- Non-explicit work → ChatGPT (current historical default after earlier credit exhaustion).
+- Suggestive content → Grok Imagine + Background Removal, or Venice uncensored models when Venice is reachable.
+- Icons/UI → Recraft or ChatGPT.
 
 ### Transparent stills (portraits, stickers, cutouts)
 
 | Provider | Approach | Notes |
 |----------|----------|-------|
-| **Venice** (try first if credits) | Native: `transparent_background: true` + `format: png/webp` on models with `supportsTransparentBackground` (currently GPT Image 1.5 / 2.5 Flare / Sunburst and -edit variants). Or post `/image/background-remove`. | Real alpha including soft edges/shadows. Check live model list. Uncensored models (Lustify etc.) available with `safe_mode: false`. |
+| **Venice** (always try first) | Native: `transparent_background: true` + `format: png/webp` on models with `supportsTransparentBackground` (currently GPT Image 1.5 / 2.5 Flare / Sunburst and -edit variants). Or post `/image/background-remove`. | Real alpha including soft edges/shadows. Check live model list. Uncensored models available. |
 | **ChatGPT** | Generate on pure white (or white + black pair). App is inconsistent for real alpha; prefer API `background: "transparent"` when available. | Post-process with remove.bg / Recraft / Transparify (dual-bg method preserves soft edges). |
 | **Grok Imagine 2.0** | Generate, then use built-in Background Removal → export PNG. | Good for suggestive content. |
 | **Recraft** | Generate then Remove BG + export PNG/WebP. | Strong for icons/UI. |
@@ -37,8 +44,8 @@ Always verify real alpha (Pillow `mode == RGBA` and transparent pixel share > 0)
 
 Follow [ANIMATION-PLAN.md]: 3–6 consistent keyframes, 1.5–3 s, held poses, separate static poster, < 750 KB preferred.
 
-1. Generate identity/composition master (transparent if possible).
-2. Produce key pose frames as transparent PNGs (Venice native or ChatGPT + post-process). Keep canvas, crop, lighting and identity locked.
+1. Generate identity/composition master (transparent if possible) — Venice first.
+2. Produce key pose frames as transparent PNGs (Venice native preferred; ChatGPT + post-process only if Venice fails). Keep canvas, crop, lighting and identity locked.
 3. Assemble locally:
    ```bash
    # From numbered transparent PNG frames
@@ -54,18 +61,17 @@ Follow [ANIMATION-PLAN.md]: 3–6 consistent keyframes, 1.5–3 s, held poses, s
 4. Export independent poster. Record frame count, durations, dimensions, byte size and hashes.
 5. Place reviewed exports under `assets/animations/<actor>/`; sources and provenance under `assets/generated/`.
 
-Venice video models or Grok video can be used for intermediate motion then frame extraction, but the preferred path remains authored keyframes for consistency and cost control. No automatic paid generation without explicit authorization.
+Venice video models or Grok video can be used for intermediate motion then frame extraction, but the preferred path remains authored keyframes for consistency and cost control. No automatic paid generation of large batches without explicit authorization; single pilots are acceptable to test credit availability.
 
 ### Practical order for new assets
 
-1. Check Venice credit balance; if available, prefer it for transparency and privacy.
-2. Non-explicit portraits/backgrounds → ChatGPT (current default).
-3. Suggestive moments → Grok Imagine + BG Removal, or Venice uncensored models.
-4. Icons / UI → Recraft or ChatGPT.
-5. Always post-process and verify alpha; assemble animations locally with ffmpeg/webpmux.
-6. Review against character visual brief and art register before publishing.
+1. **Always attempt Venice first** (hope credits are available). Use a low-cost transparent pilot.
+2. If Venice returns insufficient balance / 402, fall back: non-explicit → ChatGPT; suggestive → Grok Imagine + BG Removal.
+3. Icons / UI → Recraft or ChatGPT after Venice attempt.
+4. Always post-process and verify alpha; assemble animations locally with ffmpeg/webpmux.
+5. Review against character visual brief and art register before publishing.
 
-Existing Venice Actions workflow (`.github/workflows/venice-assets.yml`) and `art-jobs/venice/` remain paused pending credit confirmation and user direction. Do not dispatch paid jobs as part of documentation updates.
+Existing Venice Actions workflow (`.github/workflows/venice-assets.yml`) and `art-jobs/venice/` can be used for authorized batches. Documentation updates alone do not authorize large paid runs; a single pilot to test credits is preferred.
 
 ## Publish one image at a time
 
