@@ -65,18 +65,21 @@ export const spine:Scene[]=[
   say('aron',message('scene.same.aron')),
   say('narrator',message('scene.same.departure'))
  ],['borrowed_voice'],storedMessage('scene.same.journal'),{evidence:['grounding','phrase','timeline']}),
- shared(6,'Az ajánlat ára','courtyard',['marton','soma','denes','rebeka','boglarka','greta'],[
-  say('soma','Megkaptam a vendégelőadói lehetőséget. Régebben egy szót sem hagytak végigmondani. Most mindenki talál rám időt.','amused'),
-  say('greta','A meghívó valódi. Az előkészítő találkozó éjszakára került. Ez nem szokásos.'),
-  say('denes','Egy másik hallgató is visszatért. A nevét nem adhatom tovább. Elismerést ígértek a munkájáért; ezért ment el. Utána órák estek ki.'),
-  say('boglarka','Az indoka érthető. Az, hogy elment, nem beleegyezés olyasmibe, amiről nem tudott.'),
-  say('rebeka','Nem használom az arcát. A helyszín képét is ő választhatja ki, ha szeretné.'),
-  say('marton','A két esetet személyes adatok nélkül vetjük össze.','neutral',[
-   option('protect','Az állapotok és az engedélyezett időpontok elégségesek.','Dénes mindkét esetnél ugyanazt a szokatlan kimerülést igazolja.'),
-   option('consent','Kérjünk külön engedélyt a csoporttal megosztott részletekre.','Az időpontok megoszthatók, a személyes üzenetek magánügyek maradnak.')]),
-  say('narrator','Az egyikük társaságot, a másikuk elismerést keresett. A kimerülés és az elveszett idő mégis közös.')
- ],['pattern'],'Két visszatérő embernél azonos a kimerülés és a kieső idő mintája, eltérő személyes indítékok mellett.',{evidence:['borrowed_voice']}),
- shared(7,'A hiányos leírás','library',['marton','rebeka','boglarka','greta','julia','aron'],[
+ shared(6,message('scene.offer.title'),'courtyard',['marton','soma','denes','rebeka','boglarka','greta'],[
+  say('narrator',message('scene.offer.arrival')),
+  say('soma',message('scene.offer.soma'),'amused'),
+  say('greta',message('scene.offer.greta')),
+  say('denes',message('scene.offer.denes')),
+  say('boglarka',message('scene.offer.boglarka')),
+  say('rebeka',message('scene.offer.rebeka')),
+  say('marton',message('scene.offer.instruction'),'neutral',[
+   option('protect',message('scene.offer.choice.protect'),storedMessage('scene.offer.protect.reaction')),
+   option('consent',message('scene.offer.choice.consent'),storedMessage('scene.offer.consent.reaction'))]),
+  say('narrator',message('scene.offer.pattern')),
+  say('narrator',message('scene.offer.company')),
+  say('narrator',message('scene.offer.departure'))
+ ],['pattern'],storedMessage('scene.offer.journal'),{evidence:['borrowed_voice']}),
+shared(7,'A hiányos leírás','library',['marton','rebeka','boglarka','greta','julia','aron'],[
   say('aron','Felügyelettel hozzáférhettek a régi kísérleti anyagokhoz. Másolatot jegyzőkönyv mellett készítünk.'),
   say('greta','Soma neve szerepel annál a kötetnél, amelyikből kitéptek egy lapot. A év előtt kérte ki.'),
   say('julia','A korábbi tanúk sikertelen sötétmágiai kísérletekről beszélnek. Ezek nem bizonyítanak korábbi vámpírtámadásokat.'),

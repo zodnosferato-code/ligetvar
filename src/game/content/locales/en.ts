@@ -17,6 +17,7 @@ import {timelineEn} from './timeline.en.ts';
 import {holidaysEn} from './holidays.en.ts';
 import {investigationEn} from './investigation.en.ts';
 import {shared5En} from "./shared5.en.ts";
+import {shared6En} from "./shared6.en.ts";
 import {openingEn} from './opening.en.ts';
 import type {hu} from './hu.ts';
 /** Partial translation: unextracted content remains Hungarian. */
@@ -56,6 +57,7 @@ export const en:Record<keyof typeof hu,string> = {
   ...timelineEn,
   ...investigationEn,
 ...shared5En,
+...shared6En,
   "save.unknownVersion": "unknown game version",
   "save.format": " (format: {format})",
   "save.versions": "Save: {saved}{format}. Current game: {current}.",

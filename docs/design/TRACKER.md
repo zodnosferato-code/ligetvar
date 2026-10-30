@@ -33,3 +33,9 @@ See `docs/design/MASTER-TRACKER.md` for the consolidated SE-* / AS-* list. INT2 
 | ID | Status | Scope | Evidence / remaining |
 | --- | --- | --- | --- |
 | STORY-SHARED5 | Partial | shared_5 expanded English-first (then Hungarian). Added ordinary projector-search setup, Boglárka’s unanswered question, distinct ground/withdraw reactions, Áron arrival confirmation, natural departure. Evidence `borrowed_voice` and prerequisites unchanged. Node count increased. | Implemented in `shared.ts` + `locales/shared5.{en,hu}.ts`. CLI/branch tests still to be extended for the new nodes. Literary acceptance open. Later shared scenes remain sparse. |
+
+## shared_6 expansion — 30 October 2026
+
+| ID | Status | Scope | Evidence / remaining |
+| --- | --- | --- | --- |
+| STORY-SHARED6 | Partial | shared_6 expanded English-first (then Hungarian). Added courtyard arrival, Dénes’s protected second return, concrete company request from Gréta after others leave, distinct protect/consent reactions. Evidence `pattern` and prerequisites unchanged. | Implemented in `shared.ts` + `locales/shared6.{en,hu}.ts`. Later shared scenes still sparse. |
