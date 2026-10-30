@@ -5,7 +5,7 @@
 The user approved these contrasts on 19 October 2026. They guide speech, initiative, humor and reactions; none is a compulsory good/bad choice ladder. The redesign plan's goals, ages and relationship routes remain authoritative.
 
 | Character | Everyday voice | Under pressure | Closeness | Avoid |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Rebeka | Provocative, proud, sarcastic. Challenges an easy answer; exaggerates for comic effect. | Counterattacks, tests whether someone means what they say, hides hurt behind a jab. | Early verbal flirting; slower emotional exposure. Shows another image or stays instead of delivering a polished confession. | Constant hostility, generic therapy language, treating every joke as a test with a correct answer. |
 | Boglárka | Observant, quieter, dry humor. Chooses precise words and follows an idea enthusiastically when invited. | Pauses or withdraws first, then names the specific injury. Can disagree without becoming louder. | Makes small deliberate invitations; her initiative grows without replacing her personality. | Infantilizing shyness, permanent passivity, making every sentence a research disclaimer. |
 | Gréta | Direct, practical, energetic. Starts things, proposes a place, notices what needs doing. | Takes charge, becomes impatient, tries to solve what may only need company. | Respect first; deliberate private flirting; learning to leave a task unfinished. | Reducing her to an administrator, perfectly composed boundary speeches, making her organize every scene for everyone. |
@@ -125,3 +125,7 @@ The `_1`/`_2` English-first/Hungarian pass completes deliberate bilingual revisi
 ## Hungarian world expansion — 29 October 2026
 
 [Hungarian world and folklore](HUNGARIAN-WORLD.md) adds the user-requested cultural and historical layer: a clearly fictional estate chronology, sourced real influences and character-specific memories. It preserves this document’s existing authority. Two optional bilingual gatherings introduce these details; the broader foundation is not all runtime dialogue. No folklore-based clue, new magical power, ancestry retcon or geometry change is implied.
+
+## Hungarian world expansion — 30 October 2026
+
+Further expansion of [Hungarian world and folklore](HUNGARIAN-WORLD.md) adds disznóvágás, wine and pálinka customs as living family and social memory. Character-specific recollections (grandmother’s still, urban backyard photographs, counting cups for fröccs, a single student toast) remain compatible with existing voices and do not alter relationship decisions, appearance or plot. A third optional winter-table brief is proposed; it is not yet implemented. No alcohol is forced and refusal remains ordinary.
