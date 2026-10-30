@@ -4,6 +4,14 @@
 
 All generation must use adult proportions only. Attach current runtime neutral portraits as identity references for characters. Prefer image-edit endpoints when a reference exists. Venice is reserved for fully explicit content. Backgrounds must be empty of people. Existing runtime files are listed; candidates under `assets/generated/` are production history, not automatic runtime replacements.
 
+## Setting, style and negative prompts
+
+**Setting.** Ligetvár is a fictional specialist university campus on a secluded historic estate in the wooded Transdanubian foothills of Hungary. The architecture is inspired by the real Nádasdy Castle at Nádasdladány: nineteenth-century Hungarian Tudor Gothic, not a medieval fortress. Warm ivory plaster, pale limestone dressings, dark slate roofs, stepped gables, mullioned windows, clustered chimneys and one dominant square clock tower at the southeast corner define the look. The main house is a broad U open to the south around a courtyard; converted granary, stables, steward’s house and riding hall share the same materials. A secluded lake (Békás-tó) lies northeast, roughly 15–20 minutes’ walk from the upper suites. Dense oak-hornbeam forest, a ridge to the northwest and a distant village to the south complete the landscape. Subtle modern college fixtures (electric lamps, heating, ordinary institutional furniture) are present but restrained. The default season is early October.
+
+**Style.** All assets are highly detailed non-pixel 2D anime: fine controlled linework, crisp cel shading, adult proportions, restrained texture, slate-blue shadows and amber accents. No photorealism, no 3D renders, no chibi, no pixel art. Portraits are head-and-shoulders with transparent backgrounds, consistent eye line and complete hair crowns. Backgrounds are empty first-person views at seated player eye height, with a natural empty companion seat facing the viewer and open foreground for dialogue. Explicit content (adult only) uses the same drawn-anime style and must lock facial identity, marks and body type to the current neutral portraits.
+
+**Negative prompts.** Always append the shared negative block (and any character- or location-specific negatives) to suppress unwanted results. Core exclusions include pixel art, photorealism, 3D renders, childlike or exaggerated anatomy, distorted faces, extra limbs, text, watermarks, identity drift and (for backgrounds) any people, silhouettes or human reflections. Seasonal and explicit sections add further targeted negatives. If a generator has no separate negative field, append the exclusions as an “Avoid” instruction.
+
 ## Shared generation rules
 
 **Style positive (append to all):**
