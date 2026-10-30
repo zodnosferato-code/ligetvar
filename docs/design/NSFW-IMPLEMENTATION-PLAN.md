@@ -66,7 +66,7 @@ This plan expands the current mild romance (fade-to-black from midpoint, later-h
 **Required content**
 - Spontaneous pool (6–10 events): nighttime bedroom/hub escalations, favourite-place chance encounters (Holdkör for Rebeka, library alcove for Boglárka, lakeside for Gréta, after-hours records for Virág), weather/rain shelter, post-shared-chapter decompression, phone/gift-triggered quick scenes.
 - Each event has explicit prerequisites (relationship state, week window, not recently completed), mutual-choice branch, interruption-risk variant where appropriate, and aftermath that updates preferences or journal.
-- Optional mature side routes (1–2 meetings each): Lilla and/or Dr. Sárközi Júlia. Short, experienced, clearly adult, lower commitment. Triggered from existing staff interactions or new optional phone entries.
+- Optional mature side routes (1–2 meetings each): Lilla and/or Dr. Sárközi Júlia. Short, experienced, clearly adult, lower commitment. Triggered from existing staff interactions or new optional phone entries. See [SIDE-EVENTS-NSFW.md](SIDE-EVENTS-NSFW.md) for niche fantasy briefs and recommended CG + moment-loop presentation.
 - Vampire-adjacent flavor (sparse, optional): one or two relief/heightened-desire scenes after key Soma beats. Never compulsion.
 - All events respect the two-slot week, energy costs, and “missing optional never blocks required story” rule.
 
