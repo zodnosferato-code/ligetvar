@@ -7,6 +7,7 @@ import {rewriteBoglarkaLater} from './boglarka-later.ts';
 import {rewriteRebekaDate} from './rebeka-date.ts';
 import {seasonal} from './seasonal.ts';
 import {holidays} from './holidays.ts';
+import {drinking} from './drinking.ts';
 /** Sole active narrative registry, assembled from independent content modules. */
 import type {Evidence,Registry} from './types.ts';
 import {spine} from './shared.ts';
@@ -19,7 +20,7 @@ import {conversations} from './conversations.ts';
 import {outings} from './outings.ts';
 import {viragScenes} from './virag.ts';
 import {knowledge} from './knowledge.ts';
-const all=[...folklore,...spine,...gretaYear,...gretaExploration,...foundations,...triad,...optional,...conversations,...outings,...viragScenes,...holidays,...seasonal].map(expandOpening).map(expandRomance).map(rewriteRebekaDate).map(rewriteBoglarkaLater).map(rewriteBoglarkaEarly).map(rewriteGretaEarly);
+const all=[...folklore,...drinking,...spine,...gretaYear,...gretaExploration,...foundations,...triad,...optional,...conversations,...outings,...viragScenes,...holidays,...seasonal].map(expandOpening).map(expandRomance).map(rewriteRebekaDate).map(rewriteBoglarkaLater).map(rewriteBoglarkaEarly).map(rewriteGretaEarly);
 if(new Set(all.map(s=>s.id)).size!==all.length)throw new Error('Duplicate scene ID');
 export const SCENES:Registry=Object.fromEntries(all.map(s=>[s.id,s]));
 export const EVIDENCE:Record<string,Evidence>=Object.fromEntries(all.flatMap(s=>s.evidence.map(id=>[id,{id,scene:s.id,text:knowledge[id]}])));

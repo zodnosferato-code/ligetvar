@@ -1,4 +1,5 @@
 import {folkloreHu} from './folklore.hu.ts';
+import {drinkingHu} from './drinking.hu.ts';
 import {gretaExplorationHu} from './greta-exploration.hu.ts';
 import {gretaYearHu} from './greta-year.hu.ts';
 import {gretaEarlyHu} from './greta-early.hu.ts';
@@ -18,6 +19,7 @@ import {investigationHu} from './investigation.hu.ts';
 import {openingHu} from './opening.hu.ts';
 export const hu = {
   ...folkloreHu,
+  ...drinkingHu,
   ...gretaYearHu,
   ...gretaExplorationHu,
   ...gretaEarlyHu,
@@ -306,22 +308,22 @@ export const hu = {
   "cli.cancelJob": "Mégsem dolgozom",
   "cli.recycling": "Újrahasznosítás · 12 energia · nappali sáv",
   "cli.archive": "Archívumpárok · 12 energia · nappali sáv",
-  "cli.tile": "{index}. mező",
-  "cli.memory.instructions": "Fordíts fel két lapot, majd válaszd a Következő pár gombot. 18 párpróba, nincs időkorlát.",
-  "cli.recycling.instructions": "Válassz két szomszédos mezőt: legalább három azonos jel kell egy sorban vagy oszlopban. 12 sikeres csere; a hibás csere ingyenes.",
-  "location.hallway": "Egyetemi folyosó",
+  "cli.tile": "Mező {index}",
+  "cli.memory.instructions": "Fordíts fel két lapot, aztán válaszd a Következő párt. 18 próbálkozás, nincs időkorlát.",
+  "cli.recycling.instructions": "Válassz két szomszédos mezőt: legalább három azonos jel kell egy sorban vagy oszlopban. 12 sikeres csere; a sikertelen ingyenes.",
+  "location.hallway": "Főiskolai folyosó",
   "location.classroom": "Tanterem",
   "location.library": "Könyvtár",
   "location.department": "Tanszéki iroda",
-  "location.holdkor": "Holdkör pincéje",
+  "location.holdkor": "Holdkör pince",
   "location.courtyard": "Kastélyudvar",
   "location.apartment": "Márton lakosztálya",
   "location.bekas": "Békás-tó",
-  "location.chamber": "Gépészeti kamra",
+  "location.chamber": "Gépház",
   "route.friendship": "Barátság",
   "route.rebeka": "Rebeka",
   "route.boglarka": "Boglárka",
   "route.greta": "Gréta",
   "route.triad": "Rebeka, Boglárka és Márton",
   "actor.narrator": "Elbeszélés",
-} as const;
+};
