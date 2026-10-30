@@ -29,35 +29,41 @@ Fallbacks only after Venice fails or is unavailable:
 - Suggestive content → Grok Imagine + Background Removal, or Venice uncensored models when Venice is reachable.
 - Icons/UI → Recraft or ChatGPT.
 
+**Generation rule for cutouts:** When native transparency is not available, generate the subject isolated on a pure solid background (`#FFFFFF` or `#000000`) with no gradients, shadows that touch the edge, or complex environments. This enables clean post-process cutouts via `scripts/process-assets.mjs`.
+
 ### Transparent stills (portraits, stickers, cutouts)
 
 | Provider | Approach | Notes |
 |----------|----------|-------|
 | **Venice** (always try first) | Native: `transparent_background: true` + `format: png/webp` on models with `supportsTransparentBackground` (currently GPT Image 1.5 / 2.5 Flare / Sunburst and -edit variants). Or post `/image/background-remove`. | Real alpha including soft edges/shadows. Check live model list. Uncensored models available. |
-| **ChatGPT** | Generate on pure white (or white + black pair). App is inconsistent for real alpha; prefer API `background: "transparent"` when available. | Post-process with remove.bg / Recraft / Transparify (dual-bg method preserves soft edges). |
+| **ChatGPT** | Generate on pure white (or white + black pair). App is inconsistent for real alpha; prefer API `background: "transparent"` when available. | Post-process with `process-assets.mjs cutout` or remove.bg / Recraft / Transparify. |
 | **Grok Imagine 2.0** | Generate, then use built-in Background Removal → export PNG. | Good for suggestive content. |
 | **Recraft** | Generate then Remove BG + export PNG/WebP. | Strong for icons/UI. |
 
-Always verify real alpha (Pillow `mode == RGBA` and transparent pixel share > 0). Do not trust viewer checkerboards or file extensions. Prompt with “isolated, no background, die-cut” in addition to any API flag.
+Always verify real alpha (Pillow `mode == RGBA` and transparent pixel share > 0). Do not trust viewer checkerboards or file extensions. Prompt with “isolated, no background, die-cut, pure white background” in addition to any API flag.
+
+Local cutout tool (for solid-bg images):
+```bash
+node scripts/process-assets.mjs cutout raw/portrait.png out/portrait.png --key white
+# or --key black
+```
 
 ### Animations (prefer animated WebP with alpha)
 
 Follow [ANIMATION-PLAN.md]: 3–6 consistent keyframes, 1.5–3 s, held poses, separate static poster, < 750 KB preferred.
 
-1. Generate identity/composition master (transparent if possible) — Venice first.
-2. Produce key pose frames as transparent PNGs (Venice native preferred; ChatGPT + post-process only if Venice fails). Keep canvas, crop, lighting and identity locked.
-3. Assemble locally:
+1. Generate identity/composition master (transparent if possible) — Venice first. Otherwise solid pure background.
+2. Produce key pose frames as transparent PNGs (Venice native preferred; solid-bg + cutout only if Venice fails). Keep canvas, crop, lighting and identity locked.
+3. Assemble locally with the repo script (uses `libwebp_anim` so previous frames clear correctly):
    ```bash
-   # From numbered transparent PNG frames
-   ffmpeg -i frame_%04d.png \
-     -c:v libwebp_anim \
-     -pix_fmt yuva420p \
-     -lossless 1 \
-     -loop 0 \
-     -an \
-     animation.webp
+   node scripts/process-assets.mjs anim frames/frame_%04d.png assets/animations/virag/wink.webp --fps 6
+   # add --lossy for smaller files
    ```
-   Use `libwebp_anim` so previous frames clear correctly. Lossy quality ~80 is often smaller with acceptable edges. GIF is fallback only (binary transparency, larger).
+   Equivalent raw ffmpeg:
+   ```bash
+   ffmpeg -framerate 6 -i frame_%04d.png -c:v libwebp_anim -pix_fmt yuva420p -lossless 1 -loop 0 -an animation.webp
+   ```
+   GIF is fallback only (binary transparency, larger).
 4. Export independent poster. Record frame count, durations, dimensions, byte size and hashes.
 5. Place reviewed exports under `assets/animations/<actor>/`; sources and provenance under `assets/generated/`.
 
@@ -66,12 +72,14 @@ Venice video models or Grok video can be used for intermediate motion then frame
 ### Practical order for new assets
 
 1. **Always attempt Venice first** (hope credits are available). Use a low-cost transparent pilot.
-2. If Venice returns insufficient balance / 402, fall back: non-explicit → ChatGPT; suggestive → Grok Imagine + BG Removal.
-3. Icons / UI → Recraft or ChatGPT after Venice attempt.
-4. Always post-process and verify alpha; assemble animations locally with ffmpeg/webpmux.
-5. Review against character visual brief and art register before publishing.
+2. If Venice returns insufficient balance / 402, fall back: non-explicit → ChatGPT on pure solid background; suggestive → Grok Imagine + BG Removal.
+3. Run `scripts/process-assets.mjs cutout` on solid-bg results.
+4. Assemble animations with `scripts/process-assets.mjs anim`.
+5. Always post-process and verify alpha; review against character visual brief and art register before publishing.
 
 Existing Venice Actions workflow (`.github/workflows/venice-assets.yml`) and `art-jobs/venice/` can be used for authorized batches. Documentation updates alone do not authorize large paid runs; a single pilot to test credits is preferred.
+
+Manual processing is also available via the `process-assets` workflow (Actions → Process assets).
 
 ## Publish one image at a time
 
