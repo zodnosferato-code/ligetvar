@@ -5,6 +5,7 @@
 Start here before changing gameplay, story, presentation or character design. All maintained design documents in this folder are written in English; this does not mean the game's Hungarian text has been localized.
 
 | Document | Responsibility |
+| [Master tracker — story engine & assets](MASTER-TRACKER.md) | Consolidated prioritized working list for story-engine narrative tasks and all asset-related work. Agents must use this for those areas. |
 | [Hungarian world and folklore](HUNGARIAN-WORLD.md) | Sourced cultural influences, fictional estate chronology, personal history and two optional folklore meeting briefs |
 | [Castle geography](CASTLE-GEOGRAPHY.md) | Spatial authority: architecture, floors, measured paths, walking times, surroundings, ecology and future image continuity |
 | [Castle year, assets and map](CALENDAR-ASSETS.md) | Year calendar, weather/outfit selection, map meetings, folder and provenance contract |
@@ -31,18 +32,19 @@ Start here before changing gameplay, story, presentation or character design. Al
 
 1. Explicit user decisions take precedence. Record new decisions here and identify what they supersede.
 2. This folder defines current design. The tracker defines implementation status, while the character visual brief defines appearance.
-3. [ENGINE.md](../../ENGINE.md), [CLI](../CLI.md), [versioning](../VERSIONING.md), [economy](../LEISURE-ECONOMY.md), [scene staging](../SCENE-STAGING.md), [Virág's story](../VIRAG-STORY.md) and [animation contract](../ANIMATION-PLAN.md) retain detailed technical/authoring contracts. Update them alongside relevant changes. Code determines actual behavior; a conflict is a discrepancy to resolve, not proof a planned feature exists.
-4. The [original redesign plan](../../Ligetvar-Redesign-Plan.md) and [implementation roadmap](../IMPLEMENTATION-ROADMAP.md) retain detailed acceptance criteria, proposals and dated decisions. They do not override newer current decisions or tracker status. Their old checkboxes are historical checkpoints, not a second live tracker.
-5. Production logs and archives are historical evidence, never current character or feature authority.
+3. For story-engine and asset work, the [master tracker](MASTER-TRACKER.md) is the consolidated prioritized working list. Update it together with the redesign tracker.
+4. [ENGINE.md](../../ENGINE.md), [CLI](../CLI.md), [versioning](../VERSIONING.md), [economy](../LEISURE-ECONOMY.md), [scene staging](../SCENE-STAGING.md), [Virág's story](../VIRAG-STORY.md) and [animation contract](../ANIMATION-PLAN.md) retain detailed technical/authoring contracts. Update them alongside relevant changes. Code determines actual behavior; a conflict is a discrepancy to resolve, not proof a planned feature exists.
+5. The [original redesign plan](../../Ligetvar-Redesign-Plan.md) and [implementation roadmap](../IMPLEMENTATION-ROADMAP.md) retain detailed acceptance criteria, proposals and dated decisions. They do not override newer current decisions or tracker status. Their old checkboxes are historical checkpoints, not a second live tracker.
+6. Production logs and archives are historical evidence, never current character or feature authority.
 
 The [art register](../ART-REGISTER.md) remains the detailed file inventory, not another character brief. The [progress log](../REDESIGN-PROGRESS.md) retains execution history, not a competing current status table.
 
 ## Contributor workflow
 
-1. Read this index, the relevant design section and tracker row before implementation.
+1. Read this index, the relevant design section and tracker row before implementation. For story engine or asset tasks, also read the [master tracker](MASTER-TRACKER.md).
 2. Inspect current main and the linked code/contracts. Do not assume a checkbox or proposal proves runtime behavior.
 3. For an approved task, implement only its scope. Proposed ideas remain proposals until the user approves them.
-4. Update the tracker in the same commit: status, evidence, remaining acceptance criteria and date. Update the owning design/technical contract when behavior changes.
+4. Update the tracker (and master tracker when applicable) in the same commit: status, evidence, remaining acceptance criteria and date. Update the owning design/technical contract when behavior changes.
 5. Record actual commands, visual review and Actions results honestly. Keep assets-generated, runtime-integrated, assistant-reviewed and user-approved states distinct.
 
 Do not add parallel current trackers to README, AGENT.md or historical plans. Link here instead.
