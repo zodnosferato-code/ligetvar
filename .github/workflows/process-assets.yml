@@ -1,0 +1,63 @@
+name: Process assets (cutout + animated WebP)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cutout or anim"
+        required: true
+        type: choice
+        options:
+          - cutout
+          - anim
+      input:
+        description: "Input path (file for cutout, pattern for anim) relative to repo root"
+        required: true
+        type: string
+      output:
+        description: "Output path relative to repo root"
+        required: true
+        type: string
+      key:
+        description: "Color key for cutout (white or black)"
+        required: false
+        type: string
+        default: "white"
+      fps:
+        description: "FPS for animation"
+        required: false
+        type: string
+        default: "8"
+      lossy:
+        description: "Use lossy WebP (smaller)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Run cutout
+        if: inputs.mode == 'cutout'
+        run: |
+          node scripts/process-assets.mjs cutout "${{ inputs.input }}" "${{ inputs.output }}" --key "${{ inputs.key }}"
+
+      - name: Run anim
+        if: inputs.mode == 'anim'
+        run: |
+          ARGS=("anim" "${{ inputs.input }}" "${{ inputs.output }}" "--fps" "${{ inputs.fps }}")
+          if [ "${{ inputs.lossy }}" = "true" ]; then ARGS+=("--lossy"); fi
+          node scripts/process-assets.mjs "${ARGS[@]}"
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: processed-asset
+          path: ${{ inputs.output }}
+          retention-days: 7
