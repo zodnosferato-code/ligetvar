@@ -20,7 +20,9 @@ import {shared5Hu} from "./shared5.hu.ts";
 import {shared6Hu} from "./shared6.hu.ts";
 import {shared7Hu} from "./shared7.hu.ts";
 import {shared8Hu} from "./shared8.hu.ts";
+import {shared9Hu} from "./shared9.hu.ts";
 import {shared8Hu} from "./shared8.hu.ts";
+import {shared9Hu} from "./shared9.hu.ts";
 import {openingHu} from './opening.hu.ts';
 export const hu = {
   ...folkloreHu,
@@ -61,7 +63,9 @@ export const hu = {
 ...shared6Hu,
 ...shared7Hu,
   ...shared8Hu,
+  ...shared9Hu,
   ...shared8Hu,
+  ...shared9Hu,
   "save.unknownVersion": "ismeretlen játékverzió",
   "save.format": " (formátum: {format})",
   "save.versions": "Mentés: {saved}{format}. Jelenlegi játék: {current}.",
