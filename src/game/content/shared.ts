@@ -122,17 +122,19 @@ shared(8,message('scene.disclosure.title'),'classroom',['marton','rebeka','bogla
   say('narrator',message('scene.corroboration.narrator.identity')),
   say('narrator',message('scene.corroboration.departure'))
  ],['identity'],storedMessage('scene.corroboration.journal'),{evidence:['investigation_plan','timeline']}),
- shared(10,'A könnyű siker','department',['marton','soma'],[
-  say('narrator','Soma új plakátot hoz. A vendégelőadáson az ő neve áll az első sorban.'),
-  say('soma','Ha nem bolygatod az archívumot, a műhelyed megkapja a pénzt és a termet. Végre azt csinálhatod, amihez értesz.'),
-  say('marton','Mit tettél a leírással?'),
-  say('soma','Végigcsináltam. Magamtól, tudatosan. Elegem volt abból, hogy mindenki tehetségesebbnek és kívánatosabbnak látszik nálam. Most észrevesznek. Már csak be kell fejeznem.','displeased'),
-  say('marton','Az elismerés nem indok arra, hogy mások erejét elvedd.','neutral',[
-   option('refuse','A műhely jövőjét nem cserélem hallgatásra.','Soma leteszi a plakátot. Az ajánlatot nem fogadod el.'),
-   option('question','Ez nem válasz arra, mi történt az eltűnt emberekkel.','Soma elhárítja a kérdést. Megállapodást nem ígérsz.')]),
-  say('soma','Nem tudok bármit akaratni velük. Aki semmit nem akar tőlem, azt egy szép mondattal nem tartom ott. De mindig van valami, amire az ember vágyik.'),
-  say('narrator','Távozása után Márton leírja a beszélgetést. A tudatos átalakulás beismerés; a hatalom korlátait még ellenőrizni kell.')
- ],['deliberate_transformation'],'Soma beismerte a tudatos átalakulást. Sikerért és figyelemért tette, a befejezésre készül.',{evidence:['identity','ritual_fragment']}),
+ shared(10,message('scene.easySuccess.title'),'department',['marton','soma'],[
+  say('narrator',message('scene.easySuccess.arrival')),
+  say('narrator',message('scene.easySuccess.narrator.poster')),
+  say('soma',message('scene.easySuccess.soma.bribe')),
+  say('marton',message('scene.easySuccess.marton.ask')),
+  say('soma',message('scene.easySuccess.soma.confession'),'displeased'),
+  say('marton',message('scene.easySuccess.instruction'),'neutral',[
+   option('refuse',message('scene.easySuccess.choice.refuse'),storedMessage('scene.easySuccess.refuse.reaction')),
+   option('question',message('scene.easySuccess.choice.question'),storedMessage('scene.easySuccess.question.reaction'))]),
+  say('soma',message('scene.easySuccess.soma.limit')),
+  say('narrator',message('scene.easySuccess.narrator.after')),
+  say('narrator',message('scene.easySuccess.departure'))
+ ],['deliberate_transformation'],storedMessage('scene.easySuccess.journal'),{evidence:['identity','ritual_fragment']}),
  shared(11,'A nemet nem írja felül','courtyard',['marton','soma','julia','denes','greta'],[
   say('narrator','Júlia és Dénes felügyeli a találkozót; a kijáratok szabadok. Soma az archívumi másolatokat akarja vissza.'),
   say('soma','Gréta, nálam nem maradnál mások táblázatai mögött. Hozd ide az iratokat, és beszéljünk a te nevedről is.'),
