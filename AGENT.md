@@ -46,6 +46,21 @@ Before a refactor:
 
 The user's 28 October direction supersedes Hungarian-first authoring: English is the canonical source for new/revised game text and the target default player language; Hungarian is its translation. Follow [LOCALIZATION.md](docs/LOCALIZATION.md#english-first-direction--28-october-2026) and the narrative workflow. Current runtime still defaults to Hungarian and has partial English coverage; migrate catalogs, persisted text and defaults deliberately, preserving explicit preferences and live switching. Do not call the migration complete based on this documentation update. Write scenes naturally in English against plot/character/scene guidance, then translate and review Hungarian; preserve choices, knowledge, effects and player-name variables in both.
 
+### Catalog parity — never miss a translation key
+
+`src/game/content/locales/hu.ts` and `src/game/content/locales/en.ts` (plus the modular `*.hu.ts` / `*.en.ts` files they spread) must stay in exact key and placeholder parity. `MessageKey` is `keyof typeof hu`; English is typed as `Record<keyof typeof hu, string>`. Any key used by `translate()`, `gameView()`, CLI observations, UI labels, location/route/actor names, or scene text that is present in one catalog but missing from the other causes runtime `TypeError: Cannot read properties of undefined (reading 'replace')` and fails the Tests workflow.
+
+**Rules for every agent and contributor:**
+
+- When adding or changing any user-visible string (UI, CLI, locations, routes, actor labels, scene titles/lines/choices, journals, reactions, evidence, gifts, puzzles, endings), add the semantic key to **both** catalogs in the same commit.
+- Named placeholders (`{playerName}`, `{week}`, `{money}`, etc.) must match exactly between Hungarian and English. Do not invent new placeholders on only one side.
+- After any localization or presentation change, run `npm test` (or at least the content/localization tests) and confirm no missing-key crashes. Check the new commit's GitHub Actions, not an older run.
+- Do not leave a key only in `en.ts` (or only in a modular `*.en.ts`) while the Hungarian source is incomplete. The current runtime still defaults to Hungarian; missing Hungarian keys break `gameView` and tests even when English is complete.
+- For scene batches follow the narrative workflow: write/revise English first, then produce the matching Hungarian translation before considering the batch done. Record coverage in the owning tracker row.
+- If a key is intentionally unextracted, do not call `translate` on it; fall back to the authored source string as documented in LOCALIZATION.md. Never let an incomplete extraction reach a live `t(key)` call.
+
+These rules exist because a prior Actions failure was caused exactly by CLI/location/route/narrator keys existing only in the English catalog.
+
 ## Active system
 
 - React, Zustand and Vite remain the technology stack. UI-independent reducer logic lives in `src/game/engine/` with injected campaign rules.
