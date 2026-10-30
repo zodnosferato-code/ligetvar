@@ -8,8 +8,8 @@ export type RouteId=string;
 export type LocationId=string;
 export type Expression='neutral'|'amused'|'displeased'|'vulnerable'|'affectionate';
 export interface Requirements { calendar?:{seasons?:string[];events?:string[]}; scenes?:string[]; evidence?:string[]; decisions?:string[]; notDecisions?:string[]; directions?:string[]; anyOf?:Requirements[] }
-export interface Effect { bonds?:Record<string,number|undefined>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:string }
-export interface SceneStage { label:string; location:LocationId; background:LocationId; participants:ActorId[]; lighting?:'day'|'evening'|'night'; proximity:'apart'|'beside'|'close' }
+export interface Effect { bonds?:Record<string,number|undefined>; decisions?:string[]; preparation?:string[]; exposure?:number; direction?:string; preferences?:string[]; gallery?:string[] }
+export interface SceneStage { label:string; location:LocationId; background:LocationId; participants:ActorId[]; lighting?:'day'|'evening'|'night'; proximity:'apart'|'beside'|'close'; risk?:boolean }
 export interface Choice { localRequires?:string[]; requires?:Requirements; id:string; text:string; next?:string; effect?:Effect; reaction:string }
 export interface Line { moment?:string; stage?:string; id:string; speaker:string; expression:Expression; text:string; next?:string; choices?:Choice[] }
 export interface Scene {
@@ -31,6 +31,7 @@ export interface GameState {
  bonds:Record<string,number>; direction:string; decisions:Record<string,WitnessedDecision>; evidence:Record<string,WitnessedDecision>;
  completed:Record<string,number>; preparation:string[]; inventory:Record<string,number>; giftsWeek:string[];
  journal:{scene:string;week:number;text:string}[]; lastNote:string;
+ preferences:string[]; gallery:string[];
 }
 export interface Gift { name:string; price:number }
 export interface Job { energy:number; maxPay:number }

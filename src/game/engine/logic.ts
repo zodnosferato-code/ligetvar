@@ -21,7 +21,10 @@ export function applyEffect<S extends GameState>(s:S,e:Effect,scene:string,rules
  for(const id of e.decisions??[])s.decisions[id]={scene,week:s.week};
  for(const id of e.preparation??[])if(!s.preparation.includes(id))s.preparation.push(id);
  s.exposure=clamp(s.exposure+(e.exposure??0),0,100);
- if(e.direction)s.direction=e.direction;rules.applyEffect?.(s,e);
+ if(e.direction)s.direction=e.direction;
+ for(const flag of e.preferences??[])if(!s.preferences.includes(flag))s.preferences.push(flag);
+ for(const id of e.gallery??[])if(!s.gallery.includes(id))s.gallery.push(id);
+ rules.applyEffect?.(s,e);
 }
 function spendSlot(s:GameState){s.slot=(s.slot+1) as GameState['slot'];s.phase=s.slot===3?'summary':'planner';}
 export function applyChoice<S extends GameState>(s:S,id:string,r:Registry,rules:RuntimeRules<S>):S{
