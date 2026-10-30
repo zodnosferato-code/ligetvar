@@ -27,6 +27,7 @@ Start here before changing gameplay, story, presentation or character design. Al
 | [Character voices](CHARACTER-VOICES.md) | Temperaments, dialogue patterns and writing coverage |
 | [Foundation review](FOUNDATION-REVIEW.md) | Document-by-document assessment of old foundations, conflicts, retained ideas and superseded instructions |
 | [Redesign tracker](TRACKER.md) | Current implementation status, evidence, remaining gates and future features |
+| [NSFW explicit content plan](NSFW-IMPLEMENTATION-PLAN.md) | Agent-ready plan for drawn anime-style explicit scenes, dialogue, spontaneous events, engine hooks and assets (mid-to-late progression, no sex-gating). |
 
 ## Authority
 
