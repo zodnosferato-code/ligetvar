@@ -10,7 +10,7 @@ Visual identity lives only in [Character visual reference](CHARACTER-REFERENCES.
 | --- | --- | --- |
 | Rebeka | 5 portraits | All five expressions |
 | Boglárka | 5 portraits | All five expressions |
-| Gréta | 4 portraits | Neutral, amused, displeased, vulnerable; affectionate uses neutral fallback |
+| Gréta | 5 portraits | Neutral, amused, displeased, vulnerable, affectionate |
 | Virág | 5 portraits | All five expressions |
 | Soma | 2 portraits | Human and transformed |
 | Dénes, Júlia, Áron, Lilla | 4 portraits | One neutral each |
@@ -19,7 +19,7 @@ Visual identity lives only in [Character visual reference](CHARACTER-REFERENCES.
 | Virág moments | 4 loops + 4 posters | Wink, arm-link, kiss and cuddle; all labelled reviewed in the animation manifest |
 | Icons | 13 PNG files | Planning objects and UI stats/hearts |
 
-All 25 selected portrait files, 14 scene-background files and eight animation/poster files exist and are nonempty. No new art was generated. Missing Gréta affectionate is a genuine gap even though older production summaries claimed all original requirements were complete.
+All 26 selected portrait files, 14 scene-background files and eight animation/poster files exist and are nonempty. Gréta affectionate portrait added 2026-10-30.
 
 Soma, Áron and Lilla have user-approved final appearances. Other runtime review labels mean assistant review, with overall user style acceptance still open. Do not infer approval of production candidates from these runtime labels.
 
@@ -33,7 +33,7 @@ Earlier ChatGPT PNG masters, cleaned-cutout folders, approved-reference sheets a
 
 ## Remaining work
 
-- Produce and review a real Gréta affectionate runtime portrait.
+- ~~Produce and review a real Gréta affectionate runtime portrait.~~ Completed 2026-10-30; assistant-reviewed, user acceptance open.
 - Recover or recreate reviewed full-body/reference masters if future production requires them. Current Venice full-body files are candidates; Soma has no current sheet.
 - Review any future candidate against the canonical brief before integration.
 - Keep provenance, current runtime availability and final user acceptance distinct.

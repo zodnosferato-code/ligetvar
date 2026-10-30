@@ -31,7 +31,7 @@ Runtime art is **Partial** (25 portraits, 14 backgrounds, 4 Virág loops + poste
 
 | ID | Priority | Status | Task | Acceptance / Remaining Gate | Dependency / Notes |
 |----|----------|--------|------|-----------------------------|--------------------|
-| AS-01 | P0 | Partial | **Gréta affectionate portrait** | Produce, review, integrate real affectionate expression (currently falls back to neutral). | Highest gap in `ART-REGISTER.md`. |
+| AS-01 | P0 | Implemented | **Gréta affectionate portrait** | Produced, assistant-reviewed and integrated real affectionate expression; no longer falls back to neutral. | Integrated 2026-10-30; user style acceptance remains open as for other portraits. |
 | AS-02 | P1 | Partial | **Seasonal / event character outfits (YEAR-UI-03)** | Per-character coverage matrix: default → seasonal → event → scene override. Precedence + honest fallbacks. Identity consistent across dialogue & map. | `CHARACTER-VISUALS.md` owns appearance. Most bitmaps unproduced. |
 | AS-03 | P1 | Partial | **Seasonal backgrounds & atmosphere (YEAR-UI-04)** | Day/night, weather, season, and event variants for actually-used locations. Preserve viewpoint, seating, architecture, hotspot alignment. | Existing resolver + concept candidates. Do not treat tints as finished art. |
 | AS-04 | P1 | Partial | **Visual identity updates (ART-PROMPTS)** | Update Virág to 160 cm green pixie cut; apply distinguishing clothing details for supporting cast; resolve full-body outfits. | Prompt pack exists; matching runtime art unproduced. |
@@ -44,7 +44,7 @@ Runtime art is **Partial** (25 portraits, 14 backgrounds, 4 Virág loops + poste
 
 ## 3. Suggested Execution Order
 
-1. **AS-01** (Gréta affectionate) — smallest high-visibility gap.  
+1. ~~**AS-01** (Gréta affectionate)~~ — completed 2026-10-30.  
 2. **SE-01 + SE-02** in small connected batches (one character or shared chapter at a time) with CLI validation.  
 3. **AS-02 + AS-04** (outfits + identity updates) once character visuals are locked.  
 4. **AS-03** (backgrounds) in parallel with staging work.  
@@ -62,4 +62,4 @@ Runtime art is **Partial** (25 portraits, 14 backgrounds, 4 Virág loops + poste
 - No save migrations; content epoch bumps require a new year.  
 - Optional content must never gate the mandatory vampire investigation.
 
-**Next recommended action:** Pick one P0 item (AS-01 or a concrete SE-01/SE-02 batch) and implement it with the corresponding tracker + contract update.
+**Next recommended action:** Pick a concrete SE-01/SE-02 batch (or AS-02) and implement it with the corresponding tracker + contract update.
