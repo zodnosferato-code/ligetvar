@@ -11,7 +11,9 @@ export const MOMENT_CLIPS:Record<string,MomentClip>={
  lilla_sensory_touch:{status:'planned',file:null,poster:null,description:'Slow deliberate hands mapping Lilla\'s neck and collarbones; warm skin, cool air, focused expression.',width:960,height:640,durationMs:2200,bytes:0},
  lilla_sensory_hold:{status:'planned',file:null,poster:null,description:'Still hold with verbal presence; Lilla\'s shoulders drop, soft post-touch expression.',width:960,height:640,durationMs:1800,bytes:0},
  julia_guided_pace:{status:'planned',file:null,poster:null,description:'Júlia in partial professional attire directing pace and breath; calm precise gesture.',width:960,height:640,durationMs:2000,bytes:0},
- julia_guided_hold:{status:'planned',file:null,poster:null,description:'Quiet hold after instruction; Júlia\'s clinical tone softens, one hand resting.',width:960,height:640,durationMs:1600,bytes:0}
+ julia_guided_hold:{status:'planned',file:null,poster:null,description:'Quiet hold after instruction; Júlia\'s clinical tone softens, one hand resting.',width:960,height:640,durationMs:1600,bytes:0},
+ greta_precise_touch:{status:'planned',file:null,poster:null,description:'Slow deliberate hands mapping Gréta\'s wrist and collarbone; glasses on, precise focus, quiet correction.',width:960,height:640,durationMs:2100,bytes:0},
+ greta_precise_hold:{status:'planned',file:null,poster:null,description:'Still hold after mapping; Gréta\'s shoulders ease, even breath, no performance.',width:960,height:640,durationMs:1700,bytes:0}
 };
 export function validateClip(clip:MomentClip):void{
  if(!clip.description.trim()||!Number.isInteger(clip.width)||!Number.isInteger(clip.height)||clip.width<1||clip.height<1||clip.width>1280||clip.height>1280||clip.durationMs<500||clip.durationMs>4000)throw new Error('Invalid moment metadata');
