@@ -4,6 +4,8 @@
 
 Start with [docs/design/README.md](docs/design/README.md), the current design authority, and [docs/design/TRACKER.md](docs/design/TRACKER.md), the single current implementation/future-feature tracker. Read the relevant design section and tracker row before editing.
 
+**For story-engine and asset-related tasks, work off the [master tracker](docs/design/MASTER-TRACKER.md).** It consolidates the prioritized task list (SE-* and AS-* IDs) for narrative expansion, INT2 arcs, localization, staging, seasonal outfits/backgrounds, character art gaps and related acceptance work. Update the master tracker together with the redesign tracker and owning contracts when those items change.
+
 ## Design authority and maintenance
 
 - Explicit user decisions take precedence; record them in the owning design document and state what they supersede.
