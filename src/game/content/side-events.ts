@@ -60,6 +60,40 @@ function lillaSensory(): Scene {
   return s;
 }
 
+function lillaSensory2(): Scene {
+  const s = makeScene(
+    'lilla_sensory_2',
+    'Lilla · Second grounding',
+    'conversation',
+    20, 40, 'library',
+    ['marton', 'lilla'],
+    [
+      {speaker: 'narrator', text: 'Lilla finds you again near the stacks. The cardigan is open once more.', expression: 'vulnerable'},
+      {speaker: 'lilla', text: 'The last time helped. I would like another slow evening if you are still willing. Same rules: you stop when I ask, and you tell me I am here.', expression: 'vulnerable', choices: [
+        {id: 'yes', text: 'Yes. I am still here.', reaction: 'Lilla’s shoulders drop a little.', next: 'line_2', effect: {decisions: ['lilla_sensory_2_yes'], preferences: ['sensory-grounding'], gallery: ['lilla_sensory_cg1']}},
+        {id: 'no', text: 'Not tonight.', reaction: 'Lilla nods and steps back.', next: 'line_5'}
+      ]},
+      {speaker: 'lilla', text: 'Start at the collarbones this time. Slower. Say it again when I need it.', expression: 'affectionate'},
+      {speaker: 'narrator', text: 'You follow her requests. The new memory settles more firmly than the first.', expression: 'neutral'},
+      {speaker: 'lilla', text: 'Thank you. That is enough for now.', expression: 'affectionate'},
+      {speaker: 'narrator', text: 'You walk to the door together. No further promise is made.', expression: 'neutral'}
+    ],
+    {scenes: ['lilla_sensory_1'], decisions: ['lilla_sensory_yes']},
+    [],
+    'A second quiet evening with Lilla. The blank feels smaller still.',
+    {},
+    ['night']
+  );
+  s.stages = stagesLilla;
+  s.lines[0].stage = 'invite';
+  s.lines[1].stage = 'invite';
+  s.lines[2].stage = 'private';
+  s.lines[3].stage = 'private';
+  s.lines[4].stage = 'after';
+  s.lines[5].stage = 'invite';
+  return s;
+}
+
 function juliaGuided(): Scene {
   const s = makeScene(
     'julia_guided_1',
@@ -103,4 +137,38 @@ function juliaGuided(): Scene {
   return s;
 }
 
-export const sideEvents: Scene[] = [lillaSensory(), juliaGuided()];
+function juliaGuided2(): Scene {
+  const s = makeScene(
+    'julia_guided_2',
+    'Júlia · Second instruction',
+    'conversation',
+    22, 40, 'library',
+    ['marton', 'julia'],
+    [
+      {speaker: 'narrator', text: 'The library is quiet again. Júlia’s blazer is open, glasses still on.', expression: 'neutral'},
+      {speaker: 'julia', text: 'The previous form was acceptable. Would you like further instruction tonight, or shall we simply finish the notes?', expression: 'neutral', choices: [
+        {id: 'yes', text: 'Yes. Direct me again.', reaction: 'Júlia gives a brief nod.', next: 'line_2', effect: {decisions: ['julia_guided_2_yes'], preferences: ['guided-instruction'], gallery: ['julia_guided_cg1']}},
+        {id: 'no', text: 'The notes are enough.', reaction: 'Júlia closes her notebook.', next: 'line_5'}
+      ]},
+      {speaker: 'julia', text: 'Same position. Slower breath this time. I will adjust once.', expression: 'neutral'},
+      {speaker: 'narrator', text: 'Her direction remains calm and exact. Praise is sparse and precise.', expression: 'neutral'},
+      {speaker: 'julia', text: 'Well done. That concludes the evening.', expression: 'neutral'},
+      {speaker: 'narrator', text: 'You leave separately. No further obligation is created.', expression: 'neutral'}
+    ],
+    {scenes: ['julia_guided_1'], decisions: ['julia_guided_yes']},
+    [],
+    'A second after-hours hour with Dr. Sárközi. Quiet authority, no escalation.',
+    {},
+    ['night']
+  );
+  s.stages = stagesJulia;
+  s.lines[0].stage = 'invite';
+  s.lines[1].stage = 'invite';
+  s.lines[2].stage = 'private';
+  s.lines[3].stage = 'private';
+  s.lines[4].stage = 'after';
+  s.lines[5].stage = 'invite';
+  return s;
+}
+
+export const sideEvents: Scene[] = [lillaSensory(), lillaSensory2(), juliaGuided(), juliaGuided2()];
