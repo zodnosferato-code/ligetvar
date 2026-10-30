@@ -27,3 +27,9 @@ This is the single current design-status tracker. Existing roadmap IDs are retai
 ## Other current priorities
 
 See `docs/design/MASTER-TRACKER.md` for the consolidated SE-* / AS-* list. INT2 connected annual exploration for Rebeka / Boglárka / triad / Virág remains Partial. Gréta received one additional optional private continuation using preference/gallery hooks. Optional content never gates the mandatory investigation.
+
+## shared_5 expansion — 30 October 2026
+
+| ID | Status | Scope | Evidence / remaining |
+| --- | --- | --- | --- |
+| STORY-SHARED5 | Partial | shared_5 expanded English-first (then Hungarian). Added ordinary projector-search setup, Boglárka’s unanswered question, distinct ground/withdraw reactions, Áron arrival confirmation, natural departure. Evidence `borrowed_voice` and prerequisites unchanged. Node count increased. | Implemented in `shared.ts` + `locales/shared5.{en,hu}.ts`. CLI/branch tests still to be extended for the new nodes. Literary acceptance open. Later shared scenes remain sparse. |

@@ -1,7 +1,7 @@
 /** Hungarian translation of shared_5. */
 export const shared5Hu = {
   "scene.same.title": "Ugyanaz a mondat",
-  "scene.same.arrival": "A Holdkör vetőterme poros, régi filmszagú. A tartalék vetítőt keressük az esti vetítés előtt. Rebeka a fényképezőgép táskáját tartja; Gréta a felszereléslistát ellenőrzi. Boglárka a nyitott raktár ajtajánál áll a jegyzetfüzetével.",
+  "scene.same.arrival": "A Holdkör vetítőterme poros, régi filmszagú. A tartalék vetítőt keressük az esti vetítés előtt. Rebeka a fényképezőgép táskáját tartja; Gréta a felszereléslistát ellenőrzi. Boglárka a nyitott raktár ajtajánál áll a jegyzetfüzetével.",
   "scene.same.ordinary": "Ha az izzó még jó, itt tesztelhetjük. Különben elkésünk a saját helyünkről.",
   "scene.same.voice": "Az üres raktárból tisztán, közelről szól egy hang: „Maradt még egy hely neked.” Rebeka hangja.",
   "scene.same.rebeka": "Ez az enyém. Én nem mondtam. Semmit sem mondtam.",
