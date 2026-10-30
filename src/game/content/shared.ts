@@ -109,17 +109,19 @@ shared(8,message('scene.disclosure.title'),'classroom',['marton','rebeka','bogla
   say('narrator',message('scene.disclosure.narrator.direction')),
   say('narrator',message('scene.disclosure.departure'))
  ],['investigation_plan'],storedMessage('scene.disclosure.journal'),{evidence:['archive_access','ritual_fragment']}),
- shared(9,'Független ellenőrzés','department',['marton','greta','rebeka','boglarka','aron','denes'],[
-  say('aron','Az érintett engedélyével ellenőriztem a meghívót: Soma intézményi címéről küldték. A más által vezetett belépési napló ugyanazt az estét mutatja.'),
-  say('greta','Két külön rendszer, két külön kezelő. Az eredetik mellé tesszük a javításokat.'),
-  say('rebeka','A tanú a helyszínképen azonosította a lépcsőt. Magát nem akarta a sorozatba.'),
-  say('boglarka','A meghívó, a helyszín és a napló egymástól függetlenül mutat Somára. Ez már több, mint időbeli egybeesés.'),
-  say('denes','Kimerült tanúval nem rendezünk szembesítést. A következő lépésben a segítők mennek.'),
-  say('marton','Az állításaink mögött maradjon ellenőrizhető forrás.','neutral',[
-   option('document','Áronnal hitelesített másolatot kérünk.','A tanú saját példányt kap.'),
-   option('review','Júliával külön is átnézetjük az összefüggést.','Az ellenőrzés nem függ a személyes útvonaltól.')]),
-  say('narrator','Soma neve először kerül a jegyzet ellenőrzött részébe. A szándékát még tőle vagy további iratokból kell megtudni.')
- ],['identity'],'Független meghívó-, belépési és helyszínadatok Somához kötik az eseteket.',{evidence:['investigation_plan','timeline']}),
+ shared(9,message('scene.corroboration.title'),'department',['marton','greta','rebeka','boglarka','aron','denes'],[
+  say('narrator',message('scene.corroboration.arrival')),
+  say('aron',message('scene.corroboration.aron')),
+  say('greta',message('scene.corroboration.greta')),
+  say('rebeka',message('scene.corroboration.rebeka')),
+  say('boglarka',message('scene.corroboration.boglarka')),
+  say('denes',message('scene.corroboration.denes')),
+  say('marton',message('scene.corroboration.instruction'),'neutral',[
+   option('document',message('scene.corroboration.choice.document'),storedMessage('scene.corroboration.document.reaction')),
+   option('review',message('scene.corroboration.choice.review'),storedMessage('scene.corroboration.review.reaction'))]),
+  say('narrator',message('scene.corroboration.narrator.identity')),
+  say('narrator',message('scene.corroboration.departure'))
+ ],['identity'],storedMessage('scene.corroboration.journal'),{evidence:['investigation_plan','timeline']}),
  shared(10,'A könnyű siker','department',['marton','soma'],[
   say('narrator','Soma új plakátot hoz. A vendégelőadáson az ő neve áll az első sorban.'),
   say('soma','Ha nem bolygatod az archívumot, a műhelyed megkapja a pénzt és a termet. Végre azt csinálhatod, amihez értesz.'),
