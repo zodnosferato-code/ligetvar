@@ -93,18 +93,22 @@ shared(7,message('scene.fragment.title'),'library',['marton','rebeka','boglarka'
   say('narrator',message('scene.fragment.plan')),
   say('narrator',message('scene.fragment.departure'))
  ],['ritual_fragment','archive_access'],storedMessage('scene.fragment.journal'),{evidence:['pattern']}),
-shared(8,'Kinek mondjuk el?','classroom',['marton','rebeka','boglarka','greta','denes','julia'],[
-  say('greta','Az esetek dátumai és Soma távollétei fedik egymást. Kell még tőle független megerősítés.'),
-  say('denes','A tanúk adatai nálam maradnak. A segítségük nem függ attól, kivel vagytok személyes kapcsolatban.'),
-  say('julia','Én a hiányzó szöveget keresem. Áron hozzáférést biztosít. Most a tervezett tájékoztatásról kell döntenünk.'),
-  say('marton','Az érintettek beleegyezése minden változatban szükséges.','neutral',[
-   option('public','Ellenőrzött, engedélyezett bizonyítékokra épülő nyilvános beszámolót készítünk.','A tanúk neve nem lesz a nyilvánosság ára.',{disclosure:'public'}),
-   option('limited','Egyelőre korlátozott hozzáférésű jelentést készítünk.','Dénes és Júlia külön példányt őriz.',{disclosure:'limited'}),
-   option('private','A csoport és a segítők között tartjuk az ügyet.','Ez védheti a magánszférát, de megkönnyítheti az intézményi hallgatást.',{disclosure:'private'})]),
-  say('rebeka','A közös munka attól még közös, ha a magánéletünk másfelé megy. A nyomozást ne egy kapcsolat oldja meg.'),
-  say('boglarka','A szándék sem kész kapcsolat. Elmondhatjuk, merre mennénk, de külön kell beszélnünk róla.'),
-  say('narrator','A tervezőben személyes irány választható: egyéni közeledés, óvatos közös lehetőség vagy barátság. Ez nem jelent mások helyett kimondott igent.')
- ],['investigation_plan'],'Szétosztottuk a nyomozás feladatait és döntöttünk a tájékoztatásról. A romantikus irány egyelőre szándék.',{evidence:['archive_access','ritual_fragment']}),
+shared(8,message('scene.disclosure.title'),'classroom',['marton','rebeka','boglarka','greta','denes','julia'],[
+  say('narrator',message('scene.disclosure.arrival')),
+  say('greta',message('scene.disclosure.greta')),
+  say('rebeka',message('scene.disclosure.rebeka')),
+  say('boglarka',message('scene.disclosure.boglarka')),
+  say('denes',message('scene.disclosure.denes')),
+  say('julia',message('scene.disclosure.julia')),
+  say('marton',message('scene.disclosure.instruction'),'neutral',[
+   option('public',message('scene.disclosure.choice.public'),storedMessage('scene.disclosure.public.reaction'),{disclosure:'public'}),
+   option('limited',message('scene.disclosure.choice.limited'),storedMessage('scene.disclosure.limited.reaction'),{disclosure:'limited'}),
+   option('private',message('scene.disclosure.choice.private'),storedMessage('scene.disclosure.private.reaction'),{disclosure:'private'})]),
+  say('rebeka',message('scene.disclosure.rebeka.after')),
+  say('boglarka',message('scene.disclosure.boglarka.after')),
+  say('narrator',message('scene.disclosure.narrator.direction')),
+  say('narrator',message('scene.disclosure.departure'))
+ ],['investigation_plan'],storedMessage('scene.disclosure.journal'),{evidence:['archive_access','ritual_fragment']}),
  shared(9,'Független ellenőrzés','department',['marton','greta','rebeka','boglarka','aron','denes'],[
   say('aron','Az érintett engedélyével ellenőriztem a meghívót: Soma intézményi címéről küldték. A más által vezetett belépési napló ugyanazt az estét mutatja.'),
   say('greta','Két külön rendszer, két külön kezelő. Az eredetik mellé tesszük a javításokat.'),
