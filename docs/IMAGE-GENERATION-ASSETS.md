@@ -130,7 +130,7 @@ Preserve exact identity, hair, marks, outfit, crop, lighting. Change only facial
 
 ## Backgrounds
 
-Runtime in `assets/backgrounds/*-anime-v1.webp` (or specific night variants). Title uses `courtyard.jpg`. All are detailed non-pixel anime, gothic castle-college, first-person seated POV with empty companion seat, subtle modern electric fixtures. Autumn default.
+Runtime in `assets/backgrounds/*-anime-v1.webp` (or specific night variants). Title uses `courtyard.jpg`. All are detailed non-pixel anime, gothic castle-college, first-person seated POV with empty companion seat, subtle modern electric fixtures. Autumn default (early October: gold linden and russet oak).
 
 **Shared background positive:**
 ```text
@@ -153,6 +153,43 @@ Additional concept candidates exist under `assets/generated/geography-concepts-2
 
 Lighting variants: edit base to change only time of day/lighting while preserving exact architecture, furniture, seats and camera.
 
+### Seasonal variations
+
+Current runtime backgrounds are autumn (early October). Generate seasonal variants by editing the base while locking architecture, furniture, companion seats, camera and permanent details. Change only foliage, ground cover, water appearance, lighting temperature and weather effects.
+
+- **Autumn (default, existing):** Gold linden leaves, russet oak, damp paths, chestnuts under appropriate trees, warm ivory/slate/amber palette, Transdanubian oak-hornbeam woodland.
+- **Winter:** Bare deciduous branches, dark yew evergreen, intermittent frost or light snow, early darkness, cool blue-grey light, bare ground or light snow cover. No lush green grass. Sparse low lighting on paths.
+- **Spring:** Buds, woodland flowers before canopy closure, fresh green emerging, warmer evenings, soft pastel light. No full summer density.
+- **Summer:** Dense shade under mature trees, full green canopy, tall reeds at lake margins, insects, possible dusty paths, strong daylight with deep shadows. No autumn colours.
+
+**Seasonal positive append (choose one):**
+```text
+Winter: bare branches, frost or light snow, cool blue-grey light, early darkness, dark yew. Spring: budding leaves, woodland flowers, soft green emerging, mild light. Summer: dense green canopy, tall reeds, strong daylight, deep shade. Autumn: gold linden, russet oak, damp paths, warm amber light.
+```
+**Seasonal negative append:** `wrong season foliage, tropical plants, alpine mountains, summer blossom with winter snow, identical flower beds year-round, safe ice path across lake`.
+
+Do not invent a safe lake-ice crossing. Preserve empty first-person framing.
+
+## Location map, building and rooms
+
+Spatial authority is [CASTLE-GEOGRAPHY.md](design/CASTLE-GEOGRAPHY.md) and measured geometry in [docs/design/maps/](design/maps/). Fictional estate inspired by Nádasdy Castle at Nádasdladány (19th-century Hungarian Tudor Gothic): warm ivory plaster, pale limestone dressings, dark slate roofs, stepped gables, mullioned windows, clustered chimneys, one dominant square southeast clock tower. Not a medieval fortress. Modern heating, electricity and institutional fittings are discreet.
+
+**Estate overview:** Managed park ~1.4 km east–west by 1.6 km north–south in Transdanubian wooded foothills. Castle terrace at 220 m elevation; Békás Lake water ~195 m, northeast, secluded (15–20 min walk from suite). Dense oak-hornbeam forest beyond managed lawns; ridge northwest; village >3 km south. Lime avenue to lake. No tropical plants or alpine mountains.
+
+**Main building (U-shaped, open south):** Approximately 110 m east–west × 115 m north–south. West wing: staff offices (level 1) and suites (level 2). East wing: library (two storeys, lake-facing high windows). North range: teaching rooms. Low southern entrance gallery/arcade. Service annex east with cellar chamber. Inner garden between wings; public courtyard south of house (55×40 m, off-centre mature small-leaved linden, restrained flower beds, sheltered bench).
+
+**Key rooms and positions (Hungarian floor counting: ground=0):**
+- Entrance gallery / hallway: ground floor, main doors, stair, noticeboard. Central distribution.
+- Department office: west wing, first floor. Márton’s daytime hub. Meeting table, shelves, stone window.
+- Márton’s suite: west wing, second floor. Bedroom windows face west into trees (cannot see lake). Sitting area + bedroom + bath. Modest faculty apartment with kitchenette side.
+- Library: east wing, ground with internal gallery. Tall dark wooden bookcases, pointed arches, electric reading lamps.
+- Classroom: north teaching range, ground floor. Former ballroom, large north windows, timber desks, chalkboard.
+- Holdkör: converted granary cellar, east-southeast. Vaulted stone, amber lamps, small projection screen. External approach + descending stair.
+- Service chamber: beneath service annex. Weathered stone, utility pipes, shallow service trench with three floor anchor fittings, ordinary service exit.
+- Other estate: student residences (stable/steward ranges southeast), mystical gymnastics workshop (former riding hall southwest), gatehouse ~300 m south, Békás Lake landing (+650,+350 m), forest boundary, ridge lookout, distant village.
+
+Future backgrounds must respect compass-facing camera, floor/position, fixed landmarks, doors/windows, empty companion seat, season and lighting. Suite west window never shows lake. Courtyard does not adjoin lake. See map generation prompts in `docs/design/maps/MAP-GENERATION.md` for orthographic plans.
+
 ## Other assets
 
 **Icons** (`assets/icons/`): 13 PNG planning/UI icons (book, bottles, chair, door, phone, shelf, stats, hearts). Simple clean designs matching gothic-college theme; no text. Generate matching style if expanding.
@@ -163,7 +200,33 @@ Lighting variants: edit base to change only time of day/lighting while preservin
 
 **Reference sheets and full-body**: Venice candidates exist for main women full-body under `assets/generated/venice/`. Use only after identity check against current runtime neutrals. Soma has none.
 
-**Explicit assets** (adult only, Venice preferred, review required): Production catalog includes kneeling oral, explicit oral, bent-over, riding variants for Rebeka; undress, oral-on-her, riding for Boglárka and others. Always preserve exact facial identity, marks and proportions from neutral masters. Fully clothed ordinary portraits otherwise. See `scripts/venice/catalog.mjs` for historical explicit prompts; do not generate without explicit authorization.
+## Sexual / explicit content
+
+All characters are adults (19+). Explicit content is optional, never gates the investigation or endings, requires mutual choice, invitation, reconsideration/refusal branches and aftermath. Style matches runtime: detailed non-pixel drawn anime, adult proportions, identity locked to current neutral portraits. Venice preferred for fully explicit generation; prefer edit from identity masters. No photorealism. Current intimacy presentation is fade-to-black; planned expansion uses drawn CGs, short moment loops and expression variants.
+
+**Character-specific preferences (from design plans):**
+- Rebeka: control of pace/gaze, clothing/choker play, sarcasm drops in private. Key acts: kneeling oral, deep oral, bent-over penetration, riding.
+- Boglárka: mutual oral focus, deliberate requests, quiet aftercare, body acceptance. Key acts: undress/exposure, receiving oral/fingering, riding.
+- Gréta: practical checks, playful energy, light restraint/spanking where fitting, desk scenes.
+- Virág: immediate and repeated explicit, independent of main routes; oral and wall/bench sex.
+- Supporting (optional one-offs): Lilla — sensory grounding, slow touch, temperature contrast, mostly clothed, verbal presence. Júlia — experienced quiet instruction, partial professional attire, directing pace.
+
+**Cataloged explicit assets** (from `scripts/venice/catalog.mjs`; candidates, not runtime; generate only with authorization):
+- `explicit_rebeka_oral_kneeling`: Kneeling, performing fellatio, eyes looking up, hands behind back, black keyhole dress pulled down to waist, dim gothic apartment or dark lakeside, single streetlamp.
+- `explicit_rebeka_oral_explicit`: More explicit deep oral, dress fully pulled down, bare breasts, saliva string, eyes half-lidded, scar on abdomen visible, lakeside night rim light.
+- `explicit_rebeka_bent_over`: Bent over low stone wall or bench at dark lakeside, dress hiked, underwear aside, bare ass/thighs, penetration from behind visible, looking back flushed, scar visible.
+- `explicit_rebeka_riding`: Straddling viewer, dress/underwear off or around thighs, bare breasts, scar under hand or mouth, hands on viewer chest, half-lidded eyes, apartment or lakeside night.
+- `explicit_boglarka_undress`: Cardigan shrugged off, cream dress sliding down, soft full breasts and curves exposed, blushing, watching viewer, quiet library alcove or apartment.
+- `explicit_boglarka_oral_on_her`: Lying back on bed/sofa, dress and cardigan off, bare breasts, legs parted, receiving slow oral and fingering, blushing deeply, freckles visible, quiet apartment.
+- `explicit_boglarka_riding`: Straddling viewer, dress hiked or off, bare breasts, blushing soft smile, half-lidded eyes, hands on viewer chest, cardigan half on, quiet apartment night.
+
+**Shared explicit positive append:**
+```text
+masterpiece, best quality, adult woman, mature female, normal adult proportions, explicit sexual content, uncensored, nsfw, crisp cel-shaded anime, matching the supplied portrait identity exactly. Preserve facial geometry, marks, freckles, hair and body type. Change only pose, clothing state and setting. Detailed face, clean lines, two shading bands, no text, no watermark.
+```
+**Shared explicit negative:** shared negatives + `child, underage, photorealism, extra limbs, distorted anatomy, text, watermark, identity drift, wrong hair colour, missing freckles or marks`.
+
+Historical production also planned Gréta desk oral/bent/after, Virág oral/wall/lake, and triad kiss/oral/riding; these are not in the current catalog.mjs. Identity sheets (clothed → partial → nude) first, then scene CGs. Register only after visual review. See [NSFW-IMPLEMENTATION-PLAN.md](design/NSFW-IMPLEMENTATION-PLAN.md) and [SIDE-EVENTS-NSFW.md](design/SIDE-EVENTS-NSFW.md) for full structure.
 
 ## Production notes
 
