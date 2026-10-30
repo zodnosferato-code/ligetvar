@@ -57,3 +57,9 @@ See `docs/design/MASTER-TRACKER.md` for the consolidated SE-* / AS-* list. INT2 
 | ID | Status | Scope | Evidence / remaining |
 | --- | --- | --- | --- |
 | STORY-SHARED9 | Partial | shared_9 expanded English-first (then Hungarian). Added ordinary office arrival with invitation/log side-by-side, distinct reactions, preserved document/review choices, natural departure. Evidence `identity` and prerequisites unchanged. Late-reveal migration still open. | Implemented in `shared.ts` + `locales/shared9.{en,hu}.ts`. |
+
+## shared_10 expansion — 30 October 2026
+
+| ID | Status | Scope | Evidence / remaining |
+| --- | --- | --- | --- |
+| STORY-SHARED10 | Partial | shared_10 expanded English-first (then Hungarian). Added ordinary corridor arrival with guest-lecture posters, preserved confession and refuse/question choices, natural departure. Evidence `deliberate_transformation` and prerequisites unchanged. Late-reveal migration still open. | Implemented in `shared.ts` + `locales/shared10.{en,hu}.ts`. |
