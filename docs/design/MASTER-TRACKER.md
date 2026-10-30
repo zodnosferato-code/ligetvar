@@ -13,7 +13,7 @@ This is the single consolidated master tracker for story-engine-supported narrat
 | ID | Priority | Status | Task | Acceptance / Remaining Gate | Dependency / Notes |
 |----|----------|--------|------|-----------------------------|--------------------|
 | SE-01 | P0 | Partial | **Complete story writing depth (STORY)** | English-first rewrites + Hungarian translations for remaining shared chapters, individual romance, triad, and early identity/confession scenes. Broader literary/user acceptance. | Follow `SCENE-OUTLINE.md`, `NARRATIVE-WORKFLOW.md`, `CHARACTER-VOICES.md`. CLI validation + playthrough findings first. |
-| SE-02 | P0 | Partial | **INT2 — connected annual relationship exploration** | Rebeka, Boglárka, triad, and Virág get connected midpoint → later-half meetings → ending (model after Gréta). Preserve no-sex routes, witnessed history, mutual choice. | Gréta already CLI-validated. Do not claim whole-game completion. |
+| SE-02 | P0 | Partial | **INT2 — connected annual relationship exploration** | Rebeka, Boglárka, triad, and Virág get connected midpoint → later-half meetings → ending (model after Gréta). Preserve no-sex routes, witnessed history, mutual choice. | Gréta already CLI-validated; additional optional private continuation `greta_private_1` added with preference/gallery hooks. Do not claim whole-game completion. |
 | SE-03 | P1 | Partial | **Localization completion** | Full English catalog as canonical source / target default; complete Hungarian translation. | Runtime still Hungarian-first. |
 | SE-04 | P1 | Planned | **Scene staging expansions (S1–S5)** | Multi-location staging, character-specific physical beats, later-scene endings/goodbyes, richer callbacks. | `SCENE-STAGING.md`. |
 | SE-05 | P1 | Implemented (maintain) | **Knowledge & save integrity** | Every new scene preserves witnessed prerequisites, distinct bonds, decision order, and save-history validation. | `ENGINE.md`, `VERSIONING.md`. |
@@ -55,4 +55,4 @@ This is the single consolidated master tracker for story-engine-supported narrat
 - Optional content must never gate the mandatory vampire investigation.  
 - No save migrations; content epoch bumps require a new year.
 
-**Next recommended action:** Expand main-route INT2 explicit scenes (preferably Gréta) using the new preference/gallery hooks, or produce identity/CG assets for the side and spontaneous events.
+**Next recommended action:** Expand remaining main-route INT2 explicit scenes (Rebeka / Boglárka) using the preference/gallery hooks, or produce identity/CG assets for the side, spontaneous, and Gréta private events.
