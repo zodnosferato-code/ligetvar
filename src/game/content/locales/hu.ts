@@ -18,6 +18,7 @@ import {holidaysHu} from './holidays.hu.ts';
 import {investigationHu} from './investigation.hu.ts';
 import {shared5Hu} from "./shared5.hu.ts";
 import {shared6Hu} from "./shared6.hu.ts";
+import {shared7Hu} from "./shared7.hu.ts";
 import {openingHu} from './opening.hu.ts';
 export const hu = {
   ...folkloreHu,
@@ -56,6 +57,7 @@ export const hu = {
   ...investigationHu,
 ...shared5Hu,
 ...shared6Hu,
+...shared7Hu,
   "save.unknownVersion": "ismeretlen játékverzió",
   "save.format": " (formátum: {format})",
   "save.versions": "Mentés: {saved}{format}. Jelenlegi játék: {current}.",

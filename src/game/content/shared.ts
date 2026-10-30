@@ -79,18 +79,21 @@ export const spine:Scene[]=[
   say('narrator',message('scene.offer.company')),
   say('narrator',message('scene.offer.departure'))
  ],['pattern'],storedMessage('scene.offer.journal'),{evidence:['borrowed_voice']}),
-shared(7,'A hiányos leírás','library',['marton','rebeka','boglarka','greta','julia','aron'],[
-  say('aron','Felügyelettel hozzáférhettek a régi kísérleti anyagokhoz. Másolatot jegyzőkönyv mellett készítünk.'),
-  say('greta','Soma neve szerepel annál a kötetnél, amelyikből kitéptek egy lapot. A év előtt kérte ki.'),
-  say('julia','A korábbi tanúk sikertelen sötétmágiai kísérletekről beszélnek. Ezek nem bizonyítanak korábbi vámpírtámadásokat.'),
-  say('boglarka','A megmaradt rész önként végzett átalakulást ír le. Kölcsönzött életerőt említ; befejezés nélkül az állapot instabil.'),
-  say('rebeka','A lap szélén ugyanaz a pinceablak van, mint egy régi képen. A kör vége viszont leszakadt.'),
-  say('marton','A hiány is része a bizonyítéknak.','neutral',[
-   option('copy','Az egész megmaradt oldalt másoljuk, a hiánnyal együtt.','Áron hitelesíti, Júlia jelöli a bizonytalan olvasatot.'),
-   option('index','Az oldalszám alapján keressük a hiányzó mellékletet.','Egy régi karbantartási jegyzékhez jut az utalás.')]),
-  say('narrator','A leírás magyarázhatja a kimerülést. A befejezés helyét és módját még nem ismerik. Rebeka és Boglárka egymással egyeztet új időpontot.')
- ],['ritual_fragment','archive_access'],'Soma kikérte az önkéntes, életerőt kölcsönző átalakulás hiányos leírását. A régi ügyek sikertelen kísérletek voltak.',{evidence:['pattern']}),
- shared(8,'Kinek mondjuk el?','classroom',['marton','rebeka','boglarka','greta','denes','julia'],[
+shared(7,message('scene.fragment.title'),'library',['marton','rebeka','boglarka','greta','julia','aron'],[
+  say('narrator',message('scene.fragment.arrival')),
+  say('aron',message('scene.fragment.aron')),
+  say('greta',message('scene.fragment.greta')),
+  say('julia',message('scene.fragment.julia')),
+  say('boglarka',message('scene.fragment.boglarka')),
+  say('rebeka',message('scene.fragment.rebeka')),
+  say('marton',message('scene.fragment.instruction'),'neutral',[
+   option('copy',message('scene.fragment.choice.copy'),storedMessage('scene.fragment.copy.reaction')),
+   option('index',message('scene.fragment.choice.index'),storedMessage('scene.fragment.index.reaction'))]),
+  say('narrator',message('scene.fragment.exhaustion')),
+  say('narrator',message('scene.fragment.plan')),
+  say('narrator',message('scene.fragment.departure'))
+ ],['ritual_fragment','archive_access'],storedMessage('scene.fragment.journal'),{evidence:['pattern']}),
+shared(8,'Kinek mondjuk el?','classroom',['marton','rebeka','boglarka','greta','denes','julia'],[
   say('greta','Az esetek dátumai és Soma távollétei fedik egymást. Kell még tőle független megerősítés.'),
   say('denes','A tanúk adatai nálam maradnak. A segítségük nem függ attól, kivel vagytok személyes kapcsolatban.'),
   say('julia','Én a hiányzó szöveget keresem. Áron hozzáférést biztosít. Most a tervezett tájékoztatásról kell döntenünk.'),

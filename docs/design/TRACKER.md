@@ -39,3 +39,9 @@ See `docs/design/MASTER-TRACKER.md` for the consolidated SE-* / AS-* list. INT2 
 | ID | Status | Scope | Evidence / remaining |
 | --- | --- | --- | --- |
 | STORY-SHARED6 | Partial | shared_6 expanded English-first (then Hungarian). Added courtyard arrival, Dénes’s protected second return, concrete company request from Gréta after others leave, distinct protect/consent reactions. Evidence `pattern` and prerequisites unchanged. | Implemented in `shared.ts` + `locales/shared6.{en,hu}.ts`. Later shared scenes still sparse. |
+
+## shared_7 expansion — 30 October 2026
+
+| ID | Status | Scope | Evidence / remaining |
+| --- | --- | --- | --- |
+| STORY-SHARED7 | Partial | shared_7 expanded English-first (then Hungarian). Added supervised arrival, clearer distinction from earlier failed experiments, plan for photo re-examination, natural departure. Evidence `ritual_fragment`/`archive_access` unchanged. | Implemented in `shared.ts` + `locales/shared7.{en,hu}.ts`. |
